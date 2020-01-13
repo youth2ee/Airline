@@ -26,16 +26,53 @@ class AirlineApplicationTests {
 	private DataSource dataSource;
 
 	@Test
+	void apiTest2() throws Exception {
+
+		BufferedReader br = null;
+		try {
+			String urlstr = "http://openapi.airport.co.kr/service/rest/AirportCodeList/getAirportCodeList?"
+					+ "ServiceKey=ocUWaBXkUfn7dTwV69oHksQQ4C4g9sEm41EWbQU3DNWLYSsd%2BewFHSMTGYGwGi5kcBCKXPGHARowuE0BgEsokg%3D%3D&"
+					+ "numOfRows=1000";
+			URL url = new URL(urlstr);
+			HttpURLConnection urlconnection = (HttpURLConnection) url.openConnection();
+			urlconnection.setRequestMethod("GET");
+			br = new BufferedReader(new InputStreamReader(urlconnection.getInputStream(), "UTF-8"));
+			String result = "";
+			String line;
+			DocumentBuilderFactory dbFactoty = DocumentBuilderFactory.newInstance();
+			DocumentBuilder dBuilder = dbFactoty.newDocumentBuilder();
+			Document doc = dBuilder.parse(urlstr);
+			doc.getDocumentElement().normalize();
+			NodeList nList = doc.getElementsByTagName("item");
+			System.out.println("Root element: " + doc.getDocumentElement().getNodeName());
+			System.out.println("파싱할 리스트 수 : " + nList.getLength());
+			for (int temp = 0; temp < nList.getLength(); temp++) {
+				Node nNode = nList.item(temp);
+				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+
+					Element eElement = (Element) nNode;
+					System.out.println("######################");
+					// System.out.println(eElement.getTextContent());
+					System.out.println("도시명  : " + getTagValue("cityKor", eElement));
+					System.out.println("공항코드 : " + getTagValue("cityCode", eElement));
+
+				}
+			}
+			System.out.println(result);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+
+	}
+
+	//@Test
 	void apiTest() throws Exception {
 
 		BufferedReader br = null;
 		try {
 			String urlstr = "http://openapi.airport.co.kr/service/rest/FlightScheduleList/getDflightScheduleList?"
 					+ "ServiceKey=ocUWaBXkUfn7dTwV69oHksQQ4C4g9sEm41EWbQU3DNWLYSsd%2BewFHSMTGYGwGi5kcBCKXPGHARowuE0BgEsokg%3D%3D&"
-					+ "schDeptCityCode=GMP&"
-					+ "schArrvCityCode=CJU&"
-					+ "pageNo=1&"
-					+ "schDate=20200113&"
+					+ "schDeptCityCode=GMP&" + "schArrvCityCode=CJU&" + "pageNo=1&" + "schDate=20200113&"
 					+ "numOfRows=100";
 			URL url = new URL(urlstr);
 			HttpURLConnection urlconnection = (HttpURLConnection) url.openConnection();
@@ -59,7 +96,7 @@ class AirlineApplicationTests {
 					// System.out.println(eElement.getTextContent());
 					System.out.println("항공편명  : " + getTagValue("domesticNum", eElement));
 					System.out.println("도착공항  : " + getTagValue("arrivalcity", eElement));
-					System.out.println("출발시ddd  : " + getTagValue("domesticStartTime", eElement));
+					System.out.println("출발시간  : " + getTagValue("domesticStartTime", eElement));
 					System.out.println("도착시간 : " + getTagValue("domesticArrivalTime", eElement));
 					System.out.println("운항시작일  : " + getTagValue("domesticStdate", eElement));
 					System.out.println("운항종료일  : " + getTagValue("domesticEddate", eElement));
@@ -70,9 +107,9 @@ class AirlineApplicationTests {
 					System.out.println("금요일  : " + getTagValue("domesticFri", eElement));
 					System.out.println("토요일  : " + getTagValue("domesticSat", eElement));
 					System.out.println("일요일  : " + getTagValue("domesticSun", eElement));
-					
-				} 
-			} 
+
+				}
+			}
 			System.out.println(result);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
