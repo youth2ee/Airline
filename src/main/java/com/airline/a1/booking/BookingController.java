@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/booking/**")
 public class BookingController {
 	
-	@GetMapping("bookingMain")
-	public void bookingMain()throws Exception{
+	@GetMapping("bookingMain1")
+	public void bookingMain1()throws Exception{
 		
 	}
 
