@@ -25,3 +25,4 @@ src/main/resources/application.properties
 target/classes/application.properties
 *.properties
 src/main/resources/application.properties
+target/m2e-wtp/web-resources/META-INF/maven/com.airline/a1/pom.properties
