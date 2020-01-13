@@ -25,9 +25,11 @@ class AirlineApplicationTests {
 	@Autowired
 	private DataSource dataSource;
 
+	
+	
 	@Test
 	void apiTest2() throws Exception {
-
+		// 공항코드
 		BufferedReader br = null;
 		try {
 			String urlstr = "http://openapi.airport.co.kr/service/rest/AirportCodeList/getAirportCodeList?"
@@ -67,7 +69,7 @@ class AirlineApplicationTests {
 
 	//@Test
 	void apiTest() throws Exception {
-
+		// 국내항공운항정보
 		BufferedReader br = null;
 		try {
 			String urlstr = "http://openapi.airport.co.kr/service/rest/FlightScheduleList/getDflightScheduleList?"
