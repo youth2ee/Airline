@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.airline.a1.api.airportMapper">
+  
+	
+	<update id="airportUpdate" parameterType="com.airline.a1.api.AirportVO">
+		update airport set cityKor='kor' where apName='무안' 
+	</update>
+  
+  </mapper>

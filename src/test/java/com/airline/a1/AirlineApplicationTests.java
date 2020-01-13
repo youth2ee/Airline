@@ -51,11 +51,17 @@ class AirlineApplicationTests {
 				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 
 					Element eElement = (Element) nNode;
+					
+					
+					if(getTagValue("cityKor", eElement).equals("무안") || getTagValue("cityKor", eElement).equals("광주") || getTagValue("cityKor", eElement).equals("군산"))  {
+					
 					System.out.println("######################");
+					System.out.println(getTagValue("cityKor", eElement).equals("양양"));
 					// System.out.println(eElement.getTextContent());
 					System.out.println("도시명  : " + getTagValue("cityKor", eElement));
+					System.out.println("영문도시명  : " + getTagValue("cityEng", eElement));
 					System.out.println("공항코드 : " + getTagValue("cityCode", eElement));
-
+					}
 				}
 			}
 			System.out.println(result);
