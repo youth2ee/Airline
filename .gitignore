@@ -23,5 +23,3 @@
 hs_err_pid*
 src/main/resources/application.properties
 target/classes/application.properties
-*.properties
-src/main/resources/application.properties
