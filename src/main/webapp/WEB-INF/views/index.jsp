@@ -14,7 +14,6 @@
 </head>
 <body>
 
-<c:import url="./template/nav.jsp"></c:import>
 
 
 <h1> Hello Index </h1>
