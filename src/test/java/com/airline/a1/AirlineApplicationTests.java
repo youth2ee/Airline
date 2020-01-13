@@ -19,13 +19,19 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import com.airline.a1.api.AirportMapper;
+import com.airline.a1.api.AirportVO;
+
 @SpringBootTest
 class AirlineApplicationTests {
 
 	@Autowired
 	private DataSource dataSource;
+	
+	@Autowired
+	private AirportMapper airportMapper;
 
-	@Test
+	//@Test
 	void apiTest2() throws Exception {
 
 		BufferedReader br = null;
@@ -53,15 +59,29 @@ class AirlineApplicationTests {
 					Element eElement = (Element) nNode;
 					
 					
-					if(getTagValue("cityKor", eElement).equals("무안") || getTagValue("cityKor", eElement).equals("광주") || getTagValue("cityKor", eElement).equals("군산"))  {
+					  String apName="김포";
+					  
+					  if(getTagValue("cityKor", eElement).equals("서울/김포")) { 
+						  AirportVO airportVO = new AirportVO(); 
+					  airportVO.setApName(apName);
+					  airportVO.setCityKor(getTagValue("cityKor", eElement).trim());
+					  airportVO.setCityEng(getTagValue("cityEng", eElement).trim());
+					  airportVO.setCityCode(getTagValue("cityCode", eElement).trim());
+					  airportMapper.airportUpdate(airportVO);
+					  
+					  System.out.println("######################");
+					  
+					  // System.out.println(eElement.getTextContent());
+					  System.out.println("도시명  : " + getTagValue("cityKor", eElement));
+					  System.out.println("영문도시명  : " + getTagValue("cityEng", eElement));
+					  System.out.println("공항코드 : " + getTagValue("cityCode", eElement));
+					  
+					  
+					  }
+					 
 					
-					System.out.println("######################");
-					System.out.println(getTagValue("cityKor", eElement).equals("양양"));
-					// System.out.println(eElement.getTextContent());
-					System.out.println("도시명  : " + getTagValue("cityKor", eElement));
-					System.out.println("영문도시명  : " + getTagValue("cityEng", eElement));
-					System.out.println("공항코드 : " + getTagValue("cityCode", eElement));
-					}
+
+					
 				}
 			}
 			System.out.println(result);
