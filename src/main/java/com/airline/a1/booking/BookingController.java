@@ -13,4 +13,9 @@ public class BookingController {
 		
 	}
 
+	@GetMapping("bookingList")
+	public void bookingList() throws Exception {
+		
+	}
+	
 }
