@@ -18,5 +18,7 @@ private String date;
 private int adults;
 private int children;
 
+private String depAirportNm;
+
 
 }

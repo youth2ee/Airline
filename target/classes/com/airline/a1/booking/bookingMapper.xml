@@ -3,8 +3,10 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-<mapper namespace="com.airline.a1.booking.bookingMapper">
+<mapper namespace="com.airline.a1.booking.BookingMapper">
 
-
+<select id="airportList" resultType="java.lang.String">
+	select distinct depAirportNm from flightData order by depAirportNm asc;
+</select>
 
 </mapper>
