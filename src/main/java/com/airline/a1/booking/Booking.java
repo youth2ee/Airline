@@ -9,7 +9,13 @@ import lombok.Setter;
 @Setter
 public class Booking {
 	
-	private Date goDate;
-	private Date backDate;
+private int kind;	
+private String depLoc;
+private String arrLoc;
+private String depDate;
+private String arrDate;
+private int aldults;
+private int Children;
+
 
 }

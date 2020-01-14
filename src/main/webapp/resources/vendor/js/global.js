@@ -12,7 +12,7 @@
             autoUpdateInput: false
         },function (start, end) {
             $('#input-start').val(start.format('MM/DD/YYYY'));
-            $('#input-end').val(end.format('MM/DD/YYYY'));
+          $('#input-end').val(end.format('MM/DD/YYYY'));
         });
     
         $('#input-start-2').daterangepicker({
@@ -22,7 +22,7 @@
             autoUpdateInput: false
         },function (start, end) {
             $('#input-start-2').val(start.format('MM/DD/YYYY'));
-            $('#input-end-2').val(end.format('MM/DD/YYYY'));
+         $('#input-end-2').val(end.format('MM/DD/YYYY'));
         });
     
     } catch(er) {console.log(er);}
@@ -216,7 +216,7 @@
                 rooms = 'Rooms';
             }
     
-            var infoText = totalAd + ' ' + adults + totalChi + ' ' + 'Children, ' + totalRoom + ' ' + rooms;
+            var infoText = totalAd + ' ' + adults + totalChi + ' ' + 'Children, ';
     
             info.val(infoText);
         }
