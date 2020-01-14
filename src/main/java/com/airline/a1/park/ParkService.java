@@ -1,5 +1,7 @@
 package com.airline.a1.park;
 
+import org.jsoup.Jsoup;
+import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.w3c.dom.Document;
@@ -11,6 +13,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.sql.PseudoColumnUsage;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +30,37 @@ public class ParkService {
 	@Autowired
 	private parkMapper parkMapper;
 	
+	public void tttttt() throws Exception{
+		
+		 String url = "https://www.weatheri.co.kr/forecast/forecast03.php?aircode=RKTU&a_name=%EC%B2%AD%EC%A3%BC%EA%B3%B5%ED%95%AD&k=4";    //크롤링할 url지정
+	     org.jsoup.nodes.Document doc = null; 
+	     //Document에는 페이지의 전체 소스가 저장된다
+	     
+	     
+		try {
+			 
+            doc = Jsoup.connect(url).get();
+           Elements els = doc.select("body > table:nth-child(4) > tbody > tr:nth-child(3) > td:nth-child(2) > table > tbody > tr:nth-child(3) > td > table");
+            //System.out.println(doc.toString());
+           System.out.println(els);
+           System.out.println(els.toString());
+        } catch (IOException e) {
+ 
+            e.printStackTrace();
+ 
+        }
+		
+	}
+	
+	
+	//주차예약
+	public int resInsert(pReservationVO pReservationVO) throws Exception{
+		
+		return parkMapper.resInsert(pReservationVO);
+	}
+	
+	
+	//주차조회
 	public List<pReservationVO> parkCheck(pReservationVO pReservationVO) throws Exception{
 		
 		return parkMapper.parkCheck(pReservationVO);
@@ -131,18 +165,18 @@ public class ParkService {
 				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 
 					Element eElement = (Element) nNode;
-					System.out.println("######################");
 					// System.out.println(eElement.getTextContent());
 					ParkInfoVO parkInfoVO = new ParkInfoVO();
-					System.out.println("Airport Name  : " + getTagValue("aprEng", eElement));
-					System.out.println("공항명  : " + getTagValue("aprKor", eElement));
-					System.out.println("주차장명  : " + getTagValue("parkingAirportCodeName", eElement));
-					System.out.println("주차공간 : " + getTagValue("parkingFullSpace", eElement));
-					System.out.println("조회일  : " + getTagValue("parkingGetdate", eElement));
-					System.out.println("조회시간  : " + getTagValue("parkingGettime", eElement));
-					System.out.println("입고차량 수  : " + getTagValue("parkingIincnt", eElement));
-					System.out.println("출고차량 수 : " + getTagValue("parkingIoutcnt", eElement));
-					System.out.println("현주차수  : " + getTagValue("parkingIstay", eElement));
+//					System.out.println("######################");
+//					System.out.println("Airport Name  : " + getTagValue("aprEng", eElement));
+//					System.out.println("공항명  : " + getTagValue("aprKor", eElement));
+//					System.out.println("주차장명  : " + getTagValue("parkingAirportCodeName", eElement));
+//					System.out.println("주차공간 : " + getTagValue("parkingFullSpace", eElement));
+//					System.out.println("조회일  : " + getTagValue("parkingGetdate", eElement));
+//					System.out.println("조회시간  : " + getTagValue("parkingGettime", eElement));
+//					System.out.println("입고차량 수  : " + getTagValue("parkingIincnt", eElement));
+//					System.out.println("출고차량 수 : " + getTagValue("parkingIoutcnt", eElement));
+//					System.out.println("현주차수  : " + getTagValue("parkingIstay", eElement));
 					parkInfoVO.setAprEng(getTagValue("aprEng", eElement));
 					parkInfoVO.setAprKor(getTagValue("aprKor", eElement));
 					parkInfoVO.setParkingName(getTagValue("parkingAirportCodeName", eElement));
