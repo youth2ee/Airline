@@ -32,7 +32,7 @@ public class ParkService {
 	
 	public void tttttt() throws Exception{
 		
-		 String url = "https://www.weatheri.co.kr/forecast/forecast03.php?aircode=RKTU&a_name=%EC%B2%AD%EC%A3%BC%EA%B3%B5%ED%95%AD&k=4";    //크롤링할 url지정
+		 String url = "http://airport.koreatriptips.com/parking-lot.html";    //크롤링할 url지정
 	     org.jsoup.nodes.Document doc = null; 
 	     //Document에는 페이지의 전체 소스가 저장된다
 	     
@@ -40,10 +40,10 @@ public class ParkService {
 		try {
 			 
             doc = Jsoup.connect(url).get();
-           Elements els = doc.select("body > table:nth-child(4) > tbody > tr:nth-child(3) > td:nth-child(2) > table > tbody > tr:nth-child(3) > td > table");
-            //System.out.println(doc.toString());
-           System.out.println(els);
-           System.out.println(els.toString());
+           //Elements els = doc.select("body > table:nth-child(4) > tbody > tr:nth-child(3) > td:nth-child(2) > table > tbody > tr:nth-child(3) > td > table");
+            System.out.println(doc.toString());
+           //System.out.println(els);
+           //System.out.println(els.toString());
         } catch (IOException e) {
  
             e.printStackTrace();

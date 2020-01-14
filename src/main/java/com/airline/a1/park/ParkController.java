@@ -19,7 +19,7 @@ public class ParkController {
 	@RequestMapping("ParkMain")
 	public ModelAndView parkmain(ModelAndView mv) throws Exception{
 		//parkService.test();
-		parkService.tttttt();
+		//parkService.tttttt();
 		
 		List<ParkInfoVO> ar =parkService.apiTest();
 		mv.addObject("list", ar);
