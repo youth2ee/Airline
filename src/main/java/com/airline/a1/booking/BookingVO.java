@@ -7,15 +7,15 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Booking {
+public class BookingVO {
 	
 private int kind;	
 private String depLoc;
 private String arrLoc;
 private String depDate;
 private String arrDate;
-private int aldults;
-private int Children;
+private int adults;
+private int children;
 
 
 }
