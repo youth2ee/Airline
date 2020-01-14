@@ -80,16 +80,10 @@
                                 <div class="row row-space">
                                     <div class="col-2">
                                         <div class="input-group">
-                                            <label class="label">Departing:</label>
-                                            <input class="input--style-1" type="text" name="depDate" placeholder="mm/dd/yyyy" id="input-start">
+                                            <label class="label">Date:</label>
+                                            <input class="input--style-1" type="text" name="date" placeholder="mm/dd/yyyy" id="input-start">
                                         </div>
-                                    </div>
-                                    <div class="col-2">
-                                        <div class="input-group arrDate" id = "arrDate">
-                                            <label class="label">Returning:</label>
-                                            <input class="input--style-1" type="text" name="arrDate" placeholder="mm/dd/yyyy" id="input-end">
-                                        </div>
-                                    </div>
+                                    </div>                                 
                                 </div>
                                 <div class="row row-space">
                                     <div class="col-2">

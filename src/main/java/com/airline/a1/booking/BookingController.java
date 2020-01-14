@@ -16,15 +16,8 @@ public class BookingController {
 	
 	
 	  @PostMapping("bookingMain1") 
-	  public void bookingMain11(Booking booking)throws Exception{
+	  public void bookingMain11(BookingVO booking)throws Exception{
 	  
-		  	System.out.println(booking.getAdults());
-		  	System.out.println(booking.getArrLoc());
-		  	System.out.println(booking.getChildren());
-		  	System.out.println(booking.getDepLoc());
-		  	System.out.println(booking.getKind());
-		  	System.out.println(booking.getArrDate());
-		  	System.out.println(booking.getDepDate());
 	  
 	  }
 	 
