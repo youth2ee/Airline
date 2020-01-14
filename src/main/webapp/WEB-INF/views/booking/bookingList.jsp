@@ -31,7 +31,7 @@
 	<td>가격</td>  
 </tr>
 
- <tr style = "cursor:pointer;" onClick = " location.href='./bookinWrite' " onMouseOver = " indow.status = './bookinWrite' " onMouseOut = " window.status = '' " >
+ <tr style = "cursor:pointer;" onClick = " location.href='./bookingWrite' " onMouseOver = " indow.status = './bookingWrite' " onMouseOut = " window.status = '' " >
 	<td>OZ8981</td> 
 	<td>B767</td> 
 	<td>17:25</td> 
@@ -62,7 +62,7 @@
 </tr>
 
 
- <tr style = "cursor:pointer;" onClick = " location.href='./bookinWrite' " onMouseOver = " indow.status = './bookinWrite' " onMouseOut = " window.status = '' " >
+ <tr style = "cursor:pointer;" onClick = " location.href='./bookingWrite' " onMouseOver = " indow.status = './bookingWrite' " onMouseOut = " window.status = '' " >
 	<td>OZ8981</td> 
 	<td>B767</td> 
 	<td>17:25</td> 

@@ -18,4 +18,8 @@ public class BookingController {
 		
 	}
 	
+	@GetMapping("bookingWrite")
+	public void bookingWrite() throws Exception {
+		
+	}
 }
