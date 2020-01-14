@@ -23,42 +23,47 @@ booking write
 
 <div>
 
+<form action="./bookingWrite" method="post">
 <div> 
 탑승자 정보
 
-<table>
+
+<table><!-- 성인1 -->
 
 <tr><td colspan="2">성인1</td> </tr>
 
 <tr> 
 <td>성별</td> 
-<td>여<input type="radio" name="sex" value="여"> 남<input type="radio" name="sex" value="남">  </td>
+<td>
+여<input type="radio" name="customVOList[0].sex" value="여"> 남<input type="radio" name="customVOList[0].sex" value="남">  
+</td>
 </tr>
 
 <tr>
 <td>이름</td> 
-<td><input type="text" placeholder="성(신분증언어)"> <input type="text" placeholder="이름(신분증언어)"> </td>
+<td><input type="text" placeholder="성(신분증언어)" name="customVOList[0].firstName"> 
+<input type="text" placeholder="이름(신분증언어)" name="customVOList[0].lastName"> </td>
 </tr>
 
 <tr>
 <td>생년월일</td>
 <td> 
 
-<select> 
-<option selected="selected">년</option>
+<select name="customVOList[0].year"> 
+<option selected="selected" >년</option>
 <c:forEach begin="1910" end="2020" varStatus="status">
 <option>${status.index}</option>
 </c:forEach>
 </select> 
 
-<select> 
+<select name="customVOList[0].month"> 
 <option selected="selected">월</option>
 <c:forEach begin="1" end="12" varStatus="status">
 <option>${status.index}</option>
 </c:forEach>
 </select> 
 
-<select> 
+<select name="customVOList[0].day"> 
 <option selected="selected">일</option>
 <c:forEach begin="1" end="31" varStatus="status">
 <option>${status.index}</option>
@@ -69,13 +74,13 @@ booking write
 
 <tr>
 <td>회원번호(탑승객)</td>
-<td><input type="text" placeholder="회원번호"></td>
+<td><input type="text" placeholder="회원번호" name="customVOList[0].memberNum"></td>
 </tr>
 
 <tr>
 <td>개인할인(가는편)</td>
 <td> 
-<select>
+<select name="customVOList[0].depDis">
 <option>개인할인 선택 안함</option>
 <option>[30%] 장애인 1~3급</option>
 <option>[10%] 장애인 4~6급</option>
@@ -98,7 +103,100 @@ booking write
 <tr>
 <td>개인할인(오는편)</td>
 <td>
-<select>
+<select name="customVOList[0].arrDis">
+<option>개인할인 선택 안함</option>
+<option>[30%] 장애인 1~3급</option>
+<option>[10%] 장애인 4~6급</option>
+<option>[30%] 장애인 1~3급 동반 보호자 1인</option>
+<option>[10%] 현역군인(휴가증소지의 의무복무사병)</option>
+<option>[10%] 고엽제 후유증 환자</option>
+<option>[30%] 국가유공상이 4급 동반 보호자 1인</option>
+<option>[30%] 5.18민주유공 1~4급 동반 보호자 1인</option>
+<option>[30%] 국가유공상이 1~3급 동반 보호자 1인</option>
+<option>[30%] 독립유공자 동반 보호자 1인</option>
+<option>[10%] 독립유동자 유족증소지자</option>
+<option>[30%] 독립유공자</option>
+<option>[10%] 국가유공자/5.18민주유공자/월남전 참전유공자 &#38; 유공자 유족증 소지자</option>
+<option>[30%] 국가유공상이자 &#38; 5.18민주유공부상자</option>
+</select>
+</td>
+</tr>
+</table><!-- 성인1 -->
+
+<table><!-- 성인2 -->
+
+<tr><td colspan="2">성인1</td> </tr>
+
+<tr> 
+<td>성별</td> 
+<td>여<input type="radio" name="customVOList[1].sex" value="여"> 남<input type="radio" name="customVOList[1].sex" value="남">  </td>
+</tr>
+
+<tr>
+<td>이름</td> 
+<td><input type="text" placeholder="성(신분증언어)" name="customVOList[1].firstName"> 
+<input type="text" placeholder="이름(신분증언어)" name="customVOList[1].lastName"> </td>
+</tr>
+
+<tr>
+<td>생년월일</td>
+<td> 
+
+<select name="customVOList[1].year"> 
+<option selected="selected">년</option>
+<c:forEach begin="1910" end="2020" varStatus="status">
+<option>${status.index}</option>
+</c:forEach>
+</select> 
+
+<select name="customVOList[1].month"> 
+<option selected="selected">월</option>
+<c:forEach begin="1" end="12" varStatus="status">
+<option>${status.index}</option>
+</c:forEach>
+</select> 
+
+<select name="customVOList[1].day"> 
+<option selected="selected">일</option>
+<c:forEach begin="1" end="31" varStatus="status">
+<option>${status.index}</option>
+</c:forEach>
+</select> 
+</td>
+</tr>
+
+<tr>
+<td>회원번호(탑승객)</td>
+<td><input type="text" placeholder="회원번호" name="customVOList[1].memberNum"></td>
+</tr>
+
+<tr>
+<td>개인할인(가는편)</td>
+<td> 
+<select name="customVOList[1].depDis">
+<option>개인할인 선택 안함</option>
+<option>[30%] 장애인 1~3급</option>
+<option>[10%] 장애인 4~6급</option>
+<option>[30%] 장애인 1~3급 동반 보호자 1인</option>
+<option>[10%] 현역군인(휴가증소지의 의무복무사병)</option>
+<option>[10%] 고엽제 후유증 환자</option>
+<option>[30%] 국가유공상이 4급 동반 보호자 1인</option>
+<option>[30%] 5.18민주유공 1~4급 동반 보호자 1인</option>
+<option>[30%] 국가유공상이 1~3급 동반 보호자 1인</option>
+<option>[30%] 독립유공자 동반 보호자 1인</option>
+<option>[10%] 독립유동자 유족증소지자</option>
+<option>[30%] 독립유공자</option>
+<option>[10%] 국가유공자/5.18민주유공자/월남전 참전유공자 &#38; 유공자 유족증 소지자</option>
+<option>[30%] 국가유공상이자 &#38; 5.18민주유공부상자</option>
+</select>
+
+ </td>
+</tr>
+
+<tr>
+<td>개인할인(오는편)</td>
+<td>
+<select name="customVOList[1].arrDis">
 <option>개인할인 선택 안함</option>
 <option>[30%] 장애인 1~3급</option>
 <option>[10%] 장애인 4~6급</option>
@@ -118,7 +216,11 @@ booking write
 </tr>
 
 
-</table>
+</table><!-- 성인2 -->
+
+
+
+
 
 </div>
 
@@ -130,16 +232,16 @@ booking write
 <tr>
 <td>이메일</td>
 <td>
-<input type="email">
-<input type="checkbox"> 이메일 항공권 수신동의
+<input type="email" name="resEmail">
+<input type="checkbox" name="chkEmail"> 이메일 항공권 수신동의
 </td>
 </tr>
 
 <tr>
 <td>전화번호</td>
 <td>
-<input type="text">
-<input type="checkbox"> SMS 수신동의
+<input type="text" name="resPhone">
+<input type="checkbox" name="chkPhone"> SMS 수신동의
 </td>
 </tr>
 </table>
@@ -147,6 +249,10 @@ booking write
 
 </div>
 
+
+<button>클릭</button>
+
+</form>
 
 
 
