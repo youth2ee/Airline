@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,9 +12,10 @@
     <meta name="author" content="Colrolib">
     <meta name="keywords" content="Colrolib Templates">
 
+	<c:import url="../template/boot.jsp"></c:import>
     <!-- Title Page-->
     <title>Au Form Wizard</title>
-
+	
     <!-- Icons font CSS-->
     <link href="../resources/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
     <link href="../resources/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
@@ -25,6 +29,7 @@
 
     <!-- Main CSS-->
     <link href="../resources/vendor/css/main.css" rel="stylesheet" media="all">
+    
 </head>
 
 <body>
@@ -34,7 +39,7 @@
                 <div class="card-body">
                     <ul class="tab-list">
                         <li class="tab-list__item active">
-                            <a class="tab-list__link" href="#tab1" data-toggle="tab">hotels</a>
+                            <a class="tab-list__link" href="#tab1" data-toggle="tab">flight</a>
                         </li>
                         <li class="tab-list__item"><a class="tab-list__link" href="#tab2" data-toggle="tab">car</a>
                         </li>
@@ -44,23 +49,44 @@
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab1">
-                            <form method="POST" action="#">
-                                <div class="input-group input-group-big">
-                                    <label class="label">where:</label>
-                                    <input class="input--style-1" type="text" name="address" placeholder="City, region or specific hotel" required="required">
-                                    <i class="zmdi zmdi-search input-group-symbol"></i>
+                            <form method="GET" action="bookingMain1">
+                            	
+                            	<div class="radio-row" style="margin-bottom: 20px;">
+                                    <label class="radio-container m-r-45">편도
+                                        <input type="radio" name="class" value="1" checked="checked">
+                                        <span class="radio-checkmark"></span>
+                                    </label> 
+                                    <label class="radio-container m-r-45">왕복
+                                        <input type="radio" name="class" value ="2">
+                                        <span class="radio-checkmark"></span>
+                                    </label>                                
                                 </div>
+                            	
+                            
+                                <div class="input-group input-group-big">
+                                    <label class="label">출발지:</label>
+                                    <input class="input--style-1" type="text" name="depLoc" placeholder="City, region or airport" required="required">
+                                   <a href="#"><i class="zmdi zmdi-search input-group-symbol"></i></a>
+                                </div>
+                                
+                                  <div class="input-group input-group-big">
+                                    <label class="label">도착지:</label>
+                                    <input class="input--style-1" type="text" name="arrLoc" placeholder="City, region or airport" required="required">
+                                   <a href="#"><i class="zmdi zmdi-search input-group-symbol"></i></a> 
+                                </div>
+                                                      
+                                
                                 <div class="row row-space">
                                     <div class="col-2">
                                         <div class="input-group">
-                                            <label class="label">check-in:</label>
-                                            <input class="input--style-1" type="text" name="check-in" placeholder="mm/dd/yyyy" id="input-start">
+                                            <label class="label">Departing:</label>
+                                            <input class="input--style-1" type="text" name="airDate" placeholder="mm/dd/yyyy" id="input-start">
                                         </div>
                                     </div>
                                     <div class="col-2">
-                                        <div class="input-group">
-                                            <label class="label">check-out:</label>
-                                            <input class="input--style-1" type="text" name="check-out" placeholder="mm/dd/yyyy" id="input-end">
+                                        <div class="input-group arrDate">
+                                            <label class="label">Returning:</label>
+                                            <input class="input--style-1" type="text" name="airDate2" placeholder="mm/dd/yyyy" id="input-end">
                                         </div>
                                     </div>
                                 </div>
@@ -69,13 +95,13 @@
                                         <div class="input-group">
                                             <label class="label">travellers:</label>
                                             <div class="input-group-icon" id="js-select-special">
-                                                <input class="input--style-1 input--style-1-small" type="text" name="traveller" value="1 Adult, 0 Children, 1 Room" disabled="disabled" id="info">
+                                                <input class="input--style-1 input--style-1-small" type="text" name="traveller" value="1 Adult, 0 Children" disabled="disabled" id="info">
                                                 <i class="zmdi zmdi-chevron-down input-icon"></i>
                                             </div>
                                             <div class="dropdown-select">
                                                 <ul class="list-room">
                                                     <li class="list-room__item">
-                                                        <span class="list-room__name">Room 1</span>
+                                                     
                                                         <ul class="list-person">
                                                             <li class="list-person__item">
                                                                 <span class="name">Adults</span>
@@ -97,7 +123,6 @@
                                                     </li>
                                                 </ul>
                                                 <div class="list-room__footer">
-                                                    <a href="#" id="btn-add-room">Add room</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -107,136 +132,7 @@
                                     </div>
                                 </div>
                             </form>
-                        </div>
-                        <div class="tab-pane" id="tab2">
-                            <form method="POST" action="#">
-                                <div class="input-group input-group-big">
-                                    <label class="label">location:</label>
-                                    <input class="input--style-1" type="text" name="location" placeholder="Destination, hotel name" required="required">
-                                    <i class="zmdi zmdi-search input-group-symbol"></i>
-                                </div>
-                                <div class="row row-space">
-                                    <div class="col-2">
-                                        <div class="input-group">
-                                            <label class="label">driver age:</label>
-                                            <div class="rs-select2 js-select-simple select--no-search">
-                                                <select name="driver-age">
-                                                    <option>23</option>
-                                                    <option>24</option>
-                                                    <option selected="selected">25</option>
-                                                    <option>26</option>
-                                                </select>
-                                                <div class="select-dropdown"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-2">
-                                        <div class="input-group">
-                                            <label class="label">car group:</label>
-                                            <div class="rs-select2 js-select-simple select--no-search">
-                                                <select name="car-group">
-                                                    <option selected="selected">Group S-car</option>
-                                                    <option>Group 1</option>
-                                                    <option>Group 2</option>
-                                                    <option>Group 3</option>
-                                                </select>
-                                                <div class="select-dropdown"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row row-space">
-                                    <div class="col-2">
-                                        <div class="input-group">
-                                            <label class="label">pick up:</label>
-                                            <input class="input--style-1 js-single-datepicker" type="text" name="pickup" placeholder="mm/dd/yyyy" data-drop="1">
-                                            <div class="dropdown-datepicker" id="dropdown-datepicker1"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-2">
-                                        <div class="input-group">
-                                            <label class="label">time:</label>
-                                            <div class="rs-select2 js-select-simple select--no-search">
-                                                <select name="time-pickup">
-                                                    <option selected="selected">10:00 AM</option>
-                                                    <option>5:00 AM</option>
-                                                    <option>6:00 AM</option>
-                                                    <option>7:00 AM</option>
-                                                </select>
-                                                <div class="select-dropdown"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row row-space">
-                                    <div class="col-2">
-                                        <div class="input-group">
-                                            <label class="label">drop off:</label>
-                                            <input class="input--style-1 js-single-datepicker" type="text" name="dropoff" placeholder="mm/dd/yyyy" data-drop="2">
-                                            <div class="dropdown-datepicker" id="dropdown-datepicker2"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-2">
-                                        <div class="input-group">
-                                            <label class="label">time:</label>
-                                            <div class="rs-select2 js-select-simple select--no-search">
-                                                <select name="time-dropoff">
-                                                    <option selected="selected">10:00 AM</option>
-                                                    <option>5:00 AM</option>
-                                                    <option>6:00 AM</option>
-                                                    <option>7:00 AM</option>
-                                                </select>
-                                                <div class="select-dropdown"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <button class="btn-submit m-t-0" type="submit">search</button>
-                            </form>
-                        </div>
-                        <div class="tab-pane" id="tab3">
-                            <form method="POST" action="#">
-                                <div class="input-group input-group-big">
-                                    <label class="label">origin:</label>
-                                    <input class="input--style-1" type="text" name="origin" placeholder="City or airport" required="required">
-                                    <i class="zmdi zmdi-search input-group-symbol"></i>
-                                </div>
-                                <div class="input-group input-group-big">
-                                    <label class="label">destination:</label>
-                                    <input class="input--style-1" type="text" name="destination" placeholder="City or airport" required="required">
-                                    <i class="zmdi zmdi-search input-group-symbol"></i>
-                                </div>
-                                <div class="row row-space">
-                                    <div class="col-2">
-                                        <div class="input-group">
-                                            <label class="label">Departing:</label>
-                                            <input class="input--style-1" type="text" name="check-in" placeholder="mm/dd/yyyy" id="input-start-2">
-                                        </div>
-                                    </div>
-                                    <div class="col-2">
-                                        <div class="input-group">
-                                            <label class="label">returning:</label>
-                                            <input class="input--style-1" type="text" name="check-out" placeholder="mm/dd/yyyy" id="input-end-2">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="radio-row">
-                                    <label class="radio-container m-r-45">First Class
-                                        <input type="radio" name="class">
-                                        <span class="radio-checkmark"></span>
-                                    </label>
-                                    <label class="radio-container m-r-45">Business
-                                        <input type="radio" name="class">
-                                        <span class="radio-checkmark"></span>
-                                    </label>
-                                    <label class="radio-container">Economy
-                                        <input type="radio" checked="checked" name="class">
-                                        <span class="radio-checkmark"></span>
-                                    </label>
-                                </div>
-                                <button class="btn-submit m-t-35" type="submit">search</button>
-                            </form>
-                        </div>
+                        </div>             
                     </div>
                 </div>
             </div>
@@ -256,7 +152,30 @@
     <!-- Main JS-->
     <script src="../resources/vendor/js/global.js"></script>
 
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+<script type="text/javascript">
+
+	var depLoc = $("#depLoc option:selected").val();
+
+	$('#b').click(function(){
+			alert(depLoc);
+	});
+
+$(".arrDate").hide();
+
+$('input:radio[name=kind]').click(function(){
+	if($('input:radio[id=round]').is(":checked")){
+			$(".arrDate").show();
+
+		}else{
+				$(".arrDate").hide();			
+
+		}
+});
+
+</script>
+
+
+</body>
 
 </html>
 <!-- end document-->
