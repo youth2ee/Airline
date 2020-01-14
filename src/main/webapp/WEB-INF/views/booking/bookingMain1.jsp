@@ -54,11 +54,11 @@
                             	
                             	<div class="radio-row" style="margin-bottom: 20px;">
                                     <label class="radio-container m-r-45">편도
-                                        <input type="radio" name="kind" value="1" checked="checked" id=eachWay>
+                                        <input type="radio" name="kind" value="1" checked="checked" id="eachWay">
                                         <span class="radio-checkmark"></span>
                                     </label> 
                                     <label class="radio-container m-r-45">왕복
-                                        <input type="radio" name="kind" value ="2">
+                                        <input type="radio" name="kind" value ="2" id = "round">
                                         <span class="radio-checkmark"></span>
                                     </label>                                
                                 </div>
@@ -85,7 +85,7 @@
                                         </div>
                                     </div>
                                     <div class="col-2">
-                                        <div class="input-group arrDate">
+                                        <div class="input-group arrDate" id = "arrDate">
                                             <label class="label">Returning:</label>
                                             <input class="input--style-1" type="text" name="arrDate" placeholder="mm/dd/yyyy" id="input-end">
                                         </div>
@@ -108,7 +108,7 @@
                                                                 <span class="name">Adults</span>
                                                                 <div class="quantity quantity1">
                                                                     <span class="minus">-</span>
-                                                                    <input class="inputQty" type="number" min="0" value="1" name = "aldults">
+                                                                    <input class="inputQty" type="number" min="0" value="1" name = "adults">
                                                                     <span class="plus">+</span>
                                                                 </div>
                                                             </li>
@@ -155,23 +155,32 @@
 
 <script type="text/javascript">
 
-	var depLoc = $("#depLoc option:selected").val();
+$("#arrDate").hide();
 
-	$('#b').click(function(){
-			alert(depLoc);
-	});
-
-
+ $('#input-start').daterangepicker({
+	singleDatePicker:true
 	
-	document.getElementById('eachWay').readOnly= true;
-
-$('input:radio[name=class]').click(function(){
+	});
+ 
+$('input:radio[name=kind]').click(function(){
+	
 	if($('input:radio[id=round]').is(":checked")){
-		document.getElementById('eachWay').readOnly = false;
+			$("#arrDate").show();
+			
+			 $('#input-start').daterangepicker({
+				singleDatePicker:false			
+				}); 
+			 
+		
 
 		}else{
-			document.getElementById('eachWay').readOnly = true;			
-
+			$("#arrDate").hide();	
+			$('#input-start').daterangepicker({
+				singleDatePicker:true				
+				}); 
+		
+			
+		
 		}
 });
 

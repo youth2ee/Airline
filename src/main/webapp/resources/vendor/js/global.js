@@ -15,7 +15,7 @@
           $('#input-end').val(end.format('MM/DD/YYYY'));
         });
     
-        $('#input-start-2').daterangepicker({
+       $('#input-start-2').daterangepicker({
             ranges: true,
             autoApply: true,
             applyButtonClasses: false,

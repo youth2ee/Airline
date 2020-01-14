@@ -10,12 +10,13 @@ import lombok.Setter;
 public class Booking {
 	
 private int kind;	
+	/* 편도 1, 왕복2 */
 private String depLoc;
 private String arrLoc;
 private String depDate;
 private String arrDate;
-private int aldults;
-private int Children;
+private int adults;
+private int children;
 
 
 }
