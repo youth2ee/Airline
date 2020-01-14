@@ -26,7 +26,6 @@ public class BookingController {
 		  	System.out.println(booking.getKind());
 		  	System.out.println(booking.getDate());
 
-	  
 	  }
 	 
 

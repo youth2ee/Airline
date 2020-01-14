@@ -11,14 +11,11 @@ public class ImPayController {
 
 	
 	@RequestMapping("imPayList")
-	public void imPayList() {
+	public void imPayList(ImPayVO imPayVO) {
+
 		
 	}
 	
-	@RequestMapping("imPayMain")
-	public void imPayMain() {
-		
-	}
 	
 	@RequestMapping("imPayComplete")
 	public void imPayComplete() {
