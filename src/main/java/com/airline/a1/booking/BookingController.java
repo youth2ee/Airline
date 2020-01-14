@@ -29,4 +29,13 @@ public class BookingController {
 	  }
 	 
 
+	@GetMapping("bookingList")
+	public void bookingList() throws Exception {
+		
+	}
+	
+	@GetMapping("bookingWrite")
+	public void bookingWrite() throws Exception {
+		
+	}
 }
