@@ -24,8 +24,7 @@ public class BookingController {
 		  	System.out.println(booking.getChildren());
 		  	System.out.println(booking.getDepLoc());
 		  	System.out.println(booking.getKind());
-		  	System.out.println(booking.getArrDate());
-		  	System.out.println(booking.getDepDate());
+		  	System.out.println(booking.getDate());
 	  
 	  }
 	 
