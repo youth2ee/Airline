@@ -8,4 +8,6 @@ import org.apache.ibatis.annotations.Mapper;
 public interface parkMapper {
 	
 	public List<pReservationVO> parkCheck(pReservationVO pReservationVO) throws Exception;
+	
+	public int resInsert(pReservationVO pReservationVO) throws Exception;
 }

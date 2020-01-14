@@ -9,6 +9,7 @@
 </head>
 <c:import url="../template/boot.jsp" />
 <body>
+<form action="./resInsert" method="post">
 <input type="date" name="startDate" value="${param.startDate}" id="startDate">
 <input type="date" name="endDate" value="${param.endDate}" id="endDate">
 <c:forEach items="${list}" var="vo">
@@ -19,13 +20,36 @@
 
 <label for="${vo.current}">
 ${vo.current}
-<input type="radio" name="areaNum" value="${vo.current}" id="${vo.current}">
+<c:choose>
 
+	<c:when test="${vo.current%10 eq 5}">
+		<input type="radio" name="areaNum" value="${vo.current}" id="${vo.current}" style=" margin-right: 40px;">
+	</c:when>
+	
+	<c:otherwise>
+		<input type="radio" name="areaNum" value="${vo.current}" id="${vo.current}" >
+	</c:otherwise>
+	
+</c:choose>
 </label>
+
+<c:if test="${vo.current eq 20||vo.current eq 60}">
+<br>
+<br>
+<br>
+</c:if>
+<c:if test="${vo.current eq 40||vo.current eq 80}">
+<br>
+</c:if>
 
 </c:forEach>
 <br>
-요금 : <input type="text" id="rate">
+예상요금 : <input type="text" id="rate" name="rate"><br>
+차량번호 : <input type="text" id="carNum" name="carNum"><br>
+차량종류 : <input type="text" id="carKind" name="carKind"><br>
+
+<button>예약하기</button>
+</form>
 <script type="text/javascript">
 
 	var startDate = $("#startDate").val(); //2017-12-10
@@ -39,8 +63,8 @@ ${vo.current}
 
 	var day = endDateCompare - startDateCompare;
 	var cday = 24*60*60*1000;
-	day = day/cday;
-	var rate = day * 10000;
+	day = day/cday+1;
+	var rate = day * 40000;
 	
 	$("#rate").val(rate);
 
@@ -49,6 +73,7 @@ ${vo.current}
 		$(".check").each(function(){
 			var check = $(this).val();
 			$("#"+check).attr('disabled',true);
+			
 
 		});
 		
