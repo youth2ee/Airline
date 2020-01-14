@@ -277,8 +277,11 @@ a:active {
    #BUTTON
    ========================================================================== */
 .btn-submit {
-	display: block;
-	width: 100%;
+	/* display: block; */
+	/* width: 100%; */
+	height : 50px;
+	float: left;
+	width: 110px;
 	line-height: 60px;
 	font-family: inherit;
 	background: #6c7ae0;
@@ -507,7 +510,7 @@ input, textarea {
 	-webkit-box-shadow: none;
 	-moz-box-shadow: none;
 	box-shadow: none;
-	width: 100%;
+	 width: 100%; 
 	font-size: 18px;
 	font-family: inherit;
 }
@@ -526,7 +529,7 @@ button {
 }
 
 .input-group {
-	position: relative;
+	/* position: relative; */
 	margin-bottom: 35px;
 	background: #ffffff;
 	-webkit-border-radius: 10px;
@@ -604,6 +607,7 @@ button {
 	padding: 19px 0;
 	color: #666;
 	font-family: inherit;
+	height: 100%;
 }
 
 .input--style-1::-webkit-input-placeholder {
