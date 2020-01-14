@@ -34,10 +34,7 @@
 </head>
 
 <body>
-    <!--  <div class="page-wrapper p-t-200 p-b-120">  -->
- <!--        <div class="wrapper wrapper--w900">  -->
-             <div class="card card-4"> 
-              <!--   <div class="card-body" id = "body"> -->
+             <div class="card card-4">         
                      <div class="tab-content">
                        <div class="tab-pane active" id="tab1"> 
                             <form method="POST" action="bookingMain1">
@@ -57,26 +54,18 @@
                                 <div class="input-group mid" >
                                     <label class="label">출발지:</label>
                                     <input class="input--style-1" type="text" name="depLoc" placeholder="City, region or airport" required="required">
-                                  <!--  <a href="#"><i class="zmdi zmdi-search input-group-symbol"></i></a> -->
                                 </div>
                                 
                                   <div class="input-group mid">
                                     <label class="label">도착지:</label>
-                                    <input class="input--style-1" type="text" name="arrLoc" placeholder="City, region or airport" required="required">
-                                 <!--   <a href="#"><i class="zmdi zmdi-search input-group-symbol"></i></a>  -->
+                                    <input class="input--style-1" type="text" name="arrLoc" placeholder="City, region or airport" required="required">         
                                 </div>
                                                       
-                                
-                                <!-- <div class="row row-space"> -->
-                               <!--    <div class="col-2"> -->
-                                        <div class="input-group mid">
+                              <div class="input-group mid">
                                             <label class="label">Date:</label>
                                             <input class="input--style-1" type="text" name="date" placeholder="mm/dd/yyyy" id="input-start">
                                         </div>
-                                <!--     </div>   -->                               
-                                <!-- </div>  -->
-                               <!--  <div class="row row-space"> --> 
-                                    <!--  <div class="col-2"> -->
+                                
                                         <div class="input-group mid">
                                             <label class="label">travellers:</label>
                                             <div class="input-group-icon" id="js-select-special">
@@ -111,19 +100,28 @@
                                                 </div>
                                             </div>
                                         </div>
-                                   <!--  </div> -->
+                                 
                                     <div class="col-2">
                                         <button class="btn-submit" id ="booking_btn" type="submit">search</button>
                                     </div>
-                             <!--    </div> -->
+                          
                                 </div>
                             </form>
                         </div>             
                     </div>
                 </div>
-         <!--    </div> -->
-        <!-- </div> -->
-<!--  </div>   -->
+ 
+ 
+ <!-- 영화검색 -->
+ <div id="locSearch">
+ <table>
+ 
+ 	<tr><td></td></tr>
+ 
+ </table>
+ </div>
+ <!-- 영화검색끝 -->
+ 
 
     <!-- Jquery JS-->
 	<script src="../resources/vendor/jquery/jquery.min.js"></script>
@@ -162,6 +160,10 @@ $('input:radio[name=kind]').click(function(){
 				}); 	
 		}
 });
+
+
+
+
 
 </script>
 
