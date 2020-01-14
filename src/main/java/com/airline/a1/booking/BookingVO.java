@@ -12,8 +12,7 @@ public class BookingVO {
 private int kind;	
 private String depLoc;
 private String arrLoc;
-private String depDate;
-private String arrDate;
+private String date; 
 private int adults;
 private int children;
 
