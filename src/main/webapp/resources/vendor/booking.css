@@ -3,5 +3,24 @@
 /******************* bookingMain1 ********************/
 
 .mid{
-	width: 400px;
+	width: 300px;
+	height: 50px;
+	float: left;
+	margin-right: 10px;
+
+	
 }
+
+#body{
+float: left; 
+	
+}
+
+#booking_btn{
+	float: left;
+	position: absolute;
+	margin-left: 20px;
+	
+	
+}
+
