@@ -26,6 +26,7 @@
     <!-- .../resources/vendor CSS-->
     <link href="../resources/vendor/select2/select2.min.css" rel="stylesheet" media="all">
     <link href="../resources/vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+    <link rel="stylesheet" href="../resources/vendor/booking.css">
 
     <!-- Main CSS-->
     <link href="../resources/vendor/css/main.css" rel="stylesheet" media="all">
@@ -33,10 +34,10 @@
 </head>
 
 <body>
-    <div class="page-wrapper bg-img-1 p-t-200 p-b-120">
+     <div class="page-wrapper bg-img-1 p-t-200 p-b-120"> 
         <div class="wrapper wrapper--w900">
             <div class="card card-4">
-                <div class="card-body">
+                <div class="card-body" id = "body">
                     <ul class="tab-list">
                         <li class="tab-list__item active">
                             <a class="tab-list__link" href="#tab1" data-toggle="tab">flight</a>
@@ -49,27 +50,27 @@
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab1">
-                            <form method="GET" action="bookingMain1">
+                            <form method="POST" action="bookingMain1">
                             	
                             	<div class="radio-row" style="margin-bottom: 20px;">
                                     <label class="radio-container m-r-45">편도
-                                        <input type="radio" name="class" value="1" checked="checked">
+                                        <input type="radio" name="kind" value="1" checked="checked" id=eachWay>
                                         <span class="radio-checkmark"></span>
                                     </label> 
                                     <label class="radio-container m-r-45">왕복
-                                        <input type="radio" name="class" value ="2">
+                                        <input type="radio" name="kind" value ="2">
                                         <span class="radio-checkmark"></span>
                                     </label>                                
                                 </div>
                             	
                             
-                                <div class="input-group input-group-big">
+                                <div class="input-group mid">
                                     <label class="label">출발지:</label>
                                     <input class="input--style-1" type="text" name="depLoc" placeholder="City, region or airport" required="required">
                                    <a href="#"><i class="zmdi zmdi-search input-group-symbol"></i></a>
                                 </div>
                                 
-                                  <div class="input-group input-group-big">
+                                  <div class="input-group mid">
                                     <label class="label">도착지:</label>
                                     <input class="input--style-1" type="text" name="arrLoc" placeholder="City, region or airport" required="required">
                                    <a href="#"><i class="zmdi zmdi-search input-group-symbol"></i></a> 
@@ -80,13 +81,13 @@
                                     <div class="col-2">
                                         <div class="input-group">
                                             <label class="label">Departing:</label>
-                                            <input class="input--style-1" type="text" name="airDate" placeholder="mm/dd/yyyy" id="input-start">
+                                            <input class="input--style-1" type="text" name="depDate" placeholder="mm/dd/yyyy" id="input-start">
                                         </div>
                                     </div>
                                     <div class="col-2">
                                         <div class="input-group arrDate">
                                             <label class="label">Returning:</label>
-                                            <input class="input--style-1" type="text" name="airDate2" placeholder="mm/dd/yyyy" id="input-end">
+                                            <input class="input--style-1" type="text" name="arrDate" placeholder="mm/dd/yyyy" id="input-end">
                                         </div>
                                     </div>
                                 </div>
@@ -107,7 +108,7 @@
                                                                 <span class="name">Adults</span>
                                                                 <div class="quantity quantity1">
                                                                     <span class="minus">-</span>
-                                                                    <input class="inputQty" type="number" min="0" value="1">
+                                                                    <input class="inputQty" type="number" min="0" value="1" name = "aldults">
                                                                     <span class="plus">+</span>
                                                                 </div>
                                                             </li>
@@ -115,7 +116,7 @@
                                                                 <span class="name">Children</span>
                                                                 <div class="quantity quantity2">
                                                                     <span class="minus">-</span>
-                                                                    <input class="inputQty" type="number" min="0" value="0">
+                                                                    <input class="inputQty" type="number" min="0" value="0" name = "children">
                                                                     <span class="plus">+</span>
                                                                 </div>
                                                             </li>
@@ -137,7 +138,7 @@
                 </div>
             </div>
         </div>
-    </div>
+ </div> 
 
     <!-- Jquery JS-->
 	<script src="../resources/vendor/jquery/jquery.min.js"></script>
@@ -160,14 +161,16 @@
 			alert(depLoc);
 	});
 
-$(".arrDate").hide();
 
-$('input:radio[name=kind]').click(function(){
+	
+	document.getElementById('eachWay').readOnly= true;
+
+$('input:radio[name=class]').click(function(){
 	if($('input:radio[id=round]').is(":checked")){
-			$(".arrDate").show();
+		document.getElementById('eachWay').readOnly = false;
 
 		}else{
-				$(".arrDate").hide();			
+			document.getElementById('eachWay').readOnly = true;			
 
 		}
 });
