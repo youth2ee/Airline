@@ -14,6 +14,7 @@ private int kind;
 private String depLoc;
 private String arrLoc;
 private String date;
+
 private int adults;
 private int children;
 
