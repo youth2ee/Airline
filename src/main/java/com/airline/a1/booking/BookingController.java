@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/booking/**")
 public class BookingController {
 
+
 	@Autowired
 	private BookingService bookingService;
 
@@ -152,6 +153,7 @@ public class BookingController {
 		return mv;
 
 	}
+
 
 
 	@GetMapping("bookingList")

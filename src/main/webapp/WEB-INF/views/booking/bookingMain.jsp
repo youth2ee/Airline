@@ -11,8 +11,8 @@
     <meta name="description" content="Colrolib Templates">
     <meta name="author" content="Colrolib">
     <meta name="keywords" content="Colrolib Templates">
-
 	<c:import url="../template/boot.jsp"></c:import>
+	
     <!-- Title Page-->
     <title>Au Form Wizard</title>
 	
@@ -31,34 +31,38 @@
     <!-- Main CSS-->
     <link href="../resources/vendor/css/main.css" rel="stylesheet" media="all">
     
+    
 </head>
 
 <body>
              <div class="card card-4">         
                      <div class="tab-content">
                        <div class="tab-pane active" id="tab1"> 
+
                             <form method="post" action="./bookingMain">
                             	
                             	<div class="radio-row" style="margin-bottom: 20px;">
+                                    <label class="radio-container m-r-45">왕복
+                                        <input type="radio" name="kind" value ="2" id = "round" checked="checked">
+                                        <span class="radio-checkmark"></span>
+                                    </label>     
+                                                               
                                     <label class="radio-container m-r-45">편도
-                                        <input type="radio" name="kind" value="1" checked="checked" id="eachWay">
+                                        <input type="radio" name="kind" value="1"  id="eachWay">
                                         <span class="radio-checkmark"></span>
                                     </label> 
-                                    <label class="radio-container m-r-45">왕복
-                                        <input type="radio" name="kind" value ="2" id = "round">
-                                        <span class="radio-checkmark"></span>
-                                    </label>                                
                                 </div>
                             	
                             	<div id="body">
                                 <div class="input-group mid" >
                                     <label class="label">출발지:</label>
-                                    <input class="input--style-1" type="text" name="depLoc" placeholder="City, region or airport" required="required">
+                                    <input class="input--style-1 t1" type="text" name = "depLoc" placeholder="City, region or airport" required="required" id = "loc">
+                                  <!--   <input type="hidden" id="t2" readonly="readonly" name = "depLoc"> -->
                                 </div>
                                 
                                   <div class="input-group mid">
                                     <label class="label">도착지:</label>
-                                    <input class="input--style-1" type="text" name="arrLoc" placeholder="City, region or airport" required="required">         
+                                    <input class="input--style-1" type="text" name="arrLoc" placeholder="City, region or airport" required="required" >         
                                 </div>
                                                       
                               <div class="input-group mid">
@@ -72,6 +76,8 @@
                                                 <input class="input--style-1 input--style-1-small" type="text" name="traveller" value="1 Adult, 0 Children" disabled="disabled" id="info">
                                                 <i class="zmdi zmdi-chevron-down input-icon" style="height: 100%; background-color: transparent;"></i>
                                             </div>
+                                            
+                                            
                                             <div class="dropdown-select">
                                                 <ul class="list-room">
                                                     <li class="list-room__item">
@@ -104,24 +110,25 @@
                                     <div class="col-2">
                                         <button class="btn-submit" id ="booking_btn" type="submit">search</button>
                                     </div>
-                          
+                    
                                 </div>
                             </form>
                         </div>             
                     </div>
+                 
                 </div>
  
  
  <!-- 영화검색 -->
- <div id="locSearch">
- <table>
- 
- 	<tr><td></td></tr>
- 
+  <div id="locSearch" style="width: 500px; height: 500px; background-color: aqua;">
+ 	<table id="locTable" class = "tab">
+ 	<c:forEach items="${airportList}" var="airPort">
+ 	<tr><td class="loctd">${airPort}</td></tr>
+ </c:forEach>
  </table>
- </div>
+ </div> 
  <!-- 영화검색끝 -->
- 
+
 
     <!-- Jquery JS-->
 	<script src="../resources/vendor/jquery/jquery.min.js"></script>
@@ -136,32 +143,105 @@
     <!-- Main JS-->
     <script src="../resources/vendor/js/global.js"></script>
 
+
+
 <script type="text/javascript">
 
-$("#arrDate").hide();
 
+
+/*** dateRangePicker ***/
+ 
  $('#input-start').daterangepicker({
-	singleDatePicker:true,
-	format: 'yyyy/mm/dd'
+
+	singleDatePicker:false,
+	autoApply: true	
+
 	});
  
 $('input:radio[name=kind]').click(function(){
 	
-	if($('input:radio[id=round]').is(":checked")){
-			$("#arrDate").show();
-			
+	if($('input:radio[id=eachWay]').is(":checked")){
+								
 			 $('#input-start').daterangepicker({
-				singleDatePicker:false			
+				singleDatePicker:true	
+					
 				}); 
 		}else{
-			$("#arrDate").hide();	
+			
 			$('#input-start').daterangepicker({
-				singleDatePicker:true				
+				singleDatePicker:false,	
+				autoApply: true
+							
 				}); 	
 		}
 });
 
 
+/*** dateRangePicker 끝  ***/
+
+
+
+/**** 공항검색 ****/
+  $(document).ready(function(){
+	
+	$("#loc").on("keyup", function(){
+		var value = $(this).val().toLowerCase();
+
+	if(value ==""){
+		$(".tab").css("display", "none");
+
+		}else{
+			$(".tab").css("display", "inline");
+			
+			$("#locTable tr").filter(function(){
+				$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+
+				});
+			}	
+		});
+}); 
+
+
+
+ 	$(".tab").css("display","none");
+	 var loc= ""; 
+
+	
+  $('.loctd').on("click", function(){
+		
+		if($('#loc').val(loc) != ""){
+				$('#loc').val("");
+		} 
+
+		 loc = $(this).text();
+		$('#t2').val(loc); 
+		
+		$('#loc').val(loc);
+		$(".tab").css("display","none"); 
+
+		}); 
+
+
+
+	 
+	$('#loc').on("blur",function(){
+		
+			var loc = $('#loc').val();
+			var locAry = ['광주', '군산', '김포', '김해', '대구', '무안', '사천', '양양', '여수', '울산', '원주', '인천', '제주', '청주', '포항']
+	
+		 	if($.inArray(loc,locAry) < 0){
+			
+				$('#loc').val("");
+				 
+				
+			}else{
+			
+				} 
+
+		}); 
+
+
+/**** 공항검색 끝 ****/
 
 
 
