@@ -185,7 +185,7 @@ $('input:radio[name=kind]').click(function(){
   $(document).ready(function(){
 	
 	$("#loc").on("keyup", function(){
-		var value = $(this).val().toLowerCase();
+	var value = $(this).val().toLowerCase();
 
 	if(value ==""){
 		$(".tab").css("display", "none");
@@ -195,7 +195,6 @@ $('input:radio[name=kind]').click(function(){
 			
 			$("#locTable tr").filter(function(){
 				$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-
 				});
 			}	
 		});
@@ -207,26 +206,28 @@ $('input:radio[name=kind]').click(function(){
 	 var loc= ""; 
 
 	
-  $('.loctd').on("click", function(){
-		
-		if($('#loc').val(loc) != ""){
-				$('#loc').val("");
-		} 
 
-		 loc = $(this).text();
-		 alert(loc);
-		$('#t2').val(loc); 
-		
+	$('.loctd').on("click", function() {
+
+/* 		if ($('#loc').val(loc) != "") {
+			$('#loc').val("");
+		} */
+
+			
+
+		loc = $(this).text();
+
 		$('#loc').val(loc);
-		$(".tab").css("display","none"); 
+		$(".tab").css("display", "none");
 
-		}); 
+		if($('#loc').val() != ""){
 
+			$(".tab").css("display","none");
+			
+		}
+	});
 
-/**** 공항검색 끝 ****/
-
-
-
+	/**** 공항검색 끝 ****/
 </script>
 
 
