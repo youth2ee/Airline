@@ -53,12 +53,12 @@
                             	<div id="body">
                                 <div class="input-group mid" >
                                     <label class="label">출발지:</label>
-                                    <input class="input--style-1" type="text" name="depLoc" placeholder="City, region or airport" required="required">
+                                    <input class="input--style-1" type="text" name="depLoc" placeholder="City, region or airport" required="required" id = "loc">
                                 </div>
                                 
                                   <div class="input-group mid">
                                     <label class="label">도착지:</label>
-                                    <input class="input--style-1" type="text" name="arrLoc" placeholder="City, region or airport" required="required">         
+                                    <input class="input--style-1" type="text" name="arrLoc" placeholder="City, region or airport" required="required" >         
                                 </div>
                                                       
                               <div class="input-group mid">
@@ -72,6 +72,8 @@
                                                 <input class="input--style-1 input--style-1-small" type="text" name="traveller" value="1 Adult, 0 Children" disabled="disabled" id="info">
                                                 <i class="zmdi zmdi-chevron-down input-icon" style="height: 100%; background-color: transparent;"></i>
                                             </div>
+                                            
+                                            
                                             <div class="dropdown-select">
                                                 <ul class="list-room">
                                                     <li class="list-room__item">
@@ -113,11 +115,11 @@
  
  
  <!-- 영화검색 -->
- <div id="locSearch">
+ <div id="locSearch"style="width: 500px; height: 500px; background-color: red;">
  <table>
- 
- 	<tr><td></td></tr>
- 
+ <c:forEach items="${airportList}" var="airPort">
+ 	<tr><td>${airPort}</td></tr>
+ </c:forEach>
  </table>
  </div>
  <!-- 영화검색끝 -->
@@ -138,6 +140,7 @@
 
 <script type="text/javascript">
 
+/* 출발도착일 */
 $("#arrDate").hide();
 
  $('#input-start').daterangepicker({
@@ -161,7 +164,32 @@ $('input:radio[name=kind]').click(function(){
 		}
 });
 
+/* 출발도착일 끝 */
 
+
+/* 공항검색 */
+ $(document).ready(function(){
+	
+	$("#loc").on("keyup", function(){
+		var value = $(this).val().toLowerCase();
+
+	if(value ==""){
+		$("#locSearch").css("display", "none");
+
+		}else{
+			$("#locSearch").css("display", "inline");
+			
+			$("#locSearch tr").filter(function(){
+				$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+
+				});
+			}	
+
+		});
+}); 
+
+
+/* 공항검색 끝 */
 
 
 
