@@ -37,7 +37,7 @@
              <div class="card card-4">         
                      <div class="tab-content">
                        <div class="tab-pane active" id="tab1"> 
-                            <form method="POST" action="bookingMain1">
+                            <form method="POST" action="bookingMain">
                             	
                             	<div class="radio-row" style="margin-bottom: 20px;">
                                     <label class="radio-container m-r-45">왕복

@@ -26,8 +26,7 @@ public class BookingController {
 	
 	  @PostMapping("bookingMain") 
 	  public void bookingMain11(BookingVO booking)throws Exception{
-
-
+		  
 		  	System.out.println(booking.getAdults());
 		  	System.out.println(booking.getArrLoc());
 		  	System.out.println(booking.getChildren());

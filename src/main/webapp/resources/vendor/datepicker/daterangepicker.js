@@ -172,10 +172,10 @@
         }
         this.container.addClass(this.locale.direction);
 
-        if (typeof options.startDate === 'date')
+        if (typeof options.startDate === 'string')
             this.startDate = moment(options.startDate, this.locale.format);
 
-        if (typeof options.endDate === 'date')
+        if (typeof options.endDate === 'string')
             this.endDate = moment(options.endDate, this.locale.format);
 
         if (typeof options.minDate === 'string')
