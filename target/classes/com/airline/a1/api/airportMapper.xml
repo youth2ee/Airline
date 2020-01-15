@@ -14,7 +14,7 @@
 		select cityCode, apName from airport
 	</select>
 	
-	<update id="airUpdate" parameterType="com.airline.a1.api.FlightDataVO">
+	<update id="airUpdate" parameterType="com.airline.a1.booking.FlightDataVO">
 		update flightData set flightKm =#{flightKm}, flightTime=#{flightTime} where
 		fnum in (
 		select E.fnum from
