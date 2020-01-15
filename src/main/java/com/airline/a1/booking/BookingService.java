@@ -15,5 +15,9 @@ public class BookingService {
 	public List<String> airportList()throws Exception{
 		return bookingMapper.airportList();
 	}
+	
+	public List<FlightDataVO> airList(BookingVO bookingVO) throws Exception {
+		return bookingMapper.airList(bookingVO);
+	}
 
 }

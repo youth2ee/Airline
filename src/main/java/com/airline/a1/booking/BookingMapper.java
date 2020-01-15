@@ -10,5 +10,6 @@ import org.springframework.stereotype.Repository;
 public interface BookingMapper {
 	
 	public List<String> airportList()throws Exception;
-
+	public List<FlightDataVO> airList(BookingVO bookingVO) throws Exception; 
+	
 }

@@ -9,5 +9,21 @@
 	<update id="airportUpdate" parameterType="com.airline.a1.api.AirportVO">
 		update airport set cityKor=#{cityKor}, cityEng=#{cityEng}, cityCode=#{cityCode} where apName=#{apName}
 	</update>
+	
+	<select id="airportList" resultType="com.airline.a1.api.AirportVO">
+		select cityCode, apName from airport
+	</select>
+	
+	<update id="airUpdate" parameterType="com.airline.a1.api.FlightDataVO">
+		update flightData set flightKm =#{flightKm}, flightTime=#{flightTime} where
+		fnum in (
+		select E.fnum from
+		(select C.*,D.cityCode arrCityCode
+		from (select A.*,B.cityCode depCityCode
+		from flightData A left outer join airport B on A.depAirportNm = B.apName) C
+		left outer join airport D
+		on C.arrAirportNm = D.apName) E
+		where depCityCode=#{depCityCode} and arrCityCode = #{arrCityCode});
+	</update>
   
   </mapper>

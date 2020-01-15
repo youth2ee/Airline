@@ -6,7 +6,14 @@
 <mapper namespace="com.airline.a1.booking.BookingMapper">
 
 <select id="airportList" resultType="java.lang.String">
-	select distinct depAirportNm from flightData order by depAirportNm asc;
+	select distinct depAirportNm from flightData order by depAirportNm asc
 </select>
+
+<select id="airList" parameterType="com.airline.a1.booking.BookingVO" resultType="com.airline.a1.booking.FlightDataVO">
+	select * from flightData where depPlandTime > #{date} and depAirportNm = #{depLoc} and arrAirportNm = #{arrLoc} order by depPlandTime asc
+</select>
+
+
+
 
 </mapper>

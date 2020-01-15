@@ -24,7 +24,7 @@ import com.airline.a1.api.AirportDataMapper;
 import com.airline.a1.api.AirportDayDataVO;
 import com.airline.a1.api.AirportMapper;
 import com.airline.a1.api.BusVO;
-import com.airline.a1.api.FlightDataVO;
+import com.airline.a1.booking.FlightDataVO;
 
 @SpringBootTest
 class AirlineApplicationTests {
