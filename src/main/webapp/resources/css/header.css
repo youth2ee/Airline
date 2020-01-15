@@ -6,7 +6,7 @@
 }
 
 .header_top_inner {
-	background-color: #5555ec;
+	background-color: #F7F7F7;
 	width: 100%;
 	margin: 0 auto;
 	height: 40px;
@@ -23,21 +23,26 @@
 .header_top_menu {
 	width: 1180px;
 	height: 40px;
-	background-color: fuchsia;
+	/* background-color: fuchsia; */
 	margin: 0 auto;
+}
+
+div {
+	font-family: 'Noto Sans KR', 'AppeGothic', 'Malgun Gothic', '맑은 고딕',
+		'돋음', 'Dotum', 'Apple SD Gothic Neo', Aria
 }
 
 .menu_topwrap {
 	width: 335px;
 	height: 40px;
-	background-color: olive;
+	/* background-color: olive; */
 	float: left;
 }
 
 .menu_topwrap2 {
 	width: 335px;
 	height: 40px;
-	background-color: orange;
+	/* background-color: orange; */
 	float: right;
 }
 
@@ -80,6 +85,7 @@
 	line-height: 83px;
 	text-align: center;
 }
+
 .menu_topwrap {
 	height: 100%;
 	padding: 10px 0 6px;
@@ -88,7 +94,12 @@
 .menu_topwrap li {
 	list-style: none;
 	float: left;
+	font-size: 13px;
+	line-height: normal;
+	font-family: 'Noto Sans KR', 'AppeGothic', 'Malgun Gothic', '맑은 고딕',
+		'돋음', 'Dotum', 'Apple SD Gothic Neo', Arial, Helvetica, sans-serif;
 }
+
 .menu_topwrap2 {
 	height: 100%;
 	padding: 10px 0 6px;
@@ -97,4 +108,19 @@
 .menu_topwrap2 li {
 	list-style: none;
 	float: left;
+	font-size: 13px;
+	line-height: normal;
+	font-family: 'Noto Sans KR', 'AppeGothic', 'Malgun Gothic', '맑은 고딕',
+		'돋음', 'Dotum', 'Apple SD Gothic Neo', Arial, Helvetica, sans-serif;
 }
+
+.li1:before {
+	content: '';
+	display: inline-block;
+	vertical-align: middle;
+	height: 12px;
+	width: 1px;
+	border-left: 1px solid #ccc;
+	margin: 0 15px;
+}
+
