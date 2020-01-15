@@ -1,6 +1,10 @@
 package com.airline.a1.booking;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,15 +13,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/booking/**")
 public class BookingController {
 	
+	@Autowired
+	private BookingService bookingService;
+	
+
+		
+
 	
 	@GetMapping("bookingMain")
-	public void bookingMain1()throws Exception{
-		
+	public void bookingMain1(Model model)throws Exception{
+		List<String> airport = bookingService.airportList();
+		model.addAttribute("airportList", airport);
+
 	}
 	
 	
 	  @PostMapping("bookingMain") 
 	  public void bookingMain11(BookingVO booking)throws Exception{
+
 
 		  	System.out.println(booking.getAdults());
 		  	System.out.println(booking.getArrLoc());
@@ -25,6 +38,7 @@ public class BookingController {
 		  	System.out.println(booking.getDepLoc());
 		  	System.out.println(booking.getKind());
 		  	System.out.println(booking.getDate());
+
 
 	  }
 	 
