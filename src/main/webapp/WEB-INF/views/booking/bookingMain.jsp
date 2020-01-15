@@ -11,8 +11,8 @@
     <meta name="description" content="Colrolib Templates">
     <meta name="author" content="Colrolib">
     <meta name="keywords" content="Colrolib Templates">
-
 	<c:import url="../template/boot.jsp"></c:import>
+	
     <!-- Title Page-->
     <title>Au Form Wizard</title>
 	
@@ -40,14 +40,15 @@
                             <form method="POST" action="bookingMain1">
                             	
                             	<div class="radio-row" style="margin-bottom: 20px;">
+                                    <label class="radio-container m-r-45">왕복
+                                        <input type="radio" name="kind" value ="2" id = "round" checked="checked">
+                                        <span class="radio-checkmark"></span>
+                                    </label>     
+                                                               
                                     <label class="radio-container m-r-45">편도
-                                        <input type="radio" name="kind" value="1" checked="checked" id="eachWay">
+                                        <input type="radio" name="kind" value="1"  id="eachWay">
                                         <span class="radio-checkmark"></span>
                                     </label> 
-                                    <label class="radio-container m-r-45">왕복
-                                        <input type="radio" name="kind" value ="2" id = "round">
-                                        <span class="radio-checkmark"></span>
-                                    </label>                                
                                 </div>
                             	
                             	<div id="body">
@@ -138,36 +139,43 @@
     <!-- Main JS-->
     <script src="../resources/vendor/js/global.js"></script>
 
+
+
 <script type="text/javascript">
 
-/* 출발도착일 */
-$("#arrDate").hide();
 
+
+/*** dateRangePicker ***/
+ 
  $('#input-start').daterangepicker({
-	singleDatePicker:true
-	
+	singleDatePicker:false,
+	autoApply: true	
 	});
  
 $('input:radio[name=kind]').click(function(){
 	
-	if($('input:radio[id=round]').is(":checked")){
-			$("#arrDate").show();
-			
+	if($('input:radio[id=eachWay]').is(":checked")){
+								
 			 $('#input-start').daterangepicker({
-				singleDatePicker:false			
+				singleDatePicker:true	
+					
 				}); 
 		}else{
-			$("#arrDate").hide();	
+			
 			$('#input-start').daterangepicker({
-				singleDatePicker:true				
+				singleDatePicker:false,	
+				autoApply: true
+							
 				}); 	
 		}
 });
 
-/* 출발도착일 끝 */
+
+/*** dateRangePicker 끝  ***/
 
 
-/* 공항검색 */
+
+/**** 공항검색 ****/
  $(document).ready(function(){
 	
 	$("#loc").on("keyup", function(){
@@ -188,8 +196,7 @@ $('input:radio[name=kind]').click(function(){
 		});
 }); 
 
-
-/* 공항검색 끝 */
+/**** 공항검색 끝 ****/
 
 
 
