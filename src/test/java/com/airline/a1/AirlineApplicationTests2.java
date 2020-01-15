@@ -24,6 +24,7 @@ import org.w3c.dom.NodeList;
 
 import com.airline.a1.api.AirportMapper;
 import com.airline.a1.api.AirportVO;
+import com.airline.a1.booking.FlightDataVO;
 
 
 
@@ -72,10 +73,18 @@ class AirlineApplicationTests2 {
 	
 	@Test
 	void apiTest2() throws Exception {
-		// 공항코드
+		List<AirportVO> air3 = airportMapper.airportList();
+		
+		for(AirportVO a3 : air3) {
+
 		BufferedReader br = null;
 		try {
-			String urlstr = "http://openapi.airport.co.kr/service/rest/serviceLine/serviceLines?serviceKey=iEDBbpkkNQN604mbzvOvbCbGl0rXiyk4SdUBO%2FqhREGGDL5QrF2SrrZzf3l2%2BUNCeiBD97RtxaPQZaL9VqVR%2Fg%3D%3D&schStDate=20200115&schEdDate=20200116&schLineType=D&schAirport=GMP&numOfRows=100";
+			String urlstr = "http://openapi.airport.co.kr/service/rest/serviceLine/serviceLines?serviceKey=iEDBbpkkNQN604mbzvOvbCbGl0rXiyk4SdUBO%2FqhREGGDL5QrF2SrrZzf3l2%2BUNCeiBD97RtxaPQZaL9VqVR%2Fg%3D%3D&"
+					+ "schStDate=20200115&schEdDate=20200116&"
+					+ "schLineType=D&"
+					+ "schAirport="+
+					a3.getCityCode()
+					+ "&numOfRows=100";
 			URL url = new URL(urlstr);
 			HttpURLConnection urlconnection = (HttpURLConnection) url.openConnection();
 			urlconnection.setRequestMethod("GET");
@@ -124,34 +133,25 @@ class AirlineApplicationTests2 {
 									System.out.println(a1.getCityCode());
 									System.out.println(a2.getCityCode());
 									
-									AirportVO airportVO = new AirportVO();
+									FlightDataVO flightDataVO = new FlightDataVO();
+									flightDataVO.setFlightKm(getTagValue("km", eElement));
+									flightDataVO.setFlightTime(getTagValue("time", eElement));
 									
-									airportMapper.airportUpdate(airportVO);
+									flightDataVO.setDepCityCode(getTagValue("arp", eElement));
+									flightDataVO.setArrCityCode(getTagValue("odp", eElement));
+									
+									airportMapper.airUpdate(flightDataVO);
 									
 									
 								}
 								
 							}
 
-							
-							
-							
 						}
-						
-						
 						
 					}
 					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
+
 						
 				}
 			}
@@ -160,6 +160,7 @@ class AirlineApplicationTests2 {
 			System.out.println(e.getMessage());
 		}
 
+		}
 	}
 	
 	private static String getTagValue(String tag, Element eElement) {
