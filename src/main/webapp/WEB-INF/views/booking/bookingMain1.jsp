@@ -72,6 +72,8 @@
                                                 <input class="input--style-1 input--style-1-small" type="text" name="traveller" value="1 Adult, 0 Children" disabled="disabled" id="info">
                                                 <i class="zmdi zmdi-chevron-down input-icon" style="height: 100%; background-color: transparent;"></i>
                                             </div>
+                                            
+                                            
                                             <div class="dropdown-select">
                                                 <ul class="list-room">
                                                     <li class="list-room__item">
