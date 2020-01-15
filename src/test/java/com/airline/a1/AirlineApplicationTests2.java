@@ -109,18 +109,22 @@ class AirlineApplicationTests2 {
 							System.out.println("출발공항명  : " + getTagValue("arp", eElement));
 							System.out.println(a1.getCityCode());
 							
-							
-							
+							for(AirportVO a2 : air2) {
+								
+								System.out.println(a2.getCityCode());
+								if(getTagValue("odp", eElement).equals(a2.getCityCode())) {
+									
+									System.out.println("완전 찾았다.");
+										
+								}
+								
+							}
+
 							
 							
 							
 						}
 						
-						for(AirportVO a2 : air2) {
-							
-							System.out.println(a2.getCityCode());
-							
-						}
 						
 						
 					}
