@@ -18,7 +18,7 @@
 <script type="text/javascript">
 
 $('#btn').click(function(){
-	window.open("../imPay/imPayList", "이니시스",  "width=825px,height=600px");
+	window.open("../imPay/imPayList?name=사과&amount=1000", "이니시스",  "width=825px,height=600px");
 });
 
 </script>

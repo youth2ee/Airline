@@ -9,9 +9,11 @@
 	<select id="searchAirport2" resultType="com.airline.a1.api.TestVO">
 		select S.apId depAp,N.apId arrAp from airport S cross Join airport N;
 	</select>
-	<insert id="flightDataInput" parameterType="com.airline.a1.api.FlightDataVO">
-		insert into flightData values (null,#{vihicleId},#{airlineNm},#{depPlandTime},#{arrPlandTime},#{economyCharge},#{depAirportNm},#{arrAirportNm},null,null)
+
+	<insert id="flightDataInput" parameterType="com.airline.a1.booking.FlightDataVO">
+		insert into flightData values (#{vihicleId},#{airlineNm},#{depPlandTime},#{arrPlandTime},#{economyCharge},#{depAirportNm},#{arrAirportNm}, null, null)
 	</insert>
+	
 	<select id="searchAirportCode"  parameterType="java.lang.Integer" resultType="java.lang.String">
 		select cityCode from airport where apNum = #{apNum}
 	</select>

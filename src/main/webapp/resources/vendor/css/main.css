@@ -277,9 +277,12 @@ a:active {
    #BUTTON
    ========================================================================== */
 .btn-submit {
-	display: block;
-	width: 100%;
-	line-height: 60px;
+	/* display: block; */
+	/* width: 100%; */
+	height : 50px;
+	float: left;
+	width: 110px;
+	line-height: 50px;
 	font-family: inherit;
 	background: #6c7ae0;
 	-webkit-border-radius: 10px;
@@ -287,7 +290,7 @@ a:active {
 	border-radius: 10px;
 	text-transform: uppercase;
 	color: #fff;
-	font-size: 18px;
+	font-size: 17px;
 	font-weight: 700;
 	-webkit-transition: all 0.4s ease;
 	-o-transition: all 0.4s ease;
@@ -507,7 +510,7 @@ input, textarea {
 	-webkit-box-shadow: none;
 	-moz-box-shadow: none;
 	box-shadow: none;
-	width: 100%;
+	 width: 100%; 
 	font-size: 18px;
 	font-family: inherit;
 }
@@ -526,7 +529,7 @@ button {
 }
 
 .input-group {
-	position: relative;
+	/* position: relative; */
 	margin-bottom: 35px;
 	background: #ffffff;
 	-webkit-border-radius: 10px;
@@ -596,14 +599,15 @@ button {
 	display: block;
 	font-weight: 700;
 	white-space: nowrap;
-	margin-right: 30px;
+	margin-right: 15px;
 }
 
 .input--style-1 {
-	font-size: 18px;
+	font-size: 14px;
 	padding: 19px 0;
 	color: #666;
 	font-family: inherit;
+	height: 100%;
 }
 
 .input--style-1::-webkit-input-placeholder {
@@ -634,7 +638,7 @@ button {
 }
 
 .input--style-1-small {
-	font-size: 16px;
+	font-size: 12.5px;
 	padding: 20.5px 0;
 }
 

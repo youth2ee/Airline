@@ -1,107 +1,254 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<c:import url="../template/boot.jsp"></c:import>
-</head>
-<body>
-
-	<h1>bookingMain</h1>
-
-
-	<form id="frm" action="bookingMain">
-		<div class="kind-radio">
-			<p>편도</p>
-			<input type="radio" name="kind" value="1" checked="checked">
-			<p>왕복</p>
-			<input type="radio" name="kind" value="2" id="round">
-		</div>
-
-
-		<select name="depLoc" id="depLoc">
-			<option value="부산">부산</option>
-			<option value="서울">서울</option>
-			<option value="김포">김포</option>
-		</select> 
-		
-		
-		<select name="arrLoc" id="arrLoc">		
-			<option value="제주">제주</option>
-			<option value="김해">김해</option>
-			<option value="인천">인천</option>
-		</select> 
-		
-		<input type="date" id="goDate">
-		
-		 <input type="date" id="backDate">
-
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Colrolib Templates">
+    <meta name="author" content="Colrolib">
+    <meta name="keywords" content="Colrolib Templates">
+	<c:import url="../template/boot.jsp"></c:import>
 	
+    <!-- Title Page-->
+    <title>Au Form Wizard</title>
+	
+    <!-- Icons font CSS-->
+    <link href="../resources/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="../resources/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-		<button id="a">aa</button>
+    <!-- .../resources/vendor CSS-->
+    <link href="../resources/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="../resources/vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+    <link rel="stylesheet" href="../resources/vendor/booking.css">
+
+    <!-- Main CSS-->
+    <link href="../resources/vendor/css/main.css" rel="stylesheet" media="all">
+    
+    
+</head>
+
+<body>
+             <div class="card card-4">         
+                     <div class="tab-content">
+                       <div class="tab-pane active" id="tab1"> 
+
+                            <form method="post" action="./bookingMain">
+                            	
+                            	<div class="radio-row" style="margin-bottom: 20px;">
+                                    <label class="radio-container m-r-45">왕복
+                                        <input type="radio" name="kind" value ="2" id = "round" checked="checked">
+                                        <span class="radio-checkmark"></span>
+                                    </label>     
+                                                               
+                                    <label class="radio-container m-r-45">편도
+                                        <input type="radio" name="kind" value="1"  id="eachWay">
+                                        <span class="radio-checkmark"></span>
+                                    </label> 
+                                </div>
+                            	
+                            	<div id="body">
+                                <div class="input-group mid" >
+                                    <label class="label">출발지:</label>
+                                    <input class="input--style-1 t1" type="text" name = "depLoc" placeholder="City, region or airport" required="required" id = "loc">
+                                  <!--   <input type="hidden" id="t2" readonly="readonly" name = "depLoc"> -->
+                                </div>
+                                
+                                  <div class="input-group mid">
+                                    <label class="label">도착지:</label>
+                                    <input class="input--style-1" type="text" name="arrLoc" placeholder="City, region or airport" required="required" >         
+                                </div>
+                                                      
+                              <div class="input-group mid">
+                                            <label class="label">Date:</label>
+                                            <input class="input--style-1" type="text" name="date" placeholder="yyyy/mm/dd" id="input-start">
+                                        </div>
+                                
+                                        <div class="input-group mid">
+                                            <label class="label">travellers:</label>
+                                            <div class="input-group-icon" id="js-select-special">
+                                                <input class="input--style-1 input--style-1-small" type="text" name="traveller" value="1 Adult, 0 Children" disabled="disabled" id="info">
+                                                <i class="zmdi zmdi-chevron-down input-icon" style="height: 100%; background-color: transparent;"></i>
+                                            </div>
+                                            
+                                            
+                                            <div class="dropdown-select">
+                                                <ul class="list-room">
+                                                    <li class="list-room__item">
+                                                     
+                                                        <ul class="list-person">
+                                                            <li class="list-person__item">
+                                                                <span class="name">Adults</span>
+                                                                <div class="quantity quantity1">
+                                                                    <span class="minus">-</span>
+                                                                    <input class="inputQty" type="number" min="0" value="1" name = "adults">
+                                                                    <span class="plus">+</span>
+                                                                </div>
+                                                            </li>
+                                                            <li class="list-person__item">
+                                                                <span class="name">Children</span>
+                                                                <div class="quantity quantity2">
+                                                                    <span class="minus">-</span>
+                                                                    <input class="inputQty" type="number" min="0" value="0" name = "children">
+                                                                    <span class="plus">+</span>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                                <div class="list-room__footer">
+                                                </div>
+                                            </div>
+                                        </div>
+                                 
+                                    <div class="col-2">
+                                        <button class="btn-submit" id ="booking_btn" type="submit">search</button>
+                                    </div>
+                    
+                                </div>
+                            </form>
+                        </div>             
+                    </div>
+                 
+                </div>
+ 
+ 
+ <!-- 영화검색 -->
+  <div id="locSearch" style="width: 500px; height: 500px; background-color: aqua;">
+ 	<table id="locTable" class = "tab">
+ 	<c:forEach items="${airportList}" var="airPort">
+ 	<tr><td class="loctd">${airPort}</td></tr>
+ </c:forEach>
+ </table>
+ </div> 
+ <!-- 영화검색끝 -->
 
 
-	</form>
+    <!-- Jquery JS-->
+	<script src="../resources/vendor/jquery/jquery.min.js"></script>
+	<!-- .../resources/vendor JS-->
+    <script src="../resources/vendor/select2/select2.min.js"></script>
+    <script src="../resources/vendor/jquery-validate/jquery.validate.min.js"></script>
+    <script src="../resources/vendor/bootstrap-wizard/bootstrap.min.js"></script>
+    <script src="../resources/vendor/bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
+    <script src="../resources/vendor/datepicker/moment.min.js"></script>
+    <script src="../resources/vendor/datepicker/daterangepicker.js"></script>
 
-	<button id="b">bb</button>
+    <!-- Main JS-->
+    <script src="../resources/vendor/js/global.js"></script>
 
-	<script type="text/javascript">
 
-var depLoc = $("#depLoc option:selected").val();
 
-$('#b').click(function(){
-		alert(depLoc);
-});
+<script type="text/javascript">
 
-$("#arrDate").hide();
 
+
+/*** dateRangePicker ***/
+ 
+ $('#input-start').daterangepicker({
+
+	singleDatePicker:false,
+	autoApply: true	
+
+	});
+ 
 $('input:radio[name=kind]').click(function(){
-	if($('input:radio[id=round]').is(":checked")){
-			$("#arrDate").show();
-
+	
+	if($('input:radio[id=eachWay]').is(":checked")){
+								
+			 $('#input-start').daterangepicker({
+				singleDatePicker:true	
+					
+				}); 
 		}else{
-				$("#arrDate").hide();			
-
+			
+			$('#input-start').daterangepicker({
+				singleDatePicker:false,	
+				autoApply: true
+							
+				}); 	
 		}
 });
 
 
-
-</script>
-
+/*** dateRangePicker 끝  ***/
 
 
 
+/**** 공항검색 ****/
+  $(document).ready(function(){
+	
+	$("#loc").on("keyup", function(){
+		var value = $(this).val().toLowerCase();
+
+	if(value ==""){
+		$(".tab").css("display", "none");
+
+		}else{
+			$(".tab").css("display", "inline");
+			
+			$("#locTable tr").filter(function(){
+				$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+
+				});
+			}	
+		});
+}); 
 
 
-	<div>
-		<!-- 검색창 -->
-		<form id="frm">
-			<select name="kind">
 
-				<option id="depLoc" value="depLoc">출발지</option>
-				<option id="arrLoc" value="arrLoc">도착지</option>
-				<option id="airDate" value="airDate">출발날짜</option>
-				<option id="depTime" value="depTime">출발시간</option>
-
-			</select> <input type="text" name="search" id="test">
-
-			<button id="btn" onclick="btn_click();">Search</button>
-
-		</form>
-	</div>
-
-
-	<script type="text/javascript">
+ 	$(".tab").css("display","none");
+	 var loc= ""; 
 
 	
+  $('.loctd').on("click", function(){
 		
-</script>
+		if($('#loc').val(loc) != ""){
+				$('#loc').val("");
+		} 
 
+		 loc = $(this).text();
+		$('#t2').val(loc); 
+		
+		$('#loc').val(loc);
+		$(".tab").css("display","none"); 
+
+		}); 
+
+
+
+	 
+	$('#loc').on("blur",function(){
+		
+			var loc = $('#loc').val();
+			var locAry = ['광주', '군산', '김포', '김해', '대구', '무안', '사천', '양양', '여수', '울산', '원주', '인천', '제주', '청주', '포항']
+	
+		 	if($.inArray(loc,locAry) < 0){
+			
+				$('#loc').val("");
+				 
+				
+			}else{
+			
+				} 
+
+		}); 
+
+
+/**** 공항검색 끝 ****/
+
+
+
+</script>
 
 
 </body>
+
 </html>
+<!-- end document-->
