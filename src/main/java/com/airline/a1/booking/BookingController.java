@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class BookingController {
 	
 	
-	@GetMapping("bookingMain1")
+	@GetMapping("bookingMain")
 	public void bookingMain1()throws Exception{
 		
 	}
 	
 	
-	  @PostMapping("bookingMain1") 
+	  @PostMapping("bookingMain") 
 	  public void bookingMain11(BookingVO booking)throws Exception{
 
 		  	System.out.println(booking.getAdults());

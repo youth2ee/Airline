@@ -47,6 +47,9 @@
 
 
 	<h1>Hello Index</h1>
+	<a href="./booking/bookingMain">예약</a>
+	<a href="./booking/bookingList">예약리스트</a>
+	
 
 </body>
 </html>
