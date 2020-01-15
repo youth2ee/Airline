@@ -6,7 +6,7 @@
 <mapper namespace="com.airline.a1.booking.BookingMapper">
 
 <select id="airportList" resultType="java.lang.String">
-	select distinct depAirportNm from flightData order by depAirportNm asc;
+	select distinct depAirportNm from flightData order by depAirportNm asc
 </select>
 
 </mapper>

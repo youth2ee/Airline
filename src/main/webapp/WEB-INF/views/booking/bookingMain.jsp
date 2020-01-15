@@ -31,6 +31,7 @@
     <!-- Main CSS-->
     <link href="../resources/vendor/css/main.css" rel="stylesheet" media="all">
     
+    
 </head>
 
 <body>
@@ -55,7 +56,8 @@
                             	<div id="body">
                                 <div class="input-group mid" >
                                     <label class="label">출발지:</label>
-                                    <input class="input--style-1" type="text" name="depLoc" placeholder="City, region or airport" required="required" id = "loc">
+                                    <input class="input--style-1 t1" type="text" name = "depLoc" placeholder="City, region or airport" required="required" id = "loc">
+                                  <!--   <input type="hidden" id="t2" readonly="readonly" name = "depLoc"> -->
                                 </div>
                                 
                                   <div class="input-group mid">
@@ -108,24 +110,25 @@
                                     <div class="col-2">
                                         <button class="btn-submit" id ="booking_btn" type="submit">search</button>
                                     </div>
-                          
+                    
                                 </div>
                             </form>
                         </div>             
                     </div>
+                 
                 </div>
  
  
  <!-- 영화검색 -->
- <div id="locSearch"style="width: 500px; height: 500px; background-color: red;">
- <table>
- <c:forEach items="${airportList}" var="airPort">
- 	<tr><td>${airPort}</td></tr>
+  <div id="locSearch" style="width: 500px; height: 500px; background-color: aqua;">
+ 	<table id="locTable" class = "tab">
+ 	<c:forEach items="${airportList}" var="airPort">
+ 	<tr><td class="loctd">${airPort}</td></tr>
  </c:forEach>
  </table>
- </div>
+ </div> 
  <!-- 영화검색끝 -->
- 
+
 
     <!-- Jquery JS-->
 	<script src="../resources/vendor/jquery/jquery.min.js"></script>
@@ -179,25 +182,64 @@ $('input:radio[name=kind]').click(function(){
 
 
 /**** 공항검색 ****/
- $(document).ready(function(){
+  $(document).ready(function(){
 	
 	$("#loc").on("keyup", function(){
 		var value = $(this).val().toLowerCase();
 
 	if(value ==""){
-		$("#locSearch").css("display", "none");
+		$(".tab").css("display", "none");
 
 		}else{
-			$("#locSearch").css("display", "inline");
+			$(".tab").css("display", "inline");
 			
-			$("#locSearch tr").filter(function(){
+			$("#locTable tr").filter(function(){
 				$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
 
 				});
 			}	
-
 		});
 }); 
+
+
+
+ 	$(".tab").css("display","none");
+	 var loc= ""; 
+
+	
+  $('.loctd').on("click", function(){
+		
+		if($('#loc').val(loc) != ""){
+				$('#loc').val("");
+		} 
+
+		 loc = $(this).text();
+		$('#t2').val(loc); 
+		
+		$('#loc').val(loc);
+		$(".tab").css("display","none"); 
+
+		}); 
+
+
+
+	 
+	$('#loc').on("blur",function(){
+		
+			var loc = $('#loc').val();
+			var locAry = ['광주', '군산', '김포', '김해', '대구', '무안', '사천', '양양', '여수', '울산', '원주', '인천', '제주', '청주', '포항']
+	
+		 	if($.inArray(loc,locAry) < 0){
+			
+				$('#loc').val("");
+				 
+				
+			}else{
+			
+				} 
+
+		}); 
+
 
 /**** 공항검색 끝 ****/
 
