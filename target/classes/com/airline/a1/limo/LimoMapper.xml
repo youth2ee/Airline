@@ -7,7 +7,7 @@
   		select * from limo
   	</select>
   	
-  	<insert id="limoBook" parameterType="com.airline.a1.liomo.LimoVO">
+  	<insert id="limoBook" parameterType="com.airline.a1.limo.LimoVO">
   		insert into limo values(0, curdate(), #{limoPrice}, #{id}, #{depLoc}, #{arrLoc})
   	</insert>
   </mapper>
