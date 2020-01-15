@@ -14,8 +14,13 @@
 
 <h1> Booking List </h1>
 
+${bookingVO.kind}
+${bookingVO.depLoc}
+
+
 <div>
-<div> 출발지 -> 도착지 </div>
+
+<div> ${bookingVO.depLoc} -> ${bookingVO.arrLoc} </div>
 
 <div> 
 	<div style="float: left; cursor: pointer; color: red;" id="date1" > 1.13 </div> 
@@ -46,10 +51,8 @@
 </table>
 
 
-
-
-
-<div> 도착지 -> 출발지 </div>
+<c:if test="${bookingVO.kind == 2}">
+<div> ${bookingVO.arrLoc} -> ${bookingVO.depLoc} </div>
 <div> 
 	<div style="float: left;"> 1.13 </div> 
 	<div style="float: left;"> 1.14 </div> 
@@ -77,6 +80,13 @@
 </tr>
 
 </table>
+
+</c:if>
+
+
+
+
+
 
 
 </div>

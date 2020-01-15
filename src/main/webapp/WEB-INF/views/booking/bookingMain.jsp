@@ -37,7 +37,7 @@
              <div class="card card-4">         
                      <div class="tab-content">
                        <div class="tab-pane active" id="tab1"> 
-                            <form method="POST" action="bookingMain1">
+                            <form method="post" action="./bookingMain">
                             	
                             	<div class="radio-row" style="margin-bottom: 20px;">
                                     <label class="radio-container m-r-45">편도
@@ -63,7 +63,7 @@
                                                       
                               <div class="input-group mid">
                                             <label class="label">Date:</label>
-                                            <input class="input--style-1" type="text" name="date" placeholder="mm/dd/yyyy" id="input-start">
+                                            <input class="input--style-1" type="text" name="date" placeholder="yyyy/mm/dd" id="input-start">
                                         </div>
                                 
                                         <div class="input-group mid">
@@ -141,8 +141,8 @@
 $("#arrDate").hide();
 
  $('#input-start').daterangepicker({
-	singleDatePicker:true
-	
+	singleDatePicker:true,
+	format: 'yyyy/mm/dd'
 	});
  
 $('input:radio[name=kind]').click(function(){
