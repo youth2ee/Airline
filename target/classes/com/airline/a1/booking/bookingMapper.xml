@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.airline.a1.booking.BookingMapper">
+
+<select id="airportList" resultType="java.lang.String">
+	select distinct depAirportNm from flightData order by depAirportNm asc
+</select>
+
+<select id="airList" parameterType="com.airline.a1.booking.BookingVO" resultType="com.airline.a1.booking.FlightDataVO">
+	select * from flightData where depPlandTime > #{date} and depAirportNm = #{depLoc} and arrAirportNm = #{arrLoc} order by depPlandTime asc
+</select>
+
+
+
+
+</mapper>

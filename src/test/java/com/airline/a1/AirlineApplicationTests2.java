@@ -25,6 +25,10 @@ import org.w3c.dom.NodeList;
 import com.airline.a1.api.AirportMapper;
 import com.airline.a1.api.AirportVO;
 
+
+
+
+
 @SpringBootTest
 class AirlineApplicationTests2 {
 
@@ -115,7 +119,16 @@ class AirlineApplicationTests2 {
 								if(getTagValue("odp", eElement).equals(a2.getCityCode())) {
 									
 									System.out.println("완전 찾았다.");
-										
+									System.out.println("출발공항명  : " + getTagValue("arp", eElement));
+									System.out.println("도착공항명 : " + getTagValue("odp", eElement));
+									System.out.println(a1.getCityCode());
+									System.out.println(a2.getCityCode());
+									
+									AirportVO airportVO = new AirportVO();
+									
+									airportMapper.airportUpdate(airportVO);
+									
+									
 								}
 								
 							}

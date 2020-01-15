@@ -214,29 +214,11 @@ $('input:radio[name=kind]').click(function(){
 		} 
 
 		 loc = $(this).text();
+		 alert(loc);
 		$('#t2').val(loc); 
 		
 		$('#loc').val(loc);
 		$(".tab").css("display","none"); 
-
-		}); 
-
-
-
-	 
-	$('#loc').on("blur",function(){
-		
-			var loc = $('#loc').val();
-			var locAry = ['광주', '군산', '김포', '김해', '대구', '무안', '사천', '양양', '여수', '울산', '원주', '인천', '제주', '청주', '포항']
-	
-		 	if($.inArray(loc,locAry) < 0){
-			
-				$('#loc').val("");
-				 
-				
-			}else{
-			
-				} 
 
 		}); 
 
