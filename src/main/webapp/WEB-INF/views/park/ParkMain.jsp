@@ -29,6 +29,26 @@
 
 <button onclick="location.href='ParkRes'">주차예약</button>
 
+<table width="615" border="0" cellpadding="1" cellspacing="1" bgcolor="#eaecee"> 
+ <tbody>
+  <tr align="center" bgcolor="#F2F2F2"> 
+   <td width="123" height="24" bgcolor="#f6f6f6"><strong>날씨</strong></td> 
+   <td width="123" bgcolor="#f6f6f6"><strong>기온</strong></td> 
+   <td width="123" bgcolor="#f6f6f6"><strong>풍속</strong></td> 
+   <td width="123" bgcolor="#f6f6f6"><strong>풍향</strong></td> 
+   <td width="123" bgcolor="#f6f6f6"><strong>시정</strong></td> 
+  </tr> 
+  <tr align="center" bgcolor="#FFFFFF"> 
+   <td height="43"><font color="#124d79"> <img src="https://www.weatheri.co.kr/images/icon_2013_01/02.png" width="70" alt=""> </font></td> 
+   <td>3℃</td> 
+   <td>6 (Knot)</td> 
+   <td>북</td> 
+   <td>9999(m)</td> 
+  </tr> 
+ </tbody>
+</table>
+
+
 <script type="text/javascript">
 	window.onload = function(){
 
@@ -45,7 +65,18 @@
 		/* $.get("https://openapi.airport.kr/openapi/service/StatusOfParking/getTrackingParking?serviceKey=QZHG0poXIbqgwOTVR4fiVzbVQ0Pmuz5lkYnHKmazdB%2F5VtUfkpt42I%2BSmw2F5XFUbX1%2Bmm8NaH5BLRz80XVUaA%3D%3D&pageNo=1&numOfRows=15",function(data){
 			console.log(data);
 		}); */
+		var request = require('request'),
+	    	cheerio = require('cheerio');
 
+		var url = "http://openapi.airport.kr/openapi/service/StatusOfParking/getTrackingParking?serviceKey=QZHG0poXIbqgwOTVR4fiVzbVQ0Pmuz5lkYnHKmazdB%2F5VtUfkpt42I%2BSmw2F5XFUbX1%2Bmm8NaH5BLRz80XVUaA%3D%3D";
+	 
+
+		request(url, function (err, res, html) {
+	    	if (!err) {
+	        var $ = cheerio.load(html);
+	   		}
+	   		console.log(res);
+		});
 
 	}
 

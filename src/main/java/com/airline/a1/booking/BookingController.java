@@ -13,20 +13,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/booking/**")
 public class BookingController {
 	
+
 	@Autowired
 	private BookingService bookingService;
 	
-	@GetMapping("bookingMain1")
+	@GetMapping("bookingMain")
 	public void bookingMain1(Model model)throws Exception{
 		List<String> airport = bookingService.airportList();
 		model.addAttribute("airportList", airport);
 	}
 	
 	
-	  @PostMapping("bookingMain1") 
+	  @PostMapping("bookingMain") 
 	  public void bookingMain11(BookingVO booking)throws Exception{
 
-	  
+
+		  	System.out.println(booking.getAdults());
+		  	System.out.println(booking.getArrLoc());
+		  	System.out.println(booking.getChildren());
+		  	System.out.println(booking.getDepLoc());
+		  	System.out.println(booking.getKind());
+		  	System.out.println(booking.getDate());
+
+
 	  }
 	 
 
