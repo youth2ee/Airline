@@ -109,6 +109,7 @@ body {
 	</div>
 
 
+
 <div class="bxslider">
   <div style="height: 392px"><img src="https://ozimg.flyasiana.com/temp/image/20191217/f736571b-f061-4c13-9933-4366cbe91d7f.jpeg"></div>
   <div style="height: 392px"><img src="https://ozimg.flyasiana.com/temp/image/20200110/fc4ca760-22f9-4b86-9582-4ae4d9d79854.jpeg"></div>
@@ -191,6 +192,12 @@ var myFullpage = new fullpage('#fullpage', {
 
     }
 });
+
+	<h1>Hello Index</h1>
+	<a href="./booking/bookingMain">예약</a>
+	<a href="./booking/bookingList">예약리스트</a>
+	
+
 
 var appendNumber = 4;
 var swiper = new Swiper('.swiper-container', {
