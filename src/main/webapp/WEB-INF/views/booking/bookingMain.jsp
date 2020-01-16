@@ -62,7 +62,7 @@
                                 
                                   <div class="input-group mid">
                                     <label class="label">도착지:</label>
-                                    <input class="input--style-1" type="text" name="arrLoc" placeholder="City, region or airport" required="required" >         
+                                    <input class="input--style-1" type="text" name="arrLoc" placeholder="City, region or airport" required="required" id = "arrloc" >         
                                 </div>
                                                       
                               <div class="input-group mid">
@@ -310,10 +310,14 @@ $('input:radio[name=kind]').click(function(){
  
  /****** 도착지  *******/
  
+ $('#arrloc').on("focus", function(){
+			alert("qqq");
+
+	 });
  
 
 
-	/**** 공항검색 끝 ****/
+
 </script>
 
 
