@@ -10,9 +10,17 @@
 </select>
 
 <select id="airList" parameterType="com.airline.a1.booking.BookingVO" resultType="com.airline.a1.booking.FlightDataVO">
-	select * from flightData where depPlandTime > #{date} and depAirportNm = #{depLoc} and arrAirportNm = #{arrLoc} order by depPlandTime asc
+<![CDATA[
+	select * from flightData where depPlandTime > #{sdate}
+	and depPlandTime < #{edate}
+	and depAirportNm = #{depLoc} and arrAirportNm = #{arrLoc} 
+	order by depPlandTime asc
+ ]]>
 </select>
 
+<select id="oneSelect" parameterType="com.airline.a1.booking.FlightDataVO" resultType="com.airline.a1.booking.FlightDataVO">
+	select * from flightData where fnum=#{fnum}
+</select>
 
 
 
