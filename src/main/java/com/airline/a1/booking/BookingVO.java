@@ -24,5 +24,7 @@ private String day;
 private String month;
 private String year;
 
+private String sdate;
+private String edate;
 
 }

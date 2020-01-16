@@ -243,17 +243,18 @@ $('input:radio[name=kind]').click(function(){
 		 }else{
 				$('#CHECK').click(function(){
 					var t = $('#loc').val();
-					
-				 <c:forEach items="${airportList}" var="airPort">
-				 
-					if('${airPort}' == t){
-						alert("correct");
-						
-					} else {
-					        $(".tab").css("display","none");
-					        $('#loc').val("");
-					}
+					$(".tab").css("display","none");
 
+					<c:set var="loop_flag" value="false" />
+				 <c:forEach items="${airportList}" var="airPort">
+				 <c:if test="${not loop_flag }">
+					if('${airPort}' == t) {
+						alert("찾음");
+						 <c:set var="loop_flag" value="true" />
+					} else {
+						alert("gg");
+					}
+					</c:if>
 				 </c:forEach>
 
 					
