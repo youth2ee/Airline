@@ -14,37 +14,46 @@
 
 <h1> Booking List </h1>
 
-${bookingVO.kind}
-${bookingVO.depLoc}
+<c:if test="${bookingVO.kind == 1}">
+편도
+</c:if>
+<c:if test="${bookingVO.kind == 2}">
+왕복
+</c:if>
+
+<hr>
+
+<h3>성인 : ${bookingVO.adults}명</h3>
+<h3>아동 : ${bookingVO.children}명</h3>
+<h5>출발 : ${bookingVO.depLoc}</h5>
+<h5>도착 : ${bookingVO.arrLoc}</h5>
+
+<hr>
 
 
-<div>
+<section> 
 
-<div> ${bookingVO.depLoc} -> ${bookingVO.arrLoc} </div>
+<div><h1> ${bookingVO.depLoc} -> ${bookingVO.arrLoc}  </h1></div>
 
 <div> 
-
 <c:forEach items="${Dlist}" var="days1" varStatus="status"> 
-
 	<c:if test="${status.index != 5}">
-	<div style="float: left; cursor: pointer; background-color: yellow; padding: 10px;" class="date1" > 
+	<div style="float: left; cursor: pointer; padding: 10px;" class="date1" > 
 		<div class="d1">${days1.year}년</div>
 		<div class="d2">${days1.month}월 ${days1.day}일</div>
 	</div>
 	</c:if>
 	
 	<c:if test="${status.index == 5}">
-	<div style="float: left; cursor: pointer; background-color: red; padding: 10px;" class="date1" > 
-		<div class="d1">${days1.year}년</div>
-		<div class="d2">${days1.month}월 ${days1.day}일</div>
+	<div style="float: left; cursor: pointer; padding: 10px;" class="date1 bact" > 
+		<div class="d1 rd1">${days1.year}년</div>
+		<div class="d2 rd2">${days1.month}월 ${days1.day}일</div>
 	</div>
 	</c:if>
-	 
 </c:forEach>
-	
 </div>
 
-
+<div style="height: 300px; overflow-y: scroll; clear: both;">
 <table id="depT"> 
 <tr>
 	<td>편명</td> 
@@ -57,7 +66,6 @@ ${bookingVO.depLoc}
 </tr>
 
 <c:forEach items="${DairList}" var="dlist"> 
-<%--  <tr style = "cursor:pointer;" onClick = " location.href='./bookingWrite?fnum=${dlist.fnum}&adults=${bookingVO.adults}&children=${bookingVO.children}' "> --%>
 <tr class="dtrcheck">
 	<td>${dlist.vihicleId}<input type="hidden" value="${dlist.fnum}" class="dfnum"></td> 
 	<td>${dlist.airlineNm}</td> 
@@ -68,35 +76,33 @@ ${bookingVO.depLoc}
 	<td>${dlist.economyCharge}원</td>  
 </tr>
 </c:forEach>
-
-
-
 </table>
+</div>
 
+
+<hr>
 
 <c:if test="${bookingVO.kind == 2}">
-<div> ${bookingVO.arrLoc} -> ${bookingVO.depLoc} </div>
+<div><h1> ${bookingVO.arrLoc} -> ${bookingVO.depLoc} </h1></div>
 <div> 
 <c:forEach items="${Alist}" var="days2" varStatus="status2"> 
-
 	<c:if test="${status2.index != 5}">
-	<div style="float: left; cursor: pointer; background-color: yellow; padding: 10px;" class="date2" > 
+	<div style="float: left; cursor: pointer; padding: 10px;" class="date2" > 
 		<div class="d11">${days2.year}년</div>
 		<div class="d12">${days2.month}월 ${days2.day}일</div>
 	</div>
 	</c:if>
 	
 	<c:if test="${status2.index == 5}">
-	<div style="float: left; cursor: pointer; background-color: red; padding: 10px;" class="date2" > 
-		<div class="d11">${days2.year}년</div>
-		<div class="d12">${days2.month}월 ${days2.day}일</div>
+	<div style="float: left; cursor: pointer; padding: 10px;" class="date2 bact"> 
+		<div class="d11 rd11">${days2.year}년</div>
+		<div class="d12 rd12">${days2.month}월 ${days2.day}일</div>
 	</div>
 	</c:if>
-	 
 </c:forEach>
-	
 </div>
 
+<div style="height: 300px; overflow-y: scroll; clear: both;">
 <table id="arrT"> 
 <tr> 
 	<td>편명</td> 
@@ -108,9 +114,7 @@ ${bookingVO.depLoc}
 	<td>가격</td>  
 </tr>
 
-
 <c:forEach items="${AairList}" var="alist"> 
-<%--  <tr style = "cursor:pointer;" onClick = " location.href='./bookingWrite?fnum=${alist.fnum}&adults=${bookingVO.adults}&children=${bookingVO.children}' "> --%>
 <tr class="atrcheck">
 	<td>${alist.vihicleId}<input type="hidden" value="${alist.fnum}" class="afnum"></td> 
 	<td>${alist.airlineNm}</td> 
@@ -121,26 +125,41 @@ ${bookingVO.depLoc}
 	<td>${alist.economyCharge}원</td>  
 </tr>
 </c:forEach>
-
 </table>
-
+</div>
 </c:if>
 
+<form action="./bookingWritePre" method="post">
+
+<input type="hidden" name="dfnum" id="dfnumf">
+<input type="hidden" name="afnum" id="afnumf">
+<input type="hidden" name="adults" value="${bookingVO.adults}">
+<input type="hidden" name="children" value="${bookingVO.children}">
+<input type="hidden" name="kind" value="${bookingVO.kind}">
+
+<button style = "cursor:pointer;"> 다음 </button>
+</form>
 
 
-<button style = "cursor:pointer;" id="btn"> 다음 </button>
 
-
-
-</div>
+</section>
 
 <script type="text/javascript">
+
+var d1 = $('.rd1').text();
+var d2 = $('.rd2').text();
+
+var d11 = $('.rd11').text();
+var d12 = $('.rd12').text();
+
 $('.date1').click(function(){
-	var d1 = $(this).find('.d1').text().trim();
-	var d2 = $(this).find('.d2').text().trim();
+	$(this).addClass('bact');
+	$(this).siblings().removeClass('bact');
+	
+	d1 = $(this).find('.d1').text().trim();
+	d2 = $(this).find('.d2').text().trim();
 	
 	//다른 날짜를 선택할때
-
 	$.ajax({
 		data : {
 			d1:d1,
@@ -168,12 +187,15 @@ $('.date1').click(function(){
 
 
 
-$('.date2').click(function(){	
-	var d11 = $(this).find('.d11').text().trim();
-	var d12 = $(this).find('.d12').text().trim();
+$('.date2').click(function(){
+	$(this).addClass('bact');
+	$(this).siblings().removeClass('bact');
+
+	
+	d11 = $(this).find('.d11').text().trim();
+	d12 = $(this).find('.d12').text().trim();
 	
 	//다른 날짜를 선택할때
-
 	$.ajax({
 		data : {
 			d1:d11,
@@ -199,28 +221,21 @@ $('.date2').click(function(){
 var dfnum = $('.dfnum').val();
 var afnum = $('.afnum').val();
 
-$('.dtrcheck').on("click", function(){
-	alert($(this));
+$('#dfnumf').val(dfnum);
+$('#afnumf').val(afnum);
+
+
+$('body').on("click",'.dtrcheck',function(){
 	dfnum = $(this).find('.dfnum').val();
 	$(this).find('td').addClass('act');
 	$(this).siblings().find('td').removeClass('act');
 });
 
-$('.atrcheck').on("click", function(){
+$('body').on("click",'.atrcheck',function(){
 	afnum = $(this).find('.afnum').val();
 	$(this).find('td').addClass('act');
 	$(this).siblings().find('td').removeClass('act');
 });
-
-
-
-
-
-$('#btn').click(function(){
-	location.href='./bookingWrite?dfnum='+dfnum+'&afnum='+afnum+'&adults=${bookingVO.adults}&children=${bookingVO.children}&kind=${bookingVO.kind}';
-});
-
-
 
 
 

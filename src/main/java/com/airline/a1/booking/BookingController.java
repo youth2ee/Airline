@@ -167,7 +167,6 @@ public class BookingController {
 
 		}
 
-
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("bookingVO", bookingVO);
 		mv.addObject("Dlist", ddates);
@@ -242,19 +241,41 @@ public class BookingController {
 	public void bookingList() throws Exception {
 
 	}
+	
+	@PostMapping("bookingWritePre")
+	public ModelAndView bookingWritePre(String dfnum, String afnum, int adults, int children, String kind) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("adults", adults);
+		mv.addObject("children", children);
+		mv.addObject("kind", kind);
+		
+		System.out.println(dfnum+"dfnum");
+		
+		FlightDataVO dflightDataVO = new FlightDataVO();
+		dflightDataVO.setFnum(Integer.parseInt(dfnum));	
+		dflightDataVO = bookingService.oneSelect(dflightDataVO);
+		mv.addObject("dflightInfo", dflightDataVO);
+		
+		System.out.println(afnum);
+		
+		if (afnum != "") {
+			FlightDataVO aflightDataVO = new FlightDataVO();
+			aflightDataVO.setFnum(Integer.parseInt(afnum));	
+			aflightDataVO = bookingService.oneSelect(aflightDataVO);
+			mv.addObject("aflightInfo", aflightDataVO);			
+		}
+		
+		mv.setViewName("/booking/bookingWrite");
+		
+		return mv;
+	}
 
 	@GetMapping("bookingWrite")
-	public void bookingWrite(Model model, String dnum, String fnum, int adults, int children, String kind) throws Exception {
-		model.addAttribute("adults", adults);
-		model.addAttribute("children", children);
-		model.addAttribute("kind", kind);
-		
+	public void bookingWrite() throws Exception {	
 	}
 
 	@PostMapping("bookingWrite")
 	public String bookingWrite(CustomVO customVO) throws Exception {
-
-		System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 		
 		if (customVO.getAdultsVOList() != null) {
 			for(CustomVO cuVo1 : customVO.getAdultsVOList()) {
@@ -285,7 +306,6 @@ public class BookingController {
 				System.out.println(cuVo2.getArrDis());
 			}
 		}
-
 		
 		System.out.println("**************************************");
 		System.out.println(customVO.getResEmail());
@@ -299,7 +319,8 @@ public class BookingController {
 
 	@GetMapping("bookingCheck")
 	public void bookingCheck() {
-
+		
+		
 	}
 
 }

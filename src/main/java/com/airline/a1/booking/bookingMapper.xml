@@ -18,6 +18,9 @@
  ]]>
 </select>
 
+<select id="oneSelect" parameterType="com.airline.a1.booking.FlightDataVO" resultType="com.airline.a1.booking.FlightDataVO">
+	select * from flightData where fnum=#{fnum}
+</select>
 
 
 

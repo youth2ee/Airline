@@ -19,5 +19,9 @@ public class BookingService {
 	public List<FlightDataVO> airList(BookingVO bookingVO) throws Exception {
 		return bookingMapper.airList(bookingVO);
 	}
+	
+	public FlightDataVO oneSelect(FlightDataVO flightDataVO) throws Exception {
+		return bookingMapper.oneSelect(flightDataVO);
+	}
 
 }

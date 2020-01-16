@@ -12,6 +12,11 @@
 </tr>
 
 <c:if test="${pos == '1'}">
+
+<c:if test="${empty DairList}"> 
+<tr><td colspan="7" style="text-align: center;">운항정보가 존재하지 않습니다.</td></tr>
+</c:if>
+
 <c:forEach items="${DairList}" var="dlist"> 
 <tr class="dtrcheck">
 	<td>${dlist.vihicleId}<input type="hidden" value="${dlist.fnum}" class="dfnum"></td> 
@@ -26,8 +31,12 @@
 </c:if>
 
 <c:if test="${pos == '2'}">
+
+<c:if test="${empty AairList}"> 
+<tr><td colspan="7" style="text-align: center;">운항정보가 존재하지 않습니다.</td></tr>
+</c:if>
+
 <c:forEach items="${AairList}" var="alist"> 
-<%--  <tr style = "cursor:pointer;" onClick = " location.href='./bookingWrite?fnum=${alist.fnum}&adults=${bookingVO.adults}&children=${bookingVO.children}' "> --%>
 <tr class="atrcheck">
 	<td>${alist.vihicleId}<input type="hidden" value="${alist.fnum}" class="afnum"></td> 
 	<td>${alist.airlineNm}</td> 

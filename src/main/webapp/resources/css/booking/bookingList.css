@@ -1,19 +1,26 @@
 @charset "UTF-8";
 
+section{
+	width: 1000px;
+	margin: 0 auto;
+}
+
 #depT{
+width:100%;
 clear: both;
-border-color: red;
-border-style: solid;
 cursor: pointer;
 }
 
 #arrT{
+width:100%;
 clear: both;
-border-color: red;
-border-style: solid;
 cursor: pointer;
 }
 
 .act{
 	color: red;
+}
+
+.bact{
+	background-color: red;
 }

@@ -6,9 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="../resources/css/booking/bookingWrite.css" rel="stylesheet">
 </head>
 <body>
-
 booking write
 <div>
 <ul>
@@ -22,31 +22,69 @@ booking write
 </div>
 
 
+<section>
 
+<div> 
+<c:if test="${kind == 1}">
+<div><h1>편도</h1></div>
+<hr>
+<div><h1>${dflightInfo.depAirportNm}&#60;-&#62;${dflightInfo.arrAirportNm}</h1></div>
 <div>
+${dflightInfo.depPlandTime}
+${dflightInfo.vihicleId}
+${dflightInfo.airlineNm}
+${dflightInfo.economyCharge}원
+</div>
+<hr>
+</c:if>
+
+<c:if test="${kind == 2}">
+<div><h1>왕복</h1></div>
+<hr>
+<div><h1>${dflightInfo.depAirportNm}&#60;-&#62;${dflightInfo.arrAirportNm}</h1></div>
+<div>
+${dflightInfo.depPlandTime}
+${dflightInfo.vihicleId}
+${dflightInfo.airlineNm}
+${dflightInfo.economyCharge}원
+</div>
+<div><h1>${aflightInfo.depAirportNm}&#60;-&#62;${aflightInfo.arrAirportNm}</h1></div>
+<div>
+${aflightInfo.depPlandTime}
+${aflightInfo.vihicleId}
+${aflightInfo.airlineNm}
+${aflightInfo.economyCharge}원
+</div>
+<hr>
+</c:if>
+
+</div>
+
 
 <form action="./bookingWrite" method="post">
 <div> 
-탑승자 정보
+<h1>탑승자 정보</h1>
+<hr>
 
 <c:if test="${adults != 0}">
 <c:forEach begin="1" end="${adults}" varStatus="status"> 
-
 <table><!-- 성인1 -->
-
 <tr><td colspan="2">성인 ${status.index}</td> </tr>
 
 <tr> 
 <td>성별</td> 
 <td>
-여<input type="radio" name="adultsVOList[${status.index-1}].sex" value="여"> 남<input type="radio" name="adultsVOList[${status.index-1}].sex" value="남">  
+여<input type="radio" name="adultsVOList[${status.index-1}].sex" value="여"> 
+남<input type="radio" name="adultsVOList[${status.index-1}].sex" value="남">  
 </td>
 </tr>
 
 <tr>
 <td>이름</td> 
-<td><input type="text" placeholder="성(신분증언어)" name="adultsVOList[${status.index-1}].firstName"> 
-<input type="text" placeholder="이름(신분증언어)" name="adultsVOList[${status.index-1}].lastName"> </td>
+<td>
+<input type="text" placeholder="성(신분증언어)" name="adultsVOList[${status.index-1}].firstName"> 
+<input type="text" placeholder="이름(신분증언어)" name="adultsVOList[${status.index-1}].lastName"> 
+</td>
 </tr>
 
 <tr>
@@ -129,17 +167,15 @@ booking write
 </tr>
 </c:if>
 </table><!-- 성인1 -->
-
+<hr>
 </c:forEach>
 </c:if>
 
 
 <!-- %%%%%%%% -->
 
-
 <c:if test="${children != 0}">
 <c:forEach begin="1" end="${children}" varStatus="status"> 
-
 <table><!-- 아이1 -->
 
 <tr><td colspan="2">아이 ${status.index}</td> </tr>
@@ -237,12 +273,9 @@ booking write
 </tr>
 </c:if>
 </table><!-- 아이1 -->
-
+<hr>
 </c:forEach>
 </c:if>
-
-
-
 
 
 
@@ -270,20 +303,14 @@ booking write
 </tr>
 </table>
 
-
 </div>
 
-
-<button>클릭</button>
+<hr>
+<button>다음</button>
 
 </form>
 
-
-
-
-</div>
-
-
+</section>
 
 
 </body>
