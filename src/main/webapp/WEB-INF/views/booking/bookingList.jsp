@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 
-<link href="../resources/css/bookingList.css" rel="stylesheet">
+<link href="../resources/css/booking/bookingList.css" rel="stylesheet">
 <c:import url="../template/boot.jsp"></c:import>
 <body>
 
@@ -200,12 +200,12 @@ var dfnum = $('.dfnum').val();
 var afnum = $('.afnum').val();
 $('.dtrcheck').on("click", function(){
 	dfnum = $(this).find('.dfnum').val();
-	$(this).find('td').css('color', 'red');
+	$(this).addClass('act').siblings().removeClass('act');
 });
 
 $('.atrcheck').on("click", function(){
 	afnum = $(this).find('.afnum').val();
-	$(this).find('td').css('color', 'red');
+	$(this).find('td').addClass('act').siblings().removeClass('act');
 });
 
 

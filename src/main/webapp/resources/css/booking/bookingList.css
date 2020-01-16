@@ -11,3 +11,7 @@ clear: both;
 border-color: red;
 border-style: solid;
 }
+
+.act{
+	color: red;
+}
