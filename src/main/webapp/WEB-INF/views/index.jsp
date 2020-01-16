@@ -137,7 +137,8 @@
 <script type="text/javascript" src="../resources/newni/dist/fullpage.js"></script>
 
 <script>
-$(".menu1").hover(function(){
+
+/* $(".menu1").hover(function(){
 	$(".sub1").slideDown(300);
 	$(".sub1").css("display", "block"); 
 });
@@ -145,7 +146,7 @@ $(".menu1").mouseleave(function(){
 	$(".sub1").slideUp(300);
 	$(".sub1").css("display", "none"); 
 	
-});
+}); */
 $(".sub1").hover(function(){
 	$(".sub1").css("display", "block"); 
 });
