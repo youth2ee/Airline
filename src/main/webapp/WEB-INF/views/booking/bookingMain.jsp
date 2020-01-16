@@ -107,35 +107,7 @@
                                             </div>
                                         </div>
                                         
-                                       <!--  <div class="col-2">
-                                        <div class="input-group" >
-                                            <label class="label">출발지2:</label>
-                                            <div class="rs-select2 js-select-simple select--no-search" style="overflow:hidden" >
-                                                <select name="driver-age">
-                                                	<option value="" disabled selected hidden>City, region or airport</option>
-                                                    <option>23</option>
-                                                    <option>24</option>
-                                                    <option>25</option>
-                                                    <option>26</option>
-                                                    <option>23</option>
-                                                    <option>24</option>
-                                                    <option>25</option>
-                                                    <option>26</option>
-                                                     <option>23</option>
-                                                    <option>24</option>
-                                                    <option>25</option>
-                                                    <option>26</option>
-                                                      <option>23</option>
-                                                    <option>24</option>
-                                                    <option>25</option>
-                                                  
-                                                </select>
-                                                <div class="select-dropdown"></div>
-                                            </div>
-                                        </div>
-                                    </div> -->
-                                        
-                                                  
+                                   
                                     <div class="col-2">
                                         <button class="btn-submit" id ="booking_btn" type="submit">search</button>
                                     </div>
@@ -148,7 +120,7 @@
                 </div>
  
  
- <!-- 영화검색 -->
+ <!-- 공항검색 -->
   <div id="locSearch">
  	<table id="locTable" class = "tab">
  	<c:forEach items="${airportList}" var="airPort">
@@ -156,7 +128,7 @@
  </c:forEach>
  </table>
  </div> 
- <!-- 영화검색끝 -->
+ <!-- 공항검색끝 -->
 
 
     <!-- Jquery JS-->
@@ -212,12 +184,13 @@ $('input:radio[name=kind]').click(function(){
 
 
 
+
+
 /**** 공항검색 ****/
 
 
- 
- 	  var a = false;
-//--------------------- 검색어 필터 -----------------------------		
+ 	 var a = false;
+//-------------------- 검색어 필터 -----------------------------		
 	$("#loc").on("keyup", function(){
 		
 		var value = $(this).val().toLowerCase();
@@ -274,130 +247,61 @@ $('input:radio[name=kind]').click(function(){
 			 	if(a){	
 				$(".loctd").each(function(){
 						if($(this).html()==value){
-							 $(".tab").css("display","none"); 
+							 $("#locSearch").css("display","none"); 
 							check=true; 
 							}
 					}); 
 				 
 				}else {
-				
-					var loc = $('#loc').val();
-					var locAry = ['광주', '군산', '김포', '김해', '대구', '무안', '사천', '양양', '여수', '울산', '원주', '인천', '제주', '청주', '포항']
-				 	if($.inArray(loc,locAry) < 0){
-						$('#loc').val("");
-						$("#locSearch").css("display","none"); 
-						a=false;
-				 	}
+
+				 	var t = $('#loc').val();
+							
+					 <c:forEach items="${airportList}" var="airPort">	
+					 				 
+						if('${airPort}' == t){
+							
+						} else {	
+							    $('#loc').val("");  
+								$("#locSearch").css("display","none"); 
+								a=false;     
+								}
+		
+					 </c:forEach>
+				 	
 				}
-				
 			
 		}); 
-		 
-
 
 /**** 공항검색 끝 ****/
  
  
+ /***** 공항유효성검사 *****/
+ $('#booking_btn').on("click",function(){
+
+		var z = document.getElementById("loc").value;	
+			
+		var b = true;
+		
+		<c:forEach items="${airportList}" var="airPort">
+					
+			if('${airPort}' == z){						
+							b = false;	
+							alert("yes");
+							return false;
+				}else{
+						b = true;
+					}			
+		</c:forEach>
+		if(b = true){
+					 alert("출발지를 올바르게 입력해주세요"); 				
+			}		
+	 });
  
-/*  New */
+ /***** 공항유효성검사  끝*****/
  
- /*   $(document).ready(function(){
-	
-	$("#loc").bind("keyup", function(){
-		var value = $(this).val().toLowerCase();
-	if(value ==""){
-		$(".tab").css("display", "none");
-		}else{
-			$(".tab").css("display", "inline");
-			
-			$("#locTable tr").filter(function(){
-				$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-				});
-			}	
-		});
-}); 
-
-
-		 
- 	$(".tab").css("display","none");
-	 var loc= ""; 
-	 	
-  $('.loctd').bind("click", function(){
-		
-		if($('#loc').val(loc) != ""){
-				$('#loc').val("");
-				
-		} 
-		 loc = $(this).text();
-		$('#t2').val(loc); 
-		
-		$('#loc').val(loc);
-		$(".tab").css("display","none"); 
-
-		
-		}); 
-
-	
- 	$('#loc').on("blur",function(){
-			
-		var t = $('#loc').val();
-				
-		 <c:forEach items="${airportList}" var="airPort">
-		 
-			if('${airPort}' == t){
-				
-			 	
-				
-			} else { */
-			         /* $(".tab").css("display","none");  */
-			        /*$('#loc').val("");         
-		    
-			}			
-		 </c:forEach>		
-			
-		}); 
-
-
-		
-		var t = $('#loc').val();
-				
-		 <c:forEach items="${airportList}" var="airPort">
-		 
-			if('${airPort}' == t){
-				
-			 	
-				
-			} else {
-					$('#loc').on("focusout",function(){
-						
-						 $(".tab").css("display","none"); 
-				        $('#loc').val("");  
-				               
-						})   
-			}
-
-			
-		 </c:forEach>
-
-		
-
-
-	/*  	window.onload = function(){
-			   var today = new Date();
-			   var dd = today.getDate();
-			   var mm = today.getMonth()+1;
-			   var yyyy = today.getFullYear();
-			    if(dd<10){
-			           dd='0'+dd
-			       } 
-			       if(mm<10){
-			           mm='0'+mm
-			       } 
-
-			   today = yyyy+'-'+mm+'-'+dd;
-
-			   $("#input-start").attr('min', today);
-			}  */
+ 
+ /****** 도착지  *******/
+ 
  
 
 </script>
