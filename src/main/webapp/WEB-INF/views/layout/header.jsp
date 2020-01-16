@@ -29,14 +29,16 @@
 					<div class="menu2">EveryAir club</div>
 				</div>
 				<div class="sub1" style="display: none;">
-       				 ttttttttttttttttttttttttttttttt
-       				 tttttttttttttttttttttttttttttttttt
-       				 ttttttttttttttttttttttttttt
+       				항공권 예약<br>
+					최저가 간편조회<br>
+					오즈드림페어<br>
+					신용카드 혜택<br>
+					예약 안내<br>
+					운임 안내<br>
    				 </div>
    				 <div class="sub2">
-       				 ttttttttttttttttttttttttttttttt
-       				 tttttttttttttttttttttttttttttttttt
-       				 ttttttttttttttttttttttttttt
+       				예약 내역<br>
+					항공권 구매 내역
    				 </div>
    				 	<div class="sub3">
        				 ttttttttttttttttttttttttttttttt
