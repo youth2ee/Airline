@@ -106,7 +106,36 @@
                                                 </div>
                                             </div>
                                         </div>
-                                 
+                                        
+                                       <!--  <div class="col-2">
+                                        <div class="input-group" >
+                                            <label class="label">출발지2:</label>
+                                            <div class="rs-select2 js-select-simple select--no-search" style="overflow:hidden" >
+                                                <select name="driver-age">
+                                                	<option value="" disabled selected hidden>City, region or airport</option>
+                                                    <option>23</option>
+                                                    <option>24</option>
+                                                    <option>25</option>
+                                                    <option>26</option>
+                                                    <option>23</option>
+                                                    <option>24</option>
+                                                    <option>25</option>
+                                                    <option>26</option>
+                                                     <option>23</option>
+                                                    <option>24</option>
+                                                    <option>25</option>
+                                                    <option>26</option>
+                                                      <option>23</option>
+                                                    <option>24</option>
+                                                    <option>25</option>
+                                                  
+                                                </select>
+                                                <div class="select-dropdown"></div>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                        
+                                                  
                                     <div class="col-2">
                                         <button class="btn-submit" id ="booking_btn" type="submit">search</button>
                                     </div>
@@ -120,10 +149,10 @@
  
  
  <!-- 영화검색 -->
-  <div id="locSearch" style="width: 500px; height: 500px; background-color: aqua;">
+  <div id="locSearch">
  	<table id="locTable" class = "tab">
  	<c:forEach items="${airportList}" var="airPort">
- 	<tr><td class="loctd">${airPort}</td></tr>
+ 	<tr><td class="loctd" >${airPort}</td></tr>
  </c:forEach>
  </table>
  </div> 
@@ -176,74 +205,197 @@ $('input:radio[name=kind]').click(function(){
 		}
 });
 
-
 /*** dateRangePicker 끝  ***/
 
 
 
 /**** 공항검색 ****/
-  $(document).ready(function(){
-	
-	$("#loc").on("keyup", function(){
-		var value = $(this).val().toLowerCase();
 
+
+ 
+ 	  var a = false;
+//--------------------- 검색어 필터 -----------------------------		
+	$("#loc").on("keyup", function(){
+		
+		var value = $(this).val().toLowerCase();
+		a = false;
+		
+	if(value ==""){
+		$("#locSearch").css("display", "none");
+
+		}else{
+			$("#locSearch").css("display", "block");
+
+			$("#locTable tr").filter(function(){
+				$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);		
+
+				if($(this).text().toLowerCase().indexOf(value) > -1){
+					a=true;
+
+					}
+						
+				});
+			}	
+		});
+
+	//--------------------- 검색어 필터 -----------------------------	
+
+ 	$("#locSearch").css("display","none");
+	 var loc= ""; 
+
+	//--------------------- click -----------------------------		
+  $('.loctd').on("click", function(){
+		
+		if($('#loc').val(loc) != ""){
+				$('#loc').val("");
+				a = false;
+		} 
+
+		 loc = $(this).text();
+		/* $('#t2').val(loc);  */
+		
+		$('#loc').val(loc);
+		$("#locSearch").css("display","none"); 
+
+		}); 
+ 
+
+//--------------------- blur -----------------------------		
+ 	$('#loc').on("blur",function(){
+ 	 			var v = $(".tab").text().trim();
+ 	 			 console.log("a : "+ a); 
+		
+			var value = $('#loc').val();
+				var check=false;
+				
+			 	if(a){	
+				$(".loctd").each(function(){
+						if($(this).html()==value){
+							 $(".tab").css("display","none"); 
+							check=true; 
+							}
+					}); 
+				 
+				}else {
+				
+					var loc = $('#loc').val();
+					var locAry = ['광주', '군산', '김포', '김해', '대구', '무안', '사천', '양양', '여수', '울산', '원주', '인천', '제주', '청주', '포항']
+				 	if($.inArray(loc,locAry) < 0){
+						$('#loc').val("");
+						$("#locSearch").css("display","none"); 
+						a=false;
+				 	}
+				}
+				
+			
+		}); 
+		 
+
+
+/**** 공항검색 끝 ****/
+ 
+ 
+ 
+/*  New */
+ 
+ /*   $(document).ready(function(){
+	
+	$("#loc").bind("keyup", function(){
+		var value = $(this).val().toLowerCase();
 	if(value ==""){
 		$(".tab").css("display", "none");
-
 		}else{
 			$(".tab").css("display", "inline");
 			
 			$("#locTable tr").filter(function(){
 				$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-
 				});
 			}	
 		});
 }); 
 
 
-
+		 
  	$(".tab").css("display","none");
 	 var loc= ""; 
-
-	
-  $('.loctd').on("click", function(){
+	 	
+  $('.loctd').bind("click", function(){
 		
 		if($('#loc').val(loc) != ""){
 				$('#loc').val("");
+				
 		} 
-
 		 loc = $(this).text();
 		$('#t2').val(loc); 
 		
 		$('#loc').val(loc);
 		$(".tab").css("display","none"); 
 
-		}); 
-
-
-
-	 
-	$('#loc').on("blur",function(){
 		
-			var loc = $('#loc').val();
-			var locAry = ['광주', '군산', '김포', '김해', '대구', '무안', '사천', '양양', '여수', '울산', '원주', '인천', '제주', '청주', '포항']
-	
-		 	if($.inArray(loc,locAry) < 0){
-			
-				$('#loc').val("");
-				 
-				
-			}else{
-			
-				} 
+		}); 
 
+	
+ 	$('#loc').on("blur",function(){
+			
+		var t = $('#loc').val();
+				
+		 <c:forEach items="${airportList}" var="airPort">
+		 
+			if('${airPort}' == t){
+				
+			 	
+				
+			} else { */
+			         /* $(".tab").css("display","none");  */
+			        /*$('#loc').val("");         
+		    
+			}			
+		 </c:forEach>		
+			
 		}); 
 
 
-/**** 공항검색 끝 ****/
+		
+		var t = $('#loc').val();
+				
+		 <c:forEach items="${airportList}" var="airPort">
+		 
+			if('${airPort}' == t){
+				
+			 	
+				
+			} else {
+					$('#loc').on("focusout",function(){
+						
+						 $(".tab").css("display","none"); 
+				        $('#loc').val("");  
+				               
+						})   
+			}
+
+			
+		 </c:forEach>
+
+		
 
 
+	/*  	window.onload = function(){
+			   var today = new Date();
+			   var dd = today.getDate();
+			   var mm = today.getMonth()+1;
+			   var yyyy = today.getFullYear();
+			    if(dd<10){
+			           dd='0'+dd
+			       } 
+			       if(mm<10){
+			           mm='0'+mm
+			       } 
+
+			   today = yyyy+'-'+mm+'-'+dd;
+
+			   $("#input-start").attr('min', today);
+			}  */
+ 
 
 </script>
 
