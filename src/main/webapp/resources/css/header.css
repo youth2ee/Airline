@@ -3,6 +3,7 @@
 .header_wrap {
 	height: 120px;
 	background-color: red;
+	display: flow-root;
 }
 
 .header_top_inner {
@@ -86,6 +87,12 @@ div {
 	text-align: center;
 }
 
+.sub1 {
+	background-color: whitesmoke;
+    z-index: 5000;
+    position: relative;
+    height: 500px
+}
 .menu_topwrap {
 	height: 100%;
 	padding: 10px 0 6px;

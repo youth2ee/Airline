@@ -133,7 +133,7 @@ class AirlineApplicationTests {
 		System.out.println("끝");
 	}
 
-	//@Test
+	@Test
 	void apiTest4() throws Exception {
 		// 항공정보 + 운임
 		BufferedReader br = null;
@@ -157,7 +157,7 @@ class AirlineApplicationTests {
 
 	}
 
-	 @Test
+	 //@Test
 	void apiTest3() throws Exception {
 		// 항공정보 + 운임
 		BufferedReader br = null;

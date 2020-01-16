@@ -70,7 +70,7 @@ class AirlineApplicationTests2 {
 	}
 	
 	
-	@Test
+	//@Test
 	void apiTest2() throws Exception {
 		// 공항코드
 		BufferedReader br = null;
