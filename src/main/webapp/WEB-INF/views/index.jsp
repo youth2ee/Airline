@@ -139,7 +139,7 @@
 <script>
 $(".menu1").hover(function(){
 	$(".sub1").slideDown(500);
-
+});
 /* $(".menu1").hover(function(){
 	$(".sub1").slideDown(300);
 	$(".sub1").css("display", "block"); 
