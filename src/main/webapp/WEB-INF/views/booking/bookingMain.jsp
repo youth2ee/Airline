@@ -62,7 +62,7 @@
                                 
                                   <div class="input-group mid">
                                     <label class="label">도착지:</label>
-                                    <input class="input--style-1" type="text" name="arrLoc" placeholder="City, region or airport" required="required" >         
+                                    <input class="input--style-1" type="text" name="arrLoc" placeholder="City, region or airport" required="required" id = "arrloc" >         
                                 </div>
                                                       
                               <div class="input-group mid">
@@ -106,7 +106,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                 
+                                        
+                                   
                                     <div class="col-2">
                                         <button class="btn-submit" id ="booking_btn" type="submit">search</button>
                                     </div>
@@ -119,19 +120,17 @@
                 </div>
  
  
- <!-- 영화검색 -->
-  <div id="locSearch" style="width: 500px; height: 500px; background-color: aqua;">
+ <!-- 공항검색 -->
+  <div id="locSearch">
  	<table id="locTable" class = "tab">
  	<c:forEach items="${airportList}" var="airPort">
- 	<tr><td class="loctd">${airPort}</td></tr>
+ 	<tr><td class="loctd" >${airPort}</td></tr>
  </c:forEach>
  </table>
  </div> 
- <!-- 영화검색끝 -->
- 
- <div style="width: 200px; height: 200px; background-color: RED; float: left;" ID="CHECK"> 
- HH
- </div>
+
+ <!-- 공항검색끝 -->
+
 
 
     <!-- Jquery JS-->
@@ -160,7 +159,8 @@
  $('#input-start').daterangepicker({
 
 	singleDatePicker:false,
-	autoApply: true	
+	autoApply: true,
+	 minDate: new Date()
 
 	});
  
@@ -169,105 +169,155 @@ $('input:radio[name=kind]').click(function(){
 	if($('input:radio[id=eachWay]').is(":checked")){
 								
 			 $('#input-start').daterangepicker({
-				singleDatePicker:true	
+				singleDatePicker:true,
+				minDate: new Date()	
 					
 				}); 
 		}else{
 			
 			$('#input-start').daterangepicker({
 				singleDatePicker:false,	
-				autoApply: true
+				autoApply: true,
+				minDate: new Date()
 							
 				}); 	
 		}
 });
 
-
 /*** dateRangePicker 끝  ***/
 
 
 
+
+
 /**** 공항검색 ****/
-  $(document).ready(function(){
-	
+
+
+ 	 var a = false;
+//-------------------- 검색어 필터 -----------------------------		
 	$("#loc").on("keyup", function(){
-	var value = $(this).val().toLowerCase();
+
+		
+		var value = $(this).val().toLowerCase();
+		a = false;
+		
 
 	if(value ==""){
-		$(".tab").css("display", "none");
+		$("#locSearch").css("display", "none");
 
 		}else{
-			$(".tab").css("display", "inline");
-			
+			$("#locSearch").css("display", "block");
+
 			$("#locTable tr").filter(function(){
-				$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+
+				$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);		
+
+				if($(this).text().toLowerCase().indexOf(value) > -1){
+					a=true;
+
+					}
+						
+
 				});
 			}	
 		});
-}); 
 
+	//--------------------- 검색어 필터 -----------------------------	
 
-
- 	$(".tab").css("display","none");
+ 	$("#locSearch").css("display","none");
 	 var loc= ""; 
 
-	
-
-/* 	$('.loctd').on("click", function() {
-
- 		if ($('#loc').val(loc) != "") {
-			$('#loc').val("");
+	//--------------------- click -----------------------------		
+  $('.loctd').on("click", function(){
+		
+		if($('#loc').val(loc) != ""){
+				$('#loc').val("");
+				a = false;
 		} 
 
-		loc = $(this).text();
-
+		 loc = $(this).text();
+		/* $('#t2').val(loc);  */
+		
 		$('#loc').val(loc);
-		$(".tab").css("display", "none");
+		$("#locSearch").css("display","none"); 
 
-		if($('#loc').val() != ""){
+		}); 
+ 
 
-			$(".tab").css("display","none");
-			
-		}
-	});
- */
-
-
-
-	$(document).mouseover(function(e){
-
-	    if($(e.target).is('.loctd')){
-	    	$('.loctd').on("click", function() {
-	    		$('#loc').val($(this).text());
-	    	})
-		 }else{
-				$('#CHECK').click(function(){
-					var t = $('#loc').val();
-					$(".tab").css("display","none");
-
-					<c:set var="loop_flag" value="false" />
-				 <c:forEach items="${airportList}" var="airPort">
-				 <c:if test="${not loop_flag }">
-					if('${airPort}' == t) {
-						alert("찾음");
-						 <c:set var="loop_flag" value="true" />
-					} else {
-						alert("gg");
-					}
-					</c:if>
-				 </c:forEach>
-
-					
-					});
-
+//--------------------- blur -----------------------------		
+ 	$('#loc').on("blur",function(){
+ 	 			var v = $(".tab").text().trim();
+ 	 			 console.log("a : "+ a); 
+		
+			var value = $('#loc').val();
+				var check=false;
 				
-			 }
+			 	if(a){	
+				$(".loctd").each(function(){
+						if($(this).html()==value){
+							 $("#locSearch").css("display","none"); 
+							check=true; 
+							}
+					}); 
+				 
+				}else {
 
-	});
+				 	var t = $('#loc').val();
+							
+					 <c:forEach items="${airportList}" var="airPort">	
+					 				 
+						if('${airPort}' == t){
+							
+						} else {	
+							    $('#loc').val("");  
+								$("#locSearch").css("display","none"); 
+								a=false;     
+								}
+		
+					 </c:forEach>
+				 	
+				}
+			
+		}); 
 
-	
+/**** 공항검색 끝 ****/
+ 
+ 
+ /***** 공항유효성검사 *****/
+ $('#booking_btn').on("click",function(){
 
-	/**** 공항검색 끝 ****/
+		var z = document.getElementById("loc").value;	
+			
+		var b = true;
+		
+		<c:forEach items="${airportList}" var="airPort">
+					
+			if('${airPort}' == z){						
+							b = false;	
+							alert("yes");
+							return false;
+				}else{
+						b = true;
+					}			
+		</c:forEach>
+		if(b = true){
+					 alert("출발지를 올바르게 입력해주세요"); 				
+			}		
+	 });
+ 
+ /***** 공항유효성검사  끝*****/
+ 
+ 
+ /****** 도착지  *******/
+ 
+ $('#arrloc').on("focus", function(){
+			/* alert("qqq"); */
+
+	 });
+ 
+
+
+
 </script>
 
 
