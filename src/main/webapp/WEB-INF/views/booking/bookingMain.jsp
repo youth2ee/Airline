@@ -286,7 +286,7 @@ $('input:radio[name=kind]').click(function(){
  /***** 공항유효성검사 *****/
  $('#booking_btn').on("click",function(){
 
-		var z = document.getElementById("loc").value;	
+/* 		var z = document.getElementById("loc").value;	
 			
 		var b = true;
 		
@@ -294,7 +294,7 @@ $('input:radio[name=kind]').click(function(){
 					
 			if('${airPort}' == z){						
 							b = false;	
-							alert("yes");
+							$('#booking_btn').submit();
 							return false;
 				}else{
 						b = true;
@@ -302,7 +302,7 @@ $('input:radio[name=kind]').click(function(){
 		</c:forEach>
 		if(b = true){
 					 alert("출발지를 올바르게 입력해주세요"); 				
-			}		
+			}	 */	
 	 });
  
  /***** 공항유효성검사  끝*****/

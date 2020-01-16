@@ -24,4 +24,8 @@ public class BookingService {
 		return bookingMapper.oneSelect(flightDataVO);
 	}
 
+	public int bookingInsert(BookingTicketVO bookingTicketVO) throws Exception {
+		return bookingMapper.bookingInsert(bookingTicketVO);
+	}
+	
 }

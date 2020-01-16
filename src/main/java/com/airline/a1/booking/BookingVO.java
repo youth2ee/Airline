@@ -19,6 +19,7 @@ private int adults;
 private int children;
 
 private String depAirportNm;
+private String arrAirportNm;
 
 private String day;
 private String month;
@@ -26,5 +27,6 @@ private String year;
 
 private String sdate;
 private String edate;
+
 
 }

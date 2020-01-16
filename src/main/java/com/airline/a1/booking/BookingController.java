@@ -132,9 +132,11 @@ public class BookingController {
 			System.out.println("tomorrow"+tomorrow);	
 			
 			String day = tomorrow.toString();
+			/*
 			System.out.println(day.substring(0, 4));
 			System.out.println(day.substring(5, 7));
 			System.out.println(day.substring(8, 10));
+			*/
 			
 			BookingVO bookingVO2 = new BookingVO();
 			bookingVO2.setDay(day.substring(8, 10));
@@ -152,9 +154,11 @@ public class BookingController {
 				System.out.println("tomorrow"+tomorrow);	
 				
 				String day = tomorrow.toString();
+				/*
 				System.out.println(day.substring(0, 4));
 				System.out.println(day.substring(5, 7));
 				System.out.println(day.substring(8, 10));
+				*/
 				
 				BookingVO bookingVO2 = new BookingVO();
 				bookingVO2.setDay(day.substring(8, 10));
@@ -164,7 +168,6 @@ public class BookingController {
 				//2020-01-15T00:00
 				adates.add(bookingVO2);
 			}
-
 		}
 
 		ModelAndView mv = new ModelAndView();
@@ -181,16 +184,20 @@ public class BookingController {
 	
 	@GetMapping("dateSelect")
 	public ModelAndView dateSelect(String d1, String d2, BookingVO bookingVO, int pos) throws Exception {
+		/*
 		System.out.println(d1);
 		System.out.println(d2);
 		System.out.println(bookingVO.getDepLoc());
 		System.out.println(bookingVO.getArrLoc());
+		*/
 
 		d1 = d1.substring(0,4); 
 		d2 = d2.substring(0,2) + d2.substring(4, 6);
 
+		/*
 		System.out.println(d1); System.out.println(d2);
 		System.out.println(d1+d2+"0000");
+		*/
 
 		String sdate = d1+d2+"0000";
 		String edate = d1+d2+"2359";
@@ -208,7 +215,6 @@ public class BookingController {
 			flightDataVO.setArrTime(flightDataVO.getArrPlandTime().substring(8,10)+":"+flightDataVO.getArrPlandTime().substring(10)); 
 			}
 
-
 		} else if (pos == 2) { 
 			String aloc = bookingVO.getDepLoc(); 
 			String dloc = bookingVO.getArrLoc();
@@ -221,7 +227,6 @@ public class BookingController {
 			flightDataVO.setDepTime(flightDataVO.getDepPlandTime().substring(8, 10)+":"+flightDataVO.getDepPlandTime().substring(10));
 			flightDataVO.setArrTime(flightDataVO.getArrPlandTime().substring(8,10)+":"+flightDataVO.getArrPlandTime().substring(10)); }
 		}
-
 
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("bookingVO", bookingVO);
@@ -275,8 +280,7 @@ public class BookingController {
 	}
 
 	@PostMapping("bookingWrite")
-	public String bookingWrite(CustomVO customVO) throws Exception {
-		
+	public String bookingWrite(CustomVO customVO, BookingTicketVO bookingTicketVO) throws Exception {
 		if (customVO.getAdultsVOList() != null) {
 			for(CustomVO cuVo1 : customVO.getAdultsVOList()) {
 				
@@ -289,6 +293,97 @@ public class BookingController {
 				System.out.println(cuVo1.getMemberNum());
 				System.out.println(cuVo1.getDepDis());
 				System.out.println(cuVo1.getArrDis());
+				
+				System.out.println("**************************************");
+				System.out.println("사이즈");
+				System.out.println(bookingTicketVO.getBTVOList().size());
+				
+				
+				String y = Integer.toString(cuVo1.getYear());
+				String m = Integer.toString(cuVo1.getMonth());
+				String d = Integer.toString(cuVo1.getDay());
+				
+				
+				//
+				BookingTicketVO k1VO = bookingTicketVO.getBTVOList().get(0);
+				System.out.println("**************************************");
+				System.out.println(k1VO.getDepLoc());
+				System.out.println(k1VO.getDepDate());
+				
+				System.out.println(k1VO.getArrLoc());
+				System.out.println(k1VO.getArrDate());
+				
+				System.out.println(k1VO.getVihicleId());
+				System.out.println(k1VO.getAirline());
+				
+				System.out.println(k1VO.getPrice());
+				System.out.println(k1VO.getFlightTime());
+				System.out.println("**************************************");
+				
+				bookingTicketVO.setBookingNum(k1VO.getVihicleId()+k1VO.getPrice()+k1VO.getFlightTime());
+				  
+				bookingTicketVO.setVihicleId(k1VO.getVihicleId()); 
+				bookingTicketVO.setDepLoc(k1VO.getDepLoc());
+				bookingTicketVO.setDepDate(k1VO.getDepDate()); 
+				bookingTicketVO.setArrLoc(k1VO.getArrLoc());
+				bookingTicketVO.setArrDate(k1VO.getArrDate());
+				 
+				bookingTicketVO.setId("");
+				
+				bookingTicketVO.setGender(cuVo1.getSex());
+				bookingTicketVO.setName(cuVo1.getFirstName().toUpperCase()+" "+cuVo1.getLastName().toUpperCase());
+				bookingTicketVO.setBirth(y+m+d);
+				
+				bookingTicketVO.setMemberNum("");
+				
+				bookingTicketVO.setPrice(k1VO.getPrice());
+				
+				bookingTicketVO.setEmailCheck(customVO.getChkEmail());
+				bookingTicketVO.setSmsCheck(customVO.getChkPhone());
+				
+				bookingService.bookingInsert(bookingTicketVO);
+				
+				if(bookingTicketVO.getBTVOList().size() == 2) {
+					BookingTicketVO k2VO = bookingTicketVO.getBTVOList().get(1);
+					System.out.println("**************************************");
+					System.out.println(k2VO.getDepLoc());
+					System.out.println(k2VO.getDepDate());
+					
+					System.out.println(k2VO.getArrLoc());
+					System.out.println(k2VO.getArrDate());
+					
+					System.out.println(k2VO.getVihicleId());
+					System.out.println(k2VO.getAirline());
+					
+					System.out.println(k2VO.getPrice());
+					System.out.println(k2VO.getFlightTime());
+					System.out.println("**************************************");
+					
+					bookingTicketVO.setBookingNum(k2VO.getVihicleId()+k2VO.getPrice()+k2VO.getFlightTime());
+					  
+					bookingTicketVO.setVihicleId(k2VO.getVihicleId()); 
+					
+					bookingTicketVO.setDepLoc(k2VO.getArrLoc());
+					bookingTicketVO.setDepDate(k2VO.getArrDate()); 
+					
+					bookingTicketVO.setArrLoc(k2VO.getDepLoc());
+					bookingTicketVO.setArrDate(k2VO.getDepDate());
+					 
+					bookingTicketVO.setId("");
+					
+					bookingTicketVO.setGender(cuVo1.getSex());
+					bookingTicketVO.setName(cuVo1.getFirstName().toUpperCase()+" "+cuVo1.getLastName().toUpperCase());
+					bookingTicketVO.setBirth(y+m+d);
+					
+					bookingTicketVO.setMemberNum("");
+					
+					bookingTicketVO.setPrice(k2VO.getPrice());
+					
+					bookingTicketVO.setEmailCheck(customVO.getChkEmail());
+					bookingTicketVO.setSmsCheck(customVO.getChkPhone());
+					
+					bookingService.bookingInsert(bookingTicketVO);
+				}
 			}
 		}
 		
