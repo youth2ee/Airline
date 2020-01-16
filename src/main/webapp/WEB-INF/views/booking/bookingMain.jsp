@@ -128,6 +128,10 @@
  </table>
  </div> 
  <!-- 영화검색끝 -->
+ 
+ <div style="width: 200px; height: 200px; background-color: RED; float: left;" ID="CHECK"> 
+ HH
+ </div>
 
 
     <!-- Jquery JS-->
@@ -142,6 +146,8 @@
 
     <!-- Main JS-->
     <script src="../resources/vendor/js/global.js"></script>
+
+
 
 
 
@@ -207,13 +213,11 @@ $('input:radio[name=kind]').click(function(){
 
 	
 
-	$('.loctd').on("click", function() {
+/* 	$('.loctd').on("click", function() {
 
-/* 		if ($('#loc').val(loc) != "") {
+ 		if ($('#loc').val(loc) != "") {
 			$('#loc').val("");
-		} */
-
-			
+		} 
 
 		loc = $(this).text();
 
@@ -226,6 +230,41 @@ $('input:radio[name=kind]').click(function(){
 			
 		}
 	});
+ */
+
+
+
+	$(document).mouseover(function(e){
+
+	    if($(e.target).is('.loctd')){
+	    	$('.loctd').on("click", function() {
+	    		$('#loc').val($(this).text());
+	    	})
+		 }else{
+				$('#CHECK').click(function(){
+					var t = $('#loc').val();
+					
+				 <c:forEach items="${airportList}" var="airPort">
+				 
+					if('${airPort}' == t){
+						alert("correct");
+						
+					} else {
+					        $(".tab").css("display","none");
+					        $('#loc').val("");
+					}
+
+				 </c:forEach>
+
+					
+					});
+
+				
+			 }
+
+	});
+
+	
 
 	/**** 공항검색 끝 ****/
 </script>
