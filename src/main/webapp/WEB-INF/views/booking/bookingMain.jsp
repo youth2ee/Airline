@@ -128,7 +128,9 @@
  </c:forEach>
  </table>
  </div> 
+
  <!-- 공항검색끝 -->
+
 
 
     <!-- Jquery JS-->
@@ -143,6 +145,8 @@
 
     <!-- Main JS-->
     <script src="../resources/vendor/js/global.js"></script>
+
+
 
 
 
@@ -192,10 +196,12 @@ $('input:radio[name=kind]').click(function(){
  	 var a = false;
 //-------------------- 검색어 필터 -----------------------------		
 	$("#loc").on("keyup", function(){
+
 		
 		var value = $(this).val().toLowerCase();
 		a = false;
 		
+
 	if(value ==""){
 		$("#locSearch").css("display", "none");
 
@@ -203,6 +209,7 @@ $('input:radio[name=kind]').click(function(){
 			$("#locSearch").css("display", "block");
 
 			$("#locTable tr").filter(function(){
+
 				$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);		
 
 				if($(this).text().toLowerCase().indexOf(value) > -1){
@@ -210,6 +217,7 @@ $('input:radio[name=kind]').click(function(){
 
 					}
 						
+
 				});
 			}	
 		});
@@ -304,6 +312,8 @@ $('input:radio[name=kind]').click(function(){
  
  
 
+
+	/**** 공항검색 끝 ****/
 </script>
 
 

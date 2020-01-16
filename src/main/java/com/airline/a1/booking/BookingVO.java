@@ -2,11 +2,10 @@ package com.airline.a1.booking;
 
 import java.sql.Date;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
+
+@Data
 public class BookingVO {
 	
 private int kind;	
@@ -21,5 +20,11 @@ private int children;
 
 private String depAirportNm;
 
+private String day;
+private String month;
+private String year;
+
+private String sdate;
+private String edate;
 
 }

@@ -1,0 +1,52 @@
+package com.airline.a1.limo;
+
+import java.sql.Date;
+
+public class LimoVO {
+	
+	private int bookNum;
+	private Date limoDate;
+	private int limoPrice;
+	private String id;
+	private String depLoc;
+	private String arrLoc;
+	
+	public int getBookNum() {
+		return bookNum;
+	}
+	public void setBookNum(int bookNum) {
+		this.bookNum = bookNum;
+	}
+	public Date getLimoDate() {
+		return limoDate;
+	}
+	public void setLimoDate(Date limoDate) {
+		this.limoDate = limoDate;
+	}
+	public int getLimoPrice() {
+		return limoPrice;
+	}
+	public void setLimoPrice(int limoPrice) {
+		this.limoPrice = limoPrice;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getDepLoc() {
+		return depLoc;
+	}
+	public void setDepLoc(String depLoc) {
+		this.depLoc = depLoc;
+	}
+	public String getArrLoc() {
+		return arrLoc;
+	}
+	public void setArrLoc(String arrLoc) {
+		this.arrLoc = arrLoc;
+	}
+	
+	
+}
