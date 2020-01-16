@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+section{
+	width: 1000px;
+	margin: 0 auto;
+}
+
+#depT{
+width:100%;
+clear: both;
+cursor: pointer;
+}
+
+#arrT{
+width:100%;
+clear: both;
+cursor: pointer;
+}
+
+.act{
+	color: red;
+}
+
+.bact{
+	background-color: red;
+}

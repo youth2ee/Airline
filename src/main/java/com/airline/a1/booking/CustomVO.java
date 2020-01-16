@@ -27,6 +27,8 @@ public class CustomVO {
 	
 	private List<CustomVO> customVOList;
 	
+	private List<CustomVO> adultsVOList;
+	private List<CustomVO> childrenVOList;
 	
 
 }

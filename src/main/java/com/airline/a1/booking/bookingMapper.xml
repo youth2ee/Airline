@@ -3,7 +3,24 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-<mapper namespace="com.airline.a1.booking.bookingMapper">
+<mapper namespace="com.airline.a1.booking.BookingMapper">
+
+<select id="airportList" resultType="java.lang.String">
+	select distinct depAirportNm from flightData order by depAirportNm asc
+</select>
+
+<select id="airList" parameterType="com.airline.a1.booking.BookingVO" resultType="com.airline.a1.booking.FlightDataVO">
+<![CDATA[
+	select * from flightData where depPlandTime > #{sdate}
+	and depPlandTime < #{edate}
+	and depAirportNm = #{depLoc} and arrAirportNm = #{arrLoc} 
+	order by depPlandTime asc
+ ]]>
+</select>
+
+<select id="oneSelect" parameterType="com.airline.a1.booking.FlightDataVO" resultType="com.airline.a1.booking.FlightDataVO">
+	select * from flightData where fnum=#{fnum}
+</select>
 
 
 
