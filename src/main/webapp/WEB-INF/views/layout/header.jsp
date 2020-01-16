@@ -28,26 +28,6 @@
 					<div class="menu1">여행</div>
 					<div class="menu2">EveryAir club</div>
 				</div>
-				<div class="sub1" style="display: none;">
-       				 ttttttttttttttttttttttttttttttt
-       				 tttttttttttttttttttttttttttttttttt
-       				 ttttttttttttttttttttttttttt
-   				 </div>
-   				 <div class="sub2">
-       				 ttttttttttttttttttttttttttttttt
-       				 tttttttttttttttttttttttttttttttttt
-       				 ttttttttttttttttttttttttttt
-   				 </div>
-   				 	<div class="sub3">
-       				 ttttttttttttttttttttttttttttttt
-       				 tttttttttttttttttttttttttttttttttt
-       				 ttttttttttttttttttttttttttt
-   				 </div>
-   				 <div class="sub4">
-       				 ttttttttttttttttttttttttttttttt
-       				 tttttttttttttttttttttttttttttttttt
-       				 ttttttttttttttttttttttttttt
-   				 </div>
 			</div>
 		</div>
 	</div>

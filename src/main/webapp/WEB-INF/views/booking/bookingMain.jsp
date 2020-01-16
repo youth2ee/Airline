@@ -311,7 +311,7 @@ $('input:radio[name=kind]').click(function(){
  /****** 도착지  *******/
  
  $('#arrloc').on("focus", function(){
-			alert("qqq");
+			/* alert("qqq"); */
 
 	 });
  
