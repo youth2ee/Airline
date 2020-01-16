@@ -4,13 +4,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
 @Controller
 @RequestMapping("member/**")
-public class memberController {
-	
+public class MemberController {
 	@GetMapping("memberLogin")
-	public void memberLogin() throws Exception{
+	public void memberLogint() throws Exception{
 		
 	}
+	
+	
 }
