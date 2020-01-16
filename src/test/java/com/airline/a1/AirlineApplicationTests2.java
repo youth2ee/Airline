@@ -71,7 +71,7 @@ class AirlineApplicationTests2 {
 	}
 	
 	
-	@Test
+	//@Test
 	void apiTest2() throws Exception {
 		List<AirportVO> air3 = airportMapper.airportList();
 		
