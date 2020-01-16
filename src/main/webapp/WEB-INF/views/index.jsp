@@ -139,7 +139,7 @@
 <script>
 $(".menu1").hover(function(){
 	$(".sub1").slideDown(500);
-
+});
 /* $(".menu1").hover(function(){
 	$(".sub1").slideDown(300);
 	$(".sub1").css("display", "block"); 
@@ -162,25 +162,6 @@ var myFullpage = new fullpage('#fullpage', {
     }
 });
 
-<iframe src="https://service.dongledongle.com/everyair" frameborder="0" width="350px" height="500px">
-</iframe>
-
-<!-- Tocplus 15.1 -->
-<script type="text/javascript">
-tocplusTop=1150;
-tocplusLeft=5;
-tocplusMinimizedImage='http://kr03.tocplus007.com/img/minimized_ko.gif';
-tocplusHAlign='right';
-tocplusWidth=350;
-tocplusHeight=500;
-tocplusUserName='손님';
-tocplusFrameColor='#E30613';
-tocplusFloatingWindow=true;
-var tocplusHost = (("https:" == document.location.protocol) ? "https://" : "http://");
-document.write(unescape("%"+"3Cscript src='" + tocplusHost + "kr03.tocplus007.com/chatLoader.do?userId=everyair' type='text/javascript'"+"%"+"3E"+"%"+"3C/script"+"%"+"3E"));
-
-<!-- End of Tocplus -->
-
 var appendNumber = 4;
 var swiper = new Swiper('.swiper-container', {
     pagination: '.swiper-pagination',
@@ -192,6 +173,7 @@ var swiper = new Swiper('.swiper-container', {
     spaceBetween: 30,
     loop: true
 });
+
 $('.bxslider').bxSlider({
 	  auto: true,
 	  autoControls: true,
