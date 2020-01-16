@@ -35,11 +35,15 @@
 </head>
 
 <body>
+
+<form method="post">
+<input type="hidden" name = "depLoc">
+</form>
              <div class="card card-4">         
                      <div class="tab-content">
                        <div class="tab-pane active" id="tab1"> 
 
-                            <form method="post" action="./bookingMain">
+                            <form method="post" action="./bookingMain" id = "frm">
                             	
                             	<div class="radio-row" style="margin-bottom: 20px;">
                                     <label class="radio-container m-r-45">왕복
@@ -283,7 +287,7 @@ $('input:radio[name=kind]').click(function(){
 /**** 공항검색 끝 ****/
  
  
- /***** 공항유효성검사 *****/
+/***** 공항유효성검사 *****/
  $('#booking_btn').on("click",function(){
 
 		var z = document.getElementById("loc").value;	
@@ -294,7 +298,7 @@ $('input:radio[name=kind]').click(function(){
 					
 			if('${airPort}' == z){						
 							b = false;	
-							alert("yes");
+						$('#frm').submit();
 							return false;
 				}else{
 						b = true;
@@ -308,12 +312,27 @@ $('input:radio[name=kind]').click(function(){
  /***** 공항유효성검사  끝*****/
  
  
- /****** 도착지  *******/
  
- $('#arrloc').on("focus", function(){
-			/* alert("qqq"); */
+ /****** 도착지  *******/
+var z = document.getElementById("loc").value;	
 
-	 });
+$('#arrloc').focus(function(){
+
+	 if(z !=null){
+
+			$.ajax({
+					data : 
+					type : "GET",
+					url : "",
+					success : function(data){
+							data = data.trim();
+
+						}	
+
+				});		
+			
+		 };
+});
  
 
 
