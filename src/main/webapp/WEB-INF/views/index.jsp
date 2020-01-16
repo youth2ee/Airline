@@ -19,7 +19,7 @@
     $(document).ready(function(){
       $('.slider').bxSlider();
     });
-  </script>
+</script>
 <style type="text/css">
 .bx-wrapper .bx-pager.bx-default-pager a{
     background: #f96262;
@@ -76,45 +76,18 @@
 }
 </style>
 </head>
-<body>
 
+<header id="header">
+<c:import url="./layout/header.jsp" />
+</header>
+
+<body>
+<div id="body">
 <div id="fullpage">
 	<div class="section " id="section0">
 		<div class="intro">
 			<!-- 슬라이드 맘에 안들면 여기서부터 -->
-				<div class="header_wrap">
-		<div class="header_top_inner">
-			<div class="header_top_menu">
-				<div class="menu_topwrap">
-					<ul>
-						<li>마일리지 적립몰</li>
-						<li class="li1">기내 면세점</li>
-						<li class="li1">기업우대</li>
-					</ul>
-				</div>
 				
-				<div class="menu_topwrap2">
-					<ul>
-						<li>로그인</li>
-						<li class="li1">이벤트</li>
-						<li class="li1">고객지원</li>
-					</ul>				
-				</div>
-			</div>
-		</div>
-		<div class="header_bottom_inner">
-			<div class="header_bottom_menu">
-				<div class="menu_wrap">
-					<div class="menu1">예약</div>
-					<div class="menu1">여행 준비</div>
-					<div class="menu1">여행</div>
-					<div class="menu2">EveryAir club</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
 
 <div class="bxslider">
   <div style="height: 392px"><img src="https://ozimg.flyasiana.com/temp/image/20191217/f736571b-f061-4c13-9933-4366cbe91d7f.jpeg"></div>
@@ -153,15 +126,34 @@
 	<div class="section" id="section2" style="background: url(https://flyasiana.com/C/pc/image/main/bg_section03.jpg); background-size: 1920px;">
 
 	</div>
-		<div class="section" id="section2" style="background: url(https://flyasiana.com/C/pc/image/main/bg_section05.jpg); background-size: 1920px;">
+		<div class="section" id="section3" style="background: url(https://flyasiana.com/C/pc/image/main/bg_section05.jpg); background-size: 1920px;">
 
 	</div>
 </div>
+<div class="footer">
+	테스트
+</div>
+</div>
 <script type="text/javascript" src="../resources/newni/dist/fullpage.js"></script>
+
 <script>
+$(".menu1").hover(function(){
+	$(".sub1").slideDown(300);
+	$(".sub1").css("display", "block"); 
+});
+$(".menu1").mouseleave(function(){
+	$(".sub1").slideUp(300);
+	$(".sub1").css("display", "none"); 
+	
+});
+$(".sub1").hover(function(){
+	$(".sub1").css("display", "block"); 
+});
 var myFullpage = new fullpage('#fullpage', {
-    anchors: ['firstPage', 'secondPage', '3rdPage'],
+	//fixedElements: '#header',
+    anchors: ['firstPage', 'secondPage', '3rdPage','4rdPage'],
     sectionsColor: ['#FFFFFF', '#1BBC9B', '#7E8F7C'],
+   // normalScrollElements: '#section3',
     responsiveHeight: 600,
     afterResponsive: function(isResponsive){
 
@@ -188,6 +180,7 @@ $('.bxslider').bxSlider({
 	  slideWidth: 1920,
 	  slideHeight: 392
 	});
+	
 </script>
 </body>
 </html>
