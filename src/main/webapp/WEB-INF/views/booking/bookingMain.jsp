@@ -128,6 +128,10 @@
  </table>
  </div> 
  <!-- 영화검색끝 -->
+ 
+ <div style="width: 200px; height: 200px; background-color: RED; float: left;" ID="CHECK"> 
+ HH
+ </div>
 
 
     <!-- Jquery JS-->
@@ -142,6 +146,8 @@
 
     <!-- Main JS-->
     <script src="../resources/vendor/js/global.js"></script>
+
+
 
 
 
@@ -185,7 +191,7 @@ $('input:radio[name=kind]').click(function(){
   $(document).ready(function(){
 	
 	$("#loc").on("keyup", function(){
-		var value = $(this).val().toLowerCase();
+	var value = $(this).val().toLowerCase();
 
 	if(value ==""){
 		$(".tab").css("display", "none");
@@ -195,7 +201,6 @@ $('input:radio[name=kind]').click(function(){
 			
 			$("#locTable tr").filter(function(){
 				$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-
 				});
 			}	
 		});
@@ -207,26 +212,62 @@ $('input:radio[name=kind]').click(function(){
 	 var loc= ""; 
 
 	
-  $('.loctd').on("click", function(){
-		
-		if($('#loc').val(loc) != ""){
-				$('#loc').val("");
+
+/* 	$('.loctd').on("click", function() {
+
+ 		if ($('#loc').val(loc) != "") {
+			$('#loc').val("");
 		} 
 
-		 loc = $(this).text();
-		 alert(loc);
-		$('#t2').val(loc); 
-		
+		loc = $(this).text();
+
 		$('#loc').val(loc);
-		$(".tab").css("display","none"); 
+		$(".tab").css("display", "none");
 
-		}); 
+		if($('#loc').val() != ""){
+
+			$(".tab").css("display","none");
+			
+		}
+	});
+ */
 
 
-/**** 공항검색 끝 ****/
 
+	$(document).mouseover(function(e){
 
+	    if($(e.target).is('.loctd')){
+	    	$('.loctd').on("click", function() {
+	    		$('#loc').val($(this).text());
+	    	})
+		 }else{
+				$('#CHECK').click(function(){
+					var t = $('#loc').val();
+					$(".tab").css("display","none");
 
+					<c:set var="loop_flag" value="false" />
+				 <c:forEach items="${airportList}" var="airPort">
+				 <c:if test="${not loop_flag }">
+					if('${airPort}' == t) {
+						alert("찾음");
+						 <c:set var="loop_flag" value="true" />
+					} else {
+						alert("gg");
+					}
+					</c:if>
+				 </c:forEach>
+
+					
+					});
+
+				
+			 }
+
+	});
+
+	
+
+	/**** 공항검색 끝 ****/
 </script>
 
 
