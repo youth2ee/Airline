@@ -198,14 +198,18 @@ $('.date2').click(function(){
 
 var dfnum = $('.dfnum').val();
 var afnum = $('.afnum').val();
+
 $('.dtrcheck').on("click", function(){
+	alert($(this));
 	dfnum = $(this).find('.dfnum').val();
-	$(this).addClass('act').siblings().removeClass('act');
+	$(this).find('td').addClass('act');
+	$(this).siblings().find('td').removeClass('act');
 });
 
 $('.atrcheck').on("click", function(){
 	afnum = $(this).find('.afnum').val();
-	$(this).find('td').addClass('act').siblings().removeClass('act');
+	$(this).find('td').addClass('act');
+	$(this).siblings().find('td').removeClass('act');
 });
 
 

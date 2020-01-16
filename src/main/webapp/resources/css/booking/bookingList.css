@@ -4,12 +4,14 @@
 clear: both;
 border-color: red;
 border-style: solid;
+cursor: pointer;
 }
 
 #arrT{
 clear: both;
 border-color: red;
 border-style: solid;
+cursor: pointer;
 }
 
 .act{
