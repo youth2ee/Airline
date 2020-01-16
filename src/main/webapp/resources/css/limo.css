@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+
+.limo_wrap{
+	width: 430px;
+	height: 700px;
+	background-image: url("../../images/limoPic/bus.png");
+	background-size: cover;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+.limo_seat{
+	width: 250px;
+	height: 500px;
+	margin-top: 125px;
+	margin-left: 115px;
+}
+.limo{
+	background-image: url("../../images/limoPic/seatBefore.png");
+	width: 40px;
+	height: 40px;
+	background-size: cover;
+	
+}
