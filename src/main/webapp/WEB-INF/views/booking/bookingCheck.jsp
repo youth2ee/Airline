@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <c:import url="../template/boot.jsp"></c:import>
+<link href="../resources/css/booking/bookingCheck.css" rel="stylesheet">
 </head>
 <body>
 
@@ -18,7 +19,6 @@
 <section>
 
 <div>
-
 
 <c:if test="${not empty customVO.adultsVOList}">
 <h1>성인 : ${fn:length(customVO.adultsVOList)}</h1>
@@ -42,10 +42,10 @@ ${finfo.economyCharge}
 </div>
 
 <div>
-${finfo.priceVO.realPrice}원
-${finfo.priceVO.cname}원
-${finfo.priceVO.cprice}원
-${finfo.priceVO.ctotal}원
+${finfo.priceVO.realPrice}원/
+${finfo.priceVO.cname}/
+${finfo.priceVO.cprice}원/
+${finfo.priceVO.ctotal}원/
 </div>
 
 </c:forEach>
@@ -57,14 +57,37 @@ ${finfo.priceVO.ctotal}원
 <c:if test="${not empty customVO.childrenVOList}">
 <h1>아이 : ${fn:length(customVO.childrenVOList)}</h1>
 <c:forEach items="${customVO.childrenVOList}"  var="children">
+
+
+${fn:length(children.flightDataVO)}
+${children.firstName} ${children.lastName}
+${children.memberNum}
+
+
+<c:forEach items="${children.flightDataVO}" var="finfoc">
 <div>
-${children.depRealPrice}
-${children.depDis}
+${finfoc.vihicleId}
+${finfoc.airlineNm}
+${finfoc.depPlandTime}
+${finfoc.depAirportNm}
+${finfoc.arrPlandTime}
+${finfoc.arrAirportNm}
+${finfoc.flightTime}
+${finfoc.economyCharge}
 </div>
+
 <div>
-${children.arrRealPrice}
-${children.arrDis}
+${finfoc.priceVO.realPrice}원/
+${finfoc.priceVO.cname}/
+${finfoc.priceVO.cprice}원/
+${finfoc.priceVO.ctotal}원/
 </div>
+
+</c:forEach>
+
+
+
+
 </c:forEach>
 </c:if>
 
