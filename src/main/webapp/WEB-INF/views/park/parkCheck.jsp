@@ -109,7 +109,7 @@ label { /* 주차구역 */
 
 <!-- 예약 못하는 자리  -->
 <c:forEach items="${list}" var="vo">
-<input type="text" value="${vo.areaNum}" class="check"><br>
+<input type="hidden" value="${vo.areaNum}" class="check"><br>
 </c:forEach>
 
 <!-- 장애인 자리 -->

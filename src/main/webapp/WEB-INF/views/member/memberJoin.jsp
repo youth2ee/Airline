@@ -50,12 +50,21 @@
 					</tr>
 					<tr>
 						<th scope="row">영문명</th> 
-						<td>PARK YOUNJU</td>
+						<td>
+							<input type="text" id="input_koreanLastName" name="EnglishLastName" placeholder="영문 성 입력 (예 : HONG)" title="한글 성 입력 (예 : 홍)" style="width:314px;"> 
+							<input type="text" id="input_koreanFirstName" name="EnglishFirstName" placeholder="영문 이름 입력 (예 : GILDONG)" title="한글 이름 입력 (예 : 길동)" style="width:314px;">
+							<p class="txt_error_Msg" id="error_EnglishName" style="display: none;"></p>
+						</td>
 					</tr>
 	
 					<tr>
 						<th scope="row">성별</th> 
-						<td>M</td>
+						<td>
+							<select id="select_residentCountry">
+								<option value="남">남</option>
+								<option value="여">여</option>
+							</select>
+						</td>
 					</tr>
 					<tr>
 						<th scope="row"><label for="select_residentCountry">거주지역</label></th> 
