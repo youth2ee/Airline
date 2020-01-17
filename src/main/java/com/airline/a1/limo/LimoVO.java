@@ -12,7 +12,14 @@ public class LimoVO {
 	private String arrLoc;
 	private String limoTime;
 	private String seat;
+	private int person;
 	
+	public int getPerson() {
+		return person;
+	}
+	public void setPerson(int person) {
+		this.person = person;
+	}
 	public String getSeat() {
 		return seat;
 	}

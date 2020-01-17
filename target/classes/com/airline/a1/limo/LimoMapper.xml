@@ -8,7 +8,7 @@
   	</select>
   	
   	<insert id="limoBook" parameterType="com.airline.a1.limo.LimoVO">
-  		insert into limo values(0, #{limoDate}, #{limoPrice}, #{id}, #{depLoc}, #{arrLoc}, #{limoTime}, #{seat})
+  		insert into limo values(0, #{limoDate}, #{limoPrice}, #{id}, #{depLoc}, #{arrLoc}, #{limoTime}, #{seat}, #{person})
   	</insert>
   	
   	<select id="limoInfo" parameterType="com.airline.a1.limo.LimoInfoVO" resultType="com.airline.a1.limo.LimoInfoVO">
