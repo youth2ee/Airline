@@ -92,7 +92,7 @@ ${aflightInfo.economyCharge}원
 <td> 
 
 <select name="adultsVOList[${status.index-1}].year"> 
-<option selected="selected" >년</option>
+<option selected="selected">년</option>
 <c:forEach begin="1910" end="2020" varStatus="status1">
 <option>${status1.index}</option>
 </c:forEach>
@@ -100,14 +100,14 @@ ${aflightInfo.economyCharge}원
 
 <select name="adultsVOList[${status.index-1}].month"> 
 <option selected="selected">월</option>
-<c:forEach begin="1" end="12" varStatus="status2">
+<c:forEach begin="01" end="12" varStatus="status2">
 <option>${status2.index}</option>
 </c:forEach>
 </select> 
 
 <select name="adultsVOList[${status.index-1}].day"> 
 <option selected="selected">일</option>
-<c:forEach begin="1" end="31" varStatus="status3">
+<c:forEach begin="01" end="31" varStatus="status3">
 <option>${status3.index}</option>
 </c:forEach>
 </select> 
@@ -206,14 +206,14 @@ ${aflightInfo.economyCharge}원
 
 <select name="childrenVOList[${status.index-1}].month"> 
 <option selected="selected">월</option>
-<c:forEach begin="1" end="12" varStatus="status2">
+<c:forEach begin="01" end="12" varStatus="status2">
 <option>${status2.index}</option>
 </c:forEach>
 </select> 
 
 <select name="childrenVOList[${status.index-1}].day"> 
 <option selected="selected">일</option>
-<c:forEach begin="1" end="31" varStatus="status3">
+<c:forEach begin="01" end="31" varStatus="status3">
 <option>${status3.index}</option>
 </c:forEach>
 </select> 
@@ -307,6 +307,40 @@ ${aflightInfo.economyCharge}원
 
 <hr>
 <button>다음</button>
+
+<input type="hidden" name="adults" value="${adults}">
+<input type="hidden" name="children" value="${children}">
+
+<input type="hidden" name="bTVOList[0].fnum" value="${dflightInfo.fnum}">
+<input type="hidden" name="bTVOList[0].depLoc" value="${dflightInfo.depAirportNm}">
+<input type="hidden" name="bTVOList[0].arrLoc" value="${dflightInfo.arrAirportNm}">
+
+<input type="hidden" name="bTVOList[0].depDate" value="${dflightInfo.depPlandTime}">
+<input type="hidden" name="bTVOList[0].arrDate" value="${dflightInfo.arrPlandTime}">
+
+<input type="hidden" name="bTVOList[0].vihicleId" value="${dflightInfo.vihicleId}">
+<input type="hidden" name="bTVOList[0].airline" value="${dflightInfo.airlineNm}">
+
+<input type="hidden" name="bTVOList[0].price" value="${dflightInfo.economyCharge}">
+<input type="hidden" name="bTVOList[0].flightTime" value="${dflightInfo.flightTime}">
+
+
+<c:if test="${kind == 2}">
+<!--  -->
+<input type="hidden" name="bTVOList[1].fnum" value="${aflightInfo.fnum}">
+<input type="hidden" name="bTVOList[1].depLoc" value="${aflightInfo.depAirportNm}">
+<input type="hidden" name="bTVOList[1].arrLoc" value="${aflightInfo.arrAirportNm}">
+
+<input type="hidden" name="bTVOList[1].depDate" value="${aflightInfo.depPlandTime}">
+<input type="hidden" name="bTVOList[1].arrDate" value="${aflightInfo.arrPlandTime}">
+
+<input type="hidden" name="bTVOList[1].vihicleId" value="${aflightInfo.vihicleId}">
+<input type="hidden" name="bTVOList[1].airline" value="${aflightInfo.airlineNm}">
+
+<input type="hidden" name="bTVOList[1].price" value="${aflightInfo.economyCharge}">
+<input type="hidden" name="bTVOList[1].flightTime" value="${aflightInfo.flightTime}">
+</c:if>
+
 
 </form>
 
