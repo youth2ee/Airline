@@ -25,15 +25,15 @@
 
 <h3>성인 : ${bookingVO.adults}명</h3>
 <h3>아동 : ${bookingVO.children}명</h3>
-<h5>출발 : ${bookingVO.depLoc}</h5>
-<h5>도착 : ${bookingVO.arrLoc}</h5>
+<h5>출발 : ${dep}</h5>
+<h5>도착 : ${arr}</h5>
 
 <hr>
 
 
 <section> 
 
-<div><h1> ${bookingVO.depLoc} -> ${bookingVO.arrLoc}  </h1></div>
+<div><h1> ${dep} -> ${arr} </h1></div>
 
 <div> 
 <c:forEach items="${Dlist}" var="days1" varStatus="status"> 
@@ -57,7 +57,7 @@
 <table id="depT"> 
 <tr>
 	<td>편명</td> 
-	<td>기종</td> 
+	<td>항공사명</td> 
 	<td>출발시간</td> 
 	<td>도착시간</td>
 	<td>운행거리</td> 
@@ -83,7 +83,7 @@
 <hr>
 
 <c:if test="${bookingVO.kind == 2}">
-<div><h1> ${bookingVO.arrLoc} -> ${bookingVO.depLoc} </h1></div>
+<div><h1> ${arr} -> ${dep} </h1></div>
 <div> 
 <c:forEach items="${Alist}" var="days2" varStatus="status2"> 
 	<c:if test="${status2.index != 5}">
@@ -106,7 +106,7 @@
 <table id="arrT"> 
 <tr> 
 	<td>편명</td> 
-	<td>기종</td> 
+	<td>항공사명</td> 
 	<td>출발시간</td> 
 	<td>도착시간</td>
 	<td>운행거리</td> 
@@ -131,16 +131,14 @@
 
 <form action="./bookingWritePre" method="post">
 
-<input type="hidden" name="dfnum" id="dfnumf">
-<input type="hidden" name="afnum" id="afnumf">
+<input type="hidden" name="dfnumg" id="dfnumf">
+<input type="hidden" name="afnumg" id="afnumf">
 <input type="hidden" name="adults" value="${bookingVO.adults}">
 <input type="hidden" name="children" value="${bookingVO.children}">
 <input type="hidden" name="kind" value="${bookingVO.kind}">
 
 <button style = "cursor:pointer;"> 다음 </button>
 </form>
-
-
 
 </section>
 
@@ -164,8 +162,8 @@ $('.date1').click(function(){
 		data : {
 			d1:d1,
 			d2:d2,
-			depLoc:'${bookingVO.depLoc}',
-			arrLoc:'${bookingVO.arrLoc}',
+			depLoc:'${dep}',
+			arrLoc:'${arr}',
 			pos:1
 			},
 		type : "GET",
@@ -200,8 +198,8 @@ $('.date2').click(function(){
 		data : {
 			d1:d11,
 			d2:d12,
-			depLoc:'${bookingVO.depLoc}',
-			arrLoc:'${bookingVO.arrLoc}',
+			depLoc:'${arr}',
+			arrLoc:'${dep}',
 			pos:2
 			},
 		type : "GET",
@@ -218,21 +216,20 @@ $('.date2').click(function(){
 	
 });
 
-var dfnum = $('.dfnum').val();
-var afnum = $('.afnum').val();
-
-$('#dfnumf').val(dfnum);
-$('#afnumf').val(afnum);
+var dfnum = "";
+var afnum = "";
 
 
 $('body').on("click",'.dtrcheck',function(){
 	dfnum = $(this).find('.dfnum').val();
+	$('#dfnumf').val(dfnum);
 	$(this).find('td').addClass('act');
 	$(this).siblings().find('td').removeClass('act');
 });
 
 $('body').on("click",'.atrcheck',function(){
 	afnum = $(this).find('.afnum').val();
+	$('#afnumf').val(afnum);
 	$(this).find('td').addClass('act');
 	$(this).siblings().find('td').removeClass('act');
 });

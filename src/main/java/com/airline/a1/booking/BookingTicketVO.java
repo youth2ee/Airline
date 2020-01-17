@@ -10,6 +10,8 @@ public class BookingTicketVO {
 
 	private int bnum;
 	
+	private int fnum;
+	
 	private String bookingNum;
 	
 	private String vihicleId;
@@ -28,6 +30,10 @@ public class BookingTicketVO {
 	private int price;
 	private String emailCheck;
 	private String smsCheck;
+	private String ageKind;
+	
+	private String email;
+	private String phone;
 	
 	private String airline;
 	private String flightTime;
