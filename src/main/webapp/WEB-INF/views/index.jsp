@@ -159,7 +159,6 @@ var myFullpage = new fullpage('#fullpage', {
    // normalScrollElements: '#section3',
     responsiveHeight: 600,
     afterResponsive: function(isResponsive){
-
     }
 });
 
@@ -174,6 +173,7 @@ var swiper = new Swiper('.swiper-container', {
     spaceBetween: 30,
     loop: true
 });
+
 $('.bxslider').bxSlider({
 	  auto: true,
 	  autoControls: true,
