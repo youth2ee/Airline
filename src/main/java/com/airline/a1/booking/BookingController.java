@@ -258,7 +258,7 @@ public class BookingController {
 				bookingTicketVO.setArrLoc(k1VO.getArrLoc());
 				bookingTicketVO.setArrDate(k1VO.getArrDate());
 				
-				bookingTicketVO.setBookingNum(k1VO.getVihicleId()+k1VO.getPrice()+k1VO.getFlightTime());
+				bookingTicketVO.setBookingNum(bookingService.bookingNum(k1VO.getVihicleId()));
 				bookingTicketVO.setId("");
 				bookingTicketVO.setGender(cuVo1.getSex());
 				bookingTicketVO.setName(cuVo1.getFirstName().toUpperCase()+" "+cuVo1.getLastName().toUpperCase());
@@ -300,7 +300,7 @@ public class BookingController {
 					bookingTicketVO.setArrLoc(k2VO.getArrLoc());
 					bookingTicketVO.setArrDate(k2VO.getArrDate());
 					
-					bookingTicketVO.setBookingNum(k2VO.getVihicleId()+k2VO.getPrice()+k2VO.getFlightTime());
+					bookingTicketVO.setBookingNum(bookingService.bookingNum(k2VO.getVihicleId()));
 					bookingTicketVO.setId("");
 					bookingTicketVO.setGender(cuVo1.getSex());
 					bookingTicketVO.setName(cuVo1.getFirstName().toUpperCase()+" "+cuVo1.getLastName().toUpperCase());
@@ -354,7 +354,7 @@ public class BookingController {
 				bookingTicketVO.setArrLoc(k1VO.getArrLoc());
 				bookingTicketVO.setArrDate(k1VO.getArrDate());
 				
-				bookingTicketVO.setBookingNum(k1VO.getVihicleId()+k1VO.getPrice()+k1VO.getFlightTime());
+				bookingTicketVO.setBookingNum(bookingService.bookingNum(k1VO.getVihicleId()));
 				bookingTicketVO.setId("");
 				bookingTicketVO.setGender(cuVo2.getSex());
 				bookingTicketVO.setName(cuVo2.getFirstName().toUpperCase()+" "+cuVo2.getLastName().toUpperCase());
@@ -395,7 +395,7 @@ public class BookingController {
 					bookingTicketVO.setArrLoc(k2VO.getArrLoc());
 					bookingTicketVO.setArrDate(k2VO.getArrDate());
 					
-					bookingTicketVO.setBookingNum(k2VO.getVihicleId()+k2VO.getPrice()+k2VO.getFlightTime());
+					bookingTicketVO.setBookingNum(bookingService.bookingNum(k2VO.getVihicleId()));
 					bookingTicketVO.setId("");
 					bookingTicketVO.setGender(cuVo2.getSex());
 					bookingTicketVO.setName(cuVo2.getFirstName().toUpperCase()+" "+cuVo2.getLastName().toUpperCase());
