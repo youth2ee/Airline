@@ -37,6 +37,11 @@ class AirlineApplicationTests {
 	@Autowired
 	private BusVO busVO;
 
+	@Test()
+	void apiTest6() throws Exception {
+		
+	}
+	
 	//@Test
 	void apiTest5() throws Exception {
 		// 항공정보 + 운임
@@ -157,7 +162,7 @@ class AirlineApplicationTests {
 
 	}
 
-	 @Test
+	// @Test
 	void apiTest3() throws Exception {
 		// 항공정보 + 운임
 		BufferedReader br = null;
