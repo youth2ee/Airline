@@ -139,7 +139,7 @@
 <script>
 $(".menu1").hover(function(){
 	$(".sub1").slideDown(500);
-
+});
 /* $(".menu1").hover(function(){
 	$(".sub1").slideDown(300);
 	$(".sub1").css("display", "block"); 
@@ -183,7 +183,7 @@ $('.bxslider').bxSlider({
 	  slideWidth: 1920,
 	  slideHeight: 392
 	});
-	
+
 </script>
 </body>
 </html>
