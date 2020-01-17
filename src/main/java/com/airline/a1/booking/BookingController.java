@@ -285,12 +285,11 @@ public class BookingController {
 				flightDataVO.setFnum(k1VO.getFnum());
 				
 				List<FlightDataVO> flist = new ArrayList<FlightDataVO>();
-				flist.add(0,bookingService.oneSelect(flightDataVO));
+				FlightDataVO flVo = bookingService.oneSelect(flightDataVO);
+				flVo.setPriceVO(bookingService.cPrice(k1VO.getPrice(), cuVo1.getDepDis()));
+				flist.add(0, flVo);
 				cuVo1.setFlightDataVO(flist);
 				
-				List<BookingPriceVO> plist = new ArrayList<BookingPriceVO>();
-				plist.add(0, bookingService.cPrice(k1VO.getPrice(), cuVo1.getDepDis()));
-				cuVo1.setPriceVO(plist);
 				
 				if(bookingTicketVO.getBTVOList().size() == 2) {
 					BookingTicketVO k2VO = bookingTicketVO.getBTVOList().get(1);
@@ -325,12 +324,10 @@ public class BookingController {
 
 					flightDataVO.setFnum(k2VO.getFnum());
 					
-					flist.add(1,bookingService.oneSelect(flightDataVO));
+					flVo = bookingService.oneSelect(flightDataVO);
+					flVo.setPriceVO(bookingService.cPrice(k2VO.getPrice(), cuVo1.getDepDis()));
+					flist.add(1, flVo);
 					cuVo1.setFlightDataVO(flist);
-					
-					plist.add(1, bookingService.cPrice(k2VO.getPrice(), cuVo1.getArrDis()));
-					cuVo1.setPriceVO(plist);
-					
 				}
 			}
 		}
@@ -384,12 +381,10 @@ public class BookingController {
 				flightDataVO.setFnum(k1VO.getFnum());
 				
 				List<FlightDataVO> flist = new ArrayList<FlightDataVO>();
-				flist.add(0, bookingService.oneSelect(flightDataVO));
+				FlightDataVO flVo = bookingService.oneSelect(flightDataVO);
+				flVo.setPriceVO(bookingService.cPrice(k1VO.getPrice(), cuVo2.getDepDis()));
+				flist.add(0, flVo);				
 				cuVo2.setFlightDataVO(flist);
-				
-				List<BookingPriceVO> plist = new ArrayList<BookingPriceVO>();
-				plist.add(0, bookingService.cPrice(k1VO.getPrice(), cuVo2.getDepDis()));
-				cuVo2.setPriceVO(plist);
 				
 				if(bookingTicketVO.getBTVOList().size() == 2) {
 					BookingTicketVO k2VO = bookingTicketVO.getBTVOList().get(1);
@@ -428,8 +423,10 @@ public class BookingController {
 					flist.add(1, bookingService.oneSelect(flightDataVO));
 					cuVo2.setFlightDataVO(flist);
 					
-					plist.add(1, bookingService.cPrice(k2VO.getPrice(), cuVo2.getArrDis()));
-					cuVo2.setPriceVO(plist);
+					flVo = bookingService.oneSelect(flightDataVO);
+					flVo.setPriceVO(bookingService.cPrice(k2VO.getPrice(), cuVo2.getDepDis()));
+					flist.add(1, flVo);
+					cuVo2.setFlightDataVO(flist);
 					
 				}
 			}

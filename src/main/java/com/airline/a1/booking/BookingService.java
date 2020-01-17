@@ -31,21 +31,27 @@ public class BookingService {
 	public BookingPriceVO cPrice(int price, String dis) {
 		System.out.println(price);
 		System.out.println(dis);
-		
-		double discount = Integer.parseInt(dis.substring(1, 3))*(0.01);
-		System.out.println(discount);
-		int dprice = (int)(price*discount);
-		int dtotal = price-dprice;
-		
-		System.out.println(price); //원가
-		System.out.println(dprice); //쿠폰할인가
-		System.out.println(dtotal); //쿠폰적용된 금액
-		
 		BookingPriceVO bookingPriceVO = new BookingPriceVO();
-		bookingPriceVO.setRealPrice(price);
+		
+		if (!dis.equals("개인할인 선택 안함")) {
+			double discount = Integer.parseInt(dis.substring(1, 3))*(0.01);
+			System.out.println(discount);
+			int dprice = (int)(price*discount);
+			int dtotal = price-dprice;
+			
+			System.out.println(price); //원가
+			System.out.println(dprice); //쿠폰할인가
+			System.out.println(dtotal); //쿠폰적용된 금액
+			
+			bookingPriceVO.setCprice(dprice);
+			bookingPriceVO.setCtotal(dtotal);
+		} else {
+			bookingPriceVO.setCprice(0);
+			bookingPriceVO.setCtotal(price);
+		}
+		
 		bookingPriceVO.setCname(dis);
-		bookingPriceVO.setCprice(dprice);
-		bookingPriceVO.setCtotal(dtotal);
+		bookingPriceVO.setRealPrice(price);
 		
 		return bookingPriceVO;
 	}

@@ -40,10 +40,15 @@ ${finfo.arrAirportNm}
 ${finfo.flightTime}
 ${finfo.economyCharge}
 </div>
+
+<div>
+${finfo.priceVO.realPrice}원
+${finfo.priceVO.cname}원
+${finfo.priceVO.cprice}원
+${finfo.priceVO.ctotal}원
+</div>
+
 </c:forEach>
-
-
-
 
 </c:forEach>
 </c:if>
