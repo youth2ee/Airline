@@ -5,12 +5,16 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -320,7 +324,20 @@ public class BookingController {
 	@GetMapping("bookingCheck")
 	public void bookingCheck() {
 		
+	}
+	
+	@PostMapping("airportDepList")
+	public ModelAndView airportDepList(HttpServletRequest req)throws Exception{
+		String arrLoc = req.getParameter("arrLoc");	
+
+		ModelAndView mv = new ModelAndView();
+	
+		List<BookingVO> ar = bookingService.airportDepList(arrLoc);	
 		
+		 mv.addObject("depLoc", ar); 
+		 mv.setViewName("booking/common/result");
+		
+		return mv;
 	}
 
 }

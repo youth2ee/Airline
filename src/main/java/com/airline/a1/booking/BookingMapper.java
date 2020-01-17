@@ -12,5 +12,5 @@ public interface BookingMapper {
 	public List<String> airportList()throws Exception;
 	public List<FlightDataVO> airList(BookingVO bookingVO) throws Exception; 
 	public FlightDataVO oneSelect(FlightDataVO flightDataVO) throws Exception;
-	
+	public List<BookingVO> airportDepList(String arrLoc)throws Exception;
 }

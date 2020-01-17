@@ -9,6 +9,11 @@
 	select distinct depAirportNm from flightData order by depAirportNm asc
 </select>
 
+<select id="airportDepList" resultType="com.airline.a1.booking.BookingVO" parameterType="com.airline.a1.booking.BookingVO">
+	select distinct depAirportNm from flightData where arrAirportNm = #{arrLoc} order by depAirportNm asc 
+</select>
+
+
 <select id="airList" parameterType="com.airline.a1.booking.BookingVO" resultType="com.airline.a1.booking.FlightDataVO">
 <![CDATA[
 	select * from flightData where depPlandTime > #{sdate}

@@ -60,7 +60,7 @@
                             	<div id="body">
                                 <div class="input-group mid" >
                                     <label class="label">출발지:</label>
-                                    <input class="input--style-1 t1" type="text" name = "depLoc" placeholder="City, region or airport" required="required" id = "loc">
+                                    <input class="input--style-1 t1" type="text" name = "depLoc" placeholder="City, region or airport" required="required" id="loc">
                                   <!--   <input type="hidden" id="t2" readonly="readonly" name = "depLoc"> -->
                                 </div>
                                 
@@ -132,6 +132,21 @@
  </c:forEach>
  </table>
  </div> 
+
+
+<div id="deplocSearch" style="width: 500px; height: 500px; background: green;">
+
+
+</div>
+<%--  <div id="deplocSearch" style="width: 500px; height: 500px; background-color: gray;">
+ 	<table id="deplocTable">
+ 	<c:forEach items="${depLoc}" var="depairPort">
+ 	<tr><td class="deploctd" >${depairPort}</td></tr>
+ </c:forEach>
+ </table>
+ </div>   --%>
+
+
 
  <!-- 공항검색끝 -->
 
@@ -314,24 +329,28 @@ $('input:radio[name=kind]').click(function(){
  
  
  /****** 도착지  *******/
-var z = document.getElementById("loc").value;	
 
 $('#arrloc').focus(function(){
-
-	 if(z !=null){
-
+	var arrLoc = $("#loc").val(); 
+				
+		var query = {arrLoc : $("#loc").val()};
+		
 			$.ajax({
-					data : 
-					type : "GET",
-					url : "",
+					url : "airportDepList",
+					data : query,
+					type : "POST",
 					success : function(data){
-							data = data.trim();
 
-						}	
+						$("#deplocSearch").html(data);
+				
+							
+						},error:function(){
 
-				});		
+							alert('fail');
+							}	
+
+				});	 
 			
-		 };
 });
  
 
