@@ -28,34 +28,6 @@
 					<div class="menu1">여행</div>
 					<div class="menu2">EveryAir club</div>
 				</div>
-				<div class="sub1" style="display: none;">
-					<div style="float: left;">
-	       				항공권 예약<br>
-						최저가 간편조회<br>
-						오즈드림페어<br>
-						신용카드 혜택<br>
-						예약 안내<br>
-						운임 안내<br>
-					</div>
-					<div style="float: left;">
-						예약 내역<br>
-						항공권 구매 내역
-					</div>
-   				 </div>
-   				 <div class="sub2">
-       				예약 내역<br>
-					항공권 구매 내역
-   				 </div>
-   				 	<div class="sub3">
-       				 ttttttttttttttttttttttttttttttt
-       				 tttttttttttttttttttttttttttttttttt
-       				 ttttttttttttttttttttttttttt
-   				 </div>
-   				 <div class="sub4">
-       				 ttttttttttttttttttttttttttttttt
-       				 tttttttttttttttttttttttttttttttttt
-       				 ttttttttttttttttttttttttttt
-   				 </div>
 			</div>
 		</div>
 	</div>

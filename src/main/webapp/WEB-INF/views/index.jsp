@@ -139,13 +139,20 @@
 <script>
 $(".menu1").hover(function(){
 	$(".sub1").slideDown(500);
+
+
+});
+
+
+/* $(".menu1").hover(function(){
+	$(".sub1").slideDown(300);
 	$(".sub1").css("display", "block"); 
 });
 $(".menu1").mouseleave(function(){
 	$(".sub1").slideUp(500);
 	$(".sub1").css("display", "none"); 
 	
-});
+}); */
 $(".sub1").hover(function(){
 	$(".sub1").css("display", "block"); 
 });
@@ -156,7 +163,6 @@ var myFullpage = new fullpage('#fullpage', {
    // normalScrollElements: '#section3',
     responsiveHeight: 600,
     afterResponsive: function(isResponsive){
-
     }
 });
 
@@ -171,6 +177,7 @@ var swiper = new Swiper('.swiper-container', {
     spaceBetween: 30,
     loop: true
 });
+
 $('.bxslider').bxSlider({
 	  auto: true,
 	  autoControls: true,
@@ -180,7 +187,7 @@ $('.bxslider').bxSlider({
 	  slideWidth: 1920,
 	  slideHeight: 392
 	});
-	
+
 </script>
 </body>
 </html>

@@ -9,5 +9,7 @@ public interface parkMapper {
 	
 	public List<pReservationVO> parkCheck(pReservationVO pReservationVO) throws Exception;
 	
+	public pInfoVO parkWhere(pInfoVO pInfoVO) throws Exception;
+	
 	public int resInsert(pReservationVO pReservationVO) throws Exception;
 }

@@ -27,6 +27,16 @@ public class CustomVO {
 	
 	private List<CustomVO> customVOList;
 	
+	private List<CustomVO> adultsVOList;
+	private List<CustomVO> childrenVOList;
 	
+	//price
+	private int depRealPrice;
+	private int arrRealPrice;
+
+	private String ageKind;
+	
+	private List<FlightDataVO> flightDataVO;
+	private List<BookingPriceVO> priceVO;
 
 }
