@@ -325,7 +325,7 @@ public class BookingController {
 					flightDataVO.setFnum(k2VO.getFnum());
 					
 					flVo = bookingService.oneSelect(flightDataVO);
-					flVo.setPriceVO(bookingService.cPrice(k2VO.getPrice(), cuVo1.getDepDis()));
+					flVo.setPriceVO(bookingService.cPrice(k2VO.getPrice(), cuVo1.getArrDis()));
 					flist.add(1, flVo);
 					cuVo1.setFlightDataVO(flist);
 				}
@@ -424,7 +424,7 @@ public class BookingController {
 					cuVo2.setFlightDataVO(flist);
 					
 					flVo = bookingService.oneSelect(flightDataVO);
-					flVo.setPriceVO(bookingService.cPrice(k2VO.getPrice(), cuVo2.getDepDis()));
+					flVo.setPriceVO(bookingService.cPrice(k2VO.getPrice(), cuVo2.getArrDis()));
 					flist.add(1, flVo);
 					cuVo2.setFlightDataVO(flist);
 					
