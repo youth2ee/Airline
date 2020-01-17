@@ -16,7 +16,15 @@ public class LimoService {
 	}
 	
 	public int limoBook(LimoVO limoVO)throws Exception {
-		return limoMapper.limoBook(limoVO);
+		String [] split = limoVO.getSeat().split("번");
+		int result = 0;
+		for (int i = 0; i < split.length; i++) {
+			split [i] = split [i].replace("번", "");
+			limoVO.setSeat(split[i]);
+			
+			result = limoMapper.limoBook(limoVO);
+		}
+		return result;
 	}
 	
 	public List<LimoInfoVO> limoInfo(LimoInfoVO limoInfoVO)throws Exception{

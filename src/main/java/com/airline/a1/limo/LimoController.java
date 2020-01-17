@@ -48,9 +48,21 @@ public class LimoController {
 		List<LimoVO> ar = limoService.limoSelect(limoVO);
 		mv.addObject("limoPic", ar);
 		mv.setViewName("limo/limoSelect");
-		
-		
 		return mv;
 	}
 
+	@GetMapping("disabled")
+	public ModelAndView disabled(LimoVO limoVO)throws Exception{
+		System.out.println("hi");
+		ModelAndView mv = new ModelAndView();
+		List<LimoVO> ar = limoService.limoSelect(limoVO);
+		System.out.println(ar.size());
+		System.out.println(limoVO.getArrLoc());
+		System.out.println(limoVO.getDepLoc());
+		System.out.println(limoVO.getLimoTime());
+		System.out.println(limoVO.getLimoDate());
+		mv.addObject("disabled", ar);
+		mv.setViewName("limo/disabled");
+		return mv;
+	}
 }

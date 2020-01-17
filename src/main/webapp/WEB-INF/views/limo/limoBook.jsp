@@ -33,9 +33,9 @@
 			<option value="울산공항" class="airLine">울산공항</option>
 			<option value="제주공항" class="airLine">제주공항</option>
 		</select>
-		<input type="date" name="limoDate" id="datepicker">
-		<span class="place">
-		</span>
+		<input type="date" name="limoDate" id="datepicker" class="limoDate">
+		<span class="place"></span>
+		<span class="place2"></span>
 		<input type="text" placeholder="가격" name="limoPrice" class="price">
 		<select name="limoTime" class="limoTime">
 			<option>출발시간</option>
@@ -47,7 +47,7 @@
 			<option value="21:00" class="time">21:00</option>
 			<option value="24:00" class="time">24:00</option>
 		</select>
-		<input type="text" name="seat" placeholder="좌석" id="seat">
+		<input type="text" name="seat" placeholder="좌석" id="seat" readonly="readonly">
 		<button type="button" class="btn btn-info btn-lg select" data-toggle="modal" data-target="#myModal">조회하기</button>
 		<button>예매하기</button>
 	</form>
@@ -71,12 +71,12 @@
 									<c:choose>
 										<c:when test="${vo.current%4 eq 2 && vo.current lt 40}">
 											<label class="limo" style="margin-right: 43px; cursor: pointer;">
-												<input type="checkbox" name="seat" class="lim" value="${vo.current}" style="display: none;">		
+												<input type="checkbox" name="seat" class="lim" id="${vo.current}" value="${vo.current}" style="display: none;">		
 											</label>
 										</c:when>
 										<c:otherwise>
 											<label class="limo" style="cursor: pointer;">
-												<input type="checkbox" name="seat" class="lim" value="${vo.current}" style="display: none;">
+												<input type="checkbox" name="seat" class="lim" id="${vo.current}" value="${vo.current}" style="display: none;">
 											</label>
 										</c:otherwise>
 										
@@ -145,6 +145,32 @@
 			count = 0;
 		});
 		
+		$.ajax({
+			type:'get',
+			url:"./disabled",
+			data:{
+				"depLoc":$(".depLoc").val(),
+				"arrLoc":$(".arrLoc").val(),
+				"limoDate":$(".limoDate").val(),
+				"limoTime":$(".limoTime").val()
+			},
+			success : function(data){
+				data = data.trim();
+				$('.place2').html(data);
+			}
+		});
+
+		$("body").on("each", ".dis", function(){
+			var check = $(this).val();
+			$("#"+check).attr('disabled', true);
+			$("#"+check).parent().addClass("booked");
+		});
+		
+		/* $(".dis").each(function(){
+			var check = $(this).val();
+			$("#"+check).attr('disabled', true);
+			$("#"+check).parent().addClass("booked");
+		}); */
 	});
 
 	$(".complete").click(function(){
@@ -155,7 +181,7 @@
 		$('.lim').each(function(){
 			if($(this).is(":checked")){
 				alert(this.value);
-				seat = seat+this.value+'번  ';
+				seat = seat+this.value+'번';
 			}
 				$("#seat").val(seat);
 
@@ -195,7 +221,6 @@
 			$(this).prop("checked", false);
 		}
 	});
-	
 </script>
 </body>
 </html>
