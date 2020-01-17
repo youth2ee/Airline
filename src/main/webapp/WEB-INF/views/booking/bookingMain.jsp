@@ -113,7 +113,7 @@
                                         
                                    
                                     <div class="col-2">
-                                        <button class="btn-submit" id ="booking_btn" type="submit">search</button>
+                                        <button class="btn-submit" id ="booking_btn" type="button">search</button>
                                     </div>
                     
                                 </div>
@@ -125,33 +125,22 @@
  
  
  <!-- 공항검색 -->
-  <div id="locSearch">
+  <div id="locSearch" class = "search">
  	<table id="locTable" class = "tab">
  	<c:forEach items="${airportList}" var="airPort">
- 	<tr><td class="loctd" >${airPort}</td></tr>
- </c:forEach>
+ 	<tr><td class="loctd loctdd" >${airPort}</td></tr>
+ 	</c:forEach>
  </table>
  </div> 
 
 
-<div id="deplocSearch" style="width: 500px; height: 500px; background: green;">
-
+<div id="depLocDiv">
 
 </div>
-<%--  <div id="deplocSearch" style="width: 500px; height: 500px; background-color: gray;">
- 	<table id="deplocTable">
- 	<c:forEach items="${depLoc}" var="depairPort">
- 	<tr><td class="deploctd" >${depairPort}</td></tr>
- </c:forEach>
- </table>
- </div>   --%>
-
 
 
  <!-- 공항검색끝 -->
-
-
-
+ 
     <!-- Jquery JS-->
 	<script src="../resources/vendor/jquery/jquery.min.js"></script>
 	<!-- .../resources/vendor JS-->
@@ -164,9 +153,6 @@
 
     <!-- Main JS-->
     <script src="../resources/vendor/js/global.js"></script>
-
-
-
 
 
 <script type="text/javascript">
@@ -211,19 +197,16 @@ $('input:radio[name=kind]').click(function(){
 
 /**** 공항검색 ****/
 
-
  	 var a = false;
 //-------------------- 검색어 필터 -----------------------------		
 	$("#loc").on("keyup", function(){
-
 		
 		var value = $(this).val().toLowerCase();
 		a = false;
-		
-
+				
 	if(value ==""){
 		$("#locSearch").css("display", "none");
-
+		
 		}else{
 			$("#locSearch").css("display", "block");
 
@@ -255,14 +238,12 @@ $('input:radio[name=kind]').click(function(){
 		} 
 
 		 loc = $(this).text();
-		/* $('#t2').val(loc);  */
 		
 		$('#loc').val(loc);
 		$("#locSearch").css("display","none"); 
 
 		}); 
  
-
 //--------------------- blur -----------------------------		
  	$('#loc').on("blur",function(){
  	 			var v = $(".tab").text().trim();
@@ -302,56 +283,91 @@ $('input:radio[name=kind]').click(function(){
 /**** 공항검색 끝 ****/
  
  
-/***** 공항유효성검사 *****/
- $('#booking_btn').on("click",function(){
+ /***** 공항유효성검사 *****/
+ $('body').on("click",'#booking_btn',function(){
 
-		var z = document.getElementById("loc").value;	
-			
+		var z = document.getElementById("loc").value;
+						
 		var b = true;
 		
-		<c:forEach items="${airportList}" var="airPort">
-					
+		<c:forEach items="${airportList}" var="airPort">				
 			if('${airPort}' == z){						
 							b = false;	
-						$('#frm').submit();
+					
 							return false;
 				}else{
+
 						b = true;
 					}			
 		</c:forEach>
-		if(b = true){
-					 alert("출발지를 올바르게 입력해주세요"); 				
-			}		
-	 });
+	
+
+
+		 var y = document.getElementById("arrloc").value;
+			
+			var a = true;
+			
+			<c:forEach items="${airportList}" var="airPort">				
+				if('${airPort}' == y){						
+								a = false;	
+							return false;
+					}else{
+							a = true;
+							
+					
+						}			
+			</c:forEach>
+		
+
+			if(b == true && a ==true){
+					alert(" 입력해주세요")
+				}else{
+						$('#frm').submit();
+					}
+ }	
+ );
  
  /***** 공항유효성검사  끝*****/
  
  
  
- /****** 도착지  *******/
+/****** 도착지  *******/
 
 $('#arrloc').focus(function(){
+	
 	var arrLoc = $("#loc").val(); 
-				
-		var query = {arrLoc : $("#loc").val()};
-		
+
+			var query = {arrLoc : $("#loc").val()};
+			
 			$.ajax({
 					url : "airportDepList",
 					data : query,
 					type : "POST",
 					success : function(data){
+					
+						$("#depLocDiv").html(data);
 
-						$("#deplocSearch").html(data);
-				
+						
 							
 						},error:function(){
 
-							alert('fail');
+							console.log("fail");
 							}	
 
 				});	 
 			
 });
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+ 
+ 
  
 
 

@@ -25,6 +25,11 @@ float: left;
 }
 
   #locSearch{
+    margin-left: 55px;
+}
+
+
+.search{
 	top: 155px;
 	border: 1px solid rgba(0,0,0,.15);
 	border-radius: 10px;
@@ -38,18 +43,23 @@ float: left;
 	
 	text-align: right;
 	margin-top: -18px;
-    margin-left: 55px;
-    padding-left: 120px;
+	padding-left: 120px;
     line-height: 37px;
-	
 }
 
-.loctd{
+#deplocSearch{
+	
+	margin-left: 365px;
+}
+
+
+
+.loctdd{
 	cursor: pointer;
 	
 }
 
-.loctd:hover{
+.loctdd:hover{
 	color: red;
 }
 
