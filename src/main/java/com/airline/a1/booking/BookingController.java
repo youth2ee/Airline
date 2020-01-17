@@ -420,9 +420,6 @@ public class BookingController {
 					
 					flightDataVO.setFnum(k2VO.getFnum());
 					
-					flist.add(1, bookingService.oneSelect(flightDataVO));
-					cuVo2.setFlightDataVO(flist);
-					
 					flVo = bookingService.oneSelect(flightDataVO);
 					flVo.setPriceVO(bookingService.cPrice(k2VO.getPrice(), cuVo2.getArrDis()));
 					flist.add(1, flVo);
@@ -440,6 +437,11 @@ public class BookingController {
 
 	@GetMapping("bookingCheck")
 	public void bookingCheck() {
+	}
+	
+	@GetMapping("btest")
+	public void btest() {
+		
 	}
 
 }

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("member/**")
 public class MemberController {
+	
 	@GetMapping("memberLogin")
 	public void memberLogint() throws Exception{
 		
