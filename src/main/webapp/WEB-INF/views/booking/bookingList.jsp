@@ -14,38 +14,64 @@
 
 <h1> Booking List </h1>
 
+<header>
+header 
+</header>
+
+<div id="top">
+<div id="topWrap">
+<div id="top1">1
+<h5>출발 : ${bookingVO.depLoc}</h5>
+<h5>도착 : ${bookingVO.arrLoc}</h5>
 <c:if test="${bookingVO.kind == 1}">
 편도
 </c:if>
+</div>
+
+<div id="top2">2
+<h5>출발 : ${bookingVO.arrLoc}</h5>
+<h5>도착 : ${bookingVO.depLoc}</h5>
 <c:if test="${bookingVO.kind == 2}">
 왕복
 </c:if>
+</div>
 
-<hr>
-
+<div id="top3">3 
 <h3>성인 : ${bookingVO.adults}명</h3>
 <h3>아동 : ${bookingVO.children}명</h3>
-<h5>출발 : ${dep}</h5>
-<h5>도착 : ${arr}</h5>
+</div>
 
-<hr>
+<div id="top4">4 </div>
+</div>
+</div>
+
+<div id="noti">
+<div id="notiWrap">
+<table>
+<tr><td>항공권 운임은 잔여 좌석에 따라 실시간으로 달라질 수 있습니다.이후 예약상황 및 가격정책의 변경 등으로 인해 스케줄 및 운임의 변동이 있을 수 있습니다.</td></tr>
+<tr><td>"오늘날짜넣기"기준, 유류할증료와 세금 및 제반요금 포함된 성인 1명 기준 운임입니다.</td></tr>
+</table>
+</div>
+</div>
 
 
-<section> 
+<section>
+<div>
+<div id="title">가는 여정</div>
+<div id="tmsg">${bookingVO.depLoc} -> ${bookingVO.arrLoc}</div>
 
-<div><h1> ${dep} -> ${arr} </h1></div>
 
-<div> 
+<div id="dateLine"> 
 <c:forEach items="${Dlist}" var="days1" varStatus="status"> 
 	<c:if test="${status.index != 5}">
-	<div style="float: left; cursor: pointer; padding: 10px;" class="date1" > 
+	<div class="date1"> 
 		<div class="d1">${days1.year}년</div>
 		<div class="d2">${days1.month}월 ${days1.day}일</div>
 	</div>
 	</c:if>
 	
 	<c:if test="${status.index == 5}">
-	<div style="float: left; cursor: pointer; padding: 10px;" class="date1 bact" > 
+	<div class="date1 bact" > 
 		<div class="d1 rd1">${days1.year}년</div>
 		<div class="d2 rd2">${days1.month}월 ${days1.day}일</div>
 	</div>
@@ -56,8 +82,8 @@
 <div style="height: 300px; overflow-y: scroll; clear: both;">
 <table id="depT"> 
 <tr>
-	<td>편명</td> 
-	<td>항공사명</td> 
+	<td style="width: 80px;">편명</td> 
+	<td style="width: 130px;">기종</td> 
 	<td>출발시간</td> 
 	<td>도착시간</td>
 	<td>운행거리</td> 
@@ -78,23 +104,26 @@
 </c:forEach>
 </table>
 </div>
-
+</div>
 
 <hr>
 
-<c:if test="${bookingVO.kind == 2}">
-<div><h1> ${arr} -> ${dep} </h1></div>
 <div> 
+<div id="title">오는 여정</div>
+<div id="tmsg">${bookingVO.arrLoc} -> ${bookingVO.depLoc}</div>
+
+<c:if test="${bookingVO.kind == 2}">
+<div id="dateLine"> 
 <c:forEach items="${Alist}" var="days2" varStatus="status2"> 
 	<c:if test="${status2.index != 5}">
-	<div style="float: left; cursor: pointer; padding: 10px;" class="date2" > 
+	<div class="date2" > 
 		<div class="d11">${days2.year}년</div>
 		<div class="d12">${days2.month}월 ${days2.day}일</div>
 	</div>
 	</c:if>
 	
 	<c:if test="${status2.index == 5}">
-	<div style="float: left; cursor: pointer; padding: 10px;" class="date2 bact"> 
+	<div class="date2 bact"> 
 		<div class="d11 rd11">${days2.year}년</div>
 		<div class="d12 rd12">${days2.month}월 ${days2.day}일</div>
 	</div>
@@ -105,8 +134,8 @@
 <div style="height: 300px; overflow-y: scroll; clear: both;">
 <table id="arrT"> 
 <tr> 
-	<td>편명</td> 
-	<td>항공사명</td> 
+	<td style="width: 80px;">편명</td> 
+	<td style="width: 130px;">기종</td> 
 	<td>출발시간</td> 
 	<td>도착시간</td>
 	<td>운행거리</td> 
@@ -128,16 +157,18 @@
 </table>
 </div>
 </c:if>
+</div>
 
 <form action="./bookingWritePre" method="post">
 
-<input type="hidden" name="dfnumg" id="dfnumf">
-<input type="hidden" name="afnumg" id="afnumf">
-<input type="hidden" name="adults" value="${bookingVO.adults}">
-<input type="hidden" name="children" value="${bookingVO.children}">
+<input type="hidden" name="depFnum" id="dfnumf">
+<input type="hidden" name="arrFnum" id="afnumf">
+<input type="hidden" name="adult" value="${bookingVO.adults}">
+<input type="hidden" name="child" value="${bookingVO.children}">
 <input type="hidden" name="kind" value="${bookingVO.kind}">
 
-<button style = "cursor:pointer;"> 다음 </button>
+<button style="cursor: pointer;">다음</button>
+
 </form>
 
 </section>
@@ -160,11 +191,11 @@ $('.date1').click(function(){
 	//다른 날짜를 선택할때
 	$.ajax({
 		data : {
-			d1:d1,
-			d2:d2,
-			depLoc:'${dep}',
-			arrLoc:'${arr}',
-			pos:1
+			year:d1,
+			month:d2,
+			depLoc:'${bookingVO.depLoc}',
+			arrLoc:'${bookingVO.arrLoc}',
+			kind:1
 			},
 		type : "GET",
 		url : "./dateSelect",
@@ -196,11 +227,11 @@ $('.date2').click(function(){
 	//다른 날짜를 선택할때
 	$.ajax({
 		data : {
-			d1:d11,
-			d2:d12,
-			depLoc:'${arr}',
-			arrLoc:'${dep}',
-			pos:2
+			year:d11,
+			month:d12,
+			depLoc:'${bookingVO.arrLoc}',
+			arrLoc:'${bookingVO.depLoc}',
+			kind:2
 			},
 		type : "GET",
 		url : "./dateSelect",

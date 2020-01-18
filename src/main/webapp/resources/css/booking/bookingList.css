@@ -1,26 +1,108 @@
 @charset "UTF-8";
 
-section{
-	width: 1000px;
+header {
+	height: 83px;
+}
+
+section {
+	width: 1200px;
 	margin: 0 auto;
 }
 
-#depT{
-width:100%;
-clear: both;
-cursor: pointer;
+#top {
+	height: 170px;
+	background-color: #6d6e71;
 }
 
-#arrT{
-width:100%;
-clear: both;
-cursor: pointer;
+#topWrap {
+	padding-left: 85px;
+	width: 1300px;
+	height: 100%;
+	margin: 0 auto;
+	color: white;
 }
 
-.act{
+#top1 {
+	width: 295px;
+	height: 170px;
+	float: left;
+}
+
+#top2 {
+	width: 295px;
+	height: 170px;
+	float: left;
+}
+
+#top3 {
+	width: 295px;
+	height: 170px;
+	float: left;
+}
+
+#top4 {
+	width: 295px;
+	height: 170px;
+	float: left;
+}
+
+#noti {
+	height: 90px;
+	background-color: #f3f4f6;
+}
+
+#notiWrap {
+	width: 1200px;
+	height: 100%;
+	margin: 0 auto;
+	vertical-align: middle;
+	padding-top: 25px;
+}
+
+#title {
+	color: #D60815;
+	padding: 60px 0 10px 0;
+	text-align: center;
+	font-weight: bolder;
+	font-size: 20px;
+}
+
+#tmsg {
+	color: #000000;
+	padding: 0 0 20px 0;
+	font-size: 40px;
+	text-align: center;
+	border-bottom: gray solid 1px;
+}
+
+#depT {
+	width: 100%;
+	clear: both;
+	cursor: pointer;
+}
+
+#arrT {
+	width: 100%;
+	clear: both;
+	cursor: pointer;
+}
+
+#dateLine{
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.date1, .date2{
+	float: left;
+	cursor: pointer;
+	padding: 10px;
+}
+
+.act {
 	color: red;
 }
 
-.bact{
+.bact {
 	background-color: red;
 }

@@ -1,6 +1,5 @@
 package com.airline.a1.booking;
 
-import java.sql.Date;
 import java.util.List;
 
 import lombok.Data;
@@ -9,35 +8,57 @@ import lombok.Data;
 public class BookingTicketVO {
 
 	private int bnum;
+	private String bookingNum; //예약한 경우 한번에 생성
+	private String flightBNum; //예약한 인원마다 생성
 	
-	private int fnum;
+	private String kind; //편도, 왕복 //db
+	private int adult; //인원수
+	private int child; //인원수
 	
-	private String bookingNum;
-	
-	private String vihicleId;
+	private int depFnum; //db
 	private String depLoc;
-	private String depDate;
+	private String depStartTime;
+	private String depEndTime;
+	private String depPrice;
+	
+	private FlightDataVO depInfo;
+	
+	private int arrFnum; //db
 	private String arrLoc;
-	private String arrDate;
-	private Date resDate;
+	private String arrStartTime;
+	private String arrEndTime;
+	private String arrPrice;
+	
+	private FlightDataVO arrInfo;
+	
+	//예약자 정보
+	private String resDate; //db
+	private String resEmail; //db
+	private String resECheck; //db
+	private String resPhone; //db
+	private String resPCheck; //db
+	
+	//탑승자 정보
+	private String gender; //db
+	
+	private String name; //db
+	private String lastName; //성
+	private String firstName; //이름
+	
+	private String birth; //db
+	private String year;
+	private String month;
+	private String day;
+	
+	private String memberNum; //db
+	
+	private String depCoupon;
+	private String arrCoupon;
+	
+	//
+	private List<BookingTicketVO> adultList;
+	private List<BookingTicketVO> childList;
+	
 
-	private String id;
-	private String gender;
-	private String name;
-	private String birth;
-	private String memberNum;
-	
-	private int price;
-	private String emailCheck;
-	private String smsCheck;
-	private String ageKind;
-	
-	private String email;
-	private String phone;
-	
-	private String airline;
-	private String flightTime;
-	
-	List<BookingTicketVO> bTVOList; 
 	
 }
