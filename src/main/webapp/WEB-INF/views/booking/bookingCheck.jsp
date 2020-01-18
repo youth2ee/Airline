@@ -14,82 +14,121 @@
 
 가격 확인하고
 결제 넘어가기 직전
+<header>
+header 
+</header>
+
+<div id="top">
+<div id="topWrap">
+<div id="top1">1 </div>
+<div id="top2">2 </div>
+<div id="top3">3 </div>
+<div id="top4">4 </div>
+</div>
+</div>
+
+<div id="noti">
+<div id="notiWrap">
+<table>
+<tr><td>반드시 운임 조건 및 규정을 확인 후 동의하셔야 결제가 가능합니다. </td></tr>
+<tr><td>선택하신 운임은 예약과 동시에 구매하셔야 하며, 구매하지 않으신 경우 예약이 취소됩니다. </td></tr>
+</table>
+</div>
+</div>
 
 
 <section>
+<div id="title">운임 확인</div>
+<div id="tmsg">운임이 정상적으로 입력되었는지 최종확인 후, 운임 조건 및 규정을 확인하시기 바랍니다.</div>
+
+
 
 <div>
 
+<table>
 <c:if test="${not empty customVO.adultsVOList}">
-<h1>성인 : ${fn:length(customVO.adultsVOList)}</h1>
+<tr><td><h1>성인 : ${fn:length(customVO.adultsVOList)}</h1></td></tr>
+
 <c:forEach items="${customVO.adultsVOList}"  var="adult" varStatus="status">
+<tr><td>왕복인가요:${fn:length(adult.flightDataVO)}</td></tr>
 
-${fn:length(adult.flightDataVO)}
-${adult.firstName} ${adult.lastName}
-${adult.memberNum}
+<tr><td>이름 : ${adult.firstName} ${adult.lastName}</td></tr>
+<tr><td>회원번호 : ${adult.memberNum}</td></tr>
+<tr><td>*********************</td></tr>
 
-
+<tr><td> 
 <c:forEach items="${adult.flightDataVO}" var="finfo">
-<div>
-${finfo.vihicleId}
-${finfo.airlineNm}
-${finfo.depPlandTime}
-${finfo.depAirportNm}
-${finfo.arrPlandTime}
-${finfo.arrAirportNm}
-${finfo.flightTime}
-${finfo.economyCharge}
-</div>
+<table style="background-color: gray; float: left;">
+<tr><td>${finfo.vihicleId}</td></tr>
+<tr><td>${finfo.airlineNm}</td></tr>
+<tr><td>${finfo.depPlandTime}</td></tr>
+<tr><td>${finfo.depAirportNm}</td></tr>
+<tr><td>${finfo.arrPlandTime}</td></tr>
+<tr><td>${finfo.arrAirportNm}</td></tr>
+<tr><td>${finfo.flightTime}</td></tr>
+<tr><td>${finfo.economyCharge}</td></tr>
+<tr><td>*********************</td></tr>
 
-<div>
-${finfo.priceVO.realPrice}원/
-${finfo.priceVO.cname}/
-${finfo.priceVO.cprice}원/
-${finfo.priceVO.ctotal}원/
-</div>
-
+<tr><td>${finfo.priceVO.realPrice}원</td></tr>
+<tr><td>${finfo.priceVO.cname}</td></tr>
+<tr><td>${finfo.priceVO.cprice}원</td></tr>
+<tr><td class="price">${finfo.priceVO.ctotal}원</td></tr>
+<tr><td>*********************</td></tr>
+</table>
 </c:forEach>
+</td></tr>
+
 
 </c:forEach>
 </c:if>
+</table>
 
 
+<table>
 <c:if test="${not empty customVO.childrenVOList}">
-<h1>아이 : ${fn:length(customVO.childrenVOList)}</h1>
+<tr><td><h1>아이 : ${fn:length(customVO.childrenVOList)}</h1></td></tr>
 <c:forEach items="${customVO.childrenVOList}"  var="children">
+<tr><td>왕복인가요:${fn:length(children.flightDataVO)}</td></tr>
 
+<tr><td>이름 : ${children.firstName} ${children.lastName}</td></tr>
+<tr><td>회원번호 : ${children.memberNum}</td></tr>
+<tr><td>*********************</td></tr>
 
-${fn:length(children.flightDataVO)}
-${children.firstName} ${children.lastName}
-${children.memberNum}
-
-
+<tr><td> 
 <c:forEach items="${children.flightDataVO}" var="finfoc">
-<div>
-${finfoc.vihicleId}
-${finfoc.airlineNm}
-${finfoc.depPlandTime}
-${finfoc.depAirportNm}
-${finfoc.arrPlandTime}
-${finfoc.arrAirportNm}
-${finfoc.flightTime}
-${finfoc.economyCharge}
-</div>
+<table style="background-color: gray; float: left;">
+<tr><td>${finfoc.vihicleId}</td></tr>
+<tr><td>${finfoc.airlineNm}</td></tr>
+<tr><td>${finfoc.depPlandTime}</td></tr>
+<tr><td>${finfoc.depAirportNm}</td></tr>
+<tr><td>${finfoc.arrPlandTime}</td></tr>
+<tr><td>${finfoc.arrAirportNm}</td></tr>
+<tr><td>${finfoc.flightTime}</td></tr>
+<tr><td>${finfoc.economyCharge}</td></tr>
+<tr><td>*********************</td></tr>
 
-<div>
-${finfoc.priceVO.realPrice}원/
-${finfoc.priceVO.cname}/
-${finfoc.priceVO.cprice}원/
-${finfoc.priceVO.ctotal}원/
-</div>
-
+<tr><td>${finfoc.priceVO.realPrice}원</td></tr>
+<tr><td>${finfoc.priceVO.cname}</td></tr>
+<tr><td>${finfoc.priceVO.cprice}원</td></tr>
+<tr><td class="price">${finfoc.priceVO.ctotal}원</td></tr>
+<tr><td>*********************</td></tr>
+</table>
 </c:forEach>
-
+</td></tr>
 
 
 
 </c:forEach>
 </c:if>
+</table>
+
+</div>
+
+<hr>
+
+<div id="priceDiv">
+<h1>가격</h1>
+
 
 
 
@@ -110,11 +149,13 @@ ${finfoc.priceVO.ctotal}원/
 <button id="btn"> 결제 </button>
 
 <script type="text/javascript">
-
+$('.price').each(function (index, item) { 
+	console.log(item); 
+	$('#priceDiv').append(item);
+});
 $('#btn').click(function(){
 	window.open("../imPay/imPayList?name=사과&amount=1000", "이니시스",  "width=825px,height=600px");
 });
-
 </script>
 
 
