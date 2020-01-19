@@ -157,7 +157,7 @@ class AirlineApplicationTests {
 
 	}
 
-	 @Test
+	 //@Test
 	void apiTest3() throws Exception {
 		// 항공정보 + 운임
 		BufferedReader br = null;
@@ -358,7 +358,7 @@ class AirlineApplicationTests {
 		return nValue.getNodeValue();
 	}
 
-	//@Test
+	@Test
 	void contextLoads() throws Exception {
 		assertNotNull(dataSource.getConnection());
 	}

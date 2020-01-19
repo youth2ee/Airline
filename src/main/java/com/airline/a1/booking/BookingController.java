@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.zip.Adler32;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,6 +29,13 @@ public class BookingController {
 
 	@PostMapping("bookingMain") 
 	public ModelAndView bookingMain(BookingVO bookingVO) throws Exception {
+		System.out.println(bookingVO.getAdults());
+		System.out.println(bookingVO.getChildren());
+		System.out.println(bookingVO.getDepLoc());
+		System.out.println(bookingVO.getArrLoc());
+		System.out.println(bookingVO.getDate());
+		System.out.println(bookingVO.getKind());
+		
 		BookingTicketVO bookingTicketVO = new BookingTicketVO();
 		
 		String kind = "편도";
@@ -52,11 +60,13 @@ public class BookingController {
 		List<BookingVO> adates = new ArrayList<BookingVO>();
 		
 		if (bookingVO.getKind() == 1) {
-			ddate = date.substring(6) + date.substring(3, 5) + date.substring(0, 2);
+			ddate = date.substring(6) + date.substring(0, 2) + date.substring(3, 5);
+			System.out.println(ddate);
 			bookingTicketVO.setDepStartTime(ddate);
 			dairList = bookingService.airList(bookingTicketVO);
 			
 			for(FlightDataVO flightDataVO : dairList) {
+				System.out.println(flightDataVO.getAirlineNm());
 				flightDataVO.setDepTime(flightDataVO.getDepPlandTime().substring(8, 10)+":"+flightDataVO.getDepPlandTime().substring(10));
 				flightDataVO.setArrTime(flightDataVO.getArrPlandTime().substring(8, 10)+":"+flightDataVO.getArrPlandTime().substring(10));
 			}
@@ -91,7 +101,7 @@ public class BookingController {
 			bookingTicketVO.setArrLoc(bookingVO.getDepLoc());
 			
 			adate = date.substring(19) + date.substring(13, 15) + date.substring(16, 18) ;
-			bookingTicketVO.setArrStartTime(adate);
+			bookingTicketVO.setDepStartTime(adate);
 			aairList = bookingService.airList(bookingTicketVO);
 			
 			for(FlightDataVO flightDataVO : aairList) {
@@ -152,20 +162,19 @@ public class BookingController {
 		bookingTicketVO.setArrLoc(bookingVO.getArrLoc());
 		bookingTicketVO.setDepStartTime(date);
 
-		if (bookingVO.getKind() == 1) {
-			dairList = bookingService.airList(bookingTicketVO);
-			for (FlightDataVO flightDataVO : dairList) {
-				flightDataVO.setDepTime(flightDataVO.getDepPlandTime().substring(8, 10) + ":" + flightDataVO.getDepPlandTime().substring(10));
-				flightDataVO.setArrTime(flightDataVO.getArrPlandTime().substring(8, 10) + ":" + flightDataVO.getArrPlandTime().substring(10));
-			}
-
-		} else if (bookingVO.getKind() == 2) {
+		dairList = bookingService.airList(bookingTicketVO);
+		for (FlightDataVO flightDataVO : dairList) {
+			flightDataVO.setDepTime(flightDataVO.getDepPlandTime().substring(8, 10) + ":" + flightDataVO.getDepPlandTime().substring(10));
+			flightDataVO.setArrTime(flightDataVO.getArrPlandTime().substring(8, 10) + ":" + flightDataVO.getArrPlandTime().substring(10));
+		}
+		
+		if (bookingVO.getKind() == 2) {
 			aairList = bookingService.airList(bookingTicketVO);
 			for (FlightDataVO flightDataVO : aairList) {
 				flightDataVO.setDepTime(flightDataVO.getDepPlandTime().substring(8, 10) + ":" + flightDataVO.getDepPlandTime().substring(10));
 				flightDataVO.setArrTime(flightDataVO.getArrPlandTime().substring(8, 10) + ":" + flightDataVO.getArrPlandTime().substring(10));
 			}
-		}
+		} 
 
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("bookingVO", bookingVO);
@@ -186,41 +195,17 @@ public class BookingController {
 	public ModelAndView bookingWritePre(BookingTicketVO bookingTicketVO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		
-		bookingTicketVO.getDepFnum();
-		bookingTicketVO.getArrFnum();
-		bookingTicketVO.getAdult();
-		bookingTicketVO.getChild();
-		bookingTicketVO.getKind();
-		
 		FlightDataVO flightDataVO = new FlightDataVO();
 		flightDataVO.setFnum(bookingTicketVO.getDepFnum());
 		bookingTicketVO.setDepInfo(bookingService.oneSelect(flightDataVO));
 		
-		flightDataVO.setFnum(bookingTicketVO.getArrFnum());
-		bookingTicketVO.setArrInfo(bookingService.oneSelect(flightDataVO));			
 		
-		
-		//
-		/*
-		 * mv.addObject("adults", adults); mv.addObject("children", children);
-		 * mv.addObject("kind", kind);
-		 */
-
-		/*
-		 * FlightDataVO dflightDataVO = new FlightDataVO();
-		 * dflightDataVO.setFnum(Integer.parseInt(dfnumg)); dflightDataVO =
-		 * bookingService.oneSelect(dflightDataVO); mv.addObject("dflightInfo",
-		 * dflightDataVO);
-		 * 
-		 * 
-		 * if (afnumg != "") { FlightDataVO aflightDataVO = new FlightDataVO();
-		 * aflightDataVO.setFnum(Integer.parseInt(afnumg)); aflightDataVO =
-		 * bookingService.oneSelect(aflightDataVO); mv.addObject("aflightInfo",
-		 * aflightDataVO); }
-		 */
+		if (bookingTicketVO.getKind().equals("2")) {
+			flightDataVO.setFnum(bookingTicketVO.getArrFnum());
+			bookingTicketVO.setArrInfo(bookingService.oneSelect(flightDataVO));
+		}
 		
 		mv.addObject("bTVO", bookingTicketVO);
-
 		mv.setViewName("/booking/bookingWrite");
 
 		return mv;
@@ -232,171 +217,116 @@ public class BookingController {
 
 	@PostMapping("bookingWrite")
 	public void bookingWrite(BookingTicketVO bookingTicketVO) throws Exception {
-		
 		ModelAndView mv = new ModelAndView();
+		//id
+		String id = "id";
+		
+		///bookingNum 만들기
+		String bookingNum = "bnum";
+		
+		//어른
+		if(bookingTicketVO.getAdultList() != null) {
+			for(BookingTicketVO adult : bookingTicketVO.getAdultList()) {
+				adult.setBookingNum(bookingNum);
+				adult.setId(id);
+				
+				//flightnum 가는편 만들기
+				adult.setFlightBNum("flightBNum");
+				
+				String kind = "편도";
+				if(bookingTicketVO.getKind().equals("2")) {
+					kind = "왕복";
+					adult.setArrFnum(bookingTicketVO.getArrFnum());
+				}
+				adult.setKind(kind);
+				
+				adult.setAdult(1);
+				adult.setDepFnum(bookingTicketVO.getDepFnum());
+				
+				adult.setResEmail(bookingTicketVO.getResEmail());
+				adult.setResECheck(bookingTicketVO.getResECheck());
+				adult.setResPhone(bookingTicketVO.getResPhone());
+				adult.setResPCheck(bookingTicketVO.getResPCheck());
+				
+				adult.setName(adult.getLastName().toUpperCase() +" "+adult.getFirstName().toUpperCase());
+				
+				if(adult.getMonth().length() == 1) {
+					adult.setMonth("0"+adult.getMonth());
+				}				
+				if(adult.getDay().length() == 1) {
+					adult.setDay("0"+adult.getDay());
+				}
+				adult.setBirth(adult.getYear()+adult.getMonth()+adult.getDay());
+				
+				bookingService.bookingInsert(adult);
+				
+				if (bookingTicketVO.getKind().equals("2")) {
+					//flightnum 오는편 만들기
+					adult.setFlightBNum("flightBNum");
+					
+					int dep = adult.getDepFnum();
+					int arr = adult.getArrFnum();
+					adult.setDepFnum(arr);
+					adult.setArrFnum(dep);
+					
+					bookingService.bookingInsert(adult);
+				}
+			}//어른 반복문 끝
+		}//어른 끝
+		
+		//어린이
+		if(bookingTicketVO.getChildList() != null) {
+			for(BookingTicketVO child : bookingTicketVO.getChildList()) {
+				child.setBookingNum(bookingNum);
+				child.setId(id);
+				
+				//flightnum 가는편 만들기
+				child.setFlightBNum("flightBNum");
+				
+				String kind = "편도";
+				if(bookingTicketVO.getKind().equals("2")) {
+					kind = "왕복";
+					child.setArrFnum(bookingTicketVO.getArrFnum());
+				}
+				child.setKind(kind);
+				
+				child.setChild(1);
+				child.setDepFnum(bookingTicketVO.getDepFnum());
+				
+				child.setResEmail(bookingTicketVO.getResEmail());
+				child.setResECheck(bookingTicketVO.getResECheck());
+				child.setResPhone(bookingTicketVO.getResPhone());
+				child.setResPCheck(bookingTicketVO.getResPCheck());
+				
+				child.setName(child.getLastName().toUpperCase() +" "+child.getFirstName().toUpperCase());
+				
+				if(child.getMonth().length() == 1) {
+					child.setMonth("0"+child.getMonth());
+				}				
+				if(child.getDay().length() == 1) {
+					child.setDay("0"+child.getDay());
+				}
+				child.setBirth(child.getYear()+child.getMonth()+child.getDay());
+				
+				bookingService.bookingInsert(child);
+				
+				//왕복일때
+				if (bookingTicketVO.getKind().equals("2")) {
+					//flightnum 오는편 만들기
+					child.setFlightBNum("flightBNum");
+					
+					int dep = child.getDepFnum();
+					int arr = child.getArrFnum();
+					child.setDepFnum(arr);
+					child.setArrFnum(dep);
+					
+					bookingService.bookingInsert(child);
+				}
+			}//어린이 반복문 끝
+		}//어린이 끝
+		
 
-		/*
-		 * if (customVO.getAdultsVOList() != null) { for (CustomVO cuVo1 :
-		 * customVO.getAdultsVOList()) { String y = Integer.toString(cuVo1.getYear());
-		 * String m = Integer.toString(cuVo1.getMonth()); String d =
-		 * Integer.toString(cuVo1.getDay());
-		 * 
-		 * if (m.length() == 1) { m = "0" + m; }
-		 * 
-		 * if (d.length() == 1) { d = "0" + d; }
-		 * 
-		 * BookingTicketVO k1VO = bookingTicketVO.getBTVOList().get(0);
-		 * bookingTicketVO.setFnum(k1VO.getFnum());
-		 * bookingTicketVO.setVihicleId(k1VO.getVihicleId());
-		 * bookingTicketVO.setDepLoc(k1VO.getDepLoc());
-		 * bookingTicketVO.setDepDate(k1VO.getDepDate());
-		 * bookingTicketVO.setArrLoc(k1VO.getArrLoc());
-		 * bookingTicketVO.setArrDate(k1VO.getArrDate());
-		 * 
-		 * bookingTicketVO.setBookingNum(bookingService.bookingNum(k1VO.getVihicleId()))
-		 * ; bookingTicketVO.setId(""); bookingTicketVO.setGender(cuVo1.getSex());
-		 * bookingTicketVO.setName(cuVo1.getFirstName().toUpperCase() + " " +
-		 * cuVo1.getLastName().toUpperCase()); bookingTicketVO.setBirth(y + m + d);
-		 * bookingTicketVO.setMemberNum("");
-		 * bookingTicketVO.setEmailCheck(customVO.getChkEmail());
-		 * bookingTicketVO.setSmsCheck(customVO.getChkPhone());
-		 * bookingTicketVO.setAgeKind("adults");
-		 * 
-		 * bookingTicketVO.setEmail(customVO.getResEmail());
-		 * bookingTicketVO.setPhone(customVO.getResPhone());
-		 * 
-		 * // bookingTicketVO.setPrice(k1VO.getPrice()); //결제 안했으므로 가격 막자
-		 * bookingTicketVO.setPrice(0);
-		 * 
-		 * bookingService.bookingInsert(bookingTicketVO);
-		 * 
-		 * // 가격페이지에 보내기 cuVo1.setAgeKind("adults");
-		 * cuVo1.setDepRealPrice(k1VO.getPrice());
-		 * 
-		 * FlightDataVO flightDataVO = new FlightDataVO();
-		 * flightDataVO.setFnum(k1VO.getFnum());
-		 * 
-		 * List<FlightDataVO> flist = new ArrayList<FlightDataVO>(); FlightDataVO flVo =
-		 * bookingService.oneSelect(flightDataVO);
-		 * flVo.setPriceVO(bookingService.cPrice(k1VO.getPrice(), cuVo1.getDepDis()));
-		 * flist.add(0, flVo); cuVo1.setFlightDataVO(flist);
-		 * 
-		 * if (bookingTicketVO.getBTVOList().size() == 2) { BookingTicketVO k2VO =
-		 * bookingTicketVO.getBTVOList().get(1);
-		 * bookingTicketVO.setFnum(k2VO.getFnum());
-		 * bookingTicketVO.setVihicleId(k2VO.getVihicleId());
-		 * bookingTicketVO.setDepLoc(k2VO.getDepLoc());
-		 * bookingTicketVO.setDepDate(k2VO.getDepDate());
-		 * bookingTicketVO.setArrLoc(k2VO.getArrLoc());
-		 * bookingTicketVO.setArrDate(k2VO.getArrDate());
-		 * 
-		 * bookingTicketVO.setBookingNum(bookingService.bookingNum(k2VO.getVihicleId()))
-		 * ; bookingTicketVO.setId(""); bookingTicketVO.setGender(cuVo1.getSex());
-		 * bookingTicketVO .setName(cuVo1.getFirstName().toUpperCase() + " " +
-		 * cuVo1.getLastName().toUpperCase()); bookingTicketVO.setBirth(y + m + d);
-		 * bookingTicketVO.setMemberNum("");
-		 * bookingTicketVO.setEmailCheck(customVO.getChkEmail());
-		 * bookingTicketVO.setSmsCheck(customVO.getChkPhone());
-		 * bookingTicketVO.setAgeKind("adults");
-		 * 
-		 * bookingTicketVO.setEmail(customVO.getResEmail());
-		 * bookingTicketVO.setPhone(customVO.getResPhone());
-		 * 
-		 * // bookingTicketVO.setPrice(k2VO.getPrice()); //결제 안했으므로 가격 막자
-		 * bookingTicketVO.setPrice(0);
-		 * 
-		 * bookingService.bookingInsert(bookingTicketVO); // 가격
-		 * cuVo1.setAgeKind("adults"); cuVo1.setArrRealPrice(k2VO.getPrice());
-		 * 
-		 * flightDataVO.setFnum(k2VO.getFnum());
-		 * 
-		 * flVo = bookingService.oneSelect(flightDataVO);
-		 * flVo.setPriceVO(bookingService.cPrice(k2VO.getPrice(), cuVo1.getArrDis()));
-		 * flist.add(1, flVo); cuVo1.setFlightDataVO(flist); } } }
-		 * 
-		 * if (customVO.getChildrenVOList() != null) { for (CustomVO cuVo2 :
-		 * customVO.getChildrenVOList()) { String y = Integer.toString(cuVo2.getYear());
-		 * String m = Integer.toString(cuVo2.getMonth()); String d =
-		 * Integer.toString(cuVo2.getDay());
-		 * 
-		 * if (m.length() == 1) { m = "0" + m; }
-		 * 
-		 * if (d.length() == 1) { d = "0" + d; }
-		 * 
-		 * BookingTicketVO k1VO = bookingTicketVO.getBTVOList().get(0);
-		 * bookingTicketVO.setFnum(k1VO.getFnum());
-		 * bookingTicketVO.setVihicleId(k1VO.getVihicleId());
-		 * bookingTicketVO.setDepLoc(k1VO.getDepLoc());
-		 * bookingTicketVO.setDepDate(k1VO.getDepDate());
-		 * bookingTicketVO.setArrLoc(k1VO.getArrLoc());
-		 * bookingTicketVO.setArrDate(k1VO.getArrDate());
-		 * 
-		 * bookingTicketVO.setBookingNum(bookingService.bookingNum(k1VO.getVihicleId()))
-		 * ; bookingTicketVO.setId(""); bookingTicketVO.setGender(cuVo2.getSex());
-		 * bookingTicketVO.setName(cuVo2.getFirstName().toUpperCase() + " " +
-		 * cuVo2.getLastName().toUpperCase()); bookingTicketVO.setBirth(y + m + d);
-		 * bookingTicketVO.setMemberNum("");
-		 * bookingTicketVO.setEmailCheck(customVO.getChkEmail());
-		 * bookingTicketVO.setSmsCheck(customVO.getChkPhone());
-		 * bookingTicketVO.setAgeKind("children");
-		 * 
-		 * bookingTicketVO.setEmail(customVO.getResEmail());
-		 * bookingTicketVO.setPhone(customVO.getResPhone());
-		 * 
-		 * // bookingTicketVO.setPrice(k1VO.getPrice()); //결제 안했으므로 가격 막자
-		 * bookingTicketVO.setPrice(0);
-		 * 
-		 * bookingService.bookingInsert(bookingTicketVO);
-		 * 
-		 * // 가격 cuVo2.setAgeKind("children"); cuVo2.setDepRealPrice(k1VO.getPrice());
-		 * 
-		 * FlightDataVO flightDataVO = new FlightDataVO();
-		 * flightDataVO.setFnum(k1VO.getFnum());
-		 * 
-		 * List<FlightDataVO> flist = new ArrayList<FlightDataVO>(); FlightDataVO flVo =
-		 * bookingService.oneSelect(flightDataVO);
-		 * flVo.setPriceVO(bookingService.cPrice(k1VO.getPrice(), cuVo2.getDepDis()));
-		 * flist.add(0, flVo); cuVo2.setFlightDataVO(flist);
-		 * 
-		 * if (bookingTicketVO.getBTVOList().size() == 2) { BookingTicketVO k2VO =
-		 * bookingTicketVO.getBTVOList().get(1);
-		 * bookingTicketVO.setFnum(k2VO.getFnum());
-		 * bookingTicketVO.setVihicleId(k2VO.getVihicleId());
-		 * bookingTicketVO.setDepLoc(k2VO.getDepLoc());
-		 * bookingTicketVO.setDepDate(k2VO.getDepDate());
-		 * bookingTicketVO.setArrLoc(k2VO.getArrLoc());
-		 * bookingTicketVO.setArrDate(k2VO.getArrDate());
-		 * 
-		 * bookingTicketVO.setBookingNum(bookingService.bookingNum(k2VO.getVihicleId()))
-		 * ; bookingTicketVO.setId(""); bookingTicketVO.setGender(cuVo2.getSex());
-		 * bookingTicketVO .setName(cuVo2.getFirstName().toUpperCase() + " " +
-		 * cuVo2.getLastName().toUpperCase()); bookingTicketVO.setBirth(y + m + d);
-		 * bookingTicketVO.setMemberNum("");
-		 * bookingTicketVO.setEmailCheck(customVO.getChkEmail());
-		 * bookingTicketVO.setSmsCheck(customVO.getChkPhone());
-		 * bookingTicketVO.setAgeKind("children");
-		 * 
-		 * bookingTicketVO.setEmail(customVO.getResEmail());
-		 * bookingTicketVO.setPhone(customVO.getResPhone());
-		 * 
-		 * // bookingTicketVO.setPrice(k2VO.getPrice()); //결제 안했으므로 가격 막자
-		 * bookingTicketVO.setPrice(0);
-		 * 
-		 * bookingService.bookingInsert(bookingTicketVO);
-		 * 
-		 * // 가격 cuVo2.setAgeKind("children"); cuVo2.setArrRealPrice(k2VO.getPrice());
-		 * 
-		 * flightDataVO.setFnum(k2VO.getFnum());
-		 * 
-		 * flVo = bookingService.oneSelect(flightDataVO);
-		 * flVo.setPriceVO(bookingService.cPrice(k2VO.getPrice(), cuVo2.getArrDis()));
-		 * flist.add(1, flVo); cuVo2.setFlightDataVO(flist);
-		 * 
-		 * } } }
-		 * 
-		 * mv.addObject("customVO", customVO); mv.setViewName("booking/bookingCheck");
-		 * return mv;
-		 */
+		
 	}
 
 	@GetMapping("bookingCheck")

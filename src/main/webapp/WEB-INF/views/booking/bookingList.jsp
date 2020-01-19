@@ -109,10 +109,9 @@ header
 <hr>
 
 <div> 
+<c:if test="${bookingVO.kind == '2'}">
 <div id="title">오는 여정</div>
 <div id="tmsg">${bookingVO.arrLoc} -> ${bookingVO.depLoc}</div>
-
-<c:if test="${bookingVO.kind == 2}">
 <div id="dateLine"> 
 <c:forEach items="${Alist}" var="days2" varStatus="status2"> 
 	<c:if test="${status2.index != 5}">
@@ -162,7 +161,9 @@ header
 <form action="./bookingWritePre" method="post">
 
 <input type="hidden" name="depFnum" id="dfnumf">
+<c:if test="${bookingVO.kind == '2'}">
 <input type="hidden" name="arrFnum" id="afnumf">
+</c:if>
 <input type="hidden" name="adult" value="${bookingVO.adults}">
 <input type="hidden" name="child" value="${bookingVO.children}">
 <input type="hidden" name="kind" value="${bookingVO.kind}">
@@ -201,26 +202,20 @@ $('.date1').click(function(){
 		url : "./dateSelect",
 		success : function(data) {
 			data = data.trim();
-
+/* 
 			if(data == null){
 				$('#depT').html("");
 				}
-			
+			 */
 			$('#depT').html(data);
 		}
 	}); 
-
-//
-
 });
-
-
 
 $('.date2').click(function(){
 	$(this).addClass('bact');
 	$(this).siblings().removeClass('bact');
 
-	
 	d11 = $(this).find('.d11').text().trim();
 	d12 = $(this).find('.d12').text().trim();
 	
@@ -240,16 +235,10 @@ $('.date2').click(function(){
 			 $('#arrT').html(data); 
 		}
 	}); 
-
-//
-
-
-	
 });
 
 var dfnum = "";
 var afnum = "";
-
 
 $('body').on("click",'.dtrcheck',function(){
 	dfnum = $(this).find('.dfnum').val();

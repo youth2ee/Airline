@@ -51,6 +51,7 @@ public class BookingTicketVO {
 	private String day;
 	
 	private String memberNum; //db
+	private String id; //db
 	
 	private String depCoupon;
 	private String arrCoupon;

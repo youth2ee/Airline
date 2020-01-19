@@ -60,7 +60,7 @@ header
 
 
 <div> 
-<c:if test="${bTVO.kind == 1}">
+<c:if test="${bTVO.kind == '1'}">
 <div><h1>편도</h1></div>
 <hr>
 <div><h1>${bTVO.depInfo.depAirportNm}&#60;-&#62;${bTVO.depInfo.arrAirportNm}</h1></div>
@@ -73,7 +73,7 @@ ${bTVO.depInfo.economyCharge}원
 <hr>
 </c:if>
 
-<c:if test="${bTVO.kind == 2}">
+<c:if test="${bTVO.kind == '2'}">
 <div><h1>왕복</h1></div>
 <hr>
 <div><h1>${bTVO.depInfo.depAirportNm}&#60;-&#62;${bTVO.depInfo.arrAirportNm}</h1></div>
@@ -284,7 +284,7 @@ ${bTVO.arrInfo.economyCharge}원
  </td>
 </tr>
 
-<c:if test="${bTVO.child == 2}">
+<c:if test="${bTVO.kind == 2}">
 
 <tr>
 <td>개인할인(오는편)</td>
@@ -344,37 +344,14 @@ ${bTVO.arrInfo.economyCharge}원
 <hr>
 <button>다음</button>
 
+<input type="hidden" name="kind" value="${bTVO.kind}">
 <input type="hidden" name="adult" value="${bTVO.adult}">
 <input type="hidden" name="child" value="${bTVO.child}">
 
 <input type="hidden" name="depFnum" value="${bTVO.depFnum}">
-<%-- <input type="hidden" name="bTVOList[0].depLoc" value="${dflightInfo.depAirportNm}">
-<input type="hidden" name="bTVOList[0].arrLoc" value="${dflightInfo.arrAirportNm}">
 
-<input type="hidden" name="bTVOList[0].depDate" value="${dflightInfo.depPlandTime}">
-<input type="hidden" name="bTVOList[0].arrDate" value="${dflightInfo.arrPlandTime}">
-
-<input type="hidden" name="bTVOList[0].vihicleId" value="${dflightInfo.vihicleId}">
-<input type="hidden" name="bTVOList[0].airline" value="${dflightInfo.airlineNm}">
-
-<input type="hidden" name="bTVOList[0].price" value="${dflightInfo.economyCharge}">
-<input type="hidden" name="bTVOList[0].flightTime" value="${dflightInfo.flightTime}">
- --%>
-
-<c:if test="${bTVO.kind == 2}">
-<!--  -->
+<c:if test="${bTVO.kind == '2'}">
 <input type="hidden" name="arrFnum" value="${bTVO.arrFnum}">
-<%-- <input type="hidden" name="bTVOList[1].depLoc" value="${aflightInfo.depAirportNm}">
-<input type="hidden" name="bTVOList[1].arrLoc" value="${aflightInfo.arrAirportNm}">
-
-<input type="hidden" name="bTVOList[1].depDate" value="${aflightInfo.depPlandTime}">
-<input type="hidden" name="bTVOList[1].arrDate" value="${aflightInfo.arrPlandTime}">
-
-<input type="hidden" name="bTVOList[1].vihicleId" value="${aflightInfo.vihicleId}">
-<input type="hidden" name="bTVOList[1].airline" value="${aflightInfo.airlineNm}">
-
-<input type="hidden" name="bTVOList[1].price" value="${aflightInfo.economyCharge}">
-<input type="hidden" name="bTVOList[1].flightTime" value="${aflightInfo.flightTime}"> --%>
 </c:if>
 
 
