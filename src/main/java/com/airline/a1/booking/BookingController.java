@@ -260,6 +260,9 @@ public class BookingController {
 				
 				bookingService.bookingInsert(adult);
 				
+				//가격
+				bookingService.priceCount(adult);
+				
 				if (bookingTicketVO.getKind().equals("2")) {
 					//flightnum 오는편 만들기
 					adult.setFlightBNum("flightBNum");
@@ -270,6 +273,11 @@ public class BookingController {
 					adult.setArrFnum(dep);
 					
 					bookingService.bookingInsert(adult);
+					
+					//가격
+					adult.setDepFnum(dep);
+					adult.setArrFnum(arr);
+					bookingService.priceCount(adult);
 				}
 			}//어른 반복문 끝
 		}//어른 끝
@@ -310,6 +318,9 @@ public class BookingController {
 				
 				bookingService.bookingInsert(child);
 				
+				//가격
+				bookingService.priceCount(child);
+				
 				//왕복일때
 				if (bookingTicketVO.getKind().equals("2")) {
 					//flightnum 오는편 만들기
@@ -321,11 +332,15 @@ public class BookingController {
 					child.setArrFnum(dep);
 					
 					bookingService.bookingInsert(child);
+					
+					//가격
+					child.setDepFnum(dep);
+					child.setArrFnum(arr);
+					bookingService.priceCount(child);
 				}
 			}//어린이 반복문 끝
 		}//어린이 끝
 		
-
 		
 	}
 
