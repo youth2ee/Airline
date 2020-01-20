@@ -15,5 +15,16 @@ window.onload = function(){
 }
 
 
+//페이지 로딩완료 이후 로딩이미지 다시 필요하면 함수 호출
+
+//로딩이미지 띄우기
+function LS(){
+	$("#loading_oh").css("display", "block");
+}
+
+//로딩이미지 없애기
+function LE(){
+	$("#loading_oh").css("display", "none");
+}
 
 </script>

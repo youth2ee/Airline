@@ -167,7 +167,12 @@ label { /* 주차구역 */
 </div>
 </form>
 </div>
+
+<button class="ls">LS</button>
+<button class="le">LE</button>
+
 <script type="text/javascript">
+		
 
 	//시작일데이터 받기
 	var startDate = $("#startDate").val();
