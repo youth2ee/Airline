@@ -148,13 +148,12 @@ header
 <button id="btn">결제</button>
 
 <script type="text/javascript">
-
-
 $('.price').each(function (index, item) { 
 	console.log(item); 
 	var r = item.split("원");
 	$('#priceDiv').append(r);
 });
+
 
 $('.flightID').each(function (index, item) { 
 	console.log(item); 
@@ -168,7 +167,6 @@ $('.flightID').each(function (index, item) {
 $('#btn').click(function(){
 	window.open("../imPay/imPayList?name=사과&amount=1000", "이니시스",  "width=825px,height=600px");
 });
-
 </script>
 
 
