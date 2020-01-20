@@ -289,7 +289,7 @@ class AirlineApplicationTests {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+		System.out.println("끝");
 	}
 
 	// @Test
