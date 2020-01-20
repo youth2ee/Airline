@@ -120,8 +120,8 @@
                             </form>
                         </div>             
                     </div>
-                 
                 </div>
+                 
  
  
  <!-- 공항검색 -->
@@ -281,10 +281,11 @@ $('input:radio[name=kind]').click(function(){
 		}); 
 
 /**** 공항검색 끝 ****/
+
  
  
  /***** 공항유효성검사 *****/
- $('body').on("click",'#booking_btn',function(){
+$('body').on("click",'#booking_btn',function(){
 
 		var z = document.getElementById("loc").value;
 						
@@ -325,7 +326,23 @@ $('input:radio[name=kind]').click(function(){
 						$('#frm').submit();
 					}
  }	
- );
+ );  
+
+
+
+
+/*  $('body').on("click",'#booking_btn',function(){
+
+	 var deploc = $('#loc').val();
+ 	var arrloc = $('#arrloc').val();
+	<c:forEach items="${airportList}" var = "airPort">
+
+	
+	</c:forEach>
+ 	
+
+	 }); */
+
  
  /***** 공항유효성검사  끝*****/
  
