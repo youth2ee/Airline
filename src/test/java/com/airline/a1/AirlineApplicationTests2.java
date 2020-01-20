@@ -103,13 +103,15 @@ class AirlineApplicationTests2 {
 				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 
 					Element eElement = (Element) nNode;
-					System.out.println("######################");
-					System.out.println(eElement.getTextContent());
-					System.out.println("출발공항명  : " + getTagValue("arp", eElement));
-					System.out.println("도착공항명 : " + getTagValue("odp", eElement));
-					System.out.println("국내/국제구분 : " + getTagValue("tof", eElement));
-					System.out.println("운항거리 : " + getTagValue("km", eElement));
-					System.out.println("운항시간 : " + getTagValue("time", eElement));
+						/*
+						 * System.out.println("######################");
+						 * System.out.println(eElement.getTextContent()); System.out.println("출발공항명  : "
+						 * + getTagValue("arp", eElement)); System.out.println("도착공항명 : " +
+						 * getTagValue("odp", eElement)); System.out.println("국내/국제구분 : " +
+						 * getTagValue("tof", eElement)); System.out.println("운항거리 : " +
+						 * getTagValue("km", eElement)); System.out.println("운항시간 : " +
+						 * getTagValue("time", eElement));
+						 */
 					
 					List<AirportVO> air1 = airportMapper.airportList();
 					List<AirportVO> air2 = airportMapper.airportList();
@@ -118,20 +120,22 @@ class AirlineApplicationTests2 {
 						
 						System.out.println(a1.getCityCode());
 						if(getTagValue("arp", eElement).equals(a1.getCityCode())) {
-							System.out.println("찾음");
-							System.out.println("출발공항명  : " + getTagValue("arp", eElement));
-							System.out.println(a1.getCityCode());
+								/*
+								 * System.out.println("찾음"); System.out.println("출발공항명  : " + getTagValue("arp",
+								 * eElement)); System.out.println(a1.getCityCode());
+								 */
 							
 							for(AirportVO a2 : air2) {
 								
 								System.out.println(a2.getCityCode());
 								if(getTagValue("odp", eElement).equals(a2.getCityCode())) {
 									
-									System.out.println("완전 찾았다.");
-									System.out.println("출발공항명  : " + getTagValue("arp", eElement));
-									System.out.println("도착공항명 : " + getTagValue("odp", eElement));
-									System.out.println(a1.getCityCode());
-									System.out.println(a2.getCityCode());
+										/*
+										 * System.out.println("완전 찾았다."); System.out.println("출발공항명  : " +
+										 * getTagValue("arp", eElement)); System.out.println("도착공항명 : " +
+										 * getTagValue("odp", eElement)); System.out.println(a1.getCityCode());
+										 * System.out.println(a2.getCityCode());
+										 */
 									
 									FlightDataVO flightDataVO = new FlightDataVO();
 									flightDataVO.setFlightKm(getTagValue("km", eElement));

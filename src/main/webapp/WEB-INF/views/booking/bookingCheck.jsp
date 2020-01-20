@@ -39,10 +39,52 @@ header
 
 
 <section>
-<div id="title">운임 확인</div>
+<div id="title">운임 가격</div>
 <div id="tmsg">운임이 정상적으로 입력되었는지 최종확인 후, 운임 조건 및 규정을 확인하시기 바랍니다.</div>
 
+<table>
+<tr>
+<td>탑승객</td>
+<td>왕복/편도</td>
+<td>이름</td>
+<td>원가</td>
+<td>쿠폰명</td>
+<td>할인내역</td>
+<td>유류할증료</td>
+<td>공항이용료</td>
+<td>총 금액</td>
+</tr>
+<c:forEach items="${alist}" var="adult">
+<tr>
+<td>성인</td>
+<c:if test="${adult.kind}">
+<td></td>
+</c:if>
+<td>${adult.name}</td>
+<td>${adult.depPriceVO.price}</td>
+<td>${adult.depPriceVO.couName}</td>
+<td>- ${adult.depPriceVO.couponDis}</td>
+<td>+ ${adult.depPriceVO.fuelTax}</td>
+<td>+ ${adult.depPriceVO.airportTax}</td>
+<td>= ${adult.depPriceVO.totalPrice}</td>
+</tr>
 
+${adult.depPriceVO.couName}
+${adult.depPriceVO.price}
+- ${adult.depPriceVO.couponDis}
++ ${adult.depPriceVO.fuelTax}
++ ${adult.depPriceVO.airportTax}
+= ${adult.depPriceVO.totalPrice}
+<br>
+${adult.arrPriceVO.couName}
+${adult.arrPriceVO.price}
+- ${adult.arrPriceVO.couponDis}
++ ${adult.arrPriceVO.fuelTax}
++ ${adult.arrPriceVO.airportTax}
+= ${adult.arrPriceVO.totalPrice}
+
+</c:forEach>
+</table>
 
 <div>
 

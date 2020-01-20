@@ -1,12 +1,9 @@
 package com.airline.a1.booking;
 
 import java.util.List;
-
-import lombok.Builder;
 import lombok.Data;
 
 @Data
-@Builder
 public class BookingPriceVO {
 	
 	private int bpnum;
@@ -17,16 +14,14 @@ public class BookingPriceVO {
 	private String couName;
 	private int couponDis;
 	
-	@Builder.Default 
-	private int fuelTax = 3300;
-	
-	@Builder.Default 
-	private int airportTax = 4000;
+	private int fuelTax;
+	private int airportTax;
 	
 	private int totalPrice;
 	
+	private int mileagePlus;
+
 	private String memberNum;
-	private String mileagePlus;
 	private String id;
 	
 	
