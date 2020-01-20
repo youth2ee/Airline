@@ -62,6 +62,10 @@ public class BookingController {
 		List<BookingVO> ddates = new ArrayList<BookingVO>();
 		List<BookingVO> adates = new ArrayList<BookingVO>();
 		
+		List<BookingTicketVO> depDate = new ArrayList<BookingTicketVO>();
+		
+		
+		
 		if (bookingTicketVO.equals("편도")) {
 			ddate = date.substring(6) + date.substring(0, 2) + date.substring(3, 5);
 			System.out.println(ddate);
@@ -100,8 +104,11 @@ public class BookingController {
 			}
 		
 			//
-			bookingTicketVO.setDepLoc(bookingVO.getArrLoc());
-			bookingTicketVO.setArrLoc(bookingVO.getDepLoc());
+			String depLoc = bookingTicketVO.getDepLoc();
+			String arrLoc = bookingTicketVO.getArrLoc();
+			
+			bookingTicketVO.setDepLoc(arrLoc);
+			bookingTicketVO.setArrLoc(depLoc);
 			
 			adate = date.substring(19) + date.substring(13, 15) + date.substring(16, 18) ;
 			bookingTicketVO.setDepStartTime(adate);
