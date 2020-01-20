@@ -360,7 +360,7 @@ public class BookingController {
 
 		ModelAndView mv = new ModelAndView();
 	
-		List<BookingVO> ar = bookingService.airportDepList(arrLoc);	
+		List<BookingTicketVO> ar = bookingService.airportDepList(arrLoc);	
 		
 		 mv.addObject("depLoc", ar); 
 		 mv.setViewName("booking/common/result");
@@ -373,5 +373,7 @@ public class BookingController {
 	public void btest() {
 
 	}
+	
+	
 	 
 }

@@ -91,7 +91,7 @@
                                                                 <span class="name">Adults</span>
                                                                 <div class="quantity quantity1">
                                                                     <span class="minus">-</span>
-                                                                    <input class="inputQty" type="number" min="0" value="1" name = "adults">
+                                                                    <input class="inputQty" type="number" min="0" value="1" name = "adult">
                                                                     <span class="plus">+</span>
                                                                 </div>
                                                             </li>
@@ -99,7 +99,7 @@
                                                                 <span class="name">Children</span>
                                                                 <div class="quantity quantity2">
                                                                     <span class="minus">-</span>
-                                                                    <input class="inputQty" type="number" min="0" value="0" name = "children">
+                                                                    <input class="inputQty" type="number" min="0" value="0" name = "child">
                                                                     <span class="plus">+</span>
                                                                 </div>
                                                             </li>
@@ -285,7 +285,7 @@ $('input:radio[name=kind]').click(function(){
  
  
  /***** 공항유효성검사 *****/
-$('body').on("click",'#booking_btn',function(){
+/*  $('body').on("click",'#booking_btn',function(){
 
 
 		var z = document.getElementById("loc").value;
@@ -330,9 +330,76 @@ $('body').on("click",'#booking_btn',function(){
 					}
  }	
  );  
+ */
+ 
+/*   $('body').on("click",'#booking_btn',function(){
+	 
+	var loc = $('#loc').val();
+	var arrloc = $('#arrloc').val();
+
+ 	var check = true;
+	 
+	<c:forEach items="${airportList}" var="airPort">				
+	if('${airPort}' == loc){	
+						check = false;			
+
+					
+					return false;
+		}else{
+					check = true;
+			}	
+			
+	</c:forEach>
+
+	
+ 	<c:forEach items="${depLoc}" var="airPort">			
+	if('${depLoc}' == arrloc){						
+					arrloc.trim();
+					alert("ok");
+					return false;
+		}else{
+					alert("no");
+			}			
+	</c:forEach> 
 
 
+	if(check == 1 || check2 == 1){
+				alert("출발지 또는 도착지를 올바르게 입력해주세요")
+	}else if(check == 2 && check2 == 2){
+				$('#frm').submit();
+		}
+	
+	
 
+	 }); */
+	  
+
+	  $('body').on("click",'#booking_btn',function(){
+			var loc = $('#loc').val().trim();
+			var arrloc = $('#arrloc').val().trim();
+
+			alert(loc);
+			alert(arrloc);
+		  	
+			  $.ajax({
+				url : "airportCheck",
+				data :{
+						depLoc:loc,
+						arrLoc:arrloc
+					},
+				type : "GET",
+				success : function(data){
+						alert("success");
+
+
+					},error:function(){
+							alert("fail");
+
+						}
+		  });
+	  
+	  });
+	  
 
  
  /***** 공항유효성검사  끝*****/

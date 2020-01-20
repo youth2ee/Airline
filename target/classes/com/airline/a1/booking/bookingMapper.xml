@@ -14,7 +14,7 @@
 select * from flightData where depAirportNm = #{depLoc} and arrAirportNm = #{arrLoc} and depPlandTime like concat(#{depStartTime},'%') order by depPlandTime asc
 </select>
 
-<select id="airportDepList" resultType="com.airline.a1.booking.BookingVO" parameterType="com.airline.a1.booking.BookingVO">
+<select id="airportDepList" resultType="com.airline.a1.booking.BookingTicketVO" parameterType="com.airline.a1.booking.BookingTicketVO">
 	select distinct depAirportNm from flightData where arrAirportNm = #{arrLoc} order by depAirportNm asc 
 </select>
 
