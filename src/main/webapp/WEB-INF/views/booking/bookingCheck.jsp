@@ -59,7 +59,7 @@ header
 <tr><td> 
 <c:forEach items="${adult.flightDataVO}" var="finfo">
 <table style="background-color: gray; float: left;">
-<tr><td>${finfo.vihicleId}</td></tr>
+<tr><td class="flightID">${finfo.vihicleId}</td></tr>
 <tr><td>${finfo.airlineNm}</td></tr>
 <tr><td>${finfo.depPlandTime}</td></tr>
 <tr><td>${finfo.depAirportNm}</td></tr>
@@ -97,7 +97,7 @@ header
 <tr><td> 
 <c:forEach items="${children.flightDataVO}" var="finfoc">
 <table style="background-color: gray; float: left;">
-<tr><td>${finfoc.vihicleId}</td></tr>
+<tr><td class="flightID">${finfoc.vihicleId}</td></tr>
 <tr><td>${finfoc.airlineNm}</td></tr>
 <tr><td>${finfoc.depPlandTime}</td></tr>
 <tr><td>${finfoc.depAirportNm}</td></tr>
@@ -129,11 +129,10 @@ header
 <div id="priceDiv">
 <h1>가격</h1>
 
+</div>
 
-
-
-
-
+<div id="flightDiv">
+<h1>편명</h1>
 
 </div>
 
@@ -146,16 +145,24 @@ header
 
 
 
-<button id="btn"> 결제 </button>
+<button id="btn">결제</button>
 
 <script type="text/javascript">
 
 
 $('.price').each(function (index, item) { 
 	console.log(item); 
-	$('#priceDiv').append(item);
+	var r = item.split("원");
+	$('#priceDiv').append(r);
 });
 
+$('.flightID').each(function (index, item) { 
+	console.log(item); 
+	item = item.split("원");
+	$('#flightDiv').append(item);
+
+	
+});
 
 
 $('#btn').click(function(){
