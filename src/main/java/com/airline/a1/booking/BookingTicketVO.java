@@ -2,6 +2,8 @@ package com.airline.a1.booking;
 
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import lombok.Data;
 
 @Data
