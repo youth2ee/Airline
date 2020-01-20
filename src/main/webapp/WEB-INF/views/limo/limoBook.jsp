@@ -72,12 +72,12 @@
 								<c:forEach begin="1" end="45" var="limo" varStatus="vo">
 									<c:choose>
 										<c:when test="${vo.current%4 eq 2 && vo.current lt 40}">
-											<label class="limo" style="margin-right: 43px; cursor: pointer;">
+											<label class="limo" title="${vo.index}" style="margin-right: 43px; cursor: pointer;">
 												<input type="checkbox" name="seat" class="lim" id="${vo.current}" value="${vo.current}" style="display: none;">		
 											</label>
 										</c:when>
 										<c:otherwise>
-											<label class="limo" style="cursor: pointer;">
+											<label class="limo" title="${vo.index}" style="cursor: pointer;">
 												<input type="checkbox" name="seat" class="lim" id="${vo.current}" value="${vo.current}" style="display: none;">
 											</label>
 										</c:otherwise>
@@ -273,12 +273,12 @@
 		if($(this).parent().hasClass('abcd')){
 			$(this).parent().removeClass('abcd');
 			// 모달 내 seat영역에 좌석번호 재 선택시 삭제
-			$('.select_seat_text').empty();
+			$('#d'+lim_M).remove();
 			count --;
 		}else if(count < person){
 			$(this).parent().addClass('abcd');
 			// 모달 내 seat영역에 좌석번호 추가
-			$(".select_seat_text").append('<span class='+lim_M+'>'+lim_M+'번'+'</span>');
+			$(".select_seat_text").append('<span id="d'+lim_M+'" class='+lim_M+'>'+lim_M+'번'+'</span>');
 			count ++;
 		}else{
 			alert("더 이상 선택할 수 없습니다.");
@@ -286,7 +286,28 @@
 		}
 
 	});
-	
+
+
+
+/* 	$(".limo").click(function(){
+		var lim_M = $(this).children().val();
+		if($(this).hasClass('abcd')){
+			$(this).removeClass('abcd');
+			// 모달 내 seat영역에 좌석번호 재 선택시 삭제
+			$('#'+lim_M).remove();
+// 			$('.select_seat_text').empty();
+			count --;
+		}else if(count < person){
+			$(this).addClass('abcd');
+			// 모달 내 seat영역에 좌석번호 추가
+			$(".select_seat_text").append('<span id='+lim_M+'>'+lim_M+'번'+'</span>');
+			count ++;
+		}else{
+			alert("더 이상 선택할 수 없습니다.");
+			$(this).children().prop("checked", false);
+		}
+
+	}); */
 	
 	
 </script>
