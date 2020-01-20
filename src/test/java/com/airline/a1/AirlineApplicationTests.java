@@ -37,6 +37,11 @@ class AirlineApplicationTests {
 	@Autowired
 	private BusVO busVO;
 
+	@Test()
+	void apiTest6() throws Exception {
+		
+	}
+	
 	//@Test
 	void apiTest5() throws Exception {
 		// 항공정보 + 운임
@@ -133,7 +138,7 @@ class AirlineApplicationTests {
 		System.out.println("끝");
 	}
 
-	@Test
+	//@Test
 	void apiTest4() throws Exception {
 		// 항공정보 + 운임
 		BufferedReader br = null;
@@ -157,6 +162,7 @@ class AirlineApplicationTests {
 
 	}
 
+
 	 //@Test
 	void apiTest3() throws Exception {
 		// 항공정보 + 운임
@@ -173,7 +179,7 @@ class AirlineApplicationTests {
 					String urlstr = "http://openapi.tago.go.kr/openapi/service/DmstcFlightNvgInfoService/getFlightOpratInfoList?"
 							+ "serviceKey=iEDBbpkkNQN604mbzvOvbCbGl0rXiyk4SdUBO%2FqhREGGDL5QrF2SrrZzf3l2%2BUNCeiBD97RtxaPQZaL9VqVR%2Fg%3D%3D&"
 							+ "numOfRows=100&" + "depAirportId=" + depAp + "&" + "arrAirportId=" + arrAp + "&"
-							+ "depPlandTime=20200116"; // 출발일 // 항공사ID
+							+ "depPlandTime=20200119"; // 출발일 // 항공사ID
 
 					URL url = new URL(urlstr);
 					HttpURLConnection urlconnection = (HttpURLConnection) url.openConnection();
@@ -205,7 +211,14 @@ class AirlineApplicationTests {
 							if (eElement.getElementsByTagName("airlineNm").getLength() != 0) {
 								System.out.println("항공사명 : " + getTagValue("airlineNm", eElement));
 								flightDataVO.setAirlineNm(getTagValue("airlineNm", eElement));
-							} else {
+							} else if(eElement.getElementsByTagName("vihicleId").toString().contains("FGW") && eElement.getElementsByTagName("airlineNm").getLength() != 0) {
+								flightDataVO.setAirlineNm("플라이 강원");
+							} else if (eElement.getElementsByTagName("vihicleId").toString().contains("HGG") && eElement.getElementsByTagName("airlineNm").getLength() != 0) {
+								flightDataVO.setAirlineNm("하이에어");
+							} else if(eElement.getElementsByTagName("vihicleId").toString().contains("RS") && eElement.getElementsByTagName("airlineNm").getLength() != 0) {
+								flightDataVO.setAirlineNm("에어서울");
+							}
+							else {
 								System.out.println("항공사명 : 0");
 								flightDataVO.setAirlineNm("0");
 							}
@@ -245,7 +258,12 @@ class AirlineApplicationTests {
 								System.out.println("도착공항  : 0");
 								flightDataVO.setArrAirportNm("0");
 							}
-							airportDataMapper.flightDataInput(flightDataVO);
+							if(!(flightDataVO.getDepAirportNm().contains("인천") && flightDataVO.getArrAirportNm().contains("인천"))) {
+								//airportDataMapper.flightDataInput(flightDataVO);
+							} else {
+								System.out.println("인천임");
+							}
+							
 						}
 					}
 				}

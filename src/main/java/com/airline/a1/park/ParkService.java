@@ -60,17 +60,25 @@ public class ParkService {
 	}
 	
 	
+	//주차장조회
+	public pInfoVO parkWhere(pInfoVO pInfoVO) throws Exception{
+		return parkMapper.parkWhere(pInfoVO);
+	}
+	
 	//주차조회
 	public List<pReservationVO> parkCheck(pReservationVO pReservationVO) throws Exception{
 		
 		return parkMapper.parkCheck(pReservationVO);
 	}
 	
+	
+	
 	//인천공항 주차정보 호출
 	public void test() throws Exception{
 		System.out.println("hello");
         StringBuilder urlBuilder = new StringBuilder("http://openapi.airport.kr/openapi/service/StatusOfParking/getTrackingParking"); /*URL*/
-        urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + "=QZHG0poXIbqgwOTVR4fiVzbVQ0Pmuz5lkYnHKmazdB%2F5VtUfkpt42I%2BSmw2F5XFUbX1%2Bmm8NaH5BLRz80XVUaA%3D%3D"); /*Service Key*/
+        urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + "=QZHG0poXIbqgwOTVR4fiVzbVQ0Pmuz5lkYnHKmazdB%2F5VtUfkpt42I%2BSmw2F5XFUbX1%2Bmm8NaH5BLRz80XVUaA%3D%3D");/*Service Key*/
+        
         //urlBuilder.append("&" + URLEncoder.encode("ServiceKey","UTF-8") + "=" + URLEncoder.encode("QZHG0poXIbqgwOTVR4fiVzbVQ0Pmuz5lkYnHKmazdB%2F5VtUfkpt42I%2BSmw2F5XFUbX1%2Bmm8NaH5BLRz80XVUaA%3D%3D", "UTF-8")); /*공공데이터포털에서 받은 인증키*/
         urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /*페이지번호*/
         urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("15", "UTF-8")); /*한 페이지 결과 수*/
@@ -83,8 +91,9 @@ public class ParkService {
 				+ "schDate=20200113&"
 				+ "numOfRows=100";
         
-        URL url = new URL(urlBuilder.toString());
-        
+        String urls = "http://openapi.airport.kr/openapi/service/FacilitiesInformation/getFacilitesInfo?serviceKey=QZHG0poXIbqgwOTVR4fiVzbVQ0Pmuz5lkYnHKmazdB%2F5VtUfkpt42I%2BSmw2F5XFUbX1%2Bmm8NaH5BLRz80XVUaA%3D%3D&pageNo=1&numOfRows=10&lang=K&lcduty=Y&arrordep=A";
+        //URL url = new URL(urlBuilder.toString());
+        URL url = new URL(urls);
         System.out.println(urlBuilder.toString());
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("GET");
@@ -158,8 +167,8 @@ public class ParkService {
 			Document doc = dBuilder.parse(urlstr);
 			doc.getDocumentElement().normalize();
 			NodeList nList = doc.getElementsByTagName("item");
-			System.out.println("Root element: " + doc.getDocumentElement().getNodeName());
-			System.out.println("파싱할 리스트 수 : " + nList.getLength());
+			//System.out.println("Root element: " + doc.getDocumentElement().getNodeName());
+			//System.out.println("파싱할 리스트 수 : " + nList.getLength());
 			for (int temp = 0; temp < nList.getLength(); temp++) {
 				Node nNode = nList.item(temp);
 				if (nNode.getNodeType() == Node.ELEMENT_NODE) {

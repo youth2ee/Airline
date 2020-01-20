@@ -49,6 +49,11 @@
 </table>
 
 
+
+체크박스 :<input type="checkbox">
+<br>
+<label>체크박스 :<input type="checkbox"></label>
+
 <script type="text/javascript">
 	window.onload = function(){
 

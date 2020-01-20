@@ -1,8 +1,13 @@
 package com.airline.a1.booking;
 
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
+
 import lombok.Data;
 
 @Data
+@Repository
 public class FlightDataVO {
 	
 	private int fnum;
@@ -21,7 +26,8 @@ public class FlightDataVO {
 	
 	private String depCityCode;
 	private String arrCityCode;
-
+	
+	//private BookingPriceVO priceVO;
 	
 	
 }
