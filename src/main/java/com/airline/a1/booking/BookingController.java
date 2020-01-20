@@ -59,12 +59,8 @@ public class BookingController {
 		List<FlightDataVO> dairList = new ArrayList<FlightDataVO>();
 		List<FlightDataVO> aairList = new ArrayList<FlightDataVO>();
 		
-		List<BookingVO> ddates = new ArrayList<BookingVO>();
-		List<BookingVO> adates = new ArrayList<BookingVO>();
-		
-		List<BookingTicketVO> depDate = new ArrayList<BookingTicketVO>();
-		
-		
+		List<BookingTicketVO> ddates = new ArrayList<>();
+		List<BookingTicketVO> adates = new ArrayList<>();
 		
 		if (bookingTicketVO.equals("편도")) {
 			ddate = date.substring(6) + date.substring(0, 2) + date.substring(3, 5);
@@ -83,7 +79,7 @@ public class BookingController {
 				LocalDateTime tomorrow = ofDateTime.plusDays(i);	
 				String day = tomorrow.toString();
 				
-				BookingVO dep = new BookingVO();
+				BookingTicketVO dep = new BookingTicketVO();
 				dep.setDay(day.substring(8, 10));
 				dep.setMonth(day.substring(5, 7));
 				dep.setYear(day.substring(0, 4));
@@ -125,7 +121,7 @@ public class BookingController {
 				LocalDateTime tomorrow = ofDateTime.plusDays(i);	
 				String day = tomorrow.toString();
 				
-				BookingVO dep = new BookingVO();
+				BookingTicketVO dep = new BookingTicketVO();
 				dep.setDay(day.substring(8, 10));
 				dep.setMonth(day.substring(5, 7));
 				dep.setYear(day.substring(0, 4));
@@ -137,7 +133,7 @@ public class BookingController {
 				LocalDateTime tomorrow2 = ofDateTime2.plusDays(i);
 				String day2 = tomorrow2.toString();
 
-				BookingVO arr = new BookingVO();
+				BookingTicketVO arr = new BookingTicketVO();
 				arr.setDay(day2.substring(8, 10));
 				arr.setMonth(day2.substring(5, 7));
 				arr.setYear(day2.substring(0, 4));
@@ -149,7 +145,7 @@ public class BookingController {
 		
 		ModelAndView mv = new ModelAndView();
 
-		mv.addObject("bookingVO", bookingVO);
+		mv.addObject("bookingVO", bookingTicketVO);
 		mv.addObject("Dlist", ddates);
 		mv.addObject("Alist", adates);
 		mv.addObject("DairList", dairList);
@@ -161,15 +157,11 @@ public class BookingController {
 	
 	
 	@GetMapping("dateSelect")
-	public ModelAndView dateSelect(BookingVO bookingVO) throws Exception {
+	public ModelAndView dateSelect( BookingTicketVO bookingTicketVO) throws Exception {
 		List<FlightDataVO> dairList = new ArrayList<FlightDataVO>();
 		List<FlightDataVO> aairList = new ArrayList<FlightDataVO>();
 
-		String date = bookingVO.getYear().substring(0, 4) + bookingVO.getMonth().substring(0, 2) + bookingVO.getMonth().substring(4, 6); //
-
-		BookingTicketVO bookingTicketVO = new BookingTicketVO();
-		bookingTicketVO.setDepLoc(bookingVO.getDepLoc());
-		bookingTicketVO.setArrLoc(bookingVO.getArrLoc());
+		String date = bookingTicketVO.getYear().substring(0, 4) + bookingTicketVO.getMonth().substring(0, 2) + bookingTicketVO.getMonth().substring(4, 6); //
 		bookingTicketVO.setDepStartTime(date);
 
 		dairList = bookingService.airList(bookingTicketVO);
@@ -178,7 +170,7 @@ public class BookingController {
 			flightDataVO.setArrTime(flightDataVO.getArrPlandTime().substring(8, 10) + ":" + flightDataVO.getArrPlandTime().substring(10));
 		}
 		
-		if (bookingVO.getKind() == 2) {
+		if (bookingTicketVO.getKind().equals("왕복")) {
 			aairList = bookingService.airList(bookingTicketVO);
 			for (FlightDataVO flightDataVO : aairList) {
 				flightDataVO.setDepTime(flightDataVO.getDepPlandTime().substring(8, 10) + ":" + flightDataVO.getDepPlandTime().substring(10));
@@ -187,7 +179,7 @@ public class BookingController {
 		} 
 
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("bookingVO", bookingVO);
+		mv.addObject("bookingVO", bookingTicketVO);
 		mv.addObject("DairList", dairList);
 		mv.addObject("AairList", aairList);
 		mv.setViewName("booking/common/dateList");

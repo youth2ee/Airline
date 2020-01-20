@@ -23,7 +23,7 @@ header
 <div id="top1">1
 <h5>출발 : ${bookingVO.depLoc}</h5>
 <h5>도착 : ${bookingVO.arrLoc}</h5>
-<c:if test="${bookingVO.kind == 1}">
+<c:if test="${bookingVO.kind == '편도'}">
 편도
 </c:if>
 </div>
@@ -31,14 +31,14 @@ header
 <div id="top2">2
 <h5>출발 : ${bookingVO.arrLoc}</h5>
 <h5>도착 : ${bookingVO.depLoc}</h5>
-<c:if test="${bookingVO.kind == 2}">
+<c:if test="${bookingVO.kind == '왕복'}">
 왕복
 </c:if>
 </div>
 
 <div id="top3">3 
-<h3>성인 : ${bookingVO.adults}명</h3>
-<h3>아동 : ${bookingVO.children}명</h3>
+<h3>성인 : ${bookingVO.adult}명</h3>
+<h3>아동 : ${bookingVO.child}명</h3>
 </div>
 
 <div id="top4">4 </div>
@@ -161,11 +161,11 @@ header
 <form action="./bookingWritePre" method="post">
 
 <input type="hidden" name="depFnum" id="dfnumf">
-<c:if test="${bookingVO.kind == '2'}">
+<c:if test="${bookingVO.kind == '왕복'}">
 <input type="hidden" name="arrFnum" id="afnumf">
 </c:if>
-<input type="hidden" name="adult" value="${bookingVO.adults}">
-<input type="hidden" name="child" value="${bookingVO.children}">
+<input type="hidden" name="adult" value="${bookingVO.adult}">
+<input type="hidden" name="child" value="${bookingVO.child}">
 <input type="hidden" name="kind" value="${bookingVO.kind}">
 
 <button style="cursor: pointer;">다음</button>
@@ -196,7 +196,7 @@ $('.date1').click(function(){
 			month:d2,
 			depLoc:'${bookingVO.depLoc}',
 			arrLoc:'${bookingVO.arrLoc}',
-			kind:1
+			kind:'편도'
 			},
 		type : "GET",
 		url : "./dateSelect",
@@ -226,7 +226,7 @@ $('.date2').click(function(){
 			month:d12,
 			depLoc:'${bookingVO.arrLoc}',
 			arrLoc:'${bookingVO.depLoc}',
-			kind:2
+			kind:'왕복'
 			},
 		type : "GET",
 		url : "./dateSelect",
