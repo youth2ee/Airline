@@ -285,94 +285,6 @@ $('input:radio[name=kind]').click(function(){
  
  
  /***** 공항유효성검사 *****/
-/*  $('body').on("click",'#booking_btn',function(){
-
-
-		var z = document.getElementById("loc").value;
-						
-
-		var b = true;
-		
-		<c:forEach items="${airportList}" var="airPort">				
-			if('${airPort}' == z){						
-							b = false;	
-
-
-							return false;
-				}else{
-
-						b = true;
-					}			
-		</c:forEach>
-
-
-
-		 var y = document.getElementById("arrloc").value;
-			
-			var a = true;
-			
-			<c:forEach items="${airportList}" var="airPort">				
-				if('${airPort}' == y){						
-								a = false;	
-							return false;
-					}else{
-							a = true;
-							
-					
-						}			
-			</c:forEach>
-		
-
-			if(b == true && a ==true){
-					alert(" 입력해주세요")
-				}else{
-						$('#frm').submit();
-					}
- }	
- );  
- */
- 
-/*   $('body').on("click",'#booking_btn',function(){
-	 
-	var loc = $('#loc').val();
-	var arrloc = $('#arrloc').val();
-
- 	var check = true;
-	 
-	<c:forEach items="${airportList}" var="airPort">				
-	if('${airPort}' == loc){	
-						check = false;			
-
-					
-					return false;
-		}else{
-					check = true;
-			}	
-			
-	</c:forEach>
-
-	
- 	<c:forEach items="${depLoc}" var="airPort">			
-	if('${depLoc}' == arrloc){						
-					arrloc.trim();
-					alert("ok");
-					return false;
-		}else{
-					alert("no");
-			}			
-	</c:forEach> 
-
-
-	if(check == 1 || check2 == 1){
-				alert("출발지 또는 도착지를 올바르게 입력해주세요")
-	}else if(check == 2 && check2 == 2){
-				$('#frm').submit();
-		}
-	
-	
-
-	 }); */
-	  
 
 	  $('body').on("click",'#booking_btn',function(){
 			var loc = $('#loc').val().trim();
@@ -408,13 +320,13 @@ $('input:radio[name=kind]').click(function(){
  
  
  
+ 
 /****** 도착지  *******/
 
 $('#arrloc').focus(function(){
 	
 	var depLoc = $("#loc").val(); 
-
-			var query = {depLoc : $("#loc").val()};
+	var query = {depLoc : $("#loc").val()};
 			
 			$.ajax({
 					url : "airportDepList",
@@ -423,26 +335,18 @@ $('#arrloc').focus(function(){
 					success : function(data){
 					
 						$("#depLocDiv").html(data);
-
-						
-							
+												
 						},error:function(){
 
 							console.log("fail");
 							}	
-
-				});	 
-			
+				});	 			
 });
  
- 
- 
-
-
 </script>
 
 
 </body>
 
 </html>
-<!-- end document-->
+
