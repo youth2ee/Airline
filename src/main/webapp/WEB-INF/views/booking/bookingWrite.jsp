@@ -6,7 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="../resources/css/reset.css" rel="stylesheet">
 <link href="../resources/css/booking/bookingWrite.css" rel="stylesheet">
+<c:import url="../template/boot.jsp"></c:import>
 </head>
 <body>
 booking write
@@ -16,17 +18,25 @@ header
 
 <div id="top">
 <div id="topWrap">
-<div id="top1">1
-<h5>출발 : ${bTVO.depInfo.depAirportNm}</h5>
-<h5>도착 : ${bTVO.depInfo.arrAirportNm}</h5>
+<div id="top1">1<br>
+출발 : ${bTVO.depInfo.depAirportNm}<br>
+도착 : ${bTVO.depInfo.arrAirportNm}<br>
+${bTVO.depInfo.depPlandTime}<br>
+${bTVO.depInfo.arrPlandTime}<br>
+${bTVO.depInfo.vihicleId}<br>
+${bTVO.depInfo.airlineNm}<br>
 <c:if test="${bTVO.kind == 1}">
 편도
 </c:if>
 </div>
-<div id="top2">2
-<h5>출발 : ${bTVO.depInfo.arrAirportNm}</h5>
-<h5>도착 : ${bTVO.depInfo.depAirportNm}</h5>
+<div id="top2">2<br>
+출발 : ${bTVO.depInfo.arrAirportNm}<br>
+도착 : ${bTVO.depInfo.depAirportNm}<br>
 <c:if test="${bTVO.kind == 2}">
+${bTVO.arrInfo.depPlandTime}<br>
+${bTVO.arrInfo.arrPlandTime}<br>
+${bTVO.arrInfo.vihicleId}<br>
+${bTVO.arrInfo.airlineNm}<br>
 왕복
 </c:if>
 </div>
@@ -34,7 +44,12 @@ header
 <h3>성인 : ${bTVO.adult}명</h3>
 <h3>아동 : ${bTVO.child}명</h3>
 </div>
-<div id="top4">4 </div>
+<div id="top4">4 
+${bTVO.depInfo.economyCharge}원
+<c:if test="${bTVO.kind == 2}">
+${bTVO.arrInfo.economyCharge}원
+</c:if>
+</div>
 </div>
 </div>
 
@@ -52,54 +67,13 @@ header
 </div>
 
 
-
-
 <section>
-<div id="title">운임 확인</div>
+<div id="title">탑승자 정보</div>
 <div id="tmsg">운임이 정상적으로 입력되었는지 최종확인 후, 운임 조건 및 규정을 확인하시기 바랍니다.</div>
-
-
-<div> 
-<c:if test="${bTVO.kind == '1'}">
-<div><h1>편도</h1></div>
-<hr>
-<div><h1>${bTVO.depInfo.depAirportNm}&#60;-&#62;${bTVO.depInfo.arrAirportNm}</h1></div>
-<div>
-${bTVO.depInfo.depPlandTime}
-${bTVO.depInfo.vihicleId}
-${bTVO.depInfo.airlineNm}
-${bTVO.depInfo.economyCharge}원
-</div>
-<hr>
-</c:if>
-
-<c:if test="${bTVO.kind == '2'}">
-<div><h1>왕복</h1></div>
-<hr>
-<div><h1>${bTVO.depInfo.depAirportNm}&#60;-&#62;${bTVO.depInfo.arrAirportNm}</h1></div>
-<div>
-${bTVO.depInfo.depPlandTime}
-${bTVO.depInfo.vihicleId}
-${bTVO.depInfo.airlineNm}
-${bTVO.depInfo.economyCharge}원
-</div>
-<div><h1>${bTVO.arrInfo.depAirportNm}&#60;-&#62;${bTVO.arrInfo.arrAirportNm}</h1></div>
-<div>
-${bTVO.arrInfo.depPlandTime}
-${bTVO.arrInfo.vihicleId}
-${bTVO.arrInfo.airlineNm}
-${bTVO.arrInfo.economyCharge}원
-</div>
-<hr>
-</c:if>
-
-</div>
 
 
 <form action="./bookingWrite" method="post">
 <div> 
-<h1>탑승자 정보</h1>
-<hr>
 
 <c:if test="${bTVO.adult != 0}">
 <c:forEach begin="1" end="${bTVO.adult}" varStatus="status"> 

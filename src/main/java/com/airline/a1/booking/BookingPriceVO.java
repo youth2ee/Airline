@@ -1,17 +1,33 @@
 package com.airline.a1.booking;
 
+import java.util.List;
+
+import lombok.Builder;
 import lombok.Data;
 
 @Data
+@Builder
 public class BookingPriceVO {
 	
-	private int realPrice;
+	private int bpnum;
+	private String flightBNum;
+	private int fnum;
+	private int price;
 	
-	//쿠폰 
-	private String cname; //쿠폰이름
-	private int cprice; //쿠폰으로 할인으로 차감되는 금액
-	private int ctotal; //쿠폰적용 후 금액
+	private String couName;
+	private int couponDis;
 	
-	//마일리지
-
+	@Builder.Default 
+	private int fuelTax = 3300;
+	
+	@Builder.Default 
+	private int airportTax = 4000;
+	
+	private int totalPrice;
+	
+	private String memberNum;
+	private String mileagePlus;
+	private String id;
+	
+	
 }

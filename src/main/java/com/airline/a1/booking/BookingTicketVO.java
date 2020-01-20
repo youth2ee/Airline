@@ -19,7 +19,6 @@ public class BookingTicketVO {
 	private String depLoc;
 	private String depStartTime;
 	private String depEndTime;
-	private String depPrice;
 	
 	private FlightDataVO depInfo;
 	
@@ -27,7 +26,6 @@ public class BookingTicketVO {
 	private String arrLoc;
 	private String arrStartTime;
 	private String arrEndTime;
-	private String arrPrice;
 	
 	private FlightDataVO arrInfo;
 	
@@ -52,6 +50,9 @@ public class BookingTicketVO {
 	
 	private String memberNum; //db
 	private String id; //db
+	
+	private BookingPriceVO depPriceVO;
+	private BookingPriceVO arrPriceVO;
 	
 	private String depCoupon;
 	private String arrCoupon;

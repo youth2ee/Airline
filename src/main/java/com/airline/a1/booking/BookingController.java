@@ -24,11 +24,27 @@ public class BookingController {
 
 	@Autowired
 	private BookingService bookingService;
+	
+	
 
 	@GetMapping("bookingMain")
 	public void bookingMain(Model model)throws Exception{
 		List<String> airport = bookingService.airportList();
 		model.addAttribute("airportList", airport);
+	}
+	
+	@PostMapping("airportDepList")
+	public ModelAndView airportDepList(HttpServletRequest req)throws Exception{
+		String arrLoc = req.getParameter("arrLoc");	
+		
+		ModelAndView mv = new ModelAndView();
+		
+		List<BookingVO> ar = bookingService.airportDepList(arrLoc);	
+		
+		mv.addObject("depLoc", ar); 
+		mv.setViewName("booking/common/result");
+		
+		return mv;
 	}
 
 	@PostMapping("bookingMain") 
@@ -220,19 +236,22 @@ public class BookingController {
 	}
 
 	@PostMapping("bookingWrite")
-	public void bookingWrite(BookingTicketVO bookingTicketVO) throws Exception {
+	public ModelAndView bookingWrite(BookingTicketVO bookingTicketVO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		//id
-		String id = "id";
+		String id = "test";
 		
 		///bookingNum 만들기
 		String bookingNum = "bnum";
+		
+		String memberNum = "111";
 		
 		//어른
 		if(bookingTicketVO.getAdultList() != null) {
 			for(BookingTicketVO adult : bookingTicketVO.getAdultList()) {
 				adult.setBookingNum(bookingNum);
 				adult.setId(id);
+				adult.setMemberNum(memberNum);
 				
 				//flightnum 가는편 만들기
 				adult.setFlightBNum("flightBNum");
@@ -266,6 +285,7 @@ public class BookingController {
 				
 				//가격
 				bookingService.priceCount(adult);
+				adult = bookingService.priceCount(adult);
 				
 				if (bookingTicketVO.getKind().equals("2")) {
 					//flightnum 오는편 만들기
@@ -281,7 +301,7 @@ public class BookingController {
 					//가격
 					adult.setDepFnum(dep);
 					adult.setArrFnum(arr);
-					bookingService.priceCount(adult);
+				   	adult = bookingService.priceCount(adult);
 				}
 			}//어른 반복문 끝
 		}//어른 끝
@@ -291,6 +311,7 @@ public class BookingController {
 			for(BookingTicketVO child : bookingTicketVO.getChildList()) {
 				child.setBookingNum(bookingNum);
 				child.setId(id);
+				child.setMemberNum("111");
 				
 				//flightnum 가는편 만들기
 				child.setFlightBNum("flightBNum");
@@ -324,6 +345,7 @@ public class BookingController {
 				
 				//가격
 				bookingService.priceCount(child);
+				child = bookingService.priceCount(child);
 				
 				//왕복일때
 				if (bookingTicketVO.getKind().equals("2")) {
@@ -341,33 +363,22 @@ public class BookingController {
 					child.setDepFnum(dep);
 					child.setArrFnum(arr);
 					bookingService.priceCount(child);
+					child = bookingService.priceCount(child);
 				}
 			}//어린이 반복문 끝
 		}//어린이 끝
 		
+		mv.addObject("alist", bookingTicketVO.getAdultList());
+		mv.addObject("clist", bookingTicketVO.getChildList());
+		mv.setViewName("booking/bookingCheck");
 		
+		return mv;
 	}
 
 	@GetMapping("bookingCheck")
 	public void bookingCheck() {
-
-		
 	}
 	
-	@PostMapping("airportDepList")
-	public ModelAndView airportDepList(HttpServletRequest req)throws Exception{
-		String arrLoc = req.getParameter("arrLoc");	
-
-		ModelAndView mv = new ModelAndView();
-	
-		List<BookingVO> ar = bookingService.airportDepList(arrLoc);	
-		
-		 mv.addObject("depLoc", ar); 
-		 mv.setViewName("booking/common/result");
-		
-		return mv;
-
-	}
 
 	@GetMapping("btest")
 	public void btest() {

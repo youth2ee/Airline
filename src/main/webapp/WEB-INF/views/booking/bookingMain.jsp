@@ -113,7 +113,7 @@
                                         
                                    
                                     <div class="col-2">
-                                        <button class="btn-submit" id ="booking_btn" type="button">search</button>
+                                        <button class="btn-submit" id ="booking_btn" type="submit">search</button>
                                     </div>
                     
                                 </div>
@@ -285,7 +285,7 @@ $('input:radio[name=kind]').click(function(){
  
  
  /***** 공항유효성검사 *****/
-$('body').on("click",'#booking_btn',function(){
+/* $('body').on("click",'#booking_btn',function(){
 
 
 		var z = document.getElementById("loc").value;
@@ -330,7 +330,7 @@ $('body').on("click",'#booking_btn',function(){
 					}
  }	
  );  
-
+ */
 
 
 
