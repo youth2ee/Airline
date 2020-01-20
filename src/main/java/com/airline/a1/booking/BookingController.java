@@ -24,6 +24,56 @@ public class BookingController {
 
 	@Autowired
 	private BookingService bookingService;
+	
+	@PostMapping("airportDepList")
+	public ModelAndView airportDepList(HttpServletRequest req)throws Exception{
+		String depLoc = req.getParameter("depLoc");	
+
+		ModelAndView mv = new ModelAndView();
+	
+		List<BookingTicketVO> ar = bookingService.airportDepList(depLoc);	
+		
+		 mv.addObject("arrLoc", ar); 
+		 mv.setViewName("booking/common/result");
+		
+		return mv;
+
+	}
+	
+	@ResponseBody
+	@GetMapping("airportCheck")
+	public boolean airportCheck(BookingTicketVO bookingTicketVO)throws Exception{
+	
+		String depLoc = bookingTicketVO.getDepLoc();
+
+		String arrLoc = bookingTicketVO.getArrLoc();
+		
+		List<String> ar= bookingService.airportList();
+		
+		List<BookingTicketVO> ar2 = bookingService.airportDepList(depLoc);
+
+		boolean check = false;
+				
+		for(String airPort : ar) {
+			
+			if(depLoc.equals(airPort)) {
+				
+				
+				for(BookingTicketVO bookingTicketVO2 : ar2) {
+					
+					if(arrLoc.equals(bookingTicketVO2.getArrAirportNm())) {
+						check = true;
+					}
+					
+					
+				}	
+			}
+		}
+		
+		return check;
+	}
+	
+	
 
 	@GetMapping("bookingMain")
 	public void bookingMain(Model model)throws Exception{
@@ -353,60 +403,7 @@ public class BookingController {
 
 		
 	}
-	
-	@PostMapping("airportDepList")
-	public ModelAndView airportDepList(HttpServletRequest req)throws Exception{
-		String depLoc = req.getParameter("depLoc");	
-
-		ModelAndView mv = new ModelAndView();
-	
-		List<BookingTicketVO> ar = bookingService.airportDepList(depLoc);	
 		
-		 mv.addObject("arrLoc", ar); 
-		 mv.setViewName("booking/common/result");
-		
-		return mv;
-
-	}
-
-	@GetMapping("btest")
-	public void btest() {
-
-	}
-	
-	@ResponseBody
-	@GetMapping("airportCheck")
-	public boolean airportCheck(BookingTicketVO bookingTicketVO)throws Exception{
-	
-		String depLoc = bookingTicketVO.getDepLoc();
-
-		String arrLoc = bookingTicketVO.getArrLoc();
-		
-		List<String> ar= bookingService.airportList();
-		
-		List<BookingTicketVO> ar2 = bookingService.airportDepList(depLoc);
-
-		boolean check = false;
-				
-		for(String airPort : ar) {
-			
-			if(depLoc.equals(airPort)) {
-				
-				
-				for(BookingTicketVO bookingTicketVO2 : ar2) {
-					
-					if(arrLoc.equals(bookingTicketVO2.getArrAirportNm())) {
-						check = true;
-					}
-					
-					
-				}	
-			}
-		}
-		
-		return check;
-	}
-	
 	
 	 
 }
