@@ -47,12 +47,12 @@
                             	
                             	<div class="radio-row" style="margin-bottom: 20px;">
                                     <label class="radio-container m-r-45">왕복
-                                        <input type="radio" name="kind" value ="2" id = "round" checked="checked">
+                                        <input type="radio" name="kind" value ="왕복" id = "round" checked="checked">
                                         <span class="radio-checkmark"></span>
                                     </label>     
                                                                
                                     <label class="radio-container m-r-45">편도
-                                        <input type="radio" name="kind" value="1"  id="eachWay">
+                                        <input type="radio" name="kind" value="편도"  id="eachWay">
                                         <span class="radio-checkmark"></span>
                                     </label> 
                                 </div>
@@ -386,9 +386,13 @@ $('input:radio[name=kind]').click(function(){
 					},
 				type : "GET",
 				success : function(data){
-						alert("success");
-					/* 	$('#frm').submit(); */
-
+									
+					if(data == true){
+							$('#frm').submit();
+						}else{
+							alert("출발지나 도착지를 올바르게 입력하세요.");
+							}
+				
 
 					},error:function(){
 							alert("fail");
@@ -408,9 +412,9 @@ $('input:radio[name=kind]').click(function(){
 
 $('#arrloc').focus(function(){
 	
-	var arrLoc = $("#loc").val(); 
+	var depLoc = $("#loc").val(); 
 
-			var query = {arrLoc : $("#loc").val()};
+			var query = {depLoc : $("#loc").val()};
 			
 			$.ajax({
 					url : "airportDepList",

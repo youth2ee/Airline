@@ -25,8 +25,8 @@ public class BookingService {
 		return bookingMapper.oneSelect(flightDataVO);
 	}
 	
-	public List<BookingTicketVO> airportDepList(String arrLoc)throws Exception{
-			return bookingMapper.airportDepList(arrLoc);
+	public List<BookingTicketVO> airportDepList(String depLoc)throws Exception{
+			return bookingMapper.airportDepList(depLoc);
 		
 	}
 

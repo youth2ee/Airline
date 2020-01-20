@@ -11,7 +11,7 @@ public class BookingTicketVO {
 	private String bookingNum; //예약한 경우 한번에 생성
 	private String flightBNum; //예약한 인원마다 생성
 	
-	private String kind; //편도, 왕복 //db 편도1, 왕복2
+	private String kind; //편도, 왕복 //db 편도, 왕복
 	private String date;
 	private int adult; //인원수
 	private int child; //인원수

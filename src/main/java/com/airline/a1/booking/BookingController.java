@@ -356,13 +356,13 @@ public class BookingController {
 	
 	@PostMapping("airportDepList")
 	public ModelAndView airportDepList(HttpServletRequest req)throws Exception{
-		String arrLoc = req.getParameter("arrLoc");	
+		String depLoc = req.getParameter("depLoc");	
 
 		ModelAndView mv = new ModelAndView();
 	
-		List<BookingTicketVO> ar = bookingService.airportDepList(arrLoc);	
+		List<BookingTicketVO> ar = bookingService.airportDepList(depLoc);	
 		
-		 mv.addObject("depLoc", ar); 
+		 mv.addObject("arrLoc", ar); 
 		 mv.setViewName("booking/common/result");
 		
 		return mv;
@@ -374,39 +374,37 @@ public class BookingController {
 
 	}
 	
+	@ResponseBody
 	@GetMapping("airportCheck")
-	public ModelAndView airportCheck(BookingTicketVO bookingTicketVO)throws Exception{
-		ModelAndView mv = new ModelAndView();
+	public boolean airportCheck(BookingTicketVO bookingTicketVO)throws Exception{
+	
 		String depLoc = bookingTicketVO.getDepLoc();
-		List<String> ar= bookingService.airportList();
-		
-		for(String airPort : ar) {
-			if(depLoc == airPort) {
-				mv.setViewName("booking/bookingMain");	
-				
-			}else {
-				mv.addObject("message", "출발지를 올바르게 적어주세요");
-				mv.setViewName("booking/common/check");
-			}
-		}
-		
+
 		String arrLoc = bookingTicketVO.getArrLoc();
 		
-		List<BookingTicketVO> ar2 = bookingService.airportDepList(arrLoc);
+		List<String> ar= bookingService.airportList();
 		
-		for(BookingTicketVO bookingTicketVO2 : ar2) {
-			if(arrLoc == bookingTicketVO2.getArrLoc()) {
-				mv.setViewName("booking/bookingMain");
+		List<BookingTicketVO> ar2 = bookingService.airportDepList(depLoc);
+
+		boolean check = false;
 				
-			}else {
-				mv.addObject("message", "도착지를 올바르게 적어주세요");
-				mv.setViewName("booking/common/check");
-				
-			}
+		for(String airPort : ar) {
 			
+			if(depLoc.equals(airPort)) {
+				
+				
+				for(BookingTicketVO bookingTicketVO2 : ar2) {
+					
+					if(arrLoc.equals(bookingTicketVO2.getArrAirportNm())) {
+						check = true;
+					}
+					
+					
+				}	
+			}
 		}
 		
-		return mv;
+		return check;
 	}
 	
 	
