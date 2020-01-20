@@ -48,28 +48,9 @@ public class BookingController {
 	}
 
 	@PostMapping("bookingMain") 
-	public ModelAndView bookingMain(BookingVO bookingVO) throws Exception {
-		System.out.println(bookingVO.getAdults());
-		System.out.println(bookingVO.getChildren());
-		System.out.println(bookingVO.getDepLoc());
-		System.out.println(bookingVO.getArrLoc());
-		System.out.println(bookingVO.getDate());
-		System.out.println(bookingVO.getKind());
-		
-		BookingTicketVO bookingTicketVO = new BookingTicketVO();
-		
-		String kind = "편도";
-		if (bookingVO.getKind() == 2) {
-			kind = "왕복";
-		} 
-		
-		bookingTicketVO.setKind(kind);
-		bookingTicketVO.setDepLoc(bookingVO.getDepLoc());
-		bookingTicketVO.setArrLoc(bookingVO.getArrLoc());
-		bookingTicketVO.setAdult(bookingVO.getAdults());
-		bookingTicketVO.setChild(bookingVO.getChildren());
+	public ModelAndView bookingMain(BookingTicketVO bookingTicketVO) throws Exception {	
 
-		String date = bookingVO.getDate();
+		String date = bookingTicketVO.getDate();
 		String ddate = "";
 		String adate = "";
 		
@@ -79,7 +60,7 @@ public class BookingController {
 		List<BookingVO> ddates = new ArrayList<BookingVO>();
 		List<BookingVO> adates = new ArrayList<BookingVO>();
 		
-		if (bookingVO.getKind() == 1) {
+		if (bookingTicketVO.equals("편도")) {
 			ddate = date.substring(6) + date.substring(0, 2) + date.substring(3, 5);
 			System.out.println(ddate);
 			bookingTicketVO.setDepStartTime(ddate);
@@ -266,6 +247,11 @@ public class BookingController {
 				adult.setAdult(1);
 				adult.setDepFnum(bookingTicketVO.getDepFnum());
 				
+				FlightDataVO flightDataVO = new FlightDataVO();
+				flightDataVO.setFnum(bookingTicketVO.getDepFnum());
+				adult.setDepInfo(bookingService.oneSelect(flightDataVO));
+				
+		
 				adult.setResEmail(bookingTicketVO.getResEmail());
 				adult.setResECheck(bookingTicketVO.getResECheck());
 				adult.setResPhone(bookingTicketVO.getResPhone());
@@ -295,6 +281,14 @@ public class BookingController {
 					int arr = adult.getArrFnum();
 					adult.setDepFnum(arr);
 					adult.setArrFnum(dep);
+					
+					flightDataVO = new FlightDataVO();
+					flightDataVO.setFnum(bookingTicketVO.getDepFnum());
+					adult.setDepInfo(bookingService.oneSelect(flightDataVO));
+					
+					flightDataVO.setFnum(bookingTicketVO.getArrFnum());
+					adult.setArrInfo(bookingService.oneSelect(flightDataVO));
+					
 					
 					bookingService.bookingInsert(adult);
 					
@@ -326,6 +320,10 @@ public class BookingController {
 				child.setChild(1);
 				child.setDepFnum(bookingTicketVO.getDepFnum());
 				
+				FlightDataVO flightDataVO = new FlightDataVO();
+				flightDataVO.setFnum(bookingTicketVO.getDepFnum());
+				child.setDepInfo(bookingService.oneSelect(flightDataVO));
+				
 				child.setResEmail(bookingTicketVO.getResEmail());
 				child.setResECheck(bookingTicketVO.getResECheck());
 				child.setResPhone(bookingTicketVO.getResPhone());
@@ -356,6 +354,13 @@ public class BookingController {
 					int arr = child.getArrFnum();
 					child.setDepFnum(arr);
 					child.setArrFnum(dep);
+					
+					flightDataVO = new FlightDataVO();
+					flightDataVO.setFnum(bookingTicketVO.getDepFnum());
+					child.setDepInfo(bookingService.oneSelect(flightDataVO));
+					
+					flightDataVO.setFnum(bookingTicketVO.getArrFnum());
+					child.setArrInfo(bookingService.oneSelect(flightDataVO));
 					
 					bookingService.bookingInsert(child);
 					

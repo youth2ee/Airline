@@ -46,6 +46,8 @@ header
 <tr>
 <td>탑승객</td>
 <td>왕복/편도</td>
+<td>출발지</td>
+<td>도착지</td>
 <td>이름</td>
 <td>원가</td>
 <td>쿠폰명</td>
@@ -57,9 +59,9 @@ header
 <c:forEach items="${alist}" var="adult">
 <tr>
 <td>성인</td>
-<c:if test="${adult.kind}">
-<td></td>
-</c:if>
+<td>${adult.kind}</td>
+<td>${adult.depInfo.depAirportNm}</td>
+<td>${adult.depInfo.arrAirportNm}</td>
 <td>${adult.name}</td>
 <td>${adult.depPriceVO.price}</td>
 <td>${adult.depPriceVO.couName}</td>
@@ -69,20 +71,21 @@ header
 <td>= ${adult.depPriceVO.totalPrice}</td>
 </tr>
 
-${adult.depPriceVO.couName}
-${adult.depPriceVO.price}
-- ${adult.depPriceVO.couponDis}
-+ ${adult.depPriceVO.fuelTax}
-+ ${adult.depPriceVO.airportTax}
-= ${adult.depPriceVO.totalPrice}
-<br>
-${adult.arrPriceVO.couName}
-${adult.arrPriceVO.price}
-- ${adult.arrPriceVO.couponDis}
-+ ${adult.arrPriceVO.fuelTax}
-+ ${adult.arrPriceVO.airportTax}
-= ${adult.arrPriceVO.totalPrice}
-
+<c:if test="${adult.kind == '왕복'}">
+<tr>
+<td>성인</td>
+<td>${adult.kind}</td>
+<td>${adult.arrInfo.depAirportNm}</td>
+<td>${adult.arrInfo.arrAirportNm}</td>
+<td>${adult.name}</td>
+<td>${adult.arrPriceVO.price}</td>
+<td>${adult.arrPriceVO.couName}</td>
+<td>- ${adult.arrPriceVO.couponDis}</td>
+<td>+ ${adult.arrPriceVO.fuelTax}</td>
+<td>+ ${adult.arrPriceVO.airportTax}</td>
+<td>= ${adult.arrPriceVO.totalPrice}</td>
+</tr>
+</c:if>
 </c:forEach>
 </table>
 
