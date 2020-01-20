@@ -374,6 +374,41 @@ public class BookingController {
 
 	}
 	
+	@GetMapping("airportCheck")
+	public ModelAndView airportCheck(BookingTicketVO bookingTicketVO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		String depLoc = bookingTicketVO.getDepLoc();
+		List<String> ar= bookingService.airportList();
+		
+		for(String airPort : ar) {
+			if(depLoc == airPort) {
+				mv.setViewName("booking/bookingMain");	
+				
+			}else {
+				mv.addObject("message", "출발지를 올바르게 적어주세요");
+				mv.setViewName("booking/common/check");
+			}
+		}
+		
+		String arrLoc = bookingTicketVO.getArrLoc();
+		
+		List<BookingTicketVO> ar2 = bookingService.airportDepList(arrLoc);
+		
+		for(BookingTicketVO bookingTicketVO2 : ar2) {
+			if(arrLoc == bookingTicketVO2.getArrLoc()) {
+				mv.setViewName("booking/bookingMain");
+				
+			}else {
+				mv.addObject("message", "도착지를 올바르게 적어주세요");
+				mv.setViewName("booking/common/check");
+				
+			}
+			
+		}
+		
+		return mv;
+	}
+	
 	
 	 
 }

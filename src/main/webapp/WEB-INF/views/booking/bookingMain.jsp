@@ -378,9 +378,6 @@ $('input:radio[name=kind]').click(function(){
 			var loc = $('#loc').val().trim();
 			var arrloc = $('#arrloc').val().trim();
 
-			alert(loc);
-			alert(arrloc);
-		  	
 			  $.ajax({
 				url : "airportCheck",
 				data :{
@@ -390,6 +387,7 @@ $('input:radio[name=kind]').click(function(){
 				type : "GET",
 				success : function(data){
 						alert("success");
+					/* 	$('#frm').submit(); */
 
 
 					},error:function(){
