@@ -160,7 +160,7 @@
 
 	singleDatePicker:false,
 	autoApply: true,
-	 minDate: new Date()
+	/*  minDate: new Date() */
 
 	});
  
@@ -170,7 +170,7 @@ $('input:radio[name=kind]').click(function(){
 								
 			 $('#input-start').daterangepicker({
 				singleDatePicker:true,
-				minDate: new Date()	
+				/* minDate: new Date() */	
 					
 				}); 
 		}else{
@@ -178,7 +178,7 @@ $('input:radio[name=kind]').click(function(){
 			$('#input-start').daterangepicker({
 				singleDatePicker:false,	
 				autoApply: true,
-				minDate: new Date()
+				/* minDate: new Date() */
 							
 				}); 	
 		}

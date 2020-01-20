@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>
         <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <tr>
-	<td>편명</td> 
-	<td>기종</td> 
+	<td style="width: 80px;">편명</td> 
+	<td style="width: 130px;">기종</td> 
 	<td>출발시간</td> 
 	<td>도착시간</td>
 	<td>운행거리</td> 
@@ -11,7 +11,7 @@
 	<td>가격</td>  
 </tr>
 
-<c:if test="${pos == '1'}">
+<c:if test="${bookingVO.kind == '1'}">
 
 <c:if test="${empty DairList}"> 
 <tr><td colspan="7" style="text-align: center;">운항정보가 존재하지 않습니다.</td></tr>
@@ -30,7 +30,7 @@
 </c:forEach>
 </c:if>
 
-<c:if test="${pos == '2'}">
+<c:if test="${bookingVO.kind == '2'}">
 
 <c:if test="${empty AairList}"> 
 <tr><td colspan="7" style="text-align: center;">운항정보가 존재하지 않습니다.</td></tr>
