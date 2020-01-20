@@ -9,13 +9,8 @@
 	select distinct depAirportNm from flightData order by depAirportNm asc
 </select>
 
-<select id="airList" parameterType="com.airline.a1.booking.BookingVO" resultType="com.airline.a1.booking.FlightDataVO">
-<![CDATA[
-	select * from flightData where depPlandTime > #{sdate}
-	and depPlandTime < #{edate}
-	and depAirportNm = #{depLoc} and arrAirportNm = #{arrLoc} 
-	order by depPlandTime asc
- ]]>
+<select id="airList" parameterType="com.airline.a1.booking.BookingTicketVO" resultType="com.airline.a1.booking.FlightDataVO">
+select * from flightData where depAirportNm = #{depLoc} and arrAirportNm = #{arrLoc} and depPlandTime like concat(#{depStartTime},'%') order by depPlandTime asc
 </select>
 
 <select id="oneSelect" parameterType="com.airline.a1.booking.FlightDataVO" resultType="com.airline.a1.booking.FlightDataVO">
@@ -23,9 +18,9 @@
 </select>
 
 <insert id="bookingInsert" parameterType="com.airline.a1.booking.BookingTicketVO">
-insert into bookingTicket 
-values (null, #{bookingNum}, #{vihicleId}, #{depLoc}, #{depDate}, #{arrLoc}, #{arrDate}, now(), 
-#{id}, #{gender}, #{name}, #{birth}, #{memberNum}, #{price}, #{emailCheck}, #{smsCheck}, #{ageKind}, #{fnum}, #{email}, #{phone})
+insert into bookingTicket values 
+(null, #{bookingNum}, #{flightBNum}, #{kind}, #{adult}, #{child}, #{depFnum}, #{arrFnum}, 
+now(), #{resEmail}, #{resECheck}, #{resPhone}, #{resPCheck}, #{gender}, #{name}, #{birth}, #{memberNum}, #{id})
 </insert>
 
 

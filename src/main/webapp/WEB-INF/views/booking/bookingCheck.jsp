@@ -7,8 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<c:import url="../template/boot.jsp"></c:import>
 <link href="../resources/css/booking/bookingCheck.css" rel="stylesheet">
+<c:import url="../template/boot.jsp"></c:import>
 </head>
 <body>
 

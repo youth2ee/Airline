@@ -1,4 +1,4 @@
-package com.airplane.a1.checkIn;
+package com.airline.a1.checkIn;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;

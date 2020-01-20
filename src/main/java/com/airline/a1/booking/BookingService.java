@@ -17,8 +17,8 @@ public class BookingService {
 		return bookingMapper.airportList();
 	}
 	
-	public List<FlightDataVO> airList(BookingVO bookingVO) throws Exception {
-		return bookingMapper.airList(bookingVO);
+	public List<FlightDataVO> airList(BookingTicketVO bookingTicketVO) throws Exception {
+		return bookingMapper.airList(bookingTicketVO);
 	}
 	
 	public FlightDataVO oneSelect(FlightDataVO flightDataVO) throws Exception {
@@ -56,9 +56,25 @@ public class BookingService {
 		
 		return bookingPriceVO;
 	}
-	
-	public String bookingNum(String vid) {
+	//
+	public void priceCount(BookingTicketVO bookingTicketVO) {
+		System.out.println(bookingTicketVO.getKind());
 		
+		System.out.println(bookingTicketVO.getDepCoupon());
+		System.out.println(bookingTicketVO.getDepFnum());
+		System.out.println(bookingTicketVO.getDepPrice());
+		
+		System.out.println(bookingTicketVO.getArrCoupon());
+		System.out.println(bookingTicketVO.getArrFnum());
+		System.out.println(bookingTicketVO.getArrPrice());
+		
+	}
+	
+	
+	
+	
+	//
+	public String bookingNum(String vid) {
 		if (vid.contains("/")) {
 			vid = vid.replace("/", "");
 		}

@@ -4,7 +4,7 @@ header{
 }
 
 section{
-	width: 60%;
+	width: 1200px;
 	margin: 0 auto;	
 }
 
@@ -15,7 +15,7 @@ section{
 
 #topWrap{
 	padding-left:85px;
-	width: 70%;
+	width: 1200px;
 	height:100%;
 	margin: 0 auto;
 	color: white;
@@ -51,8 +51,7 @@ section{
 }
 
 #notiWrap{
-
-	width: 60%;
+	width: 1200px;
 	height:100%;
 	margin: 0 auto;
 	vertical-align: middle;
@@ -70,6 +69,5 @@ section{
 	padding: 25px 0;
 	border-top: gray solid 1px;
 	border-bottom: gray solid 1px;
-	
 }
 
