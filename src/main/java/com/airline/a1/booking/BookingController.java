@@ -35,17 +35,19 @@ public class BookingController {
 	
 	@PostMapping("airportDepList")
 	public ModelAndView airportDepList(HttpServletRequest req)throws Exception{
-		String arrLoc = req.getParameter("arrLoc");	
-		
+		String depLoc = req.getParameter("depLoc");	
+
 		ModelAndView mv = new ModelAndView();
+	
+		List<BookingTicketVO> ar = bookingService.airportDepList(depLoc);	
 		
-		List<BookingVO> ar = bookingService.airportDepList(arrLoc);	
-		
-		mv.addObject("depLoc", ar); 
-		mv.setViewName("booking/common/result");
+		 mv.addObject("arrLoc", ar); 
+		 mv.setViewName("booking/common/result");
 		
 		return mv;
+
 	}
+	
 
 	@PostMapping("bookingMain") 
 	public ModelAndView bookingMain(BookingTicketVO bookingTicketVO) throws Exception {	
@@ -385,9 +387,40 @@ public class BookingController {
 	}
 	
 
-	@GetMapping("btest")
-	public void btest() {
+	
+	@ResponseBody
+	@GetMapping("airportCheck")
+	public boolean airportCheck(BookingTicketVO bookingTicketVO)throws Exception{
+	
+		String depLoc = bookingTicketVO.getDepLoc();
 
+		String arrLoc = bookingTicketVO.getArrLoc();
+		
+		List<String> ar= bookingService.airportList();
+		
+		List<BookingTicketVO> ar2 = bookingService.airportDepList(depLoc);
+
+		boolean check = false;
+				
+		for(String airPort : ar) {
+			
+			if(depLoc.equals(airPort)) {
+				
+				
+				for(BookingTicketVO bookingTicketVO2 : ar2) {
+					
+					if(arrLoc.equals(bookingTicketVO2.getArrAirportNm())) {
+						check = true;
+					}
+					
+					
+				}	
+			}
+		}
+		
+		return check;
 	}
+	
+	
 	 
 }

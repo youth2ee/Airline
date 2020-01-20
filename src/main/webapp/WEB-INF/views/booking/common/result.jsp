@@ -4,8 +4,8 @@
  
 <div id="deplocSearch"class="search">
  	<table id="deplocTable">
- 	<c:forEach items="${depLoc}" var="depairPort">
- 	<tr><td class="deploctd loctdd" id="oo">${depairPort.depAirportNm}</td></tr>
+ 	<c:forEach items="${arrLoc}" var="arrAirport">
+ 	<tr><td class="deploctd loctdd" id="oo">${arrAirport.arrAirportNm}</td></tr>
  	</c:forEach> 
  </table>
  </div>
