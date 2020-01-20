@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import lombok.Data;
 
 @Data
-//@Repository
+@Repository
 public class FlightDataVO {
 	
 	private int fnum;
