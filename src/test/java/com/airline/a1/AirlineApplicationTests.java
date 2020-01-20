@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.Random;
 
 import javax.sql.DataSource;
 import javax.xml.parsers.DocumentBuilder;
@@ -37,12 +38,25 @@ class AirlineApplicationTests {
 	@Autowired
 	private BusVO busVO;
 
-	@Test()
+	@Test
 	void apiTest6() throws Exception {
+		Random rand = new Random();
+		String memberNumber1 = String.format("%03d%n", rand.nextInt(1000)).replace("\r\n", "");
+		String memberNumber2 = String.format("%03d%n", rand.nextInt(1000)).replace("\r\n", "");
+		String memberNumber3 = String.format("%03d%n", rand.nextInt(1000)).replace("\r\n", "");
+		String memberNumber = memberNumber1 + " " + memberNumber2 + " " + memberNumber3;
+		System.out.println("회원번호 : " + memberNumber);
+		char bookNumber1 = (char) ((int) (Math.random() * 26) + 65);
+		String bookNumber2 = String.format("%02d%n", rand.nextInt(100)).replace("\r\n", "");
+		char bookNumber3 = (char) ((int) (Math.random() * 26) + 65);
+		String bookNumber4 = String.format("%02d%n", rand.nextInt(100)).replace("\r\n", "");
+		String bookNumber = Character.toString(bookNumber1) + bookNumber2 + Character.toString(bookNumber3) + bookNumber4;
+		System.out.println("예약번호 : " + bookNumber); // A00A00 형식
 		
+
 	}
-	
-	//@Test
+
+	// @Test
 	void apiTest5() throws Exception {
 		// 항공정보 + 운임
 		BufferedReader br = null;
@@ -138,22 +152,22 @@ class AirlineApplicationTests {
 		System.out.println("끝");
 	}
 
-	//@Test
+	// @Test
 	void apiTest4() throws Exception {
 		// 항공정보 + 운임
 		BufferedReader br = null;
 		try {
-			String urlstr =  "http://openapi.airport.kr/openapi/service/FacilitiesInformation/getFacilitesInfo?ServiceKey=ocUWaBXkUfn7dTwV69oHksQQ4C4g9sEm41EWbQU3DNWLYSsd%2BewFHSMTGYGwGi5kcBCKXPGHARowuE0BgEsokg%3D%3D&lang=K&lcduty=Y";
+			String urlstr = "http://openapi.airport.kr/openapi/service/FacilitiesInformation/getFacilitesInfo?ServiceKey=ocUWaBXkUfn7dTwV69oHksQQ4C4g9sEm41EWbQU3DNWLYSsd%2BewFHSMTGYGwGi5kcBCKXPGHARowuE0BgEsokg%3D%3D&lang=K&lcduty=Y";
 
-			  URL url = new URL(urlstr);
-	            HttpURLConnection urlconnection = (HttpURLConnection) url.openConnection();
-	            urlconnection.setRequestMethod("GET");
-	            br = new BufferedReader(new InputStreamReader(urlconnection.getInputStream(),"UTF-8"));
-	            String result = "";
-	            String line;
-	            while((line = br.readLine()) != null) {
-	                result = result + line + "\n";
-	            }
+			URL url = new URL(urlstr);
+			HttpURLConnection urlconnection = (HttpURLConnection) url.openConnection();
+			urlconnection.setRequestMethod("GET");
+			br = new BufferedReader(new InputStreamReader(urlconnection.getInputStream(), "UTF-8"));
+			String result = "";
+			String line;
+			while ((line = br.readLine()) != null) {
+				result = result + line + "\n";
+			}
 
 			System.out.println(result);
 		} catch (Exception e) {
@@ -163,7 +177,7 @@ class AirlineApplicationTests {
 	}
 
 
-	 //@Test
+	 @Test
 	void apiTest3() throws Exception {
 		// 항공정보 + 운임
 		BufferedReader br = null;
@@ -179,7 +193,7 @@ class AirlineApplicationTests {
 					String urlstr = "http://openapi.tago.go.kr/openapi/service/DmstcFlightNvgInfoService/getFlightOpratInfoList?"
 							+ "serviceKey=iEDBbpkkNQN604mbzvOvbCbGl0rXiyk4SdUBO%2FqhREGGDL5QrF2SrrZzf3l2%2BUNCeiBD97RtxaPQZaL9VqVR%2Fg%3D%3D&"
 							+ "numOfRows=100&" + "depAirportId=" + depAp + "&" + "arrAirportId=" + arrAp + "&"
-							+ "depPlandTime=20200119"; // 출발일 // 항공사ID
+							+ "depPlandTime=20200120"; // 출발일 // 항공사ID
 
 					URL url = new URL(urlstr);
 					HttpURLConnection urlconnection = (HttpURLConnection) url.openConnection();
@@ -211,14 +225,16 @@ class AirlineApplicationTests {
 							if (eElement.getElementsByTagName("airlineNm").getLength() != 0) {
 								System.out.println("항공사명 : " + getTagValue("airlineNm", eElement));
 								flightDataVO.setAirlineNm(getTagValue("airlineNm", eElement));
-							} else if(eElement.getElementsByTagName("vihicleId").toString().contains("FGW") && eElement.getElementsByTagName("airlineNm").getLength() != 0) {
+							} else if (eElement.getElementsByTagName("vihicleId").toString().substring(2).equals("FGW")
+									&& eElement.getElementsByTagName("airlineNm").getLength() != 0) {
 								flightDataVO.setAirlineNm("플라이 강원");
-							} else if (eElement.getElementsByTagName("vihicleId").toString().contains("HGG") && eElement.getElementsByTagName("airlineNm").getLength() != 0) {
+							} else if (eElement.getElementsByTagName("vihicleId").toString().substring(2).equals("HGG")
+									&& eElement.getElementsByTagName("airlineNm").getLength() != 0) {
 								flightDataVO.setAirlineNm("하이에어");
-							} else if(eElement.getElementsByTagName("vihicleId").toString().contains("RS") && eElement.getElementsByTagName("airlineNm").getLength() != 0) {
+							} else if (eElement.getElementsByTagName("vihicleId").toString().substring(1).equals("RS")
+									&& eElement.getElementsByTagName("airlineNm").getLength() != 0) {
 								flightDataVO.setAirlineNm("에어서울");
-							}
-							else {
+							} else {
 								System.out.println("항공사명 : 0");
 								flightDataVO.setAirlineNm("0");
 							}
@@ -258,12 +274,13 @@ class AirlineApplicationTests {
 								System.out.println("도착공항  : 0");
 								flightDataVO.setArrAirportNm("0");
 							}
-							if(!(flightDataVO.getDepAirportNm().contains("인천") && flightDataVO.getArrAirportNm().contains("인천"))) {
-								//airportDataMapper.flightDataInput(flightDataVO);
+							if (!(flightDataVO.getDepAirportNm().equals("인천")
+									&& flightDataVO.getArrAirportNm().equals("인천"))) {
+								airportDataMapper.flightDataInput(flightDataVO);
 							} else {
 								System.out.println("인천임");
 							}
-							
+
 						}
 					}
 				}
@@ -272,7 +289,7 @@ class AirlineApplicationTests {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+		System.out.println("끝");
 	}
 
 	// @Test
