@@ -9,7 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MemberController {
 	
 	@GetMapping("memberLogin")
-	public void memberLogint() throws Exception{
+	public void memberLogin() throws Exception{
+		
+	}
+	@GetMapping("memberMypage")
+	public void memberMypage() throws Exception{
 		
 	}
 	

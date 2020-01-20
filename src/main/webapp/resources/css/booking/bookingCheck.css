@@ -46,9 +46,8 @@ section{
 }
 
 #noti{
-	min-height: 90px;
+	height: 90px;
 	background-color: #f3f4f6;
-	padding-bottom: 30px;
 }
 
 #notiWrap{
@@ -71,3 +70,4 @@ section{
 	border-top: gray solid 1px;
 	border-bottom: gray solid 1px;
 }
+

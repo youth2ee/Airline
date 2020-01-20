@@ -279,6 +279,12 @@
 				
 				
 			</div>
+		</form>
+	</div>
+	<footer>
+		<div>
+		</div>
+	</footer>
 <script type="text/javascript" src="https://flyasiana.com/C/pc/js/velocity.min.js"></script>
 <script type="text/javascript" src="https://flyasiana.com/C/pc/js/moment.min.js"></script>
 <script type="text/javascript" src="https://flyasiana.com/C/pc/js/set_calendar.js"></script>

@@ -4,170 +4,145 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.zip.Adler32;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/booking/**")
 public class BookingController {
 
-
 	@Autowired
 	private BookingService bookingService;
-
-
 
 	@GetMapping("bookingMain")
 	public void bookingMain(Model model)throws Exception{
 		List<String> airport = bookingService.airportList();
 		model.addAttribute("airportList", airport);
-
 	}
 
-
 	@PostMapping("bookingMain") 
-	public ModelAndView bookingMain1(BookingVO bookingVO) throws Exception{
+	public ModelAndView bookingMain(BookingVO bookingVO) throws Exception {
+		System.out.println(bookingVO.getAdults());
+		System.out.println(bookingVO.getChildren());
+		System.out.println(bookingVO.getDepLoc());
+		System.out.println(bookingVO.getArrLoc());
+		System.out.println(bookingVO.getDate());
+		System.out.println(bookingVO.getKind());
+		
+		BookingTicketVO bookingTicketVO = new BookingTicketVO();
+		
+		String kind = "편도";
+		if (bookingVO.getKind() == 2) {
+			kind = "왕복";
+		} 
+		
+		bookingTicketVO.setKind(kind);
+		bookingTicketVO.setDepLoc(bookingVO.getDepLoc());
+		bookingTicketVO.setArrLoc(bookingVO.getArrLoc());
+		bookingTicketVO.setAdult(bookingVO.getAdults());
+		bookingTicketVO.setChild(bookingVO.getChildren());
 
-		/*
-		 * System.out.println(bookingVO.getKind());
-		 * System.out.println(bookingVO.getDepLoc());
-		 * System.out.println(bookingVO.getArrLoc());
-		 * System.out.println(bookingVO.getDate());
-		 * System.out.println(bookingVO.getAdults());
-		 * System.out.println(bookingVO.getChildren());
-		 */
-		
-		int kind = bookingVO.getKind();
-		String date  = bookingVO.getDate();
-		
-		String day1 = "";
-		String month1 = "";
-		String year1 = "";
-		String day2 = "";
-		String month2 = "";
-		String year2 = "";
+		String date = bookingVO.getDate();
+		String ddate = "";
+		String adate = "";
 		
 		List<FlightDataVO> dairList = new ArrayList<FlightDataVO>();
 		List<FlightDataVO> aairList = new ArrayList<FlightDataVO>();
 		
-		if(kind == 1) { //편도 01/16/2020
-			month1 = date.substring(0, 2);
-			day1 = date.substring(3, 5);
-			year1 = date.substring(6);
+		List<BookingVO> ddates = new ArrayList<BookingVO>();
+		List<BookingVO> adates = new ArrayList<BookingVO>();
+		
+		if (bookingVO.getKind() == 1) {
+			ddate = date.substring(6) + date.substring(0, 2) + date.substring(3, 5);
+			System.out.println(ddate);
+			bookingTicketVO.setDepStartTime(ddate);
+			dairList = bookingService.airList(bookingTicketVO);
 			
-			//System.out.println("일"+day1);
-			//System.out.println("월"+month1);
-			//System.out.println("년"+year1);
-			//System.out.println(year1 + month1 + day1 + "0000"); 
-			
-			bookingVO.setSdate(year1+month1+day1+"0000");
-			bookingVO.setEdate(year1+month1+day1+"2359");
-			
-			dairList = bookingService.airList(bookingVO);
 			for(FlightDataVO flightDataVO : dairList) {
+				System.out.println(flightDataVO.getAirlineNm());
 				flightDataVO.setDepTime(flightDataVO.getDepPlandTime().substring(8, 10)+":"+flightDataVO.getDepPlandTime().substring(10));
 				flightDataVO.setArrTime(flightDataVO.getArrPlandTime().substring(8, 10)+":"+flightDataVO.getArrPlandTime().substring(10));
 			}
-			
-			
 
-		} else if (kind == 2) { //왕복 01/15/2020 - 01/15/2020
-			month1 = date.substring(0, 2);
-			day1 = date.substring(3, 5);
-			year1 = date.substring(6,10);
+			for (int i = -5; i < 6; i++) { //선택한 날 -5일 부터 5일 뒤까지
+				LocalDateTime ofDateTime = LocalDateTime.of(Integer.parseInt(date.substring(6)), Integer.parseInt(date.substring(0, 2)), Integer.parseInt(date.substring(3, 5)), 00, 00);
+				LocalDateTime tomorrow = ofDateTime.plusDays(i);	
+				String day = tomorrow.toString();
+				
+				BookingVO dep = new BookingVO();
+				dep.setDay(day.substring(8, 10));
+				dep.setMonth(day.substring(5, 7));
+				dep.setYear(day.substring(0, 4));
+				
+				//2020-01-15T00:00
+				ddates.add(dep);
+			}
+				
 			
-			month2 = date.substring(13, 15);
-			day2 = date.substring(16, 18);
-			year2 = date.substring(19);
+		} else {
+			ddate = date.substring(6,10) + date.substring(0, 2) + date.substring(3, 5) ;
+			bookingTicketVO.setDepStartTime(ddate);
+			dairList = bookingService.airList(bookingTicketVO);
 			
-			//System.out.println("일"+day1);
-			//System.out.println("월"+month1);
-			//System.out.println("년"+year1);
-			
-			//System.out.println("일"+day2);
-			//System.out.println("월"+month2);
-			//System.out.println("년"+year2);
-			
-			bookingVO.setSdate(year1+month1+day1+"0000");
-			bookingVO.setEdate(year1+month1+day1+"2359");
-			
-			dairList = bookingService.airList(bookingVO);
 			for(FlightDataVO flightDataVO : dairList) {
 				flightDataVO.setDepTime(flightDataVO.getDepPlandTime().substring(8, 10)+":"+flightDataVO.getDepPlandTime().substring(10));
 				flightDataVO.setArrTime(flightDataVO.getArrPlandTime().substring(8, 10)+":"+flightDataVO.getArrPlandTime().substring(10));
 			}
+		
+			//
+			bookingTicketVO.setDepLoc(bookingVO.getArrLoc());
+			bookingTicketVO.setArrLoc(bookingVO.getDepLoc());
 			
+			adate = date.substring(19) + date.substring(13, 15) + date.substring(16, 18) ;
+			bookingTicketVO.setDepStartTime(adate);
+			aairList = bookingService.airList(bookingTicketVO);
 			
-			bookingVO.setSdate(year2+month2+day2+"0000");
-			bookingVO.setEdate(year2+month2+day2+"2359");
-			
-			String aloc = bookingVO.getDepLoc();
-			String dloc = bookingVO.getArrLoc();
-			
-			bookingVO.setArrLoc(dloc);
-			bookingVO.setDepLoc(aloc);
-			
-			aairList = bookingService.airList(bookingVO);
 			for(FlightDataVO flightDataVO : aairList) {
 				flightDataVO.setDepTime(flightDataVO.getDepPlandTime().substring(8, 10)+":"+flightDataVO.getDepPlandTime().substring(10));
 				flightDataVO.setArrTime(flightDataVO.getArrPlandTime().substring(8, 10)+":"+flightDataVO.getArrPlandTime().substring(10));
 			}
 			
-		} 
-		
-
-		//가는편		
-		List<BookingVO> ddates = new ArrayList<BookingVO>();
-		List<BookingVO> adates = new ArrayList<BookingVO>();
-		
-		for (int i = -5; i < 6; i++) { //선택한 날 -5일 부터 5일 뒤까지
-			LocalDateTime ofDateTime = LocalDateTime.of(Integer.parseInt(year1), Integer.parseInt(month1), Integer.parseInt(day1), 00, 00);
-			LocalDateTime tomorrow = ofDateTime.plusDays(i);
-			System.out.println("tomorrow"+tomorrow);	
 			
-			String day = tomorrow.toString();
-			System.out.println(day.substring(0, 4));
-			System.out.println(day.substring(5, 7));
-			System.out.println(day.substring(8, 10));
-			
-			BookingVO bookingVO2 = new BookingVO();
-			bookingVO2.setDay(day.substring(8, 10));
-			bookingVO2.setMonth(day.substring(5, 7));
-			bookingVO2.setYear(day.substring(0, 4));
-			
-			//2020-01-15T00:00
-			ddates.add(bookingVO2);
-		}
-		
-		if (kind == 2) {
 			for (int i = -5; i < 6; i++) { //선택한 날 -5일 부터 5일 뒤까지
-				LocalDateTime ofDateTime = LocalDateTime.of(Integer.parseInt(year2), Integer.parseInt(month2), Integer.parseInt(day2), 00, 00);
-				LocalDateTime tomorrow = ofDateTime.plusDays(i);
-				System.out.println("tomorrow"+tomorrow);	
-				
+				LocalDateTime ofDateTime = LocalDateTime.of(Integer.parseInt(date.substring(6,10)), Integer.parseInt(date.substring(0, 2)), Integer.parseInt(date.substring(3, 5)), 00, 00);
+				LocalDateTime tomorrow = ofDateTime.plusDays(i);	
 				String day = tomorrow.toString();
-				System.out.println(day.substring(0, 4));
-				System.out.println(day.substring(5, 7));
-				System.out.println(day.substring(8, 10));
 				
-				BookingVO bookingVO2 = new BookingVO();
-				bookingVO2.setDay(day.substring(8, 10));
-				bookingVO2.setMonth(day.substring(5, 7));
-				bookingVO2.setYear(day.substring(0, 4));
+				BookingVO dep = new BookingVO();
+				dep.setDay(day.substring(8, 10));
+				dep.setMonth(day.substring(5, 7));
+				dep.setYear(day.substring(0, 4));
 				
 				//2020-01-15T00:00
-				adates.add(bookingVO2);
-			}
+				ddates.add(dep);
+				
+				LocalDateTime ofDateTime2 = LocalDateTime.of(Integer.parseInt(date.substring(19)), Integer.parseInt(date.substring(13, 15)), Integer.parseInt(date.substring(16, 18)), 00, 00);
+				LocalDateTime tomorrow2 = ofDateTime2.plusDays(i);
+				String day2 = tomorrow2.toString();
 
+				BookingVO arr = new BookingVO();
+				arr.setDay(day2.substring(8, 10));
+				arr.setMonth(day2.substring(5, 7));
+				arr.setYear(day2.substring(0, 4));
+				
+				//2020-01-15T00:00
+				adates.add(arr);
+			}	
 		}
-
+		
 		ModelAndView mv = new ModelAndView();
+
 		mv.addObject("bookingVO", bookingVO);
 		mv.addObject("Dlist", ddates);
 		mv.addObject("Alist", adates);
@@ -180,147 +155,223 @@ public class BookingController {
 	
 	
 	@GetMapping("dateSelect")
-	public ModelAndView dateSelect(String d1, String d2, BookingVO bookingVO, int pos) throws Exception {
-		System.out.println(d1);
-		System.out.println(d2);
-		System.out.println(bookingVO.getDepLoc());
-		System.out.println(bookingVO.getArrLoc());
-
-		d1 = d1.substring(0,4); 
-		d2 = d2.substring(0,2) + d2.substring(4, 6);
-
-		System.out.println(d1); System.out.println(d2);
-		System.out.println(d1+d2+"0000");
-
-		String sdate = d1+d2+"0000";
-		String edate = d1+d2+"2359";
-
+	public ModelAndView dateSelect(BookingVO bookingVO) throws Exception {
 		List<FlightDataVO> dairList = new ArrayList<FlightDataVO>();
 		List<FlightDataVO> aairList = new ArrayList<FlightDataVO>();
 
-		bookingVO.setSdate(sdate);
-		bookingVO.setEdate(edate);
+		String date = bookingVO.getYear().substring(0, 4) + bookingVO.getMonth().substring(0, 2) + bookingVO.getMonth().substring(4, 6); //
 
-		if(pos == 1) { 
-			dairList = bookingService.airList(bookingVO); 
-		for(FlightDataVO flightDataVO : dairList) {
-			flightDataVO.setDepTime(flightDataVO.getDepPlandTime().substring(8,10)+":"+flightDataVO.getDepPlandTime().substring(10));
-			flightDataVO.setArrTime(flightDataVO.getArrPlandTime().substring(8,10)+":"+flightDataVO.getArrPlandTime().substring(10)); 
-			}
+		BookingTicketVO bookingTicketVO = new BookingTicketVO();
+		bookingTicketVO.setDepLoc(bookingVO.getDepLoc());
+		bookingTicketVO.setArrLoc(bookingVO.getArrLoc());
+		bookingTicketVO.setDepStartTime(date);
 
-
-		} else if (pos == 2) { 
-			String aloc = bookingVO.getDepLoc(); 
-			String dloc = bookingVO.getArrLoc();
-
-		bookingVO.setArrLoc(dloc); 
-		bookingVO.setDepLoc(aloc);
-
-		aairList = bookingService.airList(bookingVO); 
-		for(FlightDataVO flightDataVO : aairList) {
-			flightDataVO.setDepTime(flightDataVO.getDepPlandTime().substring(8, 10)+":"+flightDataVO.getDepPlandTime().substring(10));
-			flightDataVO.setArrTime(flightDataVO.getArrPlandTime().substring(8,10)+":"+flightDataVO.getArrPlandTime().substring(10)); }
+		dairList = bookingService.airList(bookingTicketVO);
+		for (FlightDataVO flightDataVO : dairList) {
+			flightDataVO.setDepTime(flightDataVO.getDepPlandTime().substring(8, 10) + ":" + flightDataVO.getDepPlandTime().substring(10));
+			flightDataVO.setArrTime(flightDataVO.getArrPlandTime().substring(8, 10) + ":" + flightDataVO.getArrPlandTime().substring(10));
 		}
-
+		
+		if (bookingVO.getKind() == 2) {
+			aairList = bookingService.airList(bookingTicketVO);
+			for (FlightDataVO flightDataVO : aairList) {
+				flightDataVO.setDepTime(flightDataVO.getDepPlandTime().substring(8, 10) + ":" + flightDataVO.getDepPlandTime().substring(10));
+				flightDataVO.setArrTime(flightDataVO.getArrPlandTime().substring(8, 10) + ":" + flightDataVO.getArrPlandTime().substring(10));
+			}
+		} 
 
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("bookingVO", bookingVO);
-		mv.addObject("pos", pos);
-
-		mv.addObject("DairList", dairList); 
+		mv.addObject("DairList", dairList);
 		mv.addObject("AairList", aairList);
-
 		mv.setViewName("booking/common/dateList");
 
 		return mv;
 	}
 
 
-
 	@GetMapping("bookingList")
 	public void bookingList() throws Exception {
 
 	}
-	
+
 	@PostMapping("bookingWritePre")
-	public ModelAndView bookingWritePre(String dfnum, String afnum, int adults, int children, String kind) throws Exception {
+	public ModelAndView bookingWritePre(BookingTicketVO bookingTicketVO) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("adults", adults);
-		mv.addObject("children", children);
-		mv.addObject("kind", kind);
 		
-		System.out.println(dfnum+"dfnum");
+		FlightDataVO flightDataVO = new FlightDataVO();
+		flightDataVO.setFnum(bookingTicketVO.getDepFnum());
+		bookingTicketVO.setDepInfo(bookingService.oneSelect(flightDataVO));
 		
-		FlightDataVO dflightDataVO = new FlightDataVO();
-		dflightDataVO.setFnum(Integer.parseInt(dfnum));	
-		dflightDataVO = bookingService.oneSelect(dflightDataVO);
-		mv.addObject("dflightInfo", dflightDataVO);
 		
-		System.out.println(afnum);
-		
-		if (afnum != "") {
-			FlightDataVO aflightDataVO = new FlightDataVO();
-			aflightDataVO.setFnum(Integer.parseInt(afnum));	
-			aflightDataVO = bookingService.oneSelect(aflightDataVO);
-			mv.addObject("aflightInfo", aflightDataVO);			
+		if (bookingTicketVO.getKind().equals("2")) {
+			flightDataVO.setFnum(bookingTicketVO.getArrFnum());
+			bookingTicketVO.setArrInfo(bookingService.oneSelect(flightDataVO));
 		}
 		
+		mv.addObject("bTVO", bookingTicketVO);
 		mv.setViewName("/booking/bookingWrite");
-		
+
 		return mv;
 	}
 
 	@GetMapping("bookingWrite")
-	public void bookingWrite() throws Exception {	
+	public void bookingWrite() throws Exception {
 	}
 
 	@PostMapping("bookingWrite")
-	public String bookingWrite(CustomVO customVO) throws Exception {
+	public void bookingWrite(BookingTicketVO bookingTicketVO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		//id
+		String id = "id";
 		
-		if (customVO.getAdultsVOList() != null) {
-			for(CustomVO cuVo1 : customVO.getAdultsVOList()) {
+		///bookingNum 만들기
+		String bookingNum = "bnum";
+		
+		//어른
+		if(bookingTicketVO.getAdultList() != null) {
+			for(BookingTicketVO adult : bookingTicketVO.getAdultList()) {
+				adult.setBookingNum(bookingNum);
+				adult.setId(id);
 				
-				System.out.println(cuVo1.getSex());
-				System.out.println(cuVo1.getFirstName().toUpperCase());
-				System.out.println(cuVo1.getLastName().toUpperCase());
-				System.out.println(cuVo1.getYear());
-				System.out.println(cuVo1.getMonth());
-				System.out.println(cuVo1.getDay());
-				System.out.println(cuVo1.getMemberNum());
-				System.out.println(cuVo1.getDepDis());
-				System.out.println(cuVo1.getArrDis());
-			}
-		}
-		
-		if (customVO.getChildrenVOList() != null) {
-			for(CustomVO cuVo2 : customVO.getChildrenVOList()) {
+				//flightnum 가는편 만들기
+				adult.setFlightBNum("flightBNum");
 				
-				System.out.println(cuVo2.getSex());
-				System.out.println(cuVo2.getFirstName().toUpperCase());
-				System.out.println(cuVo2.getLastName().toUpperCase());
-				System.out.println(cuVo2.getYear());
-				System.out.println(cuVo2.getMonth());
-				System.out.println(cuVo2.getDay());
-				System.out.println(cuVo2.getMemberNum());
-				System.out.println(cuVo2.getDepDis());
-				System.out.println(cuVo2.getArrDis());
-			}
-		}
+				String kind = "편도";
+				if(bookingTicketVO.getKind().equals("2")) {
+					kind = "왕복";
+					adult.setArrFnum(bookingTicketVO.getArrFnum());
+				}
+				adult.setKind(kind);
+				
+				adult.setAdult(1);
+				adult.setDepFnum(bookingTicketVO.getDepFnum());
+				
+				adult.setResEmail(bookingTicketVO.getResEmail());
+				adult.setResECheck(bookingTicketVO.getResECheck());
+				adult.setResPhone(bookingTicketVO.getResPhone());
+				adult.setResPCheck(bookingTicketVO.getResPCheck());
+				
+				adult.setName(adult.getLastName().toUpperCase() +" "+adult.getFirstName().toUpperCase());
+				
+				if(adult.getMonth().length() == 1) {
+					adult.setMonth("0"+adult.getMonth());
+				}				
+				if(adult.getDay().length() == 1) {
+					adult.setDay("0"+adult.getDay());
+				}
+				adult.setBirth(adult.getYear()+adult.getMonth()+adult.getDay());
+				
+				bookingService.bookingInsert(adult);
+				
+				//가격
+				bookingService.priceCount(adult);
+				
+				if (bookingTicketVO.getKind().equals("2")) {
+					//flightnum 오는편 만들기
+					adult.setFlightBNum("flightBNum");
+					
+					int dep = adult.getDepFnum();
+					int arr = adult.getArrFnum();
+					adult.setDepFnum(arr);
+					adult.setArrFnum(dep);
+					
+					bookingService.bookingInsert(adult);
+					
+					//가격
+					adult.setDepFnum(dep);
+					adult.setArrFnum(arr);
+					bookingService.priceCount(adult);
+				}
+			}//어른 반복문 끝
+		}//어른 끝
 		
-		System.out.println("**************************************");
-		System.out.println(customVO.getResEmail());
-		System.out.println(customVO.getChkEmail());
-		System.out.println(customVO.getResPhone());
-		System.out.println(customVO.getChkPhone());
-
-
-		return "redirect:./bookingCheck";
+		//어린이
+		if(bookingTicketVO.getChildList() != null) {
+			for(BookingTicketVO child : bookingTicketVO.getChildList()) {
+				child.setBookingNum(bookingNum);
+				child.setId(id);
+				
+				//flightnum 가는편 만들기
+				child.setFlightBNum("flightBNum");
+				
+				String kind = "편도";
+				if(bookingTicketVO.getKind().equals("2")) {
+					kind = "왕복";
+					child.setArrFnum(bookingTicketVO.getArrFnum());
+				}
+				child.setKind(kind);
+				
+				child.setChild(1);
+				child.setDepFnum(bookingTicketVO.getDepFnum());
+				
+				child.setResEmail(bookingTicketVO.getResEmail());
+				child.setResECheck(bookingTicketVO.getResECheck());
+				child.setResPhone(bookingTicketVO.getResPhone());
+				child.setResPCheck(bookingTicketVO.getResPCheck());
+				
+				child.setName(child.getLastName().toUpperCase() +" "+child.getFirstName().toUpperCase());
+				
+				if(child.getMonth().length() == 1) {
+					child.setMonth("0"+child.getMonth());
+				}				
+				if(child.getDay().length() == 1) {
+					child.setDay("0"+child.getDay());
+				}
+				child.setBirth(child.getYear()+child.getMonth()+child.getDay());
+				
+				bookingService.bookingInsert(child);
+				
+				//가격
+				bookingService.priceCount(child);
+				
+				//왕복일때
+				if (bookingTicketVO.getKind().equals("2")) {
+					//flightnum 오는편 만들기
+					child.setFlightBNum("flightBNum");
+					
+					int dep = child.getDepFnum();
+					int arr = child.getArrFnum();
+					child.setDepFnum(arr);
+					child.setArrFnum(dep);
+					
+					bookingService.bookingInsert(child);
+					
+					//가격
+					child.setDepFnum(dep);
+					child.setArrFnum(arr);
+					bookingService.priceCount(child);
+				}
+			}//어린이 반복문 끝
+		}//어린이 끝
+		
+		
 	}
 
 	@GetMapping("bookingCheck")
 	public void bookingCheck() {
-		
+
 		
 	}
+	
+	@PostMapping("airportDepList")
+	public ModelAndView airportDepList(HttpServletRequest req)throws Exception{
+		String arrLoc = req.getParameter("arrLoc");	
 
+		ModelAndView mv = new ModelAndView();
+	
+		List<BookingVO> ar = bookingService.airportDepList(arrLoc);	
+		
+		 mv.addObject("depLoc", ar); 
+		 mv.setViewName("booking/common/result");
+		
+		return mv;
+
+	}
+
+	@GetMapping("btest")
+	public void btest() {
+
+	}
+	 
 }
