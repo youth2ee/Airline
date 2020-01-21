@@ -21,10 +21,11 @@
 <!------------ 공항에서 도시로 이동할 경우  ------------>
 	<h1>리무진 예약</h1>
 	<div class="containers">
-	  <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">공항 -> 도시</button>
+	  <button type="button" class="btn btn-info">공항 -> 도시</button>
+	  <button type="button" class="btn btn-info">도시 -> 공항</button>
 	  <button class="btn btn-info add">추가</button>
-	<button class="btn btn-danger del">삭제</button>
-	  <div id="demo" class="collapse">
+	  <button class="btn btn-danger del">삭제</button>
+	  <button class="btn btn-warning gobooks">예매하기</button>
 	  	<div class="frm_wrap">
 		    <form action="./limoBook" method="post" class="frm">
 		    	<input type="checkbox" class="checkbox" style="display: inline-block;">
@@ -61,11 +62,10 @@
 				<input type="text" name="seat" placeholder="좌석" readonly="readonly" class="seat">
 				<button type="button" class="btn btn-info btn-lg select">조회하기</button>
 				<button type="button" class="btn btn-info btn-lg sel" data-toggle="modal" data-target="#myModal" style="display: none;">조회하기</button>
-				<button>예매하기</button>
+				<button type="button" class="books" style="display: none;">예매하기</button>
 			</form>
 		</div>
 	  </div>
-	</div>
 	
 
 	<!------------ Modal 시작 : 리무진 버스 예매 ------------>
@@ -143,11 +143,13 @@
 		  </div>
 </div>
 
+
+<h1>----------------------------------------</h1>
 <!------------------------------------------------ 편도 2회 예매 ------------------------------------------------------>
 <div class="containers">
-	  	<div class="frm_wrap">
+	  	<div class="frm_wrap2">
 		    <form action="./limoBook" method="post" class="frm">
-		    	<input type="checkbox" class="checkbox2" style="display: inline-block;">
+		    	<input type="checkbox" class="checkbox" style="display: inline-block;">
 				<input type="text" placeholder="id" name="id">
 				<input type="date" name="limoDate" class="limoDate2 datepicker2">
 				<select name="depLoc" class="depLoc2">
@@ -179,7 +181,7 @@
 				<input type="text" name="seat" placeholder="좌석" readonly="readonly" class="seat2">
 				<button type="button" class="btn btn-info btn-lg select2">조회하기</button>
 				<button type="button" class="btn btn-info btn-lg sel3" data-toggle="modal" data-target="#myModal2" style="display: none;">조회하기</button>
-				<button>예매하기</button>
+				<button type="button" class="bookssssssssssssss" style="display: none;">예매하기</button>
 			</form>
 		</div>
 	  </div>
@@ -190,7 +192,6 @@
 
 		  <div class="modal fade" id="myModal2" role="dialog">
 		    <div class="modal-dialog">
-		    
 		      <div class="modal-content">
 		        <div class="modal-header">
 		          <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -445,9 +446,9 @@
 	});
 
 	// 공항 -> 도시 추가
-	var frm = $(".frm_wrap").html();
 	var check = 0;
 	$(".add").click(function(){
+		var frm = $(".frm_wrap2").html();
 		if(check<1){
 			$(".frm_wrap").append(frm);
 			check++;
@@ -461,6 +462,14 @@
 			if($(this).prop("checked")){
 				$(this).parent().remove();
 				check --;
+			}
+		});
+	});
+
+	$(".gobooks").click(function(){
+		$(".checkbox").each(function(){
+			if($(this).prop("checked")){
+				$(this).parent().submit();
 			}
 		});
 	});
@@ -481,7 +490,7 @@
 	
 	$(".datepicker2").attr('min', today);
 
-	$(".depLoc2").change(function(){
+	$("body").on("change", ".depLoc2", function(){
 		var depLoc = $(this).val();
 		$(".person2 option:eq(0)").prop("selected", true);
 		$(".limoTime2 option:eq(0)").prop("selected", true);
@@ -502,11 +511,8 @@
 			}
 		})	
 	});
-		
-	$('.select2').click(function(){
-		alert(person2);
-		alert(child2);
-		alert(totalperson2);
+
+	$("body").on("click", "select2", function(){
 		$(".lim").each(function(){
 			$(this).prop("checked", false);
 			$(this).parent().removeClass('abcd');
@@ -644,25 +650,26 @@
 	});
 
 	// 공항 -> 도시 추가
-	var frm2 = $(".frm_wrap").html();
+	var frm2 = $(".frm_wrap2").html();
 	var check2 = 0;
-	$(".add").click(function(){
+	$(".add2").click(function(){
 		if(check2<1){
-			$(".frm_wrap").append(frm2);
+			$(".frm_wrap2").append(frm2);
 			check2++;
 		}else{
 			alert("편도당 예매는 2번까지 가능합니다.");
 		}
 	});
 
-	$(".del").click(function(){
-		$(".checkbox").each(function(){
+	$(".del2").click(function(){
+		$(".checkbox2").each(function(){
 			if($(this).prop("checked")){
 				$(this).parent().remove();
-				check --;
+				check2 --;
 			}
 		});
 	});
+
 </script>
 </body>
 </html>
