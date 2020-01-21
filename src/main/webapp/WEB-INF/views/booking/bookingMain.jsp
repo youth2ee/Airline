@@ -88,7 +88,7 @@
                                                      
                                                         <ul class="list-person">
                                                             <li class="list-person__item">
-                                                                <span class="name">Adults</span>
+                                                                <span class="name">Adult</span>
                                                                 <div class="quantity quantity1">
                                                                     <span class="minus">-</span>
                                                                     <input class="inputQty" type="number" min="0" value="1" name = "adult">
@@ -96,7 +96,7 @@
                                                                 </div>
                                                             </li>
                                                             <li class="list-person__item">
-                                                                <span class="name">Children</span>
+                                                                <span class="name">Child</span>
                                                                 <div class="quantity quantity2">
                                                                     <span class="minus">-</span>
                                                                     <input class="inputQty" type="number" min="0" value="0" name = "child">
@@ -283,6 +283,10 @@ $('input:radio[name=kind]').click(function(){
 /**** 공항검색 끝 ****/
 
 
+ 
+ /***** 공항유효성검사 *****/
+
+
 	  $('body').on("click",'#booking_btn',function(){
 			var loc = $('#loc').val().trim();
 			var arrloc = $('#arrloc').val().trim();
@@ -318,13 +322,13 @@ $('input:radio[name=kind]').click(function(){
  
  
  
+ 
 /****** 도착지  *******/
 
 $('#arrloc').focus(function(){
 	
 	var depLoc = $("#loc").val(); 
-
-			var query = {depLoc : $("#loc").val()};
+	var query = {depLoc : $("#loc").val()};
 			
 			$.ajax({
 					url : "airportDepList",
@@ -333,26 +337,18 @@ $('#arrloc').focus(function(){
 					success : function(data){
 					
 						$("#depLocDiv").html(data);
-
-						
-							
+												
 						},error:function(){
 
 							console.log("fail");
 							}	
-
-				});	 
-			
+				});	 			
 });
  
- 
- 
-
-
 </script>
 
 
 </body>
 
 </html>
-<!-- end document-->
+

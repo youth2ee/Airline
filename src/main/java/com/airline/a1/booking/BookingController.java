@@ -25,14 +25,7 @@ public class BookingController {
 	@Autowired
 	private BookingService bookingService;
 	
-	
 
-	@GetMapping("bookingMain")
-	public void bookingMain(Model model)throws Exception{
-		List<String> airport = bookingService.airportList();
-		model.addAttribute("airportList", airport);
-	}
-	
 	@PostMapping("airportDepList")
 	public ModelAndView airportDepList(HttpServletRequest req)throws Exception{
 		String depLoc = req.getParameter("depLoc");	
@@ -47,6 +40,49 @@ public class BookingController {
 		return mv;
 
 	}
+	
+	@ResponseBody
+	@GetMapping("airportCheck")
+	public boolean airportCheck(BookingTicketVO bookingTicketVO)throws Exception{
+	
+		String depLoc = bookingTicketVO.getDepLoc();
+
+		String arrLoc = bookingTicketVO.getArrLoc();
+		
+		List<String> ar= bookingService.airportList();
+		
+		List<BookingTicketVO> ar2 = bookingService.airportDepList(depLoc);
+
+		boolean check = false;
+				
+		for(String airPort : ar) {
+			
+			if(depLoc.equals(airPort)) {
+				
+				
+				for(BookingTicketVO bookingTicketVO2 : ar2) {
+					
+					if(arrLoc.equals(bookingTicketVO2.getArrAirportNm())) {
+						check = true;
+					}
+					
+					
+				}	
+			}
+		}
+		
+		return check;
+	}
+	
+	
+
+	@GetMapping("bookingMain")
+	public void bookingMain(Model model)throws Exception{
+		List<String> airport = bookingService.airportList();
+		model.addAttribute("airportList", airport);
+	}
+	
+
 	
 
 	@PostMapping("bookingMain") 
@@ -395,42 +431,9 @@ public class BookingController {
 	@GetMapping("bookingCheck")
 	public void bookingCheck() {
 	}
-	
 
 	
-	@ResponseBody
-	@GetMapping("airportCheck")
-	public boolean airportCheck(BookingTicketVO bookingTicketVO)throws Exception{
-	
-		String depLoc = bookingTicketVO.getDepLoc();
 
-		String arrLoc = bookingTicketVO.getArrLoc();
-		
-		List<String> ar= bookingService.airportList();
-		
-		List<BookingTicketVO> ar2 = bookingService.airportDepList(depLoc);
-
-		boolean check = false;
-				
-		for(String airPort : ar) {
-			
-			if(depLoc.equals(airPort)) {
-				
-				
-				for(BookingTicketVO bookingTicketVO2 : ar2) {
-					
-					if(arrLoc.equals(bookingTicketVO2.getArrAirportNm())) {
-						check = true;
-					}
-					
-					
-				}	
-			}
-		}
-		
-		return check;
-	}
-	
 	
 	 
 }
