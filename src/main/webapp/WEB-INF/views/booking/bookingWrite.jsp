@@ -25,14 +25,14 @@ ${bTVO.depInfo.depPlandTime}<br>
 ${bTVO.depInfo.arrPlandTime}<br>
 ${bTVO.depInfo.vihicleId}<br>
 ${bTVO.depInfo.airlineNm}<br>
-<c:if test="${bTVO.kind == 1}">
+<c:if test="${bTVO.kind == '편도'}">
 편도
 </c:if>
 </div>
 <div id="top2">2<br>
 출발 : ${bTVO.depInfo.arrAirportNm}<br>
 도착 : ${bTVO.depInfo.depAirportNm}<br>
-<c:if test="${bTVO.kind == 2}">
+<c:if test="${bTVO.kind == '왕복'}">
 ${bTVO.arrInfo.depPlandTime}<br>
 ${bTVO.arrInfo.arrPlandTime}<br>
 ${bTVO.arrInfo.vihicleId}<br>
@@ -46,7 +46,7 @@ ${bTVO.arrInfo.airlineNm}<br>
 </div>
 <div id="top4">4 
 ${bTVO.depInfo.economyCharge}원
-<c:if test="${bTVO.kind == 2}">
+<c:if test="${bTVO.kind == '왕복'}">
 ${bTVO.arrInfo.economyCharge}원
 </c:if>
 </div>
@@ -151,7 +151,7 @@ ${bTVO.arrInfo.economyCharge}원
  </td>
 </tr>
 
-<c:if test="${bTVO.kind == 2}">
+<c:if test="${bTVO.kind == '왕복'}">
 
 <tr>
 <td>개인할인(오는편)</td>
@@ -258,7 +258,7 @@ ${bTVO.arrInfo.economyCharge}원
  </td>
 </tr>
 
-<c:if test="${bTVO.kind == 2}">
+<c:if test="${bTVO.kind == '왕복'}">
 
 <tr>
 <td>개인할인(오는편)</td>
@@ -324,7 +324,7 @@ ${bTVO.arrInfo.economyCharge}원
 
 <input type="hidden" name="depFnum" value="${bTVO.depFnum}">
 
-<c:if test="${bTVO.kind == '2'}">
+<c:if test="${bTVO.kind == '왕복'}">
 <input type="hidden" name="arrFnum" value="${bTVO.arrFnum}">
 </c:if>
 

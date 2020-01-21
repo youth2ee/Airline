@@ -9,6 +9,7 @@
 </head>
 
 <link href="../resources/css/booking/bookingList.css" rel="stylesheet">
+<link href="../resources/css/booking/slide.css" rel="stylesheet">
 <c:import url="../template/boot.jsp"></c:import>
 <body>
 
@@ -109,7 +110,7 @@ header
 <hr>
 
 <div> 
-<c:if test="${bookingVO.kind == '2'}">
+<c:if test="${bookingVO.kind == '왕복'}">
 <div id="title">오는 여정</div>
 <div id="tmsg">${bookingVO.arrLoc} -> ${bookingVO.depLoc}</div>
 <div id="dateLine"> 
@@ -174,8 +175,38 @@ header
 
 </section>
 
-<script type="text/javascript">
+ <div class="container" style="padding: 40px">
+        <button id="Trigger2">Trigger FadeIn/FadeOut</button>
+        <div id="Fader" class="fadeout">
+            Hello World Text
+        </div>
+ </div>
 
+
+
+<script type="text/javascript">
+/* $("#Trigger2").click(function () {
+    if ($("#Fader").hasClass("fadeout"))
+        $("#Fader").removeClass("fadeout").addClass("fadein");
+    else
+        $("#Fader").removeClass("fadein").addClass("fadeout");
+}); */
+
+$("#Trigger2").click(function () {
+    if ($("#Fader").hasClass("fadeout"))
+        $("#Fader").removeClass("fadeout").addClass("fadein");
+    else
+        $("#Fader").removeClass("fadein").addClass("fadeout");
+});
+
+
+
+
+
+
+
+
+//
 var d1 = $('.rd1').text();
 var d2 = $('.rd2').text();
 

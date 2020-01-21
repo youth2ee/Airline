@@ -202,7 +202,7 @@ public class BookingController {
 		bookingTicketVO.setDepInfo(bookingService.oneSelect(flightDataVO));
 		
 		
-		if (bookingTicketVO.getKind().equals("2")) {
+		if (bookingTicketVO.getKind().equals("왕복")) {
 			flightDataVO.setFnum(bookingTicketVO.getArrFnum());
 			bookingTicketVO.setArrInfo(bookingService.oneSelect(flightDataVO));
 		}
@@ -224,7 +224,12 @@ public class BookingController {
 		String id = "test";
 		
 		///bookingNum 만들기
-		String bookingNum = "bnum";
+		String bookingNum = "";
+		bookingNum = bookingService.bookNum();
+		bookingTicketVO.setBookingNum(bookingNum);
+		
+		//
+		String flightBNum = "";
 		
 		String memberNum = "111";
 		
@@ -235,11 +240,8 @@ public class BookingController {
 				adult.setId(id);
 				adult.setMemberNum(memberNum);
 				
-				//flightnum 가는편 만들기
-				adult.setFlightBNum("flightBNum");
-				
 				String kind = "편도";
-				if(bookingTicketVO.getKind().equals("2")) {
+				if(bookingTicketVO.getKind().equals("왕복")) {
 					kind = "왕복";
 					adult.setArrFnum(bookingTicketVO.getArrFnum());
 				}
@@ -252,6 +254,10 @@ public class BookingController {
 				flightDataVO.setFnum(bookingTicketVO.getDepFnum());
 				adult.setDepInfo(bookingService.oneSelect(flightDataVO));
 				
+				//flightnum 가는편 만들기
+				flightBNum = bookingService.flightNum(adult);
+				adult.setFlightBNum(flightBNum);
+				adult.setDepFBNum(flightBNum);
 		
 				adult.setResEmail(bookingTicketVO.getResEmail());
 				adult.setResECheck(bookingTicketVO.getResECheck());
@@ -274,9 +280,7 @@ public class BookingController {
 				bookingService.priceCount(adult);
 				adult = bookingService.priceCount(adult);
 				
-				if (bookingTicketVO.getKind().equals("2")) {
-					//flightnum 오는편 만들기
-					adult.setFlightBNum("flightBNum");
+				if (bookingTicketVO.getKind().equals("왕복")) {
 					
 					int dep = adult.getDepFnum();
 					int arr = adult.getArrFnum();
@@ -284,10 +288,13 @@ public class BookingController {
 					adult.setArrFnum(dep);
 					
 					flightDataVO = new FlightDataVO();
-					flightDataVO.setFnum(bookingTicketVO.getDepFnum());
-					adult.setDepInfo(bookingService.oneSelect(flightDataVO));
 					
-					flightDataVO.setFnum(bookingTicketVO.getArrFnum());
+					//flightnum 오는편 만들기
+					flightBNum = bookingService.flightNum(adult);
+					adult.setFlightBNum(flightBNum);
+					adult.setArrFBNum(flightBNum);
+					
+					flightDataVO.setFnum(adult.getDepFnum());
 					adult.setArrInfo(bookingService.oneSelect(flightDataVO));
 					
 					
@@ -307,12 +314,10 @@ public class BookingController {
 				child.setBookingNum(bookingNum);
 				child.setId(id);
 				child.setMemberNum("111");
-				
-				//flightnum 가는편 만들기
-				child.setFlightBNum("flightBNum");
+							
 				
 				String kind = "편도";
-				if(bookingTicketVO.getKind().equals("2")) {
+				if(bookingTicketVO.getKind().equals("왕복")) {
 					kind = "왕복";
 					child.setArrFnum(bookingTicketVO.getArrFnum());
 				}
@@ -324,6 +329,11 @@ public class BookingController {
 				FlightDataVO flightDataVO = new FlightDataVO();
 				flightDataVO.setFnum(bookingTicketVO.getDepFnum());
 				child.setDepInfo(bookingService.oneSelect(flightDataVO));
+				
+				//flightnum 가는편 만들기
+				flightBNum = bookingService.flightNum(child);
+				child.setFlightBNum(flightBNum);
+				child.setDepFBNum(flightBNum);
 				
 				child.setResEmail(bookingTicketVO.getResEmail());
 				child.setResECheck(bookingTicketVO.getResECheck());
@@ -347,9 +357,11 @@ public class BookingController {
 				child = bookingService.priceCount(child);
 				
 				//왕복일때
-				if (bookingTicketVO.getKind().equals("2")) {
+				if (bookingTicketVO.getKind().equals("왕복")) {
 					//flightnum 오는편 만들기
-					child.setFlightBNum("flightBNum");
+					flightBNum = bookingService.flightNum(child);
+					child.setFlightBNum(flightBNum);
+					child.setArrFBNum(flightBNum);
 					
 					int dep = child.getDepFnum();
 					int arr = child.getArrFnum();
@@ -357,10 +369,8 @@ public class BookingController {
 					child.setArrFnum(dep);
 					
 					flightDataVO = new FlightDataVO();
-					flightDataVO.setFnum(bookingTicketVO.getDepFnum());
-					child.setDepInfo(bookingService.oneSelect(flightDataVO));
 					
-					flightDataVO.setFnum(bookingTicketVO.getArrFnum());
+					flightDataVO.setFnum(child.getDepFnum());
 					child.setArrInfo(bookingService.oneSelect(flightDataVO));
 					
 					bookingService.bookingInsert(child);
@@ -374,6 +384,7 @@ public class BookingController {
 			}//어린이 반복문 끝
 		}//어린이 끝
 		
+		mv.addObject("bVO", bookingTicketVO);
 		mv.addObject("alist", bookingTicketVO.getAdultList());
 		mv.addObject("clist", bookingTicketVO.getChildList());
 		mv.setViewName("booking/bookingCheck");
