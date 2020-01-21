@@ -27,7 +27,5 @@ public class FlightDataVO {
 	private String depCityCode;
 	private String arrCityCode;
 	
-	//private BookingPriceVO priceVO;
-	
-	
+
 }

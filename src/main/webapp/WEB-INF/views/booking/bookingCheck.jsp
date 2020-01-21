@@ -7,8 +7,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="../resources/css/reset.css" rel="stylesheet">
 <link href="../resources/css/booking/bookingCheck.css" rel="stylesheet">
-<c:import url="../template/boot.jsp"></c:import>
+<c:import url="../template/boot.jsp" />
 </head>
 <body>
 
@@ -38,10 +39,55 @@ header
 
 
 <section>
-<div id="title">운임 확인</div>
+<div id="title">운임 가격</div>
 <div id="tmsg">운임이 정상적으로 입력되었는지 최종확인 후, 운임 조건 및 규정을 확인하시기 바랍니다.</div>
 
+<table>
+<tr>
+<td>탑승객</td>
+<td>왕복/편도</td>
+<td>출발지</td>
+<td>도착지</td>
+<td>이름</td>
+<td>원가</td>
+<td>쿠폰명</td>
+<td>할인내역</td>
+<td>유류할증료</td>
+<td>공항이용료</td>
+<td>총 금액</td>
+</tr>
+<c:forEach items="${alist}" var="adult">
+<tr>
+<td>성인</td>
+<td>${adult.kind}</td>
+<td>${adult.depInfo.depAirportNm}</td>
+<td>${adult.depInfo.arrAirportNm}</td>
+<td>${adult.name}</td>
+<td>${adult.depPriceVO.price}</td>
+<td>${adult.depPriceVO.couName}</td>
+<td>- ${adult.depPriceVO.couponDis}</td>
+<td>+ ${adult.depPriceVO.fuelTax}</td>
+<td>+ ${adult.depPriceVO.airportTax}</td>
+<td>= ${adult.depPriceVO.totalPrice}</td>
+</tr>
 
+<c:if test="${adult.kind == '왕복'}">
+<tr>
+<td>성인</td>
+<td>${adult.kind}</td>
+<td>${adult.arrInfo.depAirportNm}</td>
+<td>${adult.arrInfo.arrAirportNm}</td>
+<td>${adult.name}</td>
+<td>${adult.arrPriceVO.price}</td>
+<td>${adult.arrPriceVO.couName}</td>
+<td>- ${adult.arrPriceVO.couponDis}</td>
+<td>+ ${adult.arrPriceVO.fuelTax}</td>
+<td>+ ${adult.arrPriceVO.airportTax}</td>
+<td>= ${adult.arrPriceVO.totalPrice}</td>
+</tr>
+</c:if>
+</c:forEach>
+</table>
 
 <div>
 

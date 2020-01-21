@@ -14,6 +14,10 @@ public class BookingService {
 	@Autowired
 	private BookingMapper bookingMapper;
 	
+	private int fuelTax = 3300;
+	private int airportTax = 4000;
+	
+	
 	public List<String> airportList()throws Exception{
 		return bookingMapper.airportList();
 	}
@@ -26,8 +30,8 @@ public class BookingService {
 		return bookingMapper.oneSelect(flightDataVO);
 	}
 	
-	public List<BookingVO> airportDepList(String arrLoc)throws Exception{
-			return bookingMapper.airportDepList(arrLoc);
+	public List<BookingTicketVO> airportDepList(String depLoc)throws Exception{
+			return bookingMapper.airportDepList(depLoc);
 		
 	}
 
@@ -35,49 +39,104 @@ public class BookingService {
 		return bookingMapper.bookingInsert(bookingTicketVO);
 	}
 	
-	public BookingPriceVO cPrice(int price, String dis) {
-		System.out.println(price);
-		System.out.println(dis);
-		BookingPriceVO bookingPriceVO = new BookingPriceVO();
-		
-		if (!dis.equals("개인할인 선택 안함")) {
-			double discount = Integer.parseInt(dis.substring(1, 3))*(0.01);
-			System.out.println(discount);
-			int dprice = (int)(price*discount);
-			int dtotal = price-dprice;
-			
-			System.out.println(price); //원가
-			System.out.println(dprice); //쿠폰할인가
-			System.out.println(dtotal); //쿠폰적용된 금액
-			
-			bookingPriceVO.setCprice(dprice);
-			bookingPriceVO.setCtotal(dtotal);
-		} else {
-			bookingPriceVO.setCprice(0);
-			bookingPriceVO.setCtotal(price);
-		}
-		
-		bookingPriceVO.setCname(dis);
-		bookingPriceVO.setRealPrice(price);
-		
-		return bookingPriceVO;
-	}
-	//
-	public void priceCount(BookingTicketVO bookingTicketVO) {
+
+	public BookingTicketVO priceCount(BookingTicketVO bookingTicketVO) throws Exception {
 		System.out.println(bookingTicketVO.getKind());
 		
 		System.out.println(bookingTicketVO.getDepCoupon());
 		System.out.println(bookingTicketVO.getDepFnum());
-		System.out.println(bookingTicketVO.getDepPrice());
 		
-		System.out.println(bookingTicketVO.getArrCoupon());
-		System.out.println(bookingTicketVO.getArrFnum());
-		System.out.println(bookingTicketVO.getArrPrice());
+		FlightDataVO flightDataVO = new FlightDataVO();
+		flightDataVO.setFnum(bookingTicketVO.getDepFnum());
+		flightDataVO =  bookingMapper.oneSelect(flightDataVO);
+		System.out.println(flightDataVO.getEconomyCharge());
 		
+		BookingPriceVO bookingPriceVO = new BookingPriceVO();
+		bookingPriceVO.setPrice(Integer.parseInt(flightDataVO.getEconomyCharge()));
+		bookingPriceVO.setCouName(bookingTicketVO.getDepCoupon());
+		
+		if (!bookingTicketVO.getDepCoupon().equals("개인할인 선택 안함")) {
+			double discount = Integer.parseInt(bookingTicketVO.getDepCoupon().substring(1, 3))*(0.01);
+			System.out.println(discount);
+			int dprice = (int)(bookingPriceVO.getPrice()*discount);
+			int dtotal = bookingPriceVO.getPrice()-dprice;
+			
+			System.out.println(bookingPriceVO.getPrice()); //원가
+			System.out.println(dprice); //쿠폰할인가
+			System.out.println(dtotal); //쿠폰적용된 금액
+
+			bookingPriceVO.setCouponDis(dprice);
+			
+			bookingPriceVO.setFuelTax(fuelTax);
+			bookingPriceVO.setAirportTax(airportTax);
+
+			int total = dtotal + bookingPriceVO.getFuelTax() + bookingPriceVO.getAirportTax();
+			
+			bookingPriceVO.setTotalPrice(total);
+						
+		} else {
+			bookingPriceVO.setCouponDis(0);
+			
+			bookingPriceVO.setFuelTax(fuelTax);
+			bookingPriceVO.setAirportTax(airportTax);
+
+			int total = bookingPriceVO.getPrice() + bookingPriceVO.getFuelTax() + bookingPriceVO.getAirportTax();
+			
+			bookingPriceVO.setTotalPrice(total);
+		}
+
+		bookingTicketVO.setDepPriceVO(bookingPriceVO);
+			
+	//
+		
+		if(bookingTicketVO.getKind().equals("왕복")) {
+			flightDataVO = new FlightDataVO();
+			flightDataVO.setFnum(bookingTicketVO.getArrFnum());
+			flightDataVO =  bookingMapper.oneSelect(flightDataVO);
+			System.out.println(flightDataVO.getEconomyCharge());
+			
+			bookingPriceVO = new BookingPriceVO();
+			bookingPriceVO.setPrice(Integer.parseInt(flightDataVO.getEconomyCharge()));
+			bookingPriceVO.setCouName(bookingTicketVO.getArrCoupon());
+			
+			if (!bookingTicketVO.getArrCoupon().equals("개인할인 선택 안함")) {
+				double discount = Integer.parseInt(bookingTicketVO.getArrCoupon().substring(1, 3))*(0.01);
+				System.out.println(discount);
+				int dprice = (int)(bookingPriceVO.getPrice()*discount);
+				int dtotal = bookingPriceVO.getPrice()-dprice;
+				
+				System.out.println(bookingPriceVO.getPrice()); //원가
+				System.out.println(dprice); //쿠폰할인가
+				System.out.println(dtotal); //쿠폰적용된 금액
+
+				bookingPriceVO.setCouponDis(dprice);
+				
+				bookingPriceVO.setFuelTax(fuelTax);
+				bookingPriceVO.setAirportTax(airportTax);
+
+				int total = dtotal + bookingPriceVO.getFuelTax() + bookingPriceVO.getAirportTax();
+				
+				bookingPriceVO.setTotalPrice(total);
+				
+			} else {
+				bookingPriceVO.setCouponDis(0);
+				
+				bookingPriceVO.setFuelTax(fuelTax);
+				bookingPriceVO.setAirportTax(airportTax);
+
+				int total = bookingPriceVO.getPrice() + bookingPriceVO.getFuelTax() + bookingPriceVO.getAirportTax();
+				
+				bookingPriceVO.setTotalPrice(total);
+			}
+
+			bookingTicketVO.setArrPriceVO(bookingPriceVO);
+		}
+		
+		return bookingTicketVO;
+	
 	}
 	
-	
-	
+
 	
 	//
 	public String bookingNum(String vid) {

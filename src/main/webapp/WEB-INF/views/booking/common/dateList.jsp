@@ -11,7 +11,7 @@
 	<td>가격</td>  
 </tr>
 
-<c:if test="${bookingVO.kind == '1'}">
+<c:if test="${bookingVO.kind == '편도'}">
 
 <c:if test="${empty DairList}"> 
 <tr><td colspan="7" style="text-align: center;">운항정보가 존재하지 않습니다.</td></tr>
@@ -30,7 +30,7 @@
 </c:forEach>
 </c:if>
 
-<c:if test="${bookingVO.kind == '2'}">
+<c:if test="${bookingVO.kind == '왕복'}">
 
 <c:if test="${empty AairList}"> 
 <tr><td colspan="7" style="text-align: center;">운항정보가 존재하지 않습니다.</td></tr>
