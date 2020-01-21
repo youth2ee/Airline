@@ -9,5 +9,9 @@
 		values(null, ${id}, #{bnum})
 	</insert>
 
+	<select id="select">
+		select 
+	
+	</select>
 
 </mapper>
