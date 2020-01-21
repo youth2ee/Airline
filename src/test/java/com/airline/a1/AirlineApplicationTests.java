@@ -39,7 +39,7 @@ class AirlineApplicationTests {
 	@Autowired
 	private BusVO busVO;
 
-	@Test
+	//@Test
 		void apiTest7() throws Exception {
 		System.out.println("test");
 			Random rand = new Random();
@@ -53,7 +53,7 @@ class AirlineApplicationTests {
 		}
 
 	
-	@Test
+	//@Test
 	void apiTest6() throws Exception {
 		Random rand = new Random();
 		String memberNumber1 = String.format("%03d%n", rand.nextInt(1000)).replace("\r\n", "");
@@ -208,7 +208,7 @@ class AirlineApplicationTests {
 					String urlstr = "http://openapi.tago.go.kr/openapi/service/DmstcFlightNvgInfoService/getFlightOpratInfoList?"
 							+ "serviceKey=iEDBbpkkNQN604mbzvOvbCbGl0rXiyk4SdUBO%2FqhREGGDL5QrF2SrrZzf3l2%2BUNCeiBD97RtxaPQZaL9VqVR%2Fg%3D%3D&"
 							+ "numOfRows=100&" + "depAirportId=" + depAp + "&" + "arrAirportId=" + arrAp + "&"
-							+ "depPlandTime=20200120"; // 출발일 // 항공사ID
+							+ "depPlandTime=20200121"; // 출발일 // 항공사ID
 
 					URL url = new URL(urlstr);
 					HttpURLConnection urlconnection = (HttpURLConnection) url.openConnection();

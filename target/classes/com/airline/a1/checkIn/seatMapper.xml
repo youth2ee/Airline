@@ -4,6 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="com.airline.a1.checkIn.SeatMapper">
-
-
+	<insert id="seatBook" parameterType="com.airline.a1.checkIn.SeatVO">
+		insert into seat values (null,#{fNum},#{seatName},#{bookingNum},#{fligthNum})
+	</insert>
 </mapper>

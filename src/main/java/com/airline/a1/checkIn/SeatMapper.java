@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 @Mapper
 public interface SeatMapper {
-
+	public int seatBook(SeatVO seatVO) throws Exception;
 }

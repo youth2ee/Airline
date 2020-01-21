@@ -78,6 +78,7 @@ input[type=checkbox]:disabled {
 			</c:forEach>
 		 </div>
 	</div>
+	<button type="button" id="btn">선택 완료</button>
 <script type="text/javascript">
 	$("input:checkbox").click(function(){
 		// alert($(this).attr('id'));
@@ -112,6 +113,9 @@ input[type=checkbox]:disabled {
 			$(this).removeClass('over');
 		});
 	});
+	$("#btn").click(function(){
+		$("#frm").submit();
+		});
 </script>
 </body>
 </html>
