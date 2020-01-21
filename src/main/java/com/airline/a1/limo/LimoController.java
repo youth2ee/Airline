@@ -33,12 +33,13 @@ public class LimoController {
 	}
 	
 	@GetMapping("arrLoc")
-	public ModelAndView arrLoc(LimoInfoVO limoInfoVO, String depLoc)throws Exception{
+	public ModelAndView arrLoc(LimoInfoVO limoInfoVO, String depLoc, String sec)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		limoInfoVO.setDepLoc(depLoc);
 		List<LimoInfoVO> ar = limoService.limoInfo(limoInfoVO);
 		mv.addObject("list", ar);
 		mv.setViewName("limo/arrLoc");
+		mv.addObject("sec", sec);
 		return mv;
 	}
 	

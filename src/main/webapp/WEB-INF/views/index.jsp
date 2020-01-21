@@ -45,7 +45,6 @@
 		</div>
 	</div>
 
-
 	<h1>Hello Index</h1>
 
 </body>

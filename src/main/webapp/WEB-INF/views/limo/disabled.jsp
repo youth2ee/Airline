@@ -7,9 +7,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
-	<c:forEach items="${disabled}" var="dis">
-		<input type="hidden" value="${dis.seat}" class="dis">
-	</c:forEach>
-</body>
+	<body>
+		<c:forEach items="${disabled}" var="dis">
+			<input type="hidden" value="${dis.seat}" class="dis${sec}">
+		</c:forEach>
+	</body>
 </html>
