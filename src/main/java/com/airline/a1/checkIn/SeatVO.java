@@ -4,8 +4,8 @@ import lombok.Data;
 
 @Data
 public class SeatVO {
-	private int sNum;
-	private int fNum;
+	private int snum;
+	private int fnum;
 	private String seatName;
 	private String bookingNum;
 	private String flightNum;
