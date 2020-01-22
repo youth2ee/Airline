@@ -492,12 +492,11 @@
 	});
 
 	$(".gobooks").click(function(){
-		$(".frm").submit();
-// 		$(".checkbox").each(function(){
-// 			if($(this).prop("checked")){
-// 				$(this).parent().submit();
-// 			}
-// 		});
+		$(".checkbox").each(function(){
+			if($(this).prop("checked")){
+				$(this).parent().submit();
+			}
+		});
 	});
 
 // 편도 2회 예매 --------------------------------------------------------------------------------------------------------

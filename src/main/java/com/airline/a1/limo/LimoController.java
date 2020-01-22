@@ -24,16 +24,14 @@ public class LimoController {
 	}
 	
 	@PostMapping("limoBook")
-	public ModelAndView limoBook(HttpServletRequest servletRequest) throws Exception{
+	public ModelAndView limoBook(LimoVO limoVO) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		System.out.println(servletRequest.getParameterValues("id")[0]);
-		System.out.println(servletRequest.getParameterValues("id")[1]);
-//		int result = limoService.limoBook(limoVO);
-//		
-//		if(result >0) {
-//			mv.addObject("limo", limoVO);
-//			mv.setViewName("index");
-//		}
+		int result = limoService.limoBook(limoVO);
+		
+		if(result >0) {
+			mv.addObject("limo", limoVO);
+			mv.setViewName("index");
+		}
 		return mv;
 	}
 	
