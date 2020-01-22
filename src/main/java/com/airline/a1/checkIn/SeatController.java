@@ -23,7 +23,7 @@ public class SeatController {
 	public ModelAndView seat() throws Exception {
 		ModelAndView mv = new ModelAndView();
 		BookingTicketVO bookingTicketVO = new BookingTicketVO();
-		bookingTicketVO.setBookingNum("F66C84"); // 파라미터로 받을값 (현재는임시)
+		bookingTicketVO.setBookingNum("Z74T42"); // 파라미터로 받을값 (현재는임시)
 		List<BookingTicketVO> bookingTicketVOs = seatService.getBookData(bookingTicketVO);
 		int people = seatService.getBookCount(bookingTicketVO);
 		int kindFlag = 0;
