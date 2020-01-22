@@ -5,6 +5,21 @@
   
 <mapper namespace="com.airline.a1.checkIn.SeatMapper">
 	<insert id="seatBook" parameterType="com.airline.a1.checkIn.SeatVO">
-		insert into seat values (null,#{fNum},#{seatName},#{bookingNum},#{fligthNum})
+		insert into seat values (null,#{fNum},#{seatName},#{bookingNum},#{flightNum})
 	</insert>
+	<select id="depBookedSeat" parameterType="com.airline.a1.booking.BookingTicketVO" resultType="com.airline.a1.checkIn.SeatVO" >
+		select * from seat where fnum = #{depFnum}
+	</select>
+	<select id="arrBookedSeat" parameterType="com.airline.a1.booking.BookingTicketVO" resultType="com.airline.a1.checkIn.SeatVO" >
+		select * from seat where fnum = #{arrFnum}
+	</select>
+	<update id="updateFlightNum" parameterType="com.airline.a1.booking.BookingTicketVO">
+		update bookingTicket set flightBNum = ${flightBNum} where bnum = ${bnum}
+	</update>
+	<select id="getBookData" parameterType="com.airline.a1.booking.BookingTicketVO" resultType="com.airline.a1.booking.BookingTicketVO">
+		select * from bookingTicket where bookingNum = #{bookingNum}
+	</select>
+	<select id="getBookCount" parameterType="com.airline.a1.booking.BookingTicketVO" resultType="java.lang.Integer">
+		select count(*) from bookingTicket where bookingNum = #{bookingNum}
+	</select>
 </mapper>

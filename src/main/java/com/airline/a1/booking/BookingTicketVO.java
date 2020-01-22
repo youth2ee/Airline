@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import lombok.Data;
-
 @Data
 public class BookingTicketVO {
 
