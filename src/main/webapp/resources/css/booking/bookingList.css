@@ -79,12 +79,14 @@ section {
 	width: 100%;
 	clear: both;
 	cursor: pointer;
+	font-size: 18px;
 }
 
 #arrT {
 	width: 100%;
 	clear: both;
 	cursor: pointer;
+	font-size: 18px;
 }
 
 #dateLine{
@@ -100,9 +102,34 @@ section {
 }
 
 .act {
-	color: red;
+	color: #D60815;
 }
 
 .bact {
-	background-color: red;
+	background-color: #D60815;
+	color: white;
+}
+
+
+#deptitle, #arrtitle{
+	position: absolute;
+	background-color: white;
+	color: black;
+	font-weight: bold;
+	border: gray 1px solid; 
+	text-align: center;
+}
+
+.td1t{
+	width: 168px;
+	background-color: gray;
+}
+
+.td1{
+	background-color: gray;
+	padding-left: 10px;
+}
+
+.td1, .td2, .td3, .td4, .td5, .td6, .td7{
+	width: 150px;
 }

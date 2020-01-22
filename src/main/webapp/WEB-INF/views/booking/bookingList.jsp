@@ -16,7 +16,14 @@
 <h1> Booking List </h1>
 
 <header>
-header 
+header
+
+<table>
+
+
+</table>
+
+
 </header>
 
 <div id="top">
@@ -82,26 +89,28 @@ header
 
 <div style="height: 300px; overflow-y: scroll; clear: both;">
 <table id="depT"> 
-<tr>
-	<td style="width: 80px;">편명</td> 
-	<td style="width: 130px;">기종</td> 
-	<td>출발시간</td> 
-	<td>도착시간</td>
-	<td>운행거리</td> 
-	<td>운행시간</td> 
-	<td>가격</td>  
+<tr id="deptitle">
+	<td class="td1t">편명</td> 
+	<td class="td2">기종</td> 
+	<td class="td3">출발시간</td> 
+	<td class="td4">도착시간</td>
+	<td class="td5">운행거리</td> 
+	<td class="td6">운행시간</td> 
+	<td class="td7">가격</td>  
 </tr>
 
 <c:forEach items="${DairList}" var="dlist"> 
 <tr class="dtrcheck">
-	<td>${dlist.vihicleId}<input type="hidden" value="${dlist.fnum}" class="dfnum"></td> 
-	<td>${dlist.airlineNm}</td> 
-	<td>${dlist.depTime}</td> 
-	<td>${dlist.arrTime}</td> 
-	<td>${dlist.flightKm}</td>
-	<td>${dlist.flightTime}</td> 
-	<td>${dlist.economyCharge}원</td>  
+	<td class="td1">${dlist.vihicleId}<input type="hidden" value="${dlist.fnum}" class="dfnum"></td> 
+	<td class="td2">${dlist.airlineNm}</td> 
+	<td class="td3">${dlist.depTime}</td> 
+	<td class="td4">${dlist.arrTime}</td> 
+	<td class="td5">${dlist.flightKm}KM</td>
+	<td class="td6">${dlist.flightTime}분</td> 
+	<td class="td7">${dlist.economyCharge}원</td>  
 </tr>
+
+<tr class="dhide" style="display: none; background-color: salmon; height: 30px;"><td colspan="7">${dlist.fnum}</td></tr>
 </c:forEach>
 </table>
 </div>
@@ -133,26 +142,28 @@ header
 
 <div style="height: 300px; overflow-y: scroll; clear: both;">
 <table id="arrT"> 
-<tr> 
-	<td style="width: 80px;">편명</td> 
-	<td style="width: 130px;">기종</td> 
-	<td>출발시간</td> 
-	<td>도착시간</td>
-	<td>운행거리</td> 
-	<td>운행시간</td> 
-	<td>가격</td>  
+<tr id="deptitle"> 
+	<td class="td1t">편명</td> 
+	<td class="td2">기종</td> 
+	<td class="td3">출발시간</td> 
+	<td class="td4">도착시간</td>
+	<td class="td5">운행거리</td> 
+	<td class="td6">운행시간</td> 
+	<td class="td7">가격</td>  
 </tr>
 
 <c:forEach items="${AairList}" var="alist"> 
 <tr class="atrcheck">
-	<td>${alist.vihicleId}<input type="hidden" value="${alist.fnum}" class="afnum"></td> 
-	<td>${alist.airlineNm}</td> 
-	<td>${alist.depTime}</td> 
-	<td>${alist.arrTime}</td> 
-	<td>${alist.flightKm}</td>
-	<td>${alist.flightTime}</td> 
-	<td>${alist.economyCharge}원</td>  
+	<td class="td1">${alist.vihicleId}<input type="hidden" value="${alist.fnum}" class="afnum"></td> 
+	<td class="td2">${alist.airlineNm}</td> 
+	<td class="td3">${alist.depTime}</td> 
+	<td class="td4">${alist.arrTime}</td> 
+	<td class="td5">${alist.flightKm}KM</td>
+	<td class="td6">${alist.flightTime}분</td> 
+	<td class="td7">${alist.economyCharge}원</td>  
 </tr>
+
+<tr class="ahide" style="display: none; background-color: salmon; height: 30px;"><td colspan="7">${alist.fnum}</td></tr>
 </c:forEach>
 </table>
 </div>
@@ -192,16 +203,40 @@ header
         $("#Fader").removeClass("fadein").addClass("fadeout");
 }); */
 
-$("#Trigger2").click(function () {
+/* $(".dtrcheck").click(function () {
     if ($("#Fader").hasClass("fadeout"))
         $("#Fader").removeClass("fadeout").addClass("fadein");
     else
         $("#Fader").removeClass("fadein").addClass("fadeout");
 });
+ */
+ 
+/*   $(".dtrcheck").click(function () {
+
+	  $(this).next('.hideall').css("display", "block"); */
+
+	//   $(this).next('.fadeall').slidedown(); 
+
+	/*  alert($(this).next('.fade').text()); */ 
+/* 	    if ($(this).next('.fadeall').hasClass("fadeout"))
+	    	$(this).next('.fadeall').removeClass("fadeout").addClass("fadein");
+	    else
+	    	$(this).next('.fadeall').removeClass("fadein").addClass("fadeout"); */
+//	});
+ 
+
+/*  jQuery('#toggle').click(function () {  
+	    if($("#id").css("display") == "none"){   
+	        jQuery('#id').css("display", "block");   
+	    } else {  
+	        jQuery('#id').css("display", "none");   
+	    }  
+	});   */
 
 
 
 
+ 
 
 
 
@@ -272,17 +307,34 @@ var dfnum = "";
 var afnum = "";
 
 $('body').on("click",'.dtrcheck',function(){
+	$('.dhide').css("display", "none");   
+
 	dfnum = $(this).find('.dfnum').val();
 	$('#dfnumf').val(dfnum);
 	$(this).find('td').addClass('act');
 	$(this).siblings().find('td').removeClass('act');
+
+    if($(this).next('.dhide').css("display") == "none"){   
+    	$(this).next('.dhide').css("display", "table-row");   
+    } else {  
+    	$(this).next('.dhide').css("display", "none");   
+    }  
+	
 });
 
 $('body').on("click",'.atrcheck',function(){
+	$('.ahide').css("display", "none");   
+	
 	afnum = $(this).find('.afnum').val();
 	$('#afnumf').val(afnum);
 	$(this).find('td').addClass('act');
 	$(this).siblings().find('td').removeClass('act');
+
+    if($(this).next('.ahide').css("display") == "none"){   
+    	$(this).next('.ahide').css("display", "table-row");   
+    } else {  
+    	$(this).next('.ahide').css("display", "none");   
+    }  
 });
 
 
