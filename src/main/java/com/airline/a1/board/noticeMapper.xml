@@ -3,10 +3,12 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-<mapper namespace="com.airline.a1.board.noticeMapper">
-<insert id="boardWrite" parameterType="BoardVO">
+<mapper namespace="com.airline.a1.board.NoticeMapper">
+
+
+<insert id="noticeWrite" parameterType="com.airline.a1.board.BoardVO" useGeneratedKeys="true" keyProperty="num">	
 		insert into notice
-		values(0, #{title}, #{writer}, #{contents}, now(),0)
+		values(#{num}, #{title}, #{writer}, #{contents}, now(),0)
 	</insert>
 
 

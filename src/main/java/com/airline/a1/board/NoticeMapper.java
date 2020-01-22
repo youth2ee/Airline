@@ -7,5 +7,7 @@ import org.springframework.stereotype.Repository;
 @Mapper
 public interface NoticeMapper {
 	
+	public int noticeWrite(NoticeVO noticeVO)throws Exception;
+	
 
 }
