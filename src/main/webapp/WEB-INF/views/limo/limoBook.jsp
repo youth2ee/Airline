@@ -27,7 +27,7 @@
 	  <button class="btn btn-danger del">삭제</button>
 	  <button class="btn btn-warning gobooks">예매하기</button>
   		<div class="frm_wrap">
-		   <form action="./limoBook" method="post" class="frm">
+		   <form action="./limoBook"  method="post" class="frm">
 		    	<input type="checkbox" value="frm_wrap" class="checkbox" style="display: inline-block;">
 				<input type="text" placeholder="id" name="id">
 				<input type="date" name="limoDate" class="limoDate datepicker">
@@ -492,11 +492,12 @@
 	});
 
 	$(".gobooks").click(function(){
-		$(".checkbox").each(function(){
-			if($(this).prop("checked")){
-				$(this).parent().submit();
-			}
-		});
+		$(".frm").submit();
+// 		$(".checkbox").each(function(){
+// 			if($(this).prop("checked")){
+// 				$(this).parent().submit();
+// 			}
+// 		});
 	});
 
 // 편도 2회 예매 --------------------------------------------------------------------------------------------------------

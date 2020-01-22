@@ -2,6 +2,9 @@ package com.airline.a1.limo;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.coyote.http11.Http11AprProtocol;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,14 +24,16 @@ public class LimoController {
 	}
 	
 	@PostMapping("limoBook")
-	public ModelAndView limoBook(LimoVO limoVO) throws Exception{
+	public ModelAndView limoBook(HttpServletRequest servletRequest) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		int result = limoService.limoBook(limoVO);
-		
-		if(result >0) {
-			mv.addObject("limo", limoVO);
-			mv.setViewName("index");
-		}
+		System.out.println(servletRequest.getParameterValues("id")[0]);
+		System.out.println(servletRequest.getParameterValues("id")[1]);
+//		int result = limoService.limoBook(limoVO);
+//		
+//		if(result >0) {
+//			mv.addObject("limo", limoVO);
+//			mv.setViewName("index");
+//		}
 		return mv;
 	}
 	
