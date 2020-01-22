@@ -20,15 +20,15 @@
 	<c:import url="../template/boot.jsp"></c:import>
 <!------------ 공항에서 도시로 이동할 경우  ------------>
 	<h1>리무진 예약</h1>
-	<div class="containers">
+	<div class="containers contain">
 	  <button type="button" class="btn btn-info">공항 -> 도시</button>
 	  <button type="button" class="btn btn-info">도시 -> 공항</button>
 	  <button class="btn btn-info add">추가</button>
 	  <button class="btn btn-danger del">삭제</button>
 	  <button class="btn btn-warning gobooks">예매하기</button>
-	  	<div class="frm_wrap">
-		    <form action="./limoBook" method="post" class="frm">
-		    	<input type="checkbox" class="checkbox" style="display: inline-block;">
+  		<div class="frm_wrap">
+		   <form action="./limoBook" method="post" class="frm">
+		    	<input type="checkbox" value="frm_wrap" class="checkbox" style="display: inline-block;">
 				<input type="text" placeholder="id" name="id">
 				<input type="date" name="limoDate" class="limoDate datepicker">
 				<select name="depLoc" class="depLoc">
@@ -144,12 +144,11 @@
 </div>
 
 
-<h1>----------------------------------------</h1>
 <!------------------------------------------------ 편도 2회 예매 ------------------------------------------------------>
-<div class="containers">
+<div class="containers" style="display: none;">
 	  	<div class="frm_wrap2">
 		    <form action="./limoBook" method="post" class="frm">
-		    	<input type="checkbox" class="checkbox" style="display: inline-block;">
+		    	<input type="checkbox" value="frm_wrap2" class="checkbox" style="display: inline-block;">
 				<input type="text" placeholder="id" name="id">
 				<input type="date" name="limoDate" class="limoDate2 datepicker2">
 				<select name="depLoc" class="depLoc2">
@@ -180,7 +179,7 @@
 				</select>
 				<input type="text" name="seat" placeholder="좌석" readonly="readonly" class="seat2">
 				<button type="button" class="btn btn-info btn-lg select2">조회하기</button>
-				<button type="button" class="btn btn-info btn-lg sel3" data-toggle="modal" data-target="#myModal2" style="display: none;">조회하기</button>
+				<button type="button" id="sel3" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal2" style="display: none;">조회하기</button>
 				<button type="button" class="bookssssssssssssss" style="display: none;">예매하기</button>
 			</form>
 		</div>
@@ -205,12 +204,12 @@
 									<c:choose>
 										<c:when test="${vo.current%4 eq 2 && vo.current lt 40}">
 											<label class="limo" title="${vo.index}" style="margin-right: 43px; cursor: pointer;">
-												<input type="checkbox" name="seat" class="lim2" id="${vo.current}" value="${vo.current}" style="display: none;">		
+												<input type="checkbox" name="seat" class="lim2" id="two${vo.current}" value="${vo.current}" style="display: none;">		
 											</label>
 										</c:when>
 										<c:otherwise>
 											<label class="limo" title="${vo.index}" style="cursor: pointer;">
-												<input type="checkbox" name="seat" class="lim2" id="${vo.current}" value="${vo.current}" style="display: none;">
+												<input type="checkbox" name="seat" class="lim2" id="two${vo.current}" value="${vo.current}" style="display: none;">
 											</label>
 										</c:otherwise>
 										
@@ -311,7 +310,9 @@
 		alert(totalperson);
 		$(".lim").each(function(){
 			$(this).prop("checked", false);
+			$(this).prop('disabled', false);
 			$(this).parent().removeClass('abcd');
+			$(this).parent().removeClass('booked');
 			count = 0;
 			$(".select_seat_text").html("");
 		});
@@ -345,6 +346,7 @@
 			},
 			success : function(data){
 				data = data.trim();
+				console.log(data);
 				$('.place2').html(data);
 			}
 		});
@@ -364,10 +366,10 @@
 		$(".select_limoTime_text").html(limoTime_M);
 
 		// 선택불가 좌석 
-		 $(".dis1").each(function(){
-			var check = $(this).val();
-			$("#"+check).attr('disabled', true);
-			$("#"+check).parent().addClass("booked");
+		 $(".dis").each(function(){
+			var checked = $(this).val();
+			$("#"+checked).attr('disabled', true);
+			$("#"+checked).parent().addClass("booked");
 		}); 
 	});
 
@@ -405,17 +407,24 @@
 	var child = 0;
 	var cal1 = 0;
 	var totalperson = 0;
+	var cal2 = 0;
 	$("body").on("change", ".person1", function(){
 		person = $(".person option:selected").val();
 		person = person*1;
 		cal1 = price * person;
-		$(".price").val(cal1);
+		totalperson = person + child;
+		$(".price").val(cal1+cal2);
+		if(totalperson > 5){
+			alert("최대 5명까지만 예매할 수 있습니다.");
+			$(".child option:eq(0)").prop("selected", true);
+			$(".price").val(cal1);
+		}
 	});
 	
 	$("body").on("change", ".child1", function(){
 		child = $(".child option:selected").val();
 		child = child*1;
-		var cal2 = price * 0.8 * child;
+		cal2 = price * 0.8 * child;
 		$(".price").val(cal1+cal2);
 			totalperson = person + child;
 		if(totalperson > 5){
@@ -447,11 +456,18 @@
 
 	// 공항 -> 도시 추가
 	var check = 0;
-	$(".add").click(function(){
+	var checkcheck = true;
+	var parent = $(".frm_wrap").html();
+		$(".add").click(function(){
 		var frm = $(".frm_wrap2").html();
 		if(check<1){
-			$(".frm_wrap").append(frm);
-			check++;
+			if(checkcheck){
+				$(".frm_wrap").append(frm);
+				check++;
+			} else{
+				$(".frm_wrap").append(parent);
+			alert(parent);
+			}
 		}else{
 			alert("편도당 예매는 2번까지 가능합니다.");
 		}
@@ -460,9 +476,18 @@
 	$(".del").click(function(){
 		$(".checkbox").each(function(){
 			if($(this).prop("checked")){
+				var h = $(this).val();
+				if(h == "frm_wrap"){
+					console.log("frm_wrap");
+					checkcheck = false;
+				}else{
+					checkcheck = true;
+				}
 				$(this).parent().remove();
 				check --;
 			}
+
+			
 		});
 	});
 
@@ -512,12 +537,18 @@
 		})	
 	});
 
-	$("body").on("click", "select2", function(){
-		$(".lim").each(function(){
+	$("body").on("click", ".select2", function(){
+		alert(person2);
+		alert(child2);
+		alert(totalperson2);
+		$(".lim2").each(function(){
+			console.log('lim2');
+			$(this).prop('disabled', false);
 			$(this).prop("checked", false);
 			$(this).parent().removeClass('abcd');
-			count = 0;
-			$(".select_seat_text").html("");
+			$(this).parent().removeClass('booked');
+			count2 = 0;
+			$(".select_seat_text2").html("");
 		});
 		
 		// 각각의 요소 선택안되고 있을 시 alert 창 띄우기
@@ -532,7 +563,8 @@
 		}else if($(".limoTime2 option:eq(0)").prop("selected")){
 			alert("출발시간을 선택해주세요");
 		}else{
-			$(".sel3").click();
+			$("#sel3").click();
+			
 		}
 
 
@@ -549,6 +581,7 @@
 			},
 			success : function(data){
 				data = data.trim();
+				console.log(data);
 				$('.place2').html(data);
 			}
 		});
@@ -568,10 +601,11 @@
 		$(".select_limoTime_text2").html(limoTime_M);
 
 		// 선택불가 좌석 
-		 $(".dis2").each(function(){
-			var check = $(this).val();
-			$("#"+check).attr('disabled', true);
-			$("#"+check).parent().addClass("booked");
+		 $(".dis").each(function(){
+			 console.log('dis');
+			var checked = $(this).val();
+			$("#two"+checked).attr('disabled', true);
+			$("#two"+checked).parent().addClass("booked");
 		}); 
 	});
 
@@ -609,19 +643,26 @@
 	var child2 = 0;
 	var cal3 = 0;
 	var totalperson2 = 0;
+	var cal4 = 0;
 	$("body").on("change", ".person2", function(){
 		person2 = $(".person2 option:selected").val();
 		person2 = person2*1;
 		cal3 = price2 * person2;
-		$(".price2").val(cal3);
+		$(".price2").val(cal3+cal4);
+		totalperson2 = person2 + child2;
+		if(totalperson2 > 5){
+			alert("최대 5명까지만 예매할 수 있습니다.");
+			$(".child2 option:eq(0)").prop("selected", true);
+			$(".price2").val(cal3);
+		}
 	});
 	
 	$("body").on("change", ".child2", function(){
 		child2 = $(".child2 option:selected").val();
 		child2 = child2*1;
-		var cal4 = price2 * 0.8 * child2;
+		cal4 = price2 * 0.8 * child2;
 		$(".price2").val(cal3+cal4);
-			totalperson2 = person2 + child2;
+		totalperson2 = person2 + child2;
 		if(totalperson2 > 5){
 			alert("최대 5명까지만 예매할 수 있습니다.");
 			$(".child2 option:eq(0)").prop("selected", true);
@@ -645,7 +686,7 @@
 			count2 ++;
 		}else{
 			alert("더 이상 선택할 수 없습니다.");
-			$(this)	.prop("checked", false);
+			$(this).prop("checked", false);
 		}
 	});
 
