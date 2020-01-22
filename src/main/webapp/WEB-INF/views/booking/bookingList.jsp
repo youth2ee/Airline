@@ -110,38 +110,77 @@ header
 
 <c:forEach items="${DairList}" var="dlist"> 
 <tr class="dtrcheck">
-
 	<td class="td3"><%-- ${dlist.depTime} <div>  </div> ${dlist.arrTime} --%>
-	
-<div class="timeIWrap">
-<div class="tiLeft" style="padding-right: 10px;">${dlist.depTime}</div>
-
-<div style="float: left;">
-	<div class="timTop"></div>
-	<div>
-		<div class="timmLeft"><i class="material-icons" style="padding-right: 10px; padding-left:10px; color: gray;" >flight_takeoff</i></div>
-		 
-		<div class="timmMid">
-			<div class="timmM1"><i class='far fa-clock'></i> ${dlist.flightTime}분</div>
-			<div class="timmM2">직항</div>
-			<!-- <hr style="border: 0.5px solid #c1c1c1;"> -->
-		</div> 
 		
-		<div class="timmRight"><i class="material-icons" style="padding-left: 10px; padding-right:10px;  color: gray;">flight_land</i></div>
-	</div>
-	<div class="timBottom"></div>
-</div>
-
-<div class="tiRight" style="padding-left: 10px;">${dlist.arrTime}</div>
-</div>
+	<div class="timeIWrap">
+	<div class="tiLeft" style="padding-right: 10px;">${dlist.depTime}</div>
 	
+	<div style="float: left;">
+		<div class="timTop"></div>
+		<div>
+			<div class="timmLeft"><i class="material-icons" style="padding-right: 10px; padding-left:10px; color: #d60815;" >flight_takeoff</i></div>
+			 
+			<div class="timmMid">
+				<div class="timmM1"><i class='far fa-clock'></i> ${dlist.flightTime}분</div>
+				<div class="timmM2">직항</div>
+				<!-- <hr style="border: 0.5px solid #c1c1c1;"> -->
+			</div> 
+			
+			<div class="timmRight"><i class="material-icons" style="padding-left: 10px; padding-right:10px;  color: #d60815;">flight_land</i></div>
+		</div>
+		<div class="timBottom"></div>
+	</div>
+	
+	<div class="tiRight" style="padding-left: 10px;">${dlist.arrTime}</div>
+	</div>
+		
+	</td>
+ 
+	<td class="td2">
+		<div style="float: left;">
+		<c:if test="${dlist.airlineNm == '대한 항공'}">
+		<img alt="" src="../images/airline/1.jpg" style="width: 115px;">
+		</c:if>
+		<c:if test="${dlist.airlineNm == '아시아나항공'}">
+		<img alt="" src="../images/airline/2.png" style="width: 115px;">
+		</c:if>
+		<c:if test="${dlist.airlineNm == '에어부산'}">
+		<img alt="" src="../images/airline/3.png" style="width: 115px;">
+		</c:if>
+		<c:if test="${dlist.airlineNm == '에어서울'}">
+		<img alt="" src="../images/airline/4.jpg" style="width: 115px;">
+		</c:if>
+		<c:if test="${dlist.airlineNm == '이스타항공'}">
+		<img alt="" src="../images/airline/5.jpg" style="width: 115px;">
+		</c:if>
+		<c:if test="${dlist.airlineNm == '제주항공'}">
+		<img alt="" src="../images/airline/6.gif" style="width: 115px;">
+		</c:if>		
+		<c:if test="${dlist.airlineNm == '진 에어'}">
+		<img alt="" src="../images/airline/7.jpg" style="width: 115px;">
+		</c:if>			
+		<c:if test="${dlist.airlineNm == '코리아 익스프레스 에어'}">
+		<img alt="" src="../images/airline/8.jpg" style="width: 115px;">
+		</c:if>			
+		<c:if test="${dlist.airlineNm == '티웨이항공'}">
+		<img alt="" src="../images/airline/9.jpg" style="width: 115px;">
+		</c:if>			
+		<c:if test="${dlist.airlineNm == '플라이 강원'}">
+		<img alt="" src="../images/airline/10.png" style="width: 115px;">
+		</c:if>
+		<c:if test="${dlist.airlineNm == '하이에어'}">
+		<img alt="" src="../images/airline/11.jpg" style="width: 115px;">
+		</c:if>	
+		
+		</div>
+		<div style="float: left; padding-left: 10px;">${dlist.airlineNm}</div>
 	</td> 
-	<td class="td2">${dlist.airlineNm}</td> 
 	<td class="td1">${dlist.vihicleId}<input type="hidden" value="${dlist.fnum}" class="dfnum"></td> 
 	<%-- <td class="td4">${dlist.arrTime}</td>  --%>
 	<%-- <td class="td5">${dlist.flightKm}KM</td> --%>
 	<%-- <td class="td6">${dlist.flightTime}분</td>  --%>
 	<td class="td7">${dlist.economyCharge}원</td>  
+	
 </tr>
 
 <tr class="dhide" style="display: none; background-color: salmon; height: 30px;"><td colspan="7">${dlist.fnum} ${dlist.flightKm}KM</td></tr>
@@ -184,24 +223,89 @@ header
 <div>
 <table id="arrT"> 
 <tr id="arrtitle"> 
+	<td class="td3t" colspan="2">운항시간</td> 
+	<!-- <td class="td4">도착시간</td> -->
+	<!-- <td class="td5">운행거리</td>  -->
+	<!-- <td class="td6">운행시간</td>  -->
+	<td class="td2t">항공사</td> 
 	<td class="td1t">편명</td> 
-	<td class="td2">기종</td> 
-	<td class="td3">출발시간</td> 
-	<td class="td4">도착시간</td>
-	<td class="td5">운행거리</td> 
-	<td class="td6">운행시간</td> 
-	<td class="td7">가격</td>  
+	<td class="td7t">가격</td>  
 </tr>
 
 <c:forEach items="${AairList}" var="alist"> 
 <tr class="atrcheck">
+	<td class="td3"><%-- ${dlist.depTime} <div>  </div> ${dlist.arrTime} --%>
+		
+	<div class="timeIWrap">
+	<div class="tiLeft" style="padding-right: 10px;">${alist.depTime}</div>
+	
+	<div style="float: left;">
+		<div class="timTop"></div>
+		<div>
+			<div class="timmLeft"><i class="material-icons" style="padding-right: 10px; padding-left:10px; color: #d60815;" >flight_takeoff</i></div>
+			 
+			<div class="timmMid">
+				<div class="timmM1"><i class='far fa-clock'></i> ${alist.flightTime}분</div>
+				<div class="timmM2">직항</div>
+				<!-- <hr style="border: 0.5px solid #c1c1c1;"> -->
+			</div> 
+			
+			<div class="timmRight"><i class="material-icons" style="padding-left: 10px; padding-right:10px;  color: #d60815;">flight_land</i></div>
+		</div>
+		<div class="timBottom"></div>
+	</div>
+	
+	<div class="tiRight" style="padding-left: 10px;">${alist.arrTime}</div>
+	</div>
+		
+	</td>
+ 
+	<td class="td2">
+			<div style="float: left;">
+		<c:if test="${alist.airlineNm == '대한 항공'}">
+		<img alt="" src="../images/airline/1.jpg" style="width: 115px;">
+		</c:if>
+		<c:if test="${alist.airlineNm == '아시아나항공'}">
+		<img alt="" src="../images/airline/2.png" style="width: 115px;">
+		</c:if>
+		<c:if test="${alist.airlineNm == '에어부산'}">
+		<img alt="" src="../images/airline/3.png" style="width: 115px;">
+		</c:if>
+		<c:if test="${alist.airlineNm == '에어서울'}">
+		<img alt="" src="../images/airline/4.jpg" style="width: 115px;">
+		</c:if>
+		<c:if test="${alist.airlineNm == '이스타항공'}">
+		<img alt="" src="../images/airline/5.jpg" style="width: 115px;">
+		</c:if>
+		<c:if test="${alist.airlineNm == '제주항공'}">
+		<img alt="" src="../images/airline/6.gif" style="width: 115px;">
+		</c:if>		
+		<c:if test="${alist.airlineNm == '진 에어'}">
+		<img alt="" src="../images/airline/7.jpg" style="width: 115px;">
+		</c:if>			
+		<c:if test="${alist.airlineNm == '코리아 익스프레스 에어'}">
+		<img alt="" src="../images/airline/8.jpg" style="width: 115px;">
+		</c:if>			
+		<c:if test="${alist.airlineNm == '티웨이항공'}">
+		<img alt="" src="../images/airline/9.jpg" style="width: 115px;">
+		</c:if>			
+		<c:if test="${alist.airlineNm == '플라이 강원'}">
+		<img alt="" src="../images/airline/10.png" style="width: 115px;">
+		</c:if>
+		<c:if test="${alist.airlineNm == '하이에어'}">
+		<img alt="" src="../images/airline/11.jpg" style="width: 115px;">
+		</c:if>	
+		
+		</div>
+		<div style="float: left; padding-left: 10px;">${alist.airlineNm}</div>
+	
+	</td> 
 	<td class="td1">${alist.vihicleId}<input type="hidden" value="${alist.fnum}" class="afnum"></td> 
-	<td class="td2">${alist.airlineNm}</td> 
-	<td class="td3">${alist.depTime}</td> 
-	<td class="td4">${alist.arrTime}</td> 
-	<td class="td5">${alist.flightKm}KM</td>
-	<td class="td6">${alist.flightTime}분</td> 
+	<%-- <td class="td4">${dlist.arrTime}</td>  --%>
+	<%-- <td class="td5">${dlist.flightKm}KM</td> --%>
+	<%-- <td class="td6">${dlist.flightTime}분</td>  --%>
 	<td class="td7">${alist.economyCharge}원</td>  
+	
 </tr>
 
 <tr class="ahide" style="display: none; background-color: salmon; height: 30px;"><td colspan="7">${alist.fnum}</td></tr>
@@ -215,73 +319,25 @@ header
 <form action="./bookingWritePre" method="post">
 
 <input type="hidden" name="depFnum" id="dfnumf">
-<c:if test="${bookingVO.kind == '왕복'}">
+<c:if test="${bookingVO.kind eq '왕복'}">
 <input type="hidden" name="arrFnum" id="afnumf">
 </c:if>
 <input type="hidden" name="adult" value="${bookingVO.adult}">
 <input type="hidden" name="child" value="${bookingVO.child}">
 <input type="hidden" name="kind" value="${bookingVO.kind}">
 
-<button style="cursor: pointer;">다음</button>
+<hr>
 
+<div style="text-align: right;">
+<button id="btn">다음</button>
+</div>
 </form>
 
 </section>
 
- <div class="container" style="padding: 40px">
-        <button id="Trigger2">Trigger FadeIn/FadeOut</button>
-        <div id="Fader" class="fadeout">
-            Hello World Text
-        </div>
- </div>
-
 
 
 <script type="text/javascript">
-/* $("#Trigger2").click(function () {
-    if ($("#Fader").hasClass("fadeout"))
-        $("#Fader").removeClass("fadeout").addClass("fadein");
-    else
-        $("#Fader").removeClass("fadein").addClass("fadeout");
-}); */
-
-/* $(".dtrcheck").click(function () {
-    if ($("#Fader").hasClass("fadeout"))
-        $("#Fader").removeClass("fadeout").addClass("fadein");
-    else
-        $("#Fader").removeClass("fadein").addClass("fadeout");
-});
- */
- 
-/*   $(".dtrcheck").click(function () {
-
-	  $(this).next('.hideall').css("display", "block"); */
-
-	//   $(this).next('.fadeall').slidedown(); 
-
-	/*  alert($(this).next('.fade').text()); */ 
-/* 	    if ($(this).next('.fadeall').hasClass("fadeout"))
-	    	$(this).next('.fadeall').removeClass("fadeout").addClass("fadein");
-	    else
-	    	$(this).next('.fadeall').removeClass("fadein").addClass("fadeout"); */
-//	});
- 
-
-/*  jQuery('#toggle').click(function () {  
-	    if($("#id").css("display") == "none"){   
-	        jQuery('#id').css("display", "block");   
-	    } else {  
-	        jQuery('#id').css("display", "none");   
-	    }  
-	});   */
-
-
-
-
- 
-
-
-
 
 //
 var d1 = $('.rd1').text();
@@ -351,7 +407,8 @@ var afnum = "";
 $('body').on("click",'.dtrcheck',function(){
 	$('.dhide').css("display", "none");   
 
-	dfnum = $(this).find('.dfnum').val();
+	dfnum = $(this).find('.td1').find('.dfnum').val();
+	
 	$('#dfnumf').val(dfnum);
 	$(this).find('td').addClass('act');
 	$(this).siblings().find('td').removeClass('act');
@@ -369,7 +426,8 @@ $('body').on("click",'.dtrcheck',function(){
 $('body').on("click",'.atrcheck',function(){
 	$('.ahide').css("display", "none");   
 	
-	afnum = $(this).find('.afnum').val();
+	afnum = $(this).find('.td1').find('.afnum').val();
+	
 	$('#afnumf').val(afnum);
 	$(this).find('td').addClass('act');
 	$(this).siblings().find('td').removeClass('act');

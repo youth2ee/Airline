@@ -237,6 +237,51 @@ public class BookingController {
 			flightDataVO.setFnum(bookingTicketVO.getArrFnum());
 			bookingTicketVO.setArrInfo(bookingService.oneSelect(flightDataVO));
 		}
+		
+		
+		List<String> depTime = new ArrayList<String>();
+	
+		String ddDate = bookingTicketVO.getDepInfo().getDepPlandTime();
+		String ddYear = ddDate.substring(0, 4);
+		String ddMonth = ddDate.substring(4, 6);
+		String ddDay = ddDate.substring(6, 8);
+		String ddHour = ddDate.substring(8, 10);
+		String ddMin = ddDate.substring(10);
+
+		String daDate = bookingTicketVO.getDepInfo().getArrPlandTime();
+		String daYear = daDate.substring(0, 4);
+		String daMonth = daDate.substring(4, 6);
+		String daDay = daDate.substring(6, 8);
+		String daHour = daDate.substring(8, 10);
+		String daMin = daDate.substring(10);		
+		
+		depTime.add(0, ddYear);
+		depTime.add(1, ddMonth);
+		depTime.add(2, ddDay);
+		depTime.add(3, ddHour);
+		depTime.add(4, ddMin);
+		
+		depTime.add(5, daYear);
+		depTime.add(6, daMonth);
+		depTime.add(7, daDay);
+		depTime.add(8, daHour);
+		depTime.add(9, daMin);
+		
+		
+		List<String> arrTime = new ArrayList<String>();
+
+		
+		if (bookingTicketVO.getKind().equals("왕복")) {
+
+			System.out.println(bookingTicketVO.getArrInfo().getDepPlandTime());
+			System.out.println(bookingTicketVO.getArrInfo().getArrPlandTime());
+			
+		}
+		
+		
+
+		mv.addObject("dep", depTime);
+		mv.addObject("arr", arrTime);
 
 		mv.addObject("bTVO", bookingTicketVO);
 		mv.setViewName("/booking/bookingWrite");

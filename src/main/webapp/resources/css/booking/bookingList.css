@@ -7,6 +7,7 @@ header {
 section {
 	width: 1200px;
 	margin: 0 auto;
+	margin-bottom: 100px;
 }
 
 #top {
@@ -88,7 +89,7 @@ section {
 	font-size: 18px;
 }
 
-#dateLine{
+#dateLine {
 	width: 1134px;
 	margin: 0 auto;
 	text-align: center;
@@ -96,7 +97,7 @@ section {
 	border-top: gray solid 1px;
 }
 
-.date1, .date2{
+.date1, .date2 {
 	float: left;
 	cursor: pointer;
 	padding: 10px 20px;
@@ -105,15 +106,16 @@ section {
 
 .act {
 	color: #D60815;
+	
 }
 
 .bact {
 	background-color: #D60815;
 	color: white;
+	font-weight: bolder;
 }
 
-
-#deptitle, #arrtitle{
+#deptitle, #arrtitle {
 	position: absolute;
 	background-color: white;
 	color: black;
@@ -121,90 +123,111 @@ section {
 	text-align: center;
 }
 
-.td1t, .td2t, .td7t{
+.td1t, .td2t, .td7t {
 	width: 225px;
 	height: 35px;
 }
 
-.td3t{
+.td3t {
 	width: 370px;
 }
 
-.td1{
-	padding-left: 10px;
-}
 
-.td1, .td2, .td4, .td5, .td6, .td7{
-	width: 150px;
+.td1, .td4, .td5, .td6, .td7 {
+	width: 100px;
 	text-align: center;
 }
 
-.td3{
-	width: 250px;
+.td2{
+	width: 195px;
 }
 
-#deptitle{
-	top: 648px;
+
+.td3 {
+	width: 275px;
 }
 
-#arrtitle{
- top: 1262px;
- }
+#deptitle {
+	top: 652px;
+	padding-top: 5px;
+	background-color: gray;
+}
 
- 
- #depW, #arrW{
- height: 300px;
- width: 1072px;
- overflow-y:scroll;
- clear: both;
- margin: 0 auto;
- }
+#arrtitle {
+	top: 1466px;
+	padding-top: 5px;
+	background-color: gray;
+}
 
- 
+#depW, #arrW {
+	height: 500px;
+	width: 1072px;
+	overflow-y: scroll;
+	clear: both;
+	margin: 0 auto;
+}
+
 /*  */
-.timeIWrap{
+.timeIWrap {
+	
 }
 
-.tiLeft,.tiRight{
+.tiLeft, .tiRight {
 	float: left;
 	padding-top: 7px;
 	font-size: 22px;
-    font-weight: bold;
+	font-weight: bold;
 }
 
-
-.timTop,.timBottom{
+.timTop, .timBottom {
 	text-align: center;
 }
 
-.timBottom{
+.timBottom {
 	clear: both;
 }
 
-.timmLeft, .timmRight{
+.timmLeft, .timmRight {
 	float: left;
 	padding-top: 6px;
 }
 
-.timmMid{
+.timmMid {
 	float: left;
-    width: 131px;
-    text-align: center;
-    font-size: 14px;
+	width: 131px;
+	text-align: center;
+	font-size: 14px;
 }
 
-.timmM1{
+.timmM1 {
 	clear: both;
-	border-bottom: 1px solid gray; 
+	border-bottom: 1px solid gray;
 	padding-bottom: 5px;
 }
 
-.timmM2{
+.timmM2 {
 	padding-top: 6px;
 }
 
-
-.dtrcheck td{
+.dtrcheck td, .atrcheck td {
 	height: 75px;
 }
 
+.aimg{
+	background-color: aqua;
+	 margin: auto; 
+	width: 50px;
+}
+
+#btn {
+	cursor: pointer;
+	width: 110px;
+	height: 50px;
+	background-color: #d60815;
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 16px;
+}

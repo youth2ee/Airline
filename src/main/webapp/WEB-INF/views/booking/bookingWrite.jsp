@@ -9,6 +9,10 @@
 <link href="../resources/css/reset.css" rel="stylesheet">
 <link href="../resources/css/booking/bookingWrite.css" rel="stylesheet">
 <c:import url="../template/boot.jsp"></c:import>
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 </head>
 <body>
 booking write
@@ -18,8 +22,14 @@ header
 
 <div id="top">
 <div id="topWrap">
-<div id="top1">1<br>
-출발 : ${bTVO.depInfo.depAirportNm}<br>
+<div id="top1">
+<i class="fa fa-plane" style="font-size:40px;color:white; padding-top: 20px;"></i><br>
+${bTVO.depInfo.depAirportNm} <i class='fas fa-angle-right' style='font-size:10px;'></i> ${bTVO.depInfo.arrAirportNm}<br>
+${dep[0]}년 ${dep[1]}월 ${dep[2]}일<br>
+출발 : ${dep[3]}시 ${dep[4]}분<br>
+도착 : ${dep[8]}시 ${dep[9]}분<br>
+
+<%-- 출발 : ${bTVO.depInfo.depAirportNm}<br>
 도착 : ${bTVO.depInfo.arrAirportNm}<br>
 ${bTVO.depInfo.depPlandTime}<br>
 ${bTVO.depInfo.arrPlandTime}<br>
@@ -27,27 +37,32 @@ ${bTVO.depInfo.vihicleId}<br>
 ${bTVO.depInfo.airlineNm}<br>
 <c:if test="${bTVO.kind == '편도'}">
 편도
-</c:if>
+</c:if> --%>
 </div>
-<div id="top2">2<br>
-출발 : ${bTVO.depInfo.arrAirportNm}<br>
-도착 : ${bTVO.depInfo.depAirportNm}<br>
+
+
+
+<div id="top2">
 <c:if test="${bTVO.kind == '왕복'}">
+<i class="fa fa-plane" style="font-size:40px;color:white; padding-top: 20px;"></i>
+<h5>출발 : ${bTVO.depInfo.arrAirportNm}</h5>
+<h5>도착 : ${bTVO.depInfo.depAirportNm}</h5>
 ${bTVO.arrInfo.depPlandTime}<br>
 ${bTVO.arrInfo.arrPlandTime}<br>
-${bTVO.arrInfo.vihicleId}<br>
-${bTVO.arrInfo.airlineNm}<br>
-왕복
+${bTVO.arrInfo.vihicleId} ${bTVO.arrInfo.airlineNm}
 </c:if>
 </div>
-<div id="top3">3 
-<h3>성인 : ${bTVO.adult}명</h3>
-<h3>아동 : ${bTVO.child}명</h3>
+<div id="top3"> 
+<i class="material-icons" style="font-size:40px; color: white; padding-top: 20px;">person</i> 
+<h5>성인 : ${bTVO.adult}명</h5>
+<h5>아동 : ${bTVO.child}명</h5>
 </div>
-<div id="top4">4 
-${bTVO.depInfo.economyCharge}원
+
+<div id="top4">
+<i class='fas fa-credit-card' style="font-size:30px; color: white; padding-top: 24px;"></i>
+<h5>가는편 : ${bTVO.depInfo.economyCharge}원</h5>
 <c:if test="${bTVO.kind == '왕복'}">
-${bTVO.arrInfo.economyCharge}원
+<h5>오는편 : ${bTVO.arrInfo.economyCharge}원</h5>
 </c:if>
 </div>
 </div>
