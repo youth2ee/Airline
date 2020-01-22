@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.airline.a1.board.NoticeFilesMapper;
+import com.airline.a1.board.NoticeFilesVO;
 import com.airline.a1.board.NoticeMapper;
 import com.airline.a1.board.NoticeService;
 import com.airline.a1.board.NoticeVO;
@@ -17,6 +19,9 @@ class BoardTest {
 	
 	@Autowired
 	private NoticeMapper noticeMapper;
+	
+	@Autowired
+	private NoticeFilesMapper noticeFilesMapper;
 	
 	//@Test
 	void writeTest()throws Exception {
@@ -31,5 +36,7 @@ class BoardTest {
 		assertEquals(1, result);
 		
 	}
+	
+	
 
 }

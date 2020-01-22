@@ -14,7 +14,6 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
 </head>
 <body>
 	<div class="container">
@@ -39,7 +38,7 @@
 	    
 	
 	    
-	    <div id = "files">
+	    <div id = "filesForm">
 	    	<div class = "form-group" title = "parent" >
 	    	 	 <label for="file" class = "control-label col-sm-2" >File:</label>
 	     	 <div class = "col-sm-9">
@@ -59,12 +58,12 @@
 	</div>
 	
 <script type="text/javascript">
-		var files = $("#files").html();  //click event 밖에 선언 
-		$("#files").empty(); 	
+		var filesForm = $("#filesForm").html();  //click event 밖에 선언 
+		$("#filesForm").empty(); 	
 		var count =0; 					//안에 선언하면 초기화
 		var index =0;	//index선언
 		
-		$("#files").on("click",".del",function(){
+		$("#filesForm").on("click",".del",function(){
 			//$(this).parent().parent().remove();
 			$(this).parents(".form-group").remove(); 
 			count--;
@@ -73,8 +72,8 @@
 		
 		$("#add").click(function () {
 				if(count<5){
-			//var files = '<div id = "f'+index+''"><input><input type="button" title="f"></div>';
-				$("#files").append(files);
+			//var filesForm = '<div id = "f'+index+''"><input><input type="button" title="f"></div>';
+				$("#filesForm").append(filesForm);
 				count++;
 				//connt++
 				//index++ 자신과 상관 없는 속성 controll하기 
@@ -86,11 +85,11 @@
 		$("#contents").summernote({
 			 height: 500,
 			 callbacks:{
-				 onImageUpload:function(files,editor){
-					uploadFile(files[0], this);
+				 onImageUpload:function(filesForm,editor){
+					uploadFile(filesForm[0], this);
 				 }, //upload 끝 
-				 onMediaDelete:function(files, editor){
-					 deleteFile(files[0],this);
+				 onMediaDelete:function(filesForm, editor){
+					 deleteFile(filesForm[0],this);
 				 }// delete 끝 
 			 }//callBack 끝
 		});

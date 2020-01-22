@@ -7,11 +7,18 @@
 
 
 <insert id="noticeFileWrite" parameterType="com.airline.a1.board.NoticeFilesVO">	
-		insert into noticeFiles
+		<!-- insert into noticeFiles
 		values
 			<foreach collection="list" item="item" separator=",">
 				(null, #{item.num}, #{item.fname}, #{item.oname})
-			</foreach>
+			</foreach> -->
+			 
+	<!-- 	insert into noticeFiles values(null,#{num},#{fname},#{oname}) -->	 
+		insert into noticeFiles values 
+		<foreach collection="list" item="item" separator=",">
+		(null, #{item.num}, #{item.fname}, #{item.oname})
+		</foreach>
+			 
 	</insert>
 
 

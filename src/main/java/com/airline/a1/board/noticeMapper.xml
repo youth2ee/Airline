@@ -9,7 +9,7 @@
 <insert id="noticeWrite" parameterType="com.airline.a1.board.BoardVO" useGeneratedKeys="true" keyProperty="num">	
 		insert into notice
 		values(#{num}, #{title}, #{writer}, #{contents}, now(),0)
-	</insert>
+</insert>
 
 
 </mapper>
