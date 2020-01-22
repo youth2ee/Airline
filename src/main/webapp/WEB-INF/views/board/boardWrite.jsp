@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>      
 <!DOCTYPE html>
+
 <html>
 <head>
 <meta charset="UTF-8">
@@ -14,6 +15,8 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="../resources/css/board/boardWrite.css">
 </head>
 <body>
 	<div class="container">
@@ -36,8 +39,6 @@
 	    </div>
 	    
 	    
-	
-	    
 	    <div id = "filesForm">
 	    	<div class = "form-group" title = "parent" >
 	    	 	 <label for="file" class = "control-label col-sm-2" >File:</label>
@@ -56,7 +57,60 @@
 	    <!--  <input type="button" value = "test" id = "btn"> -->
 	    </form>
 	</div>
+
+
+
+<!------- new --------->	\
+<div class="writeForm">
+<h5 id="">내용작성</h5>	
+<div class="mar">
+<span>*은 필수항목입니다.</span>
+</div>
+<table class="table_form">
+	<tr>
+		<th scope="row">
+			<label>제목</label>
+			<span>*</span>
+		</th>
+		<td>
+			<input type="text" name="title" id="title" class="full common" style="100%;">
+		</td>	
+	</tr>
 	
+	<tr>
+		<th scope="row">
+			<label>내용</label>
+			<span>*</span>
+		</th>
+		<td>
+			<div class="textarea_wrap">
+				<textarea name="contents" class="common" id="contents" rows="4" cols="50" style="position: relative;"></textarea>	
+				<div class="txt_count">
+					<em></em>
+					/4000자
+				</div>	
+			</div>
+		</td>
+		<th>
+			<td>
+				<div class="jfile_wrap">
+					<input type="file" title="파일첨부" id="">
+				</div>
+			</td>
+		
+		</th>
+	</tr>
+</table>
+
+
+
+
+</div>
+	
+
+
+
+<!------script ------->
 <script type="text/javascript">
 		var filesForm = $("#filesForm").html();  //click event 밖에 선언 
 		$("#filesForm").empty(); 	
