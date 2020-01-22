@@ -93,6 +93,7 @@ section {
 	width: 100%;
 	margin: 0 auto;
 	text-align: center;
+	margin-bottom: 100px;
 }
 
 .date1, .date2{
@@ -133,3 +134,11 @@ section {
 .td1, .td2, .td3, .td4, .td5, .td6, .td7{
 	width: 150px;
 }
+
+#deptitle{
+	top: 653px;
+}
+
+#arrtitle{
+ top: 1000px;
+ }

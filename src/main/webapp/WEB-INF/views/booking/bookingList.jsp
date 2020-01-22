@@ -142,7 +142,7 @@ header
 
 <div style="height: 300px; overflow-y: scroll; clear: both;">
 <table id="arrT"> 
-<tr id="deptitle"> 
+<tr id="arrtitle"> 
 	<td class="td1t">편명</td> 
 	<td class="td2">기종</td> 
 	<td class="td3">출발시간</td> 
