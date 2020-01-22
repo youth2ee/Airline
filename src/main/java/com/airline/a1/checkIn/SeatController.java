@@ -67,7 +67,6 @@ public class SeatController {
 			bookingTicketVO2.setBnum(bookingTicketVOs.get(i).getBnum());
 			bookingTicketVO2.setFlightBNum(seatService.flightNum(seatService.getVihicleId(fnum)));
 			bookingTicketVO2.setDepFnum(seatDataVO.getDepFNum());
-			;
 			bookingTicketVO2.setBookingNum(seatDataVO.getBookingNum());
 			seatVO.setBookingNum(seatDataVO.getBookingNum());
 			seatVO.setFnum(seatDataVO.getDepFNum());
