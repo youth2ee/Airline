@@ -27,22 +27,26 @@ public class NoticeController {
 	}
 	
 	
-	/*
-	 * @PostMapping("noticeWrite") public ModelAndView noticeWrite(NoticeVO
-	 * noticeVO)throws Exception{
-	 * 
-	 * ModelAndView mv = new ModelAndView(); int result =
-	 * noticeService.noticeWrite(noticeVO);
-	 * 
-	 * String msg = "작성에 실패하였습니다.다시 작성해주세요."; String path = "../";
-	 * 
-	 * if(result > 0) { msg = "작성되었습니다."; }
-	 * 
-	 * mv.setViewName("common/result"); mv.addObject("message", msg);
-	 * mv.addObject("path", path);
-	 * 
-	 * return mv; }
-	 */
+	  @PostMapping("noticeWrite") public ModelAndView noticeWrite(NoticeVO
+	  noticeVO)throws Exception{
+	  
+	  ModelAndView mv = new ModelAndView(); 
+	  int result =noticeService.noticeWrite(noticeVO);
+	  
+	  String msg = "작성에 실패하였습니다.다시 작성해주세요."; 
+	  String path = "../";
+	  
+	  if(result > 0) { 
+		  msg = "작성되었습니다."; 
+		  }
+	  
+	  mv.setViewName("board/common/result"); 
+	  mv.addObject("message", msg);
+	  mv.addObject("path", path);
+	  
+	  return mv; 
+	  }
+	 
 	 
 		
 

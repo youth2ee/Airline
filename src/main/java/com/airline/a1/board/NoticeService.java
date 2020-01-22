@@ -9,6 +9,10 @@ public class NoticeService {
 	@Autowired
 	private NoticeMapper noticeMapper;
 	
+	@Autowired
+	private NoticeFilesMapper noticeFilesMapper;
+	
+	
 	public int noticeWrite(NoticeVO noticeVO)throws Exception{
 		
 		return noticeMapper.noticeWrite(noticeVO); 
