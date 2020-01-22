@@ -21,12 +21,15 @@ public class LimoController {
 	}
 	
 	@PostMapping("limoBook")
-	public ModelAndView limoBook(LimoVO limoVO) throws Exception{
+	public ModelAndView limoBook(List<LimoVO> list) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		int result = limoService.limoBook(limoVO);
+		int result = 0;
+		for (LimoVO limoVO : list) {
+			result = limoService.limoBook(limoVO);
+		}
 		
 		if(result >0) {
-			mv.addObject("limo", limoVO);
+//			mv.addObject("limo", limoVO);
 			mv.setViewName("index");
 		}
 		return mv;
