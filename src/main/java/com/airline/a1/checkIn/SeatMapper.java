@@ -13,7 +13,10 @@ public interface SeatMapper {
 	public int seatBook(SeatVO seatVO) throws Exception;
 	public List<SeatVO> depBookedSeat(BookingTicketVO bookingTicketVO) throws Exception;
 	public List<SeatVO> arrBookedSeat(BookingTicketVO bookingTicketVO) throws Exception;
-	public int updateFlightNum(BookingTicketVO bookingTicketVO) throws Exception;
+	public int updateFlightNumDep(BookingTicketVO bookingTicketVO) throws Exception;
 	public List<BookingTicketVO> getBookData(BookingTicketVO bookingTicketVO) throws Exception;
 	public int getBookCount(BookingTicketVO bookingTicketVO) throws Exception;
+	public List<SeatVO> getSeatData() throws Exception; 
+	public String getVihicleId(String fnum) throws Exception;
+	public List<BookingTicketVO> getDepBnum(BookingTicketVO bookingTicketVO) throws Exception;
 }

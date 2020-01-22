@@ -27,9 +27,9 @@ public class SeatService {
 		return seatMapper.arrBookedSeat(bookingTicketVO);
 	}
 
-	public int updateFlightNum(BookingTicketVO bookingTicketVO) throws Exception {
+	public int updateFlightNumDep(BookingTicketVO bookingTicketVO) throws Exception {
 		// bookTicket 테이블의 flightBNum을 체크인시 넣음
-		return seatMapper.updateFlightNum(bookingTicketVO);
+		return seatMapper.updateFlightNumDep(bookingTicketVO);
 	}
 
 	public List<BookingTicketVO> getBookData(BookingTicketVO bookingTicketVO) throws Exception {
@@ -41,12 +41,21 @@ public class SeatService {
 	public int getBookCount(BookingTicketVO bookingTicketVO) throws Exception {
 		return seatMapper.getBookCount(bookingTicketVO);
 	}
-
+	
+	public List<SeatVO> getSeatData() throws Exception{
+		return seatMapper.getSeatData();
+	}
+	public String getVihicleId(String fnum) throws Exception {
+		return seatMapper.getVihicleId(fnum);
+	}
+	
+	public List<BookingTicketVO> getDepBnum(BookingTicketVO bookingTicketVO) throws Exception{
+		return seatMapper.getDepBnum(bookingTicketVO);
+	}
 	// 예약번호(각자 다른거) 생성
-	public String flightNum(BookingTicketVO bookingTicketVO) throws Exception {
-		System.out.println("test");
+	public String flightNum(String fnum) throws Exception {
 		Random rand = new Random();
-		String flightNum = bookingTicketVO.getDepInfo().getVihicleId();
+		String flightNum = fnum;
 		// 편명에 "/" 제거 ex): HGG/1301 -> HGG1301
 		if (flightNum.contains("/"))
 			flightNum = flightNum.replace("/", "");
@@ -54,7 +63,7 @@ public class SeatService {
 		char filghtNum2 = (char) ((int) (Math.random() * 26) + 65);
 		// 편명 + 랜덤 알파벳 + 001~999 범위의 랜덤 숫자 ex): HGG1301/J/635 -> HGG1301J635
 		flightNum = flightNum + Character.toString(filghtNum2) + filghtNum1;
-		System.out.println("예약번호(개인) : " + flightNum);
+		//System.out.println("예약번호(개인) : " + flightNum);
 		return flightNum;
 	}
 
