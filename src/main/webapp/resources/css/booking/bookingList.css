@@ -72,7 +72,6 @@ section {
 	padding: 0 0 20px 0;
 	font-size: 40px;
 	text-align: center;
-	border-bottom: gray solid 1px;
 }
 
 #depT {
@@ -90,16 +89,18 @@ section {
 }
 
 #dateLine{
-	width: 100%;
+	width: 1134px;
 	margin: 0 auto;
 	text-align: center;
-	margin-bottom: 100px;
+	margin-bottom: 97px;
+	border-top: gray solid 1px;
 }
 
 .date1, .date2{
 	float: left;
 	cursor: pointer;
-	padding: 10px;
+	padding: 10px 20px;
+	border-bottom: 1px gray solid;
 }
 
 .act {
@@ -117,28 +118,93 @@ section {
 	background-color: white;
 	color: black;
 	font-weight: bold;
-	border: gray 1px solid; 
 	text-align: center;
 }
 
-.td1t{
-	width: 168px;
-	background-color: gray;
+.td1t, .td2t, .td7t{
+	width: 225px;
+	height: 35px;
+}
+
+.td3t{
+	width: 370px;
 }
 
 .td1{
-	background-color: gray;
 	padding-left: 10px;
 }
 
-.td1, .td2, .td3, .td4, .td5, .td6, .td7{
+.td1, .td2, .td4, .td5, .td6, .td7{
 	width: 150px;
+	text-align: center;
+}
+
+.td3{
+	width: 250px;
 }
 
 #deptitle{
-	top: 653px;
+	top: 648px;
 }
 
 #arrtitle{
- top: 1000px;
+ top: 1262px;
  }
+
+ 
+ #depW, #arrW{
+ height: 300px;
+ width: 1072px;
+ overflow-y:scroll;
+ clear: both;
+ margin: 0 auto;
+ }
+
+ 
+/*  */
+.timeIWrap{
+}
+
+.tiLeft,.tiRight{
+	float: left;
+	padding-top: 7px;
+	font-size: 22px;
+    font-weight: bold;
+}
+
+
+.timTop,.timBottom{
+	text-align: center;
+}
+
+.timBottom{
+	clear: both;
+}
+
+.timmLeft, .timmRight{
+	float: left;
+	padding-top: 6px;
+}
+
+.timmMid{
+	float: left;
+    width: 131px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.timmM1{
+	clear: both;
+	border-bottom: 1px solid gray; 
+	padding-bottom: 5px;
+}
+
+.timmM2{
+	padding-top: 6px;
+}
+
+
+.dtrcheck td{
+	height: 75px;
+}
+
