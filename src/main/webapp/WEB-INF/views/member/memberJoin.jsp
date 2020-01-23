@@ -12,6 +12,21 @@
 <link rel="stylesheet" type="text/css" href="https://flyasiana.com/C/pc/css/common.css">
 <link rel="stylesheet" type="text/css" href="https://flyasiana.com/C/pc/css/flyasiana.css">
 <link rel="stylesheet" type="text/css" href="https://flyasiana.com/C/pc/css/calendar.css">
+<style type="text/css">
+.modal-content {
+  position: relative;
+  top: 300px;
+  background-color: @modal-content-bg;
+  background-clip: padding-box;
+  border: 1px solid @modal-content-fallback-border-color; //old browsers fallback (ie8 etc)
+  border: 1px solid @modal-content-border-color;
+  border-radius: 0px;
+  .box-shadow(0 3px 9px rgba(0, 0, 0, .5));
+  // Remove focus outline from opened modal
+  outline: 0;
+}
+
+</style>
 </head>
 <body>
 <%-- <c:import url="../template/hhhhheader.jsp" /> --%>
@@ -53,7 +68,7 @@
 						<th scope="row"><label for="input_id">아이디</label></th> 
 						<td>
 							<input type="text" id="input_id" name="id" placeholder="6~15자리 영문+숫자" title="6~15자리 영문+숫자" style="width:298px;"> 
-							<button type="button" class="btn_S white" id="btn_idCheck">중복확인</button> 
+							<button type="button" class="btn_S white" id="btn_idCheck" data-toggle="modal" data-target="#idCheck">중복확인</button> 
 							<ul class="list_type3 fsz_14 mar_to10">
 								<li>6 ~ 15자리 영문(대소문자 구별), 숫자 조합 입력 가능 <br>(단 한글, 공백, 특수문자 입력 불가)</li> 
 								
@@ -185,9 +200,9 @@
 		</div>
 		
 		
-		<div class="layer_wrap" id="idCheck">
+		<div class="modal fade layer_wrap" id="idCheck">
 			<div class="dim_layer"></div>
-			<div class="layer_pop" style="width:500px">
+			<div class="modal-content layer_pop" style="width:500px">
 				<div class="pop_cont">
 					<p class="pop_tit st1">다른 아이디를 사용하시려면 입력 후 <br><span class="cal_red">중복확인</span>을 클릭해주시기 바랍니다.</p> 
 										
@@ -202,10 +217,9 @@
 				<div class="btn_wrap_ceType2">
 					<button type="button" class="btn_M red" id="btn_layerIdUse" disabled="">사용하기</button> 	
 				</div> 			
-				<a href="javascript:sharpNothig();" class="dim_close" id="btn_layerClose"><span class="hidden">닫기</span></a> 	
+				<a href="javascript:sharpNothig();" class="dim_close" id="btn_layerClose" data-dismiss="modal"><span class="hidden">닫기</span></a> 	
 			</div>
 		</div>
-		
 	</div>
 </form>
 <c:import url="../template/fffooter.jsp" />
@@ -375,6 +389,21 @@ $("#btn_confirm").click(function(){
 	$("#join_form").submit();
 	
 });
+
+$('body').on("click", function(e) { 
+	/* if(!$(e.target).hasClass("modal")) { 
+		 $("#btn_layerClose").click();
+	}  */
+	var point = $(e.target);
+	var test1 = point.hasClass('modal');
+	if(test1){ 
+		alert('a');
+		 $("#btn_layerClose").click();
+	}
+});
+
+
+
 </script>
 </body>
 </html>
