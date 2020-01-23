@@ -793,7 +793,7 @@
 		});
 	});
 
-</script>
+</script>	
 				
 			</ul>
 		</div>
