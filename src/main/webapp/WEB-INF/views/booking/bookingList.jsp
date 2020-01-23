@@ -20,13 +20,6 @@
 
 <header>
 header
-
-<table>
-
-
-</table>
-
-
 </header>
 
 <div id="top">
@@ -106,6 +99,7 @@ header
 	<td class="td2t">항공사</td> 
 	<td class="td1t">편명</td> 
 	<td class="td7t">가격</td>  
+	<td class="td7t">예약좌석</td>
 </tr>
 
 <c:forEach items="${DairList}" var="dlist"> 
@@ -180,7 +174,7 @@ header
 	<%-- <td class="td5">${dlist.flightKm}KM</td> --%>
 	<%-- <td class="td6">${dlist.flightTime}분</td>  --%>
 	<td class="td7">${dlist.economyCharge}원</td>  
-	
+	<td class="td7">${195 - dlist.seatTotal}</td> 
 </tr>
 
 <tr class="dhide" style="display: none; background-color: salmon; height: 30px;"><td colspan="7">${dlist.fnum} ${dlist.flightKm}KM</td></tr>
@@ -189,9 +183,6 @@ header
 </div>
 </div>
 </div>
-
-<!--  -->
-
 
 <!--  -->
 
@@ -230,6 +221,7 @@ header
 	<td class="td2t">항공사</td> 
 	<td class="td1t">편명</td> 
 	<td class="td7t">가격</td>  
+	<td class="td7t">예약좌석</td>
 </tr>
 
 <c:forEach items="${AairList}" var="alist"> 
@@ -305,7 +297,7 @@ header
 	<%-- <td class="td5">${dlist.flightKm}KM</td> --%>
 	<%-- <td class="td6">${dlist.flightTime}분</td>  --%>
 	<td class="td7">${alist.economyCharge}원</td>  
-	
+	<td class="td7">${195 - alist.seatTotal}</td>  
 </tr>
 
 <tr class="ahide" style="display: none; background-color: salmon; height: 30px;"><td colspan="7">${alist.fnum}</td></tr>
