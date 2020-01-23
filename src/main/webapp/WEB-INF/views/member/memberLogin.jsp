@@ -348,21 +348,5 @@ function sharpNothig(){
 
 </script>
 
-<script type="text/javascript" src="https://flyasiana.com/C/pc/js/velocity.min.js"></script>
-<script type="text/javascript" src="https://flyasiana.com/C/pc/js/moment.min.js"></script>
-<script type="text/javascript" src="https://flyasiana.com/C/pc/js/set_calendar.js"></script>
-<script type="text/javascript" src="https://flyasiana.com/resources/script/jquery-ui-custom.js"></script>
-<script type="text/javascript" src="https://flyasiana.com/js/pc/IBECommon.js"></script>
-<script type="text/javascript" src="https://flyasiana.com/js/common/rsa.js"></script>
-<script type="text/javascript" src="https://flyasiana.com/js/common/jsbn.js"></script>
-<script type="text/javascript" src="https://flyasiana.com/js/common/prng4.js"></script>
-<script type="text/javascript" src="https://flyasiana.com/js/common/rng.js"></script>
-<script type="text/javascript" src="https://flyasiana.com/js/common/IBEutil.js"></script>
-<script type="text/javascript" src="https://flyasiana.com/js/common/jquery.countdown.js"></script>
-<script type="text/javascript" src="https://flyasiana.com/js/common/IBESession.js"></script>
-<script type="text/javascript" src="https://flyasiana.com/js/common/weblog.js"></script>
-<script type="text/javascript" src="https://flyasiana.com/public/40fecf9061576a410e665f8135125"></script>
-
-
 </body>
 </html>
