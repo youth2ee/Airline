@@ -2,6 +2,8 @@ package com.airline.a1.park;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.bind.DefaultValue;
@@ -33,6 +35,19 @@ public class ParkController {
 	@GetMapping("ParkRes")
 	public void ParkRes(String arrLoc) throws Exception{
 		
+		Integer a = new Integer(10);
+		Integer b = new Integer(10);
+		Integer c = a;
+		int d = 10;
+		double e = 10.0;
+		
+		
+		
+		if(a==b) {
+			
+		}
+		
+
 		
 	}
 	

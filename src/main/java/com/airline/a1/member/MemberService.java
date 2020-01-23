@@ -1,11 +1,20 @@
 package com.airline.a1.member;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.Random;
-
 import org.springframework.stereotype.Service;
 
 @Service
 public class MemberService {
+
+
+	@Autowired
+	private MemberMapper memberMapper;
+	
+	public MembersVO memberLogin(MembersVO membersVO) throws Exception{
+		return memberMapper.memberLogin(membersVO);
+	}
+
 	
 	// 회원번호 생성
 	public String mkMemberNum() throws Exception {
@@ -17,5 +26,6 @@ public class MemberService {
 		// String memberNumber = memberNumber1 + memberNumber2 + memberNumber3; // 띄어쓰기 없음  (편의상)
 		System.out.println("회원번호 : " + memberNumber);
 		return memberNumber;
+
 	}
 }

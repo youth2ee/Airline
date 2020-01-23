@@ -10,7 +10,28 @@ public class LimoVO {
 	private String id;
 	private String depLoc;
 	private String arrLoc;
+	private String limoTime;
+	private String seat;
+	private int person;
 	
+	public int getPerson() {
+		return person;
+	}
+	public void setPerson(int person) {
+		this.person = person;
+	}
+	public String getSeat() {
+		return seat;
+	}
+	public void setSeat(String seat) {
+		this.seat = seat;
+	}
+	public String getLimoTime() {
+		return limoTime;
+	}
+	public void setLimoTime(String limoTime) {
+		this.limoTime = limoTime;
+	}
 	public int getBookNum() {
 		return bookNum;
 	}
