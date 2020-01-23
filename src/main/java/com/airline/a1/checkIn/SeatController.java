@@ -35,35 +35,45 @@ public class SeatController {
 	public ModelAndView seat(String bookingNum) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		String msg = "이미 체크인 하셨습니다.";
-		String path = "../";
+		String path = "./test";
 		BookingTicketVO bookingTicketVO = new BookingTicketVO();
-
 		bookingTicketVO.setBookingNum(bookingNum); // 파라미터로 받을값 (현재는임시)
 		List<BookingTicketVO> bookingTicketVOs = seatService.getBookData(bookingTicketVO);
-		if (bookingTicketVOs.get(0).getFlightBNum() == null) {
-			int people = seatService.getBookCount(bookingTicketVO);
-			int kindFlag = 0;
-			if (bookingTicketVOs.get(0).getKind().equals("왕복")) {
-				people = people / 2;
-				kindFlag = 1;
-			}
-			System.out.println("people : " + people);
-
-			List<SeatVO> depSeatVOs = seatService.depBookedSeat(bookingTicketVO);
-			List<SeatVO> arrSeatVOs = seatService.arrBookedSeat(bookingTicketVO);
-			List<SeatVO> seatVOs = seatService.getSeatData();
-			mv.addObject("kind", kindFlag);
-			mv.addObject("people", people);
-			mv.addObject("depFNum", bookingTicketVOs.get(0).getDepFnum());
-			mv.addObject("arrFNum", bookingTicketVOs.get(0).getArrFnum());
-			mv.addObject("tripData", bookingTicketVOs.get(0));
-			mv.addObject("booked", seatVOs);
-		} else {
+		System.out.println(bookingTicketVOs.size());
+		if (bookingTicketVOs.size() == 0) {
+			msg = "정보 조회에 실패했습니다. 예매번호를 확인해주세요.";
+			path = "./test";
 			mv.addObject("msg", msg);
 			mv.addObject("path", path);
 			mv.setViewName("common/common_result");
-		}
 
+		} else {
+			if (bookingTicketVOs.get(0).getFlightBNum() == null) {
+				int people = seatService.getBookCount(bookingTicketVO);
+				int kindFlag = 0;
+				if (bookingTicketVOs.get(0).getKind().equals("왕복")) {
+					people = people / 2;
+					kindFlag = 1;
+				}
+				System.out.println("people : " + people);
+
+				List<SeatVO> depSeatVOs = seatService.depBookedSeat(bookingTicketVO);
+				List<SeatVO> arrSeatVOs = seatService.arrBookedSeat(bookingTicketVO);
+				List<SeatVO> seatVOs = seatService.getSeatData();
+				mv.addObject("kind", kindFlag);
+				mv.addObject("people", people);
+				mv.addObject("depFNum", bookingTicketVOs.get(0).getDepFnum());
+				mv.addObject("arrFNum", bookingTicketVOs.get(0).getArrFnum());
+				mv.addObject("tripData", bookingTicketVOs.get(0));
+				mv.addObject("booked", seatVOs);
+			} else {
+
+				mv.addObject("msg", msg);
+				mv.addObject("path", path);
+				mv.setViewName("common/common_result");
+
+			}
+		}
 		return mv;
 
 	}
@@ -142,7 +152,7 @@ public class SeatController {
 				// arrFlightNum;
 			} else {
 				msg = "체크인 실패";
-				path = "../";
+				path = "./test";
 			}
 		} else { // 편도 비행기 데이터 입력 여부 확인
 			if (depInsertCheck == seatDataVO.getPeople()) {
@@ -150,7 +160,7 @@ public class SeatController {
 				// path = "./seatQr?depFlightNum=" + depFlightNum;
 			} else {
 				msg = "체크인 실패";
-				path = "../";
+				path = "./test";
 			}
 		}
 		mv.addObject("msg", msg);
