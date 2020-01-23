@@ -18,6 +18,12 @@ import com.airline.a1.booking.FlightDataVO;
 public class SeatController {
 	@Autowired
 	private SeatService seatService;
+	
+	
+	@GetMapping("test")
+	public void test() {
+		
+	}
 
 	@GetMapping("seat")
 	public ModelAndView seat() throws Exception {

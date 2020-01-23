@@ -1,56 +1,195 @@
 @charset "UTF-8";
-header{
+
+header {
 	height: 83px;
 }
 
-section{
+section {
 	width: 1200px;
-	margin: 0 auto;	
+	margin: 0 auto;
 }
 
-#top{
+#top {
 	height: 170px;
 	background-color: #6d6e71;
 }
 
-#topWrap{
+#topWrap {
 	width: 1200px;
-	height:100%;
+	height: 100%;
 	margin: 0 auto;
 	color: white;
 }
 
-#top1, #top2, #top3, #top4{
-	width:278px;
-	height:170px;
-	float:left;
+#top1, #top2, #top3, #top4 {
+	width: 278px;
+	height: 170px;
+	float: left;
 }
 
-
-#noti{
+#noti {
 	min-height: 90px;
 	background-color: #f3f4f6;
 	padding-bottom: 30px;
 }
 
-#notiWrap{
+#notiWrap {
 	width: 1200px;
-	height:100%;
+	height: 100%;
 	margin: 0 auto;
 	vertical-align: middle;
 	padding-top: 25px;
 }
 
-#title{
+#title {
 	padding: 60px 0;
 	text-align: center;
 	font-weight: bolder;
 	font-size: 40px;
 }
 
-#tmsg{
+#tmsg {
 	padding: 25px 0;
 	border-top: gray solid 1px;
 	border-bottom: gray solid 1px;
 	margin-bottom: 30px;
 }
+
+/*  */
+input[type="text"]:hover, input[type="password"]:hover, input[type="email"]:hover,
+	input[type="number"]:hover {
+	border: 1px solid #d60815;
+	background-color: #fff;
+}
+
+input[type="text"], input[type="email"], input[type="password"], input[type="number"]
+	{
+	height: 44px;
+	padding: 0 15px;
+	margin-right: 10px;
+	border: 1px solid #f3f3f3;
+	border-bottom: 1px solid #ddd;
+	color: #222;
+	background-color: #f3f3f3;
+	font-size: 16px;
+	line-height: 40px;
+}
+
+select:hover {
+	border: 1px solid #d60815;
+	background-color: #fff;
+}
+
+select {
+	height: 46px;
+	padding: 0 45px 0 15px;
+	margin-right: 10px;
+	border: 1px solid #f3f3f3;
+	border-bottom: 1px solid #ddd;
+	background: #f3f3f3 url(../../image/common/bg_select_arrow.png) no-repeat
+		right 13px top 50%;
+	background-size: 12px 8px;
+	color: #222;
+	vertical-align: middle;
+}
+
+.bth {
+	padding: 25px 25px;
+	border-bottom: 1px solid #ddd;
+	background-color: #6d6e70;
+	color: #fff;
+	font-size: 16px;
+	text-align: center;
+	font-weight: normal;
+}
+
+.btb {
+	padding: 15px 25px;
+	border-bottom: 1px solid #ddd;
+}
+
+/* checkbox */
+//
+variables // colors
+ $white: rgba (254, 255, 250, 1); $grey: rgba (220, 231, 235, 1); $lightgrey: rgba
+	(220, 231, 235, 0.25 );
+ $darkgrey: rgba (192, 200, 208, 1); $blue: rgba (34, 190, 198, 1); $black: rgba
+	(48, 69, 92, 0.8 ); // fonts
+ $sans: 'Ubuntu ', sans-serif ;
+ $heading: 'Source Sans Pro ', sans-serif ; // document styles
+body {
+	position: relative;
+	width: 90%;
+	height: 100%;
+	background: $lightgrey;
+	font-family: $ sans;
+	font-weight: 300;
+	color: $black;
+	margin: 5% auto;
+	p
+	{
+	margin-bottom
+	:
+	1em;
+}
+
+}
+//
+checkbox group
+.check_box_group {
+	position: relative;
+	padding: 0; // hide checkbox input input[type="checkbox"] { display :
+	none; // style span within the label & + label span { position :
+	relative;
+	display: inline-block;
+	vertical-align: middle;
+	cursor: pointer;
+	margin-bottom: 0.75em;
+	line-height: 1.2;
+	clear: both;
+	padding-left: 1.8em; // the background box & : before { 
+				 position : absolute;
+	content: " ";
+	border: 3px solid$darkgrey;
+	background: $darkgrey;
+	width: 16px;
+	height: 16px;
+	left: 0;
+	margin-top: -2px;
+}
+
+//
+the check /tick
+			 &:after {
+	position: absolute;
+	content: " ";
+	width: 16px;
+	height: 16px;
+	left: 0;
+	margin-top: -2px;
+}
+
+}
+//
+style :checked input span
+		 &:checked+label span { &:before { content:"︎︎ ";
+	color: $blue;
+	background: $blue;
+	text-align: center;
+	border: 3px solid$blue;
+}
+
+&
+:after {
+	margin-top: 2px;
+	left: 8px;
+	width: 3px;
+	height: 8px;
+	transform: rotate(45deg);
+	border: solid$white;
+	border-width: 0 2px 2px 0;
+}
+}
+}
+}
+/* checkbox 끝  */

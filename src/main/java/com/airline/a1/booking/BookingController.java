@@ -267,21 +267,44 @@ public class BookingController {
 		depTime.add(8, daHour);
 		depTime.add(9, daMin);
 		
-		
-		List<String> arrTime = new ArrayList<String>();
-
-		
+				
 		if (bookingTicketVO.getKind().equals("왕복")) {
+			List<String> arrTime = new ArrayList<String>();
 
 			System.out.println(bookingTicketVO.getArrInfo().getDepPlandTime());
 			System.out.println(bookingTicketVO.getArrInfo().getArrPlandTime());
 			
+			String adDate = bookingTicketVO.getArrInfo().getDepPlandTime();
+			String adYear = adDate.substring(0, 4);
+			String adMonth = adDate.substring(4, 6);
+			String adDay = adDate.substring(6, 8);
+			String adHour = adDate.substring(8, 10);
+			String adMin = adDate.substring(10);
+
+			String aaDate = bookingTicketVO.getArrInfo().getArrPlandTime();
+			String aaYear = aaDate.substring(0, 4);
+			String aaMonth = aaDate.substring(4, 6);
+			String aaDay = aaDate.substring(6, 8);
+			String aaHour = aaDate.substring(8, 10);
+			String aaMin = aaDate.substring(10);		
+			
+			arrTime.add(0, adYear);
+			arrTime.add(1, adMonth);
+			arrTime.add(2, adDay);
+			arrTime.add(3, adHour);
+			arrTime.add(4, adMin);
+			
+			arrTime.add(5, aaYear);
+			arrTime.add(6, aaMonth);
+			arrTime.add(7, aaDay);
+			arrTime.add(8, aaHour);
+			arrTime.add(9, aaMin);
+			
+			mv.addObject("arr", arrTime);
 		}
-		
 		
 
 		mv.addObject("dep", depTime);
-		mv.addObject("arr", arrTime);
 
 		mv.addObject("bTVO", bookingTicketVO);
 		mv.setViewName("/booking/bookingWrite");
