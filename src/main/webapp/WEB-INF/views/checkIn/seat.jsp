@@ -87,7 +87,7 @@ input[type=checkbox]:disabled {
 <body>
 	<form action="./seat" id="frm" method="post">
 		<input type="text" id="bookingNum" value="${tripData.bookingNum}" name="bookingNum">
-		<input type="text" id="people" value="${people}"> <!-- 파라미터로 넘겨 받을 값 (현재는 랜덤 값)-->
+		<input type="text" id="people" value="${people}" name="people"> <!-- 파라미터로 넘겨 받을 값 (현재는 랜덤 값)-->
 		<input type="text" id="depFNum" value="${depFNum}" name="depFNum">
 		<input type="text" id="depSeat" name="depSeat">
 		<div class="airport">
