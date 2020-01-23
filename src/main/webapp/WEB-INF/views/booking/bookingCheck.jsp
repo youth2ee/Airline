@@ -7,8 +7,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="../resources/css/reset.css" rel="stylesheet">
 <link href="../resources/css/booking/bookingCheck.css" rel="stylesheet">
-<c:import url="../template/boot.jsp"></c:import>
+<c:import url="../template/boot.jsp" />
 </head>
 <body>
 
@@ -38,103 +39,141 @@ header
 
 
 <section>
-<div id="title">운임 확인</div>
+<div id="title">운임 가격</div>
 <div id="tmsg">운임이 정상적으로 입력되었는지 최종확인 후, 운임 조건 및 규정을 확인하시기 바랍니다.</div>
 
+<h2>예매번호 : ${bVO.bookingNum}</h2>
+
+
+<c:if test="${not empty alist}">
+<hr>
+<h1>성인 ${fn:length(alist)}</h1>
+<table>
+<tr>
+<td>이름</td>
+<td>왕복/편도</td>
+<td>항공사</td>
+<td>편명</td>
+<td>출발지</td>
+<td>도착지</td>
+<td>원가</td>
+<td>쿠폰명</td>
+<td>할인내역</td>
+<td>유류할증료</td>
+<td>공항이용료</td>
+<td colspan="2">총 금액</td>
+</tr>
+<c:forEach items="${alist}" var="adult">
+<tr>
+<td>${adult.name}</td>
+<td>${adult.kind}</td>
+<td>${adult.depInfo.airlineNm}</td>
+<td>${adult.depInfo.vihicleId}</td>
+<td>${adult.depInfo.depAirportNm}</td>
+<td>${adult.depInfo.arrAirportNm}</td>
+<td>${adult.depPriceVO.price}원</td>
+<td>${adult.depPriceVO.couName}</td>
+<td>- ${adult.depPriceVO.couponDis}</td>
+<td>+ ${adult.depPriceVO.fuelTax}</td>
+<td>+ ${adult.depPriceVO.airportTax}</td>
+<td>=</td>
+<td class="price">${adult.depPriceVO.totalPrice}</td>
+</tr>
+
+<c:if test="${adult.kind == '왕복'}">
+<tr>
+<td>${adult.name}</td>
+<td>${adult.kind}</td>
+<td>${adult.arrInfo.airlineNm}</td>
+<td>${adult.arrInfo.vihicleId}</td>
+<td>${adult.arrInfo.depAirportNm}</td>
+<td>${adult.arrInfo.arrAirportNm}</td>
+<td>${adult.arrPriceVO.price}원</td>
+<td>${adult.arrPriceVO.couName}</td>
+<td>- ${adult.arrPriceVO.couponDis}</td>
+<td>+ ${adult.arrPriceVO.fuelTax}</td>
+<td>+ ${adult.arrPriceVO.airportTax}</td>
+<td>=</td>
+<td class="price">${adult.arrPriceVO.totalPrice}</td>
+</tr>
+</c:if>
+</c:forEach>
+</table>
+</c:if>
+
+
+<c:if test="${not empty clist}">
+<hr>
+<h1>아이  ${fn:length(clist)}</h1>
+<table>
+<tr>
+<td>이름</td>
+<td>왕복/편도</td>
+<td>항공사</td>
+<td>편명</td>
+<td>출발지</td>
+<td>도착지</td>
+<td>원가</td>
+<td>쿠폰명</td>
+<td>할인내역</td>
+<td>유류할증료</td>
+<td>공항이용료</td>
+<td colspan="2">총 금액</td>
+</tr>
+<c:forEach items="${clist}" var="child">
+<tr>
+<td>${child.name}</td>
+<td>${child.kind}</td>
+<td>${child.depInfo.airlineNm}</td>
+<td>${child.depInfo.vihicleId}</td>
+<td>${child.depInfo.depAirportNm}</td>
+<td>${child.depInfo.arrAirportNm}</td>
+<td>${child.depPriceVO.price}원</td>
+<td>${child.depPriceVO.couName}</td>
+<td>- ${child.depPriceVO.couponDis}</td>
+<td>+ ${child.depPriceVO.fuelTax}</td>
+<td>+ ${child.depPriceVO.airportTax}</td>
+<td>=</td>
+<td class="price">${child.depPriceVO.totalPrice}</td>
+</tr>
+
+<c:if test="${child.kind == '왕복'}">
+<tr>
+<td>${child.name}</td>
+<td>${child.kind}</td>
+<td>${child.arrInfo.airlineNm}</td>
+<td>${child.arrInfo.vihicleId}</td>
+<td>${child.arrInfo.depAirportNm}</td>
+<td>${child.arrInfo.arrAirportNm}</td>
+<td>${child.arrPriceVO.price}원</td>
+<td>${child.arrPriceVO.couName}</td>
+<td>- ${child.arrPriceVO.couponDis}</td>
+<td>+ ${child.arrPriceVO.fuelTax}</td>
+<td>+ ${child.arrPriceVO.airportTax}</td>
+<td>=</td>
+<td class="price">${child.arrPriceVO.totalPrice}</td>
+</tr>
+</c:if>
+</c:forEach>
+</table>
+</c:if>
 
 
 <div>
-
-<table>
-<c:if test="${not empty customVO.adultsVOList}">
-<tr><td><h1>성인 : ${fn:length(customVO.adultsVOList)}</h1></td></tr>
-
-<c:forEach items="${customVO.adultsVOList}"  var="adult" varStatus="status">
-<tr><td>왕복인가요:${fn:length(adult.flightDataVO)}</td></tr>
-
-<tr><td>이름 : ${adult.firstName} ${adult.lastName}</td></tr>
-<tr><td>회원번호 : ${adult.memberNum}</td></tr>
-<tr><td>*********************</td></tr>
-
-<tr><td> 
-<c:forEach items="${adult.flightDataVO}" var="finfo">
-<table style="background-color: gray; float: left;">
-<tr><td class="flightID">${finfo.vihicleId}</td></tr>
-<tr><td>${finfo.airlineNm}</td></tr>
-<tr><td>${finfo.depPlandTime}</td></tr>
-<tr><td>${finfo.depAirportNm}</td></tr>
-<tr><td>${finfo.arrPlandTime}</td></tr>
-<tr><td>${finfo.arrAirportNm}</td></tr>
-<tr><td>${finfo.flightTime}</td></tr>
-<tr><td>${finfo.economyCharge}</td></tr>
-<tr><td>*********************</td></tr>
-
-<tr><td>${finfo.priceVO.realPrice}원</td></tr>
-<tr><td>${finfo.priceVO.cname}</td></tr>
-<tr><td>${finfo.priceVO.cprice}원</td></tr>
-<tr><td class="price">${finfo.priceVO.ctotal}원</td></tr>
-<tr><td>*********************</td></tr>
-</table>
-</c:forEach>
-</td></tr>
-
-
-</c:forEach>
-</c:if>
-</table>
-
-
-<table>
-<c:if test="${not empty customVO.childrenVOList}">
-<tr><td><h1>아이 : ${fn:length(customVO.childrenVOList)}</h1></td></tr>
-<c:forEach items="${customVO.childrenVOList}"  var="children">
-<tr><td>왕복인가요:${fn:length(children.flightDataVO)}</td></tr>
-
-<tr><td>이름 : ${children.firstName} ${children.lastName}</td></tr>
-<tr><td>회원번호 : ${children.memberNum}</td></tr>
-<tr><td>*********************</td></tr>
-
-<tr><td> 
-<c:forEach items="${children.flightDataVO}" var="finfoc">
-<table style="background-color: gray; float: left;">
-<tr><td class="flightID">${finfoc.vihicleId}</td></tr>
-<tr><td>${finfoc.airlineNm}</td></tr>
-<tr><td>${finfoc.depPlandTime}</td></tr>
-<tr><td>${finfoc.depAirportNm}</td></tr>
-<tr><td>${finfoc.arrPlandTime}</td></tr>
-<tr><td>${finfoc.arrAirportNm}</td></tr>
-<tr><td>${finfoc.flightTime}</td></tr>
-<tr><td>${finfoc.economyCharge}</td></tr>
-<tr><td>*********************</td></tr>
-
-<tr><td>${finfoc.priceVO.realPrice}원</td></tr>
-<tr><td>${finfoc.priceVO.cname}</td></tr>
-<tr><td>${finfoc.priceVO.cprice}원</td></tr>
-<tr><td class="price">${finfoc.priceVO.ctotal}원</td></tr>
-<tr><td>*********************</td></tr>
-</table>
-</c:forEach>
-</td></tr>
-
-
-
-</c:forEach>
-</c:if>
-</table>
-
 </div>
 
 <hr>
 
 <div id="priceDiv">
-<h1>가격</h1>
-
+<table>
+<tr><td>항공 총 결제금액 : </td><td class="tprice"></td></tr>
+</table>
 </div>
 
-<div id="flightDiv">
-<h1>편명</h1>
+<hr>
 
-</div>
+
+<button class="btn btn-primary" id="btn">결제</button>
 
 </section>
 
@@ -148,25 +187,24 @@ header
 <button id="btn">결제</button>
 
 <script type="text/javascript">
+
+var r = 0;
+
 $('.price').each(function (index, item) { 
-	console.log(item); 
-	var r = item.split("원");
-	$('#priceDiv').append(r);
+	console.log($(this).text()); 
+	var t = Number($(this).text());
+	r = r + t;
+	console.log(r);
 });
+	$('.tprice').html(r);
 
 
-$('.flightID').each(function (index, item) { 
-	console.log(item); 
-	item = item.split("원");
-	$('#flightDiv').append(item);
-
-	
-});
 
 
 $('#btn').click(function(){
-	window.open("../imPay/imPayList?name=사과&amount=1000", "이니시스",  "width=825px,height=600px");
+	window.open("../imPay/imPayList?name=사과&amount="+r, "이니시스",  "width=825px, height=600px");
 });
+
 </script>
 
 

@@ -47,12 +47,12 @@
                             	
                             	<div class="radio-row" style="margin-bottom: 20px;">
                                     <label class="radio-container m-r-45">왕복
-                                        <input type="radio" name="kind" value ="2" id = "round" checked="checked">
+                                        <input type="radio" name="kind" value ="왕복" id = "round" checked="checked">
                                         <span class="radio-checkmark"></span>
                                     </label>     
                                                                
                                     <label class="radio-container m-r-45">편도
-                                        <input type="radio" name="kind" value="1"  id="eachWay">
+                                        <input type="radio" name="kind" value="편도"  id="eachWay">
                                         <span class="radio-checkmark"></span>
                                     </label> 
                                 </div>
@@ -88,18 +88,18 @@
                                                      
                                                         <ul class="list-person">
                                                             <li class="list-person__item">
-                                                                <span class="name">Adults</span>
+                                                                <span class="name">Adult</span>
                                                                 <div class="quantity quantity1">
                                                                     <span class="minus">-</span>
-                                                                    <input class="inputQty" type="number" min="0" value="1" name = "adults">
+                                                                    <input class="inputQty" type="number" min="0" value="1" name = "adult">
                                                                     <span class="plus">+</span>
                                                                 </div>
                                                             </li>
                                                             <li class="list-person__item">
-                                                                <span class="name">Children</span>
+                                                                <span class="name">Child</span>
                                                                 <div class="quantity quantity2">
                                                                     <span class="minus">-</span>
-                                                                    <input class="inputQty" type="number" min="0" value="0" name = "children">
+                                                                    <input class="inputQty" type="number" min="0" value="0" name = "child">
                                                                     <span class="plus">+</span>
                                                                 </div>
                                                             </li>
@@ -113,7 +113,7 @@
                                         
                                    
                                     <div class="col-2">
-                                        <button class="btn-submit" id ="booking_btn" type="button">search</button>
+                                        <button class="btn-submit" id ="booking_btn" type="submit">search</button>
                                     </div>
                     
                                 </div>
@@ -282,60 +282,44 @@ $('input:radio[name=kind]').click(function(){
 
 /**** 공항검색 끝 ****/
 
- 
+
  
  /***** 공항유효성검사 *****/
-$('body').on("click",'#booking_btn',function(){
 
 
-		var z = document.getElementById("loc").value;
-						
+	  $('body').on("click",'#booking_btn',function(){
+			var loc = $('#loc').val().trim();
+			var arrloc = $('#arrloc').val().trim();
 
-		var b = true;
-		
-		<c:forEach items="${airportList}" var="airPort">				
-			if('${airPort}' == z){						
-							b = false;	
-
-
-							return false;
-				}else{
-
-						b = true;
-					}			
-		</c:forEach>
-
-
-
-		 var y = document.getElementById("arrloc").value;
-			
-			var a = true;
-			
-			<c:forEach items="${airportList}" var="airPort">				
-				if('${airPort}' == y){						
-								a = false;	
-							return false;
-					}else{
-							a = true;
-							
-					
-						}			
-			</c:forEach>
-		
-
-			if(b == true && a ==true){
-					alert(" 입력해주세요")
-				}else{
-						$('#frm').submit();
-					}
- }	
- );  
+			  $.ajax({
+				url : "airportCheck",
+				data :{
+						depLoc:loc,
+						arrLoc:arrloc
+					},
+				type : "GET",
+				success : function(data){
+									
+					if(data == true){
+							$('#frm').submit();
+						}else{
+							alert("출발지나 도착지를 올바르게 입력하세요.");
+							}
+				
 
 
+					},error:function(){
+							alert("fail");
 
+						}
+		  });
+	  
+	  });
+	  
 
  
  /***** 공항유효성검사  끝*****/
+ 
  
  
  
@@ -343,9 +327,8 @@ $('body').on("click",'#booking_btn',function(){
 
 $('#arrloc').focus(function(){
 	
-	var arrLoc = $("#loc").val(); 
-
-			var query = {arrLoc : $("#loc").val()};
+	var depLoc = $("#loc").val(); 
+	var query = {depLoc : $("#loc").val()};
 			
 			$.ajax({
 					url : "airportDepList",
@@ -354,26 +337,18 @@ $('#arrloc').focus(function(){
 					success : function(data){
 					
 						$("#depLocDiv").html(data);
-
-						
-							
+												
 						},error:function(){
 
 							console.log("fail");
 							}	
-
-				});	 
-			
+				});	 			
 });
  
- 
- 
-
-
 </script>
 
 
 </body>
 
 </html>
-<!-- end document-->
+

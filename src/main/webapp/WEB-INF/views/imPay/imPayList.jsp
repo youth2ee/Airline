@@ -6,8 +6,8 @@
 <meta charset="UTF-8">
 <title>이니시스 결제</title>
 </head>
+<link href="../resources/css/reset.css" rel="stylesheet">
 <body>
-
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 
@@ -15,6 +15,7 @@
 
 
 <script type="text/javascript">
+
 var IMP = window.IMP; // 생략가능
 IMP.init('imp21684366'); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
 

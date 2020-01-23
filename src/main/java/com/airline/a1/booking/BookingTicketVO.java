@@ -2,8 +2,9 @@ package com.airline.a1.booking;
 
 import java.util.List;
 
-import lombok.Data;
+import org.springframework.stereotype.Repository;
 
+import lombok.Data;
 @Data
 public class BookingTicketVO {
 
@@ -11,7 +12,11 @@ public class BookingTicketVO {
 	private String bookingNum; //예약한 경우 한번에 생성
 	private String flightBNum; //예약한 인원마다 생성
 	
-	private String kind; //편도, 왕복 //db
+	private String depFBNum;
+	private String arrFBNum;
+	
+	private String kind; //편도, 왕복 //db 편도, 왕복
+	private String date;
 	private int adult; //인원수
 	private int child; //인원수
 	
@@ -19,7 +24,6 @@ public class BookingTicketVO {
 	private String depLoc;
 	private String depStartTime;
 	private String depEndTime;
-	private String depPrice;
 	
 	private FlightDataVO depInfo;
 	
@@ -27,7 +31,6 @@ public class BookingTicketVO {
 	private String arrLoc;
 	private String arrStartTime;
 	private String arrEndTime;
-	private String arrPrice;
 	
 	private FlightDataVO arrInfo;
 	
@@ -53,8 +56,14 @@ public class BookingTicketVO {
 	private String memberNum; //db
 	private String id; //db
 	
+	private BookingPriceVO depPriceVO;
+	private BookingPriceVO arrPriceVO;
+	
 	private String depCoupon;
 	private String arrCoupon;
+	
+	private String depAirportNm;
+	private String arrAirportNm;
 	
 	//
 	private List<BookingTicketVO> adultList;

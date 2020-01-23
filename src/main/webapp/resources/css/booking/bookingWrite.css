@@ -1,73 +1,125 @@
 @charset "UTF-8";
-header{
+
+header {
 	height: 83px;
 }
 
-section{
+section {
 	width: 1200px;
-	margin: 0 auto;	
+	margin: 0 auto;
 }
 
-#top{
+#top {
 	height: 170px;
 	background-color: #6d6e71;
 }
 
-#topWrap{
-	padding-left:85px;
+#topWrap {
 	width: 1200px;
-	height:100%;
+	height: 100%;
 	margin: 0 auto;
 	color: white;
 }
 
-#top1{
-	width:295px;
-	height:170px;
-	float:left;
+#top1, #top2, #top3, #top4 {
+	width: 278px;
+	height: 170px;
+	float: left;
 }
 
-#top2{
-	width:295px;
-	height:170px;
-	float:left;
-}
-
-#top3{
-	width:295px;
-	height:170px;
-	float:left;
-}
-
-#top4{
-	width:295px;
-	height:170px;
-	float:left;
-}
-
-#noti{
+#noti {
 	min-height: 90px;
 	background-color: #f3f4f6;
 	padding-bottom: 30px;
 }
 
-#notiWrap{
+#notiWrap {
 	width: 1200px;
-	height:100%;
+	height: 100%;
 	margin: 0 auto;
 	vertical-align: middle;
 	padding-top: 25px;
 }
 
-#title{
+#title {
 	padding: 60px 0;
 	text-align: center;
 	font-weight: bolder;
 	font-size: 40px;
 }
 
-#tmsg{
+#tmsg {
 	padding: 25px 0;
 	border-top: gray solid 1px;
 	border-bottom: gray solid 1px;
+	margin-bottom: 30px;
 }
+
+/*  */
+input[type="text"]:hover, input[type="password"]:hover, input[type="email"]:hover,
+	input[type="number"]:hover {
+	border: 1px solid #d60815;
+	background-color: #fff;
+}
+
+input[type="text"], input[type="email"], input[type="password"], input[type="number"]
+	{
+	height: 44px;
+	padding: 0 15px;
+	margin-right: 10px;
+	border: 1px solid #f3f3f3;
+	border-bottom: 1px solid #ddd;
+	color: #222;
+	background-color: #f3f3f3;
+	font-size: 16px;
+	line-height: 40px;
+}
+
+select:hover {
+	border: 1px solid #d60815;
+	background-color: #fff;
+}
+
+select {
+	height: 46px;
+	padding: 0 45px 0 15px;
+	margin-right: 10px;
+	border: 1px solid #f3f3f3;
+	border-bottom: 1px solid #ddd;
+	background: #f3f3f3 url('../../images/common/bg_select_arrow.png') no-repeat
+		right 13px top 50%;
+	background-size: 12px 8px;
+	color: #222;
+	vertical-align: middle;
+}
+
+.bth {
+	padding: 25px 25px;
+	border-bottom: 1px solid #ddd;
+	background-color: #6d6e70;
+	color: #fff;
+	font-size: 16px;
+	text-align: center;
+	font-weight: normal;
+}
+
+.btb {
+	padding: 15px 25px;
+	border-bottom: 1px solid #ddd;
+}
+
+/* checkbox */
+input[type="checkbox"]:checked + label {
+    background: url(../images/common/bg_checkbox_check.png) no-repeat;
+}
+
+input[type="checkbox"] + label {
+    min-height: 20px;
+    padding: 0 40px 0 30px;
+    background: url(../images/common/bg_checkbox_default.png) no-repeat;
+    font-size: 16px;
+    color: #222;
+    vertical-align: middle;
+    line-height: 18px;
+}
+/* checkbox 끝  */

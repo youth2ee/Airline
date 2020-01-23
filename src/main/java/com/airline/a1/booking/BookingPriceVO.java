@@ -1,17 +1,28 @@
 package com.airline.a1.booking;
 
+import java.util.List;
 import lombok.Data;
 
 @Data
 public class BookingPriceVO {
 	
-	private int realPrice;
+	private int bpnum;
+	private String flightBNum;
+	private int fnum;
+	private int price;
 	
-	//쿠폰 
-	private String cname; //쿠폰이름
-	private int cprice; //쿠폰으로 할인으로 차감되는 금액
-	private int ctotal; //쿠폰적용 후 금액
+	private String couName;
+	private int couponDis;
 	
-	//마일리지
+	private int fuelTax;
+	private int airportTax;
+	
+	private int totalPrice;
+	
+	private int mileagePlus;
 
+	private String memberNum;
+	private String id;
+	
+	
 }
