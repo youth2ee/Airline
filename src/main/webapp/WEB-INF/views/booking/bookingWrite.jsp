@@ -9,6 +9,10 @@
 <link href="../resources/css/reset.css" rel="stylesheet">
 <link href="../resources/css/booking/bookingWrite.css" rel="stylesheet">
 <c:import url="../template/boot.jsp"></c:import>
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 </head>
 <body>
 booking write
@@ -18,36 +22,49 @@ header
 
 <div id="top">
 <div id="topWrap">
-<div id="top1">1<br>
-출발 : ${bTVO.depInfo.depAirportNm}<br>
+<div id="top1">
+<i class="fa fa-plane" style="font-size:40px;color:white; padding-top: 20px;"></i><br>
+${bTVO.depInfo.depAirportNm} <i class='fas fa-angle-right' style='font-size:10px;'></i> ${bTVO.depInfo.arrAirportNm}<br>
+${bTVO.depInfo.vihicleId} ${bTVO.depInfo.airlineNm}<br>
+${dep[0]}년 ${dep[1]}월 ${dep[2]}일<br>
+출발 : ${dep[3]}시 ${dep[4]}분<br>
+도착 : ${dep[8]}시 ${dep[9]}분<br>
+
+<%-- 출발 : ${bTVO.depInfo.depAirportNm}<br>
 도착 : ${bTVO.depInfo.arrAirportNm}<br>
 ${bTVO.depInfo.depPlandTime}<br>
 ${bTVO.depInfo.arrPlandTime}<br>
 ${bTVO.depInfo.vihicleId}<br>
 ${bTVO.depInfo.airlineNm}<br>
-<c:if test="${bTVO.kind == 1}">
+<c:if test="${bTVO.kind == '편도'}">
 편도
+</c:if> --%>
+</div>
+
+
+
+<div id="top2">
+<c:if test="${bTVO.kind == '왕복'}">
+<i class="fa fa-plane" style="font-size:40px;color:white; padding-top: 20px;"></i><br>
+${bTVO.depInfo.arrAirportNm} <i class='fas fa-angle-right' style='font-size:10px;'></i> ${bTVO.depInfo.depAirportNm}<br>
+${bTVO.arrInfo.vihicleId} ${bTVO.arrInfo.airlineNm}<br>
+${arr[0]}년 ${arr[1]}월 ${arr[2]}일<br>
+출발 : ${arr[3]}시 ${arr[4]}분<br>
+도착 : ${arr[8]}시 ${arr[9]}분<br>
+
 </c:if>
 </div>
-<div id="top2">2<br>
-출발 : ${bTVO.depInfo.arrAirportNm}<br>
-도착 : ${bTVO.depInfo.depAirportNm}<br>
-<c:if test="${bTVO.kind == 2}">
-${bTVO.arrInfo.depPlandTime}<br>
-${bTVO.arrInfo.arrPlandTime}<br>
-${bTVO.arrInfo.vihicleId}<br>
-${bTVO.arrInfo.airlineNm}<br>
-왕복
-</c:if>
+<div id="top3"> 
+<i class="material-icons" style="font-size:40px; color: white; padding-top: 20px;">person</i> 
+<h5>성인 : ${bTVO.adult}명</h5>
+<h5>아동 : ${bTVO.child}명</h5>
 </div>
-<div id="top3">3 
-<h3>성인 : ${bTVO.adult}명</h3>
-<h3>아동 : ${bTVO.child}명</h3>
-</div>
-<div id="top4">4 
-${bTVO.depInfo.economyCharge}원
-<c:if test="${bTVO.kind == 2}">
-${bTVO.arrInfo.economyCharge}원
+
+<div id="top4">
+<i class='fas fa-credit-card' style="font-size:30px; color: white; padding-top: 24px;"></i>
+<h5>가는편 : ${bTVO.depInfo.economyCharge}원</h5>
+<c:if test="${bTVO.kind == '왕복'}">
+<h5>오는편 : ${bTVO.arrInfo.economyCharge}원</h5>
 </c:if>
 </div>
 </div>
@@ -78,27 +95,27 @@ ${bTVO.arrInfo.economyCharge}원
 <c:if test="${bTVO.adult != 0}">
 <c:forEach begin="1" end="${bTVO.adult}" varStatus="status"> 
 <table><!-- 성인1 -->
-<tr><td colspan="2">성인 ${status.index}</td> </tr>
+<tr><td colspan="2"><h4 style="font-size: 28px;">성인 ${status.index}</h4></td> </tr>
 
 <tr> 
-<td>성별</td> 
-<td>
+<td class="bth">성별</td> 
+<td class="btb">
 여<input type="radio" name="adultList[${status.index-1}].gender" value="여"> 
 남<input type="radio" name="adultList[${status.index-1}].gender" value="남">  
 </td>
 </tr>
 
 <tr>
-<td>이름</td> 
-<td>
+<td class="bth">이름</td> 
+<td class="btb">
 <input type="text" placeholder="성(신분증언어)" name="adultList[${status.index-1}].lastName"> 
 <input type="text" placeholder="이름(신분증언어)" name="adultList[${status.index-1}].firstName"> 
 </td>
 </tr>
 
 <tr>
-<td>생년월일</td>
-<td> 
+<td class="bth">생년월일</td>
+<td class="btb"> 
 
 <select name="adultList[${status.index-1}].year"> 
 <option selected="selected">년</option>
@@ -124,13 +141,13 @@ ${bTVO.arrInfo.economyCharge}원
 </tr>
 
 <tr>
-<td>회원번호(탑승객)</td>
-<td><input type="text" placeholder="회원번호" name="adultList[${status.index-1}].memberNum"></td>
+<td class="bth">회원번호(탑승객)</td>
+<td class="btb"><input type="text" placeholder="회원번호" name="adultList[${status.index-1}].memberNum"></td>
 </tr>
 
 <tr>
-<td>개인할인(가는편)</td>
-<td> 
+<td class="bth">개인할인(가는편)</td>
+<td class="btb"> 
 <select name="adultList[${status.index-1}].depCoupon">
 <option>개인할인 선택 안함</option>
 <option>[30%] 장애인 1~3급</option>
@@ -151,11 +168,11 @@ ${bTVO.arrInfo.economyCharge}원
  </td>
 </tr>
 
-<c:if test="${bTVO.kind == 2}">
+<c:if test="${bTVO.kind == '왕복'}">
 
 <tr>
-<td>개인할인(오는편)</td>
-<td>
+<td class="bth">개인할인(오는편)</td>
+<td class="btb">
 <select name="adultList[${status.index-1}].arrCoupon">
 <option>개인할인 선택 안함</option>
 <option>[30%] 장애인 1~3급</option>
@@ -190,22 +207,22 @@ ${bTVO.arrInfo.economyCharge}원
 <tr><td colspan="2">아이 ${status.index}</td> </tr>
 
 <tr> 
-<td>성별</td> 
-<td>
+<td class="bth">성별</td> 
+<td class="btb">
 여<input type="radio" name="childList[${status.index-1}].gender" value="여"> 
 남<input type="radio" name="childList[${status.index-1}].gender" value="남">  
 </td>
 </tr>
 
 <tr>
-<td>이름</td> 
-<td><input type="text" placeholder="성(신분증언어)" name="childList[${status.index-1}].lastName"> 
+<td class="bth">이름</td> 
+<td class="btb"><input type="text" placeholder="성(신분증언어)" name="childList[${status.index-1}].lastName"> 
 <input type="text" placeholder="이름(신분증언어)" name="childList[${status.index-1}].firstName"> </td>
 </tr>
 
 <tr>
-<td>생년월일</td>
-<td> 
+<td class="bth">생년월일</td>
+<td class="btb"> 
 
 <select name="childList[${status.index-1}].year"> 
 <option selected="selected" >년</option>
@@ -231,13 +248,13 @@ ${bTVO.arrInfo.economyCharge}원
 </tr>
 
 <tr>
-<td>회원번호(탑승객)</td>
-<td><input type="text" placeholder="회원번호" name="childList[${status.index-1}].memberNum"></td>
+<td class="bth">회원번호(탑승객)</td>
+<td class="btb"><input type="text" placeholder="회원번호" name="childList[${status.index-1}].memberNum"></td>
 </tr>
 
 <tr>
-<td>개인할인(가는편)</td>
-<td> 
+<td class="bth">개인할인(가는편)</td>
+<td class="btb"> 
 <select name="childList[${status.index-1}].depCoupon">
 <option>개인할인 선택 안함</option>
 <option>[30%] 장애인 1~3급</option>
@@ -258,11 +275,11 @@ ${bTVO.arrInfo.economyCharge}원
  </td>
 </tr>
 
-<c:if test="${bTVO.kind == 2}">
+<c:if test="${bTVO.kind == '왕복'}">
 
 <tr>
-<td>개인할인(오는편)</td>
-<td>
+<td class="bth">개인할인(오는편)</td>
+<td class="btb">
 <select name="childList[${status.index-1}].arrCoupon">
 <option>개인할인 선택 안함</option>
 <option>[30%] 장애인 1~3급</option>
@@ -283,6 +300,7 @@ ${bTVO.arrInfo.economyCharge}원
 </tr>
 </c:if>
 </table><!-- 아이1 -->
+소아/유아 동반 시, 반드시 나이를 확인할 수 있는 서류를 준비하시기 바랍니다.
 <hr>
 </c:forEach>
 </c:if>
@@ -293,20 +311,21 @@ ${bTVO.arrInfo.economyCharge}원
 
 
 <div>
-예약자 연락처 정보
+<div id="title">예약자 연락처 정보</div>
+<div id="tmsg">예약정보수신 연락처에 작성하신 이메일로 구매 결과와 여정안내서를 전송해드립니다.</div>
 
 <table>
 <tr>
-<td>이메일</td>
-<td>
+<td class="bth">이메일</td>
+<td class="btb">
 <input type="email" name="resEmail">
 <input type="checkbox" name="resECheck"> 이메일 항공권 수신동의
 </td>
 </tr>
 
 <tr>
-<td>전화번호</td>
-<td>
+<td class="bth">전화번호</td>
+<td class="btb">
 <input type="text" name="resPhone">
 <input type="checkbox" name="resPCheck"> SMS 수신동의
 </td>
@@ -324,7 +343,7 @@ ${bTVO.arrInfo.economyCharge}원
 
 <input type="hidden" name="depFnum" value="${bTVO.depFnum}">
 
-<c:if test="${bTVO.kind == '2'}">
+<c:if test="${bTVO.kind == '왕복'}">
 <input type="hidden" name="arrFnum" value="${bTVO.arrFnum}">
 </c:if>
 
@@ -332,6 +351,33 @@ ${bTVO.arrInfo.economyCharge}원
 </form>
 
 </section>
+
+<span class="check_box_group">
+	<input type="checkbox" id="breakbeat" name="my_checkbox" value="breakbeat">
+	<label for="breakbeat"><span>breakbeat</span></label><br>
+	<input type="checkbox" id="dnb" name="my_checkbox" value="dnb">
+	<label for="dnb"><span>drum&amp;bass</span></label><br>
+	<input type="checkbox" id="jungle" name="my_checkbox" value="jungle">
+	<label for="jungle"><span>jungle</span></label>
+</span>
+
+
+<script type="text/javascript">
+//console log contents of checkbox (stored in array)
+$(document).ready(function() {
+	var selectedOptions = [];
+	$(':checkbox[name="my_checkbox"]').change(function() {
+		selectedOptions = [];
+		$(':checkbox[name="my_checkbox"]').each(function(i, item) {
+			if($(item).is(':checked')) {
+				selectedOptions.push($(item).val()); 
+			}
+    });
+   console.log("selectedOptions:", selectedOptions);
+	});
+});
+
+</script>
 
 
 </body>
