@@ -19,6 +19,11 @@ public class SeatController {
 	@Autowired
 	private SeatService seatService;
 
+	@GetMapping("seatQr")
+	public void seatQr() throws Exception {
+
+	}
+
 	@GetMapping("seat")
 	public ModelAndView seat() throws Exception {
 		ModelAndView mv = new ModelAndView();
