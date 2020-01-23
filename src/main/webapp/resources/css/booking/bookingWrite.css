@@ -86,7 +86,7 @@ select {
 	margin-right: 10px;
 	border: 1px solid #f3f3f3;
 	border-bottom: 1px solid #ddd;
-	background: #f3f3f3 url(../../image/common/bg_select_arrow.png) no-repeat
+	background: #f3f3f3 url('../../images/common/bg_select_arrow.png') no-repeat
 		right 13px top 50%;
 	background-size: 12px 8px;
 	color: #222;
@@ -109,87 +109,17 @@ select {
 }
 
 /* checkbox */
-//
-variables // colors
- $white: rgba (254, 255, 250, 1); $grey: rgba (220, 231, 235, 1); $lightgrey: rgba
-	(220, 231, 235, 0.25 );
- $darkgrey: rgba (192, 200, 208, 1); $blue: rgba (34, 190, 198, 1); $black: rgba
-	(48, 69, 92, 0.8 ); // fonts
- $sans: 'Ubuntu ', sans-serif ;
- $heading: 'Source Sans Pro ', sans-serif ; // document styles
-body {
-	position: relative;
-	width: 90%;
-	height: 100%;
-	background: $lightgrey;
-	font-family: $ sans;
-	font-weight: 300;
-	color: $black;
-	margin: 5% auto;
-	p
-	{
-	margin-bottom
-	:
-	1em;
+input[type="checkbox"]:checked + label {
+    background: url(../images/common/bg_checkbox_check.png) no-repeat;
 }
 
-}
-//
-checkbox group
-.check_box_group {
-	position: relative;
-	padding: 0; // hide checkbox input input[type="checkbox"] { display :
-	none; // style span within the label & + label span { position :
-	relative;
-	display: inline-block;
-	vertical-align: middle;
-	cursor: pointer;
-	margin-bottom: 0.75em;
-	line-height: 1.2;
-	clear: both;
-	padding-left: 1.8em; // the background box & : before { 
-				 position : absolute;
-	content: " ";
-	border: 3px solid$darkgrey;
-	background: $darkgrey;
-	width: 16px;
-	height: 16px;
-	left: 0;
-	margin-top: -2px;
-}
-
-//
-the check /tick
-			 &:after {
-	position: absolute;
-	content: " ";
-	width: 16px;
-	height: 16px;
-	left: 0;
-	margin-top: -2px;
-}
-
-}
-//
-style :checked input span
-		 &:checked+label span { &:before { content:"︎︎ ";
-	color: $blue;
-	background: $blue;
-	text-align: center;
-	border: 3px solid$blue;
-}
-
-&
-:after {
-	margin-top: 2px;
-	left: 8px;
-	width: 3px;
-	height: 8px;
-	transform: rotate(45deg);
-	border: solid$white;
-	border-width: 0 2px 2px 0;
-}
-}
-}
+input[type="checkbox"] + label {
+    min-height: 20px;
+    padding: 0 40px 0 30px;
+    background: url(../images/common/bg_checkbox_default.png) no-repeat;
+    font-size: 16px;
+    color: #222;
+    vertical-align: middle;
+    line-height: 18px;
 }
 /* checkbox 끝  */

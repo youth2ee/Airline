@@ -319,15 +319,17 @@ ${arr[0]}년 ${arr[1]}월 ${arr[2]}일<br>
 <td class="bth">이메일</td>
 <td class="btb">
 <input type="email" name="resEmail">
-<input type="checkbox" name="resECheck"> 이메일 항공권 수신동의
+<input type="checkbox" name="resECheck" id="ECheck" checked="checked">
+<label for="ECheck">이메일 항공권 수신동의</label>
 </td>
 </tr>
 
 <tr>
 <td class="bth">전화번호</td>
 <td class="btb">
-<input type="text" name="resPhone">
-<input type="checkbox" name="resPCheck"> SMS 수신동의
+<input type="text" name="resPhone" checked="checked">
+<input type="checkbox" name="resPCheck" id="resPCheck">
+<label for="resPCheck">SMS 수신 동의</label>
 </td>
 </tr>
 </table>
@@ -352,32 +354,8 @@ ${arr[0]}년 ${arr[1]}월 ${arr[2]}일<br>
 
 </section>
 
-<span class="check_box_group">
-	<input type="checkbox" id="breakbeat" name="my_checkbox" value="breakbeat">
-	<label for="breakbeat"><span>breakbeat</span></label><br>
-	<input type="checkbox" id="dnb" name="my_checkbox" value="dnb">
-	<label for="dnb"><span>drum&amp;bass</span></label><br>
-	<input type="checkbox" id="jungle" name="my_checkbox" value="jungle">
-	<label for="jungle"><span>jungle</span></label>
-</span>
 
 
-<script type="text/javascript">
-//console log contents of checkbox (stored in array)
-$(document).ready(function() {
-	var selectedOptions = [];
-	$(':checkbox[name="my_checkbox"]').change(function() {
-		selectedOptions = [];
-		$(':checkbox[name="my_checkbox"]').each(function(i, item) {
-			if($(item).is(':checked')) {
-				selectedOptions.push($(item).val()); 
-			}
-    });
-   console.log("selectedOptions:", selectedOptions);
-	});
-});
-
-</script>
 
 
 </body>
