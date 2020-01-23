@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.airline.a1.booking.BookingTicketVO;
-import com.airline.a1.booking.FlightDataVO;
 
 @Service
 public class SeatService {
