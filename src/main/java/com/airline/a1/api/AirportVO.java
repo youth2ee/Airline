@@ -14,6 +14,8 @@ public class AirportVO {
 	private String cityKor;
 	private String cityEng;
 	private String cityCode;
+	
+	
 	public int getApNum() {
 		return apNum;
 	}

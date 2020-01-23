@@ -3,7 +3,30 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-<mapper namespace="com.airline.a1.booking.bookingMapper">
+<mapper namespace="com.airline.a1.booking.BookingMapper">
+
+<select id="airportList" resultType="java.lang.String">
+	select distinct depAirportNm from flightData order by depAirportNm asc
+</select>
+
+
+<select id="airList" parameterType="com.airline.a1.booking.BookingTicketVO" resultType="com.airline.a1.booking.FlightDataVO">
+select * from flightData where depAirportNm = #{depLoc} and arrAirportNm = #{arrLoc} and depPlandTime like concat(#{depStartTime},'%') order by depPlandTime asc
+</select>
+
+<select id="airportDepList" resultType="com.airline.a1.booking.BookingTicketVO" parameterType="com.airline.a1.booking.BookingTicketVO">
+	select distinct arrAirportNm from flightData where depAirportNm = #{depLoc} order by arrAirportNm asc 
+</select>
+
+<select id="oneSelect" parameterType="com.airline.a1.booking.FlightDataVO" resultType="com.airline.a1.booking.FlightDataVO">
+	select * from flightData where fnum=#{fnum}
+</select>
+
+<insert id="bookingInsert" parameterType="com.airline.a1.booking.BookingTicketVO">
+insert into bookingTicket values 
+(null, #{bookingNum}, #{flightBNum}, #{kind}, #{adult}, #{child}, #{depFnum}, #{arrFnum}, 
+now(), #{resEmail}, #{resECheck}, #{resPhone}, #{resPCheck}, #{gender}, #{name}, #{birth}, #{memberNum}, #{id})
+</insert>
 
 
 
