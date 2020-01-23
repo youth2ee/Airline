@@ -4,7 +4,7 @@
 <div id="loading_oh" style="position:absolute; top:10px; left:10px; width: 100%; height: 100%;">
 <table width="100%" height="100%" align="center" cellpadding="0" cellspacing="0">
 <tr>
-    <td align="center" width="100%" height="100%"><img src="../images/loading2.gif" border="0"><br><b><font color="black">잠시만 기다려 주세요</font></b></td>
+    <td align="center" width="100%" height="100%"><img src="${pageContext.request.contextPath}/images/loading2.gif" border="0"><br><b><font color="black">잠시만 기다려 주세요</font></b></td>
 </tr>
 </table>
 </div>

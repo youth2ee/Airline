@@ -8,26 +8,31 @@
 <title>Insert title here</title>
 <c:import url="../template/boot.jsp" />
 
+
 <link rel="stylesheet" type="text/css" href="https://flyasiana.com/C/pc/css/reset.css">
 <link rel="stylesheet" type="text/css" href="https://flyasiana.com/C/pc/css/layout.css">
 <link rel="stylesheet" type="text/css" href="https://flyasiana.com/C/pc/css/common.css">
 <link rel="stylesheet" type="text/css" href="https://flyasiana.com/C/pc/css/flyasiana.css">
 <link rel="stylesheet" type="text/css" href="https://flyasiana.com/C/pc/css/calendar.css">
+
+ 
+<!-- 
+<link rel="stylesheet" type="text/css" href="../resources/css/common/reset_p.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/member/member.css">
+ -->
 </head>
 <body>
-<c:import url="../template/hhhhheader.jsp"></c:import>
 <div class="container" id="container">
 				<h3>로그인</h3> 
-				<form action="">
-					<fieldset>
-						<legend>로그인 및 비로그인 예약조회 폼</legend> 
+				<form action="./memberLogin" method="post" id="loginform">
+
 						<div class="login_wrap">
 							<div class="tab_wrap3">
 								<ul class="tab_head t2">
-									<li class="on">
+									<li class="logintype on">
 										<a href="#" id="Logintab" title="선택됨" style="height: 63px;"><span>로그인</span></a> 
 									</li>
-									<li>
+									<li class="logintype">
 										<a href="#" id="noLogintab" style="height: 63px;"><span>비로그인 예약조회</span></a> 
 									</li>
 								</ul>
@@ -35,9 +40,7 @@
 
 							
 							<div class="inner" id="logindiv">
-								<h4 class="hidden">로그인</h4> 
-
-								<div id="snsBlockNotice" style="display:none">
+								<!-- <div id="snsBlockNotice" style="display:none">
 									<div class="title_wrap_type2 text_type2">
 										<h5>SNS 로그인 연결</h5> 
 									</div>
@@ -46,7 +49,7 @@
 										<li>아시아나클럽 계정을 보유하고 있으실 경우 해당 아이디 또는 회원번호로 로그인하여 <span class="fo_bol col_black" id="snsTypeInSnsBlock2"></span> 간편 로그인을 연동하여 주시기 바랍니다.</li> 
 										<li>아시아나클럽 계정이 없으실 경우 [회원가입]버튼을 클릭하여 회원가입을 진행해주시기 바랍니다.</li> 
 									</ul>
-								</div>
+								</div> -->
 
 								<div class="login_check_area" id="login_check_area">
 									<input type="radio" id="loginType_ID" name="loginType" value="I" checked=""><label for="loginType_ID">아이디 로그인</label> 
@@ -54,13 +57,15 @@
 								</div>
 
 								<div class="input_wrap">
-									<input type="text" id="txtID" placeholder="아이디 입력" title="아이디 입력" style="width:468px;"> 
-									<input type="password" id="txtPW" placeholder="비밀번호 입력" title="비밀번호 입력" style="width:468px;" autocomplete="off"> 
+									<input type="text" id="txtID" name="id" placeholder="아이디 입력" title="아이디 입력" style="width:468px;"> 
+									<input type="password" id="txtPW" name="pw" placeholder="비밀번호 입력" title="비밀번호 입력" style="width:468px;" autocomplete="off"> 
 								</div>
 
 								
-										<div id="login_g-recaptcha" class="g-recaptcha" style="display: none;"><div style="width: 304px; height: 78px;"><div><iframe src="https://www.google.com/recaptcha/api2/anchor?ar=1&amp;k=6LcyoDwUAAAAAG42mLWkJPNAs35QRLvnl2O0xOCJ&amp;co=aHR0cHM6Ly9mbHlhc2lhbmEuY29tOjQ0Mw..&amp;hl=ko&amp;v=eQmzkx3d5dtuXlLOA4pEID3I&amp;size=normal&amp;cb=o1yptad4otty" width="304" height="78" role="presentation" name="a-myz234i7wcb6" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox"></iframe></div><textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div></div>
+										<!-- 구글리캡챠
+										<div id="login_g-recaptcha" class="g-recaptcha" style="display: none;"><div style="width: 304px; height: 78px;"><div><iframe src="https://www.google.com/recaptcha/api2/anchor?ar=1&amp;k=6LcyoDwUAAAAAG42mLWkJPNAs35QRLvnl2O0xOCJ&amp;co=aHR0cHM6Ly9mbHlhc2lhbmEuY29tOjQ0Mw..&amp;hl=ko&amp;v=A1Aard-wURuGsXRGA7JMOqVO&amp;size=normal&amp;cb=m996u7yxhzqq" width="304" height="78" role="presentation" name="a-qoju52rfml46" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox"></iframe></div><textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div></div>
 										<input type="hidden" id="login_recaptchaResponse" name="login_recaptchaResponse">
+										-->
 									
 
 								<div class="id_save_wrap" id="memchk" style="padding-top:0px">
@@ -96,15 +101,15 @@
 								<div class="sns_btn_wrap ">
 									<ul>
 										<li class="btn_kakao">
-											<a href="javascript:;" id="btnSNSLogin_kakao"><strong>카카오톡</strong>간편로그인</a> 
+											<a href="#" id="btnSNSLogin_kakao"><strong>카카오톡</strong>간편로그인</a> 
 										</li>
 										
 										<li class="btn_facebook">
-											<a href="javascript:;" id="btnSNSLogin_facebook"><strong>페이스북</strong>간편로그인</a> 
+											<a href="#" id="btnSNSLogin_facebook"><strong>페이스북</strong>간편로그인</a> 
 										</li>
 										
 										<li class="btn_naver">
-											<a href="javascript:;" id="btnSNSLogin_naver"><strong>네이버</strong>간편로그인</a> 
+											<a href="#" id="btnSNSLogin_naver"><strong>네이버</strong>간편로그인</a> 
 										</li>
 									</ul>
 								</div>
@@ -191,7 +196,7 @@
 								
 								<div id="captchaDiv" style="display:none;">
 								
-										<div id="noLogin_g-recaptcha" class="g-recaptcha" style="display: none;"><div style="width: 304px; height: 78px;"><div><iframe src="https://www.google.com/recaptcha/api2/anchor?ar=1&amp;k=6LcyoDwUAAAAAG42mLWkJPNAs35QRLvnl2O0xOCJ&amp;co=aHR0cHM6Ly9mbHlhc2lhbmEuY29tOjQ0Mw..&amp;hl=ko&amp;v=eQmzkx3d5dtuXlLOA4pEID3I&amp;size=normal&amp;cb=ygxeksn24wti" width="304" height="78" role="presentation" name="a-9zoch63k3dmq" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox"></iframe></div><textarea id="g-recaptcha-response-1" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div></div>
+										<div id="noLogin_g-recaptcha" class="g-recaptcha" style="display: none;"><div style="width: 304px; height: 78px;"><div><iframe src="https://www.google.com/recaptcha/api2/anchor?ar=1&amp;k=6LcyoDwUAAAAAG42mLWkJPNAs35QRLvnl2O0xOCJ&amp;co=aHR0cHM6Ly9mbHlhc2lhbmEuY29tOjQ0Mw..&amp;hl=ko&amp;v=A1Aard-wURuGsXRGA7JMOqVO&amp;size=normal&amp;cb=vtd8dmea87up" width="304" height="78" role="presentation" name="a-ujn1gcwc7iju" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox"></iframe></div><textarea id="g-recaptcha-response-1" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div></div>
 										<input type="hidden" id="noLogin_recaptchaResponse" name="noLogin_recaptchaResponse">
 									
 								</div>
@@ -203,10 +208,11 @@
 							</div>
 						
 						</div>
-					</fieldset>
+					
 				</form>
 
 				
+				<!-- 
 				<div id="divLayerNational" class="layer_wrap">
 					<div class="dim_layer"></div>
 					<div class="layer_pop" style="width:540px;">
@@ -224,7 +230,9 @@
 						</a>
 					</div>
 				</div>
+				 -->
 				
+				<!-- 
 				<div id="depAllAirport1" name="allAirport" class="layer_wrap">
 					<div class="dim_layer"></div>
 					<div class="layer_pop select_airport">
@@ -245,8 +253,10 @@
 
 						<a href="javascript:sharpNothig();" class="dim_close white"><span class="hidden">닫기</span></a> 
 					</div>
-				</div>
+				</div> 
+				-->
 				
+				<!-- 
 				<div id="divLayerTempPassword" class="layer_wrap">
 					<div class="dim_layer"></div>
 					<div class="layer_pop" style="width:500px;">
@@ -260,8 +270,10 @@
 						</div>
 						<a href="javascript:sharpNothig();" class="dim_close"><span class="hidden">닫기</span></a> 
 					</div>
-				</div>
+				</div> 
+				-->
 				
+				<!-- 
 				<div id="divLayerPassengetWarn" class="layer_wrap">
 					<div class="dim_layer"></div>
 					<div class="layer_pop" style="width:400px;">
@@ -276,15 +288,66 @@
 						<a href="javascript:sharpNothig();" class="dim_close"><span class="hidden">닫기</span></a> 
 					</div>
 				</div>
+				 -->
 				
 				
 			</div>
-		</form>
-	</div>
-	<footer>
-		<div>
-		</div>
-	</footer>
+<!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
+
+<script type="text/javascript" src="https://flyasiana.com/C/pc/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="https://flyasiana.com/C/pc/js/jquery-ui.min.js"></script>
+<script>
+
+//로그인버튼 클릭 시 폼 전송
+$("#btnLogin").click(function(){
+	$("#loginform").submit();
+});
+
+function sendSms() { 
+	$.ajax({ url: "./sendSms",
+		data: {
+		receiver: "01038209098"
+		},
+		type: "post",
+		success: function(result){ 
+			if (result == "true") {
+				console.log(result);
+			} else {
+				alert("인증번호 전송 실패"); 
+			} 
+		} });}
+function phoneCheck() { 
+	$.ajax({ url: "./smsCheck", type: "post", 
+		data: { code: $("#sms").val() }, success: function(result) { if (result == "ok") { alert("번호 인증 성공"); } else { alert("번호 인증 실패"); } } }); }
+
+
+$(".logintype").click(function(){
+	$(".logintype").each(function(){
+		$(this).removeClass('on');
+	});
+
+	$(this).addClass('on');
+
+	if($(this).children().prop('id') == 'Logintab'){
+		$("#logindiv").css("display", "block");
+		$("#noLogindiv").css("display","none");
+	}else{
+		$("#logindiv").css("display", "none");
+		$("#noLogindiv").css("display","block");
+	}
+	
+});
+
+function sharpNothig(){
+	$(".calendar_layer").datepicker({
+		changeMonth: true,
+	    changeYear: true
+	});
+}
+
+</script>
+
 <script type="text/javascript" src="https://flyasiana.com/C/pc/js/velocity.min.js"></script>
 <script type="text/javascript" src="https://flyasiana.com/C/pc/js/moment.min.js"></script>
 <script type="text/javascript" src="https://flyasiana.com/C/pc/js/set_calendar.js"></script>
@@ -298,22 +361,8 @@
 <script type="text/javascript" src="https://flyasiana.com/js/common/jquery.countdown.js"></script>
 <script type="text/javascript" src="https://flyasiana.com/js/common/IBESession.js"></script>
 <script type="text/javascript" src="https://flyasiana.com/js/common/weblog.js"></script>
-<script type="text/javascript" src="https://flyasiana.com/C/pc/js/jquery-1.12.4.min.js"></script>
-<script type="text/javascript" src="https://flyasiana.com/C/pc/js/velocity.min.js"></script>
-<script type="text/javascript" src="https://flyasiana.com/C/pc/js/swiper.jquery.min.js"></script>
-<script type="text/javascript" src="https://flyasiana.com/C/pc/js/renewer.main.js"></script>
-<script type="text/javascript" src="https://flyasiana.com/C/pc/js/jquery-ui.min.js"></script>
-<script type="text/javascript" src="https://flyasiana.com/C/pc/js/moment.min.js"></script>
-<script type="text/javascript" src="https://flyasiana.com/C/pc/js/dateUtil.js"></script>
-<script type="text/javascript" src="https://flyasiana.com/resources/script/jquery-ui-custom.js"></script>
-<script type="text/javascript" src="https://flyasiana.com/C/pc/js/scrolloverflow.min.js"></script>
-<script type="text/javascript" src="https://flyasiana.com/C/pc/js/jquery.fullPage.min.js"></script>
-<script type="text/javascript" src="https://flyasiana.com/C/pc/js/ui.main.js"></script>
-<script type="text/javascript" src="https://flyasiana.com/C/pc/js/set_calendar.js"></script>
-<script type="text/javascript" src="https://flyasiana.com/js/common/netfunnel.js" charset="UTF-8"></script>
-<script type="text/javascript" src="https://flyasiana.com/js/common/netfunnel_skin.js" charset="UTF-8"></script>
-<script type="text/javascript" src="https://flyasiana.com/js/common/IBESession.js"></script>
-<script type="text/javascript" src="https://flyasiana.com/js/pc/IBEMain.js"></script>
-<script type="text/javascript" src="https://flyasiana.com/C/pc/js/util.js"></script>
+<script type="text/javascript" src="https://flyasiana.com/public/40fecf9061576a410e665f8135125"></script>
+
+
 </body>
 </html>

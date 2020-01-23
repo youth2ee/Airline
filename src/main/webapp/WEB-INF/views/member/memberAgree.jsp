@@ -374,5 +374,53 @@
 			
 		</div>
 	</div>
+<script type="text/javascript">
+	
+
+	$('input[type="checkbox"]').click(function(){
+		
+		if($('input[type="checkbox"]').index(this) ==0){
+
+			if($(this).prop("checked")){
+				$('input[type="checkbox"]').each(function(){
+					$(this).prop("checked",true);
+				});
+			}else{
+				$('input[type="checkbox"]').each(function(){
+					$(this).prop("checked",false);
+				});
+			}
+			
+		}else{
+
+			if($(this).prop("checked")){
+				var count = 0;
+				for(var i=1; i < 6; i++){
+					if($('input[type="checkbox"]').eq(i).prop("checked")){
+						count++;
+					}
+				}
+
+				if(count == 5){
+					$('input[type="checkbox"]').eq(0).prop("checked",true);
+				}
+			}else{
+				$('input[type="checkbox"]').eq(0).prop("checked",false);
+			}
+		}
+	});
+
+	$("#btn_agree").click(function(){
+		
+		if($('input[type="checkbox"]').eq(1).prop("checked") && $('input[type="checkbox"]').eq(2).prop("checked") && $('input[type="checkbox"]').eq(3).prop("checked")){
+			location.href='./memberJoin';
+		}else{
+			alert('필수사항 동의');
+		}
+		
+	});
+
+	
+</script>
 </body>
 </html>
