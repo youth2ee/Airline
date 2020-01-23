@@ -66,6 +66,7 @@
 <div class="mar">
 <span>*은 필수항목입니다.</span>
 </div>
+
 <table class="table_form">
 	<tr>
 		<th scope="row">
@@ -91,15 +92,41 @@
 				</div>	
 			</div>
 		</td>
+	</tr>	
+	<tr>
 		<th>
+			파일첨부 
+		</th>
 			<td>
 				<div class="jfile_wrap">
-					<input type="file" title="파일첨부" id="">
-				</div>
-			</td>
-		
-		</th>
+						<input type="file" title="파일첨부" id="">
+						<div class="jfilestyle jfilestyle-corner ">
+							<div name="filedrag"
+								style="position: absolute; width: 100%; height: 0px; z-index: -1;">
+							</div>
+							<input type="text" style="width: 646px" placeholder="파일첨부"
+								disabled="" text="파일첨부01">
+							<button type="button" onclick="javascript:jfileClear($(this));"
+								class="btn_detlete">
+								<span class="hidden">삭제</span>
+							</button>
+							<span class="focus-jfilestyle" tabindex="0"> 
+							<label	for="attfile1"> 
+									<span>찾아보기</span>
+							</label>
+							</span>
+						</div>
+					</div>
+
+
+
+
+
+
+				</td>
+
 	</tr>
+
 </table>
 
 
