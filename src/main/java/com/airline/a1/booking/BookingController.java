@@ -25,6 +25,7 @@ public class BookingController {
 	@Autowired
 	private BookingService bookingService;
 	
+
 	@PostMapping("airportDepList")
 	public ModelAndView airportDepList(HttpServletRequest req)throws Exception{
 		String depLoc = req.getParameter("depLoc");	
@@ -80,40 +81,24 @@ public class BookingController {
 		List<String> airport = bookingService.airportList();
 		model.addAttribute("airportList", airport);
 	}
+	
+
+	
 
 	@PostMapping("bookingMain") 
-	public ModelAndView bookingMain(BookingVO bookingVO) throws Exception {
-		System.out.println(bookingVO.getAdults());
-		System.out.println(bookingVO.getChildren());
-		System.out.println(bookingVO.getDepLoc());
-		System.out.println(bookingVO.getArrLoc());
-		System.out.println(bookingVO.getDate());
-		System.out.println(bookingVO.getKind());
-		
-		BookingTicketVO bookingTicketVO = new BookingTicketVO();
-		
-		String kind = "편도";
-		if (bookingVO.getKind() == 2) {
-			kind = "왕복";
-		} 
-		
-		bookingTicketVO.setKind(kind);
-		bookingTicketVO.setDepLoc(bookingVO.getDepLoc());
-		bookingTicketVO.setArrLoc(bookingVO.getArrLoc());
-		bookingTicketVO.setAdult(bookingVO.getAdults());
-		bookingTicketVO.setChild(bookingVO.getChildren());
+	public ModelAndView bookingMain(BookingTicketVO bookingTicketVO) throws Exception {	
 
-		String date = bookingVO.getDate();
+		String date = bookingTicketVO.getDate();
 		String ddate = "";
 		String adate = "";
 		
 		List<FlightDataVO> dairList = new ArrayList<FlightDataVO>();
 		List<FlightDataVO> aairList = new ArrayList<FlightDataVO>();
 		
-		List<BookingVO> ddates = new ArrayList<BookingVO>();
-		List<BookingVO> adates = new ArrayList<BookingVO>();
+		List<BookingTicketVO> ddates = new ArrayList<>();
+		List<BookingTicketVO> adates = new ArrayList<>();
 		
-		if (bookingVO.getKind() == 1) {
+		if (bookingTicketVO.equals("편도")) {
 			ddate = date.substring(6) + date.substring(0, 2) + date.substring(3, 5);
 			System.out.println(ddate);
 			bookingTicketVO.setDepStartTime(ddate);
@@ -130,7 +115,7 @@ public class BookingController {
 				LocalDateTime tomorrow = ofDateTime.plusDays(i);	
 				String day = tomorrow.toString();
 				
-				BookingVO dep = new BookingVO();
+				BookingTicketVO dep = new BookingTicketVO();
 				dep.setDay(day.substring(8, 10));
 				dep.setMonth(day.substring(5, 7));
 				dep.setYear(day.substring(0, 4));
@@ -151,8 +136,11 @@ public class BookingController {
 			}
 		
 			//
-			bookingTicketVO.setDepLoc(bookingVO.getArrLoc());
-			bookingTicketVO.setArrLoc(bookingVO.getDepLoc());
+			String depLoc = bookingTicketVO.getDepLoc();
+			String arrLoc = bookingTicketVO.getArrLoc();
+			
+			bookingTicketVO.setDepLoc(arrLoc);
+			bookingTicketVO.setArrLoc(depLoc);
 			
 			adate = date.substring(19) + date.substring(13, 15) + date.substring(16, 18) ;
 			bookingTicketVO.setDepStartTime(adate);
@@ -169,7 +157,7 @@ public class BookingController {
 				LocalDateTime tomorrow = ofDateTime.plusDays(i);	
 				String day = tomorrow.toString();
 				
-				BookingVO dep = new BookingVO();
+				BookingTicketVO dep = new BookingTicketVO();
 				dep.setDay(day.substring(8, 10));
 				dep.setMonth(day.substring(5, 7));
 				dep.setYear(day.substring(0, 4));
@@ -181,7 +169,7 @@ public class BookingController {
 				LocalDateTime tomorrow2 = ofDateTime2.plusDays(i);
 				String day2 = tomorrow2.toString();
 
-				BookingVO arr = new BookingVO();
+				BookingTicketVO arr = new BookingTicketVO();
 				arr.setDay(day2.substring(8, 10));
 				arr.setMonth(day2.substring(5, 7));
 				arr.setYear(day2.substring(0, 4));
@@ -193,7 +181,7 @@ public class BookingController {
 		
 		ModelAndView mv = new ModelAndView();
 
-		mv.addObject("bookingVO", bookingVO);
+		mv.addObject("bookingVO", bookingTicketVO);
 		mv.addObject("Dlist", ddates);
 		mv.addObject("Alist", adates);
 		mv.addObject("DairList", dairList);
@@ -205,15 +193,11 @@ public class BookingController {
 	
 	
 	@GetMapping("dateSelect")
-	public ModelAndView dateSelect(BookingVO bookingVO) throws Exception {
+	public ModelAndView dateSelect( BookingTicketVO bookingTicketVO) throws Exception {
 		List<FlightDataVO> dairList = new ArrayList<FlightDataVO>();
 		List<FlightDataVO> aairList = new ArrayList<FlightDataVO>();
 
-		String date = bookingVO.getYear().substring(0, 4) + bookingVO.getMonth().substring(0, 2) + bookingVO.getMonth().substring(4, 6); //
-
-		BookingTicketVO bookingTicketVO = new BookingTicketVO();
-		bookingTicketVO.setDepLoc(bookingVO.getDepLoc());
-		bookingTicketVO.setArrLoc(bookingVO.getArrLoc());
+		String date = bookingTicketVO.getYear().substring(0, 4) + bookingTicketVO.getMonth().substring(0, 2) + bookingTicketVO.getMonth().substring(4, 6); //
 		bookingTicketVO.setDepStartTime(date);
 
 		dairList = bookingService.airList(bookingTicketVO);
@@ -222,7 +206,7 @@ public class BookingController {
 			flightDataVO.setArrTime(flightDataVO.getArrPlandTime().substring(8, 10) + ":" + flightDataVO.getArrPlandTime().substring(10));
 		}
 		
-		if (bookingVO.getKind() == 2) {
+		if (bookingTicketVO.getKind().equals("왕복")) {
 			aairList = bookingService.airList(bookingTicketVO);
 			for (FlightDataVO flightDataVO : aairList) {
 				flightDataVO.setDepTime(flightDataVO.getDepPlandTime().substring(8, 10) + ":" + flightDataVO.getDepPlandTime().substring(10));
@@ -231,7 +215,7 @@ public class BookingController {
 		} 
 
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("bookingVO", bookingVO);
+		mv.addObject("bookingVO", bookingTicketVO);
 		mv.addObject("DairList", dairList);
 		mv.addObject("AairList", aairList);
 		mv.setViewName("booking/common/dateList");
@@ -270,19 +254,22 @@ public class BookingController {
 	}
 
 	@PostMapping("bookingWrite")
-	public void bookingWrite(BookingTicketVO bookingTicketVO) throws Exception {
+	public ModelAndView bookingWrite(BookingTicketVO bookingTicketVO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		//id
-		String id = "id";
+		String id = "test";
 		
 		///bookingNum 만들기
 		String bookingNum = "bnum";
+		
+		String memberNum = "111";
 		
 		//어른
 		if(bookingTicketVO.getAdultList() != null) {
 			for(BookingTicketVO adult : bookingTicketVO.getAdultList()) {
 				adult.setBookingNum(bookingNum);
 				adult.setId(id);
+				adult.setMemberNum(memberNum);
 				
 				//flightnum 가는편 만들기
 				adult.setFlightBNum("flightBNum");
@@ -297,6 +284,11 @@ public class BookingController {
 				adult.setAdult(1);
 				adult.setDepFnum(bookingTicketVO.getDepFnum());
 				
+				FlightDataVO flightDataVO = new FlightDataVO();
+				flightDataVO.setFnum(bookingTicketVO.getDepFnum());
+				adult.setDepInfo(bookingService.oneSelect(flightDataVO));
+				
+		
 				adult.setResEmail(bookingTicketVO.getResEmail());
 				adult.setResECheck(bookingTicketVO.getResECheck());
 				adult.setResPhone(bookingTicketVO.getResPhone());
@@ -316,6 +308,7 @@ public class BookingController {
 				
 				//가격
 				bookingService.priceCount(adult);
+				adult = bookingService.priceCount(adult);
 				
 				if (bookingTicketVO.getKind().equals("2")) {
 					//flightnum 오는편 만들기
@@ -326,12 +319,20 @@ public class BookingController {
 					adult.setDepFnum(arr);
 					adult.setArrFnum(dep);
 					
+					flightDataVO = new FlightDataVO();
+					flightDataVO.setFnum(bookingTicketVO.getDepFnum());
+					adult.setDepInfo(bookingService.oneSelect(flightDataVO));
+					
+					flightDataVO.setFnum(bookingTicketVO.getArrFnum());
+					adult.setArrInfo(bookingService.oneSelect(flightDataVO));
+					
+					
 					bookingService.bookingInsert(adult);
 					
 					//가격
 					adult.setDepFnum(dep);
 					adult.setArrFnum(arr);
-					bookingService.priceCount(adult);
+				   	adult = bookingService.priceCount(adult);
 				}
 			}//어른 반복문 끝
 		}//어른 끝
@@ -341,6 +342,7 @@ public class BookingController {
 			for(BookingTicketVO child : bookingTicketVO.getChildList()) {
 				child.setBookingNum(bookingNum);
 				child.setId(id);
+				child.setMemberNum("111");
 				
 				//flightnum 가는편 만들기
 				child.setFlightBNum("flightBNum");
@@ -354,6 +356,10 @@ public class BookingController {
 				
 				child.setChild(1);
 				child.setDepFnum(bookingTicketVO.getDepFnum());
+				
+				FlightDataVO flightDataVO = new FlightDataVO();
+				flightDataVO.setFnum(bookingTicketVO.getDepFnum());
+				child.setDepInfo(bookingService.oneSelect(flightDataVO));
 				
 				child.setResEmail(bookingTicketVO.getResEmail());
 				child.setResECheck(bookingTicketVO.getResECheck());
@@ -374,6 +380,7 @@ public class BookingController {
 				
 				//가격
 				bookingService.priceCount(child);
+				child = bookingService.priceCount(child);
 				
 				//왕복일때
 				if (bookingTicketVO.getKind().equals("2")) {
@@ -385,24 +392,35 @@ public class BookingController {
 					child.setDepFnum(arr);
 					child.setArrFnum(dep);
 					
+					flightDataVO = new FlightDataVO();
+					flightDataVO.setFnum(bookingTicketVO.getDepFnum());
+					child.setDepInfo(bookingService.oneSelect(flightDataVO));
+					
+					flightDataVO.setFnum(bookingTicketVO.getArrFnum());
+					child.setArrInfo(bookingService.oneSelect(flightDataVO));
+					
 					bookingService.bookingInsert(child);
 					
 					//가격
 					child.setDepFnum(dep);
 					child.setArrFnum(arr);
 					bookingService.priceCount(child);
+					child = bookingService.priceCount(child);
 				}
 			}//어린이 반복문 끝
 		}//어린이 끝
 		
+		mv.addObject("alist", bookingTicketVO.getAdultList());
+		mv.addObject("clist", bookingTicketVO.getChildList());
+		mv.setViewName("booking/bookingCheck");
 		
+		return mv;
 	}
 
 	@GetMapping("bookingCheck")
 	public void bookingCheck() {
-
-		
 	}
+
 		
 	
 	 

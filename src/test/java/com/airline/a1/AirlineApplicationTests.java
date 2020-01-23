@@ -24,6 +24,7 @@ import org.w3c.dom.NodeList;
 import com.airline.a1.api.AirportDataMapper;
 
 import com.airline.a1.api.BusVO;
+import com.airline.a1.booking.BookingTicketVO;
 import com.airline.a1.booking.FlightDataVO;
 
 @SpringBootTest
@@ -38,7 +39,21 @@ class AirlineApplicationTests {
 	@Autowired
 	private BusVO busVO;
 
-	@Test
+	//@Test
+		void apiTest7() throws Exception {
+		System.out.println("test");
+			Random rand = new Random();
+			String flightName = /*bookingTicketVO.getDepInfo().getVihicleId()*/ "HGG/1301";
+			if(flightName.contains("/"))
+				flightName = flightName.replace("/","");
+			String filghtName1 = String.format("%03d%n", rand.nextInt(1000)).replace("\r\n", "");
+			char filghtName2 = (char) ((int) (Math.random() * 26) + 65);
+			flightName = flightName +Character.toString(filghtName2)+ filghtName1 ;
+			System.out.println("예약번호(개인) : " + flightName);
+		}
+
+	
+	//@Test
 	void apiTest6() throws Exception {
 		Random rand = new Random();
 		String memberNumber1 = String.format("%03d%n", rand.nextInt(1000)).replace("\r\n", "");
@@ -177,7 +192,7 @@ class AirlineApplicationTests {
 	}
 
 
-	 @Test
+	@Test
 	void apiTest3() throws Exception {
 		// 항공정보 + 운임
 		BufferedReader br = null;
@@ -193,7 +208,7 @@ class AirlineApplicationTests {
 					String urlstr = "http://openapi.tago.go.kr/openapi/service/DmstcFlightNvgInfoService/getFlightOpratInfoList?"
 							+ "serviceKey=iEDBbpkkNQN604mbzvOvbCbGl0rXiyk4SdUBO%2FqhREGGDL5QrF2SrrZzf3l2%2BUNCeiBD97RtxaPQZaL9VqVR%2Fg%3D%3D&"
 							+ "numOfRows=100&" + "depAirportId=" + depAp + "&" + "arrAirportId=" + arrAp + "&"
-							+ "depPlandTime=20200120"; // 출발일 // 항공사ID
+							+ "depPlandTime=20200122"; // 출발일 // 항공사ID
 
 					URL url = new URL(urlstr);
 					HttpURLConnection urlconnection = (HttpURLConnection) url.openConnection();

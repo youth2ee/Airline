@@ -113,7 +113,7 @@
                                         
                                    
                                     <div class="col-2">
-                                        <button class="btn-submit" id ="booking_btn" type="button">search</button>
+                                        <button class="btn-submit" id ="booking_btn" type="submit">search</button>
                                     </div>
                     
                                 </div>
@@ -281,10 +281,10 @@ $('input:radio[name=kind]').click(function(){
 		}); 
 
 /**** 공항검색 끝 ****/
-
  
  
  /***** 공항유효성검사 *****/
+
 
 	  $('body').on("click",'#booking_btn',function(){
 			var loc = $('#loc').val().trim();
@@ -305,6 +305,7 @@ $('input:radio[name=kind]').click(function(){
 							alert("출발지나 도착지를 올바르게 입력하세요.");
 							}
 				
+
 
 					},error:function(){
 							alert("fail");
