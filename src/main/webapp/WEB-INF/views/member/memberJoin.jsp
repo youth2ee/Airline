@@ -15,6 +15,7 @@
 </head>
 <body>
 <%-- <c:import url="../template/hhhhheader.jsp" /> --%>
+<form action="memberJoin" method="post" id="join_form">
 <div class="container" id="container">
 		<div class="mem_wrap">
 			<div class="indicator_wrap">
@@ -43,8 +44,7 @@
 					<tr>
 						<th scope="row"><label for="input_koreanLastName">한글명</label></th> 
 						<td>
-							<input type="text" id="input_koreanLastName" name="koreanLastName" placeholder="한글 성 입력 (예 : 홍)" title="한글 성 입력 (예 : 홍)" style="width:314px;"> 
-							<input type="text" id="input_koreanFirstName" name="koreanFirstName" placeholder="한글 이름 입력 (예 : 길동)" title="한글 이름 입력 (예 : 길동)" style="width:314px;"> 
+							<input type="text" id="input_koreanLastName" name="name" placeholder="한글 이름 입력 (예 : 홍길동)" title="한글 이름 입력 (예 : 홍길동)" style="width:314px;"> 
 							<p class="txt_error_Msg" id="error_koreanName" style="display: none;"></p>
 						</td>
 					</tr>
@@ -106,6 +106,7 @@
 							<input type="text" id="input_koreaPhoneMiddle" placeholder="중간번호" title="휴대전화 번호 가운데 자리" maxlength="4" style="width:150px;" >- 	
 							<input type="text" id="input_koreaPhoneLast" placeholder="끝 번호" title="휴대전화번호 끝자리" maxlength="4" style="width:150px;" > 		
 							<p class="txt_error_Msg" id="error_koreaPhone" style="display: none;"></p>
+							<input type="text" id="phonesum" name="phone">
 						</td>
 						<td id="foreign_phone" style="display: none;">
 
@@ -165,6 +166,7 @@
 							<input type="text" id="input_emailDomain" placeholder="직접입력" title="직접입력" style="width:298px;"> 
 							<p class="txt_error_Msg" id="error_emailID" style="display: none;"></p>
 							<p class="txt_error_Msg" id="error_emailDomain" style="display: none;"></p>
+							<input type="text" id="emailsum" name="email">
 						</td>
 					</tr>
 					
@@ -205,6 +207,7 @@
 		</div>
 		
 	</div>
+</form>
 <c:import url="../template/fffooter.jsp" />
 <script type="text/javascript">
 
@@ -219,7 +222,8 @@ function tooltipNone(){
 var phoneOne = "";
 var phoneTwo = "";
 var phoneThree = "";
-var email = "";
+var emailOne = "";
+var emailTwo = "";
 
 
 $("#input_pw").keyup(function(){
@@ -227,6 +231,7 @@ $("#input_pw").keyup(function(){
 	var ENG = pw.match(/[A-Za-z]/g);
 	var num = pw.match(/[0123456789]/g);
 	var space = pw.match(/ /g);
+	var kor = pw.match(/[ㄱ-ㅎ가-힣ㅏ-ㅣ]/g);
 	var spe = pw.match(/[`~!@#$%^&*()-/'/"/_/+/=/|/?/;/:/,/</./>\\\{\}\[\]]/g);
 	var speun = pw.match(/[%&()+;'",<>]/g);
 	//var spe = pw.match(/[]/);
@@ -272,8 +277,8 @@ $("#input_pw").keyup(function(){
 		$(".pwd_rule  > li").eq(3).children().addClass('unable');
 	}
 
-	//공백 체크
-	if(space == null){
+	//한글,공백 체크
+	if(space == null && kor == null){
 		$(".pwd_rule  > li").eq(4).children().removeClass('unable');
 		$(".pwd_rule  > li").eq(4).children().addClass('able');
 	}else{
@@ -301,6 +306,12 @@ $("#input_pw").keyup(function(){
 	}
 	
 });
+$("#input_pw").blur(function(){
+	$("#input_pwConfirm").val("");
+	$("#error_pwConfirm").css("display", "none");
+	$("#error_pwConfirm").html('');
+});
+
 
 //비밀번호 확인 체크
 $("#input_pwConfirm").blur(function(){
@@ -309,31 +320,60 @@ $("#input_pwConfirm").blur(function(){
 	if(pw == pw2){
 		$("#error_pwConfirm").css("display", "none");
 		$("#error_pwConfirm").html('');
+
 	}else{
 		$("#error_pwConfirm").css("display", "block");
 		$("#error_pwConfirm").html('비밀번호가 일치하지 않습니다.');
+
 	}
 });
 
 //휴대전화 번호 값 받기
 $("#select_koreaPhone").change(function(){
 	phoneOne = $(this).val();
+	$("#phonesum").val(phoneOne+phoneTwo+phoneThree);
 });
 
 $("#input_koreaPhoneMiddle").blur(function(){
 	phoneTwo = $(this).val();
+	$("#phonesum").val(phoneOne+phoneTwo+phoneThree);
 });
 
 $("#input_koreaPhoneLast").blur(function(){
 	phoneThree = $(this).val();
+	$("#phonesum").val(phoneOne+phoneTwo+phoneThree);
 });
 
+
+//도메인 선택
 $("#select_emailDomain").change(function(){
 	if($("#select_emailDomain option:eq(0)").prop("selected")){
 		$("#input_emailDomain").css("display","inline");
 	}else{
 		$("#input_emailDomain").css("display","none");
+		emailTwo = $(this).val();
+		$("#emailsum").val(emailOne+'@'+emailTwo);
 	}
+});
+
+
+//이메일 작업
+$("#input_emailID").blur(function(){
+	emailOne = $(this).val();
+	$("#emailsum").val(emailOne+'@'+emailTwo);
+});
+
+$("#input_emailDomain").blur(function(){
+	emailTwo = $(this).val();
+	$("#emailsum").val(emailOne+'@'+emailTwo);
+});
+
+
+//폼 전송
+$("#btn_confirm").click(function(){
+
+	$("#join_form").submit();
+	
 });
 </script>
 </body>

@@ -7,4 +7,8 @@
 	<select id="memberLogin" parameterType="com.airline.a1.member.MembersVO" resultType="com.airline.a1.member.MembersVO">
 		select * from members where id=#{id} and pw =#{pw}
 	</select>
+	
+	<insert id="memberJoin" parameterType="com.airline.a1.member.MembersVO">
+		insert into members values(#{id}, #{pw}, #{name}, #{phone}, #{email}, #{memberNum}, 0)
+	</insert>
   </mapper>

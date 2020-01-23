@@ -14,7 +14,12 @@ public class MemberService {
 	public MembersVO memberLogin(MembersVO membersVO) throws Exception{
 		return memberMapper.memberLogin(membersVO);
 	}
-
+	
+	public int memberJoin (MembersVO membersVO) throws Exception{
+		
+		membersVO.setMemberNum(this.mkMemberNum());
+		return memberMapper.memberJoin(membersVO);
+	}
 	
 	// 회원번호 생성
 	public String mkMemberNum() throws Exception {
@@ -22,7 +27,7 @@ public class MemberService {
 		String memberNumber1 = String.format("%03d%n", rand.nextInt(1000)).replace("\r\n", "");
 		String memberNumber2 = String.format("%03d%n", rand.nextInt(1000)).replace("\r\n", "");
 		String memberNumber3 = String.format("%03d%n", rand.nextInt(1000)).replace("\r\n", "");
-		String memberNumber = memberNumber1 + " " + memberNumber2 + " " + memberNumber3; // 띄어쓰기 있음 (아시아나 형식)
+		String memberNumber = memberNumber1 + "-" + memberNumber2 + "-" + memberNumber3; // 띄어쓰기 있음 (아시아나 형식)
 		// String memberNumber = memberNumber1 + memberNumber2 + memberNumber3; // 띄어쓰기 없음  (편의상)
 		System.out.println("회원번호 : " + memberNumber);
 		return memberNumber;

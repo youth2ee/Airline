@@ -6,4 +6,6 @@ import org.apache.ibatis.annotations.Mapper;
 public interface MemberMapper {
 	
 	public MembersVO memberLogin(MembersVO membersVO) throws Exception;
+	
+	public int memberJoin(MembersVO membersVO) throws Exception;
 }

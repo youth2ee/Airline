@@ -50,4 +50,18 @@ public class MemberController {
 	public void memberJoin() throws Exception{
 		
 	}
+	
+	@PostMapping("memberJoin")
+	public ModelAndView memberJoin(MembersVO membersVO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = memberService.memberJoin(membersVO);
+		
+		if(result >0) {
+			mv.setViewName("member/memberLogin");
+		}else {
+			mv.setViewName("member/memberJoin");
+		}
+		
+		return mv;
+	}
 }
