@@ -21,6 +21,13 @@
 
 	<dependencies>
 	
+	<!-- sms --> 
+	<dependency>
+	<groupId>org.apache.httpcomponents</groupId>
+	<artifactId>httpclient</artifactId>
+	</dependency>
+
+	
 	<!-- jsoup -->
 	<dependency>
     	<groupId>org.jsoup</groupId>

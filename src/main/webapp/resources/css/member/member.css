@@ -1,0 +1,89 @@
+@charset "UTF-8";
+.container h3{margin:60px 0 50px 0;font-size:40px;color:#000;text-align:center;font-weight:normal;line-height:1;}
+
+input[type="checkbox"], input[type="radio"]{overflow:hidden;width:0;height:0;font-size:0;line-height:0; opacity:0;}
+input[type="radio"]:checked + label {background-position:0 -20px; }
+input[type="radio"] + label{height:20px;padding:0 30px;background:url('https://flyasiana.com/C/pc/image/common/bg_radio.png') no-repeat;font-size:16px;color:#222;vertical-align:middle;line-height:18px;}
+.input_wrap {display:block; position:relative;}
+input[type="text"] ,
+input[type="email"],
+input[type="password"],
+input[type="number"]{height:44px;padding:0 15px;margin-right:10px;border:1px solid #f3f3f3; border-bottom:1px solid #ddd; color:#222;background-color:#f3f3f3;font-size:16px;line-height:40px;}
+.login_wrap .inner .input_wrap input[type="text"] + input[type="text"],
+.login_wrap .inner .input_wrap input[type="text"] + input[type="password"] {margin-top: 10px}
+input[type="checkbox"] + label{min-height:20px;padding:0 40px 0 30px;background:url('https://flyasiana.com/C/pc/image/common/bg_checkbox_default.png') no-repeat;font-size:16px;color:#222;vertical-align:middle;line-height:18px;}
+input[type="checkbox"]:checked  + label{background:url('https://flyasiana.com/C/pc/image/common/bg_checkbox_check.png') no-repeat;}
+
+.btn_L{min-width:150px;padding:13px 40px 14px;font-size:18px;min-height:56px;line-height:21px;}
+.btn_L, .btn_M, .btn_S, .btn_XS{border-radius:3px;text-align:center;}
+button.gray{border:1px solid #6d6e71;background-color:#6d6e71;color:#fff;}
+.btn_M{padding:11px 30px;font-size:15px;min-height:46px;line-height:17px;}
+.btn_airport.type2{bottom:8px;right:5px;height:40px;}
+.btn_airport{display:inline-block; position:absolute; bottom:0; right:0; width:40px; height:100%;z-index:200;background:rgba(255,255,255,0);}
+
+select.white{height:40px;border:1px solid #cdd1d3;background:#fff url('../image/common/bg_select_arrow.png') no-repeat right 13px top 50%;}
+
+.compareCalendar .ui-datepicker-multi {position:relative; width:100% !important; height:100%;}
+.compareCalendar .ui-datepicker-group {position:relative; float:left; width:50%; padding:30px 40px 46px 40px; box-sizing:border-box;}
+
+
+
+.login_wrap {position:relative;width: 500px;margin:0 auto;}
+.login_wrap .tab_wrap3 + .inner {position:relative;margin-top: 25px}
+.login_wrap .inner .login_check_area {margin:0 0 30px;}
+.login_wrap .inner .id_save_wrap {margin:17px 0 0;}
+.login_wrap .inner .login_btn_wrap {margin-top: 25px;}
+.login_wrap .inner .login_btn_wrap button{width:100%;display: block;}
+.login_wrap .inner .login_info_wrap {overflow: hidden;margin:17px 0;padding-top:20px;border-top: 1px solid #ddd}
+.login_wrap .inner .login_info_wrap .left {float: left;padding-top: 10px}
+.login_wrap .inner .login_info_wrap .left .login_link li{display: inline-block;margin-left: 5px;font-size: 16px}
+.login_wrap .inner .login_info_wrap .left .login_link li:first-child {margin:0;}
+.login_wrap .inner .login_info_wrap .left .login_link li:before {display:inline-block;content:'';width:1px;height: 17px;background:#ddd;vertical-align: middle;margin-right:8px;}
+.login_wrap .inner .login_info_wrap .right {float: right}
+.login_wrap .inner .sns_btn_wrap .btn_kakao {background: url('https://flyasiana.com/C/pc/image/sub/btn_sns_kakao.png') no-repeat;}
+.login_wrap .inner .sns_btn_wrap .btn_facebook {background: url('https://flyasiana.com/C/pc/image/sub/btn_sns_facebook.png') no-repeat;}
+.login_wrap .inner .sns_btn_wrap .btn_naver {background: url('https://flyasiana.com/C/pc/image/sub/btn_sns_naver.png') no-repeat;}
+.login_wrap .inner .sns_btn_wrap li{float:left;width:163px;line-height: 18px;border:1px solid #ddd;color:#555;word-break: keep-all;vertical-align: top;box-sizing: border-box;}
+.login_wrap .inner .sns_btn_wrap li > a {display:block;width:100%;height:100%;padding:16px 10px 16px 66px;box-sizing: border-box;}
+.login_wrap .inner .sns_btn_wrap li + li{margin-left:5px;}
+.login_wrap .inner .sns_btn_wrap li > a strong {display: block}
+
+
+
+.login_wrap .itinerary .itinerary_calendar input[type="text"].datepicker{height: 46px;background: #f3f3f3 url('https://flyasiana.com/C/pc/image/sub/icon_calendar.png') no-repeat right 15px bottom 13px;padding:0 15px;font-size: 16px;border-bottom: 1px solid #ddd; width: 468px;/* text-indent:-9999px; */}
+.login_wrap .itinerary {height:auto;margin:0 0 10px;}
+.itinerary {display:block;position:relative;width:100%;height:100px;margin:20px 0 60px;}
+.login_wrap .itinerary .itinerary_select .spot_place,
+.login_wrap .itinerary .itinerary_calendar .spot_place {top:15px;left:15px;font-size:16px;}
+.itinerary .itinerary_calendar .spot_place {display:block;position:absolute;top:25px;left:25px;line-height:1;color:#737373;font-size:28px;cursor:text;}
+.login_wrap .itinerary .itinerary_calendar,
+.login_wrap .itinerary .itinerary_calendar + .itinerary_select,
+.login_wrap .itinerary .itinerary_select + .itinerary_select{position:relative;margin-top:10px;}
+.login_wrap .itinerary .itinerary_select, .login_wrap .itinerary_calendar {display:block;float:none;width: 100%;height: 46px;margin:0;}
+
+.login_wrap .itinerary .calendar_layer{top:46px;width: 1178px;left: -332px;}
+.calendar_layer {display:none; position:absolute; top:0; left:0; z-index:300; width:1180px; height:auto; border:1px solid #ccc; background:#fff; box-shadow:rgba(0,0,0,.05) 5px 5px 3px;box-sizing: border-box;}
+
+
+.tab_wrap3{position:relative; height: 63px;}
+.tab_wrap3 .tab_head.t2 > li{width:50%;}
+.tab_wrap3 .tab_head > li {display:table;position:relative;float:left;width: 33.3%;line-height: 20px;}
+.tab_wrap3 .tab_head > li.on > a {background:#fff;border:1px solid #6d6e71;border-right:none; border-bottom-color:#fff;color:#d60815;font-weight: bold;background: #fff;}
+.tab_wrap3 .tab_head > li.on > a > span {padding-left: 28px;background: url('https://flyasiana.com/C/pc/image/common/ico_tab_on.png') 0 3px no-repeat;color:#000;}
+.tab_wrap3 .tab_head > li > a{display:table-cell;width:100%;height:63px;padding:10px;text-align: center;font-size: 16px;background:#6d6e70;color:#fff;border-bottom:1px solid #666;border-left:1px solid #fff;box-sizing:border-box;vertical-align: middle;word-break:keep-all;}
+.tab_wrap3 .tab_head > li.on + li a {border-left: 1px solid #6d6e71}
+.tab_wrap3 .tab_head > li > a > span{font-size:17px;}
+
+
+button.red{border:1px solid #d60815;background-color:#d60815;color:#fff;}
+
+.login_wrap .itinerary .calendar_layer{top:46px;width: 1178px;left: -332px;}
+.calendar_layer {display:none; position:absolute; top:0; left:0; z-index:300; width:1180px; height:auto; border:1px solid #ccc; background:#fff; box-shadow:rgba(0,0,0,.05) 5px 5px 3px;box-sizing: border-box;}
+
+
+.itinerary .itinerary_select .spot_place {display:block;position:absolute;top:25px;left:25px;line-height:1;color:#737373;font-size:28px;cursor:text;}
+.itinerary .itinerary_select input[type="text"] {display:block;width:100%;margin:0;border:1px solid #f3f3f3;color:#000;font-size:28px;background:#f3f3f3 url('https://flyasiana.com/C/pc/image/common/icon_point.png') no-repeat;background-position:right 15px bottom 9px;box-sizing:border-box;outline:none;}
+
+.calendar_layer .calendar_top {position:relative; height:57px; z-index:2; padding:7px 25px; background-color:#fff; border-bottom:1px solid #eee; box-sizing:border-box; text-align:left;}
+.calendar_layer .calendar_top select {padding-right:28px; border:none; font-size:18px; color:#000;}
+
