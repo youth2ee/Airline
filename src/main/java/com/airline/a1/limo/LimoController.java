@@ -19,19 +19,27 @@ public class LimoController {
 	@Autowired
 	private LimoService limoService;
 	
+	@GetMapping("limoHome")
+	public void limoHome() throws Exception{
+		
+	}
+	
 	@GetMapping("limoBook")
 	public void limoBook()throws Exception{
 	}
 	
 	@PostMapping("limoBook")
-	public ModelAndView limoBook(LimoVO limoVO) throws Exception{
+	public ModelAndView limoBook(List<LimoVO> list) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		int result = limoService.limoBook(limoVO);
-		
-		if(result >0) {
-			mv.addObject("limo", limoVO);
-			mv.setViewName("index");
+		int result = 0;
+		for (LimoVO limoVO : list) {
+			result = limoService.limoBook(limoVO);
 		}
+		
+//		if(result >0) {
+//			mv.addObject("limo", limoVO);
+//			mv.setViewName("index");
+//		}
 		return mv;
 	}
 	

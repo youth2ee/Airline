@@ -63,6 +63,47 @@
 				<button type="button" class="btn btn-info btn-lg select">조회하기</button>
 				<button type="button" class="btn btn-info btn-lg sel" data-toggle="modal" data-target="#myModal" style="display: none;">조회하기</button>
 				<button type="button" class="books" style="display: none;">예매하기</button>
+				
+				<div class="containers" style="display: none;">
+				  	<div class="frm_wrap2">
+					    <div class="here">
+					    	<input type="checkbox" value="frm_wrap2" class="checkbox" style="display: inline-block;">
+							<input type="text" placeholder="id" name="id">
+							<input type="date" name="limoDate" class="limoDate2 datepicker2">
+							<select name="depLoc" class="depLoc2">
+								<option>출발지</option>
+								<option value="인천공항" class="airLine2">인천공항</option>
+								<option value="김포공항" class="airLine2">김포공항</option>
+								<option value="양양공항" class="airLine2">양양공항</option>
+								<option value="청주공항" class="airLine2">청주공항</option>
+								<option value="대구공항" class="airLine2">대구공항</option>
+								<option value="무안공항" class="airLine2">무안공항</option>
+								<option value="여수공항" class="airLine2">여수공항</option>
+								<option value="김해공항" class="airLine2">김해공항</option>
+								<option value="울산공항" class="airLine2">울산공항</option>
+								<option value="제주공항" class="airLine2">제주공항</option>
+							</select>
+							<span class="place4"></span>
+							<span class="place6"></span>
+							<input type="text" placeholder="가격" name="limoPrice" class="price2">
+							<select name="limoTime" class="limoTime2">
+								<option>출발시간</option>
+								<option value="06:00" class="time2">06:00</option>
+								<option value="09:00" class="time2">09:00</option>
+								<option value="12:00" class="time2">12:00</option>
+								<option value="15:00" class="time2">15:00</option>
+								<option value="18:00" class="time2">18:00</option>
+								<option value="21:00" class="time2">21:00</option>
+								<option value="24:00" class="time2">24:00</option>
+							</select>
+							<input type="text" name="seat" placeholder="좌석" readonly="readonly" class="seat2">
+							<button type="button" class="btn btn-info btn-lg select2">조회하기</button>
+							<button type="button" id="sel3" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal2" style="display: none;">조회하기</button>
+							<button type="button" class="bookssssssssssssss" style="display: none;">예매하기</button>
+						</div>
+					</div>
+				  </div>
+				<div class="hereeeer"></div>
 			</form>
 		</div>
 	  </div>
@@ -145,45 +186,7 @@
 
 
 <!------------------------------------------------ 편도 2회 예매 ------------------------------------------------------>
-<div class="containers" style="display: none;">
-	  	<div class="frm_wrap2">
-		    <form action="./limoBook" method="post" class="frm">
-		    	<input type="checkbox" value="frm_wrap2" class="checkbox" style="display: inline-block;">
-				<input type="text" placeholder="id" name="id">
-				<input type="date" name="limoDate" class="limoDate2 datepicker2">
-				<select name="depLoc" class="depLoc2">
-					<option>출발지</option>
-					<option value="인천공항" class="airLine2">인천공항</option>
-					<option value="김포공항" class="airLine2">김포공항</option>
-					<option value="양양공항" class="airLine2">양양공항</option>
-					<option value="청주공항" class="airLine2">청주공항</option>
-					<option value="대구공항" class="airLine2">대구공항</option>
-					<option value="무안공항" class="airLine2">무안공항</option>
-					<option value="여수공항" class="airLine2">여수공항</option>
-					<option value="김해공항" class="airLine2">김해공항</option>
-					<option value="울산공항" class="airLine2">울산공항</option>
-					<option value="제주공항" class="airLine2">제주공항</option>
-				</select>
-				<span class="place4"></span>
-				<span class="place6"></span>
-				<input type="text" placeholder="가격" name="limoPrice" class="price2">
-				<select name="limoTime" class="limoTime2">
-					<option>출발시간</option>
-					<option value="06:00" class="time2">06:00</option>
-					<option value="09:00" class="time2">09:00</option>
-					<option value="12:00" class="time2">12:00</option>
-					<option value="15:00" class="time2">15:00</option>
-					<option value="18:00" class="time2">18:00</option>
-					<option value="21:00" class="time2">21:00</option>
-					<option value="24:00" class="time2">24:00</option>
-				</select>
-				<input type="text" name="seat" placeholder="좌석" readonly="readonly" class="seat2">
-				<button type="button" class="btn btn-info btn-lg select2">조회하기</button>
-				<button type="button" id="sel3" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal2" style="display: none;">조회하기</button>
-				<button type="button" class="bookssssssssssssss" style="display: none;">예매하기</button>
-			</form>
-		</div>
-	  </div>
+
 	
 
 	<!------------ Modal 시작 : 리무진 버스 예매 ------------>
@@ -462,10 +465,12 @@
 		var frm = $(".frm_wrap2").html();
 		if(check<1){
 			if(checkcheck){
-				$(".frm_wrap").append(frm);
+				//$(".frm_wrap").append(frm);
+				$(".hereeeer").append(frm);
 				check++;
 			} else{
-				$(".frm_wrap").append(parent);
+				//$(".frm_wrap").append(parent);
+				$(".hereeeer").append(parent);
 			alert(parent);
 			}
 		}else{
@@ -634,8 +639,10 @@
 		$(".limoTime2 option:eq(0)").prop("selected", true);
 		$(".price2").val("");
 		$(".seat2").val("");
-		price2 = $(".arrLoc2 option:selected").attr('id');
+		price2 = $(".arrLoc2 option:selected").prop("id");
+		alert(price2);
 		price2 = price2*1;
+		console.log(price2);	
 	});
 
 	// 대인 & 소인 가격 산출하기 : 소인가격 = 대인가격 * 0.8
