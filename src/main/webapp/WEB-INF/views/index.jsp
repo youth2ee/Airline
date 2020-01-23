@@ -166,6 +166,7 @@ var myFullpage = new fullpage('#fullpage', {
     }
 });
 
+
 var appendNumber = 4;
 var swiper = new Swiper('.swiper-container', {
     pagination: '.swiper-pagination',
@@ -187,6 +188,7 @@ $('.bxslider').bxSlider({
 	  slideWidth: 1920,
 	  slideHeight: 392
 	});
+
 
 </script>
 </body>

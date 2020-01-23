@@ -281,7 +281,7 @@ $('input:radio[name=kind]').click(function(){
 		}); 
 
 /**** 공항검색 끝 ****/
- 
+
  
  /***** 공항유효성검사 *****/
 
