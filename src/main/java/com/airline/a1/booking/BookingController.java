@@ -64,11 +64,16 @@ public class BookingController {
 		return check;
 	}
 
+
 	@GetMapping("bookingMain")
 	public void bookingMain(Model model) throws Exception {
 		List<String> airport = bookingService.airportList();
 		model.addAttribute("airportList", airport);
 	}
+
+	
+
+
 
 	@PostMapping("bookingMain")
 	public ModelAndView bookingMain(BookingTicketVO bookingTicketVO) throws Exception {
@@ -495,5 +500,6 @@ public class BookingController {
 	@GetMapping("bookingCheck")
 	public void bookingCheck() {
 	}
+
 
 }
