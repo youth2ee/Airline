@@ -99,23 +99,78 @@
 		</th>
 			<td>
 				<div class="jfile_wrap">
-						<input type="file" title="파일첨부" id="">
+						<input type="file" title="파일첨부" class = "addfile" id="attfile1">
 						<div class="jfilestyle jfilestyle-corner ">
-							<div name="filedrag"
+							<div name ="filedrag"
 								style="position: absolute; width: 100%; height: 0px; z-index: -1;">
 							</div>
 							<input type="text" style="width: 646px" placeholder="파일첨부"
-								disabled="" text="파일첨부01" class="common">
-							<button type="button"class="btn_detlete">
+								 class="common addFileName" id="fileName" readonly="readonly">
+							<button type="button"class="btn_detlete" id="btn_delete1">
 								<span class="hidden">삭제</span>
 							</button>
 							<span class="focus-jfilestyle" tabindex="0"> 
 							<label	for="attfile1"> 
-									<span>찾아보기</span>
+									<span class= "search">찾아보기</span>
 							</label>
 							</span>
 						</div>
 					</div>
+					
+					<div class="jfile_wrap">
+						<input type="file" title="파일첨부" class = "addfile" id="attfile1">
+						<div class="jfilestyle jfilestyle-corner ">
+							<div name ="filedrag"
+								style="position: absolute; width: 100%; height: 0px; z-index: -1;">
+							</div>
+							<input type="text" style="width: 646px" placeholder="파일첨부"
+								 class="common addFileName" id="fileName" readonly="readonly">
+							<button type="button"class="btn_detlete" id="btn_delete1">
+								<span class="hidden">삭제</span>
+							</button>
+							<span class="focus-jfilestyle" tabindex="0"> 
+							<label	for="attfile1"> 
+									<span class= "search">찾아보기</span>
+							</label>
+							</span>
+						</div>
+					</div>
+					
+					<div class="jfile_wrap">
+						<input type="file" title="파일첨부" class = "addfile" id="attfile1">
+						<div class="jfilestyle jfilestyle-corner ">
+							<div name ="filedrag"
+								style="position: absolute; width: 100%; height: 0px; z-index: -1;">
+							</div>
+							<input type="text" style="width: 646px" placeholder="파일첨부"
+								 class="common addFileName" id="fileName" readonly="readonly">
+							<button type="button"class="btn_detlete" id="btn_delete1">
+								<span class="hidden">삭제</span>
+							</button>
+							<span class="focus-jfilestyle" tabindex="0"> 
+							<label	for="attfile1"> 
+									<span class= "search">찾아보기</span>
+							</label>
+							</span>
+						</div>
+					</div>
+					
+					<ul class= "list_type">
+						<li>
+							고객정보의 보호를 위해 첨부파일 기능 이용시, 개인정보 내용이 포함된 자료의 첨부는 지양하여 주십시오.(※ 탑승권, 항공권, 신분증 등)
+						</li>				
+					
+						<li>
+						파일명이 한글, 영문, 숫자를 제외한 다른 나라의 언어일 경우, 등록된 파일에 손상이 발생할 수 있습니다.
+						</li>
+						
+						<li>
+							JPG, JPEG, DOC, DOCX, PPT, PPTX, TXT, PDF, PNG, XPS, XLS, XLSX, 파일 형태로 첨부하시기 바랍니다.
+						</li>
+						<li>
+						파일당 최대 5MB(음성/영상 파일은 최대 20MB)까지 첨부 가능합니다.
+						</li>
+					</ul>
 
 
 
@@ -133,6 +188,33 @@
 
 </div>
 	
+<!------ new script ------->
+<script type="text/javascript">
+
+$('#attfile1').change(function(){
+
+ 	 if(window.FileReader){
+		var filename = $(this)[0].files[0].name;
+
+			}else{
+			var filename =$(this).val().split('/').pop().split('\\').pop();
+ 	 	 	}
+	 	
+		$('#fileName').val(filename); 
+	
+});
+
+$('#btn_delete1').click(function(){
+			$("#attfile1").val("");
+			$("#fileName").val("");
+	
+});
+
+
+</script>
+
+
+
 
 
 
