@@ -94,7 +94,7 @@
 		</td>
 	</tr>	
 	<tr>
-		<th>
+		<th scope="row">
 			파일첨부 
 		</th>
 			<td>
@@ -105,9 +105,8 @@
 								style="position: absolute; width: 100%; height: 0px; z-index: -1;">
 							</div>
 							<input type="text" style="width: 646px" placeholder="파일첨부"
-								disabled="" text="파일첨부01">
-							<button type="button" onclick="javascript:jfileClear($(this));"
-								class="btn_detlete">
+								disabled="" text="파일첨부01" class="common">
+							<button type="button"class="btn_detlete">
 								<span class="hidden">삭제</span>
 							</button>
 							<span class="focus-jfilestyle" tabindex="0"> 
