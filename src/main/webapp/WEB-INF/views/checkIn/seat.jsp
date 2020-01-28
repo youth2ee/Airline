@@ -4,6 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link href="../resources/css/header.css" rel="stylesheet">
+<link href="../resources/css/reset.css" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -23,7 +25,7 @@ input[type=checkbox]:disabled {
 }
 
 .bookable {
-	cursor:pointer;
+	cursor: pointer;
 	display: inline-block;
 	cursor: pointer;
 	line-height: 22px;
@@ -68,13 +70,26 @@ input[type=checkbox]:disabled {
 	height: 20px;
 }
 
-.ttt {
+.area {
 	width: 15px;
 	display: inline-block;
 }
 
+.depAir {
+	/*background: url(../resources/newni/airplaneSeat.png);*/
+	display:none;
+	height: 700px;
+	background-size: 1200px;
+	background-repeat: no-repeat;
+}
+
 .arrAir {
-	/* transform: rotate(0deg);
+	/*background: url(../resources/newni/airplaneSeat.png);*/
+	display:none;
+	height: 700px;
+	background-size: 1200px;
+	background-repeat: no-repeat;
+	/*   transform: rotate(0deg);
 	-moz-transform: scaleX(-1);
 	-o-transform: scaleX(-1);
 	-webkit-transform: scaleX(-1);
@@ -82,81 +97,95 @@ input[type=checkbox]:disabled {
 	filter: FlipH;
 	-ms-filter: "FlipH"; */
 }
+
+.depSeat {
+	position: absolute;
+	margin-left: 250px;
+	margin-top: 180px;
+}
+
+.seat1 {
+	margin-bottom: 50px;
+}
+
+.sidenav {
+	width: 450px;
+	height: 600px;
+	position: fixed;
+	z-index: 1;
+	top: 20px;
+	left: 10px;
+	background: #FFF;
+	overflow-x: hidden;
+	padding: 8px 0;
+	border: solid 6px #c30d23;
+	margin-left: 1400px;
+	padding: 15px;
+	box-sizing: border-box;
+}
+
+#btn {
+	height: 45px;
+	border-radius: 4px;
+	background-color: #c30d23;
+	border: none;
+	color: #FFFFFF;
+	font-size: 18px;
+	width: 100%;
+	transition: all 0.5s;
+	cursor: pointer;
+	margin: 5px;
+}
+
+#btn span {
+	cursor: pointer;
+	display: inline-block;
+	position: relative;
+	transition: 0.5s;
+}
+
+#btn span:after {
+	content: '\00bb';
+	position: absolute;
+	opacity: 0;
+	top: 0;
+	right: -20px;
+	transition: 0.5s;
+}
+
+#btn:hover span {
+	padding-right: 25px;
+}
+
+#btn:hover span:after {
+	opacity: 1;
+	right: 0;
+}
+
+input[type="text"] {
+	border: none;
+	cursor: unset;
+}
+
+input:focus {
+	outline: none;
+}
 </style>
 </head>
+<c:import url="../layout/header.jsp" />
 <body>
+<div class="sidenav">
+  <p>예매번호 : <input type="text" id="bookingNum" value="${tripData.bookingNum}" name="bookingNum" readonly="readonly"></p>
+  <a>인원 수 : <input type="text" id="people" value="${people}" name="people" readonly="readonly"></a>
+  <p>가는편 좌석 : <input type="text" id="depSeat" name="depSeat" readonly="readonly"></p>
+  <a>오는편 좌석 : <input type="text" id="arrSeat" name="arrSeat" readonly="readonly"></a>
+  <p><button type="button" id="btn"><span>선택 완료</span></button></p>
+</div>
 	<form action="./seat" id="frm" method="post">
-		<input type="text" id="bookingNum" value="${tripData.bookingNum}" name="bookingNum">
-		<input type="text" id="people" value="${people}" name="people"> <!-- 파라미터로 넘겨 받을 값 (현재는 랜덤 값)-->
 		<input type="text" id="depFNum" value="${depFNum}" name="depFNum">
-		<input type="text" id="depSeat" name="depSeat">
 		<div class="airport">
 			<div class="depAir">
-				<div class="seat1">
-					<c:forEach begin="1" end="3" var="i">
-					 <c:forEach begin="1" end="31" var="j">
-					 	<c:choose>
-					 		<c:when test="${i eq 1}">
-					 			<c:set var="c" value="A"/>
-					 		</c:when>
-					 		<c:when test="${i eq 2}">
-					 			<c:set var="c" value="B"/>
-					 		</c:when>
-					 		<c:otherwise>
-					 			<c:set var="c" value="C"/>
-					 		</c:otherwise>
-					 	</c:choose>
-					 	<c:choose>
-					 		<c:when test="${(i-1) * 31 + j eq 1}">
-					 			<div class="ttt">A</div>
-					 		</c:when>
-					 		<c:when test="${(i-1) * 31 + j eq 32}">
-					 			<div class="ttt">B</div>
-					 		</c:when>
-					 		<c:when test="${(i-1) * 31 + j eq 63}">
-					 			<div class="ttt">C</div>
-					 		</c:when>
-					 	</c:choose>
-						<label for="${depFNum}${c}${j}" class="bookable" title="${c}${j}"><input type="checkbox" id="${depFNum}${c}${j}" class="seat" title="${c}${j}"></label>
-					  </c:forEach>
-					  <br>
-					</c:forEach>
-					</div>
-					<div class="seat2">
-					<c:forEach begin="1" end="3" var="i">
-					 <c:forEach begin="1" end="32" var="j">
-					 <c:choose>
-					 		<c:when test="${i eq 1}">
-					 			<c:set var="c" value="D"/>
-					 		</c:when>
-					 		<c:when test="${i eq 2}">
-					 			<c:set var="c" value="E"/>
-					 		</c:when>
-					 		<c:otherwise>
-					 			<c:set var="c" value="F"/>
-					 		</c:otherwise>
-					 	</c:choose>
-					 	<c:choose>
-					 		<c:when test="${(i-1) * 32 + j eq 1}">
-					 			<div class="ttt">D</div>
-					 		</c:when>
-					 		<c:when test="${(i-1) * 32 + j eq 33}">
-					 			<div class="ttt">E</div>
-					 		</c:when>
-					 		<c:when test="${(i-1) * 32 + j eq 65}">
-					 			<div class="ttt">F</div>
-					 		</c:when>
-					 	</c:choose>
-						 <label for="${depFNum}${c}${j}" class="bookable" title="${c}${j}"><input type="checkbox" id="${depFNum}${c}${j}" class="seat" title="${c}${j}"></label>
-					  </c:forEach>
-					  <br>
-					</c:forEach>
-				 </div>
-				 </div>
-					<c:if test="${kind eq 1}"> <!-- 왕복일 경우 항목 두개 표시 -->
-				<div class="arrAir">
-					<input type="text" id="arrFNum" value="${arrFNum}" name="arrFNum">
-					<input type="text" id="arrSeat" name="arrSeat">
+				<div class="depSeat">
 					<div class="seat1">
 						<c:forEach begin="1" end="3" var="i">
 						 <c:forEach begin="1" end="31" var="j">
@@ -173,16 +202,16 @@ input[type=checkbox]:disabled {
 						 	</c:choose>
 						 	<c:choose>
 						 		<c:when test="${(i-1) * 31 + j eq 1}">
-						 			<div class="ttt">A</div>
+						 			<div class="area">A</div>
 						 		</c:when>
 						 		<c:when test="${(i-1) * 31 + j eq 32}">
-						 			<div class="ttt">B</div>
+						 			<div class="area">B</div>
 						 		</c:when>
 						 		<c:when test="${(i-1) * 31 + j eq 63}">
-						 			<div class="ttt">C</div>
+						 			<div class="area">C</div>
 						 		</c:when>
 						 	</c:choose>
-							<label for="${arrFNum}${c}${j}" class="bookable" title="${c}${j}"><input type="checkbox" id="${arrFNum}${c}${j}" class="seat" title="${c}${j}"></label>
+							<label for="${depFNum}${c}${j}" class="bookable" title="${c}${j}"><input type="checkbox" id="${depFNum}${c}${j}" class="seat" title="${c}${j}"></label>
 						  </c:forEach>
 						  <br>
 						</c:forEach>
@@ -203,25 +232,91 @@ input[type=checkbox]:disabled {
 						 	</c:choose>
 						 	<c:choose>
 						 		<c:when test="${(i-1) * 32 + j eq 1}">
-						 			<div class="ttt">D</div>
+						 			<div class="area">D</div>
 						 		</c:when>
 						 		<c:when test="${(i-1) * 32 + j eq 33}">
-						 			<div class="ttt">E</div>
+						 			<div class="area">E</div>
 						 		</c:when>
 						 		<c:when test="${(i-1) * 32 + j eq 65}">
-						 			<div class="ttt">F</div>
+						 			<div class="area">F</div>
 						 		</c:when>
 						 	</c:choose>
-							 <label for="${arrFNum}${c}${j}" class="bookable" title="${c}${j}"><input type="checkbox" id="${arrFNum}${c}${j}" class="seat" title="${c}${j}" ></label>
+							 <label for="${depFNum}${c}${j}" class="bookable" title="${c}${j}"><input type="checkbox" id="${depFNum}${c}${j}" class="seat" title="${c}${j}"></label>
 						  </c:forEach>
 						  <br>
 						</c:forEach>
+					</div>
+				 </div>
+				</div>
+					<c:if test="${kind eq 1}"> <!-- 왕복일 경우 항목 두개 표시 -->
+				<div class="arrAir">
+					<input type="text" id="arrFNum" value="${arrFNum}" name="arrFNum">
+					<div class="arrSeat">
+						<div class="seat1">
+							<c:forEach begin="1" end="3" var="i">
+							 <c:forEach begin="1" end="31" var="j">
+							 	<c:choose>
+							 		<c:when test="${i eq 1}">
+							 			<c:set var="c" value="A"/>
+							 		</c:when>
+							 		<c:when test="${i eq 2}">
+							 			<c:set var="c" value="B"/>
+							 		</c:when>
+							 		<c:otherwise>
+							 			<c:set var="c" value="C"/>
+							 		</c:otherwise>
+							 	</c:choose>
+							 	<c:choose>
+							 		<c:when test="${(i-1) * 31 + j eq 1}">
+							 			<div class="area">A</div>
+							 		</c:when>
+							 		<c:when test="${(i-1) * 31 + j eq 32}">
+							 			<div class="area">B</div>
+							 		</c:when>
+							 		<c:when test="${(i-1) * 31 + j eq 63}">
+							 			<div class="area">C</div>
+							 		</c:when>
+							 	</c:choose>
+								<label for="${arrFNum}${c}${j}" class="bookable" title="${c}${j}"><input type="checkbox" id="${arrFNum}${c}${j}" class="seat" title="${c}${j}"></label>
+							  </c:forEach>
+							  <br>
+							</c:forEach>
+							</div>
+							<div class="seat2">
+							<c:forEach begin="1" end="3" var="i">
+							 <c:forEach begin="1" end="32" var="j">
+							 <c:choose>
+							 		<c:when test="${i eq 1}">
+							 			<c:set var="c" value="D"/>
+							 		</c:when>
+							 		<c:when test="${i eq 2}">
+							 			<c:set var="c" value="E"/>
+							 		</c:when>
+							 		<c:otherwise>
+							 			<c:set var="c" value="F"/>
+							 		</c:otherwise>
+							 	</c:choose>
+							 	<c:choose>
+							 		<c:when test="${(i-1) * 32 + j eq 1}">
+							 			<div class="area">D</div>
+							 		</c:when>
+							 		<c:when test="${(i-1) * 32 + j eq 33}">
+							 			<div class="area">E</div>
+							 		</c:when>
+							 		<c:when test="${(i-1) * 32 + j eq 65}">
+							 			<div class="area">F</div>
+							 		</c:when>
+							 	</c:choose>
+								 <label for="${arrFNum}${c}${j}" class="bookable" title="${c}${j}"><input type="checkbox" id="${arrFNum}${c}${j}" class="seat" title="${c}${j}" ></label>
+							  </c:forEach>
+							  <br>
+							</c:forEach>
+							</div>
 						</div>
-			</div>
+				</div>
 				</c:if>
 		</div>
 	</form>
-	<button type="button" id="btn">선택 완료</button>
 <script type="text/javascript">
 	// ============= 인원수 랜덤 (테스트 용) =============
 	// var generateRandom = function (min, max) {
@@ -279,7 +374,7 @@ input[type=checkbox]:disabled {
 			$(".arrAir input:checkbox").not(":checked").parent().closest('label').removeClass('bookend');
 			$(".arrAir input:checkbox").not(":checked").parent().closest('label').addClass('bookable');
 		} 
-		if($(this).closest("div").parent().attr("class") == "depAir"){
+		if($(this).closest("div").parent().attr("class") == "depSeat"){
 			if($(this).is(":checked")) {
 				// 좌석 선택시 배열에 넣음 
 				depChecks.push($(this).attr('title'));
@@ -293,7 +388,7 @@ input[type=checkbox]:disabled {
 			
 		}
 
-		if($(this).closest("div").parent().attr("class") == "arrAir"){
+		if($(this).closest("div").parent().attr("class") == "arrSeat"){
 			if($(this).is(":checked")) {
 				arrChecks.push($(this).attr('title'));
 			} else if ($(this).not(":checked")) {
