@@ -271,7 +271,6 @@ public class BookingController {
 		depTime.add(7, daDay);
 		depTime.add(8, daHour);
 		depTime.add(9, daMin);
-		
 				
 		if (bookingTicketVO.getKind().equals("왕복")) {
 			List<String> arrTime = new ArrayList<String>();
@@ -307,10 +306,8 @@ public class BookingController {
 			
 			mv.addObject("arr", arrTime);
 		}
-		
 
 		mv.addObject("dep", depTime);
-
 		mv.addObject("bTVO", bookingTicketVO);
 		mv.setViewName("/booking/bookingWrite");
 
@@ -324,6 +321,7 @@ public class BookingController {
 	@PostMapping("bookingWrite")
 	public ModelAndView bookingWrite(BookingTicketVO bookingTicketVO) throws Exception {
 		ModelAndView mv = new ModelAndView();
+		
 		// id
 		String id = "test";
 
@@ -357,6 +355,8 @@ public class BookingController {
 				FlightDataVO flightDataVO = new FlightDataVO();
 				flightDataVO.setFnum(bookingTicketVO.getDepFnum());
 				adult.setDepInfo(bookingService.oneSelect(flightDataVO));
+				
+				bookingTicketVO.setDepInfo(bookingService.oneSelect(flightDataVO));
 
 				// flightnum 가는편 만들기
 				/*
@@ -402,6 +402,7 @@ public class BookingController {
 
 					flightDataVO.setFnum(adult.getDepFnum());
 					adult.setArrInfo(bookingService.oneSelect(flightDataVO));
+					bookingTicketVO.setArrInfo(bookingService.oneSelect(flightDataVO));
 
 					bookingService.bookingInsert(adult);
 
@@ -409,6 +410,9 @@ public class BookingController {
 					adult.setDepFnum(dep);
 					adult.setArrFnum(arr);
 					adult = bookingService.priceCount(adult);
+				
+				
+				
 				}
 			} // 어른 반복문 끝
 		} // 어른 끝
@@ -433,6 +437,7 @@ public class BookingController {
 				FlightDataVO flightDataVO = new FlightDataVO();
 				flightDataVO.setFnum(bookingTicketVO.getDepFnum());
 				child.setDepInfo(bookingService.oneSelect(flightDataVO));
+				bookingTicketVO.setDepInfo(bookingService.oneSelect(flightDataVO));
 
 				// flightnum 가는편 만들기
 				/*
@@ -477,6 +482,7 @@ public class BookingController {
 
 					flightDataVO.setFnum(child.getDepFnum());
 					child.setArrInfo(bookingService.oneSelect(flightDataVO));
+					bookingTicketVO.setArrInfo(bookingService.oneSelect(flightDataVO));
 
 					bookingService.bookingInsert(child);
 

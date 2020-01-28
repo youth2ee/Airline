@@ -54,10 +54,15 @@ ${arr[0]}년 ${arr[1]}월 ${arr[2]}일<br>
 
 </c:if>
 </div>
+
 <div id="top3"> 
 <i class="material-icons" style="font-size:40px; color: white; padding-top: 20px;">person</i> 
+<c:if test="${bTVO.adult != 0}">
 <h5>성인 : ${bTVO.adult}명</h5>
+</c:if>
+<c:if test="${bTVO.child != 0}">
 <h5>아동 : ${bTVO.child}명</h5>
+</c:if>
 </div>
 
 <div id="top4">
@@ -67,6 +72,7 @@ ${arr[0]}년 ${arr[1]}월 ${arr[2]}일<br>
 <h5>오는편 : ${bTVO.arrInfo.economyCharge}원</h5>
 </c:if>
 </div>
+
 </div>
 </div>
 

@@ -11,6 +11,7 @@
     <meta name="description" content="Colrolib Templates">
     <meta name="author" content="Colrolib">
     <meta name="keywords" content="Colrolib Templates">
+    <link href="../resources/css/reset.css" rel="stylesheet">
 	<c:import url="../template/boot.jsp"></c:import>
 	
     <!-- Title Page-->
@@ -60,24 +61,24 @@
                             	<div id="body">
                                 <div class="input-group mid" >
                                     <label class="label">출발지:</label>
-                                    <input class="input--style-1 t1" type="text" name = "depLoc" placeholder="City, region or airport" required="required" id="loc">
+                                    <input class="input--style-1 t1" type="text" name = "depLoc" placeholder="지역 또는 공항명" required="required" id="loc">
                                   <!--   <input type="hidden" id="t2" readonly="readonly" name = "depLoc"> -->
                                 </div>
                                 
                                   <div class="input-group mid">
                                     <label class="label">도착지:</label>
-                                    <input class="input--style-1" type="text" name="arrLoc" placeholder="City, region or airport" required="required" id = "arrloc" >         
+                                    <input class="input--style-1" type="text" name="arrLoc" placeholder="지역 또는 공항명" required="required" id = "arrloc" >         
                                 </div>
                                                       
                               <div class="input-group mid">
-                                            <label class="label">Date:</label>
+                                            <label class="label">날짜:</label>
                                             <input class="input--style-1" type="text" name="date" placeholder="yyyy/mm/dd" id="input-start">
                                         </div>
                                 
                                         <div class="input-group mid">
-                                            <label class="label">travellers:</label>
+                                            <label class="label">인원수:</label>
                                             <div class="input-group-icon" id="js-select-special">
-                                                <input class="input--style-1 input--style-1-small" type="text" name="traveller" value="1 Adult, 0 Children" disabled="disabled" id="info">
+                                                <input class="input--style-1 input--style-1-small" type="text" name="traveller" value="성인 1, 아이 0" disabled="disabled" id="info">
                                                 <i class="zmdi zmdi-chevron-down input-icon" style="height: 100%; background-color: transparent;"></i>
                                             </div>
                                             
@@ -113,7 +114,7 @@
                                         
                                    
                                     <div class="col-2">
-                                        <button class="btn-submit" id ="booking_btn" type="submit">search</button>
+                                        <button class="btn-submit" id ="booking_btn" type="submit">검색</button>
                                     </div>
                     
                                 </div>
