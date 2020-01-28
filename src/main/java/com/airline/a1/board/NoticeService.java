@@ -25,15 +25,16 @@ public class NoticeService {
 	
 	
 	
-	public int noticeWrite(NoticeVO noticeVO, MultipartFile[] files)throws Exception{
-		
+	public int noticeWrite(NoticeVO noticeVO, MultipartFile[] file)throws Exception{
+				
 		//file 유무검증 
 		
 		boolean check = false;
 		int result =noticeMapper.noticeWrite(noticeVO); 
-		if(files.length>0) {
+		
+		if(file.length>0) {
 			
-			for(MultipartFile multipartFile: files) {
+			for(MultipartFile multipartFile: file) {
 					if(multipartFile.getSize()>0) {
 						check = true;
 						break;
@@ -41,32 +42,30 @@ public class NoticeService {
 			}//for끝
 				
 			if(check) {
-				List<NoticeFilesVO> noticeFilesVOs = new ArrayList<>();
-				for(MultipartFile multipartFile:files) {
+				List<NoticeFilesVO> noticeFilesVOs = new ArrayList<>(); 
+				File file2 = filePathGenerator.getUseClassPathResource("board");
+				
+				for(MultipartFile multipartFile:file) {
 					if(multipartFile.getSize()>0) {
+						String fileName = fileSaver.save(file2, multipartFile);
 						NoticeFilesVO noticeFilesVO = new NoticeFilesVO();
-						File file = filePathGenerator.getUseClassPathResource("board");
-						String fileName = fileSaver.save(file, multipartFile);
 						noticeFilesVO.setNum(noticeVO.getNum());
 						noticeFilesVO.setFname(fileName);
 						noticeFilesVO.setOname(multipartFile.getOriginalFilename());
 						noticeFilesVOs.add(noticeFilesVO);
-						
-						
 					}
-				int	fresult = noticeFilesMapper.noticeFileWrite(noticeFilesVOs);
-					return fresult;
-				}
 				
+											
+					
+				}
+				result = noticeFilesMapper.noticeFileWrite(noticeFilesVOs);
 				
 			}
-			
+	
 			
 		}
 		
-		
-		
-		return result;
+		 return result; 
 	
 	}
 }

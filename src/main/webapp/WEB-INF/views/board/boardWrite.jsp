@@ -19,7 +19,7 @@
 <link rel="stylesheet" href="../resources/css/board/boardWrite.css">
 </head>
 <body>
-	<div class="container">
+	<%-- <div class="container">
 	  <h2>${board} Write Form</h2>
 	  <form action="${board}Write" method="post" enctype="multipart/form-data">
 	  	
@@ -56,7 +56,7 @@
 	    	 <button class="btn btn-info">Submit</button>
 	    <!--  <input type="button" value = "test" id = "btn"> -->
 	    </form>
-	</div>
+	</div> --%>
 
 
 
@@ -70,6 +70,7 @@
 <span style="font-weight: bold;">*은 필수항목입니다.</span>
 </div>
 
+<form action="${board}Write" method="post" enctype="multipart/form-data">
 <table class="table_form">
 	<tr>
 		<th scope="row">
@@ -78,6 +79,7 @@
 		</th>
 		<td>
 			<input type="text" name="title" id="title" class="full common textWrite" style="100%;">
+			<input type="hidden" id="writer" name="writer" value = "${member.id}">
 		</td>	
 	</tr>
 	
@@ -88,7 +90,7 @@
 		</th>
 		<td>
 			<div class="textarea_wrap">
-				<textarea name="contents" class="common textWrite" id="content" rows="4" cols="50" style="position: relative;"></textarea>	
+				<textarea name="contents" class="common textWrite" id="contents" rows="4" cols="50" style="position: relative;"></textarea>	
 				<div class="txt_count">
 					<em id="counter"></em>
 					/4000자
@@ -102,9 +104,9 @@
 		</th>
 			<td>
 				<div class="jfile_wrap">
-						<input type="file" title="파일첨부" class = "addfile" id="attfile1">
+						<input type="file" title="파일첨부" class = "addfile" id="attfile1" name="file">
 						<div class="jfilestyle jfilestyle-corner ">
-							<div name ="filedrag"
+							<div 
 								style="position: absolute; width: 100%; height: 0px; z-index: -1;">
 							</div>
 							<input type="text" style="width: 646px" placeholder="파일첨부"
@@ -121,9 +123,9 @@
 				 </div>
 					
 					<div class="jfile_wrap"> 
-						<input type="file" title="파일첨부" class = "addfile" id="attfile2">
+						<input type="file" title="파일첨부" class = "addfile" id="attfile2" name="file">
 						<div class="jfilestyle jfilestyle-corner ">
-							<div name ="filedrag"
+							<div 
 								style="position: absolute; width: 100%; height: 0px; z-index: -1;">
 							</div>
 							<input type="text" style="width: 646px" placeholder="파일첨부"
@@ -140,13 +142,13 @@
 					</div>
 					
 					<div class="jfile_wrap">
-						<input type="file" title="파일첨부" class = "addfile" id="attfile3">
+						<input type="file" title="파일첨부" class = "addfile" id="attfile3" name="file">
 						<div class="jfilestyle jfilestyle-corner ">
-							<div name ="filedrag"
+							<div 
 								style="position: absolute; width: 100%; height: 0px; z-index: -1;">
 							</div>
 							<input type="text" style="width: 646px" placeholder="파일첨부"
-								 class="common addFileName" id="fileName3" readonly="readonly" disabled text="파일첨부01">
+								 class="common addFileName" id="fileName3" readonly="readonly" >
 							<button type="button"class="btn_detlete" id="btn_delete3">
 								<span class="hidden">삭제</span>
 							</button>
@@ -178,9 +180,9 @@
 	</tr>
 </table>
 <div class="btn_wrap">
-	<button type="button" id="btnTransfer">등록</button>
+	<button id="btnTransfer">등록</button>
 </div>
-
+</form>
 
 
 
@@ -240,7 +242,7 @@
 	
 /**** 글자수세기 ****/
 
-$('#content').keyup(function(){
+$('#contents').keyup(function(){
 	var content = $(this).val();
 	$('#counter').html(content.length);
 	

@@ -2,6 +2,9 @@ package com.airline.a1;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -37,6 +40,22 @@ class BoardTest {
 		
 	}
 	
+	//@Test
+	void fileWriteTest()throws Exception{
+		List<NoticeFilesVO> noticeFilesVOs = new ArrayList<>();
+		
+		for(int i=0; i<3;i++) {
+		NoticeFilesVO noticeFilesVO = new NoticeFilesVO();
+		
+		noticeFilesVO.setFname("iu"+i);
+		noticeFilesVO.setNum(33);
+		noticeFilesVO.setOname("iuo"+i);
+		noticeFilesVOs.add(noticeFilesVO);
+		noticeFilesMapper.noticeFileWrite(noticeFilesVOs);
+		}
+		
+		
+	}
 	
 
 }

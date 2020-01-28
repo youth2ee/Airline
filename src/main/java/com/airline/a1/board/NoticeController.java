@@ -29,7 +29,7 @@ public class NoticeController {
 	
 	  @PostMapping("noticeWrite")
 	  public ModelAndView noticeWrite(NoticeVO noticeVO, MultipartFile[] file)throws Exception{
-	  System.out.println(file.length);
+		/* System.out.println(file.length); */
 		  
 	  ModelAndView mv = new ModelAndView(); 
 	  int result =noticeService.noticeWrite(noticeVO, file);
