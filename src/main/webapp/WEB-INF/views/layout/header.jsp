@@ -26,7 +26,7 @@
 					<div class="menu1">예약</div>
 					<div class="menu1">여행 준비</div>
 					<div class="menu1">여행</div>
-					<div class="menu2">EveryAir club</div>
+					<div class="menu1">EveryAir club</div>
 				</div>
 			</div>
 		</div>

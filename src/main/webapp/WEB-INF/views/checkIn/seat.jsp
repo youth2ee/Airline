@@ -8,11 +8,11 @@
 <link href="../resources/css/reset.css" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>좌석 선택</title>
 <style type="text/css">
 .airport {
 	/* background: url("../resources/newni/airplaneSeat.png"); */
-	/*height: 1000px;*/
+	height: 1000px;
 	background-repeat: none;
 }
 
@@ -30,8 +30,8 @@ input[type=checkbox]:disabled {
 	cursor: pointer;
 	line-height: 22px;
 	padding-left: 22px;
-	background: url('../resources/newni/e2.png') left/22px no-repeat;
-	height: 20px;
+	background: url('../resources/newni/bookableSeat.png') left/22px no-repeat;
+	height: 30px;
 }
 
 .booking {
@@ -39,8 +39,8 @@ input[type=checkbox]:disabled {
 	cursor: pointer;
 	line-height: 22px;
 	padding-left: 22px;
-	background: url('../resources/newni/e.png') left/22px no-repeat;
-	height: 20px;
+	background: url('../resources/newni/bookingSeat.png') left/22px no-repeat;
+	height: 30px;
 }
 
 .over {
@@ -48,8 +48,8 @@ input[type=checkbox]:disabled {
 	cursor: pointer;
 	line-height: 22px;
 	padding-left: 22px;
-	background: url('../resources/newni/e.png') left/22px no-repeat;
-	height: 20px;
+	background: url('../resources/newni/bookingSeat.png') left/22px no-repeat;
+	height: 30px;
 }
 
 .bookend {
@@ -57,8 +57,8 @@ input[type=checkbox]:disabled {
 	cursor: pointer;
 	line-height: 22px;
 	padding-left: 22px;
-	background: url('../resources/newni/e3.png') left/22px no-repeat;
-	height: 20px;
+	background: url('../resources/newni/bookedSeat.png') left/22px no-repeat;
+	height: 30px;
 }
 
 .booked {
@@ -66,8 +66,8 @@ input[type=checkbox]:disabled {
 	cursor: pointer;
 	line-height: 22px;
 	padding-left: 22px;
-	background: url('../resources/newni/e3.png') left/22px no-repeat;
-	height: 20px;
+	background: url('../resources/newni/bookedSeat.png') left/22px no-repeat;
+	height: 30px;
 }
 
 .area {
@@ -77,7 +77,6 @@ input[type=checkbox]:disabled {
 
 .depAir {
 	/*background: url(../resources/newni/airplaneSeat.png);*/
-	display:none;
 	height: 700px;
 	background-size: 1200px;
 	background-repeat: no-repeat;
@@ -85,7 +84,6 @@ input[type=checkbox]:disabled {
 
 .arrAir {
 	/*background: url(../resources/newni/airplaneSeat.png);*/
-	display:none;
 	height: 700px;
 	background-size: 1200px;
 	background-repeat: no-repeat;
@@ -109,32 +107,32 @@ input[type=checkbox]:disabled {
 }
 
 .sidenav {
-	width: 450px;
-	height: 600px;
+	width: 400px;
+	height: 500px;
 	position: fixed;
 	z-index: 1;
 	top: 20px;
 	left: 10px;
 	background: #FFF;
 	overflow-x: hidden;
-	padding: 8px 0;
 	border: solid 6px #c30d23;
 	margin-left: 1400px;
-	padding: 15px;
 	box-sizing: border-box;
+	margin-top: 120px;
 }
 
 #btn {
-	height: 45px;
-	border-radius: 4px;
-	background-color: #c30d23;
-	border: none;
-	color: #FFFFFF;
-	font-size: 18px;
-	width: 100%;
-	transition: all 0.5s;
-	cursor: pointer;
-	margin: 5px;
+	height: 50px;
+    border-radius: 4px;
+    background-color: #c30d23;
+    border: none;
+    color: #FFFFFF;
+    font-size: 18px;
+    width: 100%;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+    margin-top: 114px;
 }
 
 #btn span {
@@ -165,21 +163,83 @@ input[type=checkbox]:disabled {
 input[type="text"] {
 	border: none;
 	cursor: unset;
+	font-size: 17px;
 }
 
 input:focus {
 	outline: none;
+}
+
+.seatInfo {
+	height: 100px;
+	width: 100%;
+	border: 2px solid #e6acac;
+	border-radius: 5px;
+	margin-bottom: 30px;
+	padding-top: 5px;
+	padding-left: 5px;
+	box-sizing: border-box;
+}
+
+.seatInfo img {
+	height: 20px;
+}
+
+.navText {
+	padding: 19px 30px 19px;
+	border-bottom: 1px solid #999;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	color: #010101;
+	font-size: 22px;
+	letter-spacing: -2px;
+}
+
+.navBody {
+	padding: 15px;
+	letter-spacing: -2px;
+	font-size: 17px;
+}
+p {
+  margin-bottom: 10px;
+}
+td{
+	padding:2px;
 }
 </style>
 </head>
 <c:import url="../layout/header.jsp" />
 <body>
 <div class="sidenav">
-  <p>예매번호 : <input type="text" id="bookingNum" value="${tripData.bookingNum}" name="bookingNum" readonly="readonly"></p>
-  <a>인원 수 : <input type="text" id="people" value="${people}" name="people" readonly="readonly"></a>
-  <p>가는편 좌석 : <input type="text" id="depSeat" name="depSeat" readonly="readonly"></p>
-  <a>오는편 좌석 : <input type="text" id="arrSeat" name="arrSeat" readonly="readonly"></a>
-  <p><button type="button" id="btn"><span>선택 완료</span></button></p>
+	<div class="navText">좌석 선택</div>
+	<div class="navBody">
+		<div class="seatInfo">
+			<div class="seatInfo_bookSeat"><img alt="" src="../resources/newni/bookableSeat.png"> 선택가능 좌석 </div>
+			<div class="seatInfo_bookingSeat"><img alt="" src="../resources/newni/bookingSeat.png"> 선택한 좌석 </div>
+			<div class="seatInfo_bookedSeat"><img alt="" src="../resources/newni/bookedSeat.png"> 선택불가 좌석 </div>
+			<div>이부분 전체 수정</div>
+		</div>
+		<table>
+		<tr>
+			<td>예매번호</td>
+			<td><input type="text" id="bookingNum" value="${tripData.bookingNum}" name="bookingNum" readonly="readonly"></td>	
+		</tr>  
+		<tr>
+			<td>인원 수</td>
+			<td><input type="text" id="people" value="${people}" name="people" readonly="readonly" style="width:10px">명</td>
+		</tr> 
+		<tr>
+			<td>가는편 좌석</td>
+			<td><input type="text" id="depSeat" name="depSeat" readonly="readonly"></td>
+		</tr>
+		<c:if test="${kind eq 1}">
+		<tr>
+			<td>오는편 좌석</td> 
+			<td><input type="text" id="arrSeat" name="arrSeat" readonly="readonly"></td>
+		</tr></c:if>
+		</table>
+		<p><button type="button" id="btn"><span>선택 완료</span></button></p>
+	</div>
 </div>
 	<form action="./seat" id="frm" method="post">
 		<input type="text" id="depFNum" value="${depFNum}" name="depFNum">
