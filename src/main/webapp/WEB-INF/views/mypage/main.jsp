@@ -50,7 +50,12 @@
 
 	<div class="myinfo">
 	<div class="myinfoWrap">
-		<div class="myInfoLeft"></div>
+		<div class="myInfoLeft">
+		
+			<div><h1>세션에서 받아올 이름</h1></div>		
+		
+		</div>
+		
 		<div class="myInfoMiddle">
 			<div class="page" style="width: 500px;">
 				<div class="circles-container bg-white">
@@ -78,46 +83,34 @@ mypage
 
  <script type="text/javascript">
 
- $(document).ready(function() {
-	 /*             $("#circle-1").Circlebar({
-	                 maxValue: 20,
-	                 fontSize: "14px",
-	                 triggerPercentage: true
-	             }); */
-	             
-	             var t2 = new Circlebar({
-	                 element: ".circlebar",
-	                 maxValue: 100,
-	                 fontColor: "#777",
-	                 fontSize: "25px",
-	                 skin: "white",
-	                 type: "progress"
-	             });
 
-	 /*             new Circlebar({
-	                 element: ".circlebar",
-	                 maxValue: 100,
-	                 dialWidth: 40,
-	                 size: "500px",
-	                 fontSize: "30px",
-	                 type: "progress"
-	             }); */
-	         });
+		$(document).ready(function() {
+			var t2 = new Circlebar({
+				element : ".circlebar",
+				maxValue : 100,
+				fontColor : "#777",
+				fontSize : "25px",
+				skin : "white",
+				type : "progress"
+			});
+		});
 
- 
+		var _gaq = _gaq || [];
+		_gaq.push([ '_setAccount', 'UA-36251023-1' ]);
+		_gaq.push([ '_setDomainName', 'jqueryscript.net' ]);
+		_gaq.push([ '_trackPageview' ]);
 
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-36251023-1']);
-  _gaq.push(['_setDomainName', 'jqueryscript.net']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
+		(function() {
+			var ga = document.createElement('script');
+			ga.type = 'text/javascript';
+			ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl'
+					: 'http://www')
+					+ '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0];
+			s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
 
 
 
