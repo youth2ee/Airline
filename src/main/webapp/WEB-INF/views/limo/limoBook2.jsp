@@ -21,7 +21,6 @@
 <!------------ 공항에서 도시로 이동할 경우  ------------>
 	<h1>리무진 예약</h1>
 	<div class="containers contain">
-	  <button type="button" class="btn btn-info">공항 -> 도시</button>
 	  <button type="button" class="btn btn-info">도시 -> 공항</button>
 	  <button class="btn btn-info add">추가</button>
 	  <button class="btn btn-danger del">삭제</button>
@@ -32,7 +31,7 @@
 				<input type="text" placeholder="id" name="id">
 				<input type="date" name="limoDate" class="limoDate datepicker">
 				<select name="depLoc" class="depLoc">
-					<option>출발지</option>
+					<option>도착지</option>
 					<option value="인천공항" class="airLine">인천공항</option>
 					<option value="김포공항" class="airLine">김포공항</option>
 					<option value="양양공항" class="airLine">양양공항</option>
