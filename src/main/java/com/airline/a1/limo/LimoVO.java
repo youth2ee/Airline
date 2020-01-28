@@ -1,6 +1,7 @@
 package com.airline.a1.limo;
 
 import java.sql.Date;
+import java.util.List;
 
 public class LimoVO {
 	
@@ -14,6 +15,7 @@ public class LimoVO {
 	private String seat;
 	private int person;
 	
+
 	public int getPerson() {
 		return person;
 	}

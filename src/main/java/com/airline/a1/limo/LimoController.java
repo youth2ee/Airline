@@ -29,12 +29,10 @@ public class LimoController {
 	}
 	
 	@PostMapping("limoBook")
-	public ModelAndView limoBook(List<LimoVO> list) throws Exception{
+	public ModelAndView limoBook(LimoVO limoVO, String [] bookNum, String [] limoDate, int [] limoPrice, String [] id, String [] depLoc, String [] arrLoc, String [] limoTime, int [] seat, int [] person) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		int result = 0;
-		for (LimoVO limoVO : list) {
-			result = limoService.limoBook(limoVO);
-		}
+		result = limoService.limoBook(limoVO);
 		
 //		if(result >0) {
 //			mv.addObject("limo", limoVO);
@@ -68,11 +66,6 @@ public class LimoController {
 		System.out.println("hi");
 		ModelAndView mv = new ModelAndView();
 		List<LimoVO> ar = limoService.limoSelect(limoVO);
-		System.out.println(ar.size());
-		System.out.println(limoVO.getArrLoc());
-		System.out.println(limoVO.getDepLoc());
-		System.out.println(limoVO.getLimoTime());
-		System.out.println(limoVO.getLimoDate());
 		mv.addObject("disabled", ar);
 		mv.setViewName("limo/disabled");
 		return mv;
