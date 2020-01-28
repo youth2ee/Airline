@@ -21,10 +21,42 @@ header
 
 <div id="top">
 <div id="topWrap">
-<div id="top1">1 </div>
-<div id="top2">2 </div>
-<div id="top3">3 </div>
-<div id="top4">4 </div>
+
+<div id="top1">
+<i class="fa fa-plane" style="font-size:40px;color:white; padding-top: 20px;"></i><br>
+${bVO.depInfo.depAirportNm} <i class='fas fa-angle-right' style='font-size:10px;'></i> ${bVO.depInfo.arrAirportNm} <br>
+${bVO.depInfo.vihicleId} ${bVO.depInfo.airlineNm}<br>
+
+</div>
+
+<div id="top2">
+<c:if test="${bVO.kind == '왕복'}">
+<i class="fa fa-plane" style="font-size:40px;color:white; padding-top: 20px;"></i><br>
+${bVO.depInfo.arrAirportNm} <i class='fas fa-angle-right' style='font-size:10px;'></i> ${bVO.depInfo.depAirportNm}  <br>
+${bVO.arrInfo.vihicleId} ${bVO.arrInfo.airlineNm}<br>
+</c:if>
+</div>
+
+<div id="top3"> 
+<i class="material-icons" style="font-size:40px; color: white; padding-top: 20px;">person</i> 
+<c:if test="${fn:length(alist) != 0}">
+<h5>성인 : ${fn:length(alist)}명</h5>
+</c:if>
+<c:if test="${fn:length(clist) != 0}">
+<h5>아동 : ${fn:length(clist)}명</h5>
+</c:if>
+
+</div>
+
+<div id="top4">
+<i class='fas fa-credit-card' style="font-size:30px; color: white; padding-top: 24px;"></i>
+<h5>가는편 : <fmt:formatNumber value="${bVO.depInfo.economyCharge}" pattern="#,###,###"/>원</h5>
+<c:if test="${bVO.kind == '왕복'}">
+<h5>오는편 : <fmt:formatNumber value="${bVO.arrInfo.economyCharge}" pattern="#,###,###"/>원</h5>
+</c:if>
+</div>
+
+
 </div>
 </div>
 
