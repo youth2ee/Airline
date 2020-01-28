@@ -123,7 +123,7 @@ ${bookingVO.arrLoc} <i class='fas fa-angle-right' style='font-size:10px;'></i> $
 	</td>
  
 	<td class="td2">
-		<div style="float: left;">
+		<div style="float: left; padding-left: 30px;">
 		<c:if test="${dlist.airlineNm == '대한 항공'}">
 		<img alt="" src="../images/airline/1.jpg" style="width: 115px;">
 		</c:if>
@@ -169,7 +169,7 @@ ${bookingVO.arrLoc} <i class='fas fa-angle-right' style='font-size:10px;'></i> $
 	<td class="td7">${195 - dlist.seatTotal}</td> 
 </tr>
 
-<tr class="dhide" style="display: none; background-color: salmon; height: 30px;"><td colspan="7">${dlist.fnum} ${dlist.flightKm}KM</td></tr>
+<tr class="dhide"><td colspan="7">${dlist.fnum} ${dlist.flightKm}KM</td></tr>
 </c:forEach>
 </table>
 </div>
@@ -245,7 +245,7 @@ ${bookingVO.arrLoc} <i class='fas fa-angle-right' style='font-size:10px;'></i> $
 	</td>
  
 	<td class="td2">
-			<div style="float: left;">
+			<div style="float: left;  padding-left: 30px;">
 		<c:if test="${alist.airlineNm == '대한 항공'}">
 		<img alt="" src="../images/airline/1.jpg" style="width: 115px;">
 		</c:if>
@@ -292,7 +292,7 @@ ${bookingVO.arrLoc} <i class='fas fa-angle-right' style='font-size:10px;'></i> $
 	<td class="td7">${195 - alist.seatTotal}</td>  
 </tr>
 
-<tr class="ahide" style="display: none; background-color: salmon; height: 30px;"><td colspan="7">${alist.fnum}</td></tr>
+<tr class="ahide"><td colspan="7">${alist.fnum}</td></tr>
 </c:forEach>
 </table>
 </div>

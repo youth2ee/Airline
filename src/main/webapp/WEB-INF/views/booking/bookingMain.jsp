@@ -15,7 +15,7 @@
 	<c:import url="../template/boot.jsp"></c:import>
 	
     <!-- Title Page-->
-    <title>Au Form Wizard</title>
+    <title>tt</title>
 	
     <!-- Icons font CSS-->
     <link href="../resources/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
@@ -89,7 +89,7 @@
                                                      
                                                         <ul class="list-person">
                                                             <li class="list-person__item">
-                                                                <span class="name">Adult</span>
+                                                                <span class="name">성인</span>
                                                                 <div class="quantity quantity1">
                                                                     <span class="minus">-</span>
                                                                     <input class="inputQty" type="number" min="0" value="1" name = "adult">
@@ -97,7 +97,7 @@
                                                                 </div>
                                                             </li>
                                                             <li class="list-person__item">
-                                                                <span class="name">Child</span>
+                                                                <span class="name">아이</span>
                                                                 <div class="quantity quantity2">
                                                                     <span class="minus">-</span>
                                                                     <input class="inputQty" type="number" min="0" value="0" name = "child">

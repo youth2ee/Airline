@@ -34,10 +34,11 @@ ${bVO.depInfo.vihicleId} ${bVO.depInfo.airlineNm}<br>
 </div>
 
 <div id="top2">
+<c:if test="${bVO.kind == '왕복'}">
 <i class="fa fa-plane" style="font-size:40px;color:white; padding-top: 20px;"></i><br>
 ${bVO.depInfo.arrAirportNm} <i class='fas fa-angle-right' style='font-size:10px;'></i> ${bVO.depInfo.depAirportNm}  <br>
 ${bVO.arrInfo.vihicleId} ${bVO.arrInfo.airlineNm}<br>
-
+</c:if>
 </div>
 
 <div id="top3"> 

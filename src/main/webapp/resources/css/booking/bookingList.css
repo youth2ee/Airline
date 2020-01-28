@@ -2,7 +2,7 @@
 
 
 header {
-	height: 83px;
+	height: 123px;
 }
 
 section {
@@ -107,6 +107,7 @@ section {
 
 .act {
 	color: #D60815;
+	background-color: #f1f1f1;
 }
 
 .bact {
@@ -124,8 +125,13 @@ section {
 	color: white;
 }
 
-.td1t, .td2t, .td7t {
+.td2t{
 	width: 225px;
+	height: 35px;
+}
+
+.td1t, .td7t {
+	width:152px;
 	height: 35px;
 }
 
@@ -154,7 +160,8 @@ section {
 }
 
 #arrtitle {
-	top: 1466px;
+	top: 1491px;
+    left: 384px;
 	padding-top: 5px;
 	background-color: gray;
 }
@@ -168,9 +175,6 @@ section {
 }
 
 /*  */
-.timeIWrap {
-	
-}
 
 .tiLeft, .tiRight {
 	float: left;
@@ -209,8 +213,13 @@ section {
 	padding-top: 6px;
 }
 
-.dtrcheck td:not(.td3), .atrcheck td {
-	height: 75px;
+.dtrcheck td, .atrcheck td {
+    padding: 10px 0;
+    vertical-align: middle;
+}
+
+.dtrcheck, .atrcheck {
+	border-bottom: 1px solid #e0dada; 
 }
 
 .aimg {
@@ -230,4 +239,16 @@ section {
 	text-align: center;
 	text-decoration: none;
 	font-size: 16px;
+}
+
+.dhide{
+	display: none; 
+	background-color: salmon; 
+	height: 50px;
+}
+
+.ahide{
+	display: none; 
+	background-color: salmon; 
+	height: 50px;
 }
