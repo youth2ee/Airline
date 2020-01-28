@@ -209,7 +209,7 @@ section {
 	padding-top: 6px;
 }
 
-.dtrcheck td, .atrcheck td {
+.dtrcheck td:not(.td3), .atrcheck td {
 	height: 75px;
 }
 
