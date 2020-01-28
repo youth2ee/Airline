@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
         <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
-        <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,10 +10,6 @@
 <link href="../resources/css/reset.css" rel="stylesheet">
 <link href="../resources/css/booking/bookingCheck.css" rel="stylesheet">
 <c:import url="../template/boot.jsp" />
-<script src='https://kit.fontawesome.com/a076d05399.js'></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 </head>
 <body>
 
@@ -26,6 +21,7 @@ header
 
 <div id="top">
 <div id="topWrap">
+
 <div id="top1">
 <i class="fa fa-plane" style="font-size:40px;color:white; padding-top: 20px;"></i><br>
 ${bVO.depInfo.depAirportNm} <i class='fas fa-angle-right' style='font-size:10px;'></i> ${bVO.depInfo.arrAirportNm} <br>
@@ -60,6 +56,7 @@ ${bVO.arrInfo.vihicleId} ${bVO.arrInfo.airlineNm}<br>
 </c:if>
 </div>
 
+
 </div>
 </div>
 
@@ -84,7 +81,7 @@ ${bVO.arrInfo.vihicleId} ${bVO.arrInfo.airlineNm}<br>
 <hr>
 <h1>성인 ${fn:length(alist)}</h1>
 <table>
-<tr class="bth">
+<tr>
 <td>이름</td>
 <td>왕복/편도</td>
 <td>항공사</td>
@@ -99,37 +96,37 @@ ${bVO.arrInfo.vihicleId} ${bVO.arrInfo.airlineNm}<br>
 <td colspan="2">총 금액</td>
 </tr>
 <c:forEach items="${alist}" var="adult">
-<tr class="btb">
+<tr>
 <td>${adult.name}</td>
 <td>${adult.kind}</td>
 <td>${adult.depInfo.airlineNm}</td>
 <td>${adult.depInfo.vihicleId}</td>
 <td>${adult.depInfo.depAirportNm}</td>
 <td>${adult.depInfo.arrAirportNm}</td>
-<td><fmt:formatNumber value="${adult.depPriceVO.price}" pattern="#,###,###"/>원</td>
-<td class="cnm">${adult.depPriceVO.couName}</td>
-<td>- <fmt:formatNumber value="${adult.depPriceVO.couponDis}" pattern="#,###,###"/>원</td>
-<td>+ <fmt:formatNumber value="${adult.depPriceVO.fuelTax}" pattern="#,###,###"/>원</td>
-<td>+ <fmt:formatNumber value="${adult.depPriceVO.airportTax}" pattern="#,###,###"/>원</td>
+<td>${adult.depPriceVO.price}원</td>
+<td>${adult.depPriceVO.couName}</td>
+<td>- ${adult.depPriceVO.couponDis}</td>
+<td>+ ${adult.depPriceVO.fuelTax}</td>
+<td>+ ${adult.depPriceVO.airportTax}</td>
 <td>=</td>
-<td class="price"><fmt:formatNumber value="${adult.depPriceVO.totalPrice}" pattern="#,###,###"/>원</td>
+<td class="price">${adult.depPriceVO.totalPrice}</td>
 </tr>
 
 <c:if test="${adult.kind == '왕복'}">
-<tr class="btb">
+<tr>
 <td>${adult.name}</td>
 <td>${adult.kind}</td>
 <td>${adult.arrInfo.airlineNm}</td>
 <td>${adult.arrInfo.vihicleId}</td>
 <td>${adult.arrInfo.depAirportNm}</td>
 <td>${adult.arrInfo.arrAirportNm}</td>
-<td><fmt:formatNumber value="${adult.arrPriceVO.price}" pattern="#,###,###"/>원</td>
-<td class="cnm">${adult.arrPriceVO.couName}</td>
-<td>- <fmt:formatNumber value="${adult.arrPriceVO.couponDis}" pattern="#,###,###"/>원</td>
-<td>+ <fmt:formatNumber value="${adult.arrPriceVO.fuelTax}" pattern="#,###,###"/>원</td>
-<td>+ <fmt:formatNumber value="${adult.arrPriceVO.airportTax}" pattern="#,###,###"/>원</td>
+<td>${adult.arrPriceVO.price}원</td>
+<td>${adult.arrPriceVO.couName}</td>
+<td>- ${adult.arrPriceVO.couponDis}</td>
+<td>+ ${adult.arrPriceVO.fuelTax}</td>
+<td>+ ${adult.arrPriceVO.airportTax}</td>
 <td>=</td>
-<td class="price"><fmt:formatNumber value="${adult.arrPriceVO.totalPrice}" pattern="#,###,###"/>원</td>
+<td class="price">${adult.arrPriceVO.totalPrice}</td>
 </tr>
 </c:if>
 </c:forEach>
@@ -141,7 +138,7 @@ ${bVO.arrInfo.vihicleId} ${bVO.arrInfo.airlineNm}<br>
 <hr>
 <h1>아이  ${fn:length(clist)}</h1>
 <table>
-<tr class="bth">
+<tr>
 <td>이름</td>
 <td>왕복/편도</td>
 <td>항공사</td>
@@ -156,37 +153,37 @@ ${bVO.arrInfo.vihicleId} ${bVO.arrInfo.airlineNm}<br>
 <td colspan="2">총 금액</td>
 </tr>
 <c:forEach items="${clist}" var="child">
-<tr class="btb">
+<tr>
 <td>${child.name}</td>
 <td>${child.kind}</td>
 <td>${child.depInfo.airlineNm}</td>
 <td>${child.depInfo.vihicleId}</td>
 <td>${child.depInfo.depAirportNm}</td>
 <td>${child.depInfo.arrAirportNm}</td>
-<td><fmt:formatNumber value="${child.depPriceVO.price}" pattern="#,###,###"/>원</td>
-<td class="cnm">${child.depPriceVO.couName}</td>
-<td>- <fmt:formatNumber value="${child.depPriceVO.couponDis}" pattern="#,###,###"/>원</td>
-<td>+ <fmt:formatNumber value="${child.depPriceVO.fuelTax}" pattern="#,###,###"/>원</td>
-<td>+ <fmt:formatNumber value="${child.depPriceVO.airportTax}" pattern="#,###,###"/>원</td>
+<td>${child.depPriceVO.price}원</td>
+<td>${child.depPriceVO.couName}</td>
+<td>- ${child.depPriceVO.couponDis}</td>
+<td>+ ${child.depPriceVO.fuelTax}</td>
+<td>+ ${child.depPriceVO.airportTax}</td>
 <td>=</td>
-<td class="price"><fmt:formatNumber value="${child.depPriceVO.totalPrice}" pattern="#,###,###"/>원</td>
+<td class="price">${child.depPriceVO.totalPrice}</td>
 </tr>
 
 <c:if test="${child.kind == '왕복'}">
-<tr class="btb">
+<tr>
 <td>${child.name}</td>
 <td>${child.kind}</td>
 <td>${child.arrInfo.airlineNm}</td>
 <td>${child.arrInfo.vihicleId}</td>
 <td>${child.arrInfo.depAirportNm}</td>
 <td>${child.arrInfo.arrAirportNm}</td>
-<td><fmt:formatNumber value="${child.arrPriceVO.price}" pattern="#,###,###"/>원</td>
-<td class="cnm">${child.arrPriceVO.couName}</td>
-<td>- <fmt:formatNumber value="${child.arrPriceVO.couponDis}" pattern="#,###,###"/>원</td>
-<td>+ <fmt:formatNumber value="${child.arrPriceVO.fuelTax}" pattern="#,###,###"/>원</td>
-<td>+ <fmt:formatNumber value="${child.arrPriceVO.airportTax}" pattern="#,###,###"/>원</td>
+<td>${child.arrPriceVO.price}원</td>
+<td>${child.arrPriceVO.couName}</td>
+<td>- ${child.arrPriceVO.couponDis}</td>
+<td>+ ${child.arrPriceVO.fuelTax}</td>
+<td>+ ${child.arrPriceVO.airportTax}</td>
 <td>=</td>
-<td class="price"><fmt:formatNumber value="${child.arrPriceVO.totalPrice}" pattern="#,###,###"/>원</td>
+<td class="price">${child.arrPriceVO.totalPrice}</td>
 </tr>
 </c:if>
 </c:forEach>
@@ -200,17 +197,15 @@ ${bVO.arrInfo.vihicleId} ${bVO.arrInfo.airlineNm}<br>
 <hr>
 
 <div id="priceDiv">
-<table id="tpriceTb">
-<tr>
-<td>항공 총 결제금액 : </td>
-<td class="tprice"></td>
-</tr>
+<table>
+<tr><td>항공 총 결제금액 : </td><td class="tprice"></td></tr>
 </table>
 </div>
 
 <hr>
 
-<button id="btn">결제</button>
+
+<button class="btn btn-primary" id="btn">결제</button>
 
 </section>
 
@@ -218,31 +213,24 @@ ${bVO.arrInfo.vihicleId} ${bVO.arrInfo.airlineNm}<br>
 
 
 
+
+
+
+<button id="btn">결제</button>
+
 <script type="text/javascript">
 
 var r = 0;
 
 $('.price').each(function (index, item) { 
 	console.log($(this).text()); 
-	var rt = $(this).text();
-	rt = rt.replace(',','');
-	rt = rt.replace('원','');
-	console.log(rt);
-	
-	var t = Number(rt);
+	var t = Number($(this).text());
 	r = r + t;
-
-	
-	console.log(addComma(r));
+	console.log(r);
 });
-	$('.tprice').html(' '+addComma(r)+'원');
+	$('.tprice').html(r);
 
 
-	function addComma(num) {
-		  var regexp = /\B(?=(\d{3})+(?!\d))/g;
-		  return num.toString().replace(regexp, ',');
-		}
-	
 
 
 $('#btn').click(function(){
