@@ -106,10 +106,10 @@ ${arr[0]}년 ${arr[1]}월 ${arr[2]}일<br>
 <tr> 
 <td class="bth">성별</td> 
 <td class="btb">
-<input type="radio" name="adultList[${status.index-1}].gender" value="여" id="woman${status.index}"> 
-<label for="woman${status.index}">여자</label>
-<input type="radio" name="adultList[${status.index-1}].gender" value="남" id="man${status.index}">  
-<label for="man${status.index}">남자</label>
+<input type="radio" name="adultList[${status.index-1}].gender" value="여" id="womana${status.index}"> 
+<label for="womana${status.index}">여자</label>
+<input type="radio" name="adultList[${status.index-1}].gender" value="남" id="mana${status.index}">  
+<label for="mana${status.index}">남자</label>
 </td>
 </tr>
 
@@ -212,15 +212,15 @@ ${arr[0]}년 ${arr[1]}월 ${arr[2]}일<br>
 <c:forEach begin="1" end="${bTVO.child}" varStatus="status"> 
 <table style="margin-left: 111px;"><!-- 아이1 -->
 
-<tr><td colspan="2">아이 ${status.index}</td> </tr>
+<tr><td colspan="2"><h4 style="font-size: 28px;">아이 ${status.index}</h4></td> </tr>
 
 <tr> 
 <td class="bth">성별</td> 
 <td class="btb">
-<input type="radio" name="childList[${status.index-1}].gender" value="여" id="woman${status.index}"> 
-<label for="woman${status.index}">여자</label>
-<input type="radio" name="childList[${status.index-1}].gender" value="남" id="man${status.index}">  
-<label for="man${status.index}">남자</label>
+<input type="radio" name="childList[${status.index-1}].gender" value="여" id="womanc${status.index}"> 
+<label for="womanc${status.index}">여자</label>
+<input type="radio" name="childList[${status.index-1}].gender" value="남" id="manc${status.index}">  
+<label for="manc${status.index}">남자</label>
 </td>
 </tr>
 
@@ -300,7 +300,7 @@ ${arr[0]}년 ${arr[1]}월 ${arr[2]}일<br>
 </tr>
 </c:if>
 </table><!-- 아이1 -->
-소아/유아 동반 시, 반드시 나이를 확인할 수 있는 서류를 준비하시기 바랍니다.
+<div style="padding-left: 117px; padding-top: 18px;">소아/유아 동반 시, 반드시 나이를 확인할 수 있는 서류를 준비하시기 바랍니다.</div>
 <hr>
 </c:forEach>
 </c:if>
@@ -337,7 +337,7 @@ ${arr[0]}년 ${arr[1]}월 ${arr[2]}일<br>
 </div>
 
 <hr>
-<button>다음</button>
+<button id="btn">다음</button>
 
 <input type="hidden" name="kind" value="${bTVO.kind}">
 <input type="hidden" name="adult" value="${bTVO.adult}">
