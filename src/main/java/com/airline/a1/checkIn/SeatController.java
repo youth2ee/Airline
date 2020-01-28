@@ -16,6 +16,11 @@ import com.airline.a1.booking.BookingTicketVO;
 public class SeatController {
 	@Autowired
 	private SeatService seatService;
+	
+	@GetMapping("ttt")
+	public void ttt() {
+
+	}
 
 	@GetMapping("test")
 	public void test() {
