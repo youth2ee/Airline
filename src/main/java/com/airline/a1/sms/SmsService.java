@@ -22,8 +22,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class SmsService {
 	
-	public String smsSend(String receiver) throws Exception{
-		System.out.println("a");
+	public int smsSend(String receiver) throws Exception{
 		// 6자리 인증 코드 생성 
 		int rand = (int) (Math.random() * 899999) + 100000; 
 		// 인증 코드를 데이터베이스에 저장하는 코드는 생략했습니다. 
@@ -47,11 +46,12 @@ public class SmsService {
 		DefaultHttpClient client = new DefaultHttpClient();
 		
 		try { 	
-				System.out.println("b");
+
 				HttpPost httpPost = new HttpPost(url); 
 				httpPost.setHeader("Content-type", "application/json; charset=utf-8"); 
 				//문자에 대한 정보 
-				String json = "{\"sender\":\"01038209098\",\"receivers\":[\"" + "01038209098" + "\"],\"content\":\"방갑습니다\"}"; 
+				String json = "{\"sender\":\"01038209098\",\"receivers\":[\"" + receiver + "\"],\"content\":\"EveryAir입니다. "
+						+ "인증번호 6자리를 입력해주세요 [인증번호 : "+rand+"]\"}"; 
 				StringEntity se = new StringEntity(json, "UTF-8"); 
 				httpPost.setEntity(se); 
 				HttpResponse httpResponse = client.execute(httpPost, context); 
@@ -61,16 +61,16 @@ public class SmsService {
 					String line = ""; 
 					while ((line = bufferedReader.readLine()) != null) inputStream.close();
 					
-					return "true";
+					return rand;
 				}else {
-					return "false";
+					return rand;
 				}
 		} catch (Exception e) { 
 				System.err.println("Error: " + e.getLocalizedMessage()); 
 		} finally { 
 				client.getConnectionManager().shutdown(); 
 		} 
-			return null;		
+			return rand;
 		}
 
 	}

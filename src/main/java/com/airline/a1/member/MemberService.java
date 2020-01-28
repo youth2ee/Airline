@@ -11,12 +11,18 @@ public class MemberService {
 	@Autowired
 	private MemberMapper memberMapper;
 	
+	//로그인
 	public MembersVO memberLogin(MembersVO membersVO) throws Exception{
 		return memberMapper.memberLogin(membersVO);
 	}
 	
+	//id중복체크
+	public MembersVO memberidCheck(MembersVO membersVO) throws Exception{
+		return memberMapper.memberidCheck(membersVO);
+	}
+	
+	//회원가입
 	public int memberJoin (MembersVO membersVO) throws Exception{
-		
 		membersVO.setMemberNum(this.mkMemberNum());
 		return memberMapper.memberJoin(membersVO);
 	}
@@ -29,8 +35,15 @@ public class MemberService {
 		String memberNumber3 = String.format("%03d%n", rand.nextInt(1000)).replace("\r\n", "");
 		String memberNumber = memberNumber1 + "-" + memberNumber2 + "-" + memberNumber3; // 띄어쓰기 있음 (아시아나 형식)
 		// String memberNumber = memberNumber1 + memberNumber2 + memberNumber3; // 띄어쓰기 없음  (편의상)
-		System.out.println("회원번호 : " + memberNumber);
 		return memberNumber;
 
+	}
+	//아이디찾기폰
+	public MembersVO memberidFindbyPhone(MembersVO membersVO) throws Exception{
+		return memberMapper.memberidFindbyPhone(membersVO);
+	}
+	//아이디찾기이메일
+	public MembersVO memberidFindbyEmail(MembersVO membersVO) throws Exception{
+		return memberMapper.memberidFindbyEmail(membersVO);
 	}
 }

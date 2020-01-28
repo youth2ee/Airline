@@ -12,6 +12,12 @@
 <link rel="stylesheet" type="text/css" href="https://flyasiana.com/C/pc/css/common.css">
 <link rel="stylesheet" type="text/css" href="https://flyasiana.com/C/pc/css/flyasiana.css">
 <link rel="stylesheet" type="text/css" href="https://flyasiana.com/C/pc/css/calendar.css">
+
+<!-- <link rel="stylesheet" type="text/css" href="../resources/css/asiana/reset.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/asiana/layout.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/asiana/common.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/asiana/flyasiana.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/asiana/calendar.css"> -->
 <style type="text/css">
 .modal-content {
   position: relative;
@@ -55,7 +61,6 @@
 					<col style="width:auto;">
 				</colgroup>
 				<tbody>
-
 					<tr>
 						<th scope="row"><label for="input_koreanLastName">한글명</label></th> 
 						<td>
@@ -63,15 +68,14 @@
 							<p class="txt_error_Msg" id="error_koreanName" style="display: none;"></p>
 						</td>
 					</tr>
-
 					<tr>
 						<th scope="row"><label for="input_id">아이디</label></th> 
 						<td>
-							<input type="text" id="input_id" name="id" placeholder="6~15자리 영문+숫자" title="6~15자리 영문+숫자" style="width:298px;"> 
-							<button type="button" class="btn_S white" id="btn_idCheck" data-toggle="modal" data-target="#idCheck">중복확인</button> 
+							<input type="text" id="input_id" name="id" placeholder="6~15자리 영문+숫자" title="6~15자리 영문+숫자" style="width:298px;">
+							<button type="button" class="btn_S white" id="btn_memberidCheck">중복확인</button>
+							<button type="button" class="btn_S white" id="btn_idCheck" data-toggle="modal" data-target="#idCheck" style="display: none;">중복확인</button>
 							<ul class="list_type3 fsz_14 mar_to10">
 								<li>6 ~ 15자리 영문(대소문자 구별), 숫자 조합 입력 가능 <br>(단 한글, 공백, 특수문자 입력 불가)</li> 
-								
 							</ul>
 							<p class="txt_error_Msg" id="error_id" style="display: none;"></p>
 						</td>
@@ -91,7 +95,8 @@
 											<li>특수문자<span class="unable">불가</span></li> 	
 											<li>한글, 공백 입력 불가<span class="able">가능</span></li> 				
 											<li>20자 이내<span class="able">가능</span></li> 		
-										<li>보안정책상 사용 불가<span class="able">가능</span></li></ul>
+											<li>보안정책상 사용 불가<span class="able">가능</span></li>
+										</ul>
 									</div>
 									<a href="javascript:tooltipNone();" class="tooltip_close"><span class="hidden">닫기</span></a> 
 								</div>	
@@ -123,15 +128,7 @@
 							<p class="txt_error_Msg" id="error_koreaPhone" style="display: none;"></p>
 							<input type="text" id="phonesum" name="phone">
 						</td>
-						<td id="foreign_phone" style="display: none;">
 
-							<input type="hidden" id="input_foreignPhoneNationCode" value="82">
-	
-							<input type="text" id="input_foreignPhoneFirst" placeholder="앞 번호" title="휴대전화 번호 앞자리" style="width:150px;" disabled="">- 		
-							<input type="text" id="input_foreignPhoneMiddle" placeholder="중간번호" title="휴대전화 번호 가운데 자리" style="width:150px;" readonly="">- 	
-							<input type="text" id="input_foreignPhoneLast" placeholder="끝 번호" title="휴대전화번호 끝자리" style="width:150px;" readonly=""> 		
-							<p class="txt_error_Msg" id="error_foreignPhone" style="display: none;"></p>
-						</td>
 					</tr>
 					<tr>
 						<th scope="row"><label for="input_emailID">이메일</label></th> 
@@ -140,43 +137,24 @@
 							<select id="select_emailDomain" title="이메일 도메인 선택" style="width:180px;"> 
 								<option value="">직접입력</option> 
 								<option value="korea.com">korea.com</option>
-
 								<option value="dreamwiz.com">dreamwiz.com</option>
-
 								<option value="naver.com">naver.com</option>
-
 								<option value="lycos.co.kr">lycos.co.kr</option>
-
 								<option value="yahoo.co.kr">yahoo.co.kr</option>
-
 								<option value="netian.com">netian.com</option>
-
 								<option value="empal.com">empal.com</option>
-
 								<option value="hanmir.com">hanmir.com</option>
-
 								<option value="hotmail.com">hotmail.com</option>
-
 								<option value="hanafos.com">hanafos.com</option>
-
 								<option value="chol.com">chol.com</option>
-
 								<option value="hanmail.net">hanmail.net</option>
-
 								<option value="nate.com">nate.com</option>
-
 								<option value="yahoo.com">yahoo.com</option>
-
 								<option value="gmail.com">gmail.com</option>
-
 								<option value="aol.com">aol.com</option>
-
 								<option value="sbcglobal.net">sbcglobal.net</option>
-
 								<option value="hotmail.co.kr">hotmail.co.kr</option>
-
 								<option value="yahoo.co.jp">yahoo.co.jp</option>
-
 							</select>
 							<input type="text" id="input_emailDomain" placeholder="직접입력" title="직접입력" style="width:298px;"> 
 							<p class="txt_error_Msg" id="error_emailID" style="display: none;"></p>
@@ -187,11 +165,6 @@
 					
 				</tbody>
 			</table>
-
-			
-
-
-		
 			
 			<div class="btn_wrap_ceType3">
 				<button type="button" class="btn_L white" id="btn_cancel">취소</button> 
@@ -200,10 +173,9 @@
 		</div>
 		
 		
-		<div class="modal fade layer_wrap" id="idCheck">
-			<div class="dim_layer"></div>
+		<div class="modal fade layer_wrap" id="idCheck" role="dialog">
 			<div class="modal-content layer_pop" style="width:500px">
-				<div class="pop_cont">
+				<div class="modal-body pop_cont ">
 					<p class="pop_tit st1">다른 아이디를 사용하시려면 입력 후 <br><span class="cal_red">중복확인</span>을 클릭해주시기 바랍니다.</p> 
 										
 					<div class="form_area2">
@@ -215,11 +187,12 @@
 					<p id="p_info" style="display: none;"></p>
 				</div>
 				<div class="btn_wrap_ceType2">
-					<button type="button" class="btn_M red" id="btn_layerIdUse" disabled="">사용하기</button> 	
+					<button type="button" class="btn_M red" id="btn_layerIdUse" disabled="">사용하기</button>
 				</div> 			
 				<a href="javascript:sharpNothig();" class="dim_close" id="btn_layerClose" data-dismiss="modal"><span class="hidden">닫기</span></a> 	
 			</div>
 		</div>
+		
 	</div>
 </form>
 <c:import url="../template/fffooter.jsp" />
@@ -238,6 +211,7 @@ var phoneTwo = "";
 var phoneThree = "";
 var emailOne = "";
 var emailTwo = "";
+
 
 
 $("#input_pw").keyup(function(){
@@ -324,9 +298,10 @@ $("#input_pw").blur(function(){
 	$("#input_pwConfirm").val("");
 	$("#error_pwConfirm").css("display", "none");
 	$("#error_pwConfirm").html('');
+	pwflag = false;
 });
 
-
+var pwflag = false;
 //비밀번호 확인 체크
 $("#input_pwConfirm").blur(function(){
 	var pw2 = $(this).val();
@@ -334,11 +309,12 @@ $("#input_pwConfirm").blur(function(){
 	if(pw == pw2){
 		$("#error_pwConfirm").css("display", "none");
 		$("#error_pwConfirm").html('');
+		pwflag = true;
 
 	}else{
 		$("#error_pwConfirm").css("display", "block");
 		$("#error_pwConfirm").html('비밀번호가 일치하지 않습니다.');
-
+		pwflag = false;
 	}
 });
 
@@ -363,6 +339,7 @@ $("#input_koreaPhoneLast").blur(function(){
 $("#select_emailDomain").change(function(){
 	if($("#select_emailDomain option:eq(0)").prop("selected")){
 		$("#input_emailDomain").css("display","inline");
+		$("#emailsum").val(emailOne+'@');
 	}else{
 		$("#input_emailDomain").css("display","none");
 		emailTwo = $(this).val();
@@ -382,27 +359,197 @@ $("#input_emailDomain").blur(function(){
 	$("#emailsum").val(emailOne+'@'+emailTwo);
 });
 
-
-//폼 전송
-$("#btn_confirm").click(function(){
-
-	$("#join_form").submit();
+//ID중복체크 모달 띄우기
+$("#btn_memberidCheck").click(function(){
+	
+	if($("#input_id").val() == ""){
+		alert('아이디 입력 후 클릭해주시기 바랍니다.');
+	}else{
+		$("#btn_idCheck").click();
+		$("#input_laterInputId").val($("#input_id").val());
+		$("#p_info").css("display", "none");
+		$("#p_idRule").css("display", "block");
+		$("#btn_layerIdUse").attr('disabled',true);
+	}
 	
 });
 
-$('body').on("click", function(e) { 
-	/* if(!$(e.target).hasClass("modal")) { 
-		 $("#btn_layerClose").click();
-	}  */
-	var point = $(e.target);
-	var test1 = point.hasClass('modal');
-	if(test1){ 
+//ID중복체크
+$("#btn_layerIdChedk").click(function(){
+	var idcheck = $("#input_laterInputId").val();
+	var ENG = idcheck.match(/[A-Za-z]/g);
+	var num = idcheck.match(/[0123456789]/g);
+	var space = idcheck.match(/ /g);
+	var kor = idcheck.match(/[ㄱ-ㅎ가-힣ㅏ-ㅣ]/g);
+	var spe = idcheck.match(/[`~!@#$%^&*()-/'/"/_/+/=/|/?/;/:/,/</./>\\\{\}\[\]]/g);
+	
+	if(idcheck.length >5 && idcheck.length <16 && space == null && kor == null && spe == null){
+		$.get("memberidCheck?id="+idcheck, function(data){
+
+			if(data >0){
+				$("#p_info").css("display", "block");
+				$("#p_idRule").css("display", "none");
+				$("#btn_layerIdUse").attr('disabled',true);
+				$("#p_info").html('<span class="col_brown">'+idcheck+'</span>는 사용하실수 없습니다.');
+			}else{
+				$("#p_info").css("display", "block");
+				$("#p_idRule").css("display", "none");
+				$("#btn_layerIdUse").attr('disabled',false);
+				$("#p_info").html('<span class="col_brown">'+idcheck+'</span>는 사용하실수 있습니다.');
+			}
+		});
+	}
+});
+
+$("#input_laterInputId").blur(function(){
+	$("#btn_layerIdUse").attr("disabled", true);
+});
+var idflag = false;
+//id 사용하기
+$("#btn_layerIdUse").click(function(){
+
+	if($("#btn_layerIdUse").is(':disabled')){
 		alert('a');
-		 $("#btn_layerClose").click();
+	}else{
+		$("#btn_layerClose").click();
+		$("#input_id").val($("#input_laterInputId").val());
+		$("#input_id").attr("readonly",true);
+		$("#error_id").css("display","none");
+		$("#error_id").html('');
+		idflag = true;
+	}
+	
+});
+
+//이름 input 정규식
+$("#input_koreanLastName").keyup(function(event) {
+    if (!(event.keyCode >= 37 && event.keyCode <= 40)) {
+       var inputVal = $(this).val();
+       $(this).val(inputVal.replace(/[^(가-힣)]/gi, ''));
+    }
+ });
+
+//이메일 input 정규식
+$("#input_emailID").keyup(function(event) {
+    if (!(event.keyCode >= 37 && event.keyCode <= 40)) {
+        var inputVal = $(this).val();
+        $(this).val(inputVal.replace(/[^(a-zA-Z0-9)]/gi, ''));
+     }
+  });
+
+//이름 에러창 없애기
+$("#input_koreanLastName").blur(function(){
+	if($(this).val() != ""){
+		$("#error_koreanName").css("display","none");
+		$("#error_koreanName").html('');
+	}
+});
+
+//아이디 에러창 없애기
+$("#input_id").blur(function(){
+	if($(this).val() != ""){
+		$("#error_id").css("display","none");
+		$("#error_id").html('');
+	}
+});
+
+//비번 에러창 없애기
+$("#input_pw").blur(function(){
+	if($(this).val() != ""){
+		$("#error_pw").css("display","none");
+		$("#error_pw").html('');
+	}
+});
+
+//전화번호 첫자리 에러창 없애기
+$("#select_koreaPhone").change(function(){
+
+	if(!$(this).eq(0).prop("selected")){
+		$("#error_koreaPhone").css("display","none");
+		$("#error_koreaPhone").html('');
+	}
+});
+
+//전화번호 중간, 끝자리 에러창 없애기
+$("#input_koreaPhoneMiddle, #input_koreaPhoneLast").blur(function(){
+
+	if($(this).val != ""){
+		$("#error_koreaPhone").css("display","none");
+		$("#error_koreaPhone").html('');
+	}
+});
+
+//이메일 id 에러창 없애기
+$("#input_emailID").blur(function(){
+	if($(this).val() != ""){
+		$("#error_emailID").css("display","none");
+		$("#error_emailID").html('');
+	}
+});
+
+//이메일 도메인 에러창 없애기
+$("#input_emailDomain").blur(function(){
+	if($(this).val() != ""){
+		$("#error_emailDomain").css("display","none");
+		$("#error_emailDomain").html('');
 	}
 });
 
 
+//폼 전송
+$("#btn_confirm").click(function(){
+	var pwcount = 0;
+	$(".pwd_rule li").each(function(){
+		if($(this).children('span').hasClass('unable')){
+			pwcount++;
+		}
+	});
+	//이름체크
+	if($("#input_koreanLastName").val() == ""){
+		$("#input_koreanLastName").focus();
+		$("#error_koreanName").css("display","block");
+		$("#error_koreanName").html('이름을 입력해주세요.');
+	//idCheck
+	}else if($("#input_id").val == ""){
+		$("#input_id").focus();
+		$("#error_id").css("display","block");
+		$("#error_id").html('아이디을 입력해주세요.');
+	//중복확인 여부
+	}else if(!idflag){
+		$("#input_id").focus();
+		$("#error_id").css("display","block");
+		$("#error_id").html('아이디 중복확인을 해주세요.');
+	//비밀번호 검증 확인
+	}else if(pwcount > 0){
+		$("#input_pw").focus();
+		$("#error_pw").css("display","block");
+		$("#error_pw").html('비밀번호를 확인해주세요');
+		tooltipBlock();
+	//비밀번호 일치 확인		
+	}else if(!pwflag){
+		$("#input_pwConfirm").focus();
+		$("#error_pwConfirm").css("display","block");
+		$("#error_pw").html('비밀번호가 일치하지 않습니다.');
+	//휴대전화번호 확인
+	}else if($("#phonesum").val().length < 9){
+		$("#select_koreaPhone").focus();
+		$("#error_koreaPhone").css("display","block");
+		$("#error_koreaPhone").html('휴대전화 번호를 입력해주세요.');
+	//이메일 확인
+	}else if($("#input_emailID").val() == ""){
+		$("#input_emailID").focus();
+		$("#error_emailID").css("display","block");
+		$("#error_emailID").html('이메일을 입력해주세요.');
+	//도메인 확인
+	}else if($("#select_emailDomain option:eq(0)").prop("selected") && $("#input_emailDomain").val() == ""){
+		$("#input_emailDomain").focus();
+		$("#error_emailDomain").css("display","block");
+		$("#error_emailDomain").html('도메인을 입력해주세요.');
+	}else{
+		$("#join_form").submit();
+	}
+	
+});
 
 </script>
 </body>
