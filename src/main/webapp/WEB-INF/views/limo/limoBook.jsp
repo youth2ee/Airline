@@ -22,7 +22,6 @@
 	<h1>리무진 예약</h1>
 	<div class="containers contain">
 	  <button type="button" class="btn btn-info">공항 -> 도시</button>
-	  <button type="button" class="btn btn-info">도시 -> 공항</button>
 	  <button class="btn btn-info add">추가</button>
 	  <button class="btn btn-danger del">삭제</button>
 	  <button class="btn btn-warning gobooks">예매하기</button>
