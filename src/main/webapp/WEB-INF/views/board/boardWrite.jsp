@@ -60,34 +60,37 @@
 
 
 
-<!------- new --------->	\
+<!------- new --------->
+<div id="wrap_container">
+	<h3>글 작성하기</h3>
+</div>
 <div class="writeForm">
-<h5 id="">내용작성</h5>	
+<h5>내용 작성</h5>	
 <div class="mar">
-<span>*은 필수항목입니다.</span>
+<span style="font-weight: bold;">*은 필수항목입니다.</span>
 </div>
 
 <table class="table_form">
 	<tr>
 		<th scope="row">
-			<label>제목</label>
+			<label style="font-weight: normal;">제목</label>
 			<span>*</span>
 		</th>
 		<td>
-			<input type="text" name="title" id="title" class="full common" style="100%;">
+			<input type="text" name="title" id="title" class="full common textWrite" style="100%;">
 		</td>	
 	</tr>
 	
 	<tr>
 		<th scope="row">
-			<label>내용</label>
+			<label style="font-weight: normal;">내용</label>
 			<span>*</span>
 		</th>
 		<td>
 			<div class="textarea_wrap">
-				<textarea name="contents" class="common" id="contents" rows="4" cols="50" style="position: relative;"></textarea>	
+				<textarea name="contents" class="common textWrite" id="content" rows="4" cols="50" style="position: relative;"></textarea>	
 				<div class="txt_count">
-					<em></em>
+					<em id="counter"></em>
 					/4000자
 				</div>	
 			</div>
@@ -105,12 +108,31 @@
 								style="position: absolute; width: 100%; height: 0px; z-index: -1;">
 							</div>
 							<input type="text" style="width: 646px" placeholder="파일첨부"
-								 class="common addFileName" id="fileName" readonly="readonly">
+								 class="common addFileName" id="fileName1" readonly="readonly">
 							<button type="button"class="btn_detlete" id="btn_delete1">
 								<span class="hidden">삭제</span>
 							</button>
 							<span class="focus-jfilestyle" tabindex="0"> 
 							<label	for="attfile1"> 
+									<span class= "search">찾아보기</span>
+							</label>
+							</span>
+						</div>
+				 </div>
+					
+					<div class="jfile_wrap"> 
+						<input type="file" title="파일첨부" class = "addfile" id="attfile2">
+						<div class="jfilestyle jfilestyle-corner ">
+							<div name ="filedrag"
+								style="position: absolute; width: 100%; height: 0px; z-index: -1;">
+							</div>
+							<input type="text" style="width: 646px" placeholder="파일첨부"
+								 class="common addFileName" id="fileName2" readonly="readonly">
+							<button type="button"class="btn_detlete" id="btn_delete2">
+								<span class="hidden">삭제</span>
+							</button>
+							<span class="focus-jfilestyle" tabindex="0"> 
+							<label	for="attfile2"> 
 									<span class= "search">찾아보기</span>
 							</label>
 							</span>
@@ -118,42 +140,23 @@
 					</div>
 					
 					<div class="jfile_wrap">
-						<input type="file" title="파일첨부" class = "addfile" id="attfile1">
+						<input type="file" title="파일첨부" class = "addfile" id="attfile3">
 						<div class="jfilestyle jfilestyle-corner ">
 							<div name ="filedrag"
 								style="position: absolute; width: 100%; height: 0px; z-index: -1;">
 							</div>
 							<input type="text" style="width: 646px" placeholder="파일첨부"
-								 class="common addFileName" id="fileName" readonly="readonly">
-							<button type="button"class="btn_detlete" id="btn_delete1">
+								 class="common addFileName" id="fileName3" readonly="readonly" disabled text="파일첨부01">
+							<button type="button"class="btn_detlete" id="btn_delete3">
 								<span class="hidden">삭제</span>
 							</button>
 							<span class="focus-jfilestyle" tabindex="0"> 
-							<label	for="attfile1"> 
+							<label	for="attfile3"> 
 									<span class= "search">찾아보기</span>
 							</label>
 							</span>
 						</div>
-					</div>
-					
-					<div class="jfile_wrap">
-						<input type="file" title="파일첨부" class = "addfile" id="attfile1">
-						<div class="jfilestyle jfilestyle-corner ">
-							<div name ="filedrag"
-								style="position: absolute; width: 100%; height: 0px; z-index: -1;">
-							</div>
-							<input type="text" style="width: 646px" placeholder="파일첨부"
-								 class="common addFileName" id="fileName" readonly="readonly">
-							<button type="button"class="btn_detlete" id="btn_delete1">
-								<span class="hidden">삭제</span>
-							</button>
-							<span class="focus-jfilestyle" tabindex="0"> 
-							<label	for="attfile1"> 
-									<span class= "search">찾아보기</span>
-							</label>
-							</span>
-						</div>
-					</div>
+				 	</div>
 					
 					<ul class= "list_type">
 						<li>
@@ -171,17 +174,13 @@
 						파일당 최대 5MB(음성/영상 파일은 최대 20MB)까지 첨부 가능합니다.
 						</li>
 					</ul>
-
-
-
-
-
-
 				</td>
-
 	</tr>
-
 </table>
+<div class="btn_wrap">
+	<button type="button" id="btnTransfer">등록</button>
+</div>
+
 
 
 
@@ -191,22 +190,59 @@
 <!------ new script ------->
 <script type="text/javascript">
 
-$('#attfile1').change(function(){
-
- 	 if(window.FileReader){
-		var filename = $(this)[0].files[0].name;
-
-			}else{
-			var filename =$(this).val().split('/').pop().split('\\').pop();
- 	 	 	}
-	 	
-		$('#fileName').val(filename); 
+	/***** 파일 추가 삭제 *****/
+	$('#attfile1').change(function(){
+		
+	 	 if(window.FileReader){
+			var filename = $(this)[0].files[0].name;
+				}else{
+					var filename =$(this).val().split('/').pop().split('\\').pop();
+	 	 	 	}	 	
+			$('#fileName1').val(filename); 	
+	});
 	
-});
+	$('#btn_delete1').click(function(){
+				$("#attfile1").val("");
+				$("#fileName1").val("");	
+	});
 
-$('#btn_delete1').click(function(){
-			$("#attfile1").val("");
-			$("#fileName").val("");
+
+	$('#attfile2').change(function(){
+		
+	 	 if(window.FileReader){
+			var filename = $(this)[0].files[0].name;
+				}else{
+					var filename =$(this).val().split('/').pop().split('\\').pop();
+	 	 	 	}	 	
+			$('#fileName2').val(filename); 	
+	});
+	
+	$('#btn_delete2').click(function(){
+				$("#attfile2").val("");
+				$("#fileName2").val("");	
+	});
+
+
+	$('#attfile3').change(function(){
+		
+	 	 if(window.FileReader){
+			var filename = $(this)[0].files[0].name;
+				}else{
+					var filename =$(this).val().split('/').pop().split('\\').pop();
+	 	 	 	}	 	
+			$('#fileName3').val(filename); 	
+	});
+	
+	$('#btn_delete3').click(function(){
+				$("#attfile3").val("");
+				$("#fileName3").val("");	
+	});
+	
+/**** 글자수세기 ****/
+
+$('#content').keyup(function(){
+	var content = $(this).val();
+	$('#counter').html(content.length);
 	
 });
 
