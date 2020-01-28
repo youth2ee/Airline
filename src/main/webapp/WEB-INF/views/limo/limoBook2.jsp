@@ -639,10 +639,7 @@
 		$(".limoTime2 option:eq(0)").prop("selected", true);
 		$(".price2").val("");
 		$(".seat2").val("");
-// 		price2 = $(".arrLoc2 option:selected").prop("title");
-// 		price2 = $(".arrLoc2 option:selected").prop("title");
-		price2 = $(".arrLoc2").attr("selected", true);
-		price2 = price2.prop("title");
+		price2 = $(".arrLoc2 option:selected").prop("id");
 		alert(price2);
 		price2 = price2*1;
 		console.log(price2);	

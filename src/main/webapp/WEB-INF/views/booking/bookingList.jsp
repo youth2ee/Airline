@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-
+<link href="../resources/css/reset.css" rel="stylesheet">
 <link href="../resources/css/booking/bookingList.css" rel="stylesheet">
 <link href="../resources/css/booking/slide.css" rel="stylesheet">
 <c:import url="../template/boot.jsp"></c:import>
@@ -20,33 +20,18 @@
 
 <header>
 header
-
-<table>
-
-
-</table>
-
-
 </header>
 
 <div id="top">
 <div id="topWrap">
 <div id="top1">
-<i class="fa fa-plane" style="font-size:40px;color:white; padding-top: 20px;"></i>
-<h5>출발 : ${bookingVO.depLoc}</h5>
-<h5>도착 : ${bookingVO.arrLoc}</h5>
-<c:if test="${bookingVO.kind == '편도'}">
-편도
-</c:if>
+<i class="fa fa-plane" style="font-size:40px;color:white; padding-top: 20px;"></i><br>
+${bookingVO.depLoc} <i class='fas fa-angle-right' style='font-size:10px;'></i> ${bookingVO.arrLoc}
 </div>
 
 <div id="top2">
-<i class="fa fa-plane" style="font-size:40px;color:white; padding-top: 20px;"></i>
-<h5>출발 : ${bookingVO.arrLoc}</h5>
-<h5>도착 : ${bookingVO.depLoc}</h5>
-<c:if test="${bookingVO.kind == '왕복'}">
-왕복
-</c:if>
+<i class="fa fa-plane" style="font-size:40px;color:white; padding-top: 20px;"></i><br>
+${bookingVO.arrLoc} <i class='fas fa-angle-right' style='font-size:10px;'></i> ${bookingVO.depLoc}
 </div>
 
 <div id="top3">
@@ -55,7 +40,7 @@ header
 <h5>아동 : ${bookingVO.child}명</h5>
 </div>
 
-<div id="top4">4 </div>
+<div id="top4"> </div>
 </div>
 </div>
 
@@ -106,6 +91,7 @@ header
 	<td class="td2t">항공사</td> 
 	<td class="td1t">편명</td> 
 	<td class="td7t">가격</td>  
+	<td class="td7t">예약좌석</td>
 </tr>
 
 <c:forEach items="${DairList}" var="dlist"> 
@@ -180,7 +166,7 @@ header
 	<%-- <td class="td5">${dlist.flightKm}KM</td> --%>
 	<%-- <td class="td6">${dlist.flightTime}분</td>  --%>
 	<td class="td7">${dlist.economyCharge}원</td>  
-	
+	<td class="td7">${195 - dlist.seatTotal}</td> 
 </tr>
 
 <tr class="dhide" style="display: none; background-color: salmon; height: 30px;"><td colspan="7">${dlist.fnum} ${dlist.flightKm}KM</td></tr>
@@ -189,9 +175,6 @@ header
 </div>
 </div>
 </div>
-
-<!--  -->
-
 
 <!--  -->
 
@@ -230,6 +213,7 @@ header
 	<td class="td2t">항공사</td> 
 	<td class="td1t">편명</td> 
 	<td class="td7t">가격</td>  
+	<td class="td7t">예약좌석</td>
 </tr>
 
 <c:forEach items="${AairList}" var="alist"> 
@@ -305,7 +289,7 @@ header
 	<%-- <td class="td5">${dlist.flightKm}KM</td> --%>
 	<%-- <td class="td6">${dlist.flightTime}분</td>  --%>
 	<td class="td7">${alist.economyCharge}원</td>  
-	
+	<td class="td7">${195 - alist.seatTotal}</td>  
 </tr>
 
 <tr class="ahide" style="display: none; background-color: salmon; height: 30px;"><td colspan="7">${alist.fnum}</td></tr>

@@ -54,3 +54,55 @@ section{
 	border-bottom: gray solid 1px;
 	margin-bottom: 30px;
 }
+
+
+.bth > td{
+	padding:10px 0;
+	border-bottom: 1px solid #ddd;
+	background-color: #6d6e70;
+	color: #fff;
+	font-size: 16px;
+	text-align: center;
+	font-weight: normal;
+	width: 100px;
+}
+
+.btb > td{
+	padding:20px 0;
+	border-bottom: 1px solid white;
+	border-top: 1px solid white;
+	text-align: center;
+	background-color: #f1f1f1;
+}
+
+.cnm{
+	white-space: nowrap;
+}
+
+#tpriceTb{
+	margin-left: 926px;
+	font-weight: bolder;
+	font-size: 20px;
+}
+
+.tprice{
+	color: #d60815;
+	padding-left: 5px;
+}
+
+#btn {
+	cursor: pointer;
+	width: 110px;
+	height: 50px;
+	background-color: #d60815;
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 16px;
+	position: relative;
+    left: 1078px;
+    margin-bottom: 100px;
+}
+
