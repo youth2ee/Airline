@@ -92,7 +92,7 @@
 		<div class="tab_nav">
 			<ul>
 				<li class="on"><a href="./limoBook">공항 -> 도시 예매</a></li>
-				<li><a href="#">도시 -> 공항 예매 </a></li>
+				<li class="on"><a href="./limoBook2">도시 -> 공항 예매 </a></li>
 				
 					
 			</ul>
@@ -105,16 +105,16 @@
 					<div class="tab_wrap tab_type1" id="rtrpYnAll">
 						<div class="tab_cont">
 							
-							<p class="check" id="alcnSrchBtn">
-								<!-- 버튼 활성화시 class추가 'active' -->
-								<button type="button" class="btn_confirm ready noHover" onclick="fnAlcnSrch();" style="">조회하기</button>
-								<!-- 170103 class명 추가 class = "btn_confirm ready" -->
-							</p>
-							<p class="check" id="alcnSrchBtn">
-								<!-- 버튼 활성화시 class추가 'active' -->
-								<button type="button" class="btn_confirm ready noHover" onclick="fnAlcnSrch();" style="">조회하기</button>
-								<!-- 170103 class명 추가 class = "btn_confirm ready" -->
-							</p>
+<!-- 							<p class="check" id="alcnSrchBtn"> -->
+<!-- 								버튼 활성화시 class추가 'active' -->
+<!-- 								<button type="button" class="btn_confirm ready noHover" onclick="fnAlcnSrch();" style="">조회하기</button> -->
+<!-- 								170103 class명 추가 class = "btn_confirm ready" -->
+<!-- 							</p> -->
+<!-- 							<p class="check" id="alcnSrchBtn"> -->
+<!-- 								버튼 활성화시 class추가 'active' -->
+<!-- 								<button type="button" class="btn_confirm ready noHover" onclick="fnAlcnSrch();" style="">조회하기</button> -->
+<!-- 								170103 class명 추가 class = "btn_confirm ready" -->
+<!-- 							</p> -->
 						</div>
 					</div>
 				</div>

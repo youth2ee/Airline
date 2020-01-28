@@ -1,5 +1,6 @@
 package com.airline.a1.limo;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,19 +28,45 @@ public class LimoController {
 	@GetMapping("limoBook")
 	public void limoBook()throws Exception{
 	}
+	@GetMapping("limoBook2")
+	public void limoBook2()throws Exception{
+	}
+	
 	
 	@PostMapping("limoBook")
-	public ModelAndView limoBook(List<LimoVO> list) throws Exception{
+	public ModelAndView limoBook(Date [] limoDate, int [] limoPrice, String [] id, String [] depLoc, String [] arrLoc, String [] limoTime, String [] seat, int [] person) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		int result = 0;
-		for (LimoVO limoVO : list) {
-			result = limoService.limoBook(limoVO);
+		for (int i = 0; i < limoDate.length; i++) {
+			LimoVO limoVO = new LimoVO();
+			limoVO.setLimoDate(limoDate[i]);
+			limoVO.setLimoPrice(limoPrice[i]);
+			limoVO.setId(id[i]);
+			limoVO.setDepLoc(depLoc[i]);
+			limoVO.setArrLoc(arrLoc[i]);
+			limoVO.setLimoTime(limoTime[i]);
+			limoVO.setSeat(seat[i]);
+			limoVO.setPerson(person[i]);
+			limoService.limoBook(limoVO);
 		}
-		
-//		if(result >0) {
-//			mv.addObject("limo", limoVO);
-//			mv.setViewName("index");
-//		}
+		return mv;
+	}
+	@PostMapping("limoBook2")
+	public ModelAndView limoBook2(Date [] limoDate, int [] limoPrice, String [] id, String [] depLoc, String [] arrLoc, String [] limoTime, String [] seat, int [] person) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = 0;
+		for (int i = 0; i < limoDate.length; i++) {
+			LimoVO limoVO = new LimoVO();
+			limoVO.setLimoDate(limoDate[i]);
+			limoVO.setLimoPrice(limoPrice[i]);
+			limoVO.setId(id[i]);
+			limoVO.setDepLoc(depLoc[i]);
+			limoVO.setArrLoc(arrLoc[i]);
+			limoVO.setLimoTime(limoTime[i]);
+			limoVO.setSeat(seat[i]);
+			limoVO.setPerson(person[i]);
+			limoService.limoBook(limoVO);
+		}
 		return mv;
 	}
 	
@@ -68,11 +95,6 @@ public class LimoController {
 		System.out.println("hi");
 		ModelAndView mv = new ModelAndView();
 		List<LimoVO> ar = limoService.limoSelect(limoVO);
-		System.out.println(ar.size());
-		System.out.println(limoVO.getArrLoc());
-		System.out.println(limoVO.getDepLoc());
-		System.out.println(limoVO.getLimoTime());
-		System.out.println(limoVO.getLimoDate());
 		mv.addObject("disabled", ar);
 		mv.setViewName("limo/disabled");
 		return mv;
