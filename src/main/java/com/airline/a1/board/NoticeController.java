@@ -60,7 +60,7 @@ public class NoticeController {
 	 public ModelAndView noticeList(Pager pager)throws Exception{
 		 	List<BoardVO> ar = noticeService.noticeList(pager);
 		 	ModelAndView mv = new ModelAndView();
-		/* mv.addObject("board", "notice"); */
+		 	mv.addObject("board", "notice"); 
 		 	mv.addObject("list", ar);
 		 	mv.addObject("pager", pager);
 		 	mv.setViewName("board/boardList");

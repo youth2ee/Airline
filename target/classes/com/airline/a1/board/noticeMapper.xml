@@ -4,14 +4,20 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="com.airline.a1.board.NoticeMapper">
-	<sql id="bs">
-		<choose>
-			<when test="kind == 'kt'">where title like '%'||#{search}||'%'</when>
-			<when test="kind == 'kw'">where writer like '%'||#{search}||'%'</when>
-			<otherwise>where contents like '%'||#{search}||'%'</otherwise>
-		</choose>
-	</sql>
-
+		<sql id="bs">
+					<choose>
+						<when test="kind == 'kt'">
+							where title like concat('%',#{search},'%')
+						</when>
+						<when test="kind == 'kw'">
+							where writer like concat('%', #{search},'%')
+						</when>
+						<otherwise>
+							where contents like concat('%', #{search},'%')
+						</otherwise>
+					</choose>
+			</sql>
+			
 
 <insert id="noticeWrite" parameterType="com.airline.a1.board.BoardVO" useGeneratedKeys="true" keyProperty="num">	
 		insert into notice
@@ -28,7 +34,12 @@
 					order by num desc) N) K
 		where R between #{startRow} and #{lastRow} -->
 		
-		select * 
+
+	<!-- 	select * from notice
+			<include refid="bs"></include>
+		order by num desc -->
+		
+	 select * 
 			from (select
 						@ROWNUM := @ROWNUM + 1 AS ROWNUM, 
 						N.*
@@ -36,7 +47,7 @@
 				 		(select @ROWNUM :=0) R
 				 	<include refid="bs"></include>
 				 	order by num desc) K
-			limit #{startRow}, 10
+			limit #{startRow}, 10 
 		
 </select>
 

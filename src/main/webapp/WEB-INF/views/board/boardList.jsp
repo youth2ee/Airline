@@ -64,9 +64,9 @@
 	  		<form id="frm" action="./${board}List">
 	  			<input type="hidden" id="curPage" value="1" name="curPage">
 	  			<select name="kind">
-	  				<option id="kT" value="kT">Title</option>
-	  				<option id="kW" value="kW">Writer</option>
-	  				<option id="kC" value="kC">Contents</option>
+	  				<option id="kt" value="kt">Title</option>
+	  				<option id="kw" value="kw">Writer</option>
+	  				<option id="kc" value="kc">Contents</option>
 	  			</select>
 	  			
 	  			<input type="text" name="search" value="${pager.search}">
@@ -82,13 +82,13 @@
 	<script type="text/javascript">
 	 	var kind = '${pager.kind}';
 		if(kind == ''){
-				kind = "kT";
+				kind = "kt";
 			}
 		$("#"+kind).prop("selected", true);
 	
 		$('.list').click(function(){
 			$("#curPage").val($(this).attr("id"));
-			$("#frm").sumit();
+			$("#frm").submit();
 			
 			});
 		

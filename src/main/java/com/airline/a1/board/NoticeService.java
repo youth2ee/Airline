@@ -57,7 +57,7 @@ public class NoticeService {
 			return result; 	
 		}
 	
-	public List<BoardVO> noticeList(Pager pager) throws Exception{
+	public List<BoardVO> noticeList(Pager pager)throws Exception{
 		pager.makeRow();
 		pager.makePage(noticeMapper.noticeCount(pager));
 		return noticeMapper.noticeList(pager);

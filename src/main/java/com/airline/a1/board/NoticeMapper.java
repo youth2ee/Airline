@@ -1,5 +1,8 @@
 package com.airline.a1.board;
 
+
+
+
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
