@@ -1,4 +1,4 @@
-package com.airline.a1.sms;
+package com.airline.a1.send;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
