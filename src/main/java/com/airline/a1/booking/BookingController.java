@@ -332,7 +332,6 @@ public class BookingController {
 
 		//
 		String flightBNum = "";
-
 		String memberNum = "111";
 
 		// 어른
@@ -410,8 +409,6 @@ public class BookingController {
 					adult.setDepFnum(dep);
 					adult.setArrFnum(arr);
 					adult = bookingService.priceCount(adult);
-				
-				
 				
 				}
 			} // 어른 반복문 끝

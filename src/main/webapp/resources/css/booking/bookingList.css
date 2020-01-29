@@ -153,14 +153,14 @@ section {
 }
 
 #deptitle {
-	top: 652px;
+	top: 693px;
 	left: 384px;
 	padding-top: 5px;
 	background-color: gray;
 }
 
 #arrtitle {
-	top: 1491px;
+	top: 1533px;
     left: 384px;
 	padding-top: 5px;
 	background-color: gray;
@@ -175,7 +175,6 @@ section {
 }
 
 /*  */
-
 .tiLeft, .tiRight {
 	float: left;
 	padding-top: 7px;

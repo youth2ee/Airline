@@ -50,14 +50,30 @@
 
 	<div class="myinfo">
 	<div class="myinfoWrap">
+
+	
 		<div class="myInfoLeft">
-		
-			<div><h1>세션에서 받아올 이름</h1></div>		
-		
+			<div> 
+				<div id="miname">이가영 님</div> 
+				<span id="miEname">Lee Ga Young</span>
+			</div>
+			
+			<div id="cardInfo">
+				<div>레벨</div>
+				<div>card 번호</div>
+				<div>바코드 / QR코드 / SMS</div>
+			</div>
+			
+			<div style="height: 30px; background-color: green;">
+				여기에는 공지사항을 넣어야하는데 하기싫다.
+			</div>
+			
 		</div>
 		
+		
+
 		<div class="myInfoMiddle">
-			<div class="page" style="width: 500px;">
+			<div class="page" style="width: 500px; margin: 0 auto;">
 				<div class="circles-container bg-white">
 					<div class="circlebar" data-circle-startTime=0
 						data-circle-maxValue="80" data-circle-dialWidth=10
@@ -69,11 +85,13 @@
 				</div>
 			</div>
 		</div>
+		
 		<div class="myInfoRight"></div>
+		
 	</div>
 	</div>
 
-	<section>
+<section>
 
 
 mypage
