@@ -30,15 +30,6 @@ ${dep[0]}년 ${dep[1]}월 ${dep[2]}일<br>
 출발 : ${dep[3]}시 ${dep[4]}분<br>
 도착 : ${dep[8]}시 ${dep[9]}분<br>
 
-<%-- 출발 : ${bTVO.depInfo.depAirportNm}<br>
-도착 : ${bTVO.depInfo.arrAirportNm}<br>
-${bTVO.depInfo.depPlandTime}<br>
-${bTVO.depInfo.arrPlandTime}<br>
-${bTVO.depInfo.vihicleId}<br>
-${bTVO.depInfo.airlineNm}<br>
-<c:if test="${bTVO.kind == '편도'}">
-편도
-</c:if> --%>
 </div>
 
 
@@ -268,7 +259,7 @@ ${arr[0]}년 ${arr[1]}월 ${arr[2]}일<br>
 <select name="childList[${status.index-1}].depCoupon">
 <option>개인할인 선택 안함</option>
 <option selected="selected">[25%] 아이(만2~13세미만)할인</option>
-<option>[50%] 국가유공상이자1~4급 동반 소아1인<option>
+<option>[50%] 국가유공상이자1~4급 동반 소아1인</option>
 <option>[50%] 5.18부상 동반 소아1인</option>
 <option>[50%] 독립유공자 동반 소아1인</option>
 <option>[50%] 1~3급 소아 장애인 할인</option>
@@ -288,7 +279,7 @@ ${arr[0]}년 ${arr[1]}월 ${arr[2]}일<br>
 <select name="childList[${status.index-1}].arrCoupon">
 <option>개인할인 선택 안함</option>
 <option selected="selected">[25%] 아이(만2~13세미만)할인</option>
-<option>[50%] 국가유공상이자1~4급 동반 소아1인<option>
+<option>[50%] 국가유공상이자1~4급 동반 소아1인</option>
 <option>[50%] 5.18부상 동반 소아1인</option>
 <option>[50%] 독립유공자 동반 소아1인</option>
 <option>[50%] 1~3급 소아 장애인 할인</option>
@@ -344,7 +335,6 @@ ${arr[0]}년 ${arr[1]}월 ${arr[2]}일<br>
 <input type="hidden" name="child" value="${bTVO.child}">
 
 <input type="hidden" name="depFnum" value="${bTVO.depFnum}">
-
 <c:if test="${bTVO.kind == '왕복'}">
 <input type="hidden" name="arrFnum" value="${bTVO.arrFnum}">
 </c:if>
