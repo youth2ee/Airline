@@ -56,7 +56,6 @@
 		<div><input type="checkBox" id="chk1"><input type="text" id="text1" ></div>
 		<div><input type="checkBox" id="chk2"><input type="text" id="text2" name="text2"></div>
 		<input type="button" value="테스트" id="btn">
-		<input type="button" value="캡처테스트" id="btn2">
 	</form>
 	<script type="text/javascript">
 	
@@ -71,11 +70,6 @@
 		$("#btn").click(function(){
 			window.open("./eTicket","eTicket","width=700, height=900, toolbar=no, menubar=no, scrollbars=no, resizable=yes")
 			});
-		$("#btn2").click(function(){
-			html2canvas(document.querySelector("#capture")).then(canvas => {
-			    document.body.appendChild(canvas)
-			});
-		});
 		
 	</script>
 </body>
