@@ -436,7 +436,7 @@
 			    var el = document.getElementById("target");
 				var imgData = canvas.toDataURL("image/png");
 				var doc = new jsPDF('p','mm',[297,210]);
-				doc.addImage(imgData, 'png', 10,10,190,95);
+				doc.addImage(imgData, 'png', 0,0,100,50);
 				doc.save('테스트.pdf');
 			});
 		});
