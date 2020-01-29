@@ -37,12 +37,12 @@
 				</ul>
 				<div class="tab_wrap3">
 					<ul class="tab_head t2">
-						<li class="on"><a href="javascript:sharpNothig();" title="선택됨" style="height: 63px;"><span>본인 인증</span></a></li>
-						<li><a href="javascript:sharpNothig();" style="height: 63px;"><span>이메일 인증</span></a></li>
+						<li class="findtype on"><a href="#" id="findbyphone" title="선택됨" style="height: 63px;"><span>본인 인증</span></a></li>
+						<li class="findtype"><a href="#" id="findbyemail" style="height: 63px;"><span>이메일 인증</span></a></li>
 					</ul>
 					
 					<div class="tab_content">
-						<div class="tab_cont on">
+						<div id="divphone" class="tab_cont on">
 							
 							<div class="inner">
 								<h4 class="hidden">본인 인증</h4>
@@ -72,7 +72,8 @@
 							
 						</div>
 						
-						<div class="tab_cont">
+						<div id="divemail" class="tab_cont">
+							<form action="memberidFindbyEmail" method="post">
 							
 							<div class="inner">
 								<h4 class="hidden">이메일 인증</h4>
@@ -92,19 +93,14 @@
 									<tbody>
 									
 										<tr>
-											<th scope="row"><label for="lastName">성</label></th>
+											<th scope="row"><label for="lastName">이름</label></th>
 											<td>
 												
-												<input type="text" id="lastName" name="lastName" placeholder="한글 성 입력 (예: 홍)" title="한글 성 입력 (예: 홍)" style="width:264px;">
-											</td>
-											<th scope="row"><label for="firstName">이름</label></th>
-											<td>
-												
-												<input type="text" id="firstName" name="firstName" placeholder="한글 이름 입력 (예: 길동)" title="한글 이름 입력 (예: 길동)" style="width:264px;">
-											</td>								
+												<input type="text" id="lastName" name="name" placeholder="한글 이름 입력 (예: 홍길동)" title="한글 이름 입력 (예: 홍길동)" style="width:264px;">
+											</td>						
 										</tr>
 										
-										<tr>
+<%-- 										<tr>
 											<th scope="row"><label for="year">생년월일</label></th>
 											<td colspan="3">
 												
@@ -141,12 +137,12 @@
 													</c:forEach>
 												</select>
 											</td>
-										</tr>
+										</tr> --%>
 										<tr>
 											<th scope="row"><label for="emailAddress">이메일</label></th>
 											<td colspan="3">
 												
-												<input type="text" id="emailAddress" nname="emailAddress" placeholder="이메일 입력" title="이메일 아이디 입력" style="width:198px;"> @ &nbsp;
+												<input type="text" id="emailAddress" name="emailAddress" placeholder="이메일 입력" title="이메일 아이디 입력" style="width:198px;"> @ &nbsp;
 												<select id="emailDomain" name="emailDomain" title="이메일 도메인 선택" style="width:180px;">
 													<option value="">직접입력</option>
 													<option value="korea.com">korea.com</option>
@@ -170,15 +166,16 @@
 													<option value="yahoo.co.jp">yahoo.co.jp</option>
 												</select>
 												<input type="text" id="emailDomainText" name="emailDomainText" placeholder="직접입력" title="직접입력" style="width:298px;">
+												<input type="hidden" id="emailsum" name="email">
 											</td>
 										</tr>
 									</tbody>
 								</table>
 								<div class="btn_wrap_riType4">
-									<button type="button" id="btnSearchIDByEmail" class="btn_L red">확인</button>
+									<button id="btnSearchIDByEmail" class="btn_L red">확인</button>
 								</div>
 							</div>
-							
+							</form>
 						</div>
 					</div>
 				</div>
@@ -485,7 +482,55 @@
 	</div>
 </div>
 </div>
+<form action="FindIdResult" method="post" id="findIdResultForm">
+	<input type="hidden" id="findIdResult" name="id">
+</form>
+
 <script type="text/javascript">
+var emailOne="";
+var emailTwo="";
+
+//아이디찾기 방식
+$(".findtype").click(function(){
+	$(".findtype").each(function(){
+		$(this).removeClass('on');
+	});
+
+	$(this).addClass('on');
+	if($(this).children().prop('id')== 'findbyphone' ){
+		$("#divphone").css("display", "block");
+		$("#divemail").css("display","none");
+	}else{
+		$("#divphone").css("display", "none");
+		$("#divemail").css("display","block");
+	}
+	
+});
+
+//도메인 선택
+$("#emailDomain").change(function(){
+	if($("#emailDomain option:eq(0)").prop("selected")){
+		$("#emailDomainText").css("display","inline");
+		$("#emailsum").val(emailOne+'@');
+	}else{
+		$("#emailDomainText").css("display","none");
+		emailTwo = $(this).val();
+		$("#emailsum").val(emailOne+'@'+emailTwo);
+	}
+});
+
+
+//이메일 작업
+$("#emailAddress").blur(function(){
+	emailOne = $(this).val();
+	$("#emailsum").val(emailOne+'@'+emailTwo);
+});
+
+$("#emailDomainText").blur(function(){
+	emailTwo = $(this).val();
+	$("#emailsum").val(emailOne+'@'+emailTwo);
+});
+
 var SetTime = 300;		// 최초 설정 시간(기본 : 초)
 
 function msg_time() {	// 1초씩 카운트
@@ -500,6 +545,8 @@ function msg_time() {	// 1초씩 카운트
 	SetTime--;					// 1초씩 감소
 	if (SetTime < 0) {			// 시간이 종료 되었으면..
 		clearInterval(tid);		// 타이머 해제
+		$("#p_idRule").html('요청 인증 시간이 <span class="col_brown">만료됐습니다. </span> 인증요청을 다시 진행해주세요.');
+		$(".countDown").css("color", "red");
 	}
 }
 
@@ -511,24 +558,38 @@ $("#btn_layerIdChedk").click(function(){
 			$("#p_idRule").html('인증번호를 전송했습니다. <span class="col_brown">숫자 6자리를 </span>입력해주세요.');
 			//function TimerStart2(){ tid=setInterval('msg_time()',1000) };
 			SetTime = 300;
-			setTimeout(function(){
-				$(".countDown").css("display","inline");
-			},500);
+			TimerStart();
+			$(".countDown").css("color", "black");
+			$(".countDown").css("display","inline");
+			
 		}else{
 			$("#p_idRule").html('존재하지 않는 회원입니다. <span class="col_brown">이름, 휴대전화번호를 </span> 다시 확인 후 입력해주세요.');
 		}
 	});
 });
 
-window.onload = function TimerStart(){ tid=setInterval('msg_time()',1000) };
+function TimerStart(){ tid=setInterval('msg_time()',1000) };
 
 $("#btn_layerIdUse").click(function(){
 	var code = $("#input_sms").val();
+	var name = $("#input_Id").val();
+	var phone = $("#input_phone").val();
 	$.post("memberidFindbyPhone",{
-			code : code
+			code : code,
+			name : name,
+			phone : phone
 		},
 		function(data){
-			console.log(data);
+			data = data.trim();
+			if(data == "0"){
+				$("#p_idRule").html('잘못된  <span class="col_brown">인증번호 입니다.</span> 다시 확인 후 입력해주세요.');
+			}else if(data == "1"){
+				$("#p_idRule").html('인증기간이   <span class="col_brown">만료 된 코드입니다.</span> 다시 코드를 발급받아주세요');
+			}else{
+				$("#findIdResult").val(data);
+				$("#findIdResultForm").submit();
+				
+			}
 		}
 		);
 });

@@ -1,14 +1,20 @@
 package com.airline.a1.member;
 
+import java.util.Calendar;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.airline.a1.send.MailService;
 import com.airline.a1.send.SmsService;
 
 @Controller
@@ -19,7 +25,8 @@ public class MemberController {
 	private MemberService memberService;
 	@Autowired
 	private SmsService smsService;
-	
+	@Autowired
+	private MailService mailService;
 	
 	//로그인페이지이동
 	@GetMapping("memberLogin")
@@ -92,8 +99,9 @@ public class MemberController {
 	
 	//아이디찾기
 	@GetMapping("FindId")
-	public void FindId() throws Exception{
-		
+	public ModelAndView FindId(ModelAndView mv) throws Exception{
+		mv.setViewName("member/FindId");
+		return mv;
 	}
 	@ResponseBody
 	@GetMapping("memberidFindbyPhone")
@@ -103,21 +111,51 @@ public class MemberController {
 		int result = 0;
 		if(membersVO != null) {
 			result = 1;
-			int message = smsService.smsSend(membersVO.getPhone());
+			//int message = smsService.smsSend(membersVO.getPhone());
+			Calendar calendar = Calendar.getInstance();
+			Long time = calendar.getTimeInMillis();
+			session.setAttribute("time", time);
+			int message = 123456;
 			session.setAttribute("number", message);
-			session.setMaxInactiveInterval(300);
 		}
 		return result;
 	}
 	
 	@ResponseBody
 	@PostMapping("memberidFindbyPhone")
-	public int memberidFindbyPhone(String code, HttpSession session) throws Exception{
-		int result = 0;
+	public String memberidFindbyPhone(String code, HttpSession session, MembersVO membersVO) throws Exception{
+		String id = "0";
 		String message = session.getAttribute("number").toString();
+		Calendar calendar = Calendar.getInstance();
+		Long time = calendar.getTimeInMillis();
+		time = time - Long.valueOf(session.getAttribute("time").toString());
 		if(code.equals(message)) {
-			result =1;
+			id = "1";
+			if(time < 300000) {
+				membersVO = memberService.memberidFindbyPhone(membersVO);
+				id = membersVO.getId();
+			}
 		}
-		return result;
+		return id;
+	}
+	
+	@PostMapping("memberidFindbyEmail")
+	public int memberidFindbyEmail(MembersVO membersVO, HttpServletRequest request, ModelMap mo, HttpSession session) throws Exception{
+		System.out.println("떴냐");
+		membersVO = memberService.memberidFindbyEmail(membersVO);
+		int id = 0;
+		if(membersVO != null) {
+			id = 1;
+			mailService.mailFindId2(membersVO);
+		}
+		return id;
+	}
+	
+	@PostMapping("FindIdResult")
+	public ModelAndView findIdResult(MembersVO membersVO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("memberVO", membersVO);
+		mv.setViewName("member/FindIdResult");
+		return mv;
 	}
 }

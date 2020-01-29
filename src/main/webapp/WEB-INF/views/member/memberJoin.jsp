@@ -126,7 +126,7 @@
 							<input type="text" id="input_koreaPhoneMiddle" placeholder="중간번호" title="휴대전화 번호 가운데 자리" maxlength="4" style="width:150px;" >- 	
 							<input type="text" id="input_koreaPhoneLast" placeholder="끝 번호" title="휴대전화번호 끝자리" maxlength="4" style="width:150px;" > 		
 							<p class="txt_error_Msg" id="error_koreaPhone" style="display: none;"></p>
-							<input type="text" id="phonesum" name="phone">
+							<input type="hidden" id="phonesum" name="phone">
 						</td>
 
 					</tr>
@@ -159,7 +159,7 @@
 							<input type="text" id="input_emailDomain" placeholder="직접입력" title="직접입력" style="width:298px;"> 
 							<p class="txt_error_Msg" id="error_emailID" style="display: none;"></p>
 							<p class="txt_error_Msg" id="error_emailDomain" style="display: none;"></p>
-							<input type="text" id="emailsum" name="email">
+							<input type="hidden" id="emailsum" name="email">
 						</td>
 					</tr>
 					
@@ -222,13 +222,7 @@ $("#input_pw").keyup(function(){
 	var kor = pw.match(/[ㄱ-ㅎ가-힣ㅏ-ㅣ]/g);
 	var spe = pw.match(/[`~!@#$%^&*()-/'/"/_/+/=/|/?/;/:/,/</./>\\\{\}\[\]]/g);
 	var speun = pw.match(/[%&()+;'",<>]/g);
-	//var spe = pw.match(/[]/);
-	//var spe = pw.match(/[`~!@@#$%^&*|₩₩₩'₩':₩/?]/ig);
-	//var spe = pw.match(/[`~!@#$%^&*|\\\'\";:\/?]/gi);
-	//var spe = pw.match(/[`~!@#$%^&*()-_=+\|\[\]\{\};:,.<>/?]/g);
-	//var spe = pw.match(/[-=+,#/\?:^$.@*"※~&%ㆍ!』\\‘|\(\)\[\]\<\>`\'…》]/i);
-	
-	
+
 	//8자리 이상 체크
 	if(pw.length >7){
 		$(".pwd_rule  > li").eq(0).children().removeClass('unable');

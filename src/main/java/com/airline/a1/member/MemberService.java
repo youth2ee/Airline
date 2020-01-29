@@ -23,7 +23,15 @@ public class MemberService {
 	
 	//회원가입
 	public int memberJoin (MembersVO membersVO) throws Exception{
-		membersVO.setMemberNum(this.mkMemberNum());
+
+		while (true) {
+			membersVO.setMemberNum(this.mkMemberNum());
+			int result = memberMapper.memberNumCheck(membersVO);
+			if(result == 0) {
+				break;
+			}
+		}
+		
 		return memberMapper.memberJoin(membersVO);
 	}
 	

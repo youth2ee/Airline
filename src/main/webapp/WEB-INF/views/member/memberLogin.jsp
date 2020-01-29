@@ -304,23 +304,6 @@ $("#btnLogin").click(function(){
 	$("#loginform").submit();
 });
 
-function sendSms() { 
-	$.ajax({ url: "./sendSms",
-		data: {
-		receiver: "01038209098"
-		},
-		type: "post",
-		success: function(result){ 
-			if (result == "true") {
-				console.log(result);
-			} else {
-				alert("인증번호 전송 실패"); 
-			} 
-		} });}
-function phoneCheck() { 
-	$.ajax({ url: "./smsCheck", type: "post", 
-		data: { code: $("#sms").val() }, success: function(result) { if (result == "ok") { alert("번호 인증 성공"); } else { alert("번호 인증 실패"); } } }); }
-
 
 $(".logintype").click(function(){
 	$(".logintype").each(function(){
