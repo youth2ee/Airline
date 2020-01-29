@@ -7,7 +7,7 @@
 </head>
 <body>
 	<select name="arrLoc" class="arrLoc arrLoc${sec}">
-<!-- 		<option title="11111">도착지</option> -->
+		<option>출발지</option>
 		<c:forEach items="${list}" var="location">
 			<option value="${location.arrLoc}" id="${location.price}" title="${location.price}">${location.arrLoc}</option>	
 		</c:forEach>	

@@ -1,12 +1,13 @@
 package com.airline.a1.limo;
 
+import java.util.List;
+
 public class LimoInfoVO {
 	
 	private int infoNum;
 	private String depLoc;
 	private String arrLoc;
 	private int price;
-	
 	
 	public int getPrice() {
 		return price;

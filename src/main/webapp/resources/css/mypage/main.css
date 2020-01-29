@@ -91,6 +91,7 @@ header {
 .myInfoLeft, .myInfoRight{
 	width: 30%;
 	height: 476px;
+	color: 
 }
 
 .myInfoMiddle{
@@ -140,4 +141,10 @@ section {
 	margin: 0 auto;
 	margin-bottom: 100px;
 }
-
+.circles-container{
+	animation: scale1 1s ;
+}
+@keyframes scale1 {
+    0%   { transform: scale(0) }
+    100%  { transform: scale(1) }
+}
