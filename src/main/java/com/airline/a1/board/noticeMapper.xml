@@ -6,6 +6,11 @@
 <mapper namespace="com.airline.a1.board.NoticeMapper">
 		<sql id="bs">
 					<choose>
+						<when test="kind == 'ka'">
+							where 
+							title like concat('%',#{search},'%')
+							or contents like concat('%', #{search},'%')  
+						</when>
 						<when test="kind == 'kt'">
 							where title like concat('%',#{search},'%')
 						</when>
