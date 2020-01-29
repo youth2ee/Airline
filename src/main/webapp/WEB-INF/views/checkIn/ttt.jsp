@@ -4,6 +4,7 @@
 <html>
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -63,6 +64,9 @@
 			$("#text1").removeAttr('name');
 		}
 	});
+		$("#btn").click(function(){
+			window.open("./eTicket","eTicket","width=700, height=900, toolbar=no, menubar=no, scrollbars=no, resizable=yes")
+			});
 		
 	</script>
 </body>
