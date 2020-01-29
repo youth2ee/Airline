@@ -170,12 +170,15 @@
 		
 	</div>
 	<div class="paging">
-			<a href="#" class="btn_prev">
+			<a href="#" class="btn_first btn_common">
+			</a>
+			<a href="#" class="btn_prev btn_common">
 			</a>			
 			<c:forEach begin="${pager.startNum}" end = "${pager.lastNum}" var="i">
 				<a href="./noticeList?curPage=${i}" class="pagingNo">${i}</a>
 		</c:forEach>
-			<a href="#" class="btn_next"></a>
+			<a href="#" class="btn_next btn_common"></a>
+			<a href="#" class="btn_last btn_common"></a>
 	</div>
 </div>
 
