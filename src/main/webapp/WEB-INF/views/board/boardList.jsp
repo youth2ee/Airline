@@ -94,18 +94,22 @@
 
 <div id="container">
 	<h3>공지사항</h3>
+	<form id="frm" action="./${board}List">
 	<div class="total_search_input">
 		<div class="search_inner">
-			<select class="white common">
+			<select class="white common" name="kind">
 				<option>제목+내용</option>
-				<option>제목</option>
-				<option>내용</option>
+				<option id="kt" value="kt">제목</option>
+				<option id="kc" value="kc">내용</option>
 			</select>
-			<input type="text" id="searchText" placeholder="검색어를 입력하세요." class="common">
+			<input type="hidden" id="curPage" value="1" name="curPage">
+			<input type="text" name="search" id="searchText" class="common" placeholder="검색어를 입력하세요." value="${pager.search}">
 			<button id="btnSearch">검색</button>
 		</div>
 	</div>
-	
+	</form>	
+		
+		
 	<div class="tab_wrap">
 		<ul class="tabs">
 			<li class="tab-link current" data-tab="tab-1">
@@ -143,22 +147,24 @@
 						</div>
 					</li> -->						
 					
+					<c:forEach items="${list}" var = "vo">
 					<li>
 						<div class="left">
 							<div class="title">
 								<a href="#">
-									<em>온라인플랫폼 개인정보처리방침 변경 안내</em>
+									<em>${vo.title}</em>
 								</a>
 							</div>
-							<p class="txt">온라인플랫폼 개인정보처리방침 변경 안내</p>
+							<p class="txt">${vo.contents}</p>
 						</div>
 						<div class="right">
 							<div class="right_sub">
-							<span class="views">조회수:</span>
-							<span class="date">2020.01.29</span>
+							<span class="views">조회수: ${vo.hit}</span>
+							<span class="date">${vo.regDate}</span>
 							</div>
 						</div>
 					</li>
+					</c:forEach>
 				 </ul>	
 			</div>
 		</div>
@@ -172,12 +178,15 @@
 	<div class="paging">
 			<a href="#" class="btn_first btn_common">
 			</a>
-			<a href="#" class="btn_prev btn_common">
-			</a>			
+		    <c:if test = "${pager.curBlock>1}">
+				<a href="./noticeList?curPage=${pager.startNum-1}" class="btn_prev btn_common"></a>	
+			</c:if>
 			<c:forEach begin="${pager.startNum}" end = "${pager.lastNum}" var="i">
 				<a href="./noticeList?curPage=${i}" class="pagingNo">${i}</a>
-		</c:forEach>
-			<a href="#" class="btn_next btn_common"></a>
+			</c:forEach>
+			<c:if test = "${pager.curBlock<pager.totalBlock}">
+			<a href="./noticeList?curPage=${pager.lastNum+1}" class="btn_next btn_common"></a>			
+			</c:if>
 			<a href="#" class="btn_last btn_common"></a>
 	</div>
 </div>
