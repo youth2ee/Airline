@@ -20,8 +20,7 @@
 </head>
 <body>
 <div id="pdfDiv">
-	<table width="100%" border="0" cellpadding="0" cellspacing="0"
-		align="center" class="fullTable">
+	<table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" class="fullTable">
 	<a id="target" style="display: none"></a>
 		<tr>
 			<td height="20"></td>
@@ -435,9 +434,11 @@
 			html2canvas(document.querySelector("#pdfDiv")).then(canvas => {
 			    var el = document.getElementById("target");
 				var imgData = canvas.toDataURL("image/png");
-				var doc = new jsPDF('p','mm',[297,210]);
-				doc.addImage(imgData, 'png', 10,10,190,95);
+				var doc = new jsPDF('p','mm','b5');
+				doc.addImage(imgData, 'png', 0,0);
 				doc.save('테스트.pdf');
+
+				
 			});
 		});
 	</script>
