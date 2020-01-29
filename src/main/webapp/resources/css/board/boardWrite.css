@@ -1,0 +1,91 @@
+@charset "UTF-8";
+
+.writeForm{
+	width: 1180px;
+    margin: 0px auto 100px;
+    border: 1px solid gray;
+}
+
+.writeForm h5{
+	font-size: 23px;
+    font-weight: normal;
+    color: #000;
+    line-height: 1;	
+}
+
+.mar{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.mar span{
+	   color: #555;
+	   font-size: 15px;
+    line-height: normal;
+}
+
+.table_form{
+	border-top: 1px solid #666666;
+	width: 100%;
+	border-collapse: separate;
+    border-spacing: 0;
+}
+
+.table_form th{
+	adding: 25px 25px;
+    border-bottom: 1px solid #ddd;
+    background-color: #9da0a6;
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    font-weight: normal;
+	
+}
+
+
+.table_form td{
+	padding: 15px 25px;
+    border-bottom: 1px solid #ddd;
+}
+
+.common{
+	width: 100%;
+	border: 1px solid #f3f3f3;
+    border-bottom: 1px solid #ddd;
+    background-color: #f3f3f3;
+    font-size: 16px;
+}
+
+
+.full{
+	height: 44px;     
+    padding: 0 15px;
+    color: #222;
+    line-height: 40px;
+    margin-right: 0;
+}
+
+
+.textarea_wrap textarea{ 
+	height: 300px;
+    padding: 5px 15px;
+    box-sizing: border-box;
+    color: #000;
+    line-height: 24px;
+    text-indent: 0px;
+
+}
+
+.common:hover {
+	border: 1px solid #d60815;
+	background-color: #fff;
+}
+
+.txt_count{
+	text-align: right;
+}
+
+.txt_count em{
+	color: #000000;
+}
+}
