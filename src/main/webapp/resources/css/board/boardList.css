@@ -21,7 +21,7 @@ body{
 	display: inline-block;
 	width: 50px;
 	height: 48px;
-	background: #5f6062 url(./image/ico_loca_home.png) center center no-repeat;
+	background: #5f6062 url(/images/board/ico_loca_home.png) center center no-repeat;
 	cursor: pointer; 
 	
 }
@@ -70,7 +70,7 @@ body{
 .white{
 	width: 180px;
 	height:46px;
-	background: #fff url(./image/bg_select_arrow.png) no-repeat right 13px top 50%;
+	background: #fff url(/images/board/bg_select_arrow.png) no-repeat right 13px top 50%;
 	-webkit-appearance:none;
 	padding: 0 45px 0 15px;
 	font-size: 15px;
@@ -135,13 +135,11 @@ ul.tabs{
 ul.tabs li{
 	float:left;
 	display: inline-block;
-/* 	width: 16.37%; */
 	width: 16.666%;
 	height: 63px;
 	line-height: 20px;
 	border-bottom: 1px solid #6d6e71;
     color: #d60815;
-  /*   font-weight: bold; */
     cursor: pointer;
     background: #6d6e70;
     text-align: center;
@@ -171,7 +169,7 @@ ul.tabs li:last-child.current{
 
 ul.tabs li.current span{
 	padding-left: 28px;
-    background: url(./image/ico_tab_on.png) 0 3px no-repeat;
+    background: url(/images/board/ico_tab_on.png) 0 3px no-repeat;
     color: #000;
     font-weight: bold; 
 }
@@ -275,7 +273,7 @@ ul.tabs li.current span{
     height: 30px;
     margin: 0;
     display:inline-block;
-	  background: url(./image/ico_paging.png);
+	  background: url(/images/board/ico_paging.png);
 }
 
 .btn_prev{

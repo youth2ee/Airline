@@ -6,81 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- Latest compiled and minified CSS -->
-<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
-
-<!-- jQuery library -->
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
- -->
-<!-- Latest compiled JavaScript -->
-<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
- -->
 <c:import url="../template/boot.jsp"></c:import>
 <link rel="stylesheet" href="../resources/css/board/boardList.css">
 <link rel="stylesheet" href="../resources/css/asiana/reset.css">
 </head>
 <body>
-<%-- <div class = "container">
-<div class = "contents">
-	<table class = "table table-hover">
-		<tr>
-			<td>NUM</td>
-			<td>TITLE</td>
-			<td>WRITER</td>
-			<td>DATE</td>
-			<td>HIT</td>
-		
-		</tr>
-		<c:forEach items="${list}" var = "vo">
-			<tr>
-				<td>${vo.num}</td>
-				<td>${vo.title}</td>
-				<td>${vo.writer}</td>
-				<td>${vo.regDate}</td>
-				<td>${vo.hit}</td>		
-			</tr>		
-		</c:forEach>
-	
-	</table>
-	
-	<div class= "contents">
-		
-		<c:if test = "${pager.curBlock>1}">
-			<a href="./noticeList?curPage=${pager.startNum-1}">[이전]</a>
-		
-		</c:if>
-		
-		
-		<c:forEach begin="${pager.startNum}" end = "${pager.lastNum}" var="i">
-				<a href="./noticeList?curPage=${i}">${i}</a>
-		</c:forEach>
-		
-		
-		<c:if test = "${pager.curBlock<pager.totalBlock}">
-			<a href="./noticeList?curPage=${pager.lastNum+1}">[다음]</a>
-			
-		</c:if>
-	</div>
-	
-	<div> <!-- 검색창 -->
-	  		<form id="frm" action="./${board}List">
-	  			<input type="hidden" id="curPage" value="1" name="curPage">
-	  			<select name="kind">
-	  				<option id="kt" value="kt">Title</option>
-	  				<option id="kw" value="kw">Writer</option>
-	  				<option id="kc" value="kc">Contents</option>
-	  			</select>
-	  			
-	  			<input type="text" name="search" value="${pager.search}">
-	  			<button>Search</button>
-	  		</form>
-	  	</div>
-
-
-</div>
-</div> --%>
-
-
 <!----- new ------>
 <div class="location_bar">
 	<div class="inner">
@@ -201,9 +131,9 @@
 
 
 
-<!-- paging -->
+
 	<script type="text/javascript">
-	
+		/* paging  */
 		$("#page${pager.curPage}").addClass("on");
 		
 	 	var kind = '${pager.kind}';
@@ -217,11 +147,9 @@
 			$("#frm").submit();
 			
 			});
+
 		
-	</script>
-	
-	<script type="text/javascript">
-	/* tab */
+		/* tab */
 		$('ul.tabs li').click(function(){
 			var tab_id = $(this).attr('data-tab');
 
@@ -230,13 +158,10 @@
 
 		$(this).addClass('current');
 		$("#"+tab_id).addClass('current');
-	});
-	                                                  
-
-						
+		});
 		
 	</script>
-
+	
 </body>
 </html>	
 			
