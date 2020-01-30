@@ -8,6 +8,7 @@
 <title>My Page</title>
     <link href="../resources/css/reset.css" rel="stylesheet">
     <link href="../resources/css/mypage/main.css" rel="stylesheet">
+    <link href="../resources/css/mypage/mypageHeader.css" rel="stylesheet">
 	<c:import url="../template/boot.jsp"></c:import>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	
@@ -20,7 +21,6 @@
     <link rel="stylesheet" type="text/css" href="../resources/assets/skins/firecircle.css">
     <link rel="stylesheet" type="text/css" href="../resources/assets/skins/whitecircle.css">
     <link rel="stylesheet" type="text/css" href="../resources/assets/skins/simplecircle.css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet">
     <script type="text/javascript" src="../resources/assets/circle.js"></script>
 	
 	
