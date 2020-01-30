@@ -32,6 +32,10 @@ public class HomeController {
 		return "index";
 	}
 
+	@GetMapping("indexSearch")
+	public void indexSearch() {
+	}
+	
 }
 
 
