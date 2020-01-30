@@ -57,6 +57,12 @@
 
 .resWrap{
 	z-index: 1;
+	width: 800px;
+	height: 300px;
+	margin: 0 auto;
+	background-color: black;
+	position: relative;
+	top: -198px;
 }
 	
 .weather{
