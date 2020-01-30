@@ -58,26 +58,26 @@
                                 </div>
                             	
                             	<div id="body">
-                                <div class="input-group mid" >
+                                <div class="input-group mid small" >
                                     <label class="label">출발지:</label>
                                     <input class="input--style-1 t1" type="text" name = "depLoc" placeholder="City, region or airport" required="required" id="loc">
                                   <!--   <input type="hidden" id="t2" readonly="readonly" name = "depLoc"> -->
                                 </div>
                                 
-                                  <div class="input-group mid">
+                                  <div class="input-group mid small">
                                     <label class="label">도착지:</label>
                                     <input class="input--style-1" type="text" name="arrLoc" placeholder="City, region or airport" required="required" id = "arrloc" >         
                                 </div>
                                                       
-                              <div class="input-group mid">
-                                            <label class="label">Date:</label>
+                              <div class="input-group mid large" >
+                                            <label class="label">탑승일:</label>
                                             <input class="input--style-1" type="text" name="date" placeholder="yyyy/mm/dd" id="input-start">
                                         </div>
                                 
                                         <div class="input-group mid">
-                                            <label class="label">travellers:</label>
+                                            <label class="label">탑승객:</label>
                                             <div class="input-group-icon" id="js-select-special">
-                                                <input class="input--style-1 input--style-1-small" type="text" name="traveller" value="1 Adult, 0 Children" disabled="disabled" id="info">
+                                                <input class="input--style-1 input--style-1-small" type="text" name="traveller" value="성인 1, 유/소아 0" disabled="disabled" id="info">
                                                 <i class="zmdi zmdi-chevron-down input-icon" style="height: 100%; background-color: transparent;"></i>
                                             </div>
                                             
@@ -88,18 +88,18 @@
                                                      
                                                         <ul class="list-person">
                                                             <li class="list-person__item">
-                                                                <span class="name">Adult</span>
+                                                                <span class="name">성인</span>
                                                                 <div class="quantity quantity1">
-                                                                    <span class="minus">-</span>
-                                                                    <input class="inputQty" type="number" min="0" value="1" name = "adult">
+                                                                    <span class="minus" id="a_minus">-</span>
+                                                                    <input class="inputQty" type="number" min="0" value="1" name = "adult" id="adult">
                                                                     <span class="plus">+</span>
                                                                 </div>
                                                             </li>
                                                             <li class="list-person__item">
-                                                                <span class="name">Child</span>
+                                                                <span class="name">아이</span>
                                                                 <div class="quantity quantity2">
                                                                     <span class="minus">-</span>
-                                                                    <input class="inputQty" type="number" min="0" value="0" name = "child">
+                                                                    <input class="inputQty" type="number" min="0" value="0" name = "child" id="child">
                                                                     <span class="plus">+</span>
                                                                 </div>
                                                             </li>
@@ -113,7 +113,7 @@
                                         
                                    
                                     <div class="col-2">
-                                        <button class="btn-submit" id ="booking_btn" type="submit">search</button>
+                                        <button class="btn-submit" id ="booking_btn" type="button" >search</button>
                                     </div>
                     
                                 </div>
@@ -290,6 +290,9 @@ $('input:radio[name=kind]').click(function(){
 			var loc = $('#loc').val().trim();
 			var arrloc = $('#arrloc').val().trim();
 
+			var child = $('#child').val();
+			var adult = $('#adult').val();
+
 			  $.ajax({
 				url : "airportCheck",
 				data :{
@@ -300,7 +303,18 @@ $('input:radio[name=kind]').click(function(){
 				success : function(data){
 									
 					if(data == true){
-							$('#frm').submit();
+						
+						if(child <= adult){
+							if(adult < 6){
+								$('#frm').submit();	
+
+								}else{
+									alert("예약인원은 성인5명 아이5명까지 가능합니다.")									
+									}							
+							}else{												
+								alert("성인 한 사람당 아이 1명만 허용됩니다.")
+							}
+						
 						}else{
 							alert("출발지나 도착지를 올바르게 입력하세요.");
 							}
@@ -343,7 +357,9 @@ $('#arrloc').focus(function(){
 							}	
 				});	 			
 });
- 
+
+
+
 </script>
 
 
