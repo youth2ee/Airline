@@ -39,11 +39,6 @@
 					order by num desc) N) K
 		where R between #{startRow} and #{lastRow} -->
 		
-
-	<!-- 	select * from notice
-			<include refid="bs"></include>
-		order by num desc -->
-		
 	 select * 
 			from (select
 						@ROWNUM := @ROWNUM + 1 AS ROWNUM, 

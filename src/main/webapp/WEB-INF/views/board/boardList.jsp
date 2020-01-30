@@ -94,11 +94,12 @@
 
 <div id="container">
 	<h3>공지사항</h3>
+	
 	<form id="frm" action="./${board}List">
 	<div class="total_search_input">
 		<div class="search_inner">
 			<select class="white common" name="kind">
-				<option>제목+내용</option>
+				<option id="ka" value="ka">제목+내용</option>
 				<option id="kt" value="kt">제목</option>
 				<option id="kc" value="kc">내용</option>
 			</select>
@@ -175,15 +176,18 @@
 		<div id="tab-6" class="tab-content"></div>
 		
 	</div>
+	
 	<div class="paging">
 			<a href="#" class="btn_first btn_common">
 			</a>
 		    <c:if test = "${pager.curBlock>1}">
 				<a href="./noticeList?curPage=${pager.startNum-1}" class="btn_prev btn_common"></a>	
 			</c:if>
+			
 			<c:forEach begin="${pager.startNum}" end = "${pager.lastNum}" var="i">
-				<a href="./noticeList?curPage=${i}" class="pagingNo">${i}</a>
+				<a href="./noticeList?curPage=${i}" class="pagingNo on">${i}</a>
 			</c:forEach>
+			
 			<c:if test = "${pager.curBlock<pager.totalBlock}">
 			<a href="./noticeList?curPage=${pager.lastNum+1}" class="btn_next btn_common"></a>			
 			</c:if>
@@ -220,18 +224,15 @@
 		$(this).addClass('current');
 		$("#"+tab_id).addClass('current');
 	})
-	
+	                                                  
 	/*paging*/
 		$('.pagingNo').click(function(){	
-		
-			/* $('.pagingNo').removeClass('on'); */	
-			$(this).addClass('on');
-			
+		/* 	var curPage = "<c:out value='${pager.curPage}'/> */
+			var a = $(this).val();                 
+		/* $('.pagingNo').removeClass('on'); */	
+			/*  $(this).addClass('on');  */		
 			});
 	
-	
-		
-		
 	</script>
 
 </body>

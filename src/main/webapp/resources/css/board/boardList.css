@@ -301,6 +301,10 @@ ul.tabs li.current span{
 	vertical-align: super;
 }
 
+.on{
+	color: red;
+}
+
 .btn_last{
 	background-position: 0 -60px;	
 }

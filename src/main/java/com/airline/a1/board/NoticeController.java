@@ -58,6 +58,7 @@ public class NoticeController {
 	 
 	 @GetMapping("noticeList")
 	 public ModelAndView noticeList(Pager pager)throws Exception{
+		 
 		 	List<BoardVO> ar = noticeService.noticeList(pager);
 		 	ModelAndView mv = new ModelAndView();
 		 	mv.addObject("board", "notice"); 
