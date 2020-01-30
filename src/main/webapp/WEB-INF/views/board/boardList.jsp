@@ -94,7 +94,6 @@
 
 <div id="container">
 	<h3>공지사항</h3>
-	
 	<form id="frm" action="./${board}List">
 	<div class="total_search_input">
 		<div class="search_inner">
@@ -178,19 +177,23 @@
 	</div>
 	
 	<div class="paging">
+			
 			<a href="#" class="btn_first btn_common">
 			</a>
-		    <c:if test = "${pager.curBlock>1}">
+		
+		 	  <c:if test = "${pager.curBlock>1}"> 
 				<a href="./noticeList?curPage=${pager.startNum-1}" class="btn_prev btn_common"></a>	
-			</c:if>
+			 </c:if> 
 						
 			<c:forEach begin="${pager.startNum}" end = "${pager.lastNum}" var="i">
-				<a href="./noticeList?curPage=${i}" class="pagingNo on"><span id="i">${i}</span></a>
+
+				<a href="./noticeList?curPage=${i}" class="pagingNo" id="page${i}">${i}</a>
 			</c:forEach>
 			
 			<c:if test = "${pager.curBlock<pager.totalBlock}">
 			<a href="./noticeList?curPage=${pager.lastNum+1}" class="btn_next btn_common"></a>			
 			</c:if>
+			
 			<a href="#" class="btn_last btn_common"></a>
 	</div>
 </div>
@@ -199,6 +202,9 @@
 
 <!-- paging -->
 	<script type="text/javascript">
+	
+		$("#page${pager.curPage}").addClass("on");
+		
 	 	var kind = '${pager.kind}';
 		if(kind == ''){
 				kind = "kt";
@@ -225,25 +231,7 @@
 		$("#"+tab_id).addClass('current');
 	})
 	                                                  
-	/*paging*/
-		$('.pagingNo').click(function(){	
-		/* 	var curPage = "<c:out value='${pager.curPage}'/> */
-		/* 	var a = $(this).val();  */
-		/* $('.pagingNo').removeClass('on'); */	
-			/*  $(this).addClass('on');  */		
 
-
-			
-			});
-
-		window.onload = function () {
-			var curPage = <c:out value='${pager.curPage}'/>
-			var startNum = <c:out value='${pager.startNum}'/>
-			var lastNum = <c:out value='${pager.lastNum}'/>
-				
-				for(var i = startNum; i<= lastNum;i++){
-												
-				};
 						
 			};
 	

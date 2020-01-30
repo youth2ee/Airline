@@ -46,27 +46,23 @@ $(document).ready(function() {
 							<img src="./images/index/index_pic2.jpg" style="width:1910px;">
 						</div>
 						<div style="height: 392px">
-							<img
-								src="https://ozimg.flyasiana.com/temp/image/20191014/a84a6853-a8f4-4465-966a-0088daf7dd91.jpeg">
+							<img src="https://ozimg.flyasiana.com/temp/image/20191014/a84a6853-a8f4-4465-966a-0088daf7dd91.jpeg">
 						</div>
 						<div style="height: 392px">
-							<img
-								src="https://ozimg.flyasiana.com/temp/image/20200103/d7d93511-23fd-4522-9c15-e7a05b8074d9.jpeg">
+							<img src="https://ozimg.flyasiana.com/temp/image/20200103/d7d93511-23fd-4522-9c15-e7a05b8074d9.jpeg">
 						</div>
 						<div style="height: 392px">
-							<img
-								src="https://ozimg.flyasiana.com/temp/image/20200107/820d1923-5e81-4cb3-acf1-4b136d914834.jpeg">
+							<img src="https://ozimg.flyasiana.com/temp/image/20200107/820d1923-5e81-4cb3-acf1-4b136d914834.jpeg">
 						</div>
 						<div style="height: 392px">
-							<img
-								src="https://ozimg.flyasiana.com/temp/image/20191206/eab6f90a-6051-4c1a-a854-37cdd0f6722f.jpeg">
+							<img src="https://ozimg.flyasiana.com/temp/image/20191206/eab6f90a-6051-4c1a-a854-37cdd0f6722f.jpeg">
 						</div>
 					</div>
 					
-					<div> <h1> ha ha ha </h1> </div>
+					<div class="resWrap"> <h1> ha ha ha </h1> </div>
 					
 					
-					<div style="width: 80%; margin: auto; height: 150px;">
+					<div style="width: 80%; margin: auto; height: 150px; position: relative; top: -205px;">
 						<div class="swiper-container">
 							<div class="swiper-wrapper">
 								<div class="swiper-slide"

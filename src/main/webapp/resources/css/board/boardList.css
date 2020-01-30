@@ -302,7 +302,9 @@ ul.tabs li.current span{
 }
 
 .on{
-	color: red;
+	color: #d60815;
+    font-weight: bold;
+    text-decoration: underline;
 }
 
 .btn_last{
