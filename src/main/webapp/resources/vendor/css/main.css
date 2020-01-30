@@ -600,10 +600,11 @@ button {
 	font-weight: 700;
 	white-space: nowrap;
 	margin-right: 15px;
+	margin-top: 9px;
 }
 
 .input--style-1 {
-	font-size: 14px;
+	font-size: 15px;
 	padding: 19px 0;
 	color: #666;
 	font-family: inherit;
@@ -638,7 +639,7 @@ button {
 }
 
 .input--style-1-small {
-	font-size: 12.5px;
+	font-size: 14px;
 	padding: 20.5px 0;
 }
 

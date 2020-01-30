@@ -100,7 +100,7 @@ section {
 .date1, .date2 {
 	float: left;
 	cursor: pointer;
-	padding: 10px 20px;
+	padding: 10px 18.4px;
 	border-bottom: 1px gray solid;
 	border-top: 1px gray solid;
 }
@@ -153,14 +153,14 @@ section {
 }
 
 #deptitle {
-	top: 652px;
+	top: 693px;
 	left: 384px;
 	padding-top: 5px;
 	background-color: gray;
 }
 
 #arrtitle {
-	top: 1491px;
+	top: 1533px;
     left: 384px;
 	padding-top: 5px;
 	background-color: gray;
@@ -175,7 +175,6 @@ section {
 }
 
 /*  */
-
 .tiLeft, .tiRight {
 	float: left;
 	padding-top: 7px;

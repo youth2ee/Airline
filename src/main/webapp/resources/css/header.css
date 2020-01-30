@@ -2,7 +2,6 @@
 
 .header_wrap {
 	height: 120px;
-	background-color: red;
 	display: flow-root;
 }
 
@@ -14,7 +13,6 @@
 }
 
 .header_bottom_inner {
-	background-color: gray;
 	width: 100%;
 	margin: 0 auto;
 	height: 83px;
@@ -24,61 +22,66 @@
 .header_top_menu {
 	width: 1180px;
 	height: 40px;
-	/* background-color: fuchsia; */
 	margin: 0 auto;
-}
-
-div {
-	font-family: 'Noto Sans KR', 'AppeGothic', 'Malgun Gothic', '맑은 고딕',
-		'돋음', 'Dotum', 'Apple SD Gothic Neo', Aria
 }
 
 .menu_topwrap {
 	width: 335px;
 	height: 40px;
-	/* background-color: olive; */
 	float: left;
 }
 
 .menu_topwrap2 {
 	width: 335px;
 	height: 40px;
-	/* background-color: orange; */
 	float: right;
 }
 
 .header_bottom_menu {
 	width: 1180px;
 	height: 83px;
-	background-color: aqua;
 	margin: 0 auto;
 }
 
 .menu_wrap {
-	width: 520px;
 	height: 83px;
-	background-color: lime;
 	margin: 0 auto;
+	float: left;
+	padding-left: 52px;
+}
+
+.menu_wrap_Left, .menu_wrap_Right {
+	float: left;
+}
+
+.menu_wrap_Right {
+	padding-left: 28px;
+}
+
+.r1 {
+	float: left;
+	width: 30px;
+	height: 83px;
+	line-height: 83px;
+	padding: 0 25px;
 }
 
 .menu1 {
-	width: 120px;
 	height: 83px;
 	float: left;
-	background-color: pink;
 	margin-left: 4px;
 	color: black;
 	font-weight: bold;
 	font-size: 18px;
 	line-height: 83px;
 	text-align: center;
+	padding: 0 30px;
 }
 
 .menu2 {
 	width: 136px;
 	height: 83px;
 	float: left;
-	background-color: pink;
 	margin-left: 4px;
 	color: black;
 	font-weight: bold;
@@ -88,11 +91,11 @@ div {
 }
 
 .sub1 {
-	background-color: whitesmoke;
-    z-index: 5000;
-    position: relative;
-    height: 500px
+	z-index: 5000;
+	position: relative;
+	height: 500px
 }
+
 .menu_topwrap {
 	height: 100%;
 	padding: 10px 0 6px;
@@ -103,8 +106,6 @@ div {
 	float: left;
 	font-size: 13px;
 	line-height: normal;
-	font-family: 'Noto Sans KR', 'AppeGothic', 'Malgun Gothic', '맑은 고딕',
-		'돋음', 'Dotum', 'Apple SD Gothic Neo', Arial, Helvetica, sans-serif;
 }
 
 .menu_topwrap2 {
@@ -117,8 +118,6 @@ div {
 	float: left;
 	font-size: 13px;
 	line-height: normal;
-	font-family: 'Noto Sans KR', 'AppeGothic', 'Malgun Gothic', '맑은 고딕',
-		'돋음', 'Dotum', 'Apple SD Gothic Neo', Arial, Helvetica, sans-serif;
 }
 
 .li1:before {
@@ -130,4 +129,3 @@ div {
 	border-left: 1px solid #ccc;
 	margin: 0 15px;
 }
-

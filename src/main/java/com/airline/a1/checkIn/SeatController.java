@@ -16,7 +16,17 @@ import com.airline.a1.booking.BookingTicketVO;
 public class SeatController {
 	@Autowired
 	private SeatService seatService;
+
+	@GetMapping("captureTest")
+	public void captureTest() {
+
+	}
 	
+	@GetMapping("eTicket")
+	public void eTicket() {
+
+	}
+
 	@GetMapping("ttt")
 	public void ttt() {
 
@@ -113,8 +123,8 @@ public class SeatController {
 			depSeatVO.setFnum(seatDataVO.getDepFNum());
 			depSeatVO.setFlightNum(depBookingTicketVO2.getFlightBNum());
 			depSeatVO.setSeatName(depSeat[i]);
-			//depSeatResult = seatService.seatBook(depSeatVO);
-			//depUpdateResult = seatService.updateFlightNumDep(depBookingTicketVO2);
+			// depSeatResult = seatService.seatBook(depSeatVO);
+			// depUpdateResult = seatService.updateFlightNumDep(depBookingTicketVO2);
 			if (depSeatResult + depUpdateResult == 2)
 				depInsertCheck++;
 			depFlightNum = depBookingTicketVO2.getFlightBNum();
@@ -140,8 +150,8 @@ public class SeatController {
 				arrSeatVO.setFnum(seatDataVO.getArrFNum());
 				arrSeatVO.setFlightNum(arrBookingTicketVO2.getFlightBNum());
 				arrSeatVO.setSeatName(arrSeat[j]);
-				//arrSeatResult = seatService.seatBook(arrSeatVO);
-				//arrUpdateResult = seatService.updateFlightNumDep(arrBookingTicketVO2);
+				// arrSeatResult = seatService.seatBook(arrSeatVO);
+				// arrUpdateResult = seatService.updateFlightNumDep(arrBookingTicketVO2);
 				if (arrSeatResult + arrUpdateResult == 2)
 					arrInsertCheck++;
 			}

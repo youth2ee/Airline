@@ -24,9 +24,9 @@ where A.depAirportNm = #{depLoc} and A.arrAirportNm = #{arrLoc} and A.depPlandTi
 	select * from flightData where fnum=#{fnum}
 </select>
 
-<insert id="bookingInsert" parameterType="com.airline.a1.booking.BookingTicketVO">
+<insert id="bookingInsert" parameterType="com.airline.a1.booking.BookingTicketVO" useGeneratedKeys="true" keyProperty="bnum">
 insert into bookingTicket values 
-(null, #{bookingNum}, #{flightBNum}, #{kind}, #{adult}, #{child}, #{depFnum}, #{arrFnum}, 
+(#{bnum}, #{bookingNum}, #{flightBNum}, #{kind}, #{adult}, #{child}, #{depFnum}, #{arrFnum}, 
 now(), #{resEmail}, #{resECheck}, #{resPhone}, #{resPCheck}, #{gender}, #{name}, #{birth}, #{memberNum}, #{id})
 </insert>
 

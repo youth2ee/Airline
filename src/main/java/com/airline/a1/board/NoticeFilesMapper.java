@@ -10,4 +10,5 @@ import org.springframework.stereotype.Repository;
 public interface NoticeFilesMapper {
 
 		public int noticeFileWrite(List<NoticeFilesVO> noticeFilesVOs)throws Exception;
+		
 }
