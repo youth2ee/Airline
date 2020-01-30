@@ -94,7 +94,7 @@
 
 <div id="container">
 	<h3>공지사항</h3>
-	
+	<input type="text" value="${pager.curPage}">
 	<form id="frm" action="./${board}List">
 	<div class="total_search_input">
 		<div class="search_inner">
@@ -185,7 +185,7 @@
 			</c:if>
 			
 			<c:forEach begin="${pager.startNum}" end = "${pager.lastNum}" var="i">
-				<a href="./noticeList?curPage=${i}" class="pagingNo on">${i}</a>
+				<a href="./noticeList?curPage=${i}" class="pagingNo" id="page${i}">${i}</a>
 			</c:forEach>
 			
 			<c:if test = "${pager.curBlock<pager.totalBlock}">
@@ -199,6 +199,7 @@
 
 <!-- paging -->
 	<script type="text/javascript">
+		$("#page${pager.curPage}").addClass("on");
 	 	var kind = '${pager.kind}';
 		if(kind == ''){
 				kind = "kt";
