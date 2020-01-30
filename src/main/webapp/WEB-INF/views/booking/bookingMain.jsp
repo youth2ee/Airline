@@ -333,6 +333,9 @@ $('input:radio[name=kind]').click(function(){
  
  /***** 공항유효성검사  끝*****/
  
+ $('#loc').keydown(function(){
+		 $("#arrloc").val("");	
+	 });
  
  
  
