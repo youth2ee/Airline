@@ -1,0 +1,55 @@
+@charset "UTF-8";
+
+.bx-wrapper .bx-pager.bx-default-pager a{
+    background: #f96262;
+}
+.bx-wrapper .bx-pager.bx-default-pager a:hover, .bx-wrapper .bx-pager.bx-default-pager a.active, .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #fff;
+}
+.swiper-container {
+    width: 100%;
+    height: 180px;
+    margin: 20px auto;
+}
+.bx-wrapper {
+	border: none;
+	height: 500px;
+}
+
+.bx-wrapper .bx-controls.bx-has-controls-auto.bx-has-pager .bx-pager {
+	position: absolute;
+	margin-left: 890px;
+	margin-bottom: 40px;
+}
+
+.swiper-container {
+	width: 100%;
+	height: 300px;
+	margin: 20px auto;
+}
+
+.swiper-slide {
+	text-align: center;
+	font-size: 18px;
+	background: #fff;
+	/* Center slide text vertically */
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+}
+.swiper-slider{
+	width: 280px;
+	height : 180px;
+}
+.txt1 {
+	float: right;
+}

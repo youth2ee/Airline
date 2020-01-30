@@ -12,4 +12,5 @@ public class SeatDataVO {
 	private String depSeat;
 	private int arrFNum;
 	private String arrSeat;
+	private int people;
 }	

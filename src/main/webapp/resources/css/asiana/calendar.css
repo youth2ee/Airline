@@ -1,0 +1,80 @@
+@charset "utf-8";
+
+/* datepicker 멀티 css */
+.compareCalendar .ui-datepicker-multi {position:relative; width:100% !important; height:100%;}
+.compareCalendar .ui-datepicker-group {position:relative; float:left; width:50%; padding:30px 40px 46px 40px; box-sizing:border-box;}
+.compareCalendar .ui-datepicker-prev {display:block; position:absolute; left:14px; top:180px; width:15px; height:27px; background:https://flyasiana.com/C/pc/image/common/btn_preC.png) 0 0 no-repeat; text-indent:-9999px; cursor:pointer;}
+.compareCalendar .ui-datepicker-prev.ui-state-disabled {background:url(https://flyasiana.com/C/pc/image/common/btn_dispreC.png) 0 0 no-repeat;}
+.compareCalendar .ui-datepicker-next {display:block; position:absolute; right:14px; top:180px; width:15px; height:27px; background:https://flyasiana.com/C/pc/image/common/btn_nextC.png) 0 0 no-repeat; text-indent:-9999px; cursor:pointer;}
+.compareCalendar .ui-datepicker-next.ui-state-disabled {background:https://flyasiana.com/C/pc/image/common/btn_disnextC.png) 0 0 no-repeat;}
+.compareCalendar .ui-datepicker-title {margin-bottom:25px; font-size:24px; font-weight:normal; text-align:center;}
+.compareCalendar .ui-datepicker-calendar thead th {width:75px; height:42px; padding:0;font-size:14px; color:#333; font-weight:normal;text-align: center;background:#fff;border:none;}
+.compareCalendar .ui-datepicker-calendar thead th.ui-datepicker-week-end:first-child {color:#e30613;}
+.compareCalendar .ui-datepicker-calendar tbody td {width:75px; height:42px; padding:0;font-size:14px; color:#333; font-weight:normal; text-align:center; box-sizing:border-box;border:none;}
+.compareCalendar .ui-datepicker-calendar tbody td a {position:relative; display:block; line-height:42px; box-sizing:border-box;}
+.compareCalendar .ui-datepicker-calendar tbody td.ui-datepicker-today span {position:relative; display:block; line-height:42px; box-sizing:border-box;}
+.compareCalendar .ui-datepicker-calendar tbody td.ui-datepicker-today a:before,
+.compareCalendar .ui-datepicker-calendar tbody td.ui-datepicker-today span:before {display:block; content:""; position:absolute; left:0; top:0; width:71px; height:40px; border:1px solid #333;}
+.compareCalendar .ui-datepicker-calendar tbody td.ui-datepicker-today .txt_today {display:block; position:absolute; left:0; bottom:0; width:100%; height:15px; text-align:center; color:#222; font-size:11px; line-height:1;}
+.compareCalendar .ui-datepicker-calendar tbody td.ui-datepicker-today .ui-state-active .txt_today {color:#fff;}
+.compareCalendar .ui-datepicker-calendar tbody td.ui-state-disabled {color:#999;background-color: #fff;}
+/*가는 날: start , 오는 날: end*/
+.compareCalendar .ui-datepicker-calendar .startDay a {background-color:#d60815; color:#fff;}
+.compareCalendar .ui-datepicker-calendar .startDay a:after {display:block; content:""; position:absolute; left:100%; top:0; width:10px; height:42px; background:https://flyasiana.com/C/pc/image/common/bg_calender_bulL.png) 0 0 no-repeat;z-index: 1;}
+.compareCalendar .ui-datepicker-calendar .startDay a:before {display:block; border:0px !important;}
+.compareCalendar .ui-datepicker-calendar .endDay a {background-color:#d60815; color:#fff;}
+.compareCalendar .ui-datepicker-calendar .endDay a:before {display:block; content:""; position:absolute; right:100%; top:0; width:10px; height:42px; background:https://flyasiana.com/C/pc/image/common/bg_calender_bulR.png) 0 0 no-repeat;}
+.compareCalendar .ui-datepicker-calendar .endDay a:before {display:block; border:0px !important;}
+/*가는 날 ~ 오는 날 기간*/
+.compareCalendar .dp-highlight .ui-state-default {background-color:#FAF2F4; color:#000000;}
+ 
+.calendar_layer {display:none; position:absolute; top:0; left:0; z-index:300; width:1180px; height:auto; border:1px solid #ccc; background:#fff; box-shadow:rgba(0,0,0,.05) 5px 5px 3px;box-sizing: border-box;}
+.calendar_layer:after {display:block; content:""; clear:both; position:absolute; left:50%; top:0; z-index:1; width:1px; height:100%; background-color:#eee;}
+.calendar_layer .calendar_top {position:relative; height:57px; z-index:2; padding:7px 25px; background-color:#fff; border-bottom:1px solid #eee; box-sizing:border-box; text-align:left;}
+.calendar_layer .calendar_top select {padding-right:28px; border:none; font-size:18px; color:#000;}
+
+/*table 안에 있는 달력*/
+.relative_calendar {display:inline-block; position:relative;}
+
+/* 캘린더 닫기 버튼 class 변경 */
+.calendar_layer .btn_cal_close{display:inline-block; position:absolute; top:20px; right:25px; z-index:3; width:22px; height:22px; background:url('https://flyasiana.com/C/pc/image/common/btn_close_gray2.png') 0 0 no-repeat;}
+.calendar_layer .cal_reset{display:inline-block; position:absolute; top:20px; right:65px; z-index:3; width:19px; height:19px; background:url('https://flyasiana.com/C/pc/image/common/btn_calen_reset.png') 0 0 no-repeat;}
+.calendar_layer .cal_status{display:inline-block; position:absolute; top:10px; right:551px; z-index:3; font-size: 24px;font-weight: normal;text-align: center;}
+.calendar_layer .cal_title{display:inline-block; position:absolute; top:10px; right:551px; z-index:3;font-size: 24px;font-weight: normal;text-align: center;}
+.calendar_layer .cal_status02{display:inline-block; position:absolute; top:11px; right:551px; z-index:3;font-size: 24px;font-weight: normal;text-align: center;}
+.itinerary_calendar .txt_round_trip {position:absolute;top:25px;left:25px;line-height:1;}
+.itinerary_calendar .txt_round_trip span {font-size:20px;}
+.itinerary_calendar .txt_round_trip span:nth-child(1),
+.itinerary_calendar .txt_round_trip span:nth-child(3) {font-family:'latofont'; font-size:24px; font-weight:bold;color:#000;}
+
+
+/* 2017-11-09 추가 */
+.itinerary_calendar input[type="text"].datepicker {text-indent:-9999px;}
+.itinerary_calendar input[data-type="single"].datepicker {text-indent:0;}
+/* 로그인 달력 input 값 */
+.login_wrap .itinerary_calendar input[type="text"].datepicker {text-indent:0;}
+
+
+.summary_wrap .sm_top .input_wrap .calendar_layer {top:55px !important;}
+
+/* full case */
+.itinerary_calendar.full {width:100%;}
+.itinerary_calendar.full:after {display:block; content:""; position:absolute; left:50%; top:15px; width:1px; height:70px; background-color:#ddd;}
+.itinerary_calendar.full:before {display:block; content:""; position:absolute; left:50%; bottom:16px; width:19px; height:22px; margin-left:-34px; z-index:20; background:url('https://flyasiana.com/C/pc/image/common/icon_calendar.png') 0 0 no-repeat;}
+.itinerary_calendar.full .txt_round_trip {width:100%; box-sizing:border-box;}
+.txt_arrive03 {display:block; position:absolute; left:50%; top:0;}
+.txt_arrive04 {display:block; position:absolute; left:50%; top:2px; margin-left:100px;}
+.spot_place.txt_arrived {left:50% !important; margin-left:25px;}
+
+
+/*오즈드림페어*/
+.ozstyleCalendar .ui-datepicker-calendar tbody td {width:75px; height:42px; padding:0;font-size:14px; color:#333; font-weight:normal; text-align:center; box-sizing:border-box;border:none;background-color:#e4e0ee;} 
+/*가는 날: start , 오는 날: end*/
+.ozstyleCalendar .ui-datepicker-calendar .startDay a {background-color:#d60815; color:#fff;}
+.ozstyleCalendar .ui-datepicker-calendar .startDay a:after {display:block; content:""; position:absolute; left:100%; top:0; width:10px; height:42px; background:https://flyasiana.com/C/pc/image/common/bg_calender_bulL.png) 0 0 no-repeat;z-index: 1;}
+.ozstyleCalendar .ui-datepicker-calendar .startDay a:before {display:block; border:0px !important;}
+.ozstyleCalendar .ui-datepicker-calendar .endDay a {background-color:#d60815; color:#fff;}
+.ozstyleCalendar .ui-datepicker-calendar .endDay a:before {display:block; content:""; position:absolute; right:100%; top:0; width:10px; height:42px; background:https://flyasiana.com/C/pc/image/common/bg_calender_bulR.png) 0 0 no-repeat;}
+.ozstyleCalendar .ui-datepicker-calendar .endDay a:before {display:block; border:0px !important;}
+/*가는 날 ~ 오는 날 기간*/
+.ozstyleCalendar .dp-highlight .ui-state-default {background-color:#FAF2F4; color:#000000;}

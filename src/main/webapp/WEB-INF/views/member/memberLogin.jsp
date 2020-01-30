@@ -81,7 +81,7 @@
 									<div class="left">
 										<ul class="login_link">
 											<li>
-												<a id="btnIDSearch" href="javascript:;"><span class="col_black">아이디 찾기</span></a> 
+												<a id="btnIDSearch" href="./FindId"><span class="col_black">아이디 찾기</span></a> 
 											</li>
 											<li>
 												<a id="btnAcnoSearch" href="javascript:;"><span class="col_black">회원번호 찾기</span></a> 

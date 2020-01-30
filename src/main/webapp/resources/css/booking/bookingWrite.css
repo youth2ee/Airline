@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 header {
-	height: 83px;
+	height: 123px;
 }
 
 section {
@@ -144,3 +144,20 @@ input[type="checkbox"] + label {
     line-height: 18px;
 }
 /* checkbox 끝  */
+
+
+#btn {
+	cursor: pointer;
+	width: 110px;
+	height: 50px;
+	background-color: #d60815;
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 16px;
+	position: relative;
+    left: 1078px;
+    margin-bottom: 100px;
+}

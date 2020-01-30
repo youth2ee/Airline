@@ -10,5 +10,7 @@ public class MembersVO {
 	private String name;
 	private String phone;
 	private String email;
+	private String memberNum;
+	private int mileage;
 
 }

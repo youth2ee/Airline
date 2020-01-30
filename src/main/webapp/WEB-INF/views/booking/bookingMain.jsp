@@ -11,10 +11,11 @@
     <meta name="description" content="Colrolib Templates">
     <meta name="author" content="Colrolib">
     <meta name="keywords" content="Colrolib Templates">
+    <link href="../resources/css/reset.css" rel="stylesheet">
 	<c:import url="../template/boot.jsp"></c:import>
 	
     <!-- Title Page-->
-    <title>Au Form Wizard</title>
+    <title>tt</title>
 	
     <!-- Icons font CSS-->
     <link href="../resources/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
@@ -60,21 +61,25 @@
                             	<div id="body">
                                 <div class="input-group mid small" >
                                     <label class="label">출발지:</label>
-                                    <input class="input--style-1 t1" type="text" name = "depLoc" placeholder="City, region or airport" required="required" id="loc">
+                                    <input class="input--style-1 t1" type="text" name = "depLoc" placeholder="지역 또는 공항명" required="required" id="loc">
                                   <!--   <input type="hidden" id="t2" readonly="readonly" name = "depLoc"> -->
                                 </div>
                                 
                                   <div class="input-group mid small">
                                     <label class="label">도착지:</label>
-                                    <input class="input--style-1" type="text" name="arrLoc" placeholder="City, region or airport" required="required" id = "arrloc" >         
+                                    <input class="input--style-1" type="text" name="arrLoc" placeholder="지역 또는 공항명" required="required" id = "arrloc" >         
                                 </div>
                                                       
+
                               <div class="input-group mid large" >
                                             <label class="label">탑승일:</label>
+
+
                                             <input class="input--style-1" type="text" name="date" placeholder="yyyy/mm/dd" id="input-start">
                                         </div>
                                 
                                         <div class="input-group mid">
+
                                             <label class="label">탑승객:</label>
                                             <div class="input-group-icon" id="js-select-special">
                                                 <input class="input--style-1 input--style-1-small" type="text" name="traveller" value="성인 1, 아이 0" disabled="disabled" id="info">
@@ -113,7 +118,9 @@
                                         
                                    
                                     <div class="col-2">
-                                        <button class="btn-submit" id ="booking_btn" type="button" >search</button>
+
+                                        <button class="btn-submit" id ="booking_btn" type="button" >검색</button>
+
                                     </div>
                     
                                 </div>
