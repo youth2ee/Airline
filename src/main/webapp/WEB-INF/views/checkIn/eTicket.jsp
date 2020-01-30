@@ -49,7 +49,7 @@
 												<tbody>
 													<tr>
 														<td align="left"><a href="../"><img 
-															src=""
+															src="../resources/newni/logo.png"
 															alt="logo" border="0" style="width: 50%"/></a></td>
 													</tr>
 													<tr class="hiddenMobile">
