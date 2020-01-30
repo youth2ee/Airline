@@ -95,6 +95,27 @@ $(document).ready(function() {
 				style="background: url(https://flyasiana.com/C/pc/image/main/bg_section02_default.jpg); background-size: 1920px">
 				<div class="intro">
 					<h1>Keep it simple!</h1>
+					<div class="weather">
+							<select name="airLine" id="weather_sel" >
+								<option value="RKSI/인천공항/1">인천공항</option>
+								<option value="RKSS/김포공항/2">김포공항</option>
+								<option value="RKNY/양양공항/3">양양공항</option>
+								<option value="RKTU/청주공항/4">청주공항</option>
+								<option value="RKTN/대구공항/5">대구공항</option>
+								<option value="RKJB/무안공항/6">무안공항</option>
+								<option value="RKJY/여수공항/7">여수공항</option>
+								<option value="RKPK/김해공항/8">김해공항</option>
+								<option value="RKPU/울산공항/9">울산공항</option>
+								<option value="RKPC/제주공항/10">제주공항</option>
+							</select>
+							<button id="weather_select">선택</button>
+							<div id="weather_view">
+								${weather}
+								<h1>===============================================</h1>
+								${weather2}
+							</div>	
+					</div>
+					
 				</div>
 			</div>
 			<div class="section" id="section2"
@@ -192,6 +213,24 @@ $(document).ready(function() {
 			slideWidth : 1920,
 			slideHeight : 500
 		});
+		
+/* 			$.ajax({
+				type:'get',
+				dataTye:'html',
+				url:"./weather/weatherInfo",
+				success:function(data){
+					$('.weather').html(data);
+				}
+			}); */
+
+$("#weather_select").click(function(){
+	var weather = $("#weather_sel").val();
+	$.get("weather/weatherInfo?airLine="+weather, function(data){
+		data = data.trim();
+		$("#weather_view").html(data);
+	});
+	
+});
 	</script>
 </body>
 </html>

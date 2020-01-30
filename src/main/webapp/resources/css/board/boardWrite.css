@@ -3,7 +3,7 @@
 .writeForm{
 	width: 1180px;
     margin: 0px auto 100px;
-    border: 1px solid gray;
+  
 }
 
 .writeForm h5{
@@ -11,6 +11,20 @@
     font-weight: normal;
     color: #000;
     line-height: 1;	
+}
+#wrap_container{
+	width: 1180px;
+    margin: 0px auto 100px;
+}
+
+#wrap_container h3{
+	margin: 60px 0 50px 0;
+    font-size: 40px;
+    color: #000;
+    text-align: center;
+    font-weight: normal;
+    line-height: 1;
+	
 }
 
 .mar{
@@ -32,14 +46,15 @@
 }
 
 .table_form th{
-	adding: 25px 25px;
+	
+    padding: 25px 25px;
     border-bottom: 1px solid #ddd;
     background-color: #9da0a6;
     color: #fff;
     font-size: 16px;
     text-align: center;
     font-weight: normal;
-	
+    	
 }
 
 
@@ -76,16 +91,137 @@
 
 }
 
-.common:hover {
+.textWrite:hover {
 	border: 1px solid #d60815;
 	background-color: #fff;
 }
 
 .txt_count{
 	text-align: right;
+	font-size: 15px;
 }
 
 .txt_count em{
+	color: #000000;
+}
+
+.jfile_wrap{
+
+}
+
+.addfile{
+	position: absolute;
+	clip: rect(0px,0px,0px,0px);
+}
+
+
+.jfilestyle input[type="text"]{
+    color: #000;
+    width: 646px;
+    height: 44px;
+   	padding: 0 15px;
+   	margin-right: 10px;
+   	font-size: 16px;
+    line-height: 40px;
+    
+}
+
+.jfilestyle {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn_detlete{
+	display: inline-block;
+	position: absolute;
+    top: 15px;
+    right: 145px;
+	width: 20px;
+    height: 20px;
+    background-image: url(https://vochome.flyasiana.com/images/newVoc/btn_seat_unsel.png);
+    vertical-align: middle;
+    color: #222;
+    font-size: 15px;
+    line-height: normal;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+
+.search{
+	display: block;
+	height: 46px;
+	padding: 0 30px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	line-height: 46px;
+	cursor: pointer;
+	box-sizing: border-box;
+	margin: 0;
+}
+
+.search:hover{
+	border: 1px solid #000000;
+}
+
+.addFileName{
+	cursor: default;
+}
+
+.addFileName:hover{
+	  background-color: #e8e8e8;
+	
+}
+
+.addFileName::placeholder{
+	font-weight: bold;
+	
+}
+
+.list_type{
+	margin-top: 15px;
+	padding-left: 30px;
+	text-indent: -10px;
+    line-height: 1.5;
+    font-size: 15px;
+    color: #555;
+    font-weight: bold;
+	
+}
+
+.list_type >li{
+	margin-bottom: 10px;
+	
+}
+
+.btn_wrap{
+	margin-top: 50px;
+	text-align: center;
+	
+}
+
+#btnTransfer{
+	border: 1px solid #d60815;
+    background-color: #d60815;
+    color: #fff;
+	border-radius: 3px;
+	min-width: 150px;
+    padding: 13px 40px 14px;
+    font-size: 18px;
+    min-height: 56px;
+    line-height: 21px;
+    text-align: center;
+}
+
+#btnTransfer:hover{
+	border: 1px solid #b3000b;
+    background-color: #b3000b;	
+}
+
+#counter{
 	color: #000000;
 }
 }
