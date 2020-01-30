@@ -62,7 +62,7 @@ $(document).ready(function() {
 					<div class="resWrap"> <h1> ha ha ha </h1> </div>
 					
 					
-					<div style="width: 80%; margin: auto; height: 150px;">
+					<div style="width: 80%; margin: auto; height: 150px; position: relative; top: -205px;">
 						<div class="swiper-container">
 							<div class="swiper-wrapper">
 								<div class="swiper-slide"
