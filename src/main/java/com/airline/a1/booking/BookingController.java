@@ -402,7 +402,9 @@ public class BookingController {
 					flightDataVO.setFnum(adult.getDepFnum());
 					adult.setArrInfo(bookingService.oneSelect(flightDataVO));
 					bookingTicketVO.setArrInfo(bookingService.oneSelect(flightDataVO));
-
+					
+					adult.setBnum(null);
+					
 					bookingService.bookingInsert(adult);
 
 					// 가격
@@ -481,6 +483,8 @@ public class BookingController {
 					child.setArrInfo(bookingService.oneSelect(flightDataVO));
 					bookingTicketVO.setArrInfo(bookingService.oneSelect(flightDataVO));
 
+					child.setBnum(null);
+					
 					bookingService.bookingInsert(child);
 
 					// 가격
