@@ -56,9 +56,28 @@
 
 .weather{
 	margin: 0 auto;
+	margin-left: 500px;
 	width: 900px;
 	height: 400px;
-	background-color: rgba(136, 176, 75, 0.3);
 	margin-top: 200px;
-	
+	background-color:rgba(255,255,255,0.4);
+	position: absolute; 
 }
+.weather_wrap{
+	width: 620px;
+	height: 300px;
+	margin-left: 140px;
+	background-color:rgba(255,255,255,0.2);
+	position: relative;
+	top: 30px;
+}
+#weather_sel{
+	background-color: transparent;
+	width: 200px;
+	height: 40px;
+}
+
+#weather_select {
+	background-color: transparent;
+}
+

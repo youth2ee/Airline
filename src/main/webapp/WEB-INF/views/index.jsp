@@ -94,7 +94,7 @@
 					<h1>Keep it simple!</h1>
 					<div class="weather">
 							<select name="airLine" id="weather_sel" >
-								<option value="RKSI/인천공항/1">인천공항</option>
+								<option value="RKSI/인천공항/1" style='background-color:rgba(255,255,255,0.2)'>인천공항</option>
 								<option value="RKSS/김포공항/2">김포공항</option>
 								<option value="RKNY/양양공항/3">양양공항</option>
 								<option value="RKTU/청주공항/4">청주공항</option>
@@ -105,12 +105,18 @@
 								<option value="RKPU/울산공항/9">울산공항</option>
 								<option value="RKPC/제주공항/10">제주공항</option>
 							</select>
-							<button id="weather_select">선택</button>
+<!-- 							<button id="weather_select">선택</button> -->
+							<img alt="search" src="../images/search.png" style="width: 38px; height: 38px; cursor: pointer; top: 13px; position: relative; top: 15px;" id="weather_select">
+						<div class="weather_wrap">
 							<div id="weather_view">
-								${weather}
-								<h1>===============================================</h1>
-								${weather2}
-							</div>	
+								<div class="weather_today">
+									${weather}
+								</div>
+								<div class="weather_next">
+									${weather2}
+								</div>
+							</div>
+						</div>	
 					</div>
 					
 				</div>
@@ -199,14 +205,33 @@
 				}
 			}); */
 
-$("#weather_select").click(function(){
-	var weather = $("#weather_sel").val();
-	$.get("weather/weatherInfo?airLine="+weather, function(data){
-		data = data.trim();
-		$("#weather_view").html(data);
-	});
-	
-});
+		$("#weather_select").click(function(){
+			var weather = $("#weather_sel").val();
+			$.ajax({
+				type:'get',
+				url:"weather/weatherInfo",
+				async: false,
+				data:{
+					"airLine":weather
+				},
+				success: function(data){
+					data = data.trim();
+					$("#weather_view").html(data);
+				}
+			});
+			$("#weather_view tr").css("background-color", "transparent");
+			$("#weather_view td").css("background-color", "transparent");
+			$("#weather_view td").css("border-style", "hidden");
+			$("#weather_view td").css("font-weight","bold");
+			$("#weather_view td").css("vertical-align","middle");
+		});
+
+		$("#weather_view td").css("font-weight","bold");
+		$("#weather_view td").css("vertical-align","middle");
+		$("#weather_view tr").css("background-color", "transparent");
+		$("#weather_view td").css("background-color", "transparent");
+		$("#weather_view td").css("border-style", "hidden");
+		
 	</script>
 </body>
 </html>
