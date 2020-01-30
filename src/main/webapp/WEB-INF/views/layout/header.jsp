@@ -25,10 +25,12 @@
 		</div>
 		<div class="header_bottom_inner">
 			<div class="header_bottom_menu">
-				<div class="menu_wrap_Left">a</div>
+				<div class="menu_wrap_Left">
+					<img alt="" src="./images/index/index_2.png" style="width: 220px; padding-top: 18px;">
+				</div>
 			
 			
-				<div class="menu_wrap" style="float: left;">
+				<div class="menu_wrap">
 					<div class="menu1">항공권예약</div>
 					<div class="menu1">웹체크인</div>
 					<div class="menu1">주차장예약</div>
@@ -36,9 +38,9 @@
 				</div>
 				
 				<div class="menu_wrap_Right">
-					<div class="r1"><i class='fas fa-comment-dots' style='font-size:36px'></i></div>
-					<div class="r1"><i class="material-icons" style="font-size:36px">person_pin</i></div>
-					<div class="r1"><i class='fas fa-search' style='font-size:36px'></i></div>
+					<div class="r1"><i class='fas fa-comment-dots' style='font-size:30px'></i></div>
+					<div class="r1"><i class="material-icons" style="font-size:33px; padding-top: 20px;">person_pin</i></div>
+					<div class="r1"><i class='fas fa-search' style='font-size:28px; padding-left: 3px;'></i></div>
 				
 				</div>
 				

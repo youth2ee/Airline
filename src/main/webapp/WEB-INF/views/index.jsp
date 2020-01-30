@@ -9,14 +9,18 @@
 <meta charset="UTF-8">
 <title>Index</title>
 <c:import url="./template/boot.jsp"></c:import>
-<link href="../resources/css/header.css" rel="stylesheet">
 <link href="../resources/css/reset.css" rel="stylesheet">
+<link href="../resources/css/header.css" rel="stylesheet">
 <link href="../resources/css/index/main.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 <link rel="stylesheet" href="../resources/newni/dist/css/swiper.min.css">
 <link rel="stylesheet" href="../resources/newni/dist/fullpage.css">
 
-
+<script type="text/javascript">
+$(document).ready(function() {
+	$('.slider').bxSlider();
+});
+</script>
 
 
 </head>
@@ -34,13 +38,11 @@
 
 
 					<div class="bxslider">
-						<div style="height: 392px">
-							<img
-								src="https://ozimg.flyasiana.com/temp/image/20191217/f736571b-f061-4c13-9933-4366cbe91d7f.jpeg">
+						<div style="height: 392px;">
+							<img src="./images/index/index_pic1.jpg">
 						</div>
-						<div style="height: 392px">
-							<img
-								src="https://ozimg.flyasiana.com/temp/image/20200110/fc4ca760-22f9-4b86-9582-4ae4d9d79854.jpeg">
+						<div style="height: 392px;">
+							<img src="./images/index/index_pic2.jpg" style="width:1910px;">
 						</div>
 						<div style="height: 392px">
 							<img
@@ -116,9 +118,6 @@
 		src="../resources/newni/dist/fullpage.js"></script>
 
 	<script>
-		$(document).ready(function() {
-			$('.slider').bxSlider();
-		});
 
 		$(".menu1").hover(function() {
 			$(".sub1").slideDown(500);

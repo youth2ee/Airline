@@ -25,7 +25,6 @@
 	margin: 0 auto;
 }
 
-
 .menu_topwrap {
 	width: 335px;
 	height: 40px;
@@ -48,16 +47,24 @@
 	height: 83px;
 	margin: 0 auto;
 	float: left;
+	padding-left: 52px;
 }
 
-.menu_wrap_Left, .menu_wrap_Right{
+.menu_wrap_Left, .menu_wrap_Right {
 	float: left;
 }
 
-.r1{
-	float: left;
+.menu_wrap_Right {
+	padding-left: 28px;
 }
 
+.r1 {
+	float: left;
+	width: 30px;
+	height: 83px;
+	line-height: 83px;
+	padding: 0 25px;
+}
 
 .menu1 {
 	height: 83px;
@@ -84,10 +91,11 @@
 }
 
 .sub1 {
-    z-index: 5000;
-    position: relative;
-    height: 500px
+	z-index: 5000;
+	position: relative;
+	height: 500px
 }
+
 .menu_topwrap {
 	height: 100%;
 	padding: 10px 0 6px;
@@ -98,7 +106,6 @@
 	float: left;
 	font-size: 13px;
 	line-height: normal;
-
 }
 
 .menu_topwrap2 {
@@ -122,4 +129,3 @@
 	border-left: 1px solid #ccc;
 	margin: 0 15px;
 }
-
