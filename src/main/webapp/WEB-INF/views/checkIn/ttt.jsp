@@ -66,7 +66,7 @@
 	});
 		$("#btn").click(function(){
 			window.open("./eTicket","eTicket","width=700, height=900, toolbar=no, menubar=no, scrollbars=no, resizable=yes")
-			});
+		});
 		
 	</script>
 </body>
