@@ -183,9 +183,9 @@
 		    <c:if test = "${pager.curBlock>1}">
 				<a href="./noticeList?curPage=${pager.startNum-1}" class="btn_prev btn_common"></a>	
 			</c:if>
-			
+						
 			<c:forEach begin="${pager.startNum}" end = "${pager.lastNum}" var="i">
-				<a href="./noticeList?curPage=${i}" class="pagingNo on">${i}</a>
+				<a href="./noticeList?curPage=${i}" class="pagingNo on"><span id="i">${i}</span></a>
 			</c:forEach>
 			
 			<c:if test = "${pager.curBlock<pager.totalBlock}">
@@ -228,10 +228,24 @@
 	/*paging*/
 		$('.pagingNo').click(function(){	
 		/* 	var curPage = "<c:out value='${pager.curPage}'/> */
-			var a = $(this).val();                 
+		/* 	var a = $(this).val();  */
 		/* $('.pagingNo').removeClass('on'); */	
 			/*  $(this).addClass('on');  */		
+
+
+			
 			});
+
+		window.onload = function () {
+			var curPage = <c:out value='${pager.curPage}'/>
+			var startNum = <c:out value='${pager.startNum}'/>
+			var lastNum = <c:out value='${pager.lastNum}'/>
+				
+				for(var i = startNum; i<= lastNum;i++){
+												
+				};
+						
+			};
 	
 	</script>
 

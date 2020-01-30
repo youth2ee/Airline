@@ -37,9 +37,9 @@
 
 <body>
 
-<form method="post">
+<!-- <form method="post">
 <input type="hidden" name = "depLoc">
-</form>
+</form> -->
              <div class="card card-4">         
                      <div class="tab-content">
                        <div class="tab-pane active" id="tab1"> 
