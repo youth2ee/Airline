@@ -53,3 +53,8 @@
 .txt1 {
 	float: right;
 }
+
+
+.resWrap{
+	z-index: 1;
+}
