@@ -43,7 +43,7 @@
 						<tbody>
 							<tr>
 								<th scope="row">회원번호</th> 
-								<td class="taL">776 927 103 </td>
+								<td class="taL"></td>
 							</tr>
 							<tr>
 								<th scope="row">회원등급</th> 
@@ -51,11 +51,11 @@
 							</tr>
 							<tr>
 								<th scope="row">이메일</th> 
-								<td class="taL">pyj9088@naver.com</td>
+								<td class="taL"></td>
 							</tr>
 							<tr>
 								<th scope="row">아이디</th> 
-								<td class="taL">pyj9088</td>
+								<td class="taL"></td>
 							</tr>			
 						</tbody>
 					</table>
