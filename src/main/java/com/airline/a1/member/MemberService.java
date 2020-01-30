@@ -16,6 +16,9 @@ public class MemberService {
 		return memberMapper.memberLogin(membersVO);
 	}
 	
+	public MembersVO memberLogin2(MembersVO membersVO) throws Exception{
+		return memberMapper.memberLogin2(membersVO);
+	}
 	//id중복체크
 	public MembersVO memberidCheck(MembersVO membersVO) throws Exception{
 		return memberMapper.memberidCheck(membersVO);

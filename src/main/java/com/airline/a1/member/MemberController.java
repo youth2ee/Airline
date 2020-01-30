@@ -35,9 +35,13 @@ public class MemberController {
 	}
 	//로그인
 	@PostMapping("memberLogin")
-	public ModelAndView memberLogin(MembersVO membersVO, HttpSession session) throws Exception{
+	public ModelAndView memberLogin(MembersVO membersVO, HttpSession session, String loginType) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		membersVO = memberService.memberLogin(membersVO);
+		if(loginType.equals("I")) {
+			membersVO = memberService.memberLogin(membersVO);
+		}else {
+			membersVO = memberService.memberLogin2(membersVO);
+		}
 		
 		if(membersVO != null) {
 			session.setAttribute("member", membersVO);
@@ -63,8 +67,16 @@ public class MemberController {
 	
 	//회원가입페이지이동
 	@GetMapping("memberJoin")
-	public void memberJoin() throws Exception{
+	public ModelAndView memberJointo(String pO, String pP, String agree1, String agree2, String agree3) throws Exception{
+		ModelAndView mv = new ModelAndView();
 		
+		if(agree1 == null || agree2 == null || agree3 == null) {
+			mv.setViewName("member/memberAgree");
+		}else if(agree1.equals("on") && agree2.equals("on") && agree3.equals("on")){
+			mv.setViewName("member/memberJoin");
+		}
+		
+		return mv;
 	}
 	
 	//id중복체크
@@ -139,6 +151,7 @@ public class MemberController {
 		return id;
 	}
 	
+	@ResponseBody
 	@PostMapping("memberidFindbyEmail")
 	public int memberidFindbyEmail(MembersVO membersVO, HttpServletRequest request, ModelMap mo, HttpSession session) throws Exception{
 		System.out.println("떴냐");
@@ -157,5 +170,10 @@ public class MemberController {
 		mv.addObject("memberVO", membersVO);
 		mv.setViewName("member/FindIdResult");
 		return mv;
+	}
+	
+	@GetMapping("newwindow")
+	public void newwindow() throws Exception{
+		
 	}
 }

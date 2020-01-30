@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 public interface MemberMapper {
 	//로그인
 	public MembersVO memberLogin(MembersVO membersVO) throws Exception;
+	public MembersVO memberLogin2(MembersVO membersVO) throws Exception;
 	//id중복체크
 	public MembersVO memberidCheck(MembersVO membersVO) throws Exception;
 	//회원번호중복조회

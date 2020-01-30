@@ -25,6 +25,14 @@
   // Remove focus outline from opened modal
   outline: 0;
 }
+a:hover {
+	color: black;
+}
+a:focus {
+	text-decoration: none;
+	color: black;
+}
+
 </style>
 </head>
 <body>
@@ -172,7 +180,7 @@
 									</tbody>
 								</table>
 								<div class="btn_wrap_riType4">
-									<button id="btnSearchIDByEmail" class="btn_L red">확인</button>
+									<button type="button" id="btnSearchIDByEmail" class="btn_L red">확인</button>
 								</div>
 							</div>
 							</form>
@@ -209,13 +217,13 @@
 				<div class="faq_acco_wrap">
 					<div class="faq_wrap">
 						<p class="acco_tit">
-							<a href="javascript:sharpNothig();">
+							<a href="#con1" data-toggle="collapse">
 								<span class="txt_ques">Q</span>
 								아이디/회원번호/비밀번호가 기억나지 않습니다.
 								<span class="btn_faq_toggle">더보기</span>
 							</a>
 						</p>
-						<div class="acco_cont">
+						<div class="acco_cont collapse" id="con1">
 							<span class="txt_answ">A</span>
 							<div>
 								<ol>
@@ -327,8 +335,7 @@
 						</li>	
 					</ul>
 				</div>
-				
-				
+			
 <div id="divLayerFaxPostInfo" class="layer_wrap" style="display:none;">
 	<div class="dim_layer"></div>
 	<div class="layer_pop" style="width: 600px; top: 460px;">
@@ -490,6 +497,30 @@
 var emailOne="";
 var emailTwo="";
 
+//이메일찾기ajax
+$("#btnSearchIDByEmail").click(function(){
+	var email2 = $("#emailsum").val();
+	var name2 =$("#lastName").val();
+	console.log(name2);
+	console.log(email2);
+	if(name2 != "" && email2 != ""){
+		$.post("memberidFindbyEmail",{
+			name : name2,
+			email : email2
+		},
+		function(data){
+			console.log(data);
+			if(data == 0){
+				alert('입력한 정보와 일치하는 회원이 존재하지 않습니다. \n다시 확인 후 입력해주세요');
+			}else{
+				alert('입력하신 메일로 아이디를 전송했습니다. 메일을 확인해주세요');
+			}
+		}
+		);
+
+	}
+});
+
 //아이디찾기 방식
 $(".findtype").click(function(){
 	$(".findtype").each(function(){
@@ -543,7 +574,7 @@ function msg_time() {	// 1초씩 카운트
 	var msg =  minute+ " : " + second;
 	$(".countDown").text(msg);
 	SetTime--;					// 1초씩 감소
-	if (SetTime < 0) {			// 시간이 종료 되었으면..
+	if (SetTime < 0) {			// 시간이 종료 되면
 		clearInterval(tid);		// 타이머 해제
 		$("#p_idRule").html('요청 인증 시간이 <span class="col_brown">만료됐습니다. </span> 인증요청을 다시 진행해주세요.');
 		$(".countDown").css("color", "red");

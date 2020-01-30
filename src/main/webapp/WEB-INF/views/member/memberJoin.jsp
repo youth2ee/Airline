@@ -196,7 +196,32 @@
 	</div>
 </form>
 <c:import url="../template/fffooter.jsp" />
+
+<button id="window_open" onclick="window.open("./newwindow", "아론", "width=800, height=700")">새창열기</button>
+	
+<a href="#" onclick="window.open('newwindow', '팝업창 이름','width=800, height=700'); return false">새창</a>
 <script type="text/javascript">
+tocplusTop=1150;
+tocplusLeft=5;
+tocplusMinimizedImage='http://kr03.tocplus007.com/img/minimized_ko.gif';
+tocplusHAlign='right';
+tocplusLocaleFixed='ko';
+tocplusWidth=180;
+tocplusHeight=220;
+tocplusUserName=손님;
+tocplusFrameColor='#FFA500';
+tocplusFloatingWindow=true;
+var tocplusHost = (("https:" == document.location.protocol) ? "https://" : "http://");
+document.write(unescape("%"+"3Cscript src='" + tocplusHost + "kr03.tocplus007.com/chatLoader.do?userId=everyair' type='text/javascript'"+"%"+"3E"+"%"+"3C/script"+"%"+"3E"));
+</script>
+
+<script type="text/javascript">
+
+$("#window_open").click(function(){
+	 window.open("./newwindow", "아론", "width=800, height=700");  
+}  
+ 
+});
 
 function tooltipBlock(){
 	$(".layer_tooltip").css("display","block");

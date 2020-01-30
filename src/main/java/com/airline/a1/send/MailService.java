@@ -59,7 +59,7 @@ public class MailService {
 					"				<tbody>\r\n" + 
 					"				<tr>\r\n" + 
 					"					<td style=\"font-family:'AppeGothic','Malgun Gothic','맑은 고딕','돋음','Dotum','Apple SD Gothic Neo',Arial,Helvetica,sans-serif;word-break:keep-all;font-size:13px;text-align:left;\">\r\n" + 
-					"						<img src=\"https://flyasiana.com/C/pc/image/mail/logo_mailform.png\" alt=\"\" loading=\"lazy\">\r\n" + 
+					"						<img src=\"http://localhost/images/logo/logo.png\" alt=\"\" loading=\"lazy\" style=\"width:222px; height:50px;\">\r\n" + 
 					"					</td>\r\n" + 
 					"				</tr>\r\n" + 
 					"				<tr>\r\n" + 
