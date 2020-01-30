@@ -53,3 +53,12 @@
 .txt1 {
 	float: right;
 }
+
+.weather{
+	margin: 0 auto;
+	width: 900px;
+	height: 400px;
+	background-color: rgba(136, 176, 75, 0.3);
+	margin-top: 200px;
+	
+}
