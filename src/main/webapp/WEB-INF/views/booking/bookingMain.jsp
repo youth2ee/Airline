@@ -77,7 +77,7 @@
                                         <div class="input-group mid">
                                             <label class="label">탑승객:</label>
                                             <div class="input-group-icon" id="js-select-special">
-                                                <input class="input--style-1 input--style-1-small" type="text" name="traveller" value="성인 1, 유/소아 0" disabled="disabled" id="info">
+                                                <input class="input--style-1 input--style-1-small" type="text" name="traveller" value="성인 1, 아이 0" disabled="disabled" id="info">
                                                 <i class="zmdi zmdi-chevron-down input-icon" style="height: 100%; background-color: transparent;"></i>
                                             </div>
                                             
