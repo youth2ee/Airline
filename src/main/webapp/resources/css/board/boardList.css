@@ -15,7 +15,6 @@ body{
 	height: 48px;
 	width: 1180px;
 	margin: 0 auto;
-	background-color: aqua;
 }
 
 .home{
@@ -75,7 +74,6 @@ body{
 	-webkit-appearance:none;
 	padding: 0 45px 0 15px;
 	font-size: 15px;
-	font-weight: bold;
 	 margin-right: 10px;
 	 margin-left: 240px;
 }
@@ -87,11 +85,11 @@ select::-ms-expand{
 .white option{
 	padding: 0px 2px 1px;
 	font-size: 15px;
-	font-weight: bold;
 }
 
 .common{
 		border: 1px solid #cdd1d3;	
+		background-color: white;
 }
 
 .common:hover{
@@ -108,7 +106,6 @@ select::-ms-expand{
 
 #searchText::placeholder{
 	font-size: 16px;
-	font-weight: bold;
 }
 
 #btnSearch{
@@ -144,7 +141,7 @@ ul.tabs li{
 	line-height: 20px;
 	border-bottom: 1px solid #6d6e71;
     color: #d60815;
-    font-weight: bold;
+  /*   font-weight: bold; */
     cursor: pointer;
     background: #6d6e70;
     text-align: center;
@@ -176,7 +173,7 @@ ul.tabs li.current span{
 	padding-left: 28px;
     background: url(./image/ico_tab_on.png) 0 3px no-repeat;
     color: #000;
-    font-weight: bold;
+    font-weight: bold; 
 }
 
 .tab-content{
@@ -223,7 +220,6 @@ ul.tabs li.current span{
 .title em{
 	font-size: 18px;
 	font-style: normal;
-	font-weight: bolder;
 }
 
 .left p{
@@ -231,13 +227,13 @@ ul.tabs li.current span{
 	overflow: hidden;
 	font-size: 15px;
 	color: #737373;
-	font-weight: bolder;
+	
 }
 
 
 .right{
 	float: right;
-	width: 210px;
+	/* width: 210px; */
 	height: 41px;
 }
 
@@ -262,7 +258,7 @@ ul.tabs li.current span{
 
 .right_sub span{
 	color: #555555;
-	font-weight: bolder;
+
 }
 
 /****** paging ******/

@@ -58,9 +58,11 @@ public class NoticeController {
 	 
 	 @GetMapping("noticeList")
 	 public ModelAndView noticeList(Pager pager)throws Exception{
-		 
 		 	List<BoardVO> ar = noticeService.noticeList(pager);
 		 	ModelAndView mv = new ModelAndView();
+		 	int totalCount = noticeService.noticeCount(pager);
+		 	System.out.println(totalCount);
+		 	mv.addObject("c", totalCount);
 		 	mv.addObject("board", "notice"); 
 		 	mv.addObject("list", ar);
 		 	mv.addObject("pager", pager);

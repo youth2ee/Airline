@@ -7,15 +7,17 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
 
 <!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+ -->
 <!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+ -->
+<c:import url="../template/boot.jsp"></c:import>
 <link rel="stylesheet" href="../resources/css/board/boardList.css">
+<link rel="stylesheet" href="../resources/css/asiana/reset.css">
 </head>
 <body>
 <%-- <div class = "container">
@@ -178,7 +180,7 @@
 	
 	<div class="paging">
 			
-			<a href="#" class="btn_first btn_common">
+			<a href="./noticeList?curPage=1" class="btn_first btn_common">
 			</a>
 		
 		 	  <c:if test = "${pager.curBlock>1}"> 
@@ -192,9 +194,8 @@
 			
 			<c:if test = "${pager.curBlock<pager.totalBlock}">
 			<a href="./noticeList?curPage=${pager.lastNum+1}" class="btn_next btn_common"></a>			
-			</c:if>
-			
-			<a href="#" class="btn_last btn_common"></a>
+			</c:if>			
+			<a href="./noticeList?curPage=${pager.perPage}" class="btn_last btn_common"></a>
 	</div>
 </div>
 
@@ -229,12 +230,11 @@
 
 		$(this).addClass('current');
 		$("#"+tab_id).addClass('current');
-	})
+	});
 	                                                  
 
 						
-			};
-	
+		
 	</script>
 
 </body>
