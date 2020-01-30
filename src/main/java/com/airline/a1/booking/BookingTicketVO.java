@@ -8,7 +8,7 @@ import lombok.Data;
 @Data
 public class BookingTicketVO {
 
-	private int bnum;
+	private Integer bnum;
 	private String bookingNum; //예약한 경우 한번에 생성
 	private String flightBNum; //예약한 인원마다 생성
 	
