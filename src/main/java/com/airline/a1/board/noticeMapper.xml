@@ -7,19 +7,18 @@
 		<sql id="bs">
 					<choose>
 						<when test="kind == 'ka'">
-							where 
-							title like concat('%',#{search},'%')
-							or contents like concat('%', #{search},'%')  
+							where title like concat('%',#{search},'%')
+							or contents like concat('%',#{search},'%')  
 						</when>
 						<when test="kind == 'kt'">
 							where title like concat('%',#{search},'%')
 						</when>
-						<when test="kind == 'kw'">
-							where writer like concat('%', #{search},'%')
+						<when test="kind == 'kc'">
+							where contents like concat('%',#{search},'%')
 						</when>
-						<otherwise>
-							where contents like concat('%', #{search},'%')
-						</otherwise>
+					<!-- 	<otherwise>
+							where writer like concat('%', #{search},'%')
+						</otherwise> -->
 					</choose>
 			</sql>
 			

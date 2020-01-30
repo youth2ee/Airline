@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -124,8 +125,9 @@
 			
 			<c:if test = "${pager.curBlock<pager.totalBlock}">
 			<a href="./noticeList?curPage=${pager.lastNum+1}" class="btn_next btn_common"></a>			
-			</c:if>			
-			<a href="./noticeList?curPage=${pager.perPage}" class="btn_last btn_common"></a>
+			</c:if>		
+			<fmt:parseNumber var="pages" integerOnly="true" value="${tc/10}"/>			
+			<a href="./noticeList?curPage=${pages+1}" class="btn_last btn_common"></a>
 	</div>
 </div>
 

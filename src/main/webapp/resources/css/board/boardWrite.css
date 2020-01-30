@@ -80,6 +80,13 @@
     margin-right: 0;
 }
 
+.cate{
+	width: 300px;
+	color: #222;
+    line-height: 40px;
+    height: 46px;
+    padding: 0 45px 0 15px;
+}
 
 .textarea_wrap textarea{ 
 	height: 300px;
