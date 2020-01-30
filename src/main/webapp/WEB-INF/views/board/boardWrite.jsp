@@ -45,6 +45,16 @@
 	
 	<tr>
 		<th scope="row">
+			<label style="font-weight: normal;">분류선택</label>
+			<span>*</span>
+		</th>
+		<td>
+			
+		</td>
+	</tr>
+	
+	<tr>
+		<th scope="row">
 			<label style="font-weight: normal;">내용</label>
 			<span>*</span>
 		</th>
