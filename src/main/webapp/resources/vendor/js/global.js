@@ -154,7 +154,7 @@
                 '                                            </li>' +
                 '                                            <li class="list-person__item">' +
                 '                                                <span class="name">' +
-                '                                                    Children' +
+                '                                                    유/소아' +
                 '                                                </span>' +
                 '                                                <div class="quantity quantity2">' +
                 '                                                    <span class="minus">' +
@@ -205,18 +205,19 @@
         function updateRoom() {
             var totalAd = parseInt(countAdult());
             var totalChi = parseInt(countChildren());
-            var adults = 'Adult, ';
+            var adults = '성인 ';
             var rooms = 'Room';
     
             if (totalAd > 1) {
-                adults = 'Adults, ';
+                adults = '성인';
             }
     
             if (totalRoom > 1) {
                 rooms = 'Rooms';
             }
     
-            var infoText = totalAd + ' ' + adults + totalChi + ' ' + 'Children, ';
+         /*   var infoText = totalAd + ' ' + adults + totalChi + ' ' + '유/소아 ';*/
+            var infoText = adults + ' ' + totalAd + ', 아이 ' + ' ' + totalChi;
     
             info.val(infoText);
         }
