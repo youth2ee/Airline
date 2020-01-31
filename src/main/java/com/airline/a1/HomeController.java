@@ -1,5 +1,7 @@
 package com.airline.a1;
 
+import java.util.List;
+
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.airline.a1.board.BoardVO;
 import com.airline.a1.weather.WeatherService;
 
 	
@@ -16,6 +19,9 @@ public class HomeController {
 	
 	@Autowired
 	private WeatherService weatherService;
+	
+	@Autowired
+	private SearchService searchService;
 	
 	@GetMapping("/")
 	public String Home(Model model, Elements els, String airLine) throws Exception {
@@ -33,9 +39,12 @@ public class HomeController {
 	}
 
 	@GetMapping("indexSearch")
-	public void indexSearch(Model model, String search) {
+	public void indexSearch(Model model, String search) throws Exception {
 		System.out.println(search);
+		List<BoardVO> ar = searchService.searchTotalList(search);
+		
 		model.addAttribute("search", search);
+		model.addAttribute("tlist", ar);
 	}
 	
 	
