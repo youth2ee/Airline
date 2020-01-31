@@ -180,4 +180,74 @@ background-color: white;
         }
 
 
+.airLine_weather{
+	width: 300px;
+	height: 30px;
+	border-left: 5px solid #d05560;
+	margin-left: 30px;
+	margin-top: 30px;
+}
+.airLine_weather_text{
+	font-size: 25px;
+	margin-left: 15px;
+}
+.weather{
+	margin: 0 auto;
+	margin-left: 600px;
+	width: 700px;
+	height: 470px;
+	margin-top: 180px;
+	background-color:rgba(255,255,255,0.5);
+	position: absolute;
+	border-radius:50px;  
+}
+.weather_wrap{
+	width: 620px;
+	height: 350px;
+	margin-left: 140px;
+/* 	background-color:rgba(255,255,255,0.2); */
+	position: relative;
+}
+.weather_select_wrap{
+	float: right;
+	margin-bottom: 30px;
+	margin-right: 120px;
+}
+#weather_sel{
+	background-color: #deeafc;
+	width: 200px;
+	height: 40px;
+	border: 2px solid rgb(89, 92, 160);
+	border-radius: 30px;
+	font-size: 17px;
+	font-weight: bold;  
+}
 
+#weather_select {
+	background-color: transparent;
+}
+#weather_view{
+	margin-top: -300px;
+}
+.weather_view_wrap{
+	width: 300px;
+	height: 25px;
+	margin-left: 50px;
+	border-left: 5px solid #c05f88;
+}
+.weather_view_wrap2{
+	width: 300px;
+	height: 25px;
+	margin-left: 50px;
+	border-left: 5px solid #e5d07d;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+.weather_view_wrap_text{
+	font-size: 20px;
+	margin-left: 13px;
+	font-weight: bold;  
+}
+.weather_info{
+	margin-left: 50px;
+}
