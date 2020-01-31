@@ -27,7 +27,7 @@ public class NoticeService {
 	public int noticeWrite(NoticeVO noticeVO, MultipartFile[] file)throws Exception{			
 		//file 유무검증 		
 		boolean check = false;
-		int result =noticeMapper.noticeWrite(noticeVO); 		
+		int result = noticeMapper.noticeWrite(noticeVO); 		
 			if(file.length>0) {
 				
 				for(MultipartFile multipartFile: file) {
@@ -63,4 +63,11 @@ public class NoticeService {
 		return noticeMapper.noticeList(pager);
 		
 	}
+	
+	public int noticeCount(Pager pager)throws Exception{
+		 return noticeMapper.noticeCount(pager);
+		
+	}
+	
+	
 }

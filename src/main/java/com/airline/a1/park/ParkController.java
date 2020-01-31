@@ -53,7 +53,7 @@ public class ParkController {
 	
 	@GetMapping("parkCheck")
 	public ModelAndView parkCheck(ModelAndView mv, pReservationVO pReservationVO) throws Exception{
-		
+		parkService.apiRest();
 		List<pReservationVO> ar = parkService.parkCheck(pReservationVO);
 		pInfoVO pInfoVO = new pInfoVO();
 		pInfoVO.setaName(pReservationVO.getAirport());

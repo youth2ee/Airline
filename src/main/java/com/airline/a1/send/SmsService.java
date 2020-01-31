@@ -46,7 +46,6 @@ public class SmsService {
 		DefaultHttpClient client = new DefaultHttpClient();
 		
 		try { 	
-
 				HttpPost httpPost = new HttpPost(url); 
 				httpPost.setHeader("Content-type", "application/json; charset=utf-8"); 
 				//문자에 대한 정보 

@@ -172,7 +172,6 @@ label { /* 주차구역 */
 <button class="le">LE</button>
 
 <script type="text/javascript">
-	
 
 	//시작일데이터 받기
 	var startDate = $("#startDate").val();
@@ -184,11 +183,9 @@ label { /* 주차구역 */
 
     //파싱
 	var startDateCompare = new Date(startDateArr[0], parseInt(startDateArr[1])-1, startDateArr[2]);
-	console.log(startDateCompare);
-	console.log(startDateCompare.getDay());
 	var endDateCompare = new Date(endDateArr[0], parseInt(endDateArr[1])-1, endDateArr[2]);
-	console.log(endDateCompare.getDay());
 
+	console.log('startDate :'+startDate);
 	
 	var count = 0;
 	
@@ -202,6 +199,8 @@ label { /* 주차구역 */
 		var check = startDateCompare.getDay()+i;
 		if(check%7 == 0 || check%7 ==6){
 			count++;
+		}else{
+
 		}
 	}
 	console.log(count);
