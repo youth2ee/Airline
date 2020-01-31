@@ -53,6 +53,11 @@ public class HomeController {
 		
 	}
 	
+	@GetMapping("searchSelect")
+	public void searchSelect(String menu) {
+		System.out.println(menu);
+	}
+	
 }
 
 

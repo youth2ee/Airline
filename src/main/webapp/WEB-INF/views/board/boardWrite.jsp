@@ -152,15 +152,24 @@
 <div class="btn_wrap">
 	<button id="btnTransfer">등록</button>
 </div>
+
+<textarea style="display: none;" name="textContents" id="rText">    
+</textarea>
+
+<div id="hidden" style="display: none;">
+</div>
+
 </form>
-
-
-
 
 </div>
 	
 <!------ new script ------->
 <script type="text/javascript">
+
+$('#contents').blur(function(){
+	$('#hidden').html($('#contents').val());
+	$('#rText').val($('#hidden').text());
+});
 
 	/***** 파일 추가 삭제 *****/
 	$('#attfile1').change(function(){
