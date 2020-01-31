@@ -36,6 +36,7 @@ a:focus {
 </style>
 </head>
 <body>
+<c:import url="../template/roading.jsp" />
 <div class="test"></div>
 <div class="container" id="container">
 				<h3>아이디 찾기</h3>
@@ -504,6 +505,7 @@ $("#btnSearchIDByEmail").click(function(){
 	console.log(name2);
 	console.log(email2);
 	if(name2 != "" && email2 != ""){
+		LS();
 		$.post("memberidFindbyEmail",{
 			name : name2,
 			email : email2
@@ -511,12 +513,15 @@ $("#btnSearchIDByEmail").click(function(){
 		function(data){
 			console.log(data);
 			if(data == 0){
+				LE();
 				alert('입력한 정보와 일치하는 회원이 존재하지 않습니다. \n다시 확인 후 입력해주세요');
 			}else{
+				LE();
 				alert('입력하신 메일로 아이디를 전송했습니다. 메일을 확인해주세요');
 			}
 		}
 		);
+		
 
 	}
 });

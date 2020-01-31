@@ -43,6 +43,8 @@ public class MemberController {
 			membersVO = memberService.memberLogin2(membersVO);
 		}
 		
+		
+		
 		if(membersVO != null) {
 			session.setAttribute("member", membersVO);
 			mv.setViewName("redirect:../");
@@ -61,18 +63,20 @@ public class MemberController {
 	
 	//약관동의페이지이동
 	@GetMapping("memberAgree")
-	public void memberAgree() throws Exception{
-		
+	public void memberAgree(HttpServletRequest request) throws Exception{
+		System.out.println(request.getHeader("Referer"));
 	}
 	
 	//회원가입페이지이동
 	@GetMapping("memberJoin")
-	public ModelAndView memberJointo(String pO, String pP, String agree1, String agree2, String agree3) throws Exception{
+	public ModelAndView memberJointo(HttpServletRequest request) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		
-		if(agree1 == null || agree2 == null || agree3 == null) {
-			mv.setViewName("member/memberAgree");
-		}else if(agree1.equals("on") && agree2.equals("on") && agree3.equals("on")){
+		System.out.println(request.getHeader("Referer"));
+		if(request.getHeader("Referer") == null) {
+			mv.setViewName("common/common_result");
+			mv.addObject("msg", "약관 동의 후 진행해주세요.");
+			mv.addObject("path", "./memberAgree");
+		}else{
 			mv.setViewName("member/memberJoin");
 		}
 		
