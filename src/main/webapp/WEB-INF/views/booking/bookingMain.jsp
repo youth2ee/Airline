@@ -14,8 +14,12 @@
 <meta name="keywords" content="Colrolib Templates">
 
 
+
 <link href="../resources/css/reset.css" rel="stylesheet">
 <c:import url="../template/boot.jsp"></c:import>
+
+
+
 
 <!-- Title Page-->
 <title>tt</title>

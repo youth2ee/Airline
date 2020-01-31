@@ -63,4 +63,11 @@ public class NoticeService {
 		return noticeMapper.noticeList(pager);
 		
 	}
+	
+	public int noticeCount(Pager pager)throws Exception{
+		 return noticeMapper.noticeCount(pager);
+		
+	}
+	
+	
 }

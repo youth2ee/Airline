@@ -56,6 +56,16 @@ class BoardTest {
 		
 		
 	}
-	
+
+	@Test
+	void noticeTest()throws Exception{
+		for(int i=0; i<10; i++) {
+			NoticeVO noticeVO = new NoticeVO();
+			noticeVO.setTitle("title"+i+i);
+			noticeVO.setContents("contents"+i+i);
+			noticeMapper.noticeWrite(noticeVO);
+		}
+		
+	}
 
 }
