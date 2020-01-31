@@ -86,7 +86,6 @@ public class HomeController {
 			 
 
 			// print result
-
 			if(search.contains(" ")) {
 				
 				
