@@ -207,8 +207,7 @@ $(document).ready(function() {
 			<div class="section" id="section1"
 				style="background: url(https://flyasiana.com/C/pc/image/main/bg_section02_default.jpg); background-size: 1920px">
 				<div class="intro">
-					<h1>Keep it simple!</h1>
-				<a href="https://www.weather.go.kr/w/index.do"><img alt="weather" src="../images/weather.png" style="width: 180px; height: 180px; float: right; margin-left: -30px; margin-top: -60px; cursor: pointer;"></a>
+				<a href="https://www.weather.go.kr/w/index.do"><img alt="weather" src="../images/weather.png" style="width: 180px; height: 180px; margin-left: 1630px; margin-top: -60px; cursor: pointer;"></a>
 				<a href="https://www.weatheri.co.kr/forecast/forecast03.php?mNum=1&aircode=RKSI"><img alt="weather" src="../images/weather2.png" style="width: 60px; height: 60px; float: right; cursor: pointer;"></a>
 					<div class="weather">
 							<div class="airLine_weather">
