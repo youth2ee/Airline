@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.airline.a1.board.BoardVO;
+import com.airline.a1.board.NoticeVO;
 import com.airline.a1.weather.WeatherService;
 
 	
@@ -54,8 +55,22 @@ public class HomeController {
 	}
 	
 	@GetMapping("searchSelect")
-	public void searchSelect(String menu) {
+	public ModelAndView searchSelect(String menu, String search) throws Exception {
 		System.out.println(menu);
+		System.out.println(search);
+		
+		NoticeVO noticeVO = new NoticeVO();
+		noticeVO.setTitle(search);
+		noticeVO.setWriter(menu);
+		
+		List<BoardVO> ar = searchService.searchList(noticeVO);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("list", ar);
+		mv.setViewName("layout/searchList");
+		
+		return mv;
+		
 	}
 	
 }

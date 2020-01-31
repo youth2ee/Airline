@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import com.airline.a1.board.BoardVO;
+import com.airline.a1.board.NoticeVO;
 
 
 @Repository
@@ -14,7 +15,6 @@ import com.airline.a1.board.BoardVO;
 public interface SearchMapper {
 	
 	public List<BoardVO> searchTotalList(String search) throws Exception;
-	
-	
+	public List<BoardVO> searchList(NoticeVO noticeVO) throws Exception;
 	
 }

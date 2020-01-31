@@ -81,12 +81,11 @@
 				 </ul>	
 			</div>
 		</div>
-		<div id="tab-2" class="tab-content"></div>
+<!-- 		<div id="tab-2" class="tab-content"></div>
 		<div id="tab-3" class="tab-content"></div>
 		<div id="tab-4" class="tab-content"></div>
 		<div id="tab-5" class="tab-content"></div>
-		<div id="tab-6" class="tab-content"></div>
-		
+		<div id="tab-6" class="tab-content"></div> -->
 	</div>
 	
 </div>
@@ -111,17 +110,21 @@
 			var a = $(this).val();                 
 			});
 
-		$('.tab-link').click(function(){
+		$('body').on('click','.tab-link',function(){
 			var menu = $(this).find('.val').text();
+			var search = $('#searchText').val();
 
 			$.ajax({
 				data : {
-					menu:menu
+					menu:menu,
+					search:search
 					},
 				type : "GET",
 				url : "./searchSelect",
 				success : function(data) {
-					data = data.trim();
+					$('.tab_wrap').html(data);
+
+					
 				}
 			}); 
 

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.airline.a1.board.BoardVO;
+import com.airline.a1.board.NoticeVO;
 import com.airline.a1.boardUtil.FilePathGenerator;
 import com.airline.a1.boardUtil.FileSaver;
 import com.airline.a1.boardUtil.Pager;
@@ -22,6 +23,10 @@ public class SearchService {
 	
 	public List<BoardVO> searchTotalList(String search) throws Exception {
 		return searchMapper.searchTotalList(search);
+	}
+
+	public List<BoardVO> searchList(NoticeVO noticeVO) throws Exception{
+		return searchMapper.searchList(noticeVO);
 	}
 	
 }

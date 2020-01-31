@@ -149,15 +149,14 @@
 				</td>
 	</tr>
 </table>
+
 <div class="btn_wrap">
 	<button id="btnTransfer">등록</button>
 </div>
 
-<textarea style="display: none;" name="textContents" id="rText">    
-</textarea>
+<textarea style="display: none;" name="textContents" id="rText"></textarea>
 
-<div id="hidden" style="display: none;">
-</div>
+<div id="hidden" style="display: none;"></div>
 
 </form>
 
