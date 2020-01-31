@@ -37,9 +37,36 @@ $(document).ready(function() {
 });
 </script>
 
+<style type="text/css">
+.alert {
+	background-color: #f4b136;
+	color: white;
+	padding: 10px;
+	margin-bottom: 0;
+	border: 1px solid transparent;
+	border-radius: 0;
+}
 
+.closebtn {
+	margin-left: 15px;
+	color: white;
+	font-weight: bold;
+	float: right;
+	font-size: 22px;
+	line-height: 20px;
+	cursor: pointer;
+	transition: 0.3s;
+}
+
+.closebtn:hover {
+	color: black;
+}
+</style>
 </head>
-
+<div class="alert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+  <strong>우한폐렴</strong>대충 주의하라는 글
+</div>
 <header id="header">
 	<c:import url="./layout/header.jsp" />
 </header>
