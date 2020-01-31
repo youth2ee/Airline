@@ -7,12 +7,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 <c:import url="../template/boot.jsp"></c:import>
 <link rel="stylesheet" href="../resources/css/board/boardList.css">
 <link rel="stylesheet" href="../resources/css/asiana/reset.css">
+
 </head>
 <body>
-<!----- new ------>
+
 <div class="location_bar">
 	<div class="inner">
 		<a href="#" class="home"></a>
@@ -20,8 +22,7 @@
 			<option>공지사항</option>
 			<option>고객의말씀</option>
 			<option></option>
-		</select>
-	
+		</select>	
 	</div>
 </div>
 

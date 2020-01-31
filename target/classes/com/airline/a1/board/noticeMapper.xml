@@ -25,19 +25,12 @@
 
 <insert id="noticeWrite" parameterType="com.airline.a1.board.BoardVO" useGeneratedKeys="true" keyProperty="num">	
 		insert into notice
-		values(#{num}, #{title}, #{writer}, #{contents}, now(),0)
+		values(#{num}, #{cate},#{title}, #{writer}, #{contents}, now(),0)
 </insert>
 
 
 <select id="noticeList" resultType="com.airline.a1.board.NoticeVO" parameterType="com.airline.a1.boardUtil.Pager">
-		
-		<!-- select * from
-			(select N.*, @rownum:=@rownum+1 R from
-					(select * from notice
-						<include refid="bs"></include>
-					order by num desc) N) K
-		where R between #{startRow} and #{lastRow} -->
-		
+			
 	 select * 
 			from (select
 						@ROWNUM := @ROWNUM + 1 AS ROWNUM, 

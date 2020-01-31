@@ -42,7 +42,7 @@
 			<span>*</span>
 		</th>
 		<td>
-			<select id="cate" class=" cate common textWrite">
+			<select id="cate" name="cate" class=" cate common textWrite">
 				<option>선택하세요</option>
 				<option value="소식">EveryAir소식</option>
 				<option value="클럽">EveryAir클럽</option>
