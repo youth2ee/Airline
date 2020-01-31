@@ -12,7 +12,10 @@ import com.airline.a1.booking.BookingTicketVO;
 public class SeatService {
 	@Autowired
 	private SeatMapper seatMapper;
-
+	
+	public List<ETicketVO> getEticket() throws Exception{
+		return seatMapper.getEticket();
+	}
 	public int seatBook(SeatVO seatVO) throws Exception {
 		int result = seatMapper.seatBook(seatVO);
 		return result;

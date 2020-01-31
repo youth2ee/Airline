@@ -31,4 +31,14 @@
 	<select id="getVihicleId" resultType="java.lang.String" parameterType="java.lang.String">
 		select vihicleId from flightData where fnum = #{fnum}
 	</select>
+	<select id="getEticket" resultType="com.airline.a1.checkIn.ETicketVO">
+		select name, kind, flightBNum, bookingTicket.bookingNum, depAirportNm,
+		arrAirportNm, vihicleId, depPlandTime, arrPlandTime, flightTime,
+		a.cityCode depCityCode, a.cityEng depCityEng, b.cityCode arrCityCode, b.cityEng arrCityEng, c.seatName from
+		bookingTicket join flightData on bookingTicket.depFnum =
+		flightData.fNum join airport as a on flightData.depAirportNm = a.apName
+		join airport as b on flightData.arrAirportNm = b.apName join seat as c
+		on c.flightNum = bookingTicket.flightBNum where
+		bookingTicket.bookingNum='S68U58' and bookingTicket.name='YOO ZA';
+	</select>
 </mapper>

@@ -12,9 +12,104 @@
 <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script> 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
-<script type="text/javascript" src="../resources/newni/jquery-1.3.2.min.js"></script>  
+<!-- <script type="text/javascript" src="../resources/newni/jquery-1.3.2.min.js"></script> -->  
 <script type="text/javascript" src="../resources/newni/jquery-barcode.js"></script>  
 <title>eTicket</title>
+<style>
+#mySidenav a {
+  position: absolute;
+  left: -80px;
+  transition: 0.3s;
+  padding: 15px;
+  width: 100px;
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+  border-radius: 0 5px 5px 0;
+}
+
+#mySidenav a:hover {
+  left: 0;
+}
+
+#blog {
+  top: 595px;
+  background-color: #2196F3;
+}
+
+#projects {
+  top: 655px;
+  background-color: #f44336;
+}
+
+#contact {
+  top: 535px;
+  background-color: #555
+}
+.btn-group {
+    bottom: 150px;
+    position: absolute;
+    left: 300px;
+}
+.btn-group button {
+  background-color: #4CAF50; /* Green background */
+  border: 1px solid green; /* Green border */
+  color: white; /* White text */
+  padding: 10px 24px; /* Some padding */
+  cursor: pointer; /* Pointer/hand icon */
+  float: left; /* Float the buttons side by side */
+}
+
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.btn-group button:not(:last-child) {
+  border-right: none; /* Prevent double borders */
+}
+
+/* Add a background color on hover */
+.btn-group button:hover {
+  background-color: #3e8e41;
+}
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+</style>
 <meta name="robots" content="noindex,nofollow" />
 <!-- <meta name="viewport" content="width=device-width; initial-scale=1.0;" /> -->
 
@@ -59,11 +154,6 @@
 													</tr>
 													<tr class="visibleMobile">
 													</tr>
-													<tr>
-														<td colspan="1"
-															style="font-size: 12px; color: #5b5b5b; font-family: 'Open Sans', sans-serif; line-height: 18px; vertical-align: top; text-align: left;">
-															C99L47</td>
-													</tr>
 												</tbody>
 											</table>
 											<table width="220" border="0" cellpadding="0" cellspacing="0"
@@ -104,7 +194,7 @@
 										<tbody>
 										<tr>
 												<td height="1" colspan="4"
-													style="border-bottom: 1px solid #1f4e5854"></td>
+													style="border-bottom: 1px solid #e4e4e4"></td>
 											</tr>
 												<tr>
 													<td
@@ -123,16 +213,16 @@
  -->												<tr>
 													<td
 														style="font-size: 10px; font-family: 'Open Sans', sans-serif; color: #ff0000; line-height: 18px; vertical-align: top; padding: 5px 0; padding-left: 10px; color: #565656;"
-														class="article">임윤희</td>
+														class="article">${depInfo.name}</td>
 													<td colspan="2"
-														style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e; line-height: 18px; vertical-align: top; padding: 5px 0; padding-left: 100px;"><small>OZ8905P221</small></td>
+														style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e; line-height: 18px; vertical-align: top; padding: 5px 0; padding-left: 100px;"><small>${depInfo.flightBNum}<c:if test="${kind eq 1 }">/${arrInfo.flightBNum}</c:if></small></td>
 													<td
 														style="font-size: 10px; font-family: 'Open Sans', sans-serif; color: #1e2b33; line-height: 18px; vertical-align: top; padding: 5px 0; padding-right: 10px;"
-														align="right">M33M88</td>
+														align="right">${depInfo.bookingNum}</td>
 												</tr>
 													<tr>
 												<td height="1" colspan="4"
-													style="border-bottom: 1px solid #1f4e5854"></td>
+													style="border-bottom: 1px solid #e4e4e4"></td>
 											</tr>
 										
 										</tbody>
@@ -187,22 +277,22 @@
 													<td
 														style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #ff0000; line-height: 18px; vertical-align: top; padding: 5px 0; width: 200px; padding-top: 10px;"
 														class="article" >
-														<p style="margin: 0; color: #00518b; font-size: 14px; font-weight: 1000; margin-left: 10px;">ICN</p>
-														<p style="margin: 0;font-size: 10px;font-weight: bold;color: #565656;letter-spacing: -0.5px; margin-left: 10px;">인천 (Incheon)</p>
-														<p style="margin: 0;margin-left: 10px;font-weight: 1000;color: #1f1f1f;font-size: 12px;">02FEB20(월) 14:00</p>
+														<p style="margin: 0; color: #00518b; font-size: 14px; font-weight: 1000; margin-left: 10px;">${depInfo.depCityCode}</p>
+														<p style="margin: 0;font-size: 10px;font-weight: bold;color: #565656;letter-spacing: -0.5px; margin-left: 10px;">${depInfo.depAirportNm} (${depInfo.depCityEng})</p>
+														<p style="margin: 0;margin-left: 10px;font-weight: 1000;color: #1f1f1f;font-size: 12px;">${depInfo.depPlandTime} ${depTime}</p>
 														</td>
 													<td colspan="2"
 														style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e; line-height: 18px; vertical-align: top; padding: 5px 0; padding-top: 10px; ">
-														<p style="margin: 0; color: #00518b; font-size: 14px; font-weight: 1000; margin-left: 10px;">CJU</p>
-														<p style="margin: 0;font-size: 10px;font-weight: bold;color: #565656;letter-spacing: -0.5px; margin-left: 10px;">제주 (Jeju)</p>
-														<p style="margin: 0;margin-left: 10px;font-weight: 1000;color: #1f1f1f;font-size: 12px;">02FEB20(월) 14:55</p>
+														<p style="margin: 0; color: #00518b; font-size: 14px; font-weight: 1000; margin-left: 10px;">${depInfo.arrCityCode}</p>
+														<p style="margin: 0;font-size: 10px;font-weight: bold;color: #565656;letter-spacing: -0.5px; margin-left: 10px;">${depInfo.arrAirportNm} (${depInfo.arrCityEng})</p>
+														<p style="margin: 0;margin-left: 10px;font-weight: 1000;color: #1f1f1f;font-size: 12px;">${depInfo.arrPlandTime} ${arrTime}</p>
 													</td>
 													<td
 														style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #1e2b33; line-height: 18px; vertical-align: top; padding: 5px 0; padding-right: 50px; padding-top: 10px;"
 														align="right">
-															<p style="margin: 0; color: #00518b; font-size: 14px; font-weight: 1000; margin-right: 13px;">KE1334</p>
+															<p style="margin: 0; color: #00518b; font-size: 14px; font-weight: 1000; margin-right: 13px;">${depInfo.vihicleId}</p>
 															<p style="margin: 0;font-size: 10px;font-weight: bold;color: #565656;letter-spacing: -0.5px;margin-right: -4px;">Operated by EA</p>
-															<p style="margin: 0;margin-left: 10px;font-weight: 1000;color: #1f1f1f;font-size: 12px;"><img alt="" src="../resources/newni/logo3.png" width="80%;" style="margin-left: 25px;"></p>
+															<p style="margin: 0;margin-left: 10px;font-weight: 1000;color: #1f1f1f;font-size: 12px;"><img alt="" src="" width="80%;" style="margin-left: 25px;" id="depImg"></p>
 														</td>
 												</tr>
 													<tr>
@@ -213,13 +303,13 @@
 													<td
 														style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #ff0000; line-height: 18px; vertical-align: top; padding: 5px 0; width: 200px; "
 														class="article" >
-														<p style="margin: 0; color: #565656; font-size: 10px; margin-left: 10px;">예약등급 : (일반석)</p>
+														<p style="margin: 0; color: #565656; font-size: 10px; margin-left: 10px;">예약등급 : 일반석</p>
 														<p style="margin: 0;font-size: 10px;color: #565656;letter-spacing: -0.5px; margin-left: 10px;">운임 : 12000</p>
-														<p style="margin: 0;margin-left: 10px;color: #565656;font-size: 10px;">비행시간 : 48분</p>
+														<p style="margin: 0;margin-left: 10px;color: #565656;font-size: 10px;">비행시간 : ${depInfo.flightTime }분</p>
 														</td>
 													<td colspan="2"
 														style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e; line-height: 18px; vertical-align: top; padding: 5px 0; ">
-														<p style="margin: 0; color: #565656; font-size: 10px; margin-left: 10px;">좌석번호 : C9</p>
+														<p style="margin: 0; color: #565656; font-size: 10px; margin-left: 10px;">좌석번호 : ${depInfo.seatName}</p>
 														<p style="margin: 0;font-size: 10px;color: #565656;letter-spacing: -0.5px; margin-left: 10px;">마일리지 : 30</p>
 														<p style="margin: 0;margin-left: 10px;color: #565656;font-size: 10px;">항공권 유효기간 : 3개월</p>
 													</td>
@@ -241,6 +331,7 @@
 			</tr>
 		</tbody>
 	</table>
+	<c:if test="${kind eq 1 }">
 	<table width="100%" border="0" cellpadding="0" cellspacing="0"
 		align="center" class="fullTable">
 		<tbody>
@@ -274,22 +365,22 @@
 													<td
 														style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #ff0000; line-height: 18px; vertical-align: top; padding: 5px 0; width: 200px; padding-top: 10px;"
 														class="article" >
-														<p style="margin: 0; color: #00518b; font-size: 14px; font-weight: 1000; margin-left: 10px;">CJU</p>
-														<p style="margin: 0;font-size: 10px;font-weight: bold;color: #565656;letter-spacing: -0.5px; margin-left: 10px;">제주 (Jeju)</p>
+														<p style="margin: 0; color: #00518b; font-size: 14px; font-weight: 1000; margin-left: 10px;">${arrInfo.depCityCode}</p>
+														<p style="margin: 0;font-size: 10px;font-weight: bold;color: #565656;letter-spacing: -0.5px; margin-left: 10px;">${arrInfo.depAirportNm} (${arrInfo.depCityEng})</p>
 														<p style="margin: 0;margin-left: 10px;font-weight: 1000;color: #1f1f1f;font-size: 12px;">07FEB20(금) 12:00</p>
 														</td>
 													<td colspan="2"
 														style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e; line-height: 18px; vertical-align: top; padding: 5px 0;  padding-top: 10px;">
-														<p style="margin: 0; color: #00518b; font-size: 14px; font-weight: 1000; margin-left: 10px;">ICN</p>
-														<p style="margin: 0;font-size: 10px;font-weight: bold;color: #565656;letter-spacing: -0.5px; margin-left: 10px;">인천 (Incheon)</p>
+														<p style="margin: 0; color: #00518b; font-size: 14px; font-weight: 1000; margin-left: 10px;">${arrInfo.arrCityCode}</p>
+														<p style="margin: 0;font-size: 10px;font-weight: bold;color: #565656;letter-spacing: -0.5px; margin-left: 10px;">${arrInfo.arrAirportNm} (${arrInfo.arrCityEng})</p>
 														<p style="margin: 0;margin-left: 10px;font-weight: 1000;color: #1f1f1f;font-size: 12px;">07FEB20(금) 12:55</p>
 													</td>
 													<td
 														style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #1e2b33; line-height: 18px; vertical-align: top; padding: 5px 0; padding-right: 50px; padding-top: 10px;"
 														align="right">
-															<p style="margin: 0; color: #00518b; font-size: 14px; font-weight: 1000; margin-right: 13px;">OZ8732</p>
+															<p style="margin: 0; color: #00518b; font-size: 14px; font-weight: 1000; margin-right: 13px;">${arrInfo.vihicleId}</p>
 															<p style="margin: 0;font-size: 10px;font-weight: bold;color: #565656;letter-spacing: -0.5px;margin-right: -4px;">Operated by EA</p>
-															<p style="margin: 0;margin-left: 10px;font-weight: 1000;color: #1f1f1f;font-size: 12px;"><img alt="" src="../resources/newni/logo3.png" width="80%;" style="margin-left: 25px;"></p>
+															<p style="margin: 0;margin-left: 10px;font-weight: 1000;color: #1f1f1f;font-size: 12px;"><img alt="" src="" width="80%;" style="margin-left: 25px;" id="arrImg"></p>
 														</td>
 												</tr>
 													<tr>
@@ -300,13 +391,13 @@
 													<td
 														style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #ff0000; line-height: 18px; vertical-align: top; padding: 5px 0; width: 200px;"
 														class="article" >
-														<p style="margin: 0; color: #565656; font-size: 10px; margin-left: 10px;">예약등급 : (일반석)</p>
+														<p style="margin: 0; color: #565656; font-size: 10px; margin-left: 10px;">예약등급 : 일반석</p>
 														<p style="margin: 0;font-size: 10px;color: #565656;letter-spacing: -0.5px; margin-left: 10px;">운임 : 12000</p>
-														<p style="margin: 0;margin-left: 10px;color: #565656;font-size: 10px;">비행시간 : 48분</p>
+														<p style="margin: 0;margin-left: 10px;color: #565656;font-size: 10px;">비행시간 : ${arrInfo.flightTime}분</p>
 														</td>
 													<td colspan="2"
 														style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e; line-height: 18px; vertical-align: top; padding: 5px 0; ">
-														<p style="margin: 0; color: #565656; font-size: 10px; margin-left: 10px;">좌석번호 : C9</p>
+														<p style="margin: 0; color: #565656; font-size: 10px; margin-left: 10px;">좌석번호 : ${arrInfo.seatName}</p>
 														<p style="margin: 0;font-size: 10px;color: #565656;letter-spacing: -0.5px; margin-left: 10px;">마일리지 : 30</p>
 														<p style="margin: 0;margin-left: 10px;color: #565656;font-size: 10px;">항공권 유효기간 : 3개월</p>
 													</td>
@@ -327,6 +418,7 @@
 			</tr>
 		</tbody>
 	</table>
+	</c:if>
 	<!-- /Order Details -->
 	<!-- Total -->
 	<table width="100%" border="0" cellpadding="0" cellspacing="0"
@@ -404,10 +496,7 @@
 									<tr>
 										<td
 											style="font-size: 12px; color: #5b5b5b; font-family: 'Open Sans', sans-serif; line-height: 18px; vertical-align: top; text-align: left;">
-											텍스트
-											<div
-												style="transform: rotate(-268deg); display: inline-block;margin-left: 5px;">
-												;)</div>
+											EVERY AIR
 										</td>
 									</tr>
 								</tbody>
@@ -432,7 +521,26 @@
 	</div>
 	<button id="imgSave">이미지로 저장</button>
 	<button id="pdfSave">pdf로 저장</button>
+	<div id="mySidenav" class="sidenav">
+	  <a href="#" id="blog">Blog</a>
+	  <a href="#" id="projects">Projects</a>
+	  <a href="#" id="contact">Contact</a>
+	</div>
+	<div class="btn-group">
+	  <button>Apple</button>
+	  <button>Samsung</button>
+	  <button>Sony</button>
+	</div>
+	<div class="dropdown">
+	  <button class="dropbtn">Dropdown</button>
+	  <div class="dropdown-content">
+	    <a href="#">Link 1</a>
+	    <a href="#">Link 2</a>
+	    <a href="#">Link 3</a>
+	  </div>
+	</div>
 	<script type="text/javascript">
+	
 		var doc = new jsPDF();
 		var pdfHandlers = {
 			'#editor' : function (element, renderer) {
@@ -443,7 +551,7 @@
 			html2canvas(document.querySelector("#pdfDiv")).then(canvas => {
 			    var el = document.getElementById("target");
 				el.href = canvas.toDataURL("image/png");
-				el.download = '파일명.png';
+				el.download = getUUID()+'.png';
 				el.click();
 			});
 		});
@@ -453,12 +561,83 @@
 				var imgData = canvas.toDataURL("image/png");
 				var doc = new jsPDF('p','mm','b5');
 				doc.addImage(imgData, 'png', 0,0);
-				doc.save('테스트.pdf');
-
-				
+				doc.save( getUUID()+'.pdf');
 			});
 		});
 		$("#bcTarget").barcode("997456669", "codabar",{barWidth:1, barHeight:30});
+		
+		function getUUID() { // UUID v4 generator in JavaScript (RFC4122 compliant)
+			  return 'xxxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+			    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 3 | 8);
+			    return v.toString(16);
+			  });
+			}
+		// 항공사 이미지
+		switch("${depInfo.vihicleId}".substring(0,2)){
+		case "OZ" :
+			$("#depImg").attr("src","../resources/newni/asiana.png");
+			break;
+		case "BX" :
+			$("#depImg").attr("src","../resources/newni/airBusan.png");
+			break;
+		case "RS" :
+			$("#depImg").attr("src","../resources/newni/airSeoul.png");
+			break;
+		case "TW" :
+			$("#depImg").attr("src","../resources/newni/tWay.png");
+			break;
+		case "7C" :
+			$("#depImg").attr("src","../resources/newni/jejuAir.png");
+			break;
+		case "HG" :
+			$("#depImg").attr("src","../resources/newni/hiAir.png");
+			break;
+		case "ZE" :
+			$("#depImg").attr("src","../resources/newni/eStar.png");
+			break;
+		case "KE" :
+			$("#depImg").attr("src","../resources/newni/koreanAir.png");
+			break;
+		case "FG" :
+			$("#depImg").attr("src","../resources/newni/flyGangwon.png");
+			break;
+		case "KW" :
+			$("#depImg").attr("src","../resources/newni/koreaExpressAir.png");
+			break;
+		}
+		
+		switch("${arrInfo.vihicleId}".substring(0,2)){
+		case "OZ" :
+			$("#arrImg").attr("src","../resources/newni/asiana.png");
+			break;
+		case "BX" :
+			$("#arrImg").attr("src","../resources/newni/airBusan.png");
+			break;
+		case "RS" :
+			$("#arrImg").attr("src","../resources/newni/airSeoul.png");
+			break;
+		case "TW" :
+			$("#arrImg").attr("src","../resources/newni/tWay.png");
+			break;
+		case "7C" :
+			$("#arrImg").attr("src","../resources/newni/jejuAir.png");
+			break;
+		case "HG" :
+			$("#arrImg").attr("src","../resources/newni/hiAir.png");
+			break;
+		case "ZE" :
+			$("#arrImg").attr("src","../resources/newni/eStar.png");
+			break;
+		case "KE" :
+			$("#arrImg").attr("src","../resources/newni/koreanAir.png");
+			break;
+		case "FG" :
+			$("#arrImg").attr("src","../resources/newni/flyGangwon.png");
+			break;
+		case "KW" :
+			$("#arrImg").attr("src","../resources/newni/koreaExpressAir.png");
+			break;
+		}	
 	</script>
 </body>
 </html>
