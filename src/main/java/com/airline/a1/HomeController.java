@@ -1,5 +1,6 @@
 package com.airline.a1;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.jsoup.select.Elements;
@@ -46,6 +47,8 @@ public class HomeController {
 		
 		model.addAttribute("search", search);
 		model.addAttribute("tlist", ar);
+		
+		searchService.searchInsert(search);
 	}
 	
 	
@@ -63,7 +66,14 @@ public class HomeController {
 		noticeVO.setTitle(search);
 		noticeVO.setWriter(menu);
 		
-		List<BoardVO> ar = searchService.searchList(noticeVO);
+		List<BoardVO> ar = new ArrayList<BoardVO>();
+		
+		if(menu.equals("전체")) {
+			ar = searchService.searchTotalList(search);
+		}else {
+			ar = searchService.searchList(noticeVO);			
+		}
+		
 		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("list", ar);

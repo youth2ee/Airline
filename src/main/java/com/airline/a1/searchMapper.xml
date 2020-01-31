@@ -13,5 +13,9 @@ select * from notice where textContents like concat('%',#{search},'%') and title
 select * from notice where textContents like concat('%',#{title},'%') and title like concat('%',#{title},'%') and cate=#{writer}
 </select>
 
+<insert id="searchInsert" parameterType="java.lang.String">
+insert into search values (null, #{search}, now());
+</insert>
+
 
 </mapper>

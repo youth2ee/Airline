@@ -29,4 +29,8 @@ public class SearchService {
 		return searchMapper.searchList(noticeVO);
 	}
 	
+	public int searchInsert(String search) throws Exception {
+		return searchMapper.searchInsert(search);
+	}
+	
 }
