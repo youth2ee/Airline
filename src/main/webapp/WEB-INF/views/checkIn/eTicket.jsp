@@ -17,98 +17,72 @@
 <title>eTicket</title>
 <style>
 #mySidenav a {
-  position: absolute;
-  left: -80px;
-  transition: 0.3s;
-  padding: 15px;
-  width: 100px;
-  text-decoration: none;
-  font-size: 20px;
-  color: white;
-  border-radius: 0 5px 5px 0;
+	position: absolute;
+	left: -80px;
+	transition: 0.3s;
+	padding: 15px;
+	width: 100px;
+	text-decoration: none;
+	font-size: 15px;
+	color: white;
+	border-radius: 0 5px 5px 0;
 }
 
 #mySidenav a:hover {
-  left: 0;
+	left: 0;
 }
 
-#blog {
-  top: 595px;
-  background-color: #2196F3;
+#imgSave {
+	top: 535px;
+	background-color: #2196F3;
 }
 
-#projects {
-  top: 655px;
-  background-color: #f44336;
+#pdfSave {
+	top: 595px;
+	background-color: #f44336;
 }
 
-#contact {
-  top: 535px;
-  background-color: #555
+#print {
+	top: 655px;
+	background-color: #555
 }
+
 .btn-group {
-    bottom: 150px;
-    position: absolute;
-    left: 300px;
+	bottom: 150px;
+	position: absolute;
+	left: 300px;
 }
+
 .btn-group button {
-  background-color: #4CAF50; /* Green background */
-  border: 1px solid green; /* Green border */
-  color: white; /* White text */
-  padding: 10px 24px; /* Some padding */
-  cursor: pointer; /* Pointer/hand icon */
-  float: left; /* Float the buttons side by side */
+	background-color: #4CAF50; /* Green background */
+	border: 1px solid green; /* Green border */
+	color: white; /* White text */
+	padding: 10px 24px; /* Some padding */
+	cursor: pointer; /* Pointer/hand icon */
+	float: left; /* Float the buttons side by side */
 }
 
 /* Clear floats (clearfix hack) */
 .btn-group:after {
-  content: "";
-  clear: both;
-  display: table;
+	content: "";
+	clear: both;
+	display: table;
 }
 
-.btn-group button:not(:last-child) {
-  border-right: none; /* Prevent double borders */
+.btn-group button:not (:last-child ) {
+	border-right: none; /* Prevent double borders */
 }
 
 /* Add a background color on hover */
 .btn-group button:hover {
-  background-color: #3e8e41;
-}
-.dropbtn {
-  background-color: #4CAF50;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
+	background-color: #3e8e41;
 }
 
-.dropdown {
-  position: relative;
-  display: inline-block;
+@media print {
+	.noprint {
+		display: none;
+	}
 }
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown-content a:hover {background-color: #ddd;}
-
-.dropdown:hover .dropdown-content {display: block;}
-
-.dropdown:hover .dropbtn {background-color: #3e8e41;}
 </style>
 <meta name="robots" content="noindex,nofollow" />
 <!-- <meta name="viewport" content="width=device-width; initial-scale=1.0;" /> -->
@@ -519,25 +493,10 @@
 	</tbody>
 	</table>
 	</div>
-	<button id="imgSave">이미지로 저장</button>
-	<button id="pdfSave">pdf로 저장</button>
 	<div id="mySidenav" class="sidenav">
-	  <a href="#" id="blog">Blog</a>
-	  <a href="#" id="projects">Projects</a>
-	  <a href="#" id="contact">Contact</a>
-	</div>
-	<div class="btn-group">
-	  <button>Apple</button>
-	  <button>Samsung</button>
-	  <button>Sony</button>
-	</div>
-	<div class="dropdown">
-	  <button class="dropbtn">Dropdown</button>
-	  <div class="dropdown-content">
-	    <a href="#">Link 1</a>
-	    <a href="#">Link 2</a>
-	    <a href="#">Link 3</a>
-	  </div>
+	  <a href="#" id="imgSave" class="noprint">이미지로 저장</a>
+	  <a href="#" id="pdfSave" class="noprint">PDF로 저장</a>
+	  <a href="#" id="print" class="noprint">e-티켓 출력</a>
 	</div>
 	<script type="text/javascript">
 	
@@ -563,6 +522,9 @@
 				doc.addImage(imgData, 'png', 0,0);
 				doc.save( getUUID()+'.pdf');
 			});
+		});
+		$("#print").click(function(){
+             window.print();     
 		});
 		$("#bcTarget").barcode("997456669", "codabar",{barWidth:1, barHeight:30});
 		
