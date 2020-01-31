@@ -91,32 +91,44 @@
 			<div class="section" id="section1"
 				style="background: url(https://flyasiana.com/C/pc/image/main/bg_section02_default.jpg); background-size: 1920px">
 				<div class="intro">
-					<h1>Keep it simple!</h1>
+				<a href="https://www.weather.go.kr/w/index.do"><img alt="weather" src="../images/weather.png" style="width: 180px; height: 180px; float: right; margin-left: -30px; margin-top: -60px; cursor: pointer;"></a>
+				<a href="https://www.weatheri.co.kr/forecast/forecast03.php?mNum=1&aircode=RKSI"><img alt="weather" src="../images/weather2.png" style="width: 60px; height: 60px; float: right; cursor: pointer;"></a>
 					<div class="weather">
-							<select name="airLine" id="weather_sel" >
-								<option value="RKSI/인천공항/1" style='background-color:rgba(255,255,255,0.2)'>인천공항</option>
-								<option value="RKSS/김포공항/2">김포공항</option>
-								<option value="RKNY/양양공항/3">양양공항</option>
-								<option value="RKTU/청주공항/4">청주공항</option>
-								<option value="RKTN/대구공항/5">대구공항</option>
-								<option value="RKJB/무안공항/6">무안공항</option>
-								<option value="RKJY/여수공항/7">여수공항</option>
-								<option value="RKPK/김해공항/8">김해공항</option>
-								<option value="RKPU/울산공항/9">울산공항</option>
-								<option value="RKPC/제주공항/10">제주공항</option>
-							</select>
-<!-- 							<button id="weather_select">선택</button> -->
-							<img alt="search" src="../images/search.png" style="width: 38px; height: 38px; cursor: pointer; top: 13px; position: relative; top: 15px;" id="weather_select">
+							<div class="airLine_weather">
+								<span class="airLine_weather_text">공항별 날씨정보</span>
+							</div>
 						<div class="weather_wrap">
+							<div class="weather_select_wrap">
+								<select name="airLine" id="weather_sel" >
+									<option value="RKSI/인천공항/1">인천공항</option>
+									<option value="RKSS/김포공항/2">김포공항</option>
+									<option value="RKNY/양양공항/3">양양공항</option>
+									<option value="RKTU/청주공항/4">청주공항</option>
+									<option value="RKTN/대구공항/5">대구공항</option>
+									<option value="RKJB/무안공항/6">무안공항</option>
+									<option value="RKJY/여수공항/7">여수공항</option>
+									<option value="RKPK/김해공항/8">김해공항</option>
+									<option value="RKPU/울산공항/9">울산공항</option>
+									<option value="RKPC/제주공항/10">제주공항</option>
+								</select>
+	<!-- 							<button id="weather_select">선택</button> -->
+								<img alt="search" src="../images/search.png" style="width: 35px; height: 35px; cursor: pointer; top: 10px; position: relative;" id="weather_select">
+							</div>
+						</div>	
 							<div id="weather_view">
-								<div class="weather_today">
+								<div class="weather_view_wrap">
+									<span class="weather_view_wrap_text">현재날씨</span>
+								</div>
+								<div class="weather_info">
 									${weather}
 								</div>
-								<div class="weather_next">
+								<div class="weather_view_wrap2">
+									<span class="weather_view_wrap_text">날씨예보</span>
+								</div>
+								<div class="weather_info">
 									${weather2}
 								</div>
 							</div>
-						</div>	
 					</div>
 					
 				</div>
