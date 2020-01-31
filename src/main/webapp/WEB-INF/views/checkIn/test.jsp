@@ -222,6 +222,7 @@
 		</div>
 
 	</div>
+	
 	<script type="text/javascript">
 		$("#btn_search").click(function(){
 			$("#frm").submit();

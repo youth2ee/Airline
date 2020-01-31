@@ -21,6 +21,12 @@ public class SeatController {
 	@Autowired
 	private SeatService seatService;
 
+	@GetMapping("modalTest")
+	public void modalTest() {
+		
+	}
+	
+	
 	@GetMapping("captureTest")
 	public void captureTest() {
 
