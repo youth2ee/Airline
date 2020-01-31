@@ -146,6 +146,9 @@ ul.tabs li{
  	padding-top: 20px; 
 	border-left: 1px solid #fff;
 }
+ul.tabs li:hover{
+	background: #4A4C4D;
+}
 
 .tab-link span{
 	  color: #fff;

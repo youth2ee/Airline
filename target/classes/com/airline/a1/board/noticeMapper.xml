@@ -25,7 +25,7 @@
 
 <insert id="noticeWrite" parameterType="com.airline.a1.board.BoardVO" useGeneratedKeys="true" keyProperty="num">	
 		insert into notice
-		values(#{num}, #{cate},#{title}, #{writer}, #{contents}, now(),0)
+		values(#{num}, #{cate},#{title}, #{writer}, #{contents}, now(),0, #{textContents})
 </insert>
 
 
