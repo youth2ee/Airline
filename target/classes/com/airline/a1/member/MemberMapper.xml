@@ -7,10 +7,17 @@
 	<select id="memberLogin" parameterType="com.airline.a1.member.MembersVO" resultType="com.airline.a1.member.MembersVO">
 		select * from members where id=#{id} and pw =#{pw}
 	</select>
+		<select id="memberLogin2" parameterType="com.airline.a1.member.MembersVO" resultType="com.airline.a1.member.MembersVO">
+		select * from members where memberNum=#{id} and pw =#{pw}
+	</select>
 	
 	<insert id="memberJoin" parameterType="com.airline.a1.member.MembersVO">
 		insert into members values(#{id}, #{pw}, #{name}, #{phone}, #{email}, #{memberNum}, 0)
 	</insert>
+	
+	<select id="memberNumCheck" parameterType="com.airline.a1.member.MembersVO" resultType="java.lang.Integer">
+		select count(memberNum) from members where memberNum = #{memberNum}
+	</select>
 	
 	<select id="memberidCheck" parameterType="com.airline.a1.member.MembersVO" resultType="com.airline.a1.member.MembersVO">
 		select * from members where id=#{id}

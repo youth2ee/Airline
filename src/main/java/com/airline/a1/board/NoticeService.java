@@ -27,7 +27,7 @@ public class NoticeService {
 	public int noticeWrite(NoticeVO noticeVO, MultipartFile[] file)throws Exception{			
 		//file 유무검증 		
 		boolean check = false;
-		int result =noticeMapper.noticeWrite(noticeVO); 		
+		int result = noticeMapper.noticeWrite(noticeVO); 		
 			if(file.length>0) {
 				
 				for(MultipartFile multipartFile: file) {

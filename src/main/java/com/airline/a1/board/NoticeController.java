@@ -39,6 +39,8 @@ public class NoticeController {
 	  public ModelAndView noticeWrite(NoticeVO noticeVO, MultipartFile[] file)throws Exception{
 		  
 	  ModelAndView mv = new ModelAndView(); 
+	  
+	  
 	  int result =noticeService.noticeWrite(noticeVO, file);
 	  
 	  String msg = "작성에 실패하였습니다.다시 작성해주세요."; 

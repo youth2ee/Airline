@@ -28,7 +28,7 @@
 			</div>			
 			<h3 class="mem_tit">회원 약관동의</h3> 
 			<p class="text_type10">약관 및 정보이용 안내에 동의해주시기 바랍니다.</p> 
-			<form action="" id="form_terms">
+			<form action="memberJoin" id="form_terms" method="get">
 				<fieldset>
 					<legend>회원 약관동의 폼</legend> 
 					<ul class="list_type6 border">
@@ -39,7 +39,7 @@
 							
 						</li>
 						<li class="terms_area">
-							<input type="checkbox" id="agree_hompageUse" data-type="ck_item">
+							<input type="checkbox" name="agree1" id="agree_hompageUse" data-type="ck_item">
 							<label for="agree_hompageUse" class="fsz_23"><span class="col_brown2">[필수]</span> 아시아나클럽 일반 규정 및 홈페이지 이용 약관</label> 
 							
 							<div class="terms_cont" name="terms01" tabindex="0">
@@ -202,7 +202,7 @@
  &nbsp;&nbsp;제 2조 [용어의 정의] ① 온라인플랫폼, ⑥ 온라인플랫폼 회원 용어 변경<br> &nbsp;&nbsp;제 5조 [서비스의 제공] ①항의 3번 여행상품 관련 정보 제공 서비스 삭제 </p> </div></div>
 						</li>
 						<li class="terms_area">
-							<input type="checkbox" id="agree_personalCollection" data-type="ck_item">
+							<input type="checkbox" name="agree2" id="agree_personalCollection" data-type="ck_item">
 							<label for="agree_personalCollection" class="fsz_23"><span class="col_brown2">[필수]</span> 개인정보 수집 및 이용안내</label> 
 							
 							<div class="terms_cont" name="terms06" tabindex="0">
@@ -247,7 +247,7 @@
 <p>개인정보 수집 및 이용 동의를 거부하실 수 있습니다. 다만, 이 경우 회원가입이 제한됩니다.</p></div>
 						</li>
 						<li class="terms_area">
-							<input type="checkbox" id="agree_personalTransferToAbroad" data-type="ck_item">
+							<input type="checkbox" name="agree3" id="agree_personalTransferToAbroad" data-type="ck_item">
 							<label for="agree_personalTransferToAbroad" class="fsz_23"><span class="col_brown2">[필수]</span> 개인정보 국외 이전 동의</label> 
 							
 							<div class="terms_cont" name="terms10" tabindex="0">
@@ -265,7 +265,7 @@
 <p>라. 이전받는 자의 개인정보 이용 목적 및 보유, 이용기간<br> &nbsp;- 당사 예약시스템 운영 및 예약기록 유지, 개인정보 이전 후 5년 간</p></div>
 						</li>
 						<li class="terms_area">
-							<input type="checkbox" id="agree_personalCollectionOption" data-type="ck_item">
+							<input type="checkbox" id="agree_personalCollectionOption" name="pO" data-type="ck_item">
 							<label for="agree_personalCollectionOption" class="fsz_23"><span class="col_brown2">[선택]</span> 개인정보 수집 및 이용안내</label> 
 							
 							<div class="terms_cont" name="terms09" tabindex="0">
@@ -281,7 +281,7 @@
 <span style="font-size: 11pt;"> - 회원은 선택정보 제공에 대한 동의를 거부할 권리가 있으며, 동의를 거부하더라도 회원 가입이 가능합니다.</span></p></div>
 						</li>
 						<li class="terms_area">
-							<input type="checkbox" id="agree_personalProvide" data-type="ck_item">
+							<input type="checkbox" id="agree_personalProvide" name="pP" data-type="ck_item">
 							<label for="agree_personalProvide" class="fsz_23"><span class="col_brown2">[선택]</span> 개인정보 제 3자 제공 동의</label> 
 							
 							<div class="terms_cont" name="terms07" tabindex="0">
@@ -413,7 +413,7 @@
 	$("#btn_agree").click(function(){
 		
 		if($('input[type="checkbox"]').eq(1).prop("checked") && $('input[type="checkbox"]').eq(2).prop("checked") && $('input[type="checkbox"]').eq(3).prop("checked")){
-			location.href='./memberJoin';
+			$("#form_terms").submit();
 		}else{
 			alert('필수사항 동의');
 		}

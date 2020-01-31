@@ -16,6 +16,9 @@ public class MemberService {
 		return memberMapper.memberLogin(membersVO);
 	}
 	
+	public MembersVO memberLogin2(MembersVO membersVO) throws Exception{
+		return memberMapper.memberLogin2(membersVO);
+	}
 	//id중복체크
 	public MembersVO memberidCheck(MembersVO membersVO) throws Exception{
 		return memberMapper.memberidCheck(membersVO);
@@ -23,7 +26,15 @@ public class MemberService {
 	
 	//회원가입
 	public int memberJoin (MembersVO membersVO) throws Exception{
-		membersVO.setMemberNum(this.mkMemberNum());
+
+		while (true) {
+			membersVO.setMemberNum(this.mkMemberNum());
+			int result = memberMapper.memberNumCheck(membersVO);
+			if(result == 0) {
+				break;
+			}
+		}
+		
 		return memberMapper.memberJoin(membersVO);
 	}
 	
