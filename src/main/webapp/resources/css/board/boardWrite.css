@@ -86,6 +86,13 @@
     line-height: 40px;
     height: 46px;
     padding: 0 45px 0 15px;
+    background: #f3f3f3 url(/images/board/bg_select_arrow.png) no-repeat right 13px top 50%;
+    background-size: 12px 8px;
+     
+}
+
+.cate option{
+	padding: 0px 2px 1px;	
 }
 
 .textarea_wrap textarea{ 
@@ -112,9 +119,6 @@
 	color: #000000;
 }
 
-.jfile_wrap{
-	    margin-top: -6px;
-}
 
 .addfile{
 	position: absolute;
@@ -168,6 +172,7 @@
 	cursor: pointer;
 	box-sizing: border-box;
 	margin: 0;
+	font-weight: normal;
 }
 
 .search:hover{
@@ -183,19 +188,11 @@
 	
 }
 
-.addFileName::placeholder{
-	font-weight: bold;
-	
-}
-
 .list_type{
 	margin-top: 15px;
-	padding-left: 30px;
-	text-indent: -10px;
     line-height: 1.5;
     font-size: 15px;
     color: #555;
-    font-weight: bold;
 	
 }
 
