@@ -34,7 +34,7 @@ import org.w3c.dom.NodeList;
 @SpringBootTest
 class SearchTests {
 
-	//@Test
+	@Test
 	public void maTest(){
           String string = "아버지가방에들어가셨다.";
           try {
@@ -63,7 +63,7 @@ class SearchTests {
     }
 	
 	
-	@Test
+	//@Test
 	public void mTest(){
         // string to extract keywords
         String strToExtrtKwrd = "이것도분석하는게가능한부분인가요오지고지리고돌리고인정?어인정";
