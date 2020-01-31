@@ -503,7 +503,7 @@ $('#arrloc').focus(function(){
 /* 예약 끝 */
 
 /* 검색 */
-$('body').on('blur', '.search__input', function(){
+$('body').on('click', '.sbtn', function(){
 		$('#frm').submit();
  });
 

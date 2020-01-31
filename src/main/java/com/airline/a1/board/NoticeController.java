@@ -39,6 +39,8 @@ public class NoticeController {
 	  public ModelAndView noticeWrite(NoticeVO noticeVO, MultipartFile[] file)throws Exception{
 		  
 	  ModelAndView mv = new ModelAndView(); 
+	  
+	  
 	  int result =noticeService.noticeWrite(noticeVO, file);
 	  
 	  String msg = "작성에 실패하였습니다.다시 작성해주세요."; 
@@ -58,9 +60,11 @@ public class NoticeController {
 	 
 	 @GetMapping("noticeList")
 	 public ModelAndView noticeList(Pager pager)throws Exception{
-		 
 		 	List<BoardVO> ar = noticeService.noticeList(pager);
 		 	ModelAndView mv = new ModelAndView();
+		 	int totalCount = noticeService.noticeCount(pager);
+	 	
+		 	mv.addObject("tc", totalCount);
 		 	mv.addObject("board", "notice"); 
 		 	mv.addObject("list", ar);
 		 	mv.addObject("pager", pager);
