@@ -57,8 +57,8 @@
 								</div>
 
 								<div class="input_wrap">
-									<input type="text" id="txtID" name="id" placeholder="아이디 입력" title="아이디 입력" style="width:468px;"> 
-									<input type="password" id="txtPW" name="pw" placeholder="비밀번호 입력" title="비밀번호 입력" style="width:468px;" autocomplete="off"> 
+									<input type="text" id="txtID" name="id" placeholder="아이디 입력" title="아이디 입력" style="width:500px;"> 
+									<input type="password" id="txtPW" name="pw" placeholder="비밀번호 입력" title="비밀번호 입력" style="width:500px;" autocomplete="off"> 
 								</div>
 
 								
@@ -92,7 +92,7 @@
 										</ul>
 									</div>
 									<div class="right">
-										<button type="button" id="btnRegister" name="btnRegister" class="btn_M gray">회원가입</button> 
+										<button type="button" id="btnRegister" name="btnRegister" class="btn_M gray" onclick="location.href='./memberAgree'">회원가입</button> 
 									</div>
 								</div>
 
@@ -120,7 +120,7 @@
 							<div class="inner" id="noLogindiv" style="display:none; margin-top: 25px;">
 								<h4 class="hidden">비로그인 예약조회</h4> 
 								<div class="input_wrap">
-									<input type="text" id="reservationId" placeholder="예약번호 입력 ex) 5XT9UU / 12345678" title="예약번호 입력" style="width:468px;"> 
+									<input type="text" id="reservationId" placeholder="예약번호 입력 ex) 5XT9UU / 12345678" title="예약번호 입력" style="width:500px;"> 
 									<div class="itinerary">
 										<div class="itinerary_calendar">
 											<div class="calendar_wrap">
@@ -190,7 +190,7 @@
 										</div>
 									</div>
 									
-									<input type="text" id="passengerName" placeholder="예약 시 입력한 영문/국문 성(Last Name, 姓) 입력" title="예약 시 입력한 영문/국문 성(Last Name, 姓) 입력" style="width:468px;"> 
+									<input type="text" id="passengerName" placeholder="예약 시 입력한 영문/국문 성(Last Name, 姓) 입력" title="예약 시 입력한 영문/국문 성(Last Name, 姓) 입력" style="width:500px;"> 
 								</div>
 
 								
@@ -304,23 +304,6 @@ $("#btnLogin").click(function(){
 	$("#loginform").submit();
 });
 
-function sendSms() { 
-	$.ajax({ url: "./sendSms",
-		data: {
-		receiver: "01038209098"
-		},
-		type: "post",
-		success: function(result){ 
-			if (result == "true") {
-				console.log(result);
-			} else {
-				alert("인증번호 전송 실패"); 
-			} 
-		} });}
-function phoneCheck() { 
-	$.ajax({ url: "./smsCheck", type: "post", 
-		data: { code: $("#sms").val() }, success: function(result) { if (result == "ok") { alert("번호 인증 성공"); } else { alert("번호 인증 실패"); } } }); }
-
 
 $(".logintype").click(function(){
 	$(".logintype").each(function(){
@@ -345,6 +328,52 @@ function sharpNothig(){
 	    changeYear: true
 	});
 }
+
+$("#login_check_area input").click(function(){
+	if($(this).attr('id') == "loginType_ID"){
+		$("#txtID").prop('title', '아이디 입력');
+		$("#txtID").prop('placeholder', '아이디 입력');
+		$("#labelSaveID").text('아이디 저장');
+		$("#txtID").attr('maxlength', 100);
+	}else{
+		$("#txtID").prop('title', '회원번호 입력');
+		$("#txtID").prop('placeholder', '회원번호 입력');
+		$("#txtID").attr('maxlength', 11);
+		$("#labelSaveID").text('회원번호 저장');
+	}
+});
+
+$("#txtID").keyup(function(){
+	var number =  $(this).val();
+	var phone = "";
+	
+	if(!$("#loginType_ID").prop('checked')){
+
+		number = number.replace(/[^0-9]/g, "");
+		 
+		if(number.length < 4){
+			
+			return number;
+			
+		}else if(number.length < 7){
+	
+			phone += number.substring(0,3);
+	        phone += "-";
+	        phone += number.substr(3);
+	        
+		}else{
+			phone += number.substring(0,3);
+	        phone += "-";
+	        phone += number.substring(3,6);
+	        phone += "-";
+			phone += number.substring(6)
+		}
+		
+		$(this).val(phone);
+	}
+
+});
+
 
 </script>
 

@@ -1,18 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>My Page</title>
+    
     <link href="../resources/css/reset.css" rel="stylesheet">
     <link href="../resources/css/mypage/main.css" rel="stylesheet">
-	<c:import url="../template/boot.jsp"></c:import>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="../resources/css/mypage/mypageHeader.css" rel="stylesheet">
 	
-	<link href="//www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+	<c:import url="../template/boot.jsp"></c:import>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="../resources/assets/circle.js"></script>
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="//www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+    
     <link rel="stylesheet" type="text/css" href="../resources/assets/circle.css">
     <link rel="stylesheet" type="text/css" href="../resources/assets/demo.css">
     <link rel="stylesheet" type="text/css" href="../resources/assets/skins/yellowcircle.css">
@@ -20,15 +25,9 @@
     <link rel="stylesheet" type="text/css" href="../resources/assets/skins/firecircle.css">
     <link rel="stylesheet" type="text/css" href="../resources/assets/skins/whitecircle.css">
     <link rel="stylesheet" type="text/css" href="../resources/assets/skins/simplecircle.css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet">
-    <script type="text/javascript" src="../resources/assets/circle.js"></script>
-	
-	
 	
 </head>
 <body>
-
-
 
 
 <header></header>

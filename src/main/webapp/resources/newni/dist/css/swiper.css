@@ -33,7 +33,8 @@
 .swiper-wrapper {
   position: relative;
   width: 100%;
-  height: 100%;
+ /*  height: 100%; */
+ height: 100px;
   z-index: 1;
   display: -webkit-box;
   display: -moz-box;
@@ -77,13 +78,15 @@
   -ms-flex: 0 0 auto;
   flex-shrink: 0;
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
+  height: 100px;
   position: relative;
 }
 /* Auto Height */
 .swiper-container-autoheight,
 .swiper-container-autoheight .swiper-slide {
-  height: auto;
+  /* height: auto; */
+  height: 100px;
 }
 .swiper-container-autoheight .swiper-wrapper {
   -webkit-box-align: start;
@@ -251,7 +254,8 @@ button.swiper-pagination-bullet {
   left: 0;
   top: 0;
   width: 100%;
-  height: 100%;
+/*   height: 100%; */
+height: 100px;
   -webkit-transform: scale(0);
   -ms-transform: scale(0);
   -o-transform: scale(0);
@@ -277,7 +281,8 @@ button.swiper-pagination-bullet {
 }
 .swiper-container-vertical > .swiper-pagination-progress {
   width: 4px;
-  height: 100%;
+ /*  height: 100%; */
+ height: 100px;
   left: 0;
   top: 0;
 }
@@ -317,7 +322,8 @@ button.swiper-pagination-bullet {
   left: 0;
   top: 0;
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
+  height: 100px;
   pointer-events: none;
   z-index: 10;
 }
@@ -421,7 +427,8 @@ button.swiper-pagination-bullet {
   -ms-transform-origin: 0 0;
   transform-origin: 0 0;
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
+  height: 100px;
 }
 .swiper-container-cube.swiper-container-rtl .swiper-slide {
   -webkit-transform-origin: 100% 0;
@@ -441,7 +448,8 @@ button.swiper-pagination-bullet {
   left: 0;
   bottom: 0px;
   width: 100%;
-  height: 100%;
+/*   height: 100%; */
+height: 100px;
   background: #000;
   opacity: 0.6;
   -webkit-filter: blur(50px);
@@ -472,7 +480,8 @@ button.swiper-pagination-bullet {
 }
 .swiper-zoom-container {
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
+  height: 100px;
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -494,7 +503,8 @@ button.swiper-pagination-bullet {
 .swiper-zoom-container > svg,
 .swiper-zoom-container > canvas {
   max-width: 100%;
-  max-height: 100%;
+  /* max-height: 100%; */
+  max-height:100px;
   object-fit: contain;
 }
 /* Scrollbar */
@@ -518,10 +528,12 @@ button.swiper-pagination-bullet {
   top: 1%;
   z-index: 50;
   width: 5px;
-  height: 98%;
+  /* height: 98%; */
+  height: 98px;
 }
 .swiper-scrollbar-drag {
-  height: 100%;
+  /* height: 100%; */
+  height: 100px;
   width: 100%;
   position: relative;
   background: rgba(0, 0, 0, 0.5);
@@ -553,7 +565,8 @@ button.swiper-pagination-bullet {
   display: block;
   content: "";
   width: 100%;
-  height: 100%;
+ /*  height: 100%; */
+ height: 100px;
   background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox%3D'0%200%20120%20120'%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20xmlns%3Axlink%3D'http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink'%3E%3Cdefs%3E%3Cline%20id%3D'l'%20x1%3D'60'%20x2%3D'60'%20y1%3D'7'%20y2%3D'27'%20stroke%3D'%236c6c6c'%20stroke-width%3D'11'%20stroke-linecap%3D'round'%2F%3E%3C%2Fdefs%3E%3Cg%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(30%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(60%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(90%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(120%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(150%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.37'%20transform%3D'rotate(180%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.46'%20transform%3D'rotate(210%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.56'%20transform%3D'rotate(240%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.66'%20transform%3D'rotate(270%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.75'%20transform%3D'rotate(300%2060%2C60)'%2F%3E%3Cuse%20xlink%3Ahref%3D'%23l'%20opacity%3D'.85'%20transform%3D'rotate(330%2060%2C60)'%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
   background-position: 50%;
   -webkit-background-size: 100%;
