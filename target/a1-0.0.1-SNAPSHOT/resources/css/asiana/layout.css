@@ -1,0 +1,538 @@
+@charset "UTF-8";
+
+/* layout */
+#wrap{min-width:1180px;}
+#wrap.line {height:0;padding-top:10px;background-image: url(https://flyasiana.com/C/pc/image/common/bg_header_line.jpg); background-repeat: repeat-y; background-position: right top;background-color: #e7e7e8;}
+
+/* //header 180103 ksh 추가 */
+.skip_navi a{position:absolute;top:-100px;}
+.skip_navi a:focus {display:block;left:0;top:0;z-index:9999;width:100%;height:30px;line-height:30px; background:#444;color:#fff;text-align:center;}
+
+.util_wrap{position:relative;background:#f7f7f7; height:40px;box-sizing:border-box;}
+.util_wrap .inner{position:relative;width:1180px; margin:0 auto; /*padding-top:11px;*/ box-sizing:border-box;font-size:13px;color:#222;}
+.util_wrap .inner:after{display:block;content:'';clear:both;}
+.util_wrap .fav_link{float:left; padding:10px 0 10px;}
+.util_wrap .fav_link > ul{position:relative;}
+.util_wrap .fav_link > ul:after{display:block;content:'';clear:both;}
+.util_wrap .fav_link > ul > li{float:left;}
+.util_wrap .fav_link > ul > li:before{content:'';display:inline-block;vertical-align:middle;height:12px;width:1px;border-left:1px solid #ccc;margin:0 15px;}
+.util_wrap .fav_link > ul > li:first-child:before{display:none;}
+.util_wrap .fav_link > ul > li > a:hover,
+.util_wrap .fav_link > ul > li > a:focus{color:#d60815;text-decoration:underline;}
+.util_wrap .util_menu{float:right;}
+.util_wrap .util_menu > ul{position:relative;}
+.util_wrap .util_menu > ul:after{display:block;content:'';clear:both;}
+.util_wrap .util_menu > ul > li{float:left;margin-left:25px; position:relative; padding:10px 0 6px;}
+.util_wrap .util_menu > ul > li span.new_num{position:absolute; right:-17px; top:4px; display:none; width:20px; height:20px; border-radius:50%; background-color:#d10712; color:white; font-size:11px; text-align:center; line-height:20px; } 
+.util_wrap .util_menu > ul > li:first-child{margin-left:0;}
+.util_wrap .util_menu > ul > li > a:hover,
+.util_wrap .util_menu > ul > li > a:focus{color:#d60815;text-decoration:underline;}
+.util_wrap .util_menu > ul > li:hover > ul{display:block;}
+.util_wrap .util_menu > ul > li > ul{
+	position:absolute;
+	background-color:white;
+	z-index:500;
+	line-height:25px;
+	box-sizing:border-box;
+	padding:20px;
+	border:1px solid #cccccc;
+	left:-23px;
+	top:34px;
+	display:none;
+}
+.util_wrap .util_menu > ul > li > ul:before{
+	content:'';
+	display:block;
+	width:11px;
+	height:9px;
+	position:absolute;
+	top:-9px;
+	left:46px;
+	background:url('https://flyasiana.com/C/pc/image/main/gnb_arrow.png') center center no-repeat;
+}
+.util_wrap .util_menu > ul > li > ul > li:before{
+	content:'';
+	display:block;
+	width:2px;
+	height:2px;
+	background-color:#555555;
+	position:absolute;
+	left:0;
+	top:50%;
+	margin-top:-1px;
+}
+.util_wrap .util_menu > ul > li > ul > li{
+	padding-left:11px;
+	box-sizing:border-box;
+	position:relative;
+	white-space:nowrap;
+}
+.util_wrap .util_menu > ul > li > ul > li a:hover,.util_wrap .util_menu > ul > li > ul > li a:focus{
+	color:#d60815;text-decoration:underline;
+}
+
+
+.util_wrap .util_menu > ul > li.lang_select{position:relative;margin-left:30px;}
+.util_wrap .util_menu > ul > li.lang_select > a:hover,
+.util_wrap .util_menu > ul > li.lang_select > a:focus{color:#222;text-decoration:none;}
+.util_wrap .util_menu > ul > li.lang_select .layer_pop{top:30px;}
+.util_wrap .util_menu > ul > li .btn_language{position:relative;box-sizing:border-box;margin-top:-5px;padding:4px;border:1px solid #f7f7f7;}
+.util_wrap .util_menu > ul > li .btn_language:hover,
+.util_wrap .util_menu > ul > li .btn_language:focus{border:1px solid #000;}
+.util_wrap .util_menu > ul > li .btn_language.on{border:1px solid #e30613;}
+.util_wrap .util_menu > ul > li .btn_language .lang{position:relative;padding-left:3px;}
+.util_wrap .util_menu > ul > li .btn_language .lang:after{content:'';display:inline-block;vertical-align:middle;width:18px;height:18px;margin-left:5px;background:url('https://flyasiana.com/C/pc/image/common/btn_lang_more.png') right center no-repeat;}
+.util_wrap .util_menu > ul > li .btn_language .country{position:relative;}
+/* .util_wrap .util_menu > ul > li .btn_language .country:after{content:'';display:inline-block;vertical-align:middle;height:12px;width:1px;border-left:1px solid #ccc;margin:0 5px 0 10px;} */
+/* 181024 ksh 시연용 국기 아이콘 임시 히든처리 */
+/* .util_wrap .util_menu > ul > li .btn_language .country:before{content:'';display:inline-block;vertical-align:middle;width:25px;height:18px;margin-right:5px;background:url('https://flyasiana.com/C/pc/image/common/ico_language.png') 0 0 no-repeat;}
+.util_wrap .util_menu > ul > li .btn_language .country.kor:before{background-position:0 0;}
+.util_wrap .util_menu > ul > li .btn_language .country.usa:before{background-position:0 -18px;}
+.util_wrap .util_menu > ul > li .btn_language .country.jpn:before{background-position:0 -36px;}
+.util_wrap .util_menu > ul > li .btn_language .country.chn:before{background-position:0 -54px;}
+.util_wrap .util_menu > ul > li .btn_language .country.eas:before{background-position:0 -72px;}
+.util_wrap .util_menu > ul > li .btn_language .country.eur:before{background-position:0 -90px;}
+.util_wrap .util_menu > ul > li .btn_language .country.oce:before{background-position:0 -108px;}
+.util_wrap .util_menu > ul > li .btn_language .country.rus:before{background-position:0 -126px;} */
+
+/* header */
+header{position:relative;height:83px;z-index:400;background:#fff;/*transition:all .5s;*/}
+header .header_bg{background:#fff;position:absolute;top:83px;width:100%;height:0px;/*transition:all .5s ease-out;*/}
+header .h_inner{position:relative;width:1180px;height:100%; margin:0 auto;}
+header .h_inner:after{display:block;content:'';clear:both;}
+header .h_inner .logo{position:relative;z-index:2;float:left;display:inline-block;width:202px;height:38px;margin:15px 100px 0 0;background:url('https://flyasiana.com/C/pc/image/common/logo_header.png') 0 0 no-repeat;}
+header .h_inner .logo a{display:block;height:100%;}
+header .h_inner .logo.mileage{width:172px;height:58px;margin:10px 130px 0 0;background-image:url('https://flyasiana.com/C/pc/image/common/logo_header_mileage.png');}
+header .h_inner .logo.mileage.save{background-image:url('https://flyasiana.com/C/pc/image/common/logo_header_mileage_save.png');}
+
+/* header - 오픈 공통 */
+header.open .header_bg{border-top:1px solid #666;box-shadow:10px 10px 10px rgba(0,0,0,.05);}
+
+/* header - 메인 */
+/*mega start*/
+/*header.main{background:transparent;}*/
+header.main{background-color:white;}
+/*mega end*/
+header.main.open{background:#fff;}
+header.main.fixed_white{background:#fff;transition:.3s;} /* 탑이 아닐경우 헤더 fixed_white 처리 */
+header.main .header_bg{background:transparent;}
+header.main.open .header_bg{background:#fff;}
+
+/* header - 항공권예약 */
+.header_booking_wrap{position:relative;height:83px;}
+.header_booking_wrap header{position:absolute; top:0;left:0;right:0;margin:auto;}
+#booking_header{position:relative;}
+#booking_header .all_menu{position:absolute;z-index:2; top:32px;right:0;display:inline-block;width:22px;height:19px;background:url('https://flyasiana.com/C/pc/image/common/all_menu.png') 0 0 no-repeat;}
+#booking_header .all_menu:hover,
+#booking_header .all_menu:focus{background-position:0 -19px;}
+#over_header{display:none;}
+/* steper */
+.step_indi_wrap{position:absolute;z-index:1;left:0;right:0;margin:auto;margin-top:30px;text-align:center;}
+.step_indi_wrap .step_inner{display:inline-block;margin:0 auto;}
+.step_indi_wrap .step{float:left;padding:0 20px 5px;margin-right:3px;border-bottom:3px solid #cccccc;color:#cccccc;text-align:center;}
+.step_indi_wrap .step > span{font-size:14px;}
+.step_indi_wrap .step .num{}
+.step_indi_wrap .step .txt{margin-left:5px;position:absolute;top:0;left:0;overflow:hidden;width:0;height:0;font-size:0;line-height:0;}
+.step_indi_wrap .step.check{border-bottom:3px solid #555555;color:#555555;}
+.step_indi_wrap .step.on{padding:0 50px 5px; border-bottom:3px solid #d60815;color:#555555;}
+.step_indi_wrap .step.on .txt{position:relative;top:inherit;left:inherit;width:auto;height:auto;font-size:14px;line-height:1;}
+
+/* nav */
+nav{position:relative; float:left; height:83px;box-sizing:border-box;}
+nav .nav_list{height:100%;}
+nav .nav_list:after{display:block;content:'';clear:both;}
+nav .nav_list > li{float:left;height:100%;}
+nav .nav_list > li:after{display:block;content:'';clear:both;}
+nav .nav_list > li > a{position:relative;display:inline-block;padding:0 20px;min-width:120px;height:100%;box-sizing:border-box;margin-left:15px;font-weight:bold;font-size:18px;text-align:center;color:#000;line-height:78px;}
+nav .nav_line{display:none;content:'';position:absolute;z-index:2;left:0;bottom:-1px;width:120px;height:5px;background:#e30613;}
+nav .nav_list > li:first-child > a{margin-left:0;}
+nav .nav_list > li .nav_d2 > li > a{min-height:38px;margin-bottom:15px;font-weight:bold;font-size:16px;line-height:18px;color:#222;}
+nav .nav_list > li .nav_d2 > li > ul{}
+nav .nav_list > li .nav_d2 > li > ul > li {margin-top:5px;}
+nav .nav_list > li .nav_d2 > li > ul > li:first-child {margin-top:0;}
+nav .nav_list > li .nav_d2 > li > ul > li > a{font-size:14px; color:#555;line-height:16px;}
+nav .nav_list > li .nav_d2 > li > ul > li > a:hover,
+nav .nav_list > li .nav_d2 > li > ul > li > a:focus{color:#d60815;text-decoration:underline;}
+
+nav .nav_cont{position:absolute;display:block;left:-300px;width:1180px;height:0;overflow:hidden;margin:0 auto;}
+nav .nav_cont:before{content:'';display:block;height:30px;border:1px solid transparent;}
+nav .nav_cont .gnb_banner{position:relative;display:inline-block;float:right;width:196px;height:252px;box-sizing:border-box;}
+nav .nav_cont .gnb_banner > a{display:block;}
+nav .nav_cont .gnb_banner .img_wrap{position:relative;width:100%;height:126px;overflow:hidden;}
+nav .nav_cont .gnb_banner.type2 .img_wrap{height:100%;}
+nav .nav_cont .gnb_banner .img_wrap img{width:100%;height:100%;}
+nav .nav_cont .gnb_banner .txt_wrap{min-height:125px;box-sizing:border-box;padding:20px;background:#fff;border:1px solid #ccc; border-top:none;text-align:center;color:#555;font-size:14px;line-height:1.3;}
+nav .nav_cont .gnb_banner .txt_wrap p{display:-webkit-box;max-height:73px;text-overflow:ellipsis;overflow:hidden;white-space:normal;-webkit-line-clamp:3;-webkit-box-orient: vertical;}
+nav .nav_cont .gnb_banner .txt_wrap strong{display:block;margin-bottom:5px;color:#222;font-size:16px;}
+nav .nav_cont .gnb_banner > a:hover .txt_wrap,
+nav .nav_cont .gnb_banner > a:focus .txt_wrap{border:1px solid #000;border-top:none;}
+nav .nav_cont .gnb_banner > a:hover .img_wrap:after,
+nav .nav_cont .gnb_banner > a:focus .img_wrap:after{content:'';display:inline-block;position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.3);}
+nav .nav_cont .nav_d2{position:relative;display:table;width:calc(100% - 196px);float:left;min-height:250px;}
+nav .nav_cont .nav_d2:after{display:block;content:'';clear:both;}
+nav .nav_cont .nav_d2 > li{display:table-cell;vertical-align:top;border-left:1px solid #ddd; width:20%;height:100%;box-sizing:border-box;padding:0 25px;}
+
+/* col4개 / wide 스타일 분기 */
+nav .nav_cont.col6 .nav_d2 > li{width:16.66%;}
+nav .nav_cont.col5 .nav_d2 > li{width:20%;}
+nav .nav_cont.col4 .nav_d2 > li{width:25%;}
+nav .nav_cont.col3 .nav_d2 > li{width:33.33%;}
+nav .nav_cont.wide .nav_d2{width:100%;}
+
+/* nav_right */
+.nav_right{position:relative;float:right;margin-top:30px;}
+.nav_right .myasiana_area{position:relative;display:inline-block;}
+.nav_right .myasiana_area .btn_myasiana{position:relative;display:inline-block;width:40px;height:27px;margin-right:10px;background:url('https://flyasiana.com/C/pc/image/common/gnb_ico_myasiana_off.png') left top no-repeat;}
+.nav_right .myasiana_area .btn_myasiana.on,
+.nav_right .myasiana_area .btn_myasiana:hover{background:url('https://flyasiana.com/C/pc/image/common/gnb_ico_myasiana_on.png') left top no-repeat;}
+.nav_right .myasiana_area .btn_myasiana .newnum{position:absolute;top:-3px;left:15px;display:inline-block;min-width:19px;height:19px;line-height:19px;padding:0 6px;box-sizing:border-box;background:#d60815;color:#fff;border-radius:10px;font-size:12px;text-align:center;word-break:keep-all !important; display:none;}
+
+/* hdlayer_wrap */
+.hdlayer_wrap{display:none;position:absolute;top:40px;right:-10px;width:370px;}
+.hdlayer_wrap .arrow{opacity:1;display:inline-block;position:absolute;z-index:1;top:0;right:65px;width:30px;height:14px;overflow:hidden;transform-origin:bottom center;}
+.hdlayer_wrap .arrow:before{content:'';display:inline-block;position:absolute;top:7px;left:0;right:0;margin:auto;width:20px;height:20px;background:#fff;border:1px solid #ccc;transform:rotate(45deg);box-shadow:4px 2px 5px 2px rgba(0,0,0,.2);}
+.hdlayer_wrap .hdlayer{position:relative;background:#fff;width:calc(100% - 10px);margin-top:13px;border:1px solid #ccc;box-shadow:rgba(0,0,0,.1) 5px 5px 5px;}
+.hdlayer_wrap .hdlayer .inner{position:relative;padding:30px;}
+.hdlayer_wrap .hdlayer .myasiana_close{display:inline-block; position:absolute; top:20px; right:20px; width:22px; height:22px; background:url('https://flyasiana.com/C/pc/image/common/btn_close_gray.png') 0 0 no-repeat;}
+.hdlayer_wrap .hdlayer .search_close{display:inline-block; position:absolute; top:20px; right:20px; width:22px; height:22px; background:url('https://flyasiana.com/C/pc/image/common/btn_close_gray.png') 0 0 no-repeat;}
+
+/* 검색영역 layer */
+.nav_right .search_area{position:relative;display:inline-block;}
+.nav_right .search_area .btn_search{display:inline-block;width:35px; height:27px;background:url('https://flyasiana.com/C/pc/image/common/gnb_ico_search_off.png') center top no-repeat;}
+.nav_right .search_area .btn_search.on,
+.nav_right .search_area .btn_search:hover{background:url('https://flyasiana.com/C/pc/image/common/gnb_ico_search_on.png') center top no-repeat;}
+.nav_right .search_area .hdlayer_wrap{width:510px}
+.nav_right .search_area .hdlayer_wrap .arrow{right:13px;}
+.nav_right .search_area .hdlayer_wrap .hdlayer .inner{padding:20px 60px 20px 20px;}
+.nav_right .search_area button{width:120px;}
+.nav_right .search_area input[type="text"]{margin-right:5px;width:257px;}
+.nav_right .btn_header_toggle{float:right;display:inline-block;margin:-10px 0 0 35px;width:41px;height:41px;background:url('https://flyasiana.com/C/pc/image/common/btn_header_toggle.png') 0 0 no-repeat;}
+.nav_right .btn_header_toggle:hover,
+.nav_right .btn_header_toggle:focus{background-position:0 -41px;}
+
+/* 챗봇 */
+.nav_right .chatbot_area{ display:inline-block; margin-top:-6px; padding-right:25px; vertical-align:top;}
+.nav_right .chatbot_area .btn_chatbot{ position:relative; display:inline-block; width:45px; height:36px;  background-image:url('https://flyasiana.com/C/pc/image/common/gnb_ico_chatbot_off.png'); background-position:0 0; background-repeat:no-repeat;}
+.nav_right .chatbot_area .btn_chatbot-text{ font:0/0 a;}
+.nav_right .chatbot_area .hdlayer_wrap{ width:auto; top:41px; right:50%; -ms-transform:translateX(50%);transform:translateX(50%)}
+.nav_right .chatbot_area .hdlayer_wrap .arrow{ right:76px;}
+.nav_right .chatbot_area .hdlayer{ padding:10px 4px 10px 8px; white-space:nowrap; }
+.nav_right .chatbot_area .btn_chatbot:focus,
+.nav_right .chatbot_area .btn_chatbot:hover{ background-image:url('https://flyasiana.com/C/pc/image/common/gnb_ico_chatbot_on.png'); }
+.nav_right .chatbot_area .btn_chatbot:focus .hdlayer_wrap,
+.nav_right .chatbot_area .btn_chatbot:hover .hdlayer_wrap{ display:block;}
+
+
+/* 마이아시아나 layer */
+#layerMyasiana {right:-40px;}
+#layerMyasiana .ico_more{display:inline-block;width:19px;height:19px;background:url('https://flyasiana.com/C/pc/image/common/btn_myinfo_more.png') center top no-repeat;}
+#layerMyasiana .ico_more:hover,
+#layerMyasiana .ico_more:focus{background-position:center -19px;}
+#layerMyasiana .myinfo_wrap{}
+#layerMyasiana .myinfo_wrap .myinfo{}
+#layerMyasiana .myinfo_wrap .myinfo .name{position:relative;font-size:23px;color:#000; }
+#layerMyasiana .myinfo_wrap .myinfo .name:after{content:'';display:inline-block;margin-top:2px;width:19px;height:19px;background:url('https://flyasiana.com/C/pc/image/common/btn_myinfo_more.png') center top no-repeat;}
+#layerMyasiana .myinfo_wrap .myinfo .name:hover:before,
+#layerMyasiana .myinfo_wrap .myinfo .name:focus:before{content:'';position:absolute;bottom:5px;left:0;width:calc(100% - 27px);border-bottom:1px solid #000;}
+#layerMyasiana .myinfo_wrap .myinfo .name:hover:after,
+#layerMyasiana .myinfo_wrap .myinfo .name:focus:after{background-position:center -19px;}
+#layerMyasiana .myinfo_wrap .myinfo .en_name{color:#555;font-size:14px;}
+#layerMyasiana .myinfo_wrap .myinfo .desc{margin-top:5px;}
+#layerMyasiana .myinfo_wrap .myinfo .desc .grade{font-size:18px;color:#222;}
+#layerMyasiana .myinfo_wrap .myinfo .desc .grade:after{content:'';display:inline-block;height:12px;width:1px;border-left:1px solid #ccc;margin:0 7px;}
+#layerMyasiana .myinfo_wrap .myinfo .desc .mem_number{padding-left:25px;font-size:16px;color:#222;background:url('https://flyasiana.com/C/pc/image/common/ico_myinfo_mem.png') 0 center no-repeat; }
+#layerMyasiana .myinfo_wrap .detail_box{position:relative;margin:15px 0 10px;}
+#layerMyasiana .myinfo_wrap .detail_box:after{display:block;content:'';clear:both;}
+#layerMyasiana .myinfo_wrap .detail_box dl{position:relative;padding:15px 20px;background:#f0f0f0; margin-bottom:1px;box-sizing:border-box;}
+#layerMyasiana .myinfo_wrap .detail_box dl:after{display:block;content:'';clear:both;}
+#layerMyasiana .myinfo_wrap .detail_box dl.half{width:50%;float:left;}
+#layerMyasiana .myinfo_wrap .detail_box dl.half + .half{float:right;border-left:1px solid #fff;;}
+#layerMyasiana .myinfo_wrap .detail_box dl dt{float:left;;}
+#layerMyasiana .myinfo_wrap .detail_box dl dt .tit{margin-top:5px;font-size:13px;color:#222;}
+#layerMyasiana .myinfo_wrap .detail_box dl dd{float:right;position:relative;}
+#layerMyasiana .myinfo_wrap .detail_box dl dd .num{font-size:23px;font-family:'latofont';}
+#layerMyasiana .myinfo_wrap .detail_box dl dd .unit{margin-left:3px;color:#737373;font-size:14px;}
+#layerMyasiana .myinfo_wrap .detail_box dl dd .data{}
+#layerMyasiana .myinfo_wrap .detail_box dl dd .data span{vertical-align:middle;}
+#layerMyasiana .myinfo_wrap .detail_box dl dd .data .num{color:#d60815;}
+#layerMyasiana .myinfo_wrap .detail_box dl dd .data:hover .num,
+#layerMyasiana .myinfo_wrap .detail_box dl dd .data:focus .num{text-decoration:underline;}
+#layerMyasiana .myinfo_wrap .detail_box dl dd .data .unit{margin-left:3px;color:#000;}
+#layerMyasiana .myinfo_wrap .detail_box dl dd .mile_more{position:relative}
+#layerMyasiana .myinfo_wrap .detail_box dl dd .mile_more span{vertical-align:middle;}
+#layerMyasiana .myinfo_wrap .detail_box dl dd .mile_more:hover .num,
+#layerMyasiana .myinfo_wrap .detail_box dl dd .mile_more:focus .num,
+#layerMyasiana .myinfo_wrap .detail_box dl dd .mile_more:hover .unit,
+#layerMyasiana .myinfo_wrap .detail_box dl dd .mile_more:focus .unit{color:#000;}
+/* 180125 마일리지 단위 M 삭제로 width:calc(100% - 20px); 에서 100%로 수정 */
+#layerMyasiana .myinfo_wrap .detail_box dl dd .mile_more:hover:before,
+#layerMyasiana .myinfo_wrap .detail_box dl dd .mile_more:focus:before{content:'';position:absolute;bottom:0;left:0;width:100%;/*width:calc(100% - 20px);*/border-bottom:1px solid #000;}
+
+#layerMyasiana .myinfo_wrap button{width:100%;}
+#layerMyasiana .alert_wrap{margin-top:30px;}
+#layerMyasiana .alert_wrap .head{position:relative;padding-bottom:5px;border-bottom:1px solid #666;}
+#layerMyasiana .alert_wrap .head:after{display:block;content:'';clear:both;}
+#layerMyasiana .alert_wrap .head .tit{font-size:23px;color:#000;}
+#layerMyasiana .alert_wrap .head .noread{font-size:14px;color:#737373;}
+#layerMyasiana .alert_wrap .head .noread .num{color:#d60815;}
+#layerMyasiana .alert_wrap .head .ico_more{float:right;margin-top:10px;}
+#layerMyasiana .alert_wrap .alert_list{height:auto; max-height:276px;overflow:hidden;overflow-y:auto;}
+#layerMyasiana .alert_wrap .alert_list > ul > li{position:relative;border-bottom:1px solid #eee;padding:8px 10px;font-size:15px;box-sizing:border-box;}
+#layerMyasiana .alert_wrap .alert_list > ul > li:hover,
+#layerMyasiana .alert_wrap .alert_list > ul > li:focus{background:#f7f7f7;}
+#layerMyasiana .alert_wrap .alert_list > ul > li .noti_tit{width:90%;line-height:18px;display: inline-block;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;color:#222;}
+#layerMyasiana .alert_wrap .alert_list > ul > li .noti_tit .cate{margin-right:3px;color:#6b2900;}
+#layerMyasiana .alert_wrap .alert_list > ul > li .alt_time{font-size:13px;color:#737373;}
+#layerMyasiana .alert_wrap .alert_list > ul > li .status{position:absolute;right:0;bottom:5px;padding-left:15px;margin-right:5px;font-size:13px; color:#737373;background:url('https://flyasiana.com/C/pc/image/common/ico_myinfo_read.png') 0 center no-repeat;}
+#layerMyasiana .alert_wrap .alert_list > ul > li.read a,
+#layerMyasiana .alert_wrap .alert_list > ul > li.read a .cate {color:#737373;}
+#layerMyasiana .alert_wrap .alert_list > ul > li.mass{background:#f4f1ee;}
+#layerMyasiana .alert_wrap .nodata{display:table;border-bottom:1px solid #eee;height:275px;width:100%;}
+#layerMyasiana .alert_wrap .nodata dl{display:table-cell;vertical-align:middle;text-align:center;}
+#layerMyasiana .alert_wrap .nodata dl dt{margin-bottom:15px;font-size:18px;color:#555;}
+#layerMyasiana .alert_wrap .nodata dl dt .ico_noalert{display:inline-block;margin-bottom:20px;width:64px;height:66px;background:url('https://flyasiana.com/C/pc/image/main/main_icoset.png') -80px -160px no-repeat;}
+#layerMyasiana .alert_wrap .nodata dl dd{font-size:15px;color:#737373;line-height:20px;}
+
+/* language layer */
+.layer_pop.type2{left:0;right:inherit;top:0;border:1px solid #ccc;box-shadow:rgba(0,0,0,.1) 5px 5px 5px;}
+.layer_pop.type2.right{left:inherit;right:0;}
+.layer_pop.type2 .pop_cont{padding:30px;}
+.layer_pop.type2 .lang_close,
+.layer_pop.type2 .layer_close{position:absolute;top:30px;right:30px; width:22px; height:22px; background:url('https://flyasiana.com/C/pc/image/common/btn_close_gray.png') 0 0 no-repeat;}
+.layer_pop.type2 .btn_wrap_ceType2 .btn_M{padding-left:30px;padding-right:30px;}
+
+/* location bar */
+.location_bar{clear:both;position:relative;z-index:201;height:48px;background:#6d6e70;color:#fff;}
+.location_bar .inner{position:relative;width:1180px;margin:0 auto;}
+.location_bar .inner:after{content:'';display:block;clear:both;}
+.location_bar .home{display:inline-block;float:left;width:50px;height:48px;background:#5f6062 url('https://flyasiana.com/C/pc/image/common/ico_loca_home.png') center center no-repeat; }
+.location_bar .home:hover,
+.location_bar .home:focus{background-color:#4a4c4d;}
+.location_bar .loca_menulist{float:left;position:relative;}
+.location_bar .loca_menulist:after{content:'';display:block;clear:both;}
+.location_bar .loca_menulist > li{float:left;width:280px;height:48px;box-sizing:border-box;}
+.location_bar .loca_menulist > li > a{position:relative;display:table;width:100%;height:48px;box-sizing:border-box;color:#fff;}
+.location_bar .loca_menulist > li > a > span{display:table-cell;padding:0 50px 0 20px;vertical-align:middle;color:#fff;font-size:14px;}
+.location_bar .loca_menulist > li > ul{display:none;padding:10px 0;background:#fff; border:1px solid #ccc;border-top:none;}
+.location_bar .loca_menulist > li > ul > li > a{display:table;width:100%;padding:5px 0;}
+.location_bar .loca_menulist > li > ul > li > a > span{display:table-cell;padding:0 20px;vertical-align:middle;color:#555;font-size:14px;line-height:16px;}
+.location_bar .loca_menulist > li > ul > li > a:hover,
+.location_bar .loca_menulist > li > ul > li > a:focus{background:#f7f7f7;}
+.location_bar .loca_menulist > li > ul > li > a:hover > span,
+.location_bar .loca_menulist > li > ul > li > a:focus > span{color:#d60815;}
+.location_bar .loca_menulist > li > a{border-right:1px solid #8a8b8d;}
+.location_bar .loca_menulist > li > a.current{background:transparent;border-right:1px solid #8a8b8d;box-sizing:border-box;}
+.location_bar .loca_menulist > li > a.current > span{max-width:200px;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;}
+.location_bar .loca_menulist > li > a.current:hover{background:#4a4c4d;border-right:1px solid #4a4c4d;}
+.location_bar .loca_menulist > li > a.current:after{content:'';display:inline-block;position:absolute;top:20px;right:20px;width:12px;height:8px;background:url('https://flyasiana.com/C/pc/image/common/ico_loca_arrow.png') 0 0 no-repeat;}
+.location_bar .loca_menulist > li > a.current.open {background:#fff;border:1px solid #d60815;}
+.location_bar .loca_menulist > li > a.current.open > span{color:#000;}
+.location_bar .loca_menulist > li > a.current.open:after{background-position:0 -8px;}
+.location_bar .box_share_pop{float:right;display:inline-block;width:48px;height:48px;background:#7d7e80;}
+.location_bar .box_share_pop.on{background:#8b8c8f;}
+.location_bar .box_share_pop .btn_share42{width:100%;height:100%;background-position:center;background-image:url('https://flyasiana.com/C/pc/image/sub/btn_share_42x42_white.png');}
+.location_bar .box_share_pop .box_share_sns{top:30px;}
+/* //header 180103 ksh 추가 */
+
+.container{width:1180px;margin:0px auto 100px;}
+.container.full_type {width:100%;}
+.container.full_type .content {display:block;position:relative;}
+.container.full_type .content:after {content:'';clear:both;display:block;}
+.container.full_type .saving_inner {width:1180px;margin:0 auto;}
+.container.full_type .inner_container {width: 1180px;margin: 0 auto;}
+.container.full_type .content.bg_gray {background:#f7f7f7;}
+.container.full_type .content.bg_beige {background:#e6e2df;}
+
+.container.full_type02 {width:100%;min-width:1180px;margin:0 auto;}
+.container.full_type02 .inner_container {width: 1180px;margin: 0 auto;}
+
+/* footer */
+footer{background:#f0f0f0 url('https://flyasiana.com/C/pc/image/common/footer_dummy_bg.jpg') repeat-x;}
+footer .inner{width:1180px;margin:0 auto;}
+footer .group_wrap{position:relative;height:54px;}
+footer .group_wrap:after{content:'';clear:both;display:block;}
+footer .group_wrap .group_site{position:relative;float:left;display:inline-block;width:258px;height:100%;background:#6d6e70;z-index:98;}
+footer .group_wrap .group_site .famliy_site{display:block;}
+footer .group_wrap .group_site .famliy_site > span{position:relative;display:block;padding: 0 40px 0 20px;color:#fff;line-height:55px;box-sizing: border-box;font-size:15px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+footer .group_wrap .group_site .famliy_site > span:after{content:'';position:absolute;right:20px;top:20px; width:20px;height:14px;background:url('https://flyasiana.com/C/pc/image/common/sprite_footer.png') -500px 0 no-repeat;}
+footer .group_wrap .group_site .site_list{display:none;position:absolute;bottom:54px;width:100%;}
+footer .group_wrap .group_site .site_list > li {width:100%;border-top:1px solid #7a7b7e;}
+footer .group_wrap .group_site .site_list > li:first-child{border-top:none;}
+footer .group_wrap .group_site .site_list > li > a{display:block;padding: 0 10px 0 20px;height:44px;line-height:44px;background:#6e6d72;color:#fff;font-size:14px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
+footer .group_wrap .group_site .site_list > li > a:hover,
+footer .group_wrap .group_site .site_list > li > a:focus{background:#d60815;}
+footer .group_wrap .group_icon{position:relative;float:left;}
+footer .group_wrap .group_icon > ul{position:relative;margin-top:5px;padding-left:40px;}
+footer .group_wrap .group_icon > ul:after{content:'';clear:both;display:block;}
+footer .group_wrap .group_icon > ul > li{position:relative;float:left;margin-left:15px;}
+footer .group_wrap .group_icon > ul > li > a{position:relative;display:inline-block;width:40px;height:40px;box-sizing:border-box;background:url('https://flyasiana.com/C/pc/image/common/sprite_footer.png') 0 0 no-repeat;}
+footer .group_wrap .group_icon > ul > li > a.ico_01{background-position:0 0;}
+footer .group_wrap .group_icon > ul > li > a.ico_02{background-position:-40px 0;}
+footer .group_wrap .group_icon > ul > li > a.ico_03{background-position:-80px 0;}
+footer .group_wrap .group_icon > ul > li > a.ico_04{background-position:-120px 0;}
+footer .group_wrap .group_icon > ul > li > a.ico_05{background-position:-160px 0;}
+footer .group_wrap .group_icon > ul > li > a.ico_06{background-position:-200px 0;}
+footer .group_wrap .group_icon > ul > li > a.ico_07{background-position:-240px 0;}
+footer .group_wrap .group_icon > ul > li > a.ico_08{background-position:-280px 0;}
+footer .group_wrap .group_icon > ul > li > a.ico_09{background-position:-320px 0;}
+footer .group_wrap .group_icon > ul > li > a.ico_10{background-position:-360px 0;}
+footer .group_wrap .group_icon > ul > li > a.ico_11{background-position:-400px 0;}
+footer .group_wrap .group_icon > ul > li > a.ico_12{background-position:-440px 0;}
+footer .group_wrap .group_icon > ul > li > a.active{background-position-y:-40px;}
+footer .group_wrap .group_icon > ul > li .tip{position:absolute;opacity:0;bottom:44px;left:-10px;right:0;margin:auto;white-space:nowrap;}
+footer .group_wrap .group_icon > ul > li > a.active .tip,
+footer .group_wrap .group_icon > ul > li > a:focus .tip{opacity:1;}
+footer .group_wrap .group_icon > ul > li .tip:after{position:absolute;left:0px;bottom:-5px;margin:0 50%;content:'';border-left:5px solid transparent;border-top:5px solid #d60815;border-right:5px solid transparent;}
+footer .group_wrap .group_icon > ul > li .tip span{position:relative;display:inline-block;height:26px;padding:0 8px;background:#d60815;color:#fff;font-size:12px;line-height:26px;}
+footer .foot_menuwrap{display:table;width:100%;position:relative;margin:30px 0;}
+footer .foot_menuwrap dl{display:table-cell;height:100%;width:33.33%;padding-left:20px;border-left:1px solid #ddd;box-sizing:border-box;}
+footer .foot_menuwrap dl:first-child{padding-left:0;border-left:none;}
+footer .foot_menuwrap dl dt{margin-bottom:10px;font-size:16px;font-weight:bold;color:#000;}
+footer .foot_menuwrap dl dd{position:relative;}
+footer .foot_menuwrap dl dd:after{content:'';clear:both;display:block;}
+footer .foot_menuwrap dl dd ul{display:inline-block;width:50%;float:left;box-sizing:border-box;}
+footer .foot_menuwrap dl dd ul:last-child{padding-left:20px;}
+footer .foot_menuwrap dl dd ul li a{font-size:14px;color:#444;padding-right:5px;}
+footer .foot_menuwrap dl dd ul li a:hover,
+footer .foot_menuwrap dl dd ul li a:focus{text-decoration:underline;color:#d60815;}
+footer .foot_menuwrap dl dd ul li.privacy_policy a{font-weight:bold;}
+footer .foot_menuwrap dl dd ul li.privacy_policy a.ico{content:'';display:inline-block;padding-right:3px;width:19px;height:19px;vertical-align:middle;background:url('https://flyasiana.com/C/pc/image/common/sprite_footer.png') -560px 0 no-repeat;}
+footer .sns_wrap{position:relative; height:30px;}
+footer .sns_wrap:after{content:'';clear:both;display:block;}
+footer .sns_wrap .star_members{display:inline-block;width:260px;height:30px;background:url('https://flyasiana.com/C/pc/image/common/sprite_footer.png') 0 -80px no-repeat;}
+footer .sns_wrap .sns_list{position:relative;}
+footer .sns_wrap .sns_list:after{content:'';clear:both;display:block;}
+footer .sns_wrap .sns_list li{float:left;margin-left:5px;}
+footer .sns_wrap .sns_list li a{display:inline-block; width:30px;height:30px;background:url('https://flyasiana.com/C/pc/image/common/sprite_footer.png') -300px -80px no-repeat;}
+footer .sns_wrap .sns_list li a.facebook{background-position:-300px -80px;}
+footer .sns_wrap .sns_list li a.twitter{background-position:-339px -80px;}
+footer .sns_wrap .sns_list li a.google{background-position:-379px -80px;}
+footer .sns_wrap .sns_list li a.instagram{background-position:-418px -80px;}
+footer .sns_wrap .sns_list li a.weibo{background-position:-458px -80px;}
+footer .sns_wrap .sns_list li a.wechat{background-position:-498px -80px;}
+footer .sns_wrap .sns_list li a.kakaostory{background-position:-538px -80px;}
+footer .sns_wrap .sns_list li a.pinterest{background-position:-578px -80px;}
+footer .sns_wrap .sns_list li a:hover,
+footer .sns_wrap .sns_list li a:focus{background-position-y:-110px;}
+.qr_area {margin-top:20px;padding:15px;border:1px solid #ddd;border-radius:5px;text-align:center;}
+
+footer address{position:relative;padding:20px 0 40px;margin-top:20px;border-top:1px solid #ccc;box-sizing:border-box;min-height:160px;}
+footer address .info_wrap {position:relative;}
+footer address .info_wrap > li > ul {position:relative;display:inline-block;}
+footer address .info_wrap > li > ul:after{content:'';clear:both;display:block;}
+footer address .info_wrap > li > ul > li {float:left;font-size:13px; color:#555;}
+footer address .info_wrap > li > ul > li:before{content:'';display:inline-block;margin:0 10px;width:1px;height:12px;background:#acacac;}
+footer address .info_wrap > li > ul > li:first-child:before{display:none;}
+footer address .info_wrap > li > ul > li a{font-size:13px;}
+footer address .info_wrap > li > ul > li .corp{margin-right:10px;color:#222;font-size:14px;}
+
+footer address .copy_area{margin-top:5px;}
+footer address .copy_area .copy{display:inline-block;margin-right:10px;font-size:14px;color:#555;}
+footer address .btn_popup{padding:3px 10px 4px;font-size:12px;}
+footer address .special_logo{position:absolute;right:0;top:40px;}
+footer address .special_logo:after{content:'';clear:both;display:block;}
+footer address .special_logo > ul {position:relative;float:left;}
+footer address .special_logo > ul:after{content:'';clear:both;display:block;}
+footer address .special_logo > ul > li{float:left;display:inline-block;background:url('https://flyasiana.com/C/pc/image/common/sprite_footer.png') 0 -140px no-repeat;margin-left:30px;}
+footer address .special_logo > ul > li > a{display:block;height:100%;width:100%;}
+footer address .special_logo > ul > li:first-child{margin-left:0;}
+footer address .special_logo .visiting_korea{width:115px; height:59px; background-position:0 -140px;}
+footer address .special_logo .i_mecena{width:144px; height:59px; background-position:0 -220px;}
+footer address .special_logo .years_30{width:60px; height:60px; background-position:0 -290px;}
+
+footer address.eng .special_logo .i_mecena,
+footer address.jpn .special_logo .i_mecena,
+footer address.chn .special_logo .i_mecena{width:100px; height:26px;margin-top:13px; background-position:-180px -220px;}
+
+footer address.eng .visiting_korea{width:166px;height:52px;background-position:-130px -140px; }
+footer address.jpn .visiting_korea{width:109px;height:52px;background-position:-560px -140px; }
+footer address.chn .visiting_korea{width:106px;height:52px;background-position:-430px -140px; }
+footer address.chn.gan .visiting_korea{width:106px;height:52px;background-position:-300px -140px; }
+
+footer address .special_logo .qrcode{float:left;margin-left:40px;}
+footer address .special_logo .qrcode > ul{position:relative;}
+footer address .special_logo .qrcode > ul:after{content:'';clear:both;display:block;}
+footer address .special_logo .qrcode > ul > li{float:left;width:100px;text-align:center;}
+footer address .special_logo .qrcode > ul > li > a{font-size:12px;line-height:15px;}
+footer address .special_logo .qrcode > ul > li > a:before{content:'';display:inline-block;width:60px;height:60px;margin-bottom:5px;background:url('https://flyasiana.com/C/pc/image/common/sprite_footer.png') -180px -290px no-repeat; }
+footer address .special_logo .qrcode > ul > li.m_web > a:before{background-position:-180px -290px;}
+footer address .special_logo .qrcode > ul > li.m_app > a:before{background-position:-250px -290px;}
+
+/* 에러페이지 헤더/푸터 */
+header.normal{height:127px;border-bottom:1px solid #ddd;box-shadow:5px 5px 5px rgba(0,0,0,.07);}
+header.normal .h_inner .logo{position:relative;z-index:2;float:left;display:inline-block;width:204px;height:71px;margin:30px 100px 0 0;background:url('https://flyasiana.com/C/pc/image/common/logo_header_star.png') 0 0 no-repeat;}
+footer.normal {background:#f0f0f0;padding:30px;box-sizing:border-box;}
+footer.normal address{border:none;margin:0;padding:0;min-height:inherit;}
+
+/*simple_type footer*/
+.footer_simple {padding-top:39px;background: #f5f3f6;padding-bottom: 90px;}
+.footer_simple .inner {position:relative;overflow:hidden;width: 1180px;margin: 0 auto;background: transparent}
+.footer_simple .footer_logo {display:block;position: absolute;right:3px;bottom:5px;width:146px;height:28px;background: url('https://flyasiana.com/C/pc/image/common/logo_146x28.png') no-repeat;font-size: 0;line-height: 0;}
+.footer_simple ul {overflow: hidden;width:930px;margin:0 0 0 -9px;}
+.footer_simple li {position:relative;float: left;margin:0 0 10px 4px;padding-left:5px;font-size: 15px;line-height:20px;color: #555;}
+.footer_simple li:before {content:'';position: absolute;left: 0;top: 2px;width: 1px;height: 17px;background:#555555;}
+.footer_simple li a {color: #555;}
+.footer_simple li a.link {color:#75563b;}
+.footer_simple li .corp {padding-right:10px;color: #222;}
+.footer_simple .copyright {padding-top: 28px;color: #555}
+
+.footer_simple.white {color: #fff;background: transparent;}
+.footer_simple.white li,
+.footer_simple.white p,
+.footer_simple.white li .corp {color: #fff;}
+.footer_simple.white li:before {background: #fff;}
+.footer_simple.white .footer_logo {background:url('https://flyasiana.com/C/pc/image/common/logo_white_146x28.png') no-repeat;}
+
+.footer_simple.type2{padding:50px 0 50px;background:#fff;}
+.footer_simple.type2 .inner{overflow:inherit;}
+.footer_simple.type2 .footer_logo {bottom:0;background:url('https://flyasiana.com/C/pc/image/common/logo_gray.jpg') no-repeat;}
+.footer_simple.type2 .copyright {padding:0;}
+
+.noti_wrap{background-color:#f3f4f6;}
+.noti_wrap .inner{width:1180px;margin:0px auto;}
+
+/* 다국어 분기 */
+:lang(ru) header .h_inner .logo{margin:15px 35px 0 0;}
+:lang(ru) nav .nav_cont{left:-235px;}
+
+/* //다국어 분기 */
+
+/* 2018-09-17 국가/언어선택 레이아웃 변경 */
+.layer_pop.type2 .pop_cont01{padding:20px 25px;}
+.layer_pop.type2 .pop_cont01 .pop_tit.st1 {word-break:keep-all;padding-right:40px;font-size:23px; line-height:29px;}
+.layer_pop.type2 .pop_cont01 .pop_tit.st1 + div {white-space:nowrap;}
+
+
+.util_wrap .util_menu > ul > li.lang_select01{position:relative;margin-left:30px;padding-left:16px;background:url('https://flyasiana.com/C/pc/image/common/ico_earth.png') no-repeat 0 13px;}
+.util_wrap .util_menu > ul > li.lang_select01 > a:hover,
+.util_wrap .util_menu > ul > li.lang_select01 > a:focus{color:#222;text-decoration:none;}
+.util_wrap .util_menu > ul > li.lang_select01 .layer_pop{top:40px;}
+.util_wrap .util_menu > ul > li .btn_language{position:relative;box-sizing:border-box;margin-top:-5px;padding:4px;border:1px solid #f7f7f7;}
+
+.util_wrap .util_menu > ul > li.lang_select01 a .lang01{position:relative;padding-left:10px; color:#555555;}
+.util_wrap .util_menu > ul > li.lang_select01 a .lang01.on{color:#222; text-decoration:underline;}
+.util_wrap .util_menu > ul > li.lang_select01 > a:nth-child(2):before{content:'';display:inline-block;vertical-align:middle;width:10px;height:12px;border-left:1px solid #ccc;}
+.util_wrap .util_menu > ul > li .btn_language .country01{position:relative;background:url('https://flyasiana.com/C/pc/image/common/btn_lang_more.png') right center no-repeat;padding-right:23px;margin-right:4px}
+/* .util_wrap .util_menu > ul > li .btn_language .country01:before{content:'';display:inline-block;vertical-align:middle;height:12px;margin:0 5px 0 5px;} */
+
+/*대만 (국가 미표시)*/
+.util_wrap .util_menu > ul > li.lang_select02{position:relative;min-height:19px;margin-left:30px;padding-left:19px;background:url('https://flyasiana.com/C/pc/image/common/ico_earth.png') no-repeat 0 13px;}
+.util_wrap .util_menu > ul > li.lang_select02 > a:hover,
+.util_wrap .util_menu > ul > li.lang_select02 > a:focus{color:#222;text-decoration:none;}
+.util_wrap .util_menu > ul > li.lang_select02 .layer_pop{top:30px;}
+.util_wrap .util_menu > ul > li .btn_language{position:relative;box-sizing:border-box;margin-top:-5px;padding:4px;border:1px solid #f7f7f7;}
+
+.util_wrap .util_menu > ul > li.lang_select02 a .lang01{position:relative;padding-left:10px; color:#555555;}
+.util_wrap .util_menu > ul > li.lang_select02 a .lang01.on{color:#222; text-decoration:underline;}
+.util_wrap .util_menu > ul > li .btn_language .country01{position:relative;background:url('https://flyasiana.com/C/pc/image/common/btn_lang_more.png') right center no-repeat;padding-right:23px;margin-right:4px}
+
+
+.layer_pop.type2 .lang_close01{position:absolute;top:25px;right:30px; width:22px; height:22px; background:url('https://flyasiana.com/C/pc/image/common/btn_close_gray.png') 0 0 no-repeat;}
+
+
+.top25{top:25px !important}
+
+/* //2018-09-17 국가/언어선택 레이아웃 변경 */
+.display_block{
+    display:block !important;
+}

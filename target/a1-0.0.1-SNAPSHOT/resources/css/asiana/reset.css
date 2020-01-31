@@ -1,0 +1,115 @@
+@charset "utf-8";
+
+/* 한국어 */
+@import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+/* 글로벌 영어, 독일어, 프랑스어, 러시아어 */
+@import url(https://fonts.googleapis.com/css?family=Noto+Sans);
+
+@font-face {
+  font-family: 'latofont';
+  font-style: normal;
+  font-weight: normal;
+  src: url(./font/Lato-Regular.woff) format('woff');
+}
+
+/* 애드캡슐 UI개발팀 guide reset CSS */
+/* CSS 적용순서 : 아이디 > 태그와 클래스 > 클래스 > 태그 /*
+/* CSS 선택자 선언순서 : Type Selector, Layout Selector, Class Selector, Etc */
+/* CSS 속성 선언순서 : display, position, float/clear, overflow, padding/margin, width/height, border, background, color/font, align, etc */
+html,body,div,p,iframe,frameset, h1,h2,h3,h4,h5,h6, strong,span,b,em,var,label,legend, ul,ol,li,dl,dt,dd,
+table,thead,tbody,tfoot,tr,th,td,caption, form,fieldset,input,textarea, sub,sup,img,a,del,button,pre,
+header,footer,section,article,aside {padding:0;margin:0;}
+
+body {color:#222;font-size:15px;line-height:normal;font-family:'Noto Sans KR','AppeGothic','Malgun Gothic','맑은 고딕','돋음','Dotum','Apple SD Gothic Neo',Arial,Helvetica,sans-serif;word-break:keep-all;}
+
+
+/* 스페인어 */
+:lang(es){font-family:'Noto Sans', Helvetica,Arial,sans-serif;} 
+
+/* 영어 */
+:lang(en){font-family:'Noto Sans', Helvetica,Arial,sans-serif;}
+
+/* 독일어 */
+:lang(de){font-family:'Noto Sans',Helvetica,'Calibri', Tahoma, sans-serif;}
+
+/* 프랑스어 */
+:lang(fr){font-family:'Noto Sans',Helvetica,'Times New Roman',Tahoma, sans-serif;} 
+
+/* 러시아어 */
+:lang(ru){font-family: 'Noto Sans',Helvetica, Arial, sans-serif;} 
+
+ /* 중국어(간체) */
+:lang(zh-Hans),
+:lang(ch){font-family:'Arial','Microsoft YaHei','Heiti SC',sans-serif;}
+
+ /* 중국어(번체) */
+:lang(zh-Hant),
+:lang(zh){font-family:'Arial','Microsoft JhengHei','LiHei Pro','Times New Roman','HGMinchoB',sans-serif;}
+
+ /* 일본어 */
+:lang(ja){font-family:'meiryo','Hiragino Kaku Gothic Pro','Osaka','ms_PGothic',arial,sans-serif;}
+
+
+
+/* 태그 리셋 */
+button {background:transparent;cursor:pointer;}
+img {vertical-align:top;}
+img,button,fieldset,table {border:0;}
+em, address, del {font-style:normal;}
+label,a {display:inline-block;}
+strong,b {font-weight:bold;}
+
+/* form */
+input,select,label,button,textarea {border-radius: 0; -webkit-border-radius:0; background-color:transparent;color:#222;font-size:15px;line-height:normal;font-family:'Noto Sans KR','AppeGothic','Malgun Gothic','맑은 고딕','돋음','Dotum','Apple SD Gothic Neo',Arial,Helvetica,sans-serif;vertical-align:middle;-webkit-appearance: none;appearance: none;-moz-appearance: none;}
+textarea {padding:10px;border:1px solid #d5d5d5;color:#222;background:#fafafa;}
+textarea:target,
+textarea:focus {border:3px solid #000;padding:8px 7px 8px 9px;}
+select {height:46px;}
+
+/* ie placeholder */
+input:-ms-input-placeholder{font-family:'Malgun Gothic','맑은 고딕','돋음','Dotum','Apple SD Gothic Neo',Arial,Helvetica,sans-serif;}
+
+input::-ms-value{font-family:'Malgun Gothic','맑은 고딕','돋음','Dotum','Apple SD Gothic Neo',Arial,Helvetica,sans-serif;}
+
+
+/* 목록 스타일 리셋 */
+ul, ol, li {list-style:none;}
+
+/* table */
+table {width:100%;border-collapse:separate;border-spacing:0;}
+th, td {word-break:keep-all;word-wrap:break-word;}
+
+/* alink 세팅 */
+a {border:0;color:#222;text-decoration:none;}
+a:hover {text-decoration:none;}
+a.on {height:auto;text-indent:inherit;background-image:none;}
+
+/* 대체텍스트 and 숨김처리 */
+caption, legend, .hidden {position:absolute;top:0;left:0;overflow:hidden;width:0 !important;height:0 !important;font-size:0 !important;line-height:0 !important;}
+
+/* 단순 숨김처리 스와이퍼 노출되어 있는 슬라이드만 접근하기 위함 */
+.blind{visibility:hidden;}
+
+/* lato */
+.lato{font-family:'latofont',sans-serif;}
+
+:lang(ja) *,
+:lang(zh-Hans) *,
+:lang(zh-Hant) *,
+:lang(ch) *,
+:lang(zh) *{word-break:break-all !important;}
+
+
+/* ie hack / font letter-spacing */
+/* IE10 and IE11 */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+	.gray_box {letter-spacing:-0.9px;}
+	.btn_M {letter-spacing:-0.9px;}
+}
+
+/* IE9 */
+@media screen\0 {
+  .gray_box { letter-spacing:-0.9px\9; }
+  .btn_M {letter-spacing:-0.9px;}
+}
