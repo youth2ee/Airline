@@ -16,6 +16,6 @@ public interface SearchMapper {
 	
 	public List<BoardVO> searchTotalList(String search) throws Exception;
 	public List<BoardVO> searchList(NoticeVO noticeVO) throws Exception;
-	public int searchInsert(String search) throws Exception;
+	public int searchInsert(SearchVO searchVO) throws Exception;
 	
 }

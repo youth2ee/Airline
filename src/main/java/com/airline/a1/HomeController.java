@@ -4,12 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.jsoup.select.Elements;
+import org.snu.ids.ha.index.Keyword;
+import org.snu.ids.ha.index.KeywordExtractor;
+import org.snu.ids.ha.index.KeywordList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import org.snu.ids.ha.ma.MExpression;
+import org.snu.ids.ha.ma.MorphemeAnalyzer;
+import org.snu.ids.ha.ma.Sentence;
+import org.snu.ids.ha.util.Timer;
+
 
 import com.airline.a1.board.BoardVO;
 import com.airline.a1.board.NoticeVO;
@@ -42,15 +51,46 @@ public class HomeController {
 
 	@GetMapping("indexSearch")
 	public void indexSearch(Model model, String search) throws Exception {
+		if (search != "") {
 		System.out.println(search);
 		List<BoardVO> ar = searchService.searchTotalList(search);
 		
 		model.addAttribute("search", search);
 		model.addAttribute("tlist", ar);
 		
-		searchService.searchInsert(search);
+		SearchVO searchVO = new SearchVO();
+		searchVO.setSearch(search);
+		
+        // string to extract keywords
+        String strToExtrtKwrd = search;
+        // init KeywordExtractor
+        KeywordExtractor ke = new KeywordExtractor();
+        // extract keywords
+        KeywordList kl = ke.extractKeyword(strToExtrtKwrd, true);
+        
+        String msg = "";
+        
+        
+        // print result
+        for( int i = 0; i < kl.size(); i++ ) {
+        	
+            Keyword kwrd = kl.get(i);
+            System.out.println(kwrd.getString() + "\t" + kwrd.getCnt());
+            
+            msg = msg + "/" + kwrd.getString();
+        }
+		 
+		System.out.println(msg);
+		  
+		searchVO.setSvoca(msg);
+		
+		searchService.searchInsert(searchVO);			
+		}
+		 
 	}
 	
+
+
 	
 	@PostMapping("indexSearch")
 	public void indexSearch() {

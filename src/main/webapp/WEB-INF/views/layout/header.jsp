@@ -69,12 +69,16 @@ function LE(){
 					<div class="r1"><i class="material-icons" style="font-size:33px; padding-top: 20px;">person_pin</i></div>
 					<div class="r1 tooltip1">
 					<i class='fas fa-search' style='font-size:28px; padding-left: 3px;'></i>
+					
 					<div class="tooltiptext1">
-<div class="search__container">
-	<form action="./indexSearch" id="frm">
-    <input class="search__input" type="text" placeholder="Search" name="search">
-    </form>
-</div>
+					
+				<div class="search__container">
+					<form action="./indexSearch" id="frm">
+				    <input class="search__input" type="text" placeholder="Search" name="search">
+				    </form>
+				</div>
+				
+  			  <i class='fas fa-search sbtn' style='font-size:10px; padding-left: 3px; color: red;'></i>
 					</div>
 					</div>
 				</div>

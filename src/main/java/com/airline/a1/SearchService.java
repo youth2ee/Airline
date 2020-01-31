@@ -4,6 +4,9 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.snu.ids.ha.index.Keyword;
+import org.snu.ids.ha.index.KeywordExtractor;
+import org.snu.ids.ha.index.KeywordList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -29,8 +32,25 @@ public class SearchService {
 		return searchMapper.searchList(noticeVO);
 	}
 	
-	public int searchInsert(String search) throws Exception {
-		return searchMapper.searchInsert(search);
+	public int searchInsert(SearchVO searchVO) throws Exception {
+		return searchMapper.searchInsert(searchVO);
 	}
 	
+	
+	public void svoca(String search) {
+		// string to extract keywords
+        String strToExtrtKwrd = search;
+        // init KeywordExtractor
+        KeywordExtractor ke = new KeywordExtractor();
+        // extract keywords
+        KeywordList kl = ke.extractKeyword(strToExtrtKwrd, true);
+        
+        String msg = "";
+        
+        // print result
+        for( int i = 0; i < kl.size(); i++ ) {
+            Keyword kwrd = kl.get(i);
+            System.out.println(kwrd.getString() + "\t" + kwrd.getCnt());
+        }
+	}
 }

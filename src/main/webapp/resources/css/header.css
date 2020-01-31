@@ -129,3 +129,12 @@
 	border-left: 1px solid #ccc;
 	margin: 0 15px;
 }
+
+/*  */
+.sbtn{
+	position: relative;
+    top: -94px;
+    left: 88px;
+}
+
+
