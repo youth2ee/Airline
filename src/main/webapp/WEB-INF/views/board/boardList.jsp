@@ -179,7 +179,7 @@
 			</c:if>		
 			<fmt:parseNumber var="pages" integerOnly="true" value="${tc/10}"/>			
 			<a href="./noticeList?curPage=${pages+1}" class="btn_last btn_common"></a>
-	</div>
+		</div>
 		</div>
 		
 		
@@ -216,6 +216,8 @@
 
 
 	<script type="text/javascript">
+		
+	
 		/* paging  */
 		$("#page${pager.curPage}").addClass("on");
 		
@@ -242,7 +244,8 @@
 		$(this).addClass('current');
 		$("#"+tab_id).addClass('current');
 		});
-		
+
+
 	</script>
 	
 </body>
