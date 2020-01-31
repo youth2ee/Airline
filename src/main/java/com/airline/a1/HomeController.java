@@ -55,6 +55,11 @@ public class HomeController {
 
 			model.addAttribute("search", search);
 			model.addAttribute("tlist", ar);
+			
+			List<SearchVO> cr = searchService.realList();
+			
+			model.addAttribute("rList", cr);
+			
 
 			SearchVO searchVO = new SearchVO();
 			searchVO.setSearch(search);

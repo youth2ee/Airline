@@ -91,7 +91,12 @@
 </div>
 
 
-<div id="realList"></div>
+<div id="realList">
+<c:forEach items="${rList}" var="rl" varStatus="status">
+${status.index + 1} ${rl.svoca} ${rl.total}<br>
+</c:forEach>
+
+</div>
 
 
 <!-- paging -->
