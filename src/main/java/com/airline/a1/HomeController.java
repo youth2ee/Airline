@@ -33,7 +33,15 @@ public class HomeController {
 	}
 
 	@GetMapping("indexSearch")
+	public void indexSearch(Model model, String search) {
+		System.out.println(search);
+		model.addAttribute("search", search);
+	}
+	
+	
+	@PostMapping("indexSearch")
 	public void indexSearch() {
+		
 	}
 	
 }

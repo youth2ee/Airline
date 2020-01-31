@@ -37,7 +37,7 @@
 <div id="container">
 	<h3>공지사항</h3>
 	
-	<form id="frm" action="./${board}List">
+	<form id="frm" action="./indexSearch">
 	<div class="total_search_input">
 		<div class="search_inner">
 			<select class="white common" name="kind">
@@ -46,7 +46,7 @@
 				<option id="kc" value="kc">내용</option>
 			</select>
 			<input type="hidden" id="curPage" value="1" name="curPage">
-			<input type="text" name="search" id="searchText" class="common" placeholder="검색어를 입력하세요." value="${pager.search}">
+			<input type="text" name="search" id="searchText" class="common" placeholder="검색어를 입력하세요." value="${search}">
 			<button id="btnSearch">검색</button>
 		</div>
 	</div>

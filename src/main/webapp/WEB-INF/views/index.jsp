@@ -461,6 +461,12 @@ $('#arrloc').focus(function(){
 
 
 /* 예약 끝 */
+
+/* 검색 */
+$('body').on('blur', '.search__input', function(){
+		$('#frm').submit();
+ });
+
 		
 	</script>
 </body>

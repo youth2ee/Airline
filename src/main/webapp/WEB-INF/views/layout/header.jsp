@@ -47,16 +47,16 @@
 					<i class='fas fa-search' style='font-size:28px; padding-left: 3px;'></i>
 					<div class="tooltiptext1">
 <div class="search__container">
-    <input class="search__input" type="text" placeholder="Search">
+	<form action="./indexSearch" id="frm">
+    <input class="search__input" type="text" placeholder="Search" name="search">
+    </form>
 </div>
-					
-					
-					
 					</div>
 					</div>
 				</div>
-				
-				
 			</div>
 		</div>
 	</div>
+
+
+	
