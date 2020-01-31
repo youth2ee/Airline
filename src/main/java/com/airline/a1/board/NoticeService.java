@@ -4,6 +4,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -24,6 +26,19 @@ public class NoticeService {
 	@Autowired
 	private FilePathGenerator filePathGenerator;
 	
+	public boolean summerfileDelete(String file, HttpSession session)throws Exception{
+	
+		String realPath = session.getServletContext().getRealPath("resources/upload/summerfile");
+		return fileSaver.fileDelete(realPath, file);
+	}
+	
+	
+	public String summerfile(MultipartFile file, HttpSession session)throws Exception{
+		String realPath = session.getServletContext().getRealPath("resources/upload/summerfile");
+		return fileSaver.save(realPath, file);
+	}
+	
+	
 	public int noticeWrite(NoticeVO noticeVO, MultipartFile[] file)throws Exception{			
 		//file 유무검증 		
 		boolean check = false;
@@ -43,7 +58,7 @@ public class NoticeService {
 					
 					for(MultipartFile multipartFile:file) {
 						if(multipartFile.getSize()>0) {
-							String fileName = fileSaver.save(file2, multipartFile);
+							String fileName = fileSaver.save2(file2, multipartFile);
 							NoticeFilesVO noticeFilesVO = new NoticeFilesVO();
 							noticeFilesVO.setNum(noticeVO.getNum());
 							noticeFilesVO.setFname(fileName);

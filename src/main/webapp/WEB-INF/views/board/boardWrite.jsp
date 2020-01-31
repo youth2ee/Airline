@@ -11,8 +11,8 @@
 <link rel="stylesheet" href="../resources/css/board/boardWrite.css">
 <link rel="stylesheet" href="../resources/css/asiana/reset.css">
  <!-- summerNote -->
-<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css" rel="stylesheet">
-<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote.min.js"></script>
 
 </head>
 <body>
@@ -166,13 +166,55 @@
 	
 <!------ new script ------->
 <script type="text/javascript">
+
 	/**** SummerNote *****/
 	$(document).ready(function(){
 			$('.summernote').summernote({
 					height:300
-
-				});
+			/* 		 ,
+				 	callbacks:{
+						onImageUpload:function(files,editor){
+						uploadFile(files[0], this);						
+						},
+						 onMediaDelete:function(files, editor){
+							 deleteFile(files[0], this);
+						 }
+					}  */
+				}); 
 		});
+	
+/* 	function uploadFile(file, editor) {
+		var formData = new FormData();
+		
+		formData.append('file', file);		
+		
+		$.ajax({
+			data: formData,
+			type:"POST", 
+			url:"./summerFile", 
+			enctype: "multipart/form-data",
+			contentType: false,
+			cache: false,
+			processData: false,
+
+			
+			success:function(data){
+					
+				data = data.trim();
+					console.log(data);
+				data = '../resources/upload/summerfile/'+data;
+				$(editor).summernote('insertImage', data);
+			}
+			 ,
+			error:function(){		
+							
+			} 
+			
+		}); */
+	//}
+	
+
+	
 
 
 
@@ -231,11 +273,11 @@ $('#contents').blur(function(){
 	
 /**** 글자수세기 ****/
 
-$('#contents').keyup(function(){
+/* $('#contents').keyup(function(){
 	var content = $(this).val();
 	$('#counter').html(content.length);
 	
-});
+}); */
 
 
 </script>
