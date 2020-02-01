@@ -64,11 +64,16 @@ public class BookingController {
 		return check;
 	}
 
+
 	@GetMapping("bookingMain")
 	public void bookingMain(Model model) throws Exception {
 		List<String> airport = bookingService.airportList();
 		model.addAttribute("airportList", airport);
 	}
+
+	
+
+
 
 	@PostMapping("bookingMain")
 	public ModelAndView bookingMain(BookingTicketVO bookingTicketVO) throws Exception {
@@ -266,23 +271,43 @@ public class BookingController {
 		depTime.add(7, daDay);
 		depTime.add(8, daHour);
 		depTime.add(9, daMin);
-		
-		
-		List<String> arrTime = new ArrayList<String>();
-
-		
+				
 		if (bookingTicketVO.getKind().equals("왕복")) {
+			List<String> arrTime = new ArrayList<String>();
 
 			System.out.println(bookingTicketVO.getArrInfo().getDepPlandTime());
 			System.out.println(bookingTicketVO.getArrInfo().getArrPlandTime());
 			
+			String adDate = bookingTicketVO.getArrInfo().getDepPlandTime();
+			String adYear = adDate.substring(0, 4);
+			String adMonth = adDate.substring(4, 6);
+			String adDay = adDate.substring(6, 8);
+			String adHour = adDate.substring(8, 10);
+			String adMin = adDate.substring(10);
+
+			String aaDate = bookingTicketVO.getArrInfo().getArrPlandTime();
+			String aaYear = aaDate.substring(0, 4);
+			String aaMonth = aaDate.substring(4, 6);
+			String aaDay = aaDate.substring(6, 8);
+			String aaHour = aaDate.substring(8, 10);
+			String aaMin = aaDate.substring(10);		
+			
+			arrTime.add(0, adYear);
+			arrTime.add(1, adMonth);
+			arrTime.add(2, adDay);
+			arrTime.add(3, adHour);
+			arrTime.add(4, adMin);
+			
+			arrTime.add(5, aaYear);
+			arrTime.add(6, aaMonth);
+			arrTime.add(7, aaDay);
+			arrTime.add(8, aaHour);
+			arrTime.add(9, aaMin);
+			
+			mv.addObject("arr", arrTime);
 		}
-		
-		
 
 		mv.addObject("dep", depTime);
-		mv.addObject("arr", arrTime);
-
 		mv.addObject("bTVO", bookingTicketVO);
 		mv.setViewName("/booking/bookingWrite");
 
@@ -296,6 +321,7 @@ public class BookingController {
 	@PostMapping("bookingWrite")
 	public ModelAndView bookingWrite(BookingTicketVO bookingTicketVO) throws Exception {
 		ModelAndView mv = new ModelAndView();
+		
 		// id
 		String id = "test";
 
@@ -306,7 +332,6 @@ public class BookingController {
 
 		//
 		String flightBNum = "";
-
 		String memberNum = "111";
 
 		// 어른
@@ -329,6 +354,8 @@ public class BookingController {
 				FlightDataVO flightDataVO = new FlightDataVO();
 				flightDataVO.setFnum(bookingTicketVO.getDepFnum());
 				adult.setDepInfo(bookingService.oneSelect(flightDataVO));
+				
+				bookingTicketVO.setDepInfo(bookingService.oneSelect(flightDataVO));
 
 				// flightnum 가는편 만들기
 				/*
@@ -374,13 +401,17 @@ public class BookingController {
 
 					flightDataVO.setFnum(adult.getDepFnum());
 					adult.setArrInfo(bookingService.oneSelect(flightDataVO));
-
+					bookingTicketVO.setArrInfo(bookingService.oneSelect(flightDataVO));
+					
+					adult.setBnum(null);
+					
 					bookingService.bookingInsert(adult);
 
 					// 가격
 					adult.setDepFnum(dep);
 					adult.setArrFnum(arr);
 					adult = bookingService.priceCount(adult);
+				
 				}
 			} // 어른 반복문 끝
 		} // 어른 끝
@@ -405,6 +436,7 @@ public class BookingController {
 				FlightDataVO flightDataVO = new FlightDataVO();
 				flightDataVO.setFnum(bookingTicketVO.getDepFnum());
 				child.setDepInfo(bookingService.oneSelect(flightDataVO));
+				bookingTicketVO.setDepInfo(bookingService.oneSelect(flightDataVO));
 
 				// flightnum 가는편 만들기
 				/*
@@ -449,7 +481,10 @@ public class BookingController {
 
 					flightDataVO.setFnum(child.getDepFnum());
 					child.setArrInfo(bookingService.oneSelect(flightDataVO));
+					bookingTicketVO.setArrInfo(bookingService.oneSelect(flightDataVO));
 
+					child.setBnum(null);
+					
 					bookingService.bookingInsert(child);
 
 					// 가격
@@ -472,5 +507,6 @@ public class BookingController {
 	@GetMapping("bookingCheck")
 	public void bookingCheck() {
 	}
+
 
 }

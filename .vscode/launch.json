@@ -1,0 +1,14 @@
+
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch Chrome 127.0.0.1",
+      "type": "chrome",
+      "request": "launch",
+      "port": 9264,
+      "webRoot": "${workspaceFolder}",
+      "url": "http://127.0.0.1:58173/p/Airline/src/main/webapp/resources/css/asiana/?_cmAuth\u003dcznazakbqc"
+    }
+  ]
+}

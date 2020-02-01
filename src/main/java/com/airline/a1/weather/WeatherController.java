@@ -27,4 +27,5 @@ public class WeatherController {
 		model.addAttribute("weather", weatherService.WeatherInfo(split));
 	}
 
+	
 }

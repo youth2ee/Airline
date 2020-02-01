@@ -19,8 +19,9 @@ public class BookingPriceVO {
 	
 	private int totalPrice;
 	
+	
+	
 	private int mileagePlus;
-
 	private String memberNum;
 	private String id;
 	

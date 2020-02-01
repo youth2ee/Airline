@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.airline.a1.booking.BookingTicketVO;
-import com.airline.a1.booking.FlightDataVO;
 
 @Service
 public class SeatService {
@@ -52,6 +51,7 @@ public class SeatService {
 	public List<BookingTicketVO> getDepBnum(BookingTicketVO bookingTicketVO) throws Exception{
 		return seatMapper.getDepBnum(bookingTicketVO);
 	}
+
 	// 예약번호(각자 다른거) 생성
 	public String flightNum(String fnum) throws Exception {
 		Random rand = new Random();
@@ -66,5 +66,7 @@ public class SeatService {
 		//System.out.println("예약번호(개인) : " + flightNum);
 		return flightNum;
 	}
+
+
 
 }

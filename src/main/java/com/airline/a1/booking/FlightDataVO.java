@@ -27,5 +27,6 @@ public class FlightDataVO {
 	private String depCityCode;
 	private String arrCityCode;
 	
+	private int seatTotal;
 
 }

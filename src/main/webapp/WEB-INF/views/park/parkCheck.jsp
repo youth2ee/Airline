@@ -21,8 +21,9 @@ label { /* 주차구역 */
 	cursor: pointer;
 	width: 30px;
 	height: 50px;
-	line-height: 50px;
 	font-size: 18px !important;
+	border: 2px solid white;
+	box-sizing: border-box;
 }
 .bookable { /*예매가능*/
 	text-align: center;
@@ -49,7 +50,36 @@ label { /* 주차구역 */
 	opacity: 80%;
 	
 }
+.인천공항{
+	width: 1000px;
+	height: 600px;
+	background-image: url("../images/parkingarea/인천공항2.png");
+	background-size: 80%;
+	background-repeat: no-repeat;
+	padding-top: 205px;
+	padding-left: 130px;
+}
+.제주공항{
+	width: 1000px;
+	height: 630px;
+	background-image: url("../images/parkingarea/김포공항.png");
+	background-size: 90%;
+	background-repeat: no-repeat;
+	padding-top: 15px;
+	padding-left: 220px;
 
+}
+.김포공항{
+	width: 1400px;
+	height: 900px;
+	background-image: url("../images/parkingarea/제주공항.png");
+	background-size: 90%;
+	background-repeat: no-repeat;
+	padding-top: 260px;
+	padding-left: 220px;
+	
+
+}
 </style>
 </head>
 <c:import url="../template/boot.jsp" />
@@ -79,7 +109,7 @@ label { /* 주차구역 */
 
 <!-- 예약 못하는 자리  -->
 <c:forEach items="${list}" var="vo">
-<input type="text" value="${vo.areaNum}" class="check"><br>
+<input type="hidden" value="${vo.areaNum}" class="check"><br>
 </c:forEach>
 
 <!-- 장애인 자리 -->
@@ -87,21 +117,21 @@ label { /* 주차구역 */
 <input type="hidden" value="${vo}" class="etc"><br>
 </c:forEach>
 
-<div class="container container2" style="padding-top: 100px; padding-bottom: 100px;">
+<div class="container2 ${park.aName}">
+
+
 <c:forEach begin="1" end="${park.total}" varStatus="vo">
 
 <c:choose>
 	
 	<c:when test="${vo.current%park.margin2  eq park.margin && vo.current le park.nopattern}">
 		<label for="${vo.current}" class="la bookable" style="margin-right: 68px;" id="r${vo.current}">
-			${vo.current}
 			<input type="radio" name="areaNum" value="${vo.current}" id="${vo.current}">
 		</label>
 	</c:when>
 	
 	<c:otherwise>
 		<label for="${vo.current}" class="la bookable" id="r${vo.current}">
-			${vo.current}
 			<input type="radio" name="areaNum" value="${vo.current}" id="${vo.current}" >
 		</label>
 	</c:otherwise>
@@ -128,13 +158,19 @@ label { /* 주차구역 */
 </c:forEach>
 </div>
 <br>
+<div style="">
 예상요금 : <input type="text" id="rate" name="rate"><br>
 차량번호 : <input type="text" id="carNum" name="carNum"><br>
 차량종류 : <input type="text" id="carKind" name="carKind"><br>
 
 <button>예약하기</button>
+</div>
 </form>
 </div>
+
+<button class="ls">LS</button>
+<button class="le">LE</button>
+
 <script type="text/javascript">
 
 	//시작일데이터 받기
@@ -147,11 +183,9 @@ label { /* 주차구역 */
 
     //파싱
 	var startDateCompare = new Date(startDateArr[0], parseInt(startDateArr[1])-1, startDateArr[2]);
-	console.log(startDateCompare);
-	console.log(startDateCompare.getDay());
 	var endDateCompare = new Date(endDateArr[0], parseInt(endDateArr[1])-1, endDateArr[2]);
-	console.log(endDateCompare.getDay());
 
+	console.log('startDate :'+startDate);
 	
 	var count = 0;
 	
@@ -165,6 +199,8 @@ label { /* 주차구역 */
 		var check = startDateCompare.getDay()+i;
 		if(check%7 == 0 || check%7 ==6){
 			count++;
+		}else{
+
 		}
 	}
 	console.log(count);
@@ -202,12 +238,12 @@ label { /* 주차구역 */
 			alert('예약불가능한 자리입니다.');
 		}else{
 
-			
 			$(".la").each(function(){
 				$(this).removeClass('booking');
+
 			});
-			$(this).addClass('booking');
 			
+			$(this).addClass('booking');
 			
 			var per = 100;
 			//요금계산
@@ -236,7 +272,6 @@ label { /* 주차구역 */
 		
 	});
 
-	
 </script>
 </body>
 </html>

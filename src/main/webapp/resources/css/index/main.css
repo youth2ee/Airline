@@ -1,0 +1,256 @@
+@charset "UTF-8";
+
+.bx-wrapper .bx-pager.bx-default-pager a{
+    background: #f96262;
+}
+.bx-wrapper .bx-pager.bx-default-pager a:hover, .bx-wrapper .bx-pager.bx-default-pager a.active, .bx-wrapper .bx-pager.bx-default-pager a:focus {
+    background: #fff;
+}
+.swiper-container {
+    width: 100%;
+    height: 180px;
+    margin: 20px auto;
+}
+.bx-wrapper {
+	border: none;
+	height: 500px;
+}
+
+.bx-wrapper .bx-controls.bx-has-controls-auto.bx-has-pager .bx-pager {
+	position: absolute;
+	margin-left: 890px;
+	margin-bottom: 40px;
+}
+
+.swiper-container {
+	width: 100%;
+	height: 300px;
+	margin: 20px auto;
+}
+
+.swiper-slide {
+	text-align: center;
+	font-size: 18px;
+	background: #fff;
+	/* Center slide text vertically */
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+}
+.swiper-slider{
+	width: 280px;
+	height : 180px;
+}
+.txt1 {
+	float: right;
+}
+
+.resWrap{
+	z-index: 1;
+	width: 1300px;
+	height: 300px;
+	margin: 0 auto;
+	background-color: black;
+	position: relative;
+	top: -198px;
+}
+	
+.weather{
+	margin: 0 auto;
+	width: 900px;
+	height: 400px;
+	background-color: rgba(136, 176, 75, 0.3);
+	margin-top: 200px;
+	
+}
+
+
+/* search */
+.tooltip1 {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip1 .tooltiptext1 {
+  visibility: hidden;
+  width: 246px;
+      height: 77px;
+background-color: white;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 10px;
+  position: absolute;
+  z-index: 1;
+    top: 60px;
+    left: -19px;
+  margin-left: -60px;
+      border: 0.5px solid gray;
+}
+
+.tooltip1 .tooltiptext1::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent white transparent;
+    border: 0.5px solid gray;
+}
+
+.tooltip1:hover .tooltiptext1 {
+  visibility: visible;
+}
+
+/* 검색 */
+
+/* Base styling */
+@import url("https://fonts.googleapis.com/css?family=Raleway:400,700,900");
+
+.search__input {
+        width: 100%;
+        padding: 12px 24px;
+        position: relative;
+top: -10px;
+    left: 0px;
+        background-color: transparent;
+        transition: transform 250ms ease-in-out;
+        font-size: 14px;
+        line-height: 18px;
+
+        color: #575756;
+        background-color: transparent;
+        /*         background-image: url(http://mihaeltomic.com/codepen/input-search/ic_search_black_24px.svg); */
+
+        /* background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E"); */
+        background-repeat: no-repeat;
+        background-size: 18px 18px;
+        background-position: 95% center;
+        border-radius: 50px;
+        border: 1px solid #575756;
+        transition: all 250ms ease-in-out;
+        backface-visibility: hidden;
+        transform-style: preserve-3d;
+    }
+
+.search__input::placeholder {
+            color: rgba(87, 87, 86, 0.8);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+.search__input:hover,
+        .search__input:focus {
+            padding: 12px 0;
+            outline: 0;
+            border: 1px solid transparent;
+            border-bottom: 1px solid #575756;
+            border-radius: 0;
+            background-position: 100% center;
+        }
+
+.credits__container {
+        margin-top: 24px;
+    }
+
+.credits__text {
+        text-align: center;
+        font-size: 13px;
+        line-height: 18px;
+    }
+
+.credits__link {
+        color: #ff8b88;
+        text-decoration: none;
+        transition: color 250ms ease-in;
+    }
+
+.credits__link:hover,
+        .credits__link:focus {
+            color: rgb(191, 137, 135);
+        }
+
+
+.airLine_weather{
+	width: 300px;
+	height: 30px;
+	border-left: 5px solid #d05560;
+	margin-left: 30px;
+	margin-top: 30px;
+}
+.airLine_weather_text{
+	font-size: 25px;
+	margin-left: 15px;
+}
+.weather{
+	margin: 0 auto;
+	margin-left: 600px;
+	width: 700px;
+	height: 470px;
+	margin-top: 20px;
+	background-color:rgba(255,255,255,0.5);
+	position: absolute;
+	border-radius:50px;  
+}
+.weather_wrap{
+	width: 620px;
+	height: 350px;
+	margin-left: 140px;
+/* 	background-color:rgba(255,255,255,0.2); */
+	position: relative;
+}
+.weather_select_wrap{
+	float: right;
+	margin-bottom: 30px;
+	margin-right: 120px;
+}
+#weather_sel{
+	background-color: #deeafc;
+	width: 200px;
+	height: 40px;
+	border: 2px solid rgb(89, 92, 160);
+	border-radius: 30px;
+	font-size: 17px;
+	font-weight: bold;  
+}
+
+#weather_select {
+	background-color: transparent;
+}
+#weather_view{
+	margin-top: -300px;
+}
+.weather_view_wrap{
+	width: 300px;
+	height: 25px;
+	margin-left: 50px;
+	border-left: 5px solid #c05f88;
+}
+.weather_view_wrap2{
+	width: 300px;
+	height: 25px;
+	margin-left: 50px;
+	border-left: 5px solid #e5d07d;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+.weather_view_wrap_text{
+	font-size: 20px;
+	margin-left: 13px;
+	font-weight: bold;  
+}
+.weather_info{
+	margin-left: 50px;
+}

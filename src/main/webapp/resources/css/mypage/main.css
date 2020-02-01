@@ -1,0 +1,82 @@
+@charset "UTF-8";
+
+
+.myinfo{
+    width: 100%;
+    height: 476px;
+    min-width: 1180px;
+    max-height: 652px;
+    background: url(/images/mypage/sub_myasiana_main.png) no-repeat 50% 50%;
+    background-size: cover;
+}
+
+.myinfoWrap{
+	width: 1200px;
+	margin: 0 auto;
+	padding: 40px;
+}
+
+.myInfoLeft, .myInfoMiddle, .myInfoRight {
+	float: left;
+}
+
+.myInfoLeft, .myInfoRight{
+	width: 30%;
+	height: 476px;
+	color: 
+}
+
+.myInfoMiddle{
+	width: 40%;
+	height: 476px;
+	padding-left: 100px;
+    padding-top: 131px;
+}
+
+.myInfoLeft{
+	width: 260px;
+	height: 347px;
+}
+
+#miname{
+	font-size: 30px;
+    margin-top: 15px;
+    line-height: 30px;
+    word-break: keep-all;
+    color: white;
+}
+
+#miEname{
+	font-size: 15px;
+    margin-top: 15px;
+    line-height: 30px;
+    word-break: keep-all;
+    color: #c7c7c7cc;
+}
+
+#cardInfo{
+	padding-top: 30px;
+	font-size: 23px;
+	color: white;
+}
+
+
+.page{
+	position: relative;
+	top: -148px;
+	width: 500px;
+}
+
+
+section {
+	width: 1200px;
+	margin: 0 auto;
+	margin-bottom: 100px;
+}
+.circles-container{
+	animation: scale1 1s ;
+}
+@keyframes scale1 {
+    0%   { transform: scale(0) }
+    100%  { transform: scale(1) }
+}
