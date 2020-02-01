@@ -18,4 +18,6 @@ public interface SearchMapper {
 	public List<BoardVO> searchList(NoticeVO noticeVO) throws Exception;
 	public int searchInsert(SearchVO searchVO) throws Exception;
 	
+	public List<SearchVO> realList() throws Exception;
+	
 }
