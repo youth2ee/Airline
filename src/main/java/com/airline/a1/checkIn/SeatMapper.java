@@ -18,4 +18,5 @@ public interface SeatMapper {
 	public String getVihicleId(String fnum) throws Exception;
 	public List<BookingTicketVO> getDepBnum(BookingTicketVO bookingTicketVO) throws Exception;
 	public int updateFlightNumDep(BookingTicketVO bookingTicketVO);
+	public List<ETicketVO> getEticket() throws Exception;
 }

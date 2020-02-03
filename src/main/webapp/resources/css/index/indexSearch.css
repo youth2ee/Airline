@@ -22,7 +22,7 @@ body{
 	display: inline-block;
 	width: 50px;
 	height: 48px;
-	background: #5f6062 url(../board/image/ico_loca_home.png) center center no-repeat;
+	background: #5f6062 url(/images/board/ico_loca_home.png) center center no-repeat;
 	cursor: pointer; 
 	
 }
@@ -64,6 +64,8 @@ body{
 
 .search_inner{
 	height: 44px;
+	    margin: 0 auto;
+    width: 495px;
 }
 
 
@@ -71,7 +73,7 @@ body{
 .white{
 	width: 180px;
 	height:46px;
-	background: #fff url(../board/image/bg_select_arrow.png) no-repeat right 13px top 50%;
+	background: #fff url(/images/board/bg_select_arrow.png) no-repeat right 13px top 50%;
 	-webkit-appearance:none;
 	padding: 0 45px 0 15px;
 	font-size: 15px;
@@ -174,7 +176,7 @@ ul.tabs li:last-child.current{
 
 ul.tabs li.current span{
 	padding-left: 28px;
-    background: url(../board/image/ico_tab_on.png) 0 3px no-repeat;
+    background: url(/images/board/ico_tab_on.png) 0 3px no-repeat;
     color: #000;
     font-weight: bold;
 }
@@ -279,7 +281,7 @@ ul.tabs li.current span{
     height: 30px;
     margin: 0;
     display:inline-block;
-	  background: url(../board/image/ico_paging.png);
+	  background: url(/images/board/ico_paging.png);
 }
 
 .btn_prev{
@@ -376,4 +378,57 @@ header {
 #hbselect>select:hover{
 	background-color: white;
 	color: black;
+}
+
+/*  */
+#realList{
+	width: 300px;
+	height: 402px;
+	border: 1px solid black;
+	color: black;
+	position: absolute;
+    top: 204px;
+    left: 31px;
+}
+
+#rtitle{
+	width: 300px;
+	margin: 0 auto;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+}
+
+.rlist_wrap{
+	width: 229px; 
+	margin: 0 auto; 
+	clear: both;
+	padding: 8px 0;
+}
+
+.rcon{
+	float: left;
+	padding: 0 3px;
+}
+
+.rrank{
+	width: 32px;
+	text-align: center;
+	margin-right: 20px;
+}
+
+.rmain{
+	width: 136px;
+}
+
+
+.tcons{
+	width:100%;
+	overflow: hidden;
+ 	text-overflow: ellipsis;
+ 	white-space: nowrap;
+}
+
+.tact{
+	color: red;
 }
