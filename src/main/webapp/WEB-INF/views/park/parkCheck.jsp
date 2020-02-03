@@ -168,9 +168,6 @@ label { /* 주차구역 */
 </form>
 </div>
 
-<button class="ls">LS</button>
-<button class="le">LE</button>
-
 <script type="text/javascript">
 
 	//시작일데이터 받기
@@ -193,15 +190,19 @@ label { /* 주차구역 */
 	var day = endDateCompare - startDateCompare;
 	var cday = 24*60*60*1000;
 	day = day/cday+1;
-
+	
 	//선택기간 안에 주말이 몇번인가 체크
 	for(var i = 0; i < day ; i++){
 		var check = startDateCompare.getDay()+i;
 		if(check%7 == 0 || check%7 ==6){
 			count++;
-		}else{
-
+		}else if(true){
+			console.log(startDate);
+			console.log(endDate);
+			console.log(endDate > startDate);
 		}
+
+		
 	}
 	console.log(count);
 
