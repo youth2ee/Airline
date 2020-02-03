@@ -52,14 +52,13 @@ keyframes scale1 { 0% {
 	transform: scale(0)
 }
 
-100%
-{
+100%{
 transform
-:
- 
-scale
-(1)
- 
+
+
+:scale(1)
+
+
 }
 }
 body {
@@ -158,6 +157,7 @@ to {
 	background-color: #5cb85c;
 	color: white;
 	margin-bottom: 15px;
+	text-align: right;
 }
 
 .modalInnerWrap {
@@ -231,12 +231,16 @@ to {
 	background-color: beige;
 	width: inherit;
 	display: inline-table;
+	margin-left: 17px;
+	width: fit-content;
 }
 
 .seat2 {
 	background-color: cornflowerblue;
 	width: inherit;
 	display: inline-table;
+	margin-left: 50px;
+	width: fit-content;
 }
 
 input[type="text"] {
@@ -310,6 +314,29 @@ input[type=checkbox]:disabled {
 	width: 15px;
 	display: inline-block;
 }
+
+label {
+	margin-left: 5px;
+}
+
+.depAir::before {
+	content: "";
+	width: 20px;
+	height: 20px;
+	background: url('../resources/newni/seatbgL.png') left/22px no-repeat;
+}
+.depAir::after {
+	content: "";
+	width: 20px;
+	height: 20px;
+	background: url('../resources/newni/seatbgL.png') left/22px no-repeat;
+}
+.depSeat {
+	width: 250px;
+	margin: 0 auto;
+	background-color: chartreuse;
+}
+
 </style>
 <title>체크인/좌석배정│아시아나항공</title>
 <body>
@@ -609,12 +636,12 @@ input[type=checkbox]:disabled {
 				</div>
 			</div>
 			<div class="modalInnerBottom">
-			 	dddd
+			 	오는편 좌석 선택
 			</div>
 		</div>
     </div>
     <div class="modal-footer">
-      <h3>Modal Footer</h3>
+      <h3>KRW</h3>
     </div>
   </div>
 
