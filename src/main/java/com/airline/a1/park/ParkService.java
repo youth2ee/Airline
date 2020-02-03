@@ -204,6 +204,49 @@ public class ParkService {
 		}
 		return ar;
 	}
+	
+	
+	public void apiRest() throws Exception {
+		
+		BufferedReader br = null;
+		List<ParkInfoVO> ar = new ArrayList<ParkInfoVO>();
+		try {
+			String urlstr = "http://apis.data.go.kr/B090041/openapi/service/SpcdeInfoService/getHoliDeInfo?serviceKey=QZHG0poXIbqgwOTVR4fiVzbVQ0Pmuz5lkYnHKmazdB%2F5VtUfkpt42I%2BSmw2F5XFUbX1%2Bmm8NaH5BLRz80XVUaA%3D%3D&solYear=2020&numOfRows=25";
+			URL url = new URL(urlstr);
+			HttpURLConnection urlconnection = (HttpURLConnection) url.openConnection();
+			urlconnection.setRequestMethod("GET");
+			br = new BufferedReader(new InputStreamReader(urlconnection.getInputStream(), "UTF-8"));
+			String result = "";
+			String line;
+			DocumentBuilderFactory dbFactoty = DocumentBuilderFactory.newInstance();
+			DocumentBuilder dBuilder = dbFactoty.newDocumentBuilder();
+			Document doc = dBuilder.parse(urlstr);
+			doc.getDocumentElement().normalize();
+			NodeList nList = doc.getElementsByTagName("item");
+			System.out.println("Root element: " + doc.getDocumentElement().getNodeName());
+			System.out.println("파싱할 리스트 수 : " + nList.getLength());
+			for (int temp = 0; temp < nList.getLength(); temp++) {
+				Node nNode = nList.item(temp);
+				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+
+					Element eElement = (Element) nNode;
+					// System.out.println(eElement.getTextContent());
+					ParkInfoVO parkInfoVO = new ParkInfoVO();
+					System.out.println("######################");
+					System.out.println("dateKind  : " + getTagValue("dateKind", eElement));
+					System.out.println("dateName  : " + getTagValue("dateName", eElement));
+					System.out.println("isHoliday  : " + getTagValue("isHoliday", eElement));
+					System.out.println("locdate : " + getTagValue("locdate", eElement));
+					System.out.println("seq  : " + getTagValue("seq", eElement));
+
+				} 
+			} 
+			System.out.println(result);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	
 	private static String getTagValue(String tag, Element eElement) {
 		NodeList nlList = eElement.getElementsByTagName(tag).item(0).getChildNodes();
 		Node nValue = (Node) nlList.item(0);

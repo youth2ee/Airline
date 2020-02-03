@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.airline.a1.SearchMapper">
+
+<select id="searchTotalList" parameterType="java.lang.String" resultType="com.airline.a1.board.NoticeVO">
+select * from notice where textContents like concat('%',#{search},'%') and title like concat('%',#{search},'%')
+</select>
+
+<select id="searchList" parameterType="com.airline.a1.board.NoticeVO" resultType="com.airline.a1.board.NoticeVO">
+select * from notice where textContents like concat('%',#{title},'%') and title like concat('%',#{title},'%') and cate=#{writer}
+</select>
+
+<insert id="searchInsert" parameterType="com.airline.a1.SearchVO">
+insert into search values (null, #{search}, #{svoca}, now())
+</insert>
+
+<select id="realList" resultType="com.airline.a1.SearchVO">
+select svoca, count(svoca) total from search group by svoca order by total desc, total desc limit 10
+</select>
+
+
+</mapper>

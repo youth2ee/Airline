@@ -2,21 +2,18 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>      
 <!DOCTYPE html>
-
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
+<c:import url="../template/boot.jsp"></c:import>
 <link rel="stylesheet" href="../resources/css/board/boardWrite.css">
+<link rel="stylesheet" href="../resources/css/asiana/reset.css">
+ <!-- summerNote -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote.min.js"></script>
+
 </head>
 <body>
 
@@ -27,14 +24,14 @@
 <div class="writeForm">
 <h5>내용 작성</h5>	
 <div class="mar">
-<span style="font-weight: bold;">*은 필수항목입니다.</span>
+<span>*은 필수항목입니다.</span>
 </div>
 
 <form action="${board}Write" method="post" enctype="multipart/form-data">
 <table class="table_form">
 	<tr>
 		<th scope="row">
-			<label style="font-weight: normal;">제목</label>
+				제목
 			<span>*</span>
 		</th>
 		<td>
@@ -45,12 +42,29 @@
 	
 	<tr>
 		<th scope="row">
-			<label style="font-weight: normal;">내용</label>
+				분류선택
+			<span>*</span>
+		</th>
+		<td>
+			<select id="cate" name="cate" class=" cate common textWrite">
+				<option>선택하세요</option>
+				<option value="EveryAir소식">EveryAir소식</option>
+				<option value="EveryAir클럽">EveryAir클럽</option>
+				<option value="유류할증료">유류할증료</option>	
+				<option value="제휴사소식">제휴사소식</option>
+				<option value="기타">기타</option>		
+			</select>
+		</td>
+	</tr>
+	
+	<tr>
+		<th scope="row">
+			내용
 			<span>*</span>
 		</th>
 		<td>
 			<div class="textarea_wrap">
-				<textarea name="contents" class="common textWrite" id="contents" rows="4" cols="50" style="position: relative;"></textarea>	
+				<textarea name="contents" class="common textWrite summernote" id="contents" rows="4" cols="50" style="position: relative;"></textarea>	
 				<div class="txt_count">
 					<em id="counter"></em>
 					/4000자
@@ -122,35 +136,92 @@
 					
 					<ul class= "list_type">
 						<li>
-							고객정보의 보호를 위해 첨부파일 기능 이용시, 개인정보 내용이 포함된 자료의 첨부는 지양하여 주십시오.(※ 탑승권, 항공권, 신분증 등)
-						</li>				
-					
+							ㆍ 고객정보의 보호를 위해 첨부파일 기능 이용시, 개인정보 내용이 포함된 자료의 첨부는 지양하여 주십시오.(※ 탑승권, 항공권, 신분증 등)
+						</li>									
 						<li>
-						파일명이 한글, 영문, 숫자를 제외한 다른 나라의 언어일 경우, 등록된 파일에 손상이 발생할 수 있습니다.
-						</li>
-						
+							ㆍ 파일명이 한글, 영문, 숫자를 제외한 다른 나라의 언어일 경우, 등록된 파일에 손상이 발생할 수 있습니다.
+						</li>						
 						<li>
-							JPG, JPEG, DOC, DOCX, PPT, PPTX, TXT, PDF, PNG, XPS, XLS, XLSX, 파일 형태로 첨부하시기 바랍니다.
+							ㆍ JPG, JPEG, DOC, DOCX, PPT, PPTX, TXT, PDF, PNG, XPS, XLS, XLSX, 파일 형태로 첨부하시기 바랍니다.
 						</li>
 						<li>
-						파일당 최대 5MB(음성/영상 파일은 최대 20MB)까지 첨부 가능합니다.
+							ㆍ 파일당 최대 5MB(음성/영상 파일은 최대 20MB)까지 첨부 가능합니다.
 						</li>
 					</ul>
 				</td>
 	</tr>
 </table>
+
 <div class="btn_wrap">
 	<button id="btnTransfer">등록</button>
 </div>
+
+<textarea style="display: none;" name="textContents" id="rText"></textarea>
+
+<div id="hidden" style="display: none;"></div>
+
 </form>
-
-
-
 
 </div>
 	
 <!------ new script ------->
 <script type="text/javascript">
+
+	/**** SummerNote *****/
+	$(document).ready(function(){
+			$('.summernote').summernote({
+					height:300
+			/* 		 ,
+				 	callbacks:{
+						onImageUpload:function(files,editor){
+						uploadFile(files[0], this);						
+						},
+						 onMediaDelete:function(files, editor){
+							 deleteFile(files[0], this);
+						 }
+					}  */
+				}); 
+		});
+	
+/* 	function uploadFile(file, editor) {
+		var formData = new FormData();
+		
+		formData.append('file', file);		
+		
+		$.ajax({
+			data: formData,
+			type:"POST", 
+			url:"./summerFile", 
+			enctype: "multipart/form-data",
+			contentType: false,
+			cache: false,
+			processData: false,
+
+			
+			success:function(data){
+					
+				data = data.trim();
+					console.log(data);
+				data = '../resources/upload/summerfile/'+data;
+				$(editor).summernote('insertImage', data);
+			}
+			 ,
+			error:function(){		
+							
+			} 
+			
+		}); */
+	//}
+	
+
+	
+
+
+
+$('#contents').blur(function(){
+	$('#hidden').html($('#contents').val());
+	$('#rText').val($('#hidden').text());
+});
 
 	/***** 파일 추가 삭제 *****/
 	$('#attfile1').change(function(){
@@ -202,11 +273,11 @@
 	
 /**** 글자수세기 ****/
 
-$('#contents').keyup(function(){
+/* $('#contents').keyup(function(){
 	var content = $(this).val();
 	$('#counter').html(content.length);
 	
-});
+}); */
 
 
 </script>

@@ -40,12 +40,6 @@
 	<form id="frm" action="./indexSearch">
 	<div class="total_search_input">
 		<div class="search_inner">
-			<select class="white common" name="kind">
-				<option id="ka" value="ka">제목+내용</option>
-				<option id="kt" value="kt">제목</option>
-				<option id="kc" value="kc">내용</option>
-			</select>
-			<input type="hidden" id="curPage" value="1" name="curPage">
 			<input type="text" name="search" id="searchText" class="common" placeholder="검색어를 입력하세요." value="${search}">
 			<button id="btnSearch">검색</button>
 		</div>
@@ -55,111 +49,118 @@
 		
 	<div class="tab_wrap">
 		<ul class="tabs">
-			<li class="tab-link current" data-tab="tab-1">
-				<span>전체</span>
+			<li class="tab-link current">
+				<span class="val">전체</span>
 			</li>
-			<li class="tab-link" data-tab="tab-2">
-				<span>EveryAir소식</span>
+			<li class="tab-link" >
+				<span class="val">EveryAir소식</span>
 			</li>
-			<li class="tab-link" data-tab="tab-3">
-				<span>유류할증료</span>
+			<li class="tab-link" >
+				<span class="val">유류할증료</span>
 			</li>
-			<li class="tab-link" data-tab="tab-4">
-				<span>EveryAir클럽</span>
+			<li class="tab-link" >
+				<span class="val">EveryAir클럽</span>
 			</li>
-			<li class="tab-link" data-tab="tab-5">
-				<span>제휴사소식</span>
+			<li class="tab-link" >
+				<span class="val">제휴사소식</span>
 			</li>
-			<li class="tab-link" data-tab="tab-6">
-				<span>기타</span>
+			<li class="tab-link" >
+				<span class="val">기타</span>
 			</li>
 		</ul>
 		
-		<div id="tab-1" class="tab-content current">
+		<div >
 			<div class="bbs_list">
 				<ul>
-					
-					<c:forEach items="${list}" var = "vo">
+					<c:forEach items="${tlist}" var = "vo">
 					<li>
-						<div class="left">
-							<div class="title">
-								<a href="#">
-									<em>${vo.title}</em>
-								</a>
-							</div>
-							<p class="txt">${vo.contents}</p>
-						</div>
-						<div class="right">
-							<div class="right_sub">
-							<span class="views">조회수: ${vo.hit}</span>
-							<span class="date">${vo.regDate}</span>
-							</div>
-						</div>
+							<div>${vo.title}</div>
+							<div class="tcons">${vo.textContents}</div>
 					</li>
 					</c:forEach>
 				 </ul>	
 			</div>
 		</div>
-		<div id="tab-2" class="tab-content"></div>
-		<div id="tab-3" class="tab-content"></div>
-		<div id="tab-4" class="tab-content"></div>
-		<div id="tab-5" class="tab-content"></div>
-		<div id="tab-6" class="tab-content"></div>
-		
 	</div>
 	
-	<div class="paging">
-			<a href="#" class="btn_first btn_common">
-			</a>
-		    <c:if test = "${pager.curBlock>1}">
-				<a href="./noticeList?curPage=${pager.startNum-1}" class="btn_prev btn_common"></a>	
-			</c:if>
-			
-			<c:forEach begin="${pager.startNum}" end = "${pager.lastNum}" var="i">
-				<a href="./noticeList?curPage=${i}" class="pagingNo on">${i}</a>
-			</c:forEach>
-			
-			<c:if test = "${pager.curBlock<pager.totalBlock}">
-			<a href="./noticeList?curPage=${pager.lastNum+1}" class="btn_next btn_common"></a>			
-			</c:if>
-			<a href="#" class="btn_last btn_common"></a>
-	</div>
 </div>
 
 
+<div id="realList">
+<div id="rtitle">실시간 검색어</div>
+
+<c:forEach items="${rList}" var="rl" varStatus="status">
+
+<div class="rlist_wrap">
+<div class="rcon rrank" >${status.index + 1}</div>
+<div class="rcon rmain" >${rl.svoca}</div>
+<div class="rcon" >${rl.total}</div>
+</div>
+
+</c:forEach>
+
+</div>
+
 
 <!-- paging -->
-	<script type="text/javascript">
-	 	var kind = '${pager.kind}';
-		if(kind == ''){
-				kind = "kt";
-			}
-		$("#"+kind).prop("selected", true);
-	
-		$('.list').click(function(){
-			$("#curPage").val($(this).attr("id"));
-			$("#frm").submit();
-			
-			});
-		
-	</script>
+
 	
 	<script type="text/javascript">
-	/* tab */
-		$('ul.tabs li').click(function(){
-			var tab_id = $(this).attr('data-tab');
+	var search = '${search}';
 
-		$('ul.tabs li').removeClass('current');
-		$('.tab-content').removeClass('current');
+	$(document).ready(function(){
+		$('.tcons').each(function(index){ 
 
-		$(this).addClass('current');
-		$("#"+tab_id).addClass('current');
-	})
-	                                                  
+			var tlist = $(this).text();
+			tlist = tlist.replace(search, "<span class='tact'>"+search+"</span>");
+	
+			$(this).html(tlist);
+
+		});		
+	});
+	                                          
 	/*paging*/
 		$('.pagingNo').click(function(){	
-			var a = $(this).val();                 
 			});
+
+		$('body').on('click','.tab-link',function(){
+
+			$(this).parent('ul').find('li').removeClass('current');
+			$(this).addClass('current');
+			
+			var menu = $(this).find('.val').text();
+			var search = $('#searchText').val();
+
+			$.ajax({
+				data : {
+					menu:menu,
+					search:search
+					},
+				type : "GET",
+				url : "./searchSelect",
+				success : function(data) {
+
+					$('.bbs_list').html(data);
+					$('.tcons').each(function(index){ 
+
+						var tlist = $(this).text();
+						tlist = tlist.replace(search, "<span class='tact'>"+search+"</span>");
+				
+						$(this).html(tlist);
+
+					});	
+
+					
+					
+					
+				}
+			}); 
+			
+		});
+
+		/*  */
+
+
 	
 	</script>
 
