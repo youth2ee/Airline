@@ -7,14 +7,14 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <c:import url="./template/boot.jsp"></c:import>
-
+    <link href="../resources/css/header.css" rel="stylesheet">
 <link rel="stylesheet" href="../resources/css/index/indexSearch.css">
 <link rel="stylesheet" href="../resources/css/reset.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 
-	<header></header>
+	<header><c:import url="./layout/header.jsp"></c:import></header>
 	<div id="headerBottom">
 		<div id="hbh">
 			<div id="hbhome">
@@ -37,7 +37,7 @@
 	<!----- new ------>
 
 	<div id="container">
-		<h3>공지사항</h3>
+		<h3>통합검색</h3>
 
 		<form id="frm" action="./indexSearch">
 			<div class="total_search_input">
