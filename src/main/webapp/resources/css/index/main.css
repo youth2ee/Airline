@@ -202,7 +202,8 @@ top: -10px;
 	margin-top: 20px;
 	background-color:rgba(255,255,255,0.5);
 	position: absolute;
-	border-radius:50px;  
+	border-radius:50px;
+	top: 100px;  
 }
 .weather_wrap{
 	width: 620px;
@@ -244,7 +245,6 @@ top: -10px;
 	margin-left: 50px;
 	border-left: 5px solid #e5d07d;
 	margin-top: 20px;
-	margin-bottom: 20px;
 }
 .weather_view_wrap_text{
 	font-size: 20px;

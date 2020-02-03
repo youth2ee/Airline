@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.airline.a1.api.AirportDataMapper">
+	<select id="searchAirport" parameterType="java.lang.Integer" resultType="java.lang.String">
+		select apId from airport where apNum = #{apNum} 
+	</select>
+	<select id="searchAirport2" resultType="com.airline.a1.api.TestVO">
+		select S.apId depAp,N.apId arrAp from airport S cross Join airport N;
+	</select>
+
+	<insert id="flightDataInput" parameterType="com.airline.a1.booking.FlightDataVO">
+		insert into flightData values (null,#{vihicleId},#{airlineNm},#{depPlandTime},#{arrPlandTime},#{economyCharge},#{depAirportNm},#{arrAirportNm}, null, null)
+	</insert>
+	
+	<select id="searchAirportCode"  parameterType="java.lang.Integer" resultType="java.lang.String">
+		select cityCode from airport where apNum = #{apNum}
+	</select>
+	<insert id ="busDataInput" parameterType="com.airline.a1.api.BusVO">
+		insert into bus values (#{busCategoryKorName},#{busDataBusNum},#{busDataFirstTime},#{busDataEndTime},#{busDataEtcKor},#{busDataMoney},#{busDataRouteKor},#{busDataGetonKor})
+	</insert>
+</mapper>
