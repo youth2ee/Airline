@@ -80,7 +80,7 @@ $(document).ready(function() {
 
 
 					<div class="bxslider">
-						<div style="height: 500px;">
+						<div style="height: 392px;">
 							<img src="./images/index/index_pic1.jpg">
 						</div>
 						<div style="height: 392px;">
@@ -104,7 +104,7 @@ $(document).ready(function() {
 	<!-- 예약시작 -->
 	<div class="resWrap">
 	
-	<div class="card card-4">
+	<div class="card card-4" style="background: none">
 		<div class="tab-content">
 			<div class="tab-pane active" id="tab1">
 
@@ -203,7 +203,7 @@ $(document).ready(function() {
 	<!-- 예약 끝 -->
 					
 					<div style="width: 80%; margin: auto; height: 150px; position: relative; top: -205px;">
-						<div class="swiper-container">
+						<div class="swiper-container" style="height: max-content">
 							<div class="swiper-wrapper">
 								<div class="swiper-slide"
 									style="background: url('https://ozimg.flyasiana.com/main_banner/20200115_mini.jpg'); height: 180px; margin-right: 8px;">Slide
@@ -234,7 +234,6 @@ $(document).ready(function() {
 			<div class="section" id="section1"
 				style="background: url(https://flyasiana.com/C/pc/image/main/bg_section02_default.jpg); background-size: 1920px">
 				<div class="intro">
-					<h1>Keep it simple!</h1>
 				<a href="https://www.weather.go.kr/w/index.do"><img alt="weather" src="../images/weather.png" style="width: 180px; height: 180px; margin-left: 1630px; margin-top: -60px; cursor: pointer;"></a>
 				<a href="https://www.weatheri.co.kr/forecast/forecast03.php?mNum=1&aircode=RKSI"><img alt="weather" src="../images/weather2.png" style="width: 60px; height: 60px; float: right; cursor: pointer;"></a>
 					<div class="weather">
@@ -275,7 +274,6 @@ $(document).ready(function() {
 							</div>
 					</div>
 					
->>>>>>> f19ed613f219f1af04c35b889a5b77cc4945b8ae
 				</div>
 			</div>
 			<div class="section" id="section2"
@@ -531,9 +529,16 @@ $('#arrloc').focus(function(){
 /* 예약 끝 */
 
 /* 검색 */
-$('body').on('blur', '.search__input', function(){
-		$('#frm').submit();
+$('body').on('click', '#sbtn', function(){
+	$('.tooltiptext1').slideDown();
+
+	
  });
+
+$('body').on('click', '#sbtn', function(){
+	$('#frm').submit();
+});
+
 
 		
 	</script>

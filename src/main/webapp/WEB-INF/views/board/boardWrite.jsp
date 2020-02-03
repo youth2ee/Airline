@@ -159,8 +159,7 @@
 
 
 <div id="hidden" style="display: none;"></div>
-
-<input type="button" id="tbtn">
+<input type="hidden" id="ihidden" name="textContents">
 
 </form>
 
@@ -216,20 +215,20 @@
 		}); */
 	//}
 	
-	var markupStr = $('#summernote').summernote('code');
+		
+	// summernote.blur
+	$('.summernote').on('summernote.blur', function() {
+		var markupStr = $('#contents').val();
+		$('#hidden').html(markupStr);
+		markupStr = $('#hidden').text();
 	
-	
-	$('#tbtn').click(function(){
-		alert(markupStr);
+		$('#ihidden').val(markupStr);
+
+		//글자수 세기
+		$('#counter').html(markupStr.length);
 		
 	});
-	
-		
-		
-	
 
-	
-	
 
 	/***** 파일 추가 삭제 *****/
 	$('#attfile1').change(function(){
