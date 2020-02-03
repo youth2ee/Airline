@@ -52,12 +52,26 @@ public class HomeController {
 		if (search != "") {
 			System.out.println(search);
 			List<BoardVO> ar = searchService.searchTotalList(search);
-
+			
+			/*
+			 * for(BoardVO con:ar) { String tcon = con.getTextContents();
+			 * 
+			 * 
+			 * 
+			 * 
+			 * }
+			 */
+			
+			
+			
+			
 			model.addAttribute("search", search);
 			model.addAttribute("tlist", ar);
 			
-			List<SearchVO> cr = searchService.realList();
 			
+			
+			
+			List<SearchVO> cr = searchService.realList();
 			model.addAttribute("rList", cr);
 			
 
@@ -98,30 +112,38 @@ public class HomeController {
 				
 			}else {
 				if(kl.size() >= 3) {
-					  for( int i = 0; i < kl.size(); i++ ) {
+					  for(int i = 0; i < kl.size(); i++ ) {
 						  if(i == 1) {
 							  Keyword kwrd = kl.get(i); 
 							  System.out.println(kwrd.getString() + "\t" + kwrd.getCnt());
 							  msg = kwrd.getString();
-							  searchVO.setSvoca(msg);
+							  
+							  if(search.contains("스")) {
+								  searchVO.setSvoca(search);
+							  }else {
+								  searchVO.setSvoca(msg);
+							  }
+							  
 							  searchService.searchInsert(searchVO);
 						  }
 					  }
 				} else if (kl.size() == 1) {
-					  for( int i = 0; i < kl.size(); i++ ) {
+					  for(int i = 0; i < kl.size(); i++ ) {
 							  Keyword kwrd = kl.get(i); 
 							  System.out.println(kwrd.getString() + "\t" + kwrd.getCnt());
 							  msg = kwrd.getString();
-							  searchVO.setSvoca(msg);
+							  
+							  if(search.contains("스")) {
+								  searchVO.setSvoca(search);
+							  }else {
+								  searchVO.setSvoca(msg);
+							  }
+							  
 							  searchService.searchInsert(searchVO);
 						  }
 				}
 			}
-			
-			
-			 
 		}
-
 	}
 
 	@PostMapping("indexSearch")

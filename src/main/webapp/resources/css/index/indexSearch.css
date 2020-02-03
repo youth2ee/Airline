@@ -64,6 +64,8 @@ body{
 
 .search_inner{
 	height: 44px;
+	    margin: 0 auto;
+    width: 495px;
 }
 
 
@@ -381,10 +383,48 @@ header {
 /*  */
 #realList{
 	width: 300px;
-	height: 500px;
+	height: 402px;
 	border: 1px solid black;
 	color: black;
-	position: relative;
-    top: -512px;
-    left: 22px;
+	position: absolute;
+    top: 204px;
+    left: 31px;
+}
+
+#rtitle{
+	width: 300px;
+	margin: 0 auto;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+}
+
+.rlist_wrap{
+	width: 217px; 
+	margin: 0 auto; 
+	clear: both;
+	padding: 8px 0;
+}
+
+.rcon{
+	float: left;
+	padding: 0 3px;
+}
+
+.rrank{
+	width: 32px;
+	text-align: center;
+	margin-right: 20px;
+}
+
+.rmain{
+	width: 136px;
+}
+
+
+.tcons{
+	width:100%;
+	  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

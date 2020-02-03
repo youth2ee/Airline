@@ -75,25 +75,29 @@
 					<c:forEach items="${tlist}" var = "vo">
 					<li>
 							<div>${vo.title}</div>
-							<div>${vo.textContents}</div>
+							<div class="tcons">${vo.textContents}</div>
 					</li>
 					</c:forEach>
 				 </ul>	
 			</div>
 		</div>
-<!-- 		<div id="tab-2" class="tab-content"></div>
-		<div id="tab-3" class="tab-content"></div>
-		<div id="tab-4" class="tab-content"></div>
-		<div id="tab-5" class="tab-content"></div>
-		<div id="tab-6" class="tab-content"></div> -->
 	</div>
 	
 </div>
 
 
 <div id="realList">
+<div id="rtitle">실시간 검색어</div>
+
 <c:forEach items="${rList}" var="rl" varStatus="status">
-${status.index + 1} ${rl.svoca} ${rl.total}<br>
+<%-- ${status.index + 1} ${rl.svoca} ${rl.total}<br> --%>
+
+<div class="rlist_wrap">
+<div class="rcon rrank" >${status.index + 1}</div>
+<div class="rcon rmain" >${rl.svoca}</div>
+<div class="rcon" >${rl.total}</div>
+</div>
+
 </c:forEach>
 
 </div>
