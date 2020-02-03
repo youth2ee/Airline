@@ -48,7 +48,8 @@
 						<div class="tooltiptext1">
 							<div class="search__container">
 								<form action="./indexSearch" id="frm">
-							    <input class="search__input" type="text" placeholder="Search" name="search">
+							  	  <input class="search__input" type="text" placeholder="Search" name="search">
+							  	  <i class='fas fa-search' id="ssbtn"></i>
 							    </form>
 							</div>
 						</div>
