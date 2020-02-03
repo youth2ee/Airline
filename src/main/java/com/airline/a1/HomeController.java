@@ -55,10 +55,12 @@ public class HomeController {
 				  int num = tcon.indexOf(search);
 				  int tlen = tcon.length();
 				  
+				  System.out.println(num);
+				  
 				  if(num > 10) {
 					  tcon = tcon.substring(num-10);
 				  } else {
-					  tcon = tcon.substring(num);
+					  tcon = tcon.substring(0);
 				}
 				  con.setTextContents(tcon);
 			  }
@@ -178,7 +180,8 @@ public class HomeController {
 		
 		  for(BoardVO con:ar) { 
 			  String tcon = con.getTextContents();
-		  
+			  System.out.println(tcon);
+			  
 			  int num = tcon.indexOf(search);
 			  int tlen = tcon.length();
 			  
@@ -188,6 +191,7 @@ public class HomeController {
 				  tcon = tcon.substring(num);
 			}
 			  con.setTextContents(tcon);
+			  System.out.println(con.getTextContents());
 		  }
 		
 
