@@ -10,6 +10,7 @@
     width: 100%;
     height: 180px;
     margin: 20px auto;
+    top: 97px;
 }
 .bx-wrapper {
 	border: none;
@@ -55,13 +56,22 @@
 }
 
 .resWrap{
-	z-index: 1;
+/* 	z-index: 1;
 	width: 1300px;
 	height: 300px;
 	margin: 0 auto;
 	background-color: black;
 	position: relative;
-	top: -198px;
+	top: -198px; */
+	
+	z-index: 10000;
+    width: 1300px;
+    height: 250px;
+    margin: 0 auto;
+    background-color: #0000008c;
+    position: relative;
+    border-radius: 25px;
+    top: -85px;
 }
 	
 .weather{

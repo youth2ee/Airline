@@ -210,6 +210,7 @@ td{
 </head>
 <c:import url="../layout/header.jsp" />
 <body>
+<form action="./seat" id="frm" method="post">
 <div class="sidenav">
 	<div class="navText">좌석 선택</div>
 	<div class="navBody">
@@ -241,7 +242,7 @@ td{
 		<p><button type="button" id="btn"><span>선택 완료</span></button></p>
 	</div>
 </div>
-	<form action="./seat" id="frm" method="post">
+	
 		<input type="text" id="depFNum" value="${depFNum}" name="depFNum">
 		<div class="airport">
 			<div class="depAir">

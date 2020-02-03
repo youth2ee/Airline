@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="../resources/css/reset.css" rel="stylesheet">
+<link href="../resources/css/header.css" rel="stylesheet">
 <link href="../resources/css/booking/bookingWrite.css" rel="stylesheet">
 <c:import url="../template/boot.jsp"></c:import>
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
@@ -15,9 +16,9 @@
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 </head>
 <body>
-booking write
+
 <header>
-header 
+<c:import url="../layout/header.jsp"></c:import>
 </header>
 
 <div id="top">
@@ -345,7 +346,18 @@ ${arr[0]}년 ${arr[1]}월 ${arr[2]}일<br>
 </section>
 
 
+<script type="text/javascript">
+/* 검색 */
+$('body').on('click', '#sbtn', function(){
+	$('.tooltiptext1').css("display", "inline-block");
+});
 
+
+$('body').on('click', '#ssbtn', function(){
+	$('#frm').submit();
+});
+
+</script>
 
 
 </body>

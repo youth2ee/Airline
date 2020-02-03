@@ -6,8 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>My Page</title>
-    
     <link href="../resources/css/reset.css" rel="stylesheet">
+    <link href="../resources/css/header.css" rel="stylesheet">
     <link href="../resources/css/mypage/main.css" rel="stylesheet">
     <link href="../resources/css/mypage/mypageHeader.css" rel="stylesheet">
 	
@@ -30,7 +30,7 @@
 <body>
 
 
-<header></header>
+<header><c:import url="../layout/header.jsp"></c:import></header>
 <div id="headerBottom">
 <div id="hbh">
 <div id="hbhome"><i class="fa fa-home"></i></div>
