@@ -14,11 +14,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import org.snu.ids.ha.ma.MExpression;
-import org.snu.ids.ha.ma.MorphemeAnalyzer;
-import org.snu.ids.ha.ma.Sentence;
-import org.snu.ids.ha.util.Timer;
-
 import com.airline.a1.board.BoardVO;
 import com.airline.a1.board.NoticeVO;
 import com.airline.a1.weather.WeatherService;
@@ -50,7 +45,7 @@ public class HomeController {
 	@GetMapping("indexSearch")
 	public void indexSearch(Model model, String search) throws Exception {
 		if (search != "") {
-			System.out.println(search);
+			/* System.out.println(search); */
 			List<BoardVO> ar = searchService.searchTotalList(search);
 			
 			
@@ -65,23 +60,15 @@ public class HomeController {
 				  } else {
 					  tcon = tcon.substring(num);
 				}
-			  
 				  con.setTextContents(tcon);
-			  
 			  }
 			 
-			
-			
 			model.addAttribute("search", search);
 			model.addAttribute("tlist", ar);
-			
-			
-			
 			
 			List<SearchVO> cr = searchService.realList();
 			model.addAttribute("rList", cr);
 			
-
 			SearchVO searchVO = new SearchVO();
 			searchVO.setSearch(search);
 
@@ -115,14 +102,12 @@ public class HomeController {
 			if(search.contains(" ")) {
 				
 				
-				
-				
 			}else {
 				if(kl.size() >= 3) {
 					  for(int i = 0; i < kl.size(); i++ ) {
 						  if(i == 1) {
 							  Keyword kwrd = kl.get(i); 
-							  System.out.println(kwrd.getString() + "\t" + kwrd.getCnt());
+							/* System.out.println(kwrd.getString() + "\t" + kwrd.getCnt()); */
 							  msg = kwrd.getString();
 							  
 							  if(search.contains("스")) {
@@ -137,7 +122,7 @@ public class HomeController {
 				} else if (kl.size() == 1) {
 					  for(int i = 0; i < kl.size(); i++ ) {
 							  Keyword kwrd = kl.get(i); 
-							  System.out.println(kwrd.getString() + "\t" + kwrd.getCnt());
+						/* System.out.println(kwrd.getString() + "\t" + kwrd.getCnt()); */
 							  msg = kwrd.getString();
 							  
 							  if(search.contains("스")) {
@@ -148,8 +133,23 @@ public class HomeController {
 							  
 							  searchService.searchInsert(searchVO);
 						  }
+				} else {
+					  for(int i = 0; i < kl.size(); i++ ) {
+						  Keyword kwrd = kl.get(i); 
+						/* System.out.println(kwrd.getString() + "\t" + kwrd.getCnt()); */
+						  msg = kwrd.getString();
+						  
+						  if(search.contains("우한")) {
+							  searchVO.setSvoca(search);
+						  }
+						  searchService.searchInsert(searchVO);
+						  
+					  }
 				}
 			}
+			
+			System.out.println(searchVO.getSearch());
+			
 		}
 	}
 
@@ -197,6 +197,17 @@ public class HomeController {
 
 		return mv;
 
+	}
+	
+	@GetMapping("rlist")
+	public ModelAndView rlist() throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+		List<SearchVO> cr = searchService.realList();
+		mv.addObject("rList", cr);
+		mv.setViewName("layout/rlist");
+		
+		return mv;
 	}
 
 }
