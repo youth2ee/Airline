@@ -47,22 +47,22 @@
 	<div class="tab_wrap">
 		<ul class="tabs">
 			<li class="tab-link current" data-tab="tab-1">
-				<span>전체</span>
+				<a href="#01" data-value="01"><span>전체</span></a>
 			</li>
 			<li class="tab-link" data-tab="tab-2">
-				<span>EveryAir소식</span>
+				<a href="#02" data-value="02"><span>EveryAir소식</span></a>
 			</li>
 			<li class="tab-link" data-tab="tab-3">
-				<span>유류할증료</span>
+				<a href="#03" data-value="03"><span>유류할증료</span></a>
 			</li>
 			<li class="tab-link" data-tab="tab-4">
-				<span>EveryAir클럽</span>
+				<a href="#04" data-value="04"><span>EveryAir클럽</span></a>
 			</li>
 			<li class="tab-link" data-tab="tab-5">
-				<span>제휴사소식</span>
+				<a href="#05" data-value="05"><span>제휴사소식</span></a>
 			</li>
 			<li class="tab-link" data-tab="tab-6">
-				<span>기타</span>
+				<a href="#06" data-value="06"><span>기타</span></a>
 			</li>
 		</ul>
 		
@@ -190,7 +190,7 @@
 		
 	</div>
 	
-	<%-- <div class="paging">
+<%-- 	<div class="paging">
 			
 			<a href="./noticeList?curPage=1" class="btn_first btn_common">
 			</a>
@@ -246,6 +246,7 @@
 		});
 
 
+		
 	</script>
 	
 </body>

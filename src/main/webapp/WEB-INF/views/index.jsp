@@ -37,9 +37,36 @@ $(document).ready(function() {
 });
 </script>
 
+<style type="text/css">
+.alert {
+	background-color: #f4b136;
+	color: white;
+	padding: 10px;
+	margin-bottom: 0;
+	border: 1px solid transparent;
+	border-radius: 0;
+}
 
+.closebtn {
+	margin-left: 15px;
+	color: white;
+	font-weight: bold;
+	float: right;
+	font-size: 22px;
+	line-height: 20px;
+	cursor: pointer;
+	transition: 0.3s;
+}
+
+.closebtn:hover {
+	color: black;
+}
+</style>
 </head>
-
+<div class="alert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+  <strong>우한폐렴</strong>대충 주의하라는 글
+</div>
 <header id="header">
 	<c:import url="./layout/header.jsp" />
 </header>
@@ -207,6 +234,7 @@ $(document).ready(function() {
 			<div class="section" id="section1"
 				style="background: url(https://flyasiana.com/C/pc/image/main/bg_section02_default.jpg); background-size: 1920px">
 				<div class="intro">
+					<h1>Keep it simple!</h1>
 				<a href="https://www.weather.go.kr/w/index.do"><img alt="weather" src="../images/weather.png" style="width: 180px; height: 180px; margin-left: 1630px; margin-top: -60px; cursor: pointer;"></a>
 				<a href="https://www.weatheri.co.kr/forecast/forecast03.php?mNum=1&aircode=RKSI"><img alt="weather" src="../images/weather2.png" style="width: 60px; height: 60px; float: right; cursor: pointer;"></a>
 					<div class="weather">
@@ -247,6 +275,7 @@ $(document).ready(function() {
 							</div>
 					</div>
 					
+>>>>>>> f19ed613f219f1af04c35b889a5b77cc4945b8ae
 				</div>
 			</div>
 			<div class="section" id="section2"
@@ -502,36 +531,10 @@ $('#arrloc').focus(function(){
 /* 예약 끝 */
 
 /* 검색 */
-$('body').on('click', '.sbtn', function(){
+$('body').on('blur', '.search__input', function(){
 		$('#frm').submit();
  });
 
-		$("#weather_select").click(function(){
-			var weather = $("#weather_sel").val();
-			$.ajax({
-				type:'get',
-				url:"weather/weatherInfo",
-				async: false,
-				data:{
-					"airLine":weather
-				},
-				success: function(data){
-					data = data.trim();
-					$("#weather_view").html(data);
-				}
-			});
-			$("#weather_view tr").css("background-color", "transparent");
-			$("#weather_view td").css("background-color", "transparent");
-			$("#weather_view td").css("border-style", "hidden");
-			$("#weather_view td").css("font-weight","bold");
-			$("#weather_view td").css("vertical-align","middle");
-		});
-
-		$("#weather_view td").css("font-weight","bold");
-		$("#weather_view td").css("vertical-align","middle");
-		$("#weather_view tr").css("background-color", "transparent");
-		$("#weather_view td").css("background-color", "transparent");
-		$("#weather_view td").css("border-style", "hidden");
 		
 	</script>
 </body>
