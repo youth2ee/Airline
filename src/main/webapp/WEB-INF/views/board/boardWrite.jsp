@@ -65,6 +65,7 @@
 		<td>
 			<div class="textarea_wrap">
 				<textarea name="contents" class="common textWrite summernote" id="contents" rows="4" cols="50" style="position: relative;"></textarea>	
+				
 				<div class="txt_count">
 					<em id="counter"></em>
 					/4000자
@@ -156,9 +157,10 @@
 	<button id="btnTransfer">등록</button>
 </div>
 
-<textarea style="display: none;" name="textContents" id="rText"></textarea>
 
 <div id="hidden" style="display: none;"></div>
+
+<input type="button" id="tbtn">
 
 </form>
 
@@ -166,6 +168,7 @@
 	
 <!------ new script ------->
 <script type="text/javascript">
+
 
 	/**** SummerNote *****/
 	$(document).ready(function(){
@@ -213,15 +216,20 @@
 		}); */
 	//}
 	
-
+	var markupStr = $('#summernote').summernote('code');
+	
+	
+	$('#tbtn').click(function(){
+		alert(markupStr);
+		
+	});
+	
+		
+		
 	
 
-
-
-$('#contents').blur(function(){
-	$('#hidden').html($('#contents').val());
-	$('#rText').val($('#hidden').text());
-});
+	
+	
 
 	/***** 파일 추가 삭제 *****/
 	$('#attfile1').change(function(){
