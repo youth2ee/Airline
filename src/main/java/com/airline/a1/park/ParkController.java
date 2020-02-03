@@ -1,6 +1,8 @@
 package com.airline.a1.park;
 
+import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
@@ -35,25 +37,24 @@ public class ParkController {
 	@GetMapping("ParkRes")
 	public void ParkRes(String arrLoc) throws Exception{
 		
-		Integer a = new Integer(10);
-		Integer b = new Integer(10);
-		Integer c = a;
-		int d = 10;
-		double e = 10.0;
-		
-		
-		
-		if(a==b) {
-			
-		}
-		
-
 		
 	}
 	
 	@GetMapping("parkCheck")
 	public ModelAndView parkCheck(ModelAndView mv, pReservationVO pReservationVO) throws Exception{
-		parkService.apiRest();
+		
+		int sDate = Integer.parseInt(pReservationVO.getStartDate().toString().replace("-", "").substring(0,6));
+		int eDate = Integer.parseInt(pReservationVO.getEndDate().toString().replace("-", "").substring(0,6));
+		
+		List<String> rest = new ArrayList<>();
+		for (int i = sDate; i <= eDate; i++) {
+			if(i%100 == 13) {
+				i = i + 88;			
+			}
+			int year = Math.floorDiv(i, 100);
+			int month = i - year*100;
+			parkService.apiRest(year,month, rest);
+		}
 		List<pReservationVO> ar = parkService.parkCheck(pReservationVO);
 		pInfoVO pInfoVO = new pInfoVO();
 		pInfoVO.setaName(pReservationVO.getAirport());
@@ -68,6 +69,7 @@ public class ParkController {
 		mv.addObject("etc", etc);
 		mv.addObject("list", ar);
 		mv.addObject("park", pInfoVO);
+		mv.addObject("rest", rest);
 		mv.setViewName("park/parkCheck");
 		return mv;
 	}

@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+#sub_content {max-width:1240px; min-height:500px; margin:0 auto 65px; padding:50px; border:1px solid #dddddd; background:#fff;}
+.section {margin-bottom:50px;}
+.board_table {width:100%; border-top:2px solid #333333; font-size:17px; color:#777777; text-align:center !important; line-height:1.625; font-weight:400; word-break:break-all;}
+.board_table thead th {color:#151515; background:#f8f8f9;}
+.board_table td, 
+.board_table th {height:60px; padding:10px 15px; line-height:1.4; border-bottom:1px solid #e2e2e2; vertical-align:middle;}
+.write_form {border-top:2px solid #333333; font-size:17px; color:#444; line-height:1.625;}
+.frow {position:relative; padding:8px 10px 10px 260px; border-bottom:1px solid #d8d8da; vertical-align:top; line-height:40px;}
+.frow .label {position:absolute; top:0; left:0; width:245px; height:100%; padding:8px 15px 10px 35px; color:#151515; font-size:17px; font-weight:400; background:#f8f8f9;}
+.frow * {vertical-align:middle;}

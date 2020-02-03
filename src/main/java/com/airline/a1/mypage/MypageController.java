@@ -22,6 +22,8 @@ public class MypageController {
 	
 	@GetMapping("park")
 	public void park() {}
+	@GetMapping("parkSelect")
+	public void parkSelect() {}
 	
 	@GetMapping("limo")
 	public void limo() {}

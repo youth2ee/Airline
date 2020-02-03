@@ -167,25 +167,24 @@ label { /* 주차구역 */
 </div>
 </form>
 </div>
-
+<c:forEach items="${rest}" var="vo" varStatus="var">
+<input type="hidden" id="r${var.count}" class="resttext" value="${vo}">
+</c:forEach>
 <script type="text/javascript">
 
 	//시작일데이터 받기
 	var startDate = $("#startDate").val();
 	var startDateArr = startDate.split('-');
-
  	//종료일 데이터 받기
-	var endDate = $( "#endDate" ).val(); 
+	var endDate = $("#endDate").val(); 
 	var endDateArr = endDate.split('-');
 
     //파싱
 	var startDateCompare = new Date(startDateArr[0], parseInt(startDateArr[1])-1, startDateArr[2]);
 	var endDateCompare = new Date(endDateArr[0], parseInt(endDateArr[1])-1, endDateArr[2]);
-
-	console.log('startDate :'+startDate);
 	
 	var count = 0;
-	
+	var countr = 0;
 	//날비교
 	var day = endDateCompare - startDateCompare;
 	var cday = 24*60*60*1000;
@@ -196,17 +195,20 @@ label { /* 주차구역 */
 		var check = startDateCompare.getDay()+i;
 		if(check%7 == 0 || check%7 ==6){
 			count++;
-		}else if(true){
-			console.log(startDate);
-			console.log(endDate);
-			console.log(endDate > startDate);
 		}
-
-		
 	}
-	console.log(count);
 
-	
+
+	$(".resttext").each(function(){
+		var restDate = $(this).val();
+		var restDateCompare = new Date(restDate.substring(0,4),restDate.substring(4,6) -1,restDate.substring(6,8));
+		var restDay = restDateCompare.getDay();
+
+		if(restDateCompare >= startDateCompare && restDateCompare <= endDateCompare && restDay != 0 && restDay != 6){
+			count++;
+			countr++;
+		}
+	});
 		//주차불가능지역 불가능하게 만들기
 		$(".check").each(function(){
 			var check = $(this).val();
@@ -253,10 +255,8 @@ label { /* 주차구역 */
 			//장기이용 할인
 			if(day>6){
 				if(day>14){
-					console.log('장기이용 10% 할인');
 					per = 90;
 				}else{
-					console.log('장기이용 5% 할인');
 					per = 95;
 				}
 			}
