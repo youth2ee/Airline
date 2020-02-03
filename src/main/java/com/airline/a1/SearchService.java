@@ -36,6 +36,10 @@ public class SearchService {
 		return searchMapper.searchInsert(searchVO);
 	}
 	
+	public List<SearchVO> realList() throws Exception {
+		return searchMapper.realList();
+	}
+	
 	
 	public void svoca(String search) {
 		// string to extract keywords

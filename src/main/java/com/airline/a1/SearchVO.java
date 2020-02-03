@@ -11,4 +11,6 @@ public class SearchVO {
 	private String search;
 	private String svoca;
 	private Date sdate;
+	
+	private int total;
 }
