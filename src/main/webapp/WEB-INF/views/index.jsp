@@ -80,23 +80,23 @@ $(document).ready(function() {
 
 
 					<div class="bxslider">
-						<div style="height: 500px;">
+						<div style="height: 392px;">
 							<img src="./images/index/index_pic1.jpg">
 						</div>
 						<div style="height: 392px;">
 							<img src="./images/index/index_pic2.jpg" style="width:1910px;">
 						</div>
 						<div style="height: 392px">
-							<img src="https://ozimg.flyasiana.com/temp/image/20191014/a84a6853-a8f4-4465-966a-0088daf7dd91.jpeg">
+							<img src="./images/index/index_pic3.png" style="width:1910px;">
 						</div>
 						<div style="height: 392px">
-							<img src="https://ozimg.flyasiana.com/temp/image/20200103/d7d93511-23fd-4522-9c15-e7a05b8074d9.jpeg">
+							<img src="./images/index/index_pic4.png" style="width:1910px;">
 						</div>
 						<div style="height: 392px">
-							<img src="https://ozimg.flyasiana.com/temp/image/20200107/820d1923-5e81-4cb3-acf1-4b136d914834.jpeg">
+							<img src="./images/index/index_pic5.png" style="width:1910px;">
 						</div>
 						<div style="height: 392px">
-							<img src="https://ozimg.flyasiana.com/temp/image/20191206/eab6f90a-6051-4c1a-a854-37cdd0f6722f.jpeg">
+							<img src="./images/index/index_pic6.png" style="width:1910px;">
 						</div>
 					</div>
 					
@@ -104,13 +104,13 @@ $(document).ready(function() {
 	<!-- 예약시작 -->
 	<div class="resWrap">
 	
-	<div class="card card-4">
+	<div class="card card-4" style="background: none">
 		<div class="tab-content">
 			<div class="tab-pane active" id="tab1">
 
-				<form method="post" action="./bookingMain" id="frm">
+				<form method="post" action="./bookingMain" id="frm2">
 
-					<div class="radio-row" style="margin-bottom: 20px;">
+					<div class="radio-row" style="margin-bottom: 20px; padding-left: 49px;">
 							<label class="radio-container m-r-45">왕복 
 							<input type="radio" name="kind" value="왕복" id="round" checked="checked">
 							<span class="radio-checkmark"></span>
@@ -121,7 +121,7 @@ $(document).ready(function() {
 						</label>
 					</div>
 
-					<div id="body">
+					<div id="body" style="margin-left: 46px;">
 						<div class="input-group mid small">
 							<label class="label">출발지 :</label> 
 							<input class="input--style-1 t1" type="text" name="depLoc" placeholder="지역 또는 공항명" required="required" id="loc">
@@ -203,7 +203,7 @@ $(document).ready(function() {
 	<!-- 예약 끝 -->
 					
 					<div style="width: 80%; margin: auto; height: 150px; position: relative; top: -205px;">
-						<div class="swiper-container">
+						<div class="swiper-container" style="height: max-content">
 							<div class="swiper-wrapper">
 								<div class="swiper-slide"
 									style="background: url('https://ozimg.flyasiana.com/main_banner/20200115_mini.jpg'); height: 180px; margin-right: 8px;">Slide
@@ -234,7 +234,6 @@ $(document).ready(function() {
 			<div class="section" id="section1"
 				style="background: url(https://flyasiana.com/C/pc/image/main/bg_section02_default.jpg); background-size: 1920px">
 				<div class="intro">
-					<h1>Keep it simple!</h1>
 				<a href="https://www.weather.go.kr/w/index.do"><img alt="weather" src="../images/weather.png" style="width: 180px; height: 180px; margin-left: 1630px; margin-top: -60px; cursor: pointer;"></a>
 				<a href="https://www.weatheri.co.kr/forecast/forecast03.php?mNum=1&aircode=RKSI"><img alt="weather" src="../images/weather2.png" style="width: 60px; height: 60px; float: right; cursor: pointer;"></a>
 					<div class="weather">
@@ -275,7 +274,6 @@ $(document).ready(function() {
 							</div>
 					</div>
 					
->>>>>>> f19ed613f219f1af04c35b889a5b77cc4945b8ae
 				</div>
 			</div>
 			<div class="section" id="section2"
@@ -331,7 +329,7 @@ $(document).ready(function() {
 
 			
 		var myFullpage = new fullpage('#fullpage', {
-			//fixedElements: '#header',
+			/* fixedElements: 'firstPage', */
 			navigation:true,
 			navigationTooltips: ['Page 1', 'Page 2', 'Page 3', 'Page 4'],
 			showActiveTooltip: true,
@@ -488,7 +486,7 @@ $('input:radio[name=kind]').click(function(){
 						
 						if(child <= adult){
 							if(adult < 6){
-								$('#frm').submit();	
+								$('#frm2').submit();	
 								}else{
 									alert("예약인원은 성인5명 아이5명까지 가능합니다.")									
 									}							
@@ -531,9 +529,15 @@ $('#arrloc').focus(function(){
 /* 예약 끝 */
 
 /* 검색 */
-$('body').on('blur', '.search__input', function(){
-		$('#frm').submit();
- });
+$('body').on('click', '#sbtn', function(){
+	$('.tooltiptext1').css("display", "inline-block");
+});
+
+
+$('body').on('click', '#ssbtn', function(){
+	$('#frm').submit();
+});
+
 
 		
 	</script>
