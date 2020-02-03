@@ -49,27 +49,27 @@
 		
 	<div class="tab_wrap">
 		<ul class="tabs">
-			<li class="tab-link current" data-tab="tab-1">
+			<li class="tab-link current">
 				<span class="val">전체</span>
 			</li>
-			<li class="tab-link" data-tab="tab-2">
+			<li class="tab-link" >
 				<span class="val">EveryAir소식</span>
 			</li>
-			<li class="tab-link" data-tab="tab-3">
+			<li class="tab-link" >
 				<span class="val">유류할증료</span>
 			</li>
-			<li class="tab-link" data-tab="tab-4">
+			<li class="tab-link" >
 				<span class="val">EveryAir클럽</span>
 			</li>
-			<li class="tab-link" data-tab="tab-5">
+			<li class="tab-link" >
 				<span class="val">제휴사소식</span>
 			</li>
-			<li class="tab-link" data-tab="tab-6">
+			<li class="tab-link" >
 				<span class="val">기타</span>
 			</li>
 		</ul>
 		
-		<div id="tab-1" class="tab-content current">
+		<div >
 			<div class="bbs_list">
 				<ul>
 					<c:forEach items="${tlist}" var = "vo">
@@ -90,7 +90,6 @@
 <div id="rtitle">실시간 검색어</div>
 
 <c:forEach items="${rList}" var="rl" varStatus="status">
-<%-- ${status.index + 1} ${rl.svoca} ${rl.total}<br> --%>
 
 <div class="rlist_wrap">
 <div class="rcon rrank" >${status.index + 1}</div>
@@ -107,23 +106,28 @@
 
 	
 	<script type="text/javascript">
-	/* tab */
-		$('ul.tabs li').click(function(){
-			var tab_id = $(this).attr('data-tab');
+	var search = '${search}';
 
-		$('ul.tabs li').removeClass('current');
-		$('.tab-content').removeClass('current');
+	$(document).ready(function(){
+		$('.tcons').each(function(index){ 
 
-		$(this).addClass('current');
-		$("#"+tab_id).addClass('current');
-	})
-	                                                  
+			var tlist = $(this).text();
+			tlist = tlist.replace(search, "<span class='tact'>"+search+"</span>");
+	
+			$(this).html(tlist);
+
+		});		
+	});
+	                                          
 	/*paging*/
 		$('.pagingNo').click(function(){	
-			var a = $(this).val();                 
 			});
 
 		$('body').on('click','.tab-link',function(){
+
+			$(this).parent('ul').find('li').removeClass('current');
+			$(this).addClass('current');
+			
 			var menu = $(this).find('.val').text();
 			var search = $('#searchText').val();
 
@@ -135,13 +139,29 @@
 				type : "GET",
 				url : "./searchSelect",
 				success : function(data) {
-					$('.tab_wrap').html(data);
+
+					$('.bbs_list').html(data);
+					$('.tcons').each(function(index){ 
+
+						var tlist = $(this).text();
+						tlist = tlist.replace(search, "<span class='tact'>"+search+"</span>");
+				
+						$(this).html(tlist);
+
+					});	
+
+					
+					
+					
 				}
 			}); 
 			
 		});
 
-		
+		/*  */
+
+
+	
 	</script>
 
 </body>

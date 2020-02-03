@@ -53,16 +53,23 @@ public class HomeController {
 			System.out.println(search);
 			List<BoardVO> ar = searchService.searchTotalList(search);
 			
-			/*
-			 * for(BoardVO con:ar) { String tcon = con.getTextContents();
-			 * 
-			 * 
-			 * 
-			 * 
-			 * }
-			 */
 			
-			
+			  for(BoardVO con:ar) { 
+				  String tcon = con.getTextContents();
+			  
+				  int num = tcon.indexOf(search);
+				  int tlen = tcon.length();
+				  
+				  if(num > 10) {
+					  tcon = tcon.substring(num-10);
+				  } else {
+					  tcon = tcon.substring(num);
+				}
+			  
+				  con.setTextContents(tcon);
+			  
+			  }
+			 
 			
 			
 			model.addAttribute("search", search);
@@ -164,9 +171,25 @@ public class HomeController {
 
 		if (menu.equals("전체")) {
 			ar = searchService.searchTotalList(search);
+			
 		} else {
 			ar = searchService.searchList(noticeVO);
 		}
+		
+		  for(BoardVO con:ar) { 
+			  String tcon = con.getTextContents();
+		  
+			  int num = tcon.indexOf(search);
+			  int tlen = tcon.length();
+			  
+			  if(num > 10) {
+				  tcon = tcon.substring(num-10);
+			  } else {
+				  tcon = tcon.substring(num);
+			}
+			  con.setTextContents(tcon);
+		  }
+		
 
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("list", ar);
