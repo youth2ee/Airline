@@ -18,8 +18,17 @@ public class Pager {
 										//외부로 나갈 것들만 멤버변수로 선언. 그 외는 필요할 때 지역변수로 선언
 	private String kind;
 	private String search;
+	private String menu;
+	
+	
 	
 
+	public String getMenu() {
+		return menu;
+	}
+	public void setMenu(String menu) {
+		this.menu = menu;
+	}
 	public String getKind() {
 		return kind;
 	}

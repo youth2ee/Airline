@@ -1,5 +1,6 @@
 package com.airline.a1.board;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -86,35 +88,70 @@ public class NoticeController {
 	  }
 	 
 	 
-	 @GetMapping("noticeList")
-	 public ModelAndView noticeList(Pager pager)throws Exception{
-		 	List<BoardVO> ar = noticeService.noticeList(pager);
-		 	ModelAndView mv = new ModelAndView();
-		 	int totalCount = noticeService.noticeCount(pager);
-	 	
-		 	mv.addObject("tc", totalCount);
-		 	mv.addObject("board", "notice"); 
-		 	mv.addObject("list", ar);
-		 	mv.addObject("pager", pager);
-		 	mv.setViewName("board/boardList");
-		 	
-		 	return mv;
-	 }
+	
+	  @GetMapping("noticeList") 
+	  public ModelAndView noticeList(Pager pager)throws Exception{ 
+		 List<BoardVO> ar = noticeService.noticeList(pager); 
+		 ModelAndView mv = new ModelAndView(); 
+		 int totalCount = noticeService.noticeCount(pager);
+	  
+	  mv.addObject("tc", totalCount); 
+	  mv.addObject("board", "notice");
+	  mv.addObject("list", ar); 
+	  mv.addObject("pager", pager);
+	  mv.setViewName("board/boardList");
+	  
+	  return mv; 
+	  
+	  }
+	  
+	  @GetMapping("noticeList1")
+	  public ModelAndView noticeList1(Pager pager)throws Exception{
+		  ModelAndView mv = new ModelAndView(); 
+		  mv.addObject("board", "notice");
+		  mv.setViewName("board/boardList1");
+		  return mv; 
+	  }
+	  
+	 
+	 
+	/*
+	 * @GetMapping("noticeList") public ModelAndView noticeList(Pager pager,String
+	 * menu)throws Exception{ List<BoardVO> ar = new ArrayList<BoardVO>();
+	 * 
+	 * ModelAndView mv = new ModelAndView(); int totalCount =
+	 * noticeService.noticeCount(pager); System.out.println(menu);
+	 * if(menu.equals("전체")) { ar = noticeService.noticeList(pager, menu); }else {
+	 * ar = noticeService.subNoticeList(pager, menu);
+	 * 
+	 * }
+	 * 
+	 * mv.addObject("tc", totalCount); mv.addObject("board", "notice");
+	 * mv.addObject("list", ar); mv.addObject("pager", pager);
+	 * mv.setViewName("board/boardList");
+	 * 
+	 * return mv; }
+	 */
 	 
 	 @GetMapping("subNoticeList")
-	 public ModelAndView subNoticeList(Pager pager, String cate)throws Exception{
-		 	List<BoardVO> ar = noticeService.subNoticeList(pager);
-		 	ModelAndView mv = new ModelAndView();
-		 	int totalCount = noticeService.noticeCount(pager);
-	 	
-		 	mv.addObject("tc", totalCount);
-		 	mv.addObject("board", "subNotice"); 
-		 	mv.addObject("list", ar);
-		 	mv.addObject("pager", pager);
-		 	mv.setViewName("board/boardList");
-		 	
-		 	return mv;
+	 public ModelAndView subNoticeList(Pager pager)throws Exception{
+		
+
+		 List<BoardVO> ar = noticeService.subNoticeList(pager); 
+		 ModelAndView mv = new ModelAndView(); 
+		/*
+		 * int totalCount = noticeService.noticeCount(pager); mv.addObject("tc",
+		 * totalCount);
+		 */ 
+		  mv.addObject("board", "notice");
+		  mv.addObject("list", ar); 
+		  mv.addObject("pager", pager);
+		  mv.setViewName("board/common/sub");		  
+		  
+		  return mv;
+		 
 	 }
+	 
 		
 	
 

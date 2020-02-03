@@ -45,12 +45,12 @@
 		
 	<div class="tab_wrap">
 		<ul class="tabs">
-			<li class="tab-link current" data-tab="tab-1">
-					<a href="./noticeList" ><span>전체</span></a>		
+			<li class="tab-link" data-tab="tab-1">
+					<span>전체</span>
 			</li>
 			
-			<li class="tab-link" data-tab="tab-2">					
-						<a href="./noticeList1"><span class="val">EveryAir소식</span></a>		
+			<li class="tab-link current" data-tab="tab-2">
+						<span class="val">EveryAir소식</span>			
 			</li>
 			
 			<li class="tab-link" data-tab="tab-3">
@@ -67,7 +67,7 @@
 			</li>
 		</ul>
 		
-		<div id="tab-1" class="tab-content current">
+		<div id="tab-1" class="tab-content">
 			<div class="bbs_list">
 				<ul>
 			<!-- 		<li class="bg_point">
@@ -124,7 +124,7 @@
 					
 		</div>
 		
-		<div id="tab-2" class="tab-content test">
+		<div id="tab-2" class="tab-content test current">
 				<div class="bbs_list">
 				<ul>
 			<!-- 		<li class="bg_point">
