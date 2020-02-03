@@ -48,10 +48,10 @@
 		<td>
 			<select id="cate" name="cate" class=" cate common textWrite">
 				<option>선택하세요</option>
-				<option value="소식">EveryAir소식</option>
-				<option value="클럽">EveryAir클럽</option>
-				<option value="유류">유류할증료</option>	
-				<option value="제휴사">제휴사소식</option>
+				<option value="EveryAir소식">EveryAir소식</option>
+				<option value="EveryAir클럽">EveryAir클럽</option>
+				<option value="유류할증료">유류할증료</option>	
+				<option value="제휴사소식">제휴사소식</option>
 				<option value="기타">기타</option>		
 			</select>
 		</td>
