@@ -1,7 +1,5 @@
 package com.airline.a1.board;
 
-import java.util.List;
-
 import lombok.Data;
 
 @Data

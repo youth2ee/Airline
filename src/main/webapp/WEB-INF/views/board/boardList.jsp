@@ -43,26 +43,32 @@
 	</div>
 	</form>	
 		
-		
 	<div class="tab_wrap">
 		<ul class="tabs">
 			<li class="tab-link current" data-tab="tab-1">
-				<span>전체</span>
+					<span>전체</span>
 			</li>
+			
 			<li class="tab-link" data-tab="tab-2">
-				<span>EveryAir소식</span>
+					<form id="frm2" action="./${board}List">
+						<input type="hidden" value="1" name="curPage">
+						<input type="hidden" id="cate" value="EveryAir소식" name="cate">
+						<span class="val">EveryAir소식</span>
+						<button type="submit">aaa</button>
+					</form>
 			</li>
+			
 			<li class="tab-link" data-tab="tab-3">
-				<span>유류할증료</span>
+				<!-- <a href="#03" data-value="03"> --><span class="val">유류할증료</span><!-- </a> -->
 			</li>
 			<li class="tab-link" data-tab="tab-4">
-				<span>EveryAir클럽</span>
+				<a href="#04" data-value="04"><span>EveryAir클럽</span></a>
 			</li>
 			<li class="tab-link" data-tab="tab-5">
-				<span>제휴사소식</span>
+				<a href="#05" data-value="05"><span>제휴사소식</span></a>
 			</li>
 			<li class="tab-link" data-tab="tab-6">
-				<span>기타</span>
+				<a href="#06" data-value="06"><span>기타</span></a>
 			</li>
 		</ul>
 		
@@ -111,7 +117,6 @@
 			 </c:if> 
 						
 			<c:forEach begin="${pager.startNum}" end = "${pager.lastNum}" var="i">
-
 				<a href="./noticeList?curPage=${i}" class="pagingNo" id="page${i}">${i}</a>
 			</c:forEach>
 			
@@ -175,11 +180,11 @@
 			</c:forEach>
 			
 			<c:if test = "${pager.curBlock<pager.totalBlock}">
-			<a href="./noticeList?curPage=${pager.lastNum+1}" class="btn_next btn_common"></a>			
+			<a href="./noticeList?curPage=${pager.lastNum+1}" class="btn_next btn_commont"></a>			
 			</c:if>		
 			<fmt:parseNumber var="pages" integerOnly="true" value="${tc/10}"/>			
 			<a href="./noticeList?curPage=${pages+1}" class="btn_last btn_common"></a>
-	</div>
+		</div>
 		</div>
 		
 		
@@ -190,7 +195,7 @@
 		
 	</div>
 	
-	<%-- <div class="paging">
+<%-- 	<div class="paging">
 			
 			<a href="./noticeList?curPage=1" class="btn_first btn_common">
 			</a>
@@ -216,6 +221,8 @@
 
 
 	<script type="text/javascript">
+		
+	
 		/* paging  */
 		$("#page${pager.curPage}").addClass("on");
 		
@@ -225,11 +232,12 @@
 			}
 		$("#"+kind).prop("selected", true);
 	
-		$('.list').click(function(){
+		 $('.list').click(function(){
 			$("#curPage").val($(this).attr("id"));
+			alert("ok");
 			$("#frm").submit();
 			
-			});
+			}); 
 
 		
 		/* tab */
@@ -242,6 +250,26 @@
 		$(this).addClass('current');
 		$("#"+tab_id).addClass('current');
 		});
+
+		
+		/* tab 넘기기 */
+	/* 	$('body').on('click','.tab-link',function(){
+				var menu = $(this).find('.val').text();
+
+				$.ajax({
+					data : {
+						menu:menu
+						},
+					type : "GET",
+					url : "./",
+					success : function(data){
+							$('.tab_wrap').html(data);
+						}
+
+					})
+			});	
+	 */
+		
 		
 	</script>
 	

@@ -2,6 +2,8 @@ package com.airline.a1.board;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,6 +26,32 @@ public class NoticeController {
 	public NoticeVO getNotice()throws Exception{
 			return new NoticeVO();
 	}
+	
+	@PostMapping(value = "summerfileDelete")
+	public ModelAndView summerfileDelete(String file, HttpSession session)throws Exception{
+		boolean check = noticeService.summerfileDelete(file, session);
+		String result = "Delete Fail";
+		if(check) {
+			result = "Delete Success";
+		}
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("board/common/common_ajaxResult");
+		mv.addObject("result", result);
+		return mv;
+	}
+	
+	@PostMapping(value = "summerFile")
+	public ModelAndView summerFile(MultipartFile file, HttpSession session)throws Exception{
+		System.out.println("ddd1123123213");
+		String fileName = noticeService.summerfile(file, session);
+		//System.out.println(file.getOriginalFilename()); test
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("board/common/common_ajaxResult");
+		mv.addObject("result", fileName);
+		return mv;
+	}
+	
 	
 	@GetMapping("noticeWrite")
 	public ModelAndView noticeWrite()throws Exception{
@@ -72,6 +100,25 @@ public class NoticeController {
 		 	
 		 	return mv;
 	 }
+	 
+	// @GetMapping("noticeList")
+	 public ModelAndView subNoticeList(Pager pager)throws Exception{
+		 	List<BoardVO> ar = noticeService.subNoticeList(pager);
+		 	ModelAndView mv = new ModelAndView();
+		 	int totalCount = noticeService.noticeCount(pager);
+	 	
+		 	mv.addObject("tc", totalCount);
+		 	mv.addObject("board", "subNotice"); 
+		 	mv.addObject("list", ar);
+		 	mv.addObject("pager", pager);
+		 	mv.setViewName("board/boardList");
+		 	
+		 	return mv;
+	 }
 		
+	
+
+	 
+	 
 
 }
