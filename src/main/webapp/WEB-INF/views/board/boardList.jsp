@@ -31,7 +31,7 @@
 	<form id="frm" action="./${board}List">
 	<div class="total_search_input">
 		<div class="search_inner">
-			<select class="white common" name="kind">
+			<select class="white common" name="kind" id="kind">
 				<option id="ka" value="ka">제목+내용</option>
 				<option id="kt" value="kt">제목</option>
 				<option id="kc" value="kc">내용</option>
@@ -253,22 +253,29 @@
 
 		
 		/* tab 넘기기 */
-	/* 	$('body').on('click','.tab-link',function(){
-				var menu = $(this).find('.val').text();
-
-				$.ajax({
+	$('body').on('click','.tab-link',function(){
+				var cate = $(this).find('.val').text();
+				var curPage = "1";
+				var search = $('#searchText').val();
+				var kind = document.getElementById("kind");
+				kind = kind.options[kind.selectedIndex].value;
+				
+		 	$.ajax({
 					data : {
-						menu:menu
+						cate:cate
+						curPage:curPage
+						search:search
+						kind:kind
 						},
 					type : "GET",
-					url : "./",
+					url : "./subNoticeList",
 					success : function(data){
-							$('.tab_wrap').html(data);
+							
 						}
 
-					})
+					});
 			});	
-	 */
+	 
 		
 		
 	</script>
