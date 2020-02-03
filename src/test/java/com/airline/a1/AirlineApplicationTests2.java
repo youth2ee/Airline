@@ -113,6 +113,7 @@ class AirlineApplicationTests2 {
 						 * getTagValue("time", eElement));
 						 */
 					
+					
 					List<AirportVO> air1 = airportMapper.airportList();
 					List<AirportVO> air2 = airportMapper.airportList();
 					
@@ -120,22 +121,12 @@ class AirlineApplicationTests2 {
 						
 						System.out.println(a1.getCityCode());
 						if(getTagValue("arp", eElement).equals(a1.getCityCode())) {
-								/*
-								 * System.out.println("찾음"); System.out.println("출발공항명  : " + getTagValue("arp",
-								 * eElement)); System.out.println(a1.getCityCode());
-								 */
+
 							
 							for(AirportVO a2 : air2) {
 								
 								System.out.println(a2.getCityCode());
 								if(getTagValue("odp", eElement).equals(a2.getCityCode())) {
-									
-										/*
-										 * System.out.println("완전 찾았다."); System.out.println("출발공항명  : " +
-										 * getTagValue("arp", eElement)); System.out.println("도착공항명 : " +
-										 * getTagValue("odp", eElement)); System.out.println(a1.getCityCode());
-										 * System.out.println(a2.getCityCode());
-										 */
 									
 									FlightDataVO flightDataVO = new FlightDataVO();
 									flightDataVO.setFlightKm(getTagValue("km", eElement));
@@ -146,6 +137,7 @@ class AirlineApplicationTests2 {
 									
 									airportMapper.airUpdate(flightDataVO);
 									
+									Thread.sleep(1000);
 									
 								}
 								

@@ -15,13 +15,14 @@ body{
 	height: 48px;
 	width: 1180px;
 	margin: 0 auto;
+	background-color: aqua;
 }
 
 .home{
 	display: inline-block;
 	width: 50px;
 	height: 48px;
-	background: #5f6062 url(/images/board/ico_loca_home.png) center center no-repeat;
+	background: #5f6062 url(../board/image/ico_loca_home.png) center center no-repeat;
 	cursor: pointer; 
 	
 }
@@ -70,10 +71,11 @@ body{
 .white{
 	width: 180px;
 	height:46px;
-	background: #fff url(/images/board/bg_select_arrow.png) no-repeat right 13px top 50%;
+	background: #fff url(../board/image/bg_select_arrow.png) no-repeat right 13px top 50%;
 	-webkit-appearance:none;
 	padding: 0 45px 0 15px;
 	font-size: 15px;
+	font-weight: bold;
 	 margin-right: 10px;
 	 margin-left: 240px;
 }
@@ -85,11 +87,11 @@ select::-ms-expand{
 .white option{
 	padding: 0px 2px 1px;
 	font-size: 15px;
+	font-weight: bold;
 }
 
 .common{
 		border: 1px solid #cdd1d3;	
-		background-color: white;
 }
 
 .common:hover{
@@ -106,6 +108,7 @@ select::-ms-expand{
 
 #searchText::placeholder{
 	font-size: 16px;
+	font-weight: bold;
 }
 
 #btnSearch{
@@ -135,19 +138,18 @@ ul.tabs{
 ul.tabs li{
 	float:left;
 	display: inline-block;
+/* 	width: 16.37%; */
 	width: 16.666%;
 	height: 63px;
 	line-height: 20px;
 	border-bottom: 1px solid #6d6e71;
     color: #d60815;
+    font-weight: bold;
     cursor: pointer;
     background: #6d6e70;
     text-align: center;
  	padding-top: 20px; 
 	border-left: 1px solid #fff;
-}
-ul.tabs li:hover{
-	background: #4A4C4D;
 }
 
 .tab-link span{
@@ -172,9 +174,9 @@ ul.tabs li:last-child.current{
 
 ul.tabs li.current span{
 	padding-left: 28px;
-    background: url(/images/board/ico_tab_on.png) 0 3px no-repeat;
+    background: url(../board/image/ico_tab_on.png) 0 3px no-repeat;
     color: #000;
-    font-weight: bold; 
+    font-weight: bold;
 }
 
 .tab-content{
@@ -221,6 +223,7 @@ ul.tabs li.current span{
 .title em{
 	font-size: 18px;
 	font-style: normal;
+	font-weight: bolder;
 }
 
 .left p{
@@ -228,13 +231,13 @@ ul.tabs li.current span{
 	overflow: hidden;
 	font-size: 15px;
 	color: #737373;
-	
+	font-weight: bolder;
 }
 
 
 .right{
 	float: right;
-	/* width: 210px; */
+	width: 210px;
 	height: 41px;
 }
 
@@ -259,7 +262,7 @@ ul.tabs li.current span{
 
 .right_sub span{
 	color: #555555;
-
+	font-weight: bolder;
 }
 
 /****** paging ******/
@@ -276,7 +279,7 @@ ul.tabs li.current span{
     height: 30px;
     margin: 0;
     display:inline-block;
-	  background: url(/images/board/ico_paging.png);
+	  background: url(../board/image/ico_paging.png);
 }
 
 .btn_prev{
@@ -299,13 +302,78 @@ ul.tabs li.current span{
 }
 
 .on{
-	color: #d60815;
-    font-weight: bold;
-    text-decoration: underline;
+	color: red;
 }
 
 .btn_last{
 	background-position: 0 -60px;	
 }
 
+header {
+	height: 123px;
+}
+
+#headerBottom {
+	height: 48px;
+	width: 100%;
+	background-color: #6d6e70;
+}
+
+#hbh {
+	width: 1200px;
+	margin: 0 auto;
+}
+
+#hbhome {
+	float: left;
+	width: 50px;
+	text-align: center;
+	vertical-align: 48px;
+	line-height: 48px; height : 48px;
+	background-color: white;
+	height: 48px;
+}
+
+#hbhome > i{
+	font-size: 30px;
+	padding-top: 9px;
+}
+
+#hbselect {
+	float: left;
+}
+
+#hbselect>select {
+	width: 279px;
+	height: 48px;
+	padding: 0 45px 0 15px;
+	margin-right: 10px;
+	background: #6d6e70 url('/images/mypage/ico_loca_arrow.png') no-repeat right 13px top 50%;
+	color: #222;
+	vertical-align: middle;
+	-webkit-appearance: none;
+	color: white;
+	border-spacing: 0;
+	border-collapse: collapse;
+}
+
+#hbselect>select.current.open:after {
+    background-position: 0 -8px;
+}
+
+
+#hbselect>select.current:after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 12px;
+    height: 8px;
+    background: url(/images/mypage/ico_loca_arrow.png) no-repeat right 13px top 50%; ;
+}
+
+#hbselect>select:hover{
+	background-color: white;
+	color: black;
 }
