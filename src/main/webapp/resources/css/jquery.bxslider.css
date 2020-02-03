@@ -8,6 +8,7 @@
   *zoom: 1;
   -ms-touch-action: pan-y;
   touch-action: pan-y;
+  height: 392px;
 }
 .bx-wrapper img {
   max-width: 100%;
@@ -23,6 +24,7 @@ ul.bxslider {
 .bx-viewport {
   /*fix other elements on the page moving (on Chrome)*/
   -webkit-transform: translatez(0);
+  height: 392px;
 }
 /** THEME
 ===================================*/
@@ -70,6 +72,7 @@ ul.bxslider {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   border-radius: 5px;
+  margin-bottom: 80px;
 }
 .bx-wrapper .bx-pager.bx-default-pager a:hover,
 .bx-wrapper .bx-pager.bx-default-pager a.active,
