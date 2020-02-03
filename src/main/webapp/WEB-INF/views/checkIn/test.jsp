@@ -340,7 +340,6 @@ label {
 </style>
 <title>체크인/좌석배정│아시아나항공</title>
 <body>
-
 <!-- util_wrap -->
 	<div class="container" id="container">
 		<h3>체크인</h3>
@@ -353,7 +352,7 @@ label {
 			<li>팝업 차단 해제 후 이용해주시기 바랍니다.</li>
 		</ul>
 		<div class="search_box mar_to10">
-		<form id="frm" action="./seat">
+		<form id="frm" action="./test" method="post">
 			<div class="inner alC">
 				<select id="numTypeSelect" style="width: 200px" title="종류별 번호">
 					<option value="reservNo">예약번호</option>
@@ -647,6 +646,33 @@ label {
 
 </div>
 	<script type="text/javascript">
+
+	
+	// Get the modal
+	var modal = document.getElementById("myModal");
+
+	// Get the button that opens the modal
+	var btn = document.getElementById("btn_search");
+
+	// Get the <span> element that closes the modal
+	var span = document.getElementsByClassName("close")[0];
+
+	// When the user clicks the button, open the modal 
+	btn.onclick = function() {
+	  modal.style.display = "block";
+	}
+
+	// When the user clicks on <span> (x), close the modal
+	span.onclick = function() {
+	  modal.style.display = "none";
+	}
+
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function(event) {
+	  if (event.target == modal) {
+	    modal.style.display = "none";
+	  }
+	}
 	
 	$("#btn_search").change(function(){	
 		if($("#chk1").is(":checked")){
@@ -656,31 +682,6 @@ label {
 			$("#text1").removeAttr('name');
 		}
 	});
-		// Get the modal
-		var modal = document.getElementById("myModal");
-
-		// Get the button that opens the modal
-		var btn = document.getElementById("btn_search");
-
-		// Get the <span> element that closes the modal
-		var span = document.getElementsByClassName("close")[0];
-
-		// When the user clicks the button, open the modal 
-		btn.onclick = function() {
-		  modal.style.display = "block";
-		}
-
-		// When the user clicks on <span> (x), close the modal
-		span.onclick = function() {
-		  modal.style.display = "none";
-		}
-
-		// When the user clicks anywhere outside of the modal, close it
-		window.onclick = function(event) {
-		  if (event.target == modal) {
-		    modal.style.display = "none";
-		  }
-		}
 		
 		var depChecks=[]; // 가는 비행기의 좌석에 체크된 항목을 담을 배열
 		var arrChecks=[]; // 오는 비행기의 좌석에 체크된 항목을 담을 배열
@@ -781,12 +782,10 @@ label {
 					alert('가는편 비행기의 좌석을 확인');
 			}
 		});
-	</script>
-	<!-- <script type="text/javascript">
 		$("#btn_search").click(function(){
 			$("#frm").submit();
 		});
+	</script>
 			
-	</script> -->
 </body>
 </html>
