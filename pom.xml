@@ -24,7 +24,6 @@
     	<groupId>org.snu.ids</groupId>
     	<artifactId>ha</artifactId>
     	<version>1.0</version>
-
 	</dependency>
 
 	<!-- https://mvnrepository.com/artifact/kr.bydelta/koalanlp-kkma -->
