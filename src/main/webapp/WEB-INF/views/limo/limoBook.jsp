@@ -8,20 +8,53 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="../resources/css/limo.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="https://etk.srail.co.kr/css/common.css">
+<link rel="stylesheet" type="text/css" href="https://etk.srail.co.kr/css/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="https://etk.srail.co.kr/css/skin/etk_kr/sub.css">
+<link rel="stylesheet" type="text/css" href="https://etk.srail.co.kr/css/searchTicket.css">
 <style type="text/css">
 .abcd{
  background-image: url("../images/limoPic/seatAfter.png") !important;
 
 }
-
 </style>
 </head>
 <body>
 	<c:import url="../template/boot.jsp"></c:import>
 <!------------ 공항에서 도시로 이동할 경우  ------------>
-	<h1>리무진 예약</h1>
+	<div class="sub_tit_area">
+		<h2>AIRLINE 리무진버스 예매</h2>
+		<div class="sub_loc_area">
+			<a href="../" class="home" id="container" title="본문 시작지점">홈</a>
+			
+				<a href="?pageId=TK0100000000">승차권예매(공항->도시)</a>
+			
+				<a href="/hpg/hra/01/selectScheduleList.do?pageId=TK0101010000">승차권예매(도시->공항)</a>
+			
+				<a href="/hpg/hra/01/selectScheduleList.do?pageId=TK0101010000">일반승차권 조회</a>
+			
+		</div>
+	</div>
+	<div class="tab tab1">
+		<ul>
+			<li style="width:33.333333333333336%"><a href="/hpg/hra/01/selectScheduleList.do?pageId=TK0101010000" class="on"><span>[공항->도시]예매</span></a></li>
+			<li style="width:33.333333333333336%"><a href="/hpg/hra/01/selectGroupScheduleList.do?pageId=TK0101020000"><span>[도시->공항]예매</span></a></li>
+			<li style="width:33.333333333333336%"><a href="/hpg/hra/01/selectConditionGoodsScheduleList.do?pageId=TK0101060000"><span>예매내역 조회</span></a></li>
+		</ul>
+	</div>
+	
+	<ul class="contain_wrap">
+		<li>
+			<div class="information">
+				<span>예매자정보</span>
+			</div>
+			<div class="information_info">
+				<input type="text" placeholder="id" name="id" class="information_info_id">
+			</div>
+		</li>
+		
+	</ul>
 	<div class="containers contain">
-	  <button type="button" class="btn btn-info">공항 -> 도시</button>
 	  <button class="btn btn-info add">추가</button>
 	  <button class="btn btn-danger del">삭제</button>
 	  <button class="btn btn-warning gobooks">예매하기</button>

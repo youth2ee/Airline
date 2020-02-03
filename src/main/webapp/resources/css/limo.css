@@ -1,5 +1,32 @@
 @charset "UTF-8";
 
+.contain_wrap{
+	width: 1200px;
+	height: 330px;
+	border: 1px solid #d5d5d5;
+	background-color: #fcfcfc;
+	margin: 0 auto;
+}
+
+.information{
+	width: 80px;
+	height: 35px;
+	background-color: silver;
+	margin-right: 20px;	
+	display: inline-block;
+}
+
+.information_info{
+	width: 960px;
+	height: 35px;
+	background-color: blue;
+	display: inline-block;
+}
+
+.information_info_id{
+	width: 200px;
+	height: 35px;
+}
 .modal-content{
 	width: 700px;
 }
