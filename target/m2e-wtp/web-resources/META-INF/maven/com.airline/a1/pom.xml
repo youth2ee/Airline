@@ -20,12 +20,12 @@
 	</properties>
 
 	<dependencies>
+	
 	<dependency>
-    	<groupId>org.snu.ids</groupId>
-    	<artifactId>ha</artifactId>
-    	<version>1.0</version>
-
-	</dependency>
+       <groupId>org.snu.ids</groupId>
+       <artifactId>ha</artifactId>
+       <version>1.0</version>
+   </dependency>
 
 	<!-- https://mvnrepository.com/artifact/kr.bydelta/koalanlp-kkma -->
 	<dependency>
@@ -40,13 +40,7 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-mail</artifactId>
 	</dependency>
-		
-	<dependency>
-       <groupId>org.snu.ids</groupId>
-       <artifactId>ha</artifactId>
-       <version>1.0</version>
-   </dependency>	
-		
+					
 	<!-- sms --> 
 	<dependency>
 	<groupId>org.apache.httpcomponents</groupId>
