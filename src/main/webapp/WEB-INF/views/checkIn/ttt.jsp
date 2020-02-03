@@ -117,20 +117,53 @@ body {font-family: Arial, Helvetica, sans-serif;}
   background-color: #5cb85c;
   color: white;
 }
+.modalInnerWrap {
+	height: 100%;
+}
 .modalInnerLeft{
     width: 55%;
     height: 600px;
     background-color: red;
     float: left;
+   	height: 85%;
 }
 .modalInnerRight{
     width: 45%;
     height: 600px;
     background-color: #607D8B;
     float: left;
+    height: 85%;
+}
+.modalInnerRightTop{
+    height: 60%;
+    background-color: cadetblue;
 }
 .modal-header2 {
 	background-color: aquamarine;
+}
+.modalInnerBottom {
+    background-color: chocolate;
+    width: 50%;
+    margin: 0 auto;
+    display: inline-block;
+    margin-top: 20px;
+    margin-left: 210px;
+}
+.left1 {
+	height: inherit;
+}
+.nameView {
+    background-color: blueviolet;
+    height: 50px;
+}
+.seatView {
+	overflow-y: scroll;
+	/* height: -webkit-fill-available; */
+	height: 453px;
+}
+.seatWarning {
+	height: 50px;
+    background-color: burlywood;
 }
 </style>
 </head>
@@ -161,10 +194,53 @@ body {font-family: Arial, Helvetica, sans-serif;}
     <div class="modal-body">
 		<div class="modalInnerWrap">
 			<div class="modalInnerLeft">
+				<div class="left1">
+					<div class="nameView">이름</div>
+						<div class="seatView">
+						ddd<br>
+						ddd<br>
+						ddd<br>
+						ddd<br>
+						ddd<br>
+						ddd<br>
+						ddd<br>
+						ddd<br>
+						ddd<br>
+						ddd<br>
+						ddd<br>
+						ddd<br>
+						ddd<br>
+						ddd<br>
+						ddd<br>
+						ddd<br>
+						ddd<br>
+						ddd<br>
+						ddd<br>
+						ddd<br>
+						ddd<br>
+						ddd<br>
+						ddd<br>
+						ddd<br>
+						ddd<br>
+						ddd<br>
+						ddd<br>
+						ddd<br>
+						ddd<br>
+						ddd<br>
+						ddd<br>
+						ddd<br>
+						ddd<br>
+						ddd<br>
+						</div>
+						<div class="seatWarning"> 좌석지정 유의사항 안내</div>
+					</div>
 			</div>
 			<div class="modalInnerRight">
 				<div class="modalInnerRightTop"></div>
 				<div class="modalInnerRightDown"></div>
+			</div>
+			<div class="modalInnerBottom">
+			 	dddd
 			</div>
 		</div>
     </div>

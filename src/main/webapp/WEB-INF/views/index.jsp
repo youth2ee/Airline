@@ -80,7 +80,7 @@ $(document).ready(function() {
 
 
 					<div class="bxslider">
-						<div style="height: 500px;">
+						<div style="height: 392px;">
 							<img src="./images/index/index_pic1.jpg">
 						</div>
 						<div style="height: 392px;">
@@ -104,7 +104,7 @@ $(document).ready(function() {
 	<!-- 예약시작 -->
 	<div class="resWrap">
 	
-	<div class="card card-4">
+	<div class="card card-4" style="background: none">
 		<div class="tab-content">
 			<div class="tab-pane active" id="tab1">
 
@@ -203,7 +203,7 @@ $(document).ready(function() {
 	<!-- 예약 끝 -->
 					
 					<div style="width: 80%; margin: auto; height: 150px; position: relative; top: -205px;">
-						<div class="swiper-container">
+						<div class="swiper-container" style="height: max-content">
 							<div class="swiper-wrapper">
 								<div class="swiper-slide"
 									style="background: url('https://ozimg.flyasiana.com/main_banner/20200115_mini.jpg'); height: 180px; margin-right: 8px;">Slide

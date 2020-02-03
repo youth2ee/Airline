@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.airline.a1.checkIn.SeatMapper">
+	<insert id="seatBook" parameterType="com.airline.a1.checkIn.SeatVO">
+		insert into seat values (null,#{fnum},#{seatName},#{bookingNum},#{flightNum})
+	</insert>
+	<select id="depBookedSeat" parameterType="com.airline.a1.booking.BookingTicketVO" resultType="com.airline.a1.checkIn.SeatVO" >
+		select * from seat where fnum = #{depFnum}
+	</select>
+	<select id="arrBookedSeat" parameterType="com.airline.a1.booking.BookingTicketVO" resultType="com.airline.a1.checkIn.SeatVO" >
+		select * from seat where fnum = #{arrFnum}
+	</select>
+	<select id="getSeatData" resultType="com.airline.a1.checkIn.SeatVO">
+		select * from seat
+	</select>
+	<update id="updateFlightNumDep" parameterType="com.airline.a1.booking.BookingTicketVO">
+		update bookingTicket set flightBNum = #{flightBNum} where bnum = #{bnum} and depFnum = #{depFnum}
+	</update>
+	<select id="getDepBnum" resultType="com.airline.a1.booking.BookingTicketVO" parameterType="com.airline.a1.booking.BookingTicketVO">
+		select * from bookingTicket where bookingNum = #{bookingNum} and depFnum = #{depFnum};
+	</select>
+	<select id="getBookData" parameterType="com.airline.a1.booking.BookingTicketVO" resultType="com.airline.a1.booking.BookingTicketVO">
+		select * from bookingTicket where bookingNum = #{bookingNum}
+	</select>
+	<select id="getBookCount" parameterType="com.airline.a1.booking.BookingTicketVO" resultType="java.lang.Integer">
+		select count(*) from bookingTicket where bookingNum = #{bookingNum}
+	</select>
+	<select id="getVihicleId" resultType="java.lang.String" parameterType="java.lang.String">
+		select vihicleId from flightData where fnum = #{fnum}
+	</select>
+	<select id="getEticket" resultType="com.airline.a1.checkIn.ETicketVO">
+		select name, kind, flightBNum, bookingTicket.bookingNum, depAirportNm,
+		arrAirportNm, vihicleId, depPlandTime, arrPlandTime, flightTime,
+		a.cityCode depCityCode, a.cityEng depCityEng, b.cityCode arrCityCode, b.cityEng arrCityEng, c.seatName from
+		bookingTicket join flightData on bookingTicket.depFnum =
+		flightData.fNum join airport as a on flightData.depAirportNm = a.apName
+		join airport as b on flightData.arrAirportNm = b.apName join seat as c
+		on c.flightNum = bookingTicket.flightBNum where
+		bookingTicket.bookingNum='S68U58' and bookingTicket.name='YOO ZA';
+	</select>
+</mapper>

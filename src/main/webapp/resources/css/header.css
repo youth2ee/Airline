@@ -65,6 +65,9 @@
 	line-height: 83px;
 	padding: 0 25px;
 }
+li,.menu_wrap_Left,.menu_wrap_Right {
+	cursor: pointer;
+}
 
 .menu1 {
 	height: 83px;
@@ -76,6 +79,7 @@
 	line-height: 83px;
 	text-align: center;
 	padding: 0 30px;
+	cursor: pointer;
 }
 
 .menu2 {

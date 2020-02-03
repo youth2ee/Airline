@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.airline.a1.board.NoticeMapper">
+		<sql id="bs">
+					<choose>
+						<when test="kind == 'ka'">
+							where 
+							title like concat('%',#{search},'%')
+							or contents like concat('%', #{search},'%')  
+						</when>
+						<when test="kind == 'kt'">
+							where title like concat('%',#{search},'%')
+						</when>
+						<when test="kind == 'kw'">
+							where writer like concat('%', #{search},'%')
+						</when>
+						<otherwise>
+							where contents like concat('%', #{search},'%')
+						</otherwise>
+					</choose>
+			</sql>
+			
+
+<insert id="noticeWrite" parameterType="com.airline.a1.board.BoardVO" useGeneratedKeys="true" keyProperty="num">	
+		insert into notice
+		values(#{num}, #{title}, #{writer}, #{contents}, now(),0)
+</insert>
+
+
+<select id="noticeList" resultType="com.airline.a1.board.NoticeVO" parameterType="com.airline.a1.boardUtil.Pager">
+		
+		<!-- select * from
+			(select N.*, @rownum:=@rownum+1 R from
+					(select * from notice
+						<include refid="bs"></include>
+					order by num desc) N) K
+		where R between #{startRow} and #{lastRow} -->
+		
+	 select * 
+			from (select
+						@ROWNUM := @ROWNUM + 1 AS ROWNUM, 
+						N.*
+				 	from notice N,
+				 		(select @ROWNUM :=0) R
+				 	<include refid="bs"></include>
+				 	order by num desc) K
+			limit #{startRow}, 10 
+		
+</select>
+
+
+<select id="noticeCount" resultType="java.lang.Integer" parameterType="com.airline.a1.boardUtil.Pager">
+		select count(ifnull(num,0)) from notice
+				<include refid="bs"></include>
+</select>
+</mapper>
