@@ -209,14 +209,20 @@ to {
 	background-color: burlywood;
 }
 
-.seatView input:not([type="checkbox"]) {
- 	overflow: hidden;
-    width: 0;
-    height: 0;
-    font-size: 0;
-    line-height: 0;
-    opacity: 0;
-	-webkit-appearance: none;
+.seatView > input{
+ 	-webkit-appearance: checkbox;
+}
+.seatView > input[type="checkbox"]{
+ 	opacity: 1;
+ 	width: 10px;
+ 	height: 10px;
+}
+input[type="checkbox"], input[type="radio"] {
+    width: 10px;
+    height: 10px;
+    font-size: 12px;
+    line-height: 1;
+    opacity: 1;
 }
 </style>
 </head>

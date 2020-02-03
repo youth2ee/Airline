@@ -41,20 +41,4 @@ public class SearchService {
 	}
 	
 	
-	public void svoca(String search) {
-		// string to extract keywords
-        String strToExtrtKwrd = search;
-        // init KeywordExtractor
-        KeywordExtractor ke = new KeywordExtractor();
-        // extract keywords
-        KeywordList kl = ke.extractKeyword(strToExtrtKwrd, true);
-        
-        String msg = "";
-        
-        // print result
-        for( int i = 0; i < kl.size(); i++ ) {
-            Keyword kwrd = kl.get(i);
-            System.out.println(kwrd.getString() + "\t" + kwrd.getCnt());
-        }
-	}
 }
