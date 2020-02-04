@@ -11,11 +11,16 @@
 	<c:import url="../template/boot.jsp"></c:import>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link href="../resources/css/mypage/park.css" rel="stylesheet">
-	<style type="text/css">
+    <link rel="stylesheet" type="text/css" href="../resources/css/xddatepicker/jquery.datetimepicker.css">
+	<script src="../js/jquery.js"></script>
+	<script src="../js/jquery.datetimepicker.full.min.js"></script>
+	
+<style type="text/css">
+	
 th {
   text-align: center;
 }
-	
+label {font-size:16px !important; color:#151515 !important;}	
 	</style>
 </head>
 <body>
@@ -49,12 +54,8 @@ th {
 									<input type="text" id="resveEndDt" name="resveEndDt" value="2020-02-18" readonly="readonly">
 								</div>
 							</div>
-							<div class="col02">
-								<label for="resveSttus" class="label">상태</label>
-								<select id="resveSttus" name="resveSttus">
-								<option value="" selected="selected">전체</option><option value="WAIT">예약대기</option><option value="CMPL">예약완료</option><option value="USE">이용중</option><option value="END">이용완료</option><option value="CNCL">예약취소</option><option value="DNCL">지연취소</option><option value="NNCL">예약불가</option></select>
-								<button id="btnSearch" class="sbtn btn_submit">조회</button>
-							</div>							
+						
+								<button id="btnSearch" class="sbtn btn_submit" style="border: 0px">조회</button>
 						</div>
 					</div>							
 			</form>
@@ -81,26 +82,51 @@ th {
 				</table>
 				<!-- //paginate -->
 			</div>
-			<div>
-				<h3 class="stitle01">주차 예약 이용안내</h3>
-				<div class="border_box">
-					<p class="ssection">한국공항공사 주차 예약 시스템을 항상 이용해주셔서 감사합니다.<br></p>
-					<ul class="dot_list">
-						<li><span class="fc_wine">예약대기</span> : 예약일정 내에 주차공간이 부족한 상태</li>
-						<li><span class="fc_wine">예약완료</span> : 정상적으로 주차 예약된 상태</li>
-						<li><span class="fc_wine">이용중</span> : 주차장에 차량을 입차 후 출차하지 않은 상태</li>
-						<li><span class="fc_wine">이용완료</span> : 주차장에 차량을 입차 후 출차한 상태</li>
-						<li><span class="fc_wine">예약취소</span> : 이용자가 예약을 취소한 상태</li>
-						<li><span class="fc_wine">지연취소</span> : 주차장을 이용하지 않고 시스템에 의해서 자동 취소된 상태</li>
-						<li><span class="fc_wine">예약불가</span> : 예약대기 상태로 입차 예정시간인 6시간 전까지 예약완료 되지 못한 상태</li>
-					</ul>
-				</div>
-			</div>
 		</div>
+<script type="text/javascript">
+/* $("#resveBeginDt").datepicker(); */
+/* $("#resveEndDt").datepicker(); */
 
+/* $.datetimepicker.setLocale('ko'); */
+$.datetimepicker.setLocale('ko');
+$('#resveBeginDt').datetimepicker({
+ i18n:{
+  ko:{
+   months:[
+    '1월','2월','3월','4월',
+    '5월','6월','7월','8월',
+    '9월','10월','11월','12월',
+   ],
+   dayOfWeek:[
+    "일", "월", "화", "수", 
+    "목", "금", "토",
+   ]
+  }
+ },
+ timepicker:false,
+ format:'Y-m-d',
+ lang:'ko'
+});
 
-
-
-
+$('#resveEndDt').datetimepicker({
+	 i18n:{
+	  ko:{
+	   months:[
+	    '1월','2월','3월','4월',
+	    '5월','6월','7월','8월',
+	    '9월','10월','11월','12월',
+	   ],
+	   dayOfWeek:[
+	    "일", "월", "화", "수", 
+	    "목", "금", "토",
+	   ]
+	  }
+	 },
+	 timepicker:false,
+	 format:'Y-m-d',
+	 lang:'ko'
+	});
+</script>
 </body>
+
 </html>

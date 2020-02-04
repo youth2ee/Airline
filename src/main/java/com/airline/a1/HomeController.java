@@ -204,11 +204,7 @@ public class HomeController {
 		ModelAndView mv = new ModelAndView();
 		
 		List<SearchVO> cr = searchService.realList();
-		
-		for (int i = 0; i < cr.size(); i++) {
-			System.out.println(cr.get(i).getSvoca());
 
-		}
 		RankingVO rankingVO = new RankingVO();		
 		rankingVO.setRank1(cr.get(0).getSvoca());
 		rankingVO.setRank2(cr.get(1).getSvoca());
@@ -226,6 +222,10 @@ public class HomeController {
 		mv.setViewName("layout/rlist");
 		
 		return mv;
+	}
+	@GetMapping("sorttest")
+	public void sorttest() throws Exception{
+		
 	}
 
 }
