@@ -528,15 +528,7 @@ $('#arrloc').focus(function(){
 
 /* 예약 끝 */
 
-/* 검색 */
-$('body').on('click', '#sbtn', function(){
-	$('.tooltiptext1').css("display", "inline-block");
-});
 
-
-$('body').on('click', '#ssbtn', function(){
-	$('#frm').submit();
-});
 
 
 		

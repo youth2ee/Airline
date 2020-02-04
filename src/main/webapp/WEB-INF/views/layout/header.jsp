@@ -46,7 +46,7 @@
 					<i class='fas fa-search' id="sbtn" style='font-size:28px; padding-left: 3px;'></i>
 						<div class="tooltiptext1">
 							<div class="search__container">
-								<form action="${pageContext.request.contextPath}/indexSearch" id="frm">
+								<form action="${pageContext.request.contextPath}/indexSearch" id="frm2">
 
 							  	  <input class="search__input" type="text" placeholder="Search" name="search">
 							  	  <i class='fas fa-search' id="ssbtn"></i>
@@ -60,5 +60,16 @@
 		</div>
 	</div>
 
+<script type="text/javascript">
+/* 검색 */
+$('body').on('click', '#sbtn', function(){
+	$('.tooltiptext1').css("display", "inline-block");
+});
+
+
+$('body').on('click', '#ssbtn', function(){
+	$('#frm2').submit();
+});
+</script>
 
 	

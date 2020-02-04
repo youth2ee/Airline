@@ -54,8 +54,8 @@
 			<ul class="tabs">
 				<li class="tab-link current"><span class="val">전체</span></li>
 				<li class="tab-link"><span class="val">EveryAir소식</span></li>
-				<li class="tab-link"><span class="val">유류할증료</span></li>
 				<li class="tab-link"><span class="val">EveryAir클럽</span></li>
+				<li class="tab-link"><span class="val">유류할증료</span></li>
 				<li class="tab-link"><span class="val">제휴사소식</span></li>
 				<li class="tab-link"><span class="val">기타</span></li>
 			</ul>
@@ -63,12 +63,74 @@
 			<div>
 				<div class="bbs_list">
 					<ul>
+						<li class="cate">EveryAir소식</li>							
 						<c:forEach items="${tlist}" var="vo">
-							<li OnClick="location.href ='./indexSearch?search=${vo.num}'" style="cursor:pointer;" >
-								<div>${vo.title}</div>
-								<div class="tcons">${vo.textContents}</div>
-							</li>
+							
+							<c:if test="${not empty vo}">
+							<c:if test="${vo.cate == 'EveryAir소식'}">
+								<li OnClick="location.href ='./board/boardSelect?num=${vo.num}'" style="cursor:pointer;" >
+									<div class="ttitle">${vo.title}</div>
+									<div class="tcons">${vo.textContents}</div>
+								</li>
+							</c:if>
+							</c:if>
 						</c:forEach>
+						
+						<li class="cate">EveryAir클럽</li>							
+						<c:forEach items="${tlist}" var="vo">
+
+						
+							<c:if test="${not empty vo}">
+							<c:if test="${vo.cate == 'EveryAir클럽'}">
+								<li OnClick="location.href ='./board/boardSelect?num=${vo.num}'" style="cursor:pointer;" >
+									<div class="ttitle">${vo.title}</div>
+									<div class="tcons">${vo.textContents}</div>
+								</li>
+							</c:if>
+							</c:if>
+						</c:forEach>
+						
+						<li class="cate">유류할증료</li>							
+						<c:forEach items="${tlist}" var="vo">
+
+							<c:if test="${not empty vo}">
+							<c:if test="${vo.cate == '유류할증료'}">
+								<li OnClick="location.href ='./board/boardSelect?num=${vo.num}'" style="cursor:pointer;" >
+									<div class="ttitle">${vo.title}</div>
+									<div class="tcons">${vo.textContents}</div>
+								</li>
+							</c:if>
+							</c:if>
+						</c:forEach>
+						
+						<li class="cate">제휴사소식</li>							
+						<c:forEach items="${tlist}" var="vo">
+
+						
+							<c:if test="${not empty vo}">
+							<c:if test="${vo.cate == '제휴사소식'}">
+								<li OnClick="location.href ='./board/boardSelect?num=${vo.num}'" style="cursor:pointer;" >
+									<div class="ttitle">${vo.title}</div>
+									<div class="tcons">${vo.textContents}</div>
+								</li>
+							</c:if>
+							</c:if>
+						</c:forEach>
+						
+						<li class="cate">기타</li>							
+						<c:forEach items="${tlist}" var="vo">
+
+							
+							<c:if test="${not empty vo}">
+							<c:if test="${vo.cate == '기타'}">
+								<li OnClick="location.href ='./board/boardSelect?num=${vo.num}'" style="cursor:pointer;" >
+									<div class="ttitle">${vo.title}</div>
+									<div class="tcons">${vo.textContents}</div>
+								</li>
+							</c:if>
+							</c:if>
+						</c:forEach>						
+						
 					</ul>
 				</div>
 			</div>
@@ -86,6 +148,7 @@
 				<div class="rcon rrank">${status.index + 1}</div>
 				<div class="rcon rmain">${rl.svoca}</div>
 				<div class="rcon">${rl.total}</div>
+				<div class="rup"></div>
 			</div>
 
 		</c:forEach>
@@ -127,10 +190,13 @@
 						type : "GET",
 						url : "./searchSelect",
 						success : function(data) {
-
 							$('.bbs_list').html(data);
+					        $(".cate").each(function(){
+					        	if($(this).next().hasClass('cate') || $(this).next().html()==undefined){
+					        		$(this).after('<li class="nolist">검색결과가 없습니다.</li>');
+					        	}
+					        });
 							$('.tcons').each(function(index) {
-
 								var tlist = $(this).text();
 								tlist = tlist.replace(search,"<span class='tact'>" + search + "</span>");
 										$(this).html(tlist);
@@ -141,16 +207,73 @@
 				});
 
 /* ajax 실시간 자동 검색어 */
-$(document).ready(function() {
-playAlert = setInterval(function() {
+ 
+var result = []; 
 
+$(document).ready(function() {
     $.ajax ({
+		data : {
+			rank1 : $('.rmain:eq(0)').text(),
+			rank2 : $('.rmain:eq(1)').text(),
+			rank3 : $('.rmain:eq(2)').text(),
+			rank4 : $('.rmain:eq(3)').text(),
+			rank5 : $('.rmain:eq(4)').text(),
+			rank6 : $('.rmain:eq(5)').text(),
+			rank7 : $('.rmain:eq(6)').text(),
+			rank8 : $('.rmain:eq(7)').text(),
+			rank9 : $('.rmain:eq(8)').text(),
+			rank10 : $('.rmain:eq(9)').text()
+		},
+		type : "POST",
+        url : "./rlist",
+        cache : false,
+        success : function (data) {
+        $("#rwrap").html(data);
+
+/*         alert($('.rup').find('.rupc').prop('title'));
+
+		result = $('.rup').find('.rupc').prop('title'); */
+
+		for(i=1, i<11, i++){
+
+		result[i] = $('.rup:eq('+i+')').find('.rupc').prop('title');
+		console.log(result[i]);
+			
+		}
+
+        
+        }
+
+    });
+
+
+
+    
+playAlert = setInterval(function() {
+	
+    $.ajax ({
+		data : {
+			rank1 : $('.rmain:eq(0)').text(),
+			rank2 : $('.rmain:eq(1)').text(),
+			rank3 : $('.rmain:eq(2)').text(),
+			rank4 : $('.rmain:eq(3)').text(),
+			rank5 : $('.rmain:eq(4)').text(),
+			rank6 : $('.rmain:eq(5)').text(),
+			rank7 : $('.rmain:eq(6)').text(),
+			rank8 : $('.rmain:eq(7)').text(),
+			rank9 : $('.rmain:eq(8)').text(),
+			rank10 : $('.rmain:eq(9)').text(),
+			rank : result
+		},
+		type : "POST",
         url : "./rlist",
         cache : false,
         success : function (data) {
 
         $("#rwrap").html(data);
 
+/*         alert($('.rup').find('.rupc').prop('title')); */
+        
         }
 
     });
@@ -162,7 +285,13 @@ playAlert = setInterval(function() {
 
 
 
+$(".cate").each(function(){
 
+	if($(this).next().hasClass('cate') || $(this).next().html()==undefined){
+		$(this).after('<li class="nolist">검색결과가 없습니다.</li>');
+	}
+	
+});
 
 
 
