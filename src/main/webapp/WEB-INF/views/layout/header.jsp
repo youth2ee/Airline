@@ -32,10 +32,10 @@
 			
 			
 				<div class="menu_wrap">
-					<div class="menu1">항공권예약</div>
-					<div class="menu1">웹체크인</div>
-					<div class="menu1">주차장예약</div>
-					<div class="menu1">리무진예약</div>
+					<div class="menu1" OnClick="location.href ='${pageContext.request.contextPath}/booking/bookingMain'" style="cursor:pointer;">항공권예약</div>
+					<div class="menu1" OnClick="location.href ='${pageContext.request.contextPath}/booking/bookingMain'" style="cursor:pointer;">웹체크인</div>
+					<div class="menu1" OnClick="location.href ='${pageContext.request.contextPath}/booking/bookingMain'" style="cursor:pointer;">주차장예약</div>
+					<div class="menu1" OnClick="location.href ='${pageContext.request.contextPath}/booking/bookingMain'" style="cursor:pointer;">리무진예약</div>
 				</div>
 				
 				
