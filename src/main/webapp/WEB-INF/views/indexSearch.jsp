@@ -7,15 +7,14 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <c:import url="./template/boot.jsp"></c:import>
-
+    <link href="../resources/css/header.css" rel="stylesheet">
 <link rel="stylesheet" href="../resources/css/index/indexSearch.css">
 <link rel="stylesheet" href="../resources/css/reset.css">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 
-	<header></header>
+	<header><c:import url="./layout/header.jsp"></c:import></header>
 	<div id="headerBottom">
 		<div id="hbh">
 			<div id="hbhome">
@@ -38,7 +37,7 @@
 	<!----- new ------>
 
 	<div id="container">
-		<h3>공지사항</h3>
+		<h3>통합검색</h3>
 
 		<form id="frm" action="./indexSearch">
 			<div class="total_search_input">
@@ -65,7 +64,7 @@
 				<div class="bbs_list">
 					<ul>
 						<c:forEach items="${tlist}" var="vo">
-							<li>
+							<li OnClick="location.href ='./indexSearch?search=${vo.num}'" style="cursor:pointer;" >
 								<div>${vo.title}</div>
 								<div class="tcons">${vo.textContents}</div>
 							</li>
@@ -83,7 +82,7 @@
 		<div id="rwrap"> 
 		<c:forEach items="${rList}" var="rl" varStatus="status">
 
-			<div class="rlist_wrap">
+			<div class="rlist_wrap" OnClick="location.href ='./indexSearch?search=${rl.svoca}'" style="cursor:pointer;" >
 				<div class="rcon rrank">${status.index + 1}</div>
 				<div class="rcon rmain">${rl.svoca}</div>
 				<div class="rcon">${rl.total}</div>
@@ -104,8 +103,7 @@
 		$(document).ready(function() {
 					$('.tcons').each(function(index) {
 								var tlist = $(this).text();
-								tlist = tlist.replace(search,
-										"<span class='tact'>" + search + "</span>");
+								tlist = tlist.replace(search, "<span class='tact'>" + search + "</span>");
 
 								$(this).html(tlist);
 
@@ -142,7 +140,7 @@
 
 				});
 
-		/* ajax 실시간 자동 검색어 */
+/* ajax 실시간 자동 검색어 */
 $(document).ready(function() {
 playAlert = setInterval(function() {
 

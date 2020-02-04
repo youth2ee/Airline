@@ -6,11 +6,14 @@
 <mapper namespace="com.airline.a1.SearchMapper">
 
 <select id="searchTotalList" parameterType="java.lang.String" resultType="com.airline.a1.board.NoticeVO">
-select * from notice where textContents like concat('%',#{search},'%') and title like concat('%',#{search},'%')
+select * from notice where textContents like concat('%',#{search},'%') or title like concat('%',#{search},'%')
 </select>
 
 <select id="searchList" parameterType="com.airline.a1.board.NoticeVO" resultType="com.airline.a1.board.NoticeVO">
-select * from notice where textContents like concat('%',#{title},'%') and title like concat('%',#{title},'%') and cate=#{writer}
+<!-- select * from notice where cate=#{writer} and textContents like concat('%',#{title},'%') or title like concat('%',#{title},'%') -->
+select * from
+(select * from notice where textContents like concat('%',#{title},'%') or title like concat('%',#{title},'%')) A
+where cate=#{writer}
 </select>
 
 <insert id="searchInsert" parameterType="com.airline.a1.SearchVO">

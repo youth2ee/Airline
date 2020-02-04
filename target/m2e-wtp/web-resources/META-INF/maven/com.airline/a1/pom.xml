@@ -48,6 +48,12 @@
 	</dependency>
 
 	
+	   <dependency>
+       <groupId>org.snu.ids</groupId>
+       <artifactId>ha</artifactId>
+       <version>1.0</version>
+   </dependency>
+	
 	<!-- jsoup -->
 	<dependency>
     	<groupId>org.jsoup</groupId>

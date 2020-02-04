@@ -1,72 +1,55 @@
 @charset "UTF-8";
 
 /******************* bookingMain1 ********************/
-
-.mid{
+.mid {
 	width: 300px;
 	height: 50px;
 	float: left;
 	margin-right: 10px;
-
-	
 }
 
-.large{
-	width:315px;	
+.large {
+	width: 315px;
 }
 
-.small{
+.small {
 	width: 280px;
 }
 
-#body{
-float: left; 
-	
+#body {
+	float: left;
 }
 
-#booking_btn{
+#booking_btn {
 	float: left;
 	position: absolute;
 	margin-left: 20px;
-	
-	
 }
 
-  #locSearch{
-    margin-left: 55px;
+#locSearch {
+	margin-left: 102px;
 }
 
-
-.search{
-	top: 155px;
-	border: 1px solid rgba(0,0,0,.15);
+.search {
+	position: absolute;
+	top: 157px;
 	border-radius: 10px;
-	box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
-	width: 280px; 
-	height: auto; 
+	width: 222px;
 	background-color: white;
 	font-size: 16px;
 	color: #666;
-	padding: 10px;	
-	text-align: right;
-	margin-top: -18px;
-	padding-left: 120px;
-    line-height: 37px;
+	padding-left: 85px;
+	line-height: 36px;
 }
 
-#deplocSearch{
-	
-	margin-left: 345px;
+#deplocSearch {
+	margin-left: 335px;
 }
 
-
-
-.loctdd{
+.loctdd {
 	cursor: pointer;
-	
 }
 
-.loctdd:hover{
+.loctdd:hover {
 	color: red;
 }
-

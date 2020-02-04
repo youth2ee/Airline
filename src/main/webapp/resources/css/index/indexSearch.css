@@ -383,7 +383,7 @@ header {
 /*  */
 #realList{
 	width: 300px;
-	height: 402px;
+	height: 361px;
 	border: 1px solid black;
 	color: black;
 	position: absolute;
@@ -432,3 +432,20 @@ header {
 .tact{
 	color: red;
 }
+
+/* 실시간 검색어 a */
+#rwrap{
+	background-color: #f0f0f0;
+	height: 303px;
+}
+
+.rlist_wrap{
+	height: 30px;
+}
+
+ .rlist_wrap:hover, .rlist_wrap:active {
+	text-decoration: none; 
+	color:white; 
+	background-color:#f59000;
+ }
+
