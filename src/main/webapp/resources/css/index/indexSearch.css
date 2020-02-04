@@ -145,6 +145,7 @@ ul.tabs li{
 	height: 63px;
 	line-height: 20px;
 	border-bottom: 1px solid #6d6e71;
+	border-top: 1px solid #6d6e71;
     color: #d60815;
     font-weight: bold;
     cursor: pointer;
@@ -162,9 +163,9 @@ ul.tabs li{
 ul.tabs li.current{
 	background: #fff;
 	color: #222;
-	border: 1px solid #6d6e71;
+/* 	border: 1px solid #6d6e71;
 	border-right: none;
-   	border-bottom-color: #fff;
+   	border-bottom-color: #fff; */
 }
 
 ul.tabs li:last-child.current{
