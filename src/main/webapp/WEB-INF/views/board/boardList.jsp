@@ -88,7 +88,7 @@
 									<em>${vo.title}</em>
 								</a>
 							</div>
-							<p class="txt">${vo.contents}</p>
+							<p class="txt">${vo.textContents}</p>
 						</div>
 						<div class="right">
 							<div class="right_sub">
