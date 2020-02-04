@@ -206,9 +206,10 @@ ul.tabs li.current span{
     list-style: none;
 }
 
+/* tab-contents */
 .left{
 	float: left;
-	width: 905px;
+	width: 890px;
 	height: 57px;
 }
 
@@ -265,6 +266,10 @@ ul.tabs li.current span{
 .right_sub span{
 	color: #555555;
 
+}
+
+.txt{
+	height: 25px;
 }
 
 /****** paging ******/
