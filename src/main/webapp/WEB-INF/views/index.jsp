@@ -530,7 +530,33 @@ $('#arrloc').focus(function(){
 
 /* 예약 끝 */
 
+ /* 날씨입니다 지우지 마세여 ^8^*/
 
+$("#weather_select").click(function(){
+			var weather = $("#weather_sel").val();
+			$.ajax({
+				type:'get',
+				url:"weather/weatherInfo",
+				async: false,
+				data:{
+					"airLine":weather
+				},
+				success: function(data){
+					data = data.trim();
+					$("#weather_view").html(data);
+				}
+			});
+			$("#weather_view tr").css("background-color", "transparent");
+			$("#weather_view td").css("background-color", "transparent");
+			$("#weather_view td").css("border-style", "hidden");
+			$("#weather_view td").css("font-weight","bold");
+			$("#weather_view td").css("vertical-align","middle");
+		});
+		$("#weather_view td").css("font-weight","bold");
+		$("#weather_view td").css("vertical-align","middle");
+		$("#weather_view tr").css("background-color", "transparent");
+		$("#weather_view td").css("background-color", "transparent");
+		$("#weather_view td").css("border-style", "hidden");
 
 
 		

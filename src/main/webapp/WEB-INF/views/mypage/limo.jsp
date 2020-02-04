@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="../resources/css/reset.css" rel="stylesheet">
-    <link href="../resources/css/header.css" rel="stylesheet">
+<link href="../resources/css/header.css" rel="stylesheet">
 <link href="../resources/css/mypage/mypageHeader.css" rel="stylesheet">
 <link href="../resources/css/mypage/limo.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="http://www.letskorail.com/css/com.css">
@@ -16,8 +16,6 @@
 <link rel="stylesheet" type="text/css" href="http://www.letskorail.com/css/reserve.css">
 <c:import url="../template/boot.jsp"></c:import>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	
-	
 </head>
 <body>
 
