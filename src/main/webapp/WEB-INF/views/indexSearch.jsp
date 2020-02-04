@@ -54,8 +54,8 @@
 			<ul class="tabs">
 				<li class="tab-link current"><span class="val">전체</span></li>
 				<li class="tab-link"><span class="val">EveryAir소식</span></li>
-				<li class="tab-link"><span class="val">유류할증료</span></li>
 				<li class="tab-link"><span class="val">EveryAir클럽</span></li>
+				<li class="tab-link"><span class="val">유류할증료</span></li>
 				<li class="tab-link"><span class="val">제휴사소식</span></li>
 				<li class="tab-link"><span class="val">기타</span></li>
 			</ul>
@@ -63,12 +63,86 @@
 			<div>
 				<div class="bbs_list">
 					<ul>
+						<li><h1 style="font-weight: bold;">EveryAir소식</h1></li>							
 						<c:forEach items="${tlist}" var="vo">
-							<li OnClick="location.href ='./indexSearch?search=${vo.num}'" style="cursor:pointer;" >
-								<div>${vo.title}</div>
-								<div class="tcons">${vo.textContents}</div>
-							</li>
+							<c:if test="${vo.cate  != 'EveryAir소식'}">
+								<li>검색결과가 없습니다.</li>
+							</c:if>
+							
+							<c:if test="${not empty vo}">
+							<c:if test="${vo.cate == 'EveryAir소식'}">
+								<li OnClick="location.href ='./board/boardSelect?num=${vo.num}'" style="cursor:pointer;" >
+									<div>${vo.title}</div>
+									<div class="tcons">${vo.textContents}</div>
+								</li>
+							</c:if>
+							</c:if>
 						</c:forEach>
+						
+						<li><h1 style="font-weight: bold;">EveryAir클럽</h1></li>							
+						<c:forEach items="${tlist}" var="vo">
+							<c:if test="${empty vo}">
+								<li>검색결과가 없습니다.</li>
+							</c:if>
+						
+							<c:if test="${not empty vo}">
+							<c:if test="${vo.cate == 'EveryAir클럽'}">
+								<li OnClick="location.href ='./board/boardSelect?num=${vo.num}'" style="cursor:pointer;" >
+									<div>${vo.title}</div>
+									<div class="tcons">${vo.textContents}</div>
+								</li>
+							</c:if>
+							</c:if>
+						</c:forEach>
+						
+						<li><h1 style="font-weight: bold;">유류할증료</h1></li>							
+						<c:forEach items="${tlist}" var="vo">
+							<c:if test="${empty vo}">
+								<li>검색결과가 없습니다.</li>
+							</c:if>
+						
+							<c:if test="${not empty vo}">
+							<c:if test="${vo.cate == '유류할증료'}">
+								<li OnClick="location.href ='./board/boardSelect?num=${vo.num}'" style="cursor:pointer;" >
+									<div>${vo.title}</div>
+									<div class="tcons">${vo.textContents}</div>
+								</li>
+							</c:if>
+							</c:if>
+						</c:forEach>
+						
+						<li><h1 style="font-weight: bold;">제휴사소식</h1></li>							
+						<c:forEach items="${tlist}" var="vo">
+							<c:if test="${empty vo}">
+								<li>검색결과가 없습니다.</li>
+							</c:if>
+						
+							<c:if test="${not empty vo}">
+							<c:if test="${vo.cate == '제휴사소식'}">
+								<li OnClick="location.href ='./board/boardSelect?num=${vo.num}'" style="cursor:pointer;" >
+									<div>${vo.title}</div>
+									<div class="tcons">${vo.textContents}</div>
+								</li>
+							</c:if>
+							</c:if>
+						</c:forEach>
+						
+						<li><h1 style="font-weight: bold;">기타</h1></li>							
+						<c:forEach items="${tlist}" var="vo">
+							<c:if test="${empty vo}">
+								<li>검색결과가 없습니다.</li>
+							</c:if>
+							
+							<c:if test="${not empty vo}">
+							<c:if test="${vo.cate == '기타'}">
+								<li OnClick="location.href ='./board/boardSelect?num=${vo.num}'" style="cursor:pointer;" >
+									<div>${vo.title}</div>
+									<div class="tcons">${vo.textContents}</div>
+								</li>
+							</c:if>
+							</c:if>
+						</c:forEach>						
+						
 					</ul>
 				</div>
 			</div>
