@@ -158,8 +158,6 @@ ul.tabs li:hover{
 .tab-link a{
 	width: 100%;
 	height: 100%;
-	background-color: orange;
-	
 }
 
 ul.tabs li.current{

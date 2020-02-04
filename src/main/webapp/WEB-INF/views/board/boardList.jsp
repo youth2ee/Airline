@@ -46,11 +46,11 @@
 	<div class="tab_wrap">
 		<ul class="tabs">
 			<li class="tab-link current" data-tab="tab-1">
-					<a href="./noticeList" ><span>전체</span></a>		
+					<a href="./noticeList"><span>전체</span></a>		
 			</li>
 			
 			<li class="tab-link" data-tab="tab-2">					
-						<a href="./noticeList1"><span class="val">EveryAir소식</span></a>		
+						<a href="./noticeList1?menu=EveryAir소식"><span class="val">EveryAir소식</span></a>		
 			</li>
 			
 			<li class="tab-link" data-tab="tab-3">
