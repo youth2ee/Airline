@@ -19,7 +19,7 @@
 
 
 <header>
-
+<c:import url="../layout/header.jsp"></c:import>
 </header>
 
 <div id="top">
@@ -286,7 +286,7 @@ ${bookingVO.arrLoc} <i class='fas fa-angle-right' style='font-size:10px;'></i> $
 </c:if>
 </div>
 
-<form action="./booking/bookingWritePre" method="post">
+<form action="${pageContext.request.contextPath}/booking/bookingWritePre" method="post">
 
 <input type="hidden" name="depFnum" id="dfnumf">
 <c:if test="${bookingVO.kind eq '왕복'}">
@@ -409,16 +409,6 @@ $('body').on("click",'.atrcheck',function(){
     }  
 });
 
-
-/* 검색 */
-$('body').on('click', '#sbtn', function(){
-	$('.tooltiptext1').css("display", "inline-block");
-});
-
-
-$('body').on('click', '#ssbtn', function(){
-	$('#frm').submit();
-});
 
 </script>
 

@@ -52,14 +52,13 @@ keyframes scale1 { 0% {
 	transform: scale(0)
 }
 
-100%
-{
+100%{
 transform
-:
- 
-scale
-(1)
- 
+
+
+:scale(1)
+
+
 }
 }
 body {
@@ -158,6 +157,7 @@ to {
 	background-color: #5cb85c;
 	color: white;
 	margin-bottom: 15px;
+	text-align: right;
 }
 
 .modalInnerWrap {
@@ -231,12 +231,16 @@ to {
 	background-color: beige;
 	width: inherit;
 	display: inline-table;
+	margin-left: 17px;
+	width: fit-content;
 }
 
 .seat2 {
 	background-color: cornflowerblue;
 	width: inherit;
 	display: inline-table;
+	margin-left: 50px;
+	width: fit-content;
 }
 
 input[type="text"] {
@@ -310,10 +314,32 @@ input[type=checkbox]:disabled {
 	width: 15px;
 	display: inline-block;
 }
+
+label {
+	margin-left: 5px;
+}
+
+.depAir::before {
+	content: "";
+	width: 20px;
+	height: 20px;
+	background: url('../resources/newni/seatbgL.png') left/22px no-repeat;
+}
+.depAir::after {
+	content: "";
+	width: 20px;
+	height: 20px;
+	background: url('../resources/newni/seatbgL.png') left/22px no-repeat;
+}
+.depSeat {
+	width: 250px;
+	margin: 0 auto;
+	background-color: chartreuse;
+}
+
 </style>
 <title>체크인/좌석배정│아시아나항공</title>
 <body>
-
 <!-- util_wrap -->
 	<div class="container" id="container">
 		<h3>체크인</h3>
@@ -326,7 +352,7 @@ input[type=checkbox]:disabled {
 			<li>팝업 차단 해제 후 이용해주시기 바랍니다.</li>
 		</ul>
 		<div class="search_box mar_to10">
-		<form id="frm" action="./seat">
+		<form id="frm" action="./test" method="post">
 			<div class="inner alC">
 				<select id="numTypeSelect" style="width: 200px" title="종류별 번호">
 					<option value="reservNo">예약번호</option>
@@ -609,17 +635,44 @@ input[type=checkbox]:disabled {
 				</div>
 			</div>
 			<div class="modalInnerBottom">
-			 	dddd
+			 	오는편 좌석 선택
 			</div>
 		</div>
     </div>
     <div class="modal-footer">
-      <h3>Modal Footer</h3>
+      <h3>KRW</h3>
     </div>
   </div>
 
 </div>
 	<script type="text/javascript">
+
+	
+	// Get the modal
+	var modal = document.getElementById("myModal");
+
+	// Get the button that opens the modal
+	var btn = document.getElementById("btn_search");
+
+	// Get the <span> element that closes the modal
+	var span = document.getElementsByClassName("close")[0];
+
+	// When the user clicks the button, open the modal 
+	btn.onclick = function() {
+	  modal.style.display = "block";
+	}
+
+	// When the user clicks on <span> (x), close the modal
+	span.onclick = function() {
+	  modal.style.display = "none";
+	}
+
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function(event) {
+	  if (event.target == modal) {
+	    modal.style.display = "none";
+	  }
+	}
 	
 	$("#btn_search").change(function(){	
 		if($("#chk1").is(":checked")){
@@ -629,31 +682,6 @@ input[type=checkbox]:disabled {
 			$("#text1").removeAttr('name');
 		}
 	});
-		// Get the modal
-		var modal = document.getElementById("myModal");
-
-		// Get the button that opens the modal
-		var btn = document.getElementById("btn_search");
-
-		// Get the <span> element that closes the modal
-		var span = document.getElementsByClassName("close")[0];
-
-		// When the user clicks the button, open the modal 
-		btn.onclick = function() {
-		  modal.style.display = "block";
-		}
-
-		// When the user clicks on <span> (x), close the modal
-		span.onclick = function() {
-		  modal.style.display = "none";
-		}
-
-		// When the user clicks anywhere outside of the modal, close it
-		window.onclick = function(event) {
-		  if (event.target == modal) {
-		    modal.style.display = "none";
-		  }
-		}
 		
 		var depChecks=[]; // 가는 비행기의 좌석에 체크된 항목을 담을 배열
 		var arrChecks=[]; // 오는 비행기의 좌석에 체크된 항목을 담을 배열
@@ -754,12 +782,10 @@ input[type=checkbox]:disabled {
 					alert('가는편 비행기의 좌석을 확인');
 			}
 		});
-	</script>
-	<!-- <script type="text/javascript">
 		$("#btn_search").click(function(){
 			$("#frm").submit();
 		});
+	</script>
 			
-	</script> -->
 </body>
 </html>
