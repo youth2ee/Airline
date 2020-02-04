@@ -15,7 +15,13 @@
 th {
   text-align: center;
 }
-	
+.label{
+line-height: 40px;
+text-align: left;
+}
+.btn{
+line-height: 37px;
+}
 	</style>
 </head>
 <body>
@@ -37,8 +43,6 @@ th {
 </div>
 <div id="sub_content">
 			<form id="resveForm" name="resveForm" class="needs-validation" novalidate="">
-				<fieldset>
-					<legend>예약 조회폼</legend>
 					<div class="section">
 						<div class="write_form">
 							<div class="frow">
@@ -75,25 +79,11 @@ th {
 							</div>							
 						</div>
 					</div>
-					<div class="section">
-						<h3 class="stitle01">예약 상태</h3>
-						<div class="write_form">
-							<div class="frow type02">
-								<p class="label">상태</p>
-								<div class="fc_wine" id="resveSttusName">예약완료</div>
-							</div>										
-							<div class="frow" id="canclResn" style="display:none">
-								<p class="label">예약취소 사유</p>
-								<div id="canclResnName">&nbsp;</div>
-							</div>										
-						</div>
-					</div>
 					<div class="btn_area">
 						<button id="btnList" class="btn border">목록</button>
 						<button id="btnEdit" class="btn wine" style="">예약변경</button>
 						<button id="btnCncl" class="btn" style="">예약취소</button>
 					</div>
-				</fieldset>
 			</form>
 		</div>
 
