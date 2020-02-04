@@ -237,10 +237,11 @@ public class HomeController {
 	}
 	
 	@PostMapping("rlist")
-	public ModelAndView rlist(SearchRankingVO newVO, String rank) throws Exception {
+	public ModelAndView rlist(SearchRankingVO newVO, String [] rank) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		
-		System.out.println(rank);
+		System.out.println("ff");
+		System.out.println(rank[1]);
 		
 		Map<String, Integer> tolist = searchService.listUpdate(newVO);
 

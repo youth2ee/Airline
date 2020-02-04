@@ -209,6 +209,7 @@
 /* ajax 실시간 자동 검색어 */
  
 var result = []; 
+var rank = [];
 
 $(document).ready(function() {
     $.ajax ({
@@ -230,17 +231,18 @@ $(document).ready(function() {
         success : function (data) {
         $("#rwrap").html(data);
 
-/*         alert($('.rup').find('.rupc').prop('title'));
+/*      alert($('.rup').find('.rupc').prop('title'));
 
 		result = $('.rup').find('.rupc').prop('title'); */
 
-		for(i=1, i<11, i++){
+			for (i = 1; i < 11; i++){
+	
+				result[i] = $('.rup:eq('+i+')').find('.rupc').prop('title');
+				console.log(result[i]);
+				rank[i] = result[i];
+			}
 
-		result[i] = $('.rup:eq('+i+')').find('.rupc').prop('title');
-		console.log(result[i]);
-			
-		}
-
+			hanna();
         
         }
 
@@ -248,9 +250,9 @@ $(document).ready(function() {
 
 
 
-    
+function hanna(){        
 playAlert = setInterval(function() {
-	
+	$.ajaxSettings.traditional = true;
     $.ajax ({
 		data : {
 			rank1 : $('.rmain:eq(0)').text(),
@@ -263,7 +265,7 @@ playAlert = setInterval(function() {
 			rank8 : $('.rmain:eq(7)').text(),
 			rank9 : $('.rmain:eq(8)').text(),
 			rank10 : $('.rmain:eq(9)').text(),
-			rank : result
+			rank : rank
 		},
 		type : "POST",
         url : "./rlist",
@@ -272,15 +274,24 @@ playAlert = setInterval(function() {
 
         $("#rwrap").html(data);
 
+		for (i = 1; i < 11; i++){
+			
+			result[i] = $('.rup:eq('+i+')').find('.rupc').prop('title');
+			console.log(result[i]);
+			rank[i] = result[i];
+			
+		}
+
 /*         alert($('.rup').find('.rupc').prop('title')); */
         
         }
 
     });
 
-    }, 500);
+    }, 5000);
 
 }); 
+}
 
 
 
