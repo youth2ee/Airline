@@ -63,14 +63,13 @@ public class HomeController {
 			/* System.out.println(search); */
 			List<BoardVO> ar = searchService.searchTotalList(search);
 			
-			
 			  for(BoardVO con:ar) { 
 				  String tcon = con.getTextContents();
 			  
 				  int num = tcon.indexOf(search);
 				  int tlen = tcon.length();
 				  
-				  System.out.println(num);
+				/* System.out.println(num); */
 				  
 				  if(num > 10) {
 					  tcon = tcon.substring(num-10);
@@ -117,8 +116,26 @@ public class HomeController {
 
 			// print result
 			if(search.contains(" ")) {
-				
-				
+				if(kl.size() >= 4) {
+				  for(int i = 0; i < kl.size(); i++ ) {
+					  
+					  if(i == 1) {
+						  Keyword kwrd = kl.get(i); 
+						  msg = kwrd.getString();
+						  
+						  if(search.contains("스")) {
+							  searchVO.setSvoca(search);
+						  }else {
+							  searchVO.setSvoca(msg);
+						  }
+						  
+						  searchService.searchInsert(searchVO);
+					  	}
+					  
+					  
+					  
+					  }
+				}
 			}else {
 				if(kl.size() >= 3) {
 					  for(int i = 0; i < kl.size(); i++ ) {
@@ -160,13 +177,9 @@ public class HomeController {
 							  searchVO.setSvoca(search);
 						  }
 						  searchService.searchInsert(searchVO);
-						  
 					  }
 				}
 			}
-			
-			System.out.println(searchVO.getSearch());
-			
 		}
 	}
 
@@ -177,9 +190,6 @@ public class HomeController {
 
 	@GetMapping("searchSelect")
 	public ModelAndView searchSelect(String menu, String search) throws Exception {
-		System.out.println(menu);
-		System.out.println(search);
-
 		NoticeVO noticeVO = new NoticeVO();
 		noticeVO.setTitle(search);
 		noticeVO.setWriter(menu);
@@ -188,14 +198,12 @@ public class HomeController {
 
 		if (menu.equals("전체")) {
 			ar = searchService.searchTotalList(search);
-			
 		} else {
 			ar = searchService.searchList(noticeVO);
 		}
 		
 		  for(BoardVO con:ar) { 
 			  String tcon = con.getTextContents();
-			  System.out.println(tcon);
 			  
 			  int num = tcon.indexOf(search);
 			  int tlen = tcon.length();
@@ -206,7 +214,6 @@ public class HomeController {
 				  tcon = tcon.substring(num);
 			}
 			  con.setTextContents(tcon);
-			  System.out.println(con.getTextContents());
 		  }
 		
 
@@ -284,12 +291,10 @@ public class HomeController {
 
 		if (bookingTicketVO.getKind().equals("편도")) {
 			ddate = date.substring(6) + date.substring(0, 2) + date.substring(3, 5);
-			System.out.println(ddate);
 			bookingTicketVO.setDepStartTime(ddate);
 			dairList = bookingService.airList(bookingTicketVO);
 
 			for (FlightDataVO flightDataVO : dairList) {
-				System.out.println(flightDataVO.getAirlineNm());
 				flightDataVO.setDepTime(flightDataVO.getDepPlandTime().substring(8, 10) + ":"
 						+ flightDataVO.getDepPlandTime().substring(10));
 				flightDataVO.setArrTime(flightDataVO.getArrPlandTime().substring(8, 10) + ":"
