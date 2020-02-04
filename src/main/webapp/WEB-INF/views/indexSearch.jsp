@@ -63,11 +63,8 @@
 			<div>
 				<div class="bbs_list">
 					<ul>
-						<li><h1 style="font-weight: bold;">EveryAir소식</h1></li>							
+						<li class="cate"><h1 style="font-weight: bold;">EveryAir소식</h1></li>							
 						<c:forEach items="${tlist}" var="vo">
-							<c:if test="${vo.cate  != 'EveryAir소식'}">
-								<li>검색결과가 없습니다.</li>
-							</c:if>
 							
 							<c:if test="${not empty vo}">
 							<c:if test="${vo.cate == 'EveryAir소식'}">
@@ -79,11 +76,9 @@
 							</c:if>
 						</c:forEach>
 						
-						<li><h1 style="font-weight: bold;">EveryAir클럽</h1></li>							
+						<li class="cate"><h1 style="font-weight: bold;">EveryAir클럽</h1></li>							
 						<c:forEach items="${tlist}" var="vo">
-							<c:if test="${empty vo}">
-								<li>검색결과가 없습니다.</li>
-							</c:if>
+
 						
 							<c:if test="${not empty vo}">
 							<c:if test="${vo.cate == 'EveryAir클럽'}">
@@ -95,11 +90,9 @@
 							</c:if>
 						</c:forEach>
 						
-						<li><h1 style="font-weight: bold;">유류할증료</h1></li>							
+						<li class="cate"><h1 style="font-weight: bold;">유류할증료</h1></li>							
 						<c:forEach items="${tlist}" var="vo">
-							<c:if test="${empty vo}">
-								<li>검색결과가 없습니다.</li>
-							</c:if>
+
 						
 							<c:if test="${not empty vo}">
 							<c:if test="${vo.cate == '유류할증료'}">
@@ -111,11 +104,9 @@
 							</c:if>
 						</c:forEach>
 						
-						<li><h1 style="font-weight: bold;">제휴사소식</h1></li>							
+						<li class="cate"><h1 style="font-weight: bold;">제휴사소식</h1></li>							
 						<c:forEach items="${tlist}" var="vo">
-							<c:if test="${empty vo}">
-								<li>검색결과가 없습니다.</li>
-							</c:if>
+
 						
 							<c:if test="${not empty vo}">
 							<c:if test="${vo.cate == '제휴사소식'}">
@@ -127,11 +118,9 @@
 							</c:if>
 						</c:forEach>
 						
-						<li><h1 style="font-weight: bold;">기타</h1></li>							
+						<li class="cate"><h1 style="font-weight: bold;">기타</h1></li>							
 						<c:forEach items="${tlist}" var="vo">
-							<c:if test="${empty vo}">
-								<li>검색결과가 없습니다.</li>
-							</c:if>
+
 							
 							<c:if test="${not empty vo}">
 							<c:if test="${vo.cate == '기타'}">
@@ -237,6 +226,22 @@ playAlert = setInterval(function() {
 
 
 
+/* $(".cate").click(function(){
+	var thiscate = $(this)
+	var contents =$(this).next()
+	if(!contents.hasClass('cate')){
+		$(thiscate).after('<li>검색결과가 없습니다</li>');
+	}
+	
+}); */
+
+$(".cate").each(function(){
+
+	if($(this).next().hasClass('cate') || $(this).next().html()==undefined){
+		$(this).after('<li>검색결과가 없습니다.</li>');
+	}
+	
+});
 
 
 
