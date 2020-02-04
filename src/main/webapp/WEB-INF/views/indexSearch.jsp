@@ -63,69 +63,68 @@
 			<div>
 				<div class="bbs_list">
 					<ul>
-						<li class="cate"><h1 style="font-weight: bold;">EveryAir소식</h1></li>							
+						<li class="cate">EveryAir소식</li>							
 						<c:forEach items="${tlist}" var="vo">
 							
 							<c:if test="${not empty vo}">
 							<c:if test="${vo.cate == 'EveryAir소식'}">
 								<li OnClick="location.href ='./board/boardSelect?num=${vo.num}'" style="cursor:pointer;" >
-									<div>${vo.title}</div>
+									<div class="ttitle">${vo.title}</div>
 									<div class="tcons">${vo.textContents}</div>
 								</li>
 							</c:if>
 							</c:if>
 						</c:forEach>
 						
-						<li class="cate"><h1 style="font-weight: bold;">EveryAir클럽</h1></li>							
+						<li class="cate">EveryAir클럽</li>							
 						<c:forEach items="${tlist}" var="vo">
 
 						
 							<c:if test="${not empty vo}">
 							<c:if test="${vo.cate == 'EveryAir클럽'}">
 								<li OnClick="location.href ='./board/boardSelect?num=${vo.num}'" style="cursor:pointer;" >
-									<div>${vo.title}</div>
+									<div class="ttitle">${vo.title}</div>
 									<div class="tcons">${vo.textContents}</div>
 								</li>
 							</c:if>
 							</c:if>
 						</c:forEach>
 						
-						<li class="cate"><h1 style="font-weight: bold;">유류할증료</h1></li>							
+						<li class="cate">유류할증료</li>							
 						<c:forEach items="${tlist}" var="vo">
 
-						
 							<c:if test="${not empty vo}">
 							<c:if test="${vo.cate == '유류할증료'}">
 								<li OnClick="location.href ='./board/boardSelect?num=${vo.num}'" style="cursor:pointer;" >
-									<div>${vo.title}</div>
+									<div class="ttitle">${vo.title}</div>
 									<div class="tcons">${vo.textContents}</div>
 								</li>
 							</c:if>
 							</c:if>
 						</c:forEach>
 						
-						<li class="cate"><h1 style="font-weight: bold;">제휴사소식</h1></li>							
+						<li class="cate">제휴사소식</li>							
 						<c:forEach items="${tlist}" var="vo">
 
 						
 							<c:if test="${not empty vo}">
 							<c:if test="${vo.cate == '제휴사소식'}">
 								<li OnClick="location.href ='./board/boardSelect?num=${vo.num}'" style="cursor:pointer;" >
-									<div>${vo.title}</div>
+									<div class="ttitle">${vo.title}</div>
 									<div class="tcons">${vo.textContents}</div>
 								</li>
 							</c:if>
 							</c:if>
 						</c:forEach>
 						
-						<li class="cate"><h1 style="font-weight: bold;">기타</h1></li>							
+						<li class="cate">기타</li>							
 						<c:forEach items="${tlist}" var="vo">
 
 							
 							<c:if test="${not empty vo}">
 							<c:if test="${vo.cate == '기타'}">
 								<li OnClick="location.href ='./board/boardSelect?num=${vo.num}'" style="cursor:pointer;" >
-									<div>${vo.title}</div>
+									<div class="ttitle">${vo.title}</div>
 									<div class="tcons">${vo.textContents}</div>
 								</li>
 							</c:if>
@@ -191,7 +190,19 @@
 						url : "./searchSelect",
 						success : function(data) {
 
+
+							
 							$('.bbs_list').html(data);
+
+					        $(".cate").each(function(){
+
+					        	if($(this).next().hasClass('cate') || $(this).next().html()==undefined){
+					        		$(this).after('<li class="nolist">검색결과가 없습니다.</li>');
+					        	}
+					        	
+					        });
+
+							
 							$('.tcons').each(function(index) {
 
 								var tlist = $(this).text();
@@ -213,6 +224,7 @@ playAlert = setInterval(function() {
         success : function (data) {
 
         $("#rwrap").html(data);
+        
 
         }
 
@@ -225,20 +237,10 @@ playAlert = setInterval(function() {
 
 
 
-
-/* $(".cate").click(function(){
-	var thiscate = $(this)
-	var contents =$(this).next()
-	if(!contents.hasClass('cate')){
-		$(thiscate).after('<li>검색결과가 없습니다</li>');
-	}
-	
-}); */
-
 $(".cate").each(function(){
 
 	if($(this).next().hasClass('cate') || $(this).next().html()==undefined){
-		$(this).after('<li>검색결과가 없습니다.</li>');
+		$(this).after('<li class="nolist">검색결과가 없습니다.</li>');
 	}
 	
 });

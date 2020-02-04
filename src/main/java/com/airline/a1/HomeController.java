@@ -218,6 +218,7 @@ public class HomeController {
 		
 
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("cate", menu);
 		mv.addObject("list", ar);
 		mv.setViewName("layout/searchList");
 
