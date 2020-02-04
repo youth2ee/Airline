@@ -14,12 +14,9 @@
 <meta name="keywords" content="Colrolib Templates">
 
 
-
 <link href="../resources/css/reset.css" rel="stylesheet">
+<link href="../resources/css/header.css" rel="stylesheet">
 <c:import url="../template/boot.jsp"></c:import>
-
-
-
 
 <!-- Title Page-->
 <title>tt</title>
@@ -43,6 +40,24 @@
 </head>
 
 <body>
+<header><c:import url="../layout/header.jsp"></c:import></header>
+<div id="headerBottom">
+<div id="hbh">
+<div id="hbhome"><i class="fa fa-home"></i></div>
+<div id="hbselect">
+<select onchange="location.href=this.value">
+<option selected="selected" value="./main">나의 Every Air</option>
+<option value="./memberUpdate">회원정보수정</option>
+<option value="./mileage">마일리지</option>
+<option value="./ticketCheck">예매내역</option>
+<option value="./park">주차장 예약내역</option>
+<option value="./limo">리무진 예약내역</option>
+</select>
+</div>
+</div>
+</div>
+
+<section>
 
 	<form method="post">
 		<input type="hidden" name="depLoc">
@@ -146,6 +161,8 @@
 
 	<div id="depLocDiv"></div>
 	<!-- 공항검색끝 -->
+	
+</section>
 
 	<!-- Jquery JS-->
 	<script src="../resources/vendor/jquery/jquery.min.js"></script>
