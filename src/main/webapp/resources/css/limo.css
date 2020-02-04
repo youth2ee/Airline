@@ -1,12 +1,21 @@
 @charset "UTF-8";
 
 .contain_wrap{
-	width: 1200px;
-	height: 330px;
+	width: 1300px;
+	height: 250px;
 	border: 1px solid #d5d5d5;
 	background-color: #fcfcfc;
 	margin: 0 auto;
 }
+.contain_wrap2{
+	width: 1300px;
+	height: 250px;
+	border: 1px solid #d5d5d5;
+	background-color: #fcfcfc;
+	margin: 0 auto;
+	padding-top: 25px;
+}
+
 
 .information{
 	width: 80px;
@@ -123,4 +132,33 @@
 	width: 240px;
 	height: 80px;
 	margin-left: 400px;
+}
+input, select{
+	height: 50px;
+}
+.checkbox{
+	width: 20px;
+	top: 18px;
+}
+
+.add{
+	background-color: #e6e6e6;
+	width: 100px;
+	height: 50px;
+	border-radius: 10px;
+}
+.del{
+	background-color: #e6e6e6;
+	width: 100px;
+	height: 50px;
+	border-radius: 10px;
+}
+.gobooks{
+	background-color: #e6e6e6;
+	width: 100px;
+	height: 50px;
+	border-radius: 10px;
+}
+.select, .select2{
+	height: 50px;
 }
