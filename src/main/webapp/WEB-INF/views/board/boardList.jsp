@@ -7,11 +7,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
-<c:import url="../template/boot.jsp"></c:import>
-<link rel="stylesheet" href="../resources/css/board/boardList.css">
-<link rel="stylesheet" href="../resources/css/asiana/reset.css">
-
+	<c:import url="../template/boot.jsp"></c:import>
+	<link rel="stylesheet" href="../resources/css/board/boardList.css">
+	<link rel="stylesheet" href="../resources/css/asiana/reset.css">
 </head>
 <body>
 
@@ -54,19 +52,19 @@
 			</li>
 			
 			<li class="tab-link" data-tab="tab-3">
-				<!-- <a href="#03" data-value="03"> --><span class="val">유류할증료</span><!-- </a> -->
+				<a href="./noticeList2?menu=EveryAir클럽"> <span class="val">EveryAir클럽</span></a>
 			</li>
 			<li class="tab-link" data-tab="tab-4">
-				<a href="#04" data-value="04"><span>EveryAir클럽</span></a>
+				<a href="./noticeList3?menu=유류할증료"><span>유류할증료</span></a>
 			</li>
 			<li class="tab-link" data-tab="tab-5">
-				<a href="#05" data-value="05"><span>제휴사소식</span></a>
+				<a href="./noticeList4?menu=제휴사소식"><span>제휴사소식</span></a>
 			</li>
 			<li class="tab-link" data-tab="tab-6">
-				<a href="#06" data-value="06"><span>기타</span></a>
+				<a href="./noticeList5?menu=기타"><span>기타</span></a>
 			</li>
 		</ul>
-		
+		</div>
 		<div id="tab-1" class="tab-content current">
 			<div class="bbs_list">
 				<ul>
@@ -124,20 +122,9 @@
 					
 		</div>
 		
-		<div id="tab-2" class="tab-content test">
+	<%-- 	<div id="tab-2" class="tab-content test">
 				<div class="bbs_list">
-				<ul>
-			<!-- 		<li class="bg_point">
-						<div class="left">
-							<div class="title">
-								<p class="txt"></p>
-							</div>
-						</div>
-						<div class="right">
-							<span class="views"></span>
-							<span class="date"></span>
-						</div>
-					</li> -->						
+				<ul>					
 					
 					<c:forEach items="${list}" var = "vo">
 					<li>
@@ -188,7 +175,7 @@
 		<div id="tab-5" class="tab-content"></div>
 		<div id="tab-6" class="tab-content"></div>
 		
-	</div>
+	</div> --%>
 	
 <%-- 	<div class="paging">
 			

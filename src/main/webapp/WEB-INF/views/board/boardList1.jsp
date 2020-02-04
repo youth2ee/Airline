@@ -7,11 +7,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
-<c:import url="../template/boot.jsp"></c:import>
-<link rel="stylesheet" href="../resources/css/board/boardList.css">
-<link rel="stylesheet" href="../resources/css/asiana/reset.css">
-
+	<c:import url="../template/boot.jsp"></c:import>
+	<link rel="stylesheet" href="../resources/css/board/boardList.css">
+	<link rel="stylesheet" href="../resources/css/asiana/reset.css">
 </head>
 <body>
 
@@ -28,6 +26,8 @@
 
 <div id="container">
 	<h3>공지사항</h3>
+	
+	<!--- 검색 --->
 	<form id="frm" action="./${board}List1">
 	<div class="total_search_input">
 		<div class="search_inner">
@@ -43,32 +43,39 @@
 		</div>
 	</div>
 	</form>	
-		
+	
+	<!--- tab --->	
 	<div class="tab_wrap">
 		<ul class="tabs">
+		
 			<li class="tab-link" data-tab="tab-1">
-					<a href="./noticeList"><span>전체</span></a>
-			</li>
-			
+					<a href="./noticeList">
+						<span> 전체 </span></a>
+			</li>		
 			<li class="tab-link current" data-tab="tab-2">
-					<a href="./noticeList1?menu=EveryAir소식"><span class="val">EveryAir소식</span></a>			
-			</li>
-			
+					<a href="./noticeList1?menu=EveryAir소식">
+						<span class="val"> EveryAir소식 </span></a>			
+			</li>			
 			<li class="tab-link" data-tab="tab-3">
-				<!-- <a href="#03" data-value="03"> --><span class="val">유류할증료</span><!-- </a> -->
+					<a href="./noticeList2?menu=EveryAir클럽">
+						 <span class="val"> EveryAir클럽 </span></a>
 			</li>
 			<li class="tab-link" data-tab="tab-4">
-				<a href="#04" data-value="04"><span>EveryAir클럽</span></a>
+				<a href="./noticeList3?menu=유류할증료">
+					<span> 유류할증료 </span></a>
 			</li>
 			<li class="tab-link" data-tab="tab-5">
-				<a href="#05" data-value="05"><span>제휴사소식</span></a>
+				<a href="./noticeList4?menu=제휴사소식">
+					<span> 제휴사소식 </span></a>
 			</li>
 			<li class="tab-link" data-tab="tab-6">
-				<a href="#06" data-value="06"><span>기타</span></a>
+				<a href="./noticeList5?menu=기타">
+					<span> 기타 </span></a>
 			</li>
 		</ul>
 		
-		<div id="tab-1" class="tab-content">
+		<!--- tab-content --->
+		<div id="tab-2" class="tab-content test current">
 			<div class="bbs_list">
 				<ul>
 			<!-- 		<li class="bg_point">
@@ -83,64 +90,7 @@
 						</div>
 					</li> -->						
 					
-					<c:forEach items="${list}" var = "vo">
-					<li>
-						<div class="left">
-							<div class="title">
-								<a href="#">
-									<em>${vo.title}</em>
-								</a>
-							</div>
-							<p class="txt">${vo.contents}</p>
-						</div>
-						<div class="right">
-							<div class="right_sub">
-							<span class="views">조회수: ${vo.hit}</span>
-							<span class="date">${vo.regDate}</span>
-							</div>
-						</div>
-					</li>
-					</c:forEach>
-				 </ul>	
-			</div>
-			<%-- <div class="paging">
-			
-			<a href="./noticeList1?curPage=1" class="btn_first btn_common">
-			</a>
-		
-		 	  <c:if test = "${pager.curBlock>1}"> 
-				<a href="./noticeList1?curPage=${pager.startNum-1}" class="btn_prev btn_common"></a>	
-			 </c:if> 
-						
-			<c:forEach begin="${pager.startNum}" end = "${pager.lastNum}" var="i">
-				<a href="./noticeList1?curPage=${i}" class="pagingNo" id="page${i}">${i}</a>
-			</c:forEach>
-			
-			<c:if test = "${pager.curBlock<pager.totalBlock}">
-			<a href="./noticeList1?curPage=${pager.lastNum+1}" class="btn_next btn_common"></a>			
-			</c:if>		
-			<fmt:parseNumber var="pages" integerOnly="true" value="${tc/10}"/>			
-			<a href="./noticeList1?curPage=${pages+1}" class="btn_last btn_common"></a>
-		</div> --%>
-					
-		</div>
-		
-		<div id="tab-2" class="tab-content test current">
-				<div class="bbs_list">
-				<ul>
-			<!-- 		<li class="bg_point">
-						<div class="left">
-							<div class="title">
-								<p class="txt"></p>
-							</div>
-						</div>
-						<div class="right">
-							<span class="views"></span>
-							<span class="date"></span>
-						</div>
-					</li> -->						
-					
-					<c:forEach items="${list}" var = "vo">
+				<c:forEach items="${list}" var = "vo">
 					<li>
 						<div class="left">
 							<div class="title">
@@ -161,123 +111,50 @@
 				 </ul>	
 			</div>
 			
-			<div class="paging">
-			
-			<a href="./noticeList1?menu=EveryAir소식&curPage=1" class="btn_first btn_common">
-			</a>
-		
-		 	  <c:if test = "${pager.curBlock>1}"> 
+			<!--- paging --->
+			<div class="paging">			
+				<a href="./noticeList1?menu=EveryAir소식&curPage=1" class="btn_first btn_common"></a>
+			<c:if test = "${pager.curBlock>1}"> 
 				<a href="./noticeList1?menu=EveryAir소식&curPage=${pager.startNum-1}" class="btn_prev btn_common"></a>	
-			 </c:if> 
-						
+			 </c:if> 						
 			<c:forEach begin="${pager.startNum}" end = "${pager.lastNum}" var="i">
-
 				<a href="./noticeList1?menu=EveryAir소식&curPage=${i}" class="pagingNo" id="page${i}">${i}</a>
-			</c:forEach>
-			
+			</c:forEach>		
 			<c:if test = "${pager.curBlock<pager.totalBlock}">
-			<a href="./noticeList1?menu=EveryAir소식&curPage=${pager.lastNum+1}" class="btn_next btn_commont"></a>			
+				<a href="./noticeList1?menu=EveryAir소식&curPage=${pager.lastNum+1}" class="btn_next btn_commont"></a>			
 			</c:if>		
 			<fmt:parseNumber var="pages" integerOnly="true" value="${tc/10}"/>			
-			<a href="./noticeList1?menu=EveryAir소식&curPage=${pages+1}" class="btn_last btn_common"></a>
-		</div>
-		</div>
-		
-		
-		<div id="tab-3" class="tab-content"></div>
-		<div id="tab-4" class="tab-content"></div>
-		<div id="tab-5" class="tab-content"></div>
-		<div id="tab-6" class="tab-content"></div>
-		
+				<a href="./noticeList1?menu=EveryAir소식&curPage=${pages+1}" class="btn_last btn_common"></a>
+			</div>
+		</div>		
 	</div>
-	
-<%-- 	<div class="paging">
-			
-			<a href="./noticeList?curPage=1" class="btn_first btn_common">
-			</a>
-		
-		 	  <c:if test = "${pager.curBlock>1}"> 
-				<a href="./noticeList?curPage=${pager.startNum-1}" class="btn_prev btn_common"></a>	
-			 </c:if> 
-						
-			<c:forEach begin="${pager.startNum}" end = "${pager.lastNum}" var="i">
-
-				<a href="./noticeList?curPage=${i}" class="pagingNo" id="page${i}">${i}</a>
-			</c:forEach>
-			
-			<c:if test = "${pager.curBlock<pager.totalBlock}">
-			<a href="./noticeList?curPage=${pager.lastNum+1}" class="btn_next btn_common"></a>			
-			</c:if>		
-			<fmt:parseNumber var="pages" integerOnly="true" value="${tc/10}"/>			
-			<a href="./noticeList?curPage=${pages+1}" class="btn_last btn_common"></a>
-	</div> --%>
 </div>
 
 
+<!--- script --->
+	<script type="text/javascript">			
 
-
-	<script type="text/javascript">
+	/** paging **/
+	$("#page${pager.curPage}").addClass("on");
 		
+	var kind = '${pager.kind}';
+	if(kind == ''){
+			kind = "kt";
+		}
+	$("#"+kind).prop("selected", true);
 	
-		/* paging  */
-		$("#page${pager.curPage}").addClass("on");
-		
-	 	var kind = '${pager.kind}';
-		if(kind == ''){
-				kind = "kt";
-			}
-		$("#"+kind).prop("selected", true);
-	
-		 $('.list').click(function(){
-			$("#curPage").val($(this).attr("id"));
-			alert("ok");
-			$("#frm").submit();
-			
-			}); 
 
-		
-		/* tab */
-		$('ul.tabs li').click(function(){
-			var tab_id = $(this).attr('data-tab');
+	/** tab **/
+	$('ul.tabs li').click(function(){
+		var tab_id = $(this).attr('data-tab');
 
 		$('ul.tabs li').removeClass('current');
 		$('.tab-content').removeClass('current');
-
+		
 		$(this).addClass('current');
 		$("#"+tab_id).addClass('current');
-		});
-
-		
-		/* tab 넘기기 */
-/* 	$('body').on('click','.tab-link',function(){
-				var menu = $(this).find('.val').text();
-				var curPage = 1;
-				var search = $('#searchText').val();
-				var aa = document.getElementById("kind");
-				kind = aa.options[aa.selectedIndex].value;
-								
- 	$.ajax({
-					data : {
-						menu:menu,
-						kind:kind,
-						curPage:curPage,
-						search:search						
-						},
-					type : "GET",
-					url : "./subNoticeList",
-					success : function(data){
-						
-							$('.test').html(data);
-						}
-
-					});
-		
-			});	 
-
- */
-	 
-		
-		
+	});
+			
 	</script>
 	
 </body>
