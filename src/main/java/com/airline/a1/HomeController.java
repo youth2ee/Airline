@@ -2,7 +2,9 @@ package com.airline.a1;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -60,7 +62,6 @@ public class HomeController {
 	@GetMapping("indexSearch")
 	public void indexSearch(Model model, String search) throws Exception {
 		if (search != "") {
-			/* System.out.println(search); */
 			List<BoardVO> ar = searchService.searchTotalList(search);
 			
 			  for(BoardVO con:ar) { 
@@ -69,8 +70,6 @@ public class HomeController {
 				  int num = tcon.indexOf(search);
 				  int tlen = tcon.length();
 				  
-				/* System.out.println(num); */
-				  
 				  if(num > 10) {
 					  tcon = tcon.substring(num-10);
 				  } else {
@@ -78,6 +77,15 @@ public class HomeController {
 				}
 				  con.setTextContents(tcon);
 			  }
+			  
+			/*
+			 * SearchRankingVO newVO = searchService.rListSelect();
+			 * 
+			 * Map<String, Integer> tolist = searchService.listUpdate(newVO);
+			 * model.addAttribute("tolist", tolist);
+			 */
+			  
+			  
 			 
 			model.addAttribute("search", search);
 			model.addAttribute("tlist", ar);
@@ -106,15 +114,10 @@ public class HomeController {
 			 * e.printStackTrace(); }
 			 */
 			
-			// string to extract keywords 
 			String strToExtrtKwrd = search; 
-			// init KeywordExtractor 
 			KeywordExtractor ke = new KeywordExtractor(); 
-			// extract keywords 
 			KeywordList kl = ke.extractKeyword(strToExtrtKwrd, true);
-			 
 
-			// print result
 			if(search.contains(" ")) {
 				if(kl.size() >= 4) {
 				  for(int i = 0; i < kl.size(); i++ ) {
@@ -131,8 +134,6 @@ public class HomeController {
 						  
 						  searchService.searchInsert(searchVO);
 					  	}
-					  
-					  
 					  
 					  }
 				}
@@ -215,7 +216,6 @@ public class HomeController {
 			}
 			  con.setTextContents(tcon);
 		  }
-		
 
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("cate", menu);
@@ -223,12 +223,29 @@ public class HomeController {
 		mv.setViewName("layout/searchList");
 
 		return mv;
-
 	}
 	
 	@GetMapping("rlist")
 	public ModelAndView rlist() throws Exception {
 		ModelAndView mv = new ModelAndView();
+		
+		List<SearchVO> cr = searchService.realList();
+		mv.addObject("rList", cr);
+		mv.setViewName("layout/rlist");
+		
+		return mv;
+	}
+	
+	@PostMapping("rlist")
+	public ModelAndView rlist(SearchRankingVO newVO, String rank) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+		System.out.println(rank);
+		
+		Map<String, Integer> tolist = searchService.listUpdate(newVO);
+
+		searchService.rListInsert(newVO);
+		mv.addObject("tolist", tolist);
 		
 		List<SearchVO> cr = searchService.realList();
 		mv.addObject("rList", cr);

@@ -7,6 +7,22 @@
 				<div class="rcon rrank">${status.index + 1}</div>
 				<div class="rcon rmain">${rl.svoca}</div>
 				<div class="rcon">${rl.total}</div>
+				
+				<div class="rup">
+				
+				<c:if test="${tolist[rl.svoca] > 0}">
+				<div class="rupc" title="up">▲</div>
+				</c:if>
+				
+				<c:if test="${tolist[rl.svoca] < 0}">
+				<div class="rupc" title="down">▼</div>
+				</c:if>
+				
+				<c:if test="${tolist[rl.svoca] == 0}">
+				<div class="rupc" title="middle">-</div>
+				</c:if>
+				
+				</div>
 			</div>
 
 		</c:forEach>
