@@ -5,4 +5,6 @@
 <div class="depFNum">${depFNum}</div>
 <div class="arrFNum">${arrFNum}</div>
 <div class="tripData">${tripData}</div>
-<div class="booked">${booked}</div>
+<div class="depSeat">${depSeat}</div>
+<div class="arrSeat">${arrSeat}</div>
+<div class="bookingNum">${bookingNum}</div>

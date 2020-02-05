@@ -254,7 +254,7 @@ input:focus {
 }
 
 input[type=checkbox] {
-	display: none;
+	display: none; 
 }
 
 input[type=checkbox]:disabled {
@@ -287,8 +287,7 @@ input[type=checkbox]:disabled {
 	cursor: pointer;
 	line-height: 22px;
 	padding-left: 22px;
-	background: url('../resources/newni/bookingSeat.png') left/22px
-		no-repeat;
+	background: url('../resources/newni/bookingSeat.png') left/22px	no-repeat;
 	height: 30px;
 }
 
@@ -331,12 +330,28 @@ label {
 	height: 20px;
 	background: url('../resources/newni/seatbgL.png') left/22px no-repeat;
 }
-.depSeat {
+.depSeat,.arrSeat {
 	width: 250px;
 	margin: 0 auto;
 	background-color: chartreuse;
 }
-
+.modalInnerBottom2 {
+    margin-top: 30px;
+    float: left;
+    margin-left: 215px;
+    text-align: center;
+}
+.depBookGo{
+	float: left;
+    width: 150px;
+    background-color: indianred;
+}
+.bookOk {
+	margin-left: 50px;
+    float: left;
+    width: 150px;
+    background-color: darkolivegreen;
+}
 </style>
 <title>체크인/좌석배정│아시아나항공</title>
 <body>
@@ -357,7 +372,7 @@ label {
 				<select id="numTypeSelect" style="width: 200px" title="종류별 번호">
 					<option value="reservNo">예약번호</option>
 					<option value="ticketNo">항공권번호</option>
-				</select> <input type="text" id="bookingNum" name="bookingNum" maxlength="8" placeholder="영문/숫자 조합 6자리 또는 숫자 8자리" title="번호 입력 예시 : 영문/숫자 조합 6자리 또는 숫자 8자리"
+				</select> <input type="text" id="bookingNum" value="M96X87" name="bookingNum" maxlength="8" placeholder="영문/숫자 조합 6자리 또는 숫자 8자리" title="번호 입력 예시 : 영문/숫자 조합 6자리 또는 숫자 8자리"
 					style="width: 280px; text-transform: uppercase;">
 
 
@@ -552,12 +567,13 @@ label {
       <h2>김포 -> 제주</h2>
     </div>
     <div class="modal-body">
+    <form id="frm2" method="post">
 		<div class="modalInnerWrap">
 			<div class="modalInnerLeft">
 				<div class="left1">
 					<div class="nameView">이름</div>
 						<div class="seatView">
-						<div class="depAir">
+				<div class="depAir">
 				<div class="depSeat">
 					<div class="seat1">
 						<c:forEach begin="1" end="31" var="i">
@@ -573,7 +589,7 @@ label {
 						 			<c:set var="c" value="C"/>
 						 		</c:otherwise>
 						 	</c:choose>
-							<label for="${depFNum}${c}${i}" class="bookable" title="${c}${i}"><input type="checkbox" id="${depFNum}${c}${i}" class="seat" title="${c}${i}"></label>
+							<label for="dep${c}${i}" class="bookable" title="${c}${i}"><input type="checkbox" id="dep${c}${i}" class="seat" title="${c}${i}"></label>
 						  </c:forEach>
 						  <br>
 						</c:forEach>
@@ -592,12 +608,54 @@ label {
 						 			<c:set var="c" value="F"/>
 						 		</c:otherwise>
 						 	</c:choose>
-							 <label for="${depFNum}${c}${i}" class="bookable" title="${c}${i}"><input type="checkbox" id="${depFNum}${c}${i}" class="seat" title="${c}${i}"></label>
+							 <label for="dep${c}${i}" class="bookable" title="${c}${i}"><input type="checkbox" id="dep${c}${i}" class="seat" title="${c}${i}"></label>
 						  </c:forEach>
 						  <br>
 						</c:forEach>
 					</div>
 				 </div>
+				</div>
+				<div class="arrAir" style="display: none">
+					<div class="arrSeat">
+						<div class="seat1">
+						<c:forEach begin="1" end="31" var="i">
+						 <c:forEach begin="1" end="3" var="j">
+						<c:choose>
+						 		<c:when test="${j eq 1}">
+						 			<c:set var="c" value="A"/>
+						 		</c:when>
+						 		<c:when test="${j eq 2}">
+						 			<c:set var="c" value="B"/>
+						 		</c:when>
+						 		<c:otherwise>
+						 			<c:set var="c" value="C"/>
+						 		</c:otherwise>
+						 	</c:choose>
+							<label for="arr${c}${i}" class="bookable" title="${c}${i}"><input type="checkbox" id="arr${c}${i}" class="seat" title="${c}${i}"></label>
+						  </c:forEach>
+						  <br>
+						</c:forEach>
+						</div>
+							<div class="seat2">
+						<c:forEach begin="1" end="32" var="i">
+						 <c:forEach begin="1" end="3" var="j">
+						 <c:choose>
+						 		<c:when test="${j eq 1}">
+						 			<c:set var="c" value="D"/>
+						 		</c:when>
+						 		<c:when test="${j eq 2}">
+						 			<c:set var="c" value="E"/>
+						 		</c:when>
+						 		<c:otherwise>
+						 			<c:set var="c" value="F"/>
+						 		</c:otherwise>
+						 	</c:choose>
+							 <label for="arr${arrFNum}${c}${i}" class="bookable" title="${c}${i}"><input type="checkbox" id="arr${arrFNum}${c}${i}" class="seat" title="${c}${i}"></label>
+						  </c:forEach>
+						  <br>
+						</c:forEach>
+					</div>
+						</div>
 				</div>
 						</div>
 						<div class="seatWarning"> 좌석지정 유의사항 안내</div>
@@ -626,11 +684,10 @@ label {
 							<td>가는편 좌석</td>
 							<td><input type="text" id="depSeat" name="depSeat" readonly="readonly"></td>
 						</tr>
-						<c:if test="${kind eq 1}">
 						<tr>
 							<td>오는편 좌석</td> 
 							<td><input type="text" id="arrSeat" name="arrSeat" readonly="readonly"></td>
-						</tr></c:if>
+						</tr>
 					</table>
 				</div>
 			</div>
@@ -640,7 +697,12 @@ label {
 			<div class="modalInnerBottom">
 			 	오는편 좌석 선택
 			</div>
+			<div class="modalInnerBottom2" style="display: none">
+			 	<div class="depBookGo">버튼1</div>
+			 	<div class="bookOk">버튼2</div>
+			</div>
 		</div>
+		</form>
     </div>
     <div class="modal-footer">
       <h3>KRW</h3>
@@ -649,7 +711,7 @@ label {
 
 </div>
 	<script type="text/javascript">
-		
+
 		var depChecks=[]; // 가는 비행기의 좌석에 체크된 항목을 담을 배열
 		var arrChecks=[]; // 오는 비행기의 좌석에 체크된 항목을 담을 배열
 		
@@ -710,7 +772,6 @@ label {
 				<c:forEach items='depChecks' var='depCheck'>
 					$("#depSeat").val(${depCheck}); // 선택한 좌석을 파라미터로 넘기기 위해 input에 담아줌
 				</c:forEach>
-				
 			}
 
 			if($(this).closest("div").parent().attr("class") == "arrSeat"){
@@ -723,35 +784,7 @@ label {
 					$("#arrSeat").val(${arrCheck});
 				</c:forEach>
 			}
-			
 		});
-
-		<c:forEach items='${booked}' var='book'> // 예매 되어있는 좌석 가져오기
-			console.log(${book.fnum});
-			$("input:checkbox[id=${book.fnum}${book.seatName}]").attr('disabled', true); // 이미 예매 되어있는 좌석을 선택불가로 바꿈
-			$("input:checkbox[id=${book.fnum}${book.seatName}]").parent().closest('label').addClass('booked'); // 색상도 바꿔줌
-			$("input:checkbox[id=${book.fnum}${book.seatName}]").parent().closest('label').removeClass('bookable'); // 색상도 바꿔줌
-		</c:forEach>
-		
-		$("#btn").click(function(){
-			if($(".arrAir").length != 0) { // 왕복
-				if($("#people").val() == $(".depAir input:checkbox:checked").length && $("#people").val() == $(".arrAir input:checkbox:checked").length)
-					$("#frm").submit();
-				else if($("#people").val() != $(".depAir input:checkbox:checked").length)
-					alert('가는편 비행기의 좌석을 확인');
-				else if($("#people").val() != $(".arrAir input:checkbox:checked").length)
-					alert('오는편 비행기의 좌석을 확인');
-			}
-			else if($(".arrAir").length == 0) { // 편도
-				if($("#people").val() == $(".depAir input:checkbox:checked").length)
-					$("#frm").submit();
-				else
-					alert('가는편 비행기의 좌석을 확인');
-			}
-		});
-		/* $("#btn_search").click(function(){
-			$("#frm").submit();
-		}); */
 
 		$("#btn_search").click(function() {
 			var  bookingNum = $('#bookingNum').val();
@@ -764,15 +797,28 @@ label {
 					var arrFNum = $(".ajax").find(".arrFNum").text();
 					var tripData = $(".ajax").find(".tripData").text();
 					var booked = $(".ajax").find(".booked").text();
+					var depSeat = $(".ajax").find(".depSeat").text();
+					var arrSeat = $(".ajax").find(".arrSeat").text();
+					var bookingNum = $(".ajax").find(".bookingNum").text();
+					
 					$("#myModal").css('display','block');
 					$("#people").val(people);
-					$("#depFNum").val(depFNum);
-					$("#arrFNum").val(arrFNum);
 					$("#tripData").val(tripData);
-					$("#booked").val(booked);
-					
-
-					
+					$('#bookingNum').val(bookingNum);
+					var depSplit = depSeat.split(",");
+					for(var i = 0; i < depSplit.length; i++){
+						var depSeat = depSplit[i].replace("[","").replace("]","").trim();
+						$(".depSeat input:checkbox[id=dep"+depSeat+"]").attr('disabled', true); // 이미 예매 되어있는 좌석을 선택불가로 바꿈
+						$(".depSeat input:checkbox[id=dep"+depSeat+"]").parent().closest('label').addClass('booked'); // 색상도 바꿔줌
+						$(".depSeat input:checkbox[id=dep"+depSeat+"]").parent().closest('label').removeClass('bookable'); // 색상도 바꿔줌
+						}
+					var arrSplit = arrSeat.split(",");
+					for(var i = 0; i < arrSplit.length; i++){
+						var arrSeat = arrSplit[i].replace("[","").replace("]","").trim();
+						$(".arrSeat input:checkbox[id=arr"+arrSeat+"]").attr('disabled', true); // 이미 예매 되어있는 좌석을 선택불가로 바꿈
+						$(".arrSeat input:checkbox[id=arr"+arrSeat+"]").parent().closest('label').addClass('booked'); // 색상도 바꿔줌
+						$(".arrSeat input:checkbox[id=arr"+arrSeat+"]").parent().closest('label').removeClass('bookable'); // 색상도 바꿔줌
+						}
 					var span = document.getElementsByClassName("close")[0];
 					span.onclick = function() {
 						  $("#myModal").css('display','none');
@@ -790,6 +836,30 @@ label {
 				}
 				
 			});
+		});
+		$(".modalInnerBottom").click(function(){
+			if($("#people").val() == $(".depAir input:checkbox:checked").length){
+				$(".depAir").css("display","none");
+				$(".arrAir").css("display","block");
+				$(".modalInnerBottom").css('display','none');
+				$(".modalInnerBottom2").css('display','block');
+			} else {
+				alert('좌석을 선택하세요.');
+			}
+		});
+		$(".depBookGo").click(function(){
+			$(".depAir").css("display","block");
+			$(".arrAir").css("display","none");
+			$(".modalInnerBottom").css('display','inline-block');
+			$(".modalInnerBottom2").css('display','none');
+		});
+		$(".bookOk").click(function(){
+			if($("#people").val() == $(".depAir input:checkbox:checked").length && $("#people").val() == $(".arrAir input:checkbox:checked").length){
+				$("#frm2").submit();
+			}
+			else{
+				alert('좌석 선택이 완료되지 않았습니다.');
+			}
 		});
 	</script>
 			

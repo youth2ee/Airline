@@ -2,6 +2,7 @@ package com.airline.a1.checkIn;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -90,6 +91,8 @@ public class SeatController {
 		BookingTicketVO bookingTicketVO = new BookingTicketVO();
 		bookingTicketVO.setBookingNum(bookingNum);
 		List<BookingTicketVO> bookingTicketVOs = seatService.getBookData(bookingTicketVO);
+		System.out.println(bookingTicketVOs.get(0).getDepFnum());
+		System.out.println(bookingTicketVOs.get(0).getArrFnum());
 		if (bookingTicketVOs.size() == 0) {
 			mv.addObject("result", 0);
 		} else if (bookingTicketVOs.get(0).getFlightBNum() != null) {
@@ -102,9 +105,18 @@ public class SeatController {
 				kindFlag = 1;
 			}
 			System.out.println("people : " + people);
-			List<SeatVO> depSeatVOs = seatService.depBookedSeat(bookingTicketVO);
-			List<SeatVO> arrSeatVOs = seatService.arrBookedSeat(bookingTicketVO);
+			List<SeatVO> depSeatVOs = seatService.depBookedSeat(bookingTicketVOs.get(0));
+			List<SeatVO> arrSeatVOs = seatService.arrBookedSeat(bookingTicketVOs.get(0));
 			List<SeatVO> seatVOs = seatService.getSeatData();
+			ArrayList<String> depSeat = new ArrayList<>();
+			ArrayList<String> arrSeat = new ArrayList<>();
+			System.out.println(bookingTicketVOs.get(0).getArrFnum());
+			for(int i=0; i < depSeatVOs.size(); i++) {
+				System.out.println(depSeatVOs.get(i).getSeatName());
+				System.out.println(arrSeatVOs.get(i).getSeatName());
+				depSeat.add(depSeatVOs.get(i).getSeatName());
+				arrSeat.add(arrSeatVOs.get(i).getSeatName());
+			}
 			mv.addObject("result", 2);
 			mv.addObject("kind", kindFlag);
 			mv.addObject("people", people);
@@ -112,6 +124,9 @@ public class SeatController {
 			mv.addObject("arrFNum", bookingTicketVOs.get(0).getArrFnum());
 			mv.addObject("tripData", bookingTicketVOs.get(0));
 			mv.addObject("booked", seatVOs);
+			mv.addObject("depSeat", depSeat);
+			mv.addObject("arrSeat", arrSeat);
+			mv.addObject("bookingNum",bookingNum);
 		}
 		return mv;
 	}
@@ -163,8 +178,15 @@ public class SeatController {
 
 	}
 
-	@PostMapping("seat")
+	@PostMapping("test")
 	public ModelAndView seat(SeatDataVO seatDataVO) throws Exception {
+		
+		System.out.println(seatDataVO);
+		
+		
+		
+		
+		
 		ModelAndView mv = new ModelAndView();
 		BookingTicketVO isCheck = new BookingTicketVO();
 		int depInsertCheck = 0;
