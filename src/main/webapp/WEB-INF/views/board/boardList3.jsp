@@ -10,18 +10,29 @@
 	<c:import url="../template/boot.jsp"></c:import>
 	<link rel="stylesheet" href="../resources/css/board/boardList.css">
 	<link rel="stylesheet" href="../resources/css/asiana/reset.css">
+	<link href="../resources/css/header.css" rel="stylesheet">
+<link href="../resources/css/mypage/mypageHeader.css" rel="stylesheet">
 </head>
 <body>
 
-<div class="location_bar">
-	<div class="inner">
-		<a href="#" class="home"></a>
-		<select onchange="if(this.value) location.href=(this.value);" id="location_select">
-			<option>공지사항</option>
-			<option>고객의말씀</option>
-			<option></option>
-		</select>	
-	</div>
+<header>
+<c:import url="../layout/header.jsp"></c:import>
+</header>
+
+<div id="headerBottom">
+<div id="hbh">
+<div id="hbhome"><i class="fa fa-home"></i></div>
+<div id="hbselect">
+<select onchange="location.href=this.value">
+<option selected="selected" value="./main">나의 Every Air</option>
+<option value="./memberUpdate">회원정보수정</option>
+<option value="./mileage">마일리지</option>
+<option value="./ticketCheck">예매내역</option>
+<option value="./park">주차장 예약내역</option>
+<option value="./limo">리무진 예약내역</option>
+</select>
+</div>
+</div>
 </div>
 
 <div id="container">
