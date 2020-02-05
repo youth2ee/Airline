@@ -11,6 +11,7 @@
 <c:import url="../template/boot.jsp"></c:import>
 <link rel="stylesheet" href="../resources/css/board/boardList.css">
 <link rel="stylesheet" href="../resources/css/asiana/reset.css">
+<link href="../resources/css/mypage/mypageHeader.css" rel="stylesheet">
 
 </head>
 <body>
