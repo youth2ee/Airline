@@ -47,13 +47,13 @@
 											<input type="text" id="lvvhclResveDate" name="endDate" readonly="readonly" aria-required="true">
 										</div>
 									</div>
-									<div class="frow">
+<!-- 									<div class="frow">
 										<p class="label"><span class="star">*</span> 차량 종류</p>
 										<ul class="chk_list">
 											<li><input type="radio" name="carKind" value="대형" id="parkngAr1" checked="checked"> <label for="parkngAr1" class="r_label">일반 차량</label></li>
 											<li><input type="radio" name="carKind" value="소형" id="parkngAr2"> <label for="parkngAr2" class="r_label">소형 차량</label></li>
 										</ul>
-									</div>
+									</div> -->
 						            <div id="resve_able_info" class="fc_wine" style="padding-top:10px;"></div>
 						            <div id="resve_able_info2" style="padding-top:0px;"></div>
 								</div>

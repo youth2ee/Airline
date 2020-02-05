@@ -17,7 +17,7 @@
   	</select>
   	
   	<insert id="resInsert" parameterType="com.airline.a1.park.pReservationVO">
-  		insert into pReservation values (0, #{carNum}, #{carKind}, curdate(), #{rate}, null,
-  		 #{startDate}, #{endDate}, #{areaNum}, #{airport})
+  		insert into pReservation values (0, #{carNum}, curdate(), #{rate}, #{id},
+  		 #{startDate}, #{endDate}, #{areaNum}, #{airport}, #{phone}, #{password})
   	</insert>
   </mapper>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -85,7 +86,15 @@ label { /* 주차구역 */
 	
 
 }
+
+
 </style>
+<link rel="stylesheet" type="text/css" href="https://flyasiana.com/C/pc/css/reset.css">
+<link rel="stylesheet" type="text/css" href="https://flyasiana.com/C/pc/css/common.css">
+<link rel="stylesheet" type="text/css" href="https://flyasiana.com/C/pc/css/layout.css">
+<link rel="stylesheet" type="text/css" href="https://flyasiana.com/C/pc/css/flyasiana.css">
+<link rel="stylesheet" type="text/css" href="https://flyasiana.com/C/pc/css/calendar.css">
+
 </head>
 <c:import url="../template/boot.jsp" />
 
@@ -97,7 +106,7 @@ label { /* 주차구역 */
 				<li class="s02 on"><span class="num">2</span>예약 신청</li>
 				<li class="s03"><span class="num">3</span>예약 요약</li>
 			</ul>
-			<form id="resveForm" name="resveForm" class="needs-validation" novalidate="novalidate">
+			<form id="resveForm" action="./resInsert" method="post">
 					<div id="step02" class="step on">
 						<h3 class="stitle01">예약 신청</h3>								
 						<div class="fcol_g section">
@@ -112,9 +121,33 @@ label { /* 주차구역 */
 										<div id="airportLotArea">${param.airport} 주차장</div>
 									</div>
 									<div class="frow">
+										<p class="label" style="line-height: 40px; text-align: left;">예상 요금</p>										
+										<div id="rateexpect" style="float: left;">원</div>
+										
+											<div class="tooltip_wrap">
+												<a href="javascript:tooltipBlock();" class="btn_info" style="position: absolute; top: -10px; left: 200px;">도움말</a> 
+												<div class="layer_tooltip" style="width: 348px; display: none; position: absolute; top: -50px; left: 220px;">
+													<div class="inner">
+														<ul class="pwd_rule">
+															<li>평일 일일 요금 : <fmt:formatNumber>${park.perDay}</fmt:formatNumber> 원</li> 	
+															<li>주말,공휴일 일일 요금 : <fmt:formatNumber>${park.perWeek}</fmt:formatNumber> 원</li>		
+															<li>숫자<span class="unable">불가</span></li>		
+															<li>특수문자<span class="unable">불가</span></li> 	
+															<li>한글, 공백 입력 불가<span class="able">가능</span></li> 				
+															<li>20자 이내<span class="able">가능</span></li> 		
+															<li></li>
+														</ul>
+													</div>
+													<a href="javascript:tooltipNone();" class="tooltip_close"><span class="hidden">닫기</span></a> 
+												</div>	
+											</div>
+										
+									</div>
+									
+									<div class="frow">
 										<label for="acPlate" class="label"><span class="star">*</span> 차량번호</label>
 										<div class="full">
-											<input type="text" id="acPlate" name="carNum" maxlength="20" placeholder="예) 00가0000, 서울00가0000, 외교000000" aria-required="true">
+											<input type="text" id="carNum" name="carNum" maxlength="20" placeholder="예) 00가0000, 서울00가0000, 외교000000" aria-required="true">
 										</div>
 									</div>
 									<div class="frow">
@@ -123,46 +156,32 @@ label { /* 주차구역 */
 											<c:when test="${not empty member}">
 												<div class="full">
 										        	${member.phone}
+										        	<input type="hidden" id="phone" name="phone" value="${member.phone}">
 												</div>
 											</c:when>
 											<c:otherwise>
 												<div class="full">
-											        <input type="text" id="acCttpc" name="acCttpc" maxlength="11" placeholder="예) 01012345678 숫자만 기입">
+											        <input type="text" id="phone" name="phone" maxlength="11" placeholder="예) 01012345678 숫자만 기입">
 												</div>
 											</c:otherwise>
 										</c:choose>
-									</div>
-									<div class="frow">
-										<label for="acEmailAddress" class="label"><span class="star">*</span> 이메일 주소</label>
-										<c:choose>
-											<c:when test="${not empty member}">
-												<div class="full">
-													${member.email}
-												</div>
-											</c:when>
-											<c:otherwise>
-												<div class="full">
-													<input type="text" id="acEmailAddress" name="acEmailAddress" maxlength="100" placeholder="예) iam@domain.com" aria-required="true">
-												</div>
-											</c:otherwise>
-										</c:choose>
-									
 									</div>
 									<c:choose>
 											<c:when test="${not empty member}">
-												
+												<input type="hidden" id="acPassword" name="password" value="1234" maxlength="4"><br>
+												<input type="hidden" id="acPassword2" value="1234" maxlength="4">
 											</c:when>
 											<c:otherwise>
 												<div class="frow">
 													<label for="acPassword" class="label"><span class="star">*</span> 비밀번호</label>
 													<div class="full">
-														<input type="password" id="acPassword" name="acPassword" maxlength="4" placeholder="4자리(숫자가능, 예: 2019, 102a, nprs)" aria-required="true"><br>
+														<input type="password" id="acPassword" name="password" maxlength="4" placeholder="4자리(숫자가능, 예: 2019, 102a, nprs)" aria-required="true"><br>
 													</div>
 												</div>									
 												<div class="frow">
 													<label for="acPassword2" class="label"><span class="star">*</span> 비밀번호 확인</label>
 													<div class="full">
-														<input type="password" id="acPassword2" name="acPassword2" maxlength="4" placeholder="4자리(숫자가능, 예: 2019, 102a, nprs)" aria-required="true">
+														<input type="password" id="acPassword2" maxlength="4" placeholder="4자리(숫자가능, 예: 2019, 102a, nprs)" aria-required="true">
 													</div>
 												</div>									
 											</c:otherwise>
@@ -180,10 +199,6 @@ label { /* 주차구역 */
 										<li>(장애인 차량) 장애인 차량 주차면이 별도로 마련되어 있습니다. (엘리베이터 및 에스컬레이터 없음)</li>
 										<li>(주차요금) 주차요금은 실제 입출차 시간을 기준으로 부과됩니다.</li>
 									</ul>
-									<div class="map_pop">
-										<a href="#" class="btn_close btnParkingLotClose"><img src="/images/resve/common/btn_pclose.jpg" alt="주차위치 팝업 닫기"></a>
-										<div class="map_box"><p><img src="/images/resve/sub/map01.jpg" class="map" alt=""></p></div>
-									</div>
 								</div>
 							</div>
 						</div>	
@@ -192,11 +207,7 @@ label { /* 주차구역 */
 						<h3 class="stitle01">주차 위치 선택</h3>
                         <div class="map_box02">
 							<div class="container">
-							
-								<input type="date" name="startDate" value="${param.startDate}" style="display: none;">
-								<input type="date" name="endDate" value="${param.endDate}" style="display: none;">
-								<input type="hidden" name="airport" value="${param.airport}" >
-							
+									
 								<!-- 예약 못하는 자리  -->
 								<c:forEach items="${list}" var="vo">
 									<input type="hidden" value="${vo.areaNum}" class="check"><br>
@@ -241,33 +252,27 @@ label { /* 주차구역 */
 									</c:forEach>
 							</div>
 							<br>
-							<div style="">
-							예상요금 : <input type="text" id="rate" name="rate"><br>
-							차량번호 : <input type="text" id="carNum" name="carNum"><br>
-							차량종류 : <input type="text" id="carKind" name="carKind"><br>
-							
-							</div>
 							</div>
 							<c:forEach items="${rest}" var="vo" varStatus="var">
 							<input type="hidden" id="r${var.count}" class="resttext" value="${vo}">
 							</c:forEach>
                         </div>
 						<div class="btn_area">
-						    <button id="btnNext" class="btn wine">예약하기</button>
+						    <button type="button" id="btnNext" class="btn wine">예약하기</button>
 						</div>
 					</div>
 					<!-- //step02 -->					
-				<input type="hidden" id="startDate" name="resveTempDe" value="${param.startDate}">
-				<input type="hidden" id="endDate" name="resveTempSn" value="${param.endDate}">
-				<input type="hidden" id="airportCode" name="airportCode" value="1">
-				<input type="hidden" id="iLotArea" name="iLotArea" value="2">
-				<input type="hidden" id="entvhclResveDt" name="entvhclResveDt" value="2020-02-29 07:20">
-				<input type="hidden" id="lvvhclResveDt" name="lvvhclResveDt" value="2020-03-04 18:10">
-				<input type="hidden" id="parkngAr" name="parkngAr" value="GNRL">
-				<input type="hidden" id="acPlateEnc" name="acPlateEnc">
+				<input type="hidden" id="startDate" name="startDate" value="${param.startDate}">
+				<input type="hidden" id="endDate" name="endDate" value="${param.endDate}">
+				<input type="hidden" id="rate" name="rate" value="1">
+				<input type="hidden" id="airport" name="airport" value="${param.airport}">
+				<input type="hidden" id="id" name="id" value="${member.id}">
+				<input type="hidden" id="selectedArea" name="areaNum" value="">
 			</form>
 		</div>
-
+<input type="radio" name="name" style="width: 10px; height: 10px; background-color: black;">
+<input type="radio" name="name" style="width: 10px; height: 10px; background-color: black;">
+<input type="radio" name="name" style="width: 10px; height: 10px; background-color: black;">
 <script type="text/javascript">
 
 	//시작일데이터 받기
@@ -287,9 +292,7 @@ label { /* 주차구역 */
 	var day = endDateCompare - startDateCompare;
 	var cday = 24*60*60*1000;
 	day = day/cday+1;
-
-
-	
+	var ratekor = '';
 	//선택기간 안에 주말이 몇번인가 체크
 	for(var i = 0; i < day ; i++){
 		var check = startDateCompare.getDay()+i;
@@ -297,21 +300,8 @@ label { /* 주차구역 */
 			count++;
 		}
 	}
-
-
-	var per = 100;
-	//요금계산
-	var rate = (day-count) * ${park.perDay} + count*${park.perWeek};
-
-	//장기이용 할인
-	if(day>6){
-		if(day>14){
-			per = 90;
-		}else{
-			per = 95;
-		}
-	}
-
+	var areachoose = false;
+	
 	
 	$(".resttext").each(function(){
 		var restDate = $(this).val();
@@ -324,6 +314,35 @@ label { /* 주차구역 */
 		}
 	});
 
+	var weekday = day - count;
+	
+	var per = 100;
+	//요금계산
+	
+	//장기이용 할인
+	var discount = '';
+	if(day>6){
+		if(day>14){
+			discount = '10% 할인';
+			per = 90;
+		}else{
+			discount = '5% 할인';
+			per = 95;
+		}
+	}
+	var rate = (day-count) * ${park.perDay} + count*${park.perWeek};
+	var ratefinal = rate*per/100;
+
+	
+	function numberWithCommas(x) {
+		return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
+	
+	var ratevisible = numberWithCommas(ratefinal);
+
+	$("#rateexpect").html(ratevisible + ' 원');
+	
+	$("#rate").val(ratefinal);
 	
 		//주차불가능지역 불가능하게 만들기
 		$(".check").each(function(){
@@ -350,34 +369,81 @@ label { /* 주차구역 */
 
 
 	//좌석 선택 이벤트
-	$(".la").click(function(){
-
+	$(".la").click(function(e){
 		//예약가능여부 체크
 		if($(this).hasClass('booked')){
 			alert('예약불가능한 자리입니다.');
+		}else if($(this).hasClass('booking')){
+			alert('이미선택한 자리입니다.');
 		}else{
 
 			$(".la").each(function(){
 				$(this).removeClass('booking');
-
 			});
 			
 			$(this).addClass('booking');
-			
 
-
+			$("#selectedArea").val($(this).children('input').val());
 			if($(this).hasClass('etc')){
-				alert('장애인 주차구역 선택');
-				per = per - 50;
+				alert('장애인 주차구역 선택 \n 요금이 50% 추가할인 됩니다.');
+				var rateHandi = ratefinal/2;
+				$("#rate").val(rateHandi);
+				$("#rateexpect").html(numberWithCommas(rateHandi) + ' 원');
+				$(".pwd_rule  > li").eq(6).html('장애인 차량 할인 : 50%할인 <span class="able">가능</span>');
+			}else{
+				$("#rate").val(ratefinal);
+				$("#rateexpect").html(numberWithCommas(ratefinal) + ' 원');
+				$(".pwd_rule  > li").eq(6).html('장애인 차량 할인 : 해당 사항 없음 <span class="unable">불가능</span>');
 			}
-
-			rate = rate*per/100;
-			$("#rate").val(rate);
+			areachoose = true;
+			
 		}
-
-		
+		e.preventDefault();
 	});
 
+	function tooltipBlock(){
+		$(".layer_tooltip").css("display","block");
+	}
+	function tooltipNone(){
+		$(".layer_tooltip").css("display","none");
+	}
+
+	$(".pwd_rule  > li").eq(2).html('총 이용 일 : '+day+'일');
+	$(".pwd_rule  > li").eq(3).html('평일  : '+weekday+'일');
+	$(".pwd_rule  > li").eq(4).html('주말, 공휴일 : '+count+'일');
+
+	if(discount == ""){
+		$(".pwd_rule  > li").eq(5).html('장기이용 할인 : 해당 사항 없음 <span class="unable">불가</span>');
+	}else{
+		$(".pwd_rule  > li").eq(5).html('장기이용 할인 : '+discount+'<span class="able">가능</span>');
+
+	}
+	$(".pwd_rule  > li").eq(6).html('장애인 차량 할인 : 해당 사항 없음 <span class="unable">불가능</span>');
+
+	$("#btnNext").click(function(){
+		var carNum = $("#carNum").val();
+		var phone = $("#phone").val();
+		var password = $("#acPassword").val();
+		var password2 = $("#acPassword2").val();
+		var areaNum = $("#selectedArea").val();
+
+		if(carNum == ""){
+			alert('차량번호를 입력해주세요');
+			$("#carNum").focus();
+		}else if(phone == ""){
+			alert('전화번호를 입력해주세요');
+			$("#phone").focus();
+		}else if(password != password2 || password == "" || password.length != 4){
+			alert('비밀번호를 확인해주세요');
+			$("#acPassword").focus();
+		}else if(areaNum == ""){
+			alert('주차할 자리를 선택해주세요');
+			$("#selectedArea").focus();
+		}else{
+			$("#resveForm").submit();
+		}
+		
+	});
 </script>
 </body>
 </html>
