@@ -1,5 +1,43 @@
 @charset "UTF-8";
 
+.contain_wrap{
+	width: 1300px;
+	height: 250px;
+	border: 1px solid #d5d5d5;
+	background-color: #fcfcfc;
+	margin: 0 auto;
+	margin-top: 50px;
+}
+.contain_wrap2{
+	width: 1300px;
+	height: 250px;
+	border: 1px solid #d5d5d5;
+	background-color: #fcfcfc;
+	margin: 0 auto;
+	padding-top: 25px;
+	margin-top: 50px;
+}
+
+
+.information{
+	width: 80px;
+	height: 35px;
+	background-color: silver;
+	margin-right: 20px;	
+	display: inline-block;
+}
+
+.information_info{
+	width: 960px;
+	height: 35px;
+	background-color: blue;
+	display: inline-block;
+}
+
+.information_info_id{
+	width: 200px;
+	height: 35px;
+}
 .modal-content{
 	width: 700px;
 }
@@ -96,4 +134,37 @@
 	width: 240px;
 	height: 80px;
 	margin-left: 400px;
+}
+input, select{
+	height: 50px;
+}
+.checkbox{
+	width: 20px;
+	top: 18px;
+}
+
+.add{
+	background-color: #c60b15;
+	width: 100px;
+	height: 50px;
+	border-radius: 10px;
+	color: white;
+}
+.del{
+	background-color: #cc484f;
+	width: 100px;
+	height: 50px;
+	border-radius: 10px;
+	color: white;
+}
+.gobooks{
+	background-color: white;
+	border: 2px solid #c60b15;
+	width: 100px;
+	height: 50px;
+	border-radius: 10px;
+	color: #c60b15;
+}
+.select, .select2{
+	height: 50px;
 }
