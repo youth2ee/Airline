@@ -47,8 +47,10 @@
 						<div class="tooltiptext1">
 							<div class="search__container">
 								<form action="${pageContext.request.contextPath}/indexSearch" id="frm2">
-							  		  <input class="search__input" type="text" placeholder="Search" name="search">
-							  		  <i class='fas fa-search' id="ssbtn"></i>
+
+							  	  <input class="search__input" type="text" placeholder="Search" name="search">
+							  	  <i class='fas fa-search' id="ssbtn"></i>
+
 							    </form>
 							</div>
 						</div>
@@ -67,3 +69,4 @@ $('body').on('click', '#ssbtn', function(){
 	$('#frm2').submit();
 });
 </script>
+
