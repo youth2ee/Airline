@@ -314,30 +314,7 @@ public class HomeController {
 		return check;
 	}
 	
-	@GetMapping("rlist")
-	public ModelAndView rlist() throws Exception {
-		ModelAndView mv = new ModelAndView();
-		
-		List<SearchVO> cr = searchService.realList();
-
-		RankingVO rankingVO = new RankingVO();		
-		rankingVO.setRank1(cr.get(0).getSvoca());
-		rankingVO.setRank2(cr.get(1).getSvoca());
-		rankingVO.setRank3(cr.get(2).getSvoca());
-		rankingVO.setRank4(cr.get(3).getSvoca());
-		rankingVO.setRank5(cr.get(4).getSvoca());
-		rankingVO.setRank6(cr.get(5).getSvoca());
-		rankingVO.setRank7(cr.get(6).getSvoca());
-		rankingVO.setRank8(cr.get(7).getSvoca());
-		rankingVO.setRank9(cr.get(8).getSvoca());
-		rankingVO.setRank10(cr.get(9).getSvoca());
-		
-		searchService.rankListUpdate(rankingVO);
-		mv.addObject("rList", cr);
-		mv.setViewName("layout/rlist");
-		
-		return mv;
-	}
+	
 	@GetMapping("sorttest")
 	public void sorttest() throws Exception{
 		
