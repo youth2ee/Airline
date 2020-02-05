@@ -19,7 +19,8 @@ public class CustomSchedule {
 	    List<SearchVO> ar = searchService.realList();
 		SearchRankingVO searchRankingVO = new SearchRankingVO();
 		
-		System.out.println("스케쥴링 실행중");
+	
+			//System.out.println("스케쥴링 실행중");
 		
 			 searchRankingVO.setRank1(ar.get(0).getSvoca());
 			 searchRankingVO.setRank2(ar.get(1).getSvoca());
