@@ -205,16 +205,16 @@ $(document).ready(function() {
 						<div class="swiper-container" style="height: max-content">
 							<div class="swiper-wrapper">
 								<div class="swiper-slide"
-									style="background: url('https://ozimg.flyasiana.com/main_banner/20200115_mini.jpg'); height: 180px; margin-right: 8px;">Slide
+									style="background: url('https://ozimg.flyasiana.com/main_banner/20200115_mini.jpg'); height: 180px; margin-right: 8px; background-size: cover;">Slide
 									1</div>
 								<div class="swiper-slide"
-									style="background: url('https://ozimg.flyasiana.com/image_fixed/destination/des_M_CJU.jpg'); height: 180px; margin-right: 8px;">Slide
+									style="background: url('https://ozimg.flyasiana.com/image_fixed/destination/des_M_CJU.jpg'); height: 180px; margin-right: 8px;background-size: cover;">Slide
 									2</div>
 								<div class="swiper-slide"
-									style="background: url('https://ozimg.flyasiana.com/image_fixed/destination/des_M_FUK.jpg'); height: 180px; margin-right: 8px;">Slide
+									style="background: url('https://ozimg.flyasiana.com/image_fixed/destination/des_M_FUK.jpg'); height: 180px; margin-right: 8px;background-size: cover;">Slide
 									3</div>
 								<div class="swiper-slide"
-									style="background: url('https://ozimg.flyasiana.com/image_fixed/destination/des_M_OKA.jpg'); height: 180px; margin-right: 8px;">Slide
+									style="background: url('https://ozimg.flyasiana.com/image_fixed/destination/des_M_OKA.jpg');height: 180px; margin-right: 8px;background-size: cover;">Slide
 									4</div>
 							</div>
 							<!-- Add Pagination -->
