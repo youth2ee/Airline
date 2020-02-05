@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-        <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,11 +47,11 @@ label {font-size:16px !important; color:#151515 !important;}
 							<div class="col01">
 								<label for="" class="label">이용예정일시</label>
 								<div class="cal_wrap">
-									<input type="text" id="resveBeginDt" name="resveBeginDt" value="2020-01-19" readonly="readonly">
+									<input type="text" id="resveBeginDt" name="startDate" value="${VO.startDate}" readonly="readonly">
 								</div>
 								<span class="bar">-</span>
 								<div class="cal_wrap">
-									<input type="text" id="resveEndDt" name="resveEndDt" value="2020-02-18" readonly="readonly">
+									<input type="text" id="resveEndDt" name="endDate" value="${VO.endDate}" readonly="readonly">
 								</div>
 							</div>
 						
@@ -71,14 +71,19 @@ label {font-size:16px !important; color:#151515 !important;}
 						<th scope="col"></th>
 					</tr></thead>
 					<tbody>
-					<tr>
-						<td class="t_hidden"><a style="color:#1E3269" onclick="$.view('11334')">7908BB0001</a></td>
-						<td class="t_hidden">김포공항</td>
-						<td class="t_hidden">52구7908</td>
-						<td class="t_hidden">2020-02-11 07:10 ~ 2020-02-19 18:30</td>
-						<td class="t_hidden">일반</td>
-						<td class="t_hidden">예약완료</td>
-						<td><button class="btn small wine" onclick="$.edit('11334')">예약변경</button><button class="btn small border" onclick="$.cancle('11334')">예약취소</button></td></tr></tbody>
+					<c:forEach items="${list}" var="dto">
+						<tr>
+							<td class="t_hidden"><a style="color:#1E3269" onclick="location.href='parkSelect?pResNum=${dto.pResNum}'">7908BB0001/${dto.pResNum}</a></td>
+							<td class="t_hidden">${dto.airport}</td>
+							<td class="t_hidden">${dto.carNum}</td>
+							<td class="t_hidden">${dto.startDate} ~ ${dto.endDate}</td>
+							<td class="t_hidden">일반</td>
+							<td class="t_hidden">예약완료</td>
+							<td><button class="btn small wine" onclick="$.edit('11334')">예약변경</button><button class="btn small border" onclick="$.cancle('11334')">예약취소</button></td>
+						
+						</tr>
+					</c:forEach>
+					</tbody>
 				</table>
 				<!-- //paginate -->
 			</div>

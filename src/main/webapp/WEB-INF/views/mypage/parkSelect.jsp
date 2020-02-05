@@ -51,19 +51,19 @@ line-height: 37px;
 							</div>
 							<div class="frow">
 								<p class="label">예약 주차
-								</p><div id="airportLotArea">김포공항 국내선 제2주차장</div>
+								</p><div id="airportLotArea">${VO.airport}</div>
 							</div>
 							<div class="frow">
 								<p class="label">차량번호
-								</p><div id="acPlate">52구7908</div>
+								</p><div id="acPlate">${VO.carNum}</div>
 							</div>
 							<div class="frow">
 								<p class="label">입차 예정일시</p>
-								<div id="entvhclResveDt">2020-02-11 07:10</div>
+								<div id="entvhclResveDt">${VO.startDate}</div>
 							</div>
 							<div class="frow">
 								<p class="label">출차 예정일시</p>										
-								<div id="lvvhclResveDt">2020-02-19 18:30</div>
+								<div id="lvvhclResveDt">${VO.endDate}</div>
 							</div>
 							<div class="frow">
 								<p class="label">차량종류</p>
@@ -71,12 +71,8 @@ line-height: 37px;
 							</div>					
 							<div class="frow">
 								<p class="label">휴대전화번호
-								</p><div id="acCttpc">010-3820-9098</div>
-							</div>
-							<div class="frow">
-								<p class="label">이메일 주소
-								</p><div id="acEmailAddress">pyj9088@gmail.com</div>
-							</div>							
+								</p><div id="acCttpc">${VO.phone}</div>
+							</div>						
 						</div>
 					</div>
 					<div class="btn_area">

@@ -74,8 +74,14 @@ public class ParkService {
 		
 		return parkMapper.parkCheck(pReservationVO);
 	}
+	//마이페이지주차내역조회
+	public List<pReservationVO> myReservation(pReservationVO pReservationVO) throws Exception{
+		return parkMapper.myReservation(pReservationVO);
+	}
 	
-	
+	public pReservationVO resSelect(pReservationVO pReservationVO) throws Exception{
+		return parkMapper.resSelect(pReservationVO);
+	}
 	
 	//인천공항 주차정보 호출
 	public void test() throws Exception{
@@ -171,25 +177,12 @@ public class ParkService {
 			Document doc = dBuilder.parse(urlstr);
 			doc.getDocumentElement().normalize();
 			NodeList nList = doc.getElementsByTagName("item");
-			//System.out.println("Root element: " + doc.getDocumentElement().getNodeName());
-			//System.out.println("파싱할 리스트 수 : " + nList.getLength());
 			for (int temp = 0; temp < nList.getLength(); temp++) {
 				Node nNode = nList.item(temp);
 				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 
 					Element eElement = (Element) nNode;
-					// System.out.println(eElement.getTextContent());
 					ParkInfoVO parkInfoVO = new ParkInfoVO();
-//					System.out.println("######################");
-//					System.out.println("Airport Name  : " + getTagValue("aprEng", eElement));
-//					System.out.println("공항명  : " + getTagValue("aprKor", eElement));
-//					System.out.println("주차장명  : " + getTagValue("parkingAirportCodeName", eElement));
-//					System.out.println("주차공간 : " + getTagValue("parkingFullSpace", eElement));
-//					System.out.println("조회일  : " + getTagValue("parkingGetdate", eElement));
-//					System.out.println("조회시간  : " + getTagValue("parkingGettime", eElement));
-//					System.out.println("입고차량 수  : " + getTagValue("parkingIincnt", eElement));
-//					System.out.println("출고차량 수 : " + getTagValue("parkingIoutcnt", eElement));
-//					System.out.println("현주차수  : " + getTagValue("parkingIstay", eElement));
 					parkInfoVO.setAprEng(getTagValue("aprEng", eElement));
 					parkInfoVO.setAprKor(getTagValue("aprKor", eElement));
 					parkInfoVO.setParkingName(getTagValue("parkingAirportCodeName", eElement));
@@ -233,20 +226,12 @@ public class ParkService {
 			Document doc = dBuilder.parse(urlstr);
 			doc.getDocumentElement().normalize();
 			NodeList nList = doc.getElementsByTagName("item");
-//			System.out.println("Root element: " + doc.getDocumentElement().getNodeName());
-//			System.out.println("파싱할 리스트 수 : " + nList.getLength());
 			for (int temp = 0; temp < nList.getLength(); temp++) {
 				Node nNode = nList.item(temp);
 				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 
 					Element eElement = (Element) nNode;
-					// System.out.println(eElement.getTextContent());
-//					System.out.println("######################");
-//					System.out.println("dateKind  : " + getTagValue("dateKind", eElement));
-//					System.out.println("dateName  : " + getTagValue("dateName", eElement));
-//					System.out.println("isHoliday  : " + getTagValue("isHoliday", eElement));
-//					System.out.println("locdate : " + getTagValue("locdate", eElement));
-//					System.out.println("seq  : " + getTagValue("seq", eElement));
+
 					if(getTagValue("isHoliday", eElement).equals("Y")) {
 						rest.add(getTagValue("locdate", eElement));
 					}
