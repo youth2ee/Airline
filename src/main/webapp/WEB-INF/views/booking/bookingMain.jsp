@@ -13,7 +13,7 @@
 <meta name="author" content="Colrolib">
 <meta name="keywords" content="Colrolib Templates">
 
-
+    <link href="../resources/css/mypage/mypageHeader.css" rel="stylesheet">
 <link href="../resources/css/reset.css" rel="stylesheet">
 <link href="../resources/css/header.css" rel="stylesheet">
 <c:import url="../template/boot.jsp"></c:import>
@@ -34,7 +34,7 @@
 <link rel="stylesheet" href="../resources/vendor/booking.css">
 
 <!-- Main CSS-->
-<link href="../resources/vendor/css/main.css" rel="stylesheet" media="all">
+<link href="../resources/vendor/css/bookingMain.css" rel="stylesheet" media="all">
 
 
 </head>
@@ -59,9 +59,6 @@
 
 <section>
 
-	<form method="post">
-		<input type="hidden" name="depLoc">
-	</form>
 	
 	<div class="card card-4">
 		<div class="tab-content">
@@ -84,7 +81,6 @@
 							<label class="label">출발지:</label> <input
 								class="input--style-1 t1" type="text" name="depLoc"
 								placeholder="지역 또는 공항명" required="required" id="loc">
-							<!--   <input type="hidden" id="t2" readonly="readonly" name = "depLoc"> -->
 						</div>
 
 						<div class="input-group mid small">
