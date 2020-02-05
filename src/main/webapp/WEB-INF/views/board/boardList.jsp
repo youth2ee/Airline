@@ -7,23 +7,35 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
 <c:import url="../template/boot.jsp"></c:import>
 <link rel="stylesheet" href="../resources/css/board/boardList.css">
 <link rel="stylesheet" href="../resources/css/asiana/reset.css">
+<link href="../resources/css/header.css" rel="stylesheet">
+<link href="../resources/css/mypage/mypageHeader.css" rel="stylesheet">
 
 </head>
-<body>
 
-<div class="location_bar">
-	<div class="inner">
-		<a href="#" class="home"></a>
-		<select onchange="if(this.value) location.href=(this.value);" id="location_select">
-			<option>공지사항</option>
-			<option>고객의말씀</option>
-			<option></option>
-		</select>	
-	</div>
+<body>
+<header>
+<c:import url="../layout/header.jsp"></c:import>
+</header>
+
+
+
+<div id="headerBottom">
+<div id="hbh">
+<div id="hbhome"><i class="fa fa-home"></i></div>
+<div id="hbselect">
+<select onchange="location.href=this.value">
+<option selected="selected" value="./main">나의 Every Air</option>
+<option value="./memberUpdate">회원정보수정</option>
+<option value="./mileage">마일리지</option>
+<option value="./ticketCheck">예매내역</option>
+<option value="./park">주차장 예약내역</option>
+<option value="./limo">리무진 예약내역</option>
+</select>
+</div>
+</div>
 </div>
 
 <div id="container">
@@ -31,7 +43,7 @@
 	<form id="frm" action="./${board}List">
 	<div class="total_search_input">
 		<div class="search_inner">
-			<select class="white common" name="kind">
+			<select class="white common" name="kind" id="kind">
 				<option id="ka" value="ka">제목+내용</option>
 				<option id="kt" value="kt">제목</option>
 				<option id="kc" value="kc">내용</option>
@@ -46,32 +58,27 @@
 	<div class="tab_wrap">
 		<ul class="tabs">
 			<li class="tab-link current" data-tab="tab-1">
-					<span>전체</span>
+					<a href="./noticeList"><span>전체</span></a>		
 			</li>
 			
-			<li class="tab-link" data-tab="tab-2">
-					<form id="frm2" action="./${board}List">
-						<input type="hidden" value="1" name="curPage">
-						<input type="hidden" id="cate" value="EveryAir소식" name="cate">
-						<span class="val">EveryAir소식</span>
-						<button type="submit">aaa</button>
-					</form>
+			<li class="tab-link" data-tab="tab-2">					
+						<a href="./noticeList1?menu=EveryAir소식"><span class="val">EveryAir소식</span></a>		
 			</li>
 			
 			<li class="tab-link" data-tab="tab-3">
-				<!-- <a href="#03" data-value="03"> --><span class="val">유류할증료</span><!-- </a> -->
+				<a href="./noticeList2?menu=EveryAir클럽"> <span class="val">EveryAir클럽</span></a>
 			</li>
 			<li class="tab-link" data-tab="tab-4">
-				<a href="#04" data-value="04"><span>EveryAir클럽</span></a>
+				<a href="./noticeList3?menu=유류할증료"><span>유류할증료</span></a>
 			</li>
 			<li class="tab-link" data-tab="tab-5">
-				<a href="#05" data-value="05"><span>제휴사소식</span></a>
+				<a href="./noticeList4?menu=제휴사소식"><span>제휴사소식</span></a>
 			</li>
 			<li class="tab-link" data-tab="tab-6">
-				<a href="#06" data-value="06"><span>기타</span></a>
+				<a href="./noticeList5?menu=기타"><span>기타</span></a>
 			</li>
 		</ul>
-		
+		</div>
 		<div id="tab-1" class="tab-content current">
 			<div class="bbs_list">
 				<ul>
@@ -95,7 +102,7 @@
 									<em>${vo.title}</em>
 								</a>
 							</div>
-							<p class="txt">${vo.contents}</p>
+							<p class="txt">${vo.textContents}</p>
 						</div>
 						<div class="right">
 							<div class="right_sub">
@@ -129,20 +136,9 @@
 					
 		</div>
 		
-		<div id="tab-2" class="tab-content">
+	<%-- 	<div id="tab-2" class="tab-content test">
 				<div class="bbs_list">
-				<ul>
-			<!-- 		<li class="bg_point">
-						<div class="left">
-							<div class="title">
-								<p class="txt"></p>
-							</div>
-						</div>
-						<div class="right">
-							<span class="views"></span>
-							<span class="date"></span>
-						</div>
-					</li> -->						
+				<ul>					
 					
 					<c:forEach items="${list}" var = "vo">
 					<li>
@@ -175,7 +171,6 @@
 			 </c:if> 
 						
 			<c:forEach begin="${pager.startNum}" end = "${pager.lastNum}" var="i">
-
 				<a href="./noticeList?curPage=${i}" class="pagingNo" id="page${i}">${i}</a>
 			</c:forEach>
 			
@@ -193,7 +188,7 @@
 		<div id="tab-5" class="tab-content"></div>
 		<div id="tab-6" class="tab-content"></div>
 		
-	</div>
+	</div> --%>
 	
 <%-- 	<div class="paging">
 			
@@ -205,7 +200,6 @@
 			 </c:if> 
 						
 			<c:forEach begin="${pager.startNum}" end = "${pager.lastNum}" var="i">
-
 				<a href="./noticeList?curPage=${i}" class="pagingNo" id="page${i}">${i}</a>
 			</c:forEach>
 			
@@ -238,42 +232,50 @@
 			$("#frm").submit();
 			
 			}); 
-
 		
 		/* tab */
 		$('ul.tabs li').click(function(){
 			var tab_id = $(this).attr('data-tab');
-
 		$('ul.tabs li').removeClass('current');
 		$('.tab-content').removeClass('current');
-
 		$(this).addClass('current');
 		$("#"+tab_id).addClass('current');
 		});
-
 		
 		/* tab 넘기기 */
-	/* 	$('body').on('click','.tab-link',function(){
+/* 	$('body').on('click','.tab-link',function(){
 				var menu = $(this).find('.val').text();
-
-				$.ajax({
+				var curPage = 1;
+				var search = $('#searchText').val();
+				var aa = document.getElementById("kind");
+				kind = aa.options[aa.selectedIndex].value;
+								
+ 	$.ajax({
 					data : {
-						menu:menu
+						menu:menu,
+						kind:kind,
+						curPage:curPage,
+						search:search						
 						},
 					type : "GET",
-					url : "./",
+					url : "./subNoticeList",
 					success : function(data){
-							$('.tab_wrap').html(data);
+						
+							$('.test').html(data);
 						}
-
-					})
-			});	
-	 */
+					});
+		
+			});	 
+ */
+	 
 		
 		
 	</script>
 	
 </body>
+
+
+
 </html>	
 			
 			

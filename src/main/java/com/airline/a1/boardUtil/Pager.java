@@ -18,8 +18,17 @@ public class Pager {
 										//외부로 나갈 것들만 멤버변수로 선언. 그 외는 필요할 때 지역변수로 선언
 	private String kind;
 	private String search;
+	private String menu;
+	
+	
 	
 
+	public String getMenu() {
+		return menu;
+	}
+	public void setMenu(String menu) {
+		this.menu = menu;
+	}
 	public String getKind() {
 		return kind;
 	}
@@ -102,7 +111,7 @@ public class Pager {
 	
 	//makeRow
 	public void makeRow() { //getter를 호출해야 그 안에 있는 if문이 실행되니까!! null이 들어오면 안됨
-		this.startRow = (this.getCurPage()-1)*this.getPerPage()+1;
+		this.startRow = ((this.getCurPage()-1)*this.getPerPage()+1)-1;
 		this.lastRow = this.getCurPage()*this.getPerPage();
 	}
 	

@@ -65,7 +65,6 @@
 		<td>
 			<div class="textarea_wrap">
 				<textarea name="contents" class="common textWrite summernote" id="contents" rows="4" cols="50" style="position: relative;"></textarea>	
-				
 				<div class="txt_count">
 					<em id="counter"></em>
 					/4000자
@@ -157,9 +156,9 @@
 	<button id="btnTransfer">등록</button>
 </div>
 
+<textarea style="display: none;" name="textContents" id="rText"></textarea>
 
 <div id="hidden" style="display: none;"></div>
-<input type="hidden" id="ihidden" name="textContents">
 
 </form>
 
@@ -167,7 +166,6 @@
 	
 <!------ new script ------->
 <script type="text/javascript">
-
 
 	/**** SummerNote *****/
 	$(document).ready(function(){
@@ -215,20 +213,15 @@
 		}); */
 	//}
 	
-		
-	// summernote.blur
-	$('.summernote').on('summernote.blur', function() {
-		var markupStr = $('#contents').val();
-		$('#hidden').html(markupStr);
-		markupStr = $('#hidden').text();
+
 	
-		$('#ihidden').val(markupStr);
 
-		//글자수 세기
-		$('#counter').html(markupStr.length);
-		
-	});
 
+
+$('#contents').blur(function(){
+	$('#hidden').html($('#contents').val());
+	$('#rText').val($('#hidden').text());
+});
 
 	/***** 파일 추가 삭제 *****/
 	$('#attfile1').change(function(){

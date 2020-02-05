@@ -144,14 +144,15 @@ ul.tabs li{
 	width: 16.666%;
 	height: 63px;
 	line-height: 20px;
-	border-bottom: 1px solid #6d6e71;
+/* 	border-bottom: 1px solid #6d6e71; */
+	border: 1px solid #6d6e71;
     color: #d60815;
     font-weight: bold;
     cursor: pointer;
     background: #6d6e70;
     text-align: center;
  	padding-top: 20px; 
-	border-left: 1px solid #fff;
+	/* border-left: 1px solid #fff; */
 }
 
 .tab-link span{
@@ -162,14 +163,12 @@ ul.tabs li{
 ul.tabs li.current{
 	background: #fff;
 	color: #222;
-	border: 1px solid #6d6e71;
+/* 	border: 1px solid #6d6e71;
 	border-right: none;
-   	border-bottom-color: #fff;
+   	border-bottom-color: #fff; */
 }
 
 ul.tabs li:last-child.current{
-	border: 1px solid #6d6e71;
-    border-bottom: #fff;
     color: #222;
 } 
 
@@ -383,12 +382,14 @@ header {
 /*  */
 #realList{
 	width: 300px;
-	height: 402px;
-	border: 1px solid black;
+	height: 407px;
 	color: black;
-	position: absolute;
     top: 204px;
     left: 31px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+	position: absolute;
+    z-index: 1000;
+    	background-color: #f0f0f0;
 }
 
 #rtitle{
@@ -397,14 +398,18 @@ header {
 	height: 50px;
 	line-height: 50px;
 	text-align: center;
+	font-size: 25px;
+	font-weight: bolder;
 }
 
 .rlist_wrap{
-	width: 229px; 
-	margin: 0 auto; 
-	clear: both;
-	padding: 8px 0;
+width: 241px;
+    margin: 0 auto;
+    clear: both;
+    padding: 5px 0;
+    height: 35px;
 }
+
 
 .rcon{
 	float: left;
@@ -418,7 +423,22 @@ header {
 }
 
 .rmain{
-	width: 136px;
+	width: 100px;
+}
+
+
+.rcon > img {
+	width: 25px;
+}
+
+.rlast{
+text-align: center;
+    width: 67px;
+}
+
+.rup{
+float: left;
+    width: 13px;
 }
 
 
@@ -430,5 +450,40 @@ header {
 }
 
 .tact{
-	color: red;
+color: white;
+    line-height: 23px;
+    background-color: #d60815;
+    padding: 6px;
+}
+
+/* 실시간 검색어 a */
+#rwrap{
+	height: 303px;
+}
+
+
+
+ .rlist_wrap:hover, .rlist_wrap:active {
+	text-decoration: none; 
+	color:white; 
+	background-color:#f59000;
+ }
+
+/* 검색 내용 */
+.cate{
+	font-weight: bold;
+	background-color: #f0f0f0;
+	font-size: 22px;
+		pointer-events: none;
+}
+
+.nolist{
+	pointer-events: none;
+	color: #6d6e71;
+}
+
+.ttitle{
+	line-height: 20px;
+	font-weight: bold;
+	font-size: 17px;
 }
