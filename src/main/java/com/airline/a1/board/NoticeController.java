@@ -29,6 +29,11 @@ public class NoticeController {
 			return new NoticeVO();
 	}
 	
+
+	
+	
+	/**** summerNote ****/	
+	
 	@PostMapping(value = "summerfileDelete")
 	public ModelAndView summerfileDelete(String file, HttpSession session)throws Exception{
 		boolean check = noticeService.summerfileDelete(file, session);
@@ -55,22 +60,24 @@ public class NoticeController {
 	}
 	
 	
-	@GetMapping("noticeWrite")
-	public ModelAndView noticeWrite()throws Exception{
-			ModelAndView mv = new ModelAndView();
-			mv.addObject("board", "notice");
-			mv.setViewName("board/boardWrite");
-				
-			return mv;
-	}
+
 	
+	/**** NoticeWrite****/
+	
+		@GetMapping("noticeWrite")
+		public ModelAndView noticeWrite()throws Exception{
+				ModelAndView mv = new ModelAndView();
+				mv.addObject("board", "notice");
+				mv.setViewName("board/boardWrite");
+					
+				return mv;
+		}
+		
 	
 	  @PostMapping("noticeWrite")
 	  public ModelAndView noticeWrite(NoticeVO noticeVO, MultipartFile[] file)throws Exception{
 		  
-	  ModelAndView mv = new ModelAndView(); 
-	  
-	  
+	  ModelAndView mv = new ModelAndView(); 	  	  
 	  int result =noticeService.noticeWrite(noticeVO, file);
 	  
 	  String msg = "작성에 실패하였습니다.다시 작성해주세요."; 
@@ -89,6 +96,8 @@ public class NoticeController {
 	 
 	 
 	
+	/**** NoticeList ****/
+	  
 	  @GetMapping("noticeList") 
 	  public ModelAndView noticeList(Pager pager)throws Exception{ 
 		 List<BoardVO> ar = noticeService.noticeList(pager); 
@@ -180,28 +189,39 @@ public class NoticeController {
 		  return mv; 
 	  }
 	 
-	 @GetMapping("subNoticeList")
-	 public ModelAndView subNoticeList(Pager pager)throws Exception{
-		
-
-		 List<BoardVO> ar = noticeService.subNoticeList(pager); 
-		 ModelAndView mv = new ModelAndView(); 
-		/*
-		 * int totalCount = noticeService.noticeCount(pager); mv.addObject("tc",
-		 * totalCount);
-		 */ 
-		  mv.addObject("board", "notice");
-		  mv.addObject("list", ar); 
-		  mv.addObject("pager", pager);
-		  mv.setViewName("board/common/sub");		  
-		  
-		  return mv;
-		 
-	 }
-	 
-		
 	
-
+	/*List한번에 받기 
+	 * @GetMapping("subNoticeList") public ModelAndView subNoticeList(Pager
+	 * pager)throws Exception{
+	 * 
+	 * ModelAndView mv = new ModelAndView(); List<BoardVO> ar =
+	 * noticeService.subNoticeList(pager); int totalCount =
+	 * noticeService.noticeCount2(pager);
+	 * 
+	 * 
+	 * 
+	 * }
+	 */
+	 
+	 
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	/**** NoticeSelect ****/
+	  
+	  @GetMapping("noticeSelect")
+	  public ModelAndView NoticeSelect()throws Exception{
+		  ModelAndView mv = new ModelAndView();
+		  	mv.addObject("board", "notice");
+			mv.setViewName("board/boardSelect");
+				
+			return mv;
+		  
+	  }
 	 
 	 
 
