@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <ul>
+
 	
 	<c:if test="${cate != '전체'}">
 	
@@ -92,5 +93,6 @@
 	
 	
 	</c:if>
+
 
 </ul>

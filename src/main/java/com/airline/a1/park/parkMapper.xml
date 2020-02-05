@@ -17,7 +17,17 @@
   	</select>
   	
   	<insert id="resInsert" parameterType="com.airline.a1.park.pReservationVO">
-  		insert into pReservation values (0, #{carNum}, #{carKind}, curdate(), #{rate}, null,
-  		 #{startDate}, #{endDate}, #{areaNum}, #{airport})
+  		insert into pReservation values (0, #{carNum}, curdate(), #{rate}, #{id},
+  		 #{startDate}, #{endDate}, #{areaNum}, #{airport}, #{phone}, #{password})
   	</insert>
+  	
+  	<select id="myReservation" parameterType="com.airline.a1.park.pReservationVO" resultType="com.airline.a1.park.pReservationVO">
+  		select P.* from (select * from pReservation where id = #{id}) P where
+  		startDate between #{startDate} and #{endDate}
+  		or  endDate between #{startDate} and #{endDate}
+  	</select>
+  	
+  	<select id="resSelect" parameterType="com.airline.a1.park.pReservationVO" resultType="com.airline.a1.park.pReservationVO">
+  		select * from pReservation where pResNum = #{pResNum}
+  	</select>
   </mapper>

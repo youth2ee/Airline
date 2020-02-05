@@ -1,13 +1,27 @@
 package com.airline.a1.mypage;
 
+import java.sql.Date;
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.airline.a1.member.MembersVO;
+import com.airline.a1.park.ParkService;
+import com.airline.a1.park.pReservationVO;
 
 @Controller
 @RequestMapping("mypage/**")
 public class MypageController {
-
+	
+	@Autowired
+	private ParkService parkService;
+	
 	@GetMapping("main")
 	public void main() {}
 	
@@ -21,7 +35,32 @@ public class MypageController {
 	public void ticketCheck() {}
 	
 	@GetMapping("park")
-	public void park() {}
+	public void park(HttpSession session, pReservationVO pReservationVO,Model model) throws Exception {
+		
+		if(pReservationVO.getStartDate() == null) {
+			Long today = System.currentTimeMillis();
+			Long todaypast = today - 1296000000;
+			Long todayafter = today + 1296000000;
+			
+			Date past = new Date(todaypast);
+			Date after = new Date(todayafter);
+			pReservationVO.setStartDate(past);
+			pReservationVO.setEndDate(after);
+		}
+		MembersVO membersVO = (MembersVO)session.getAttribute("member");
+		pReservationVO.setId(membersVO.getId());
+		List<pReservationVO> ar = parkService.myReservation(pReservationVO);
+		model.addAttribute("list", ar);
+		model.addAttribute("VO", pReservationVO);
+		
+	}
+	@GetMapping("parkSelect")
+	public void parkSelect(pReservationVO pReservationVO, Model model) throws Exception {
+		
+		pReservationVO = parkService.resSelect(pReservationVO);
+		model.addAttribute("VO", pReservationVO);
+		
+	}
 	
 	@GetMapping("limo")
 	public void limo() {}

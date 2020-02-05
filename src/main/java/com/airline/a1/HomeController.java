@@ -66,6 +66,9 @@ public class HomeController {
 	@GetMapping("indexSearch")
 	public void indexSearch(Model model, String search) throws Exception {
 		if (search != "") {
+
+			/* System.out.println(search); */
+
 			List<BoardVO> ar = searchService.searchTotalList(search);
 			
 			if(ar.size() > 0) {
@@ -83,6 +86,7 @@ public class HomeController {
 					  tcon = tcon.substring(0);
 				}
 				  con.setTextContents(tcon);
+
 				 }
 			  }
 		} else {
@@ -101,6 +105,7 @@ public class HomeController {
 			Map<String, Integer> tolist = searchService.rListTwo();
 			model.addAttribute("tolist", tolist);
 			
+
 			 
 			model.addAttribute("search", search);
 			model.addAttribute("tlist", ar);
@@ -134,6 +139,7 @@ public class HomeController {
 			KeywordList kl = ke.extractKeyword(strToExtrtKwrd, true);
 
 			if(search.contains(" ")) {
+
 				if(kl.size() >= 4) {
 				  for(int i = 0; i < kl.size(); i++ ) {
 					  
@@ -152,6 +158,7 @@ public class HomeController {
 					  
 					  }
 				}
+
 			}else {
 				
 				if(searchService.getType(search)) {
@@ -199,10 +206,15 @@ public class HomeController {
 							  searchVO.setSvoca(search);
 						  }
 						  searchService.searchInsert(searchVO);
+
 					  }
 				}
+
 				}
 			}
+			
+			System.out.println(searchVO.getSearch());
+			
 		}
 	}
 
@@ -300,6 +312,12 @@ public class HomeController {
 		}
 
 		return check;
+	}
+	
+	
+	@GetMapping("sorttest")
+	public void sorttest() throws Exception{
+		
 	}
 
 	@PostMapping("bookingMain")

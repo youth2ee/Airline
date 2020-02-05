@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-        <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +11,18 @@
     <link href="../resources/css/mypage/mypageHeader.css" rel="stylesheet">
 	<c:import url="../template/boot.jsp"></c:import>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+	<link href="../resources/css/mypage/park.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../resources/css/xddatepicker/jquery.datetimepicker.css">
+	<script src="../js/jquery.js"></script>
+	<script src="../js/jquery.datetimepicker.full.min.js"></script>
+	
+<style type="text/css">
+	
+th {
+  text-align: center;
+}
+label {font-size:16px !important; color:#151515 !important;}	
+	</style>
 </head>
 <body>
 <header><c:import url="../layout/header.jsp"></c:import></header>
@@ -30,11 +41,98 @@
 </div>
 </div>
 </div>
+<div id="sub_content">
+			<form id="resveForm" name="resveForm" class="needs-validation" novalidate="">
+					<div class="search_form">
+						<div class="fbox">
+							<div class="col01">
+								<label for="" class="label">이용예정일시</label>
+								<div class="cal_wrap">
+									<input type="text" id="resveBeginDt" name="startDate" value="${VO.startDate}" readonly="readonly">
+								</div>
+								<span class="bar">-</span>
+								<div class="cal_wrap">
+									<input type="text" id="resveEndDt" name="endDate" value="${VO.endDate}" readonly="readonly">
+								</div>
+							</div>
+						
+								<button id="btnSearch" class="sbtn btn_submit" style="border: 0px">조회</button>
+						</div>
+					</div>							
+			</form>
+			<div class="section">
+				<table class="board_table" id="grid">
+					<thead class="t_hidden">
+						<tr><th scope="col">예약번호</th>
+						<th scope="col">공항</th>
+						<th scope="col">차량번호</th>
+						<th scope="col">이용예정일시</th>
+						<th scope="col">차량종류</th>
+						<th scope="col">상태</th>
+						<th scope="col"></th>
+					</tr></thead>
+					<tbody>
+					<c:forEach items="${list}" var="dto">
+						<tr>
+							<td class="t_hidden"><a style="color:#1E3269" onclick="location.href='parkSelect?pResNum=${dto.pResNum}'">7908BB0001/${dto.pResNum}</a></td>
+							<td class="t_hidden">${dto.airport}</td>
+							<td class="t_hidden">${dto.carNum}</td>
+							<td class="t_hidden">${dto.startDate} ~ ${dto.endDate}</td>
+							<td class="t_hidden">일반</td>
+							<td class="t_hidden">예약완료</td>
+							<td><button class="btn small wine" onclick="$.edit('11334')">예약변경</button><button class="btn small border" onclick="$.cancle('11334')">예약취소</button></td>
+						
+						</tr>
+					</c:forEach>
+					</tbody>
+				</table>
+				<!-- //paginate -->
+			</div>
+		</div>
+<script type="text/javascript">
+/* $("#resveBeginDt").datepicker(); */
+/* $("#resveEndDt").datepicker(); */
 
+/* $.datetimepicker.setLocale('ko'); */
+$.datetimepicker.setLocale('ko');
+$('#resveBeginDt').datetimepicker({
+ i18n:{
+  ko:{
+   months:[
+    '1월','2월','3월','4월',
+    '5월','6월','7월','8월',
+    '9월','10월','11월','12월',
+   ],
+   dayOfWeek:[
+    "일", "월", "화", "수", 
+    "목", "금", "토",
+   ]
+  }
+ },
+ timepicker:false,
+ format:'Y-m-d',
+ lang:'ko'
+});
 
-
-
-
-
+$('#resveEndDt').datetimepicker({
+	 i18n:{
+	  ko:{
+	   months:[
+	    '1월','2월','3월','4월',
+	    '5월','6월','7월','8월',
+	    '9월','10월','11월','12월',
+	   ],
+	   dayOfWeek:[
+	    "일", "월", "화", "수", 
+	    "목", "금", "토",
+	   ]
+	  }
+	 },
+	 timepicker:false,
+	 format:'Y-m-d',
+	 lang:'ko'
+	});
+</script>
 </body>
+
 </html>

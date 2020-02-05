@@ -10,7 +10,6 @@ public class pReservationVO {
 	
 	private int pResNum;
 	private String carNum;
-	private String carKind;
 	private Date resDate;
 	private int rate;
 	private String id;
@@ -18,7 +17,22 @@ public class pReservationVO {
 	private Date endDate;
 	private int areaNum;
 	private String airport;
+	private String phone;
+	private String password;
 	
+	
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	public int getpResNum() {
 		return pResNum;
 	}
@@ -30,12 +44,6 @@ public class pReservationVO {
 	}
 	public void setCarNum(String carNum) {
 		this.carNum = carNum;
-	}
-	public String getCarKind() {
-		return carKind;
-	}
-	public void setCarKind(String carKind) {
-		this.carKind = carKind;
 	}
 	public Date getResDate() {
 		return resDate;
