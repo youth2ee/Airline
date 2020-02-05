@@ -215,6 +215,7 @@
 .search {
 	position: absolute;
 	top: 157px;
+	left: -46px;
 	border-radius: 10px;
 	width: 222px;
 	background-color: white;
