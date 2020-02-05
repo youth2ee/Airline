@@ -357,7 +357,7 @@ label {
 				<select id="numTypeSelect" style="width: 200px" title="종류별 번호">
 					<option value="reservNo">예약번호</option>
 					<option value="ticketNo">항공권번호</option>
-				</select> <input type="text" id="input_reservNo" name="bookingNum" maxlength="8" placeholder="영문/숫자 조합 6자리 또는 숫자 8자리" title="번호 입력 예시 : 영문/숫자 조합 6자리 또는 숫자 8자리"
+				</select> <input type="text" id="bookingNum" name="bookingNum" maxlength="8" placeholder="영문/숫자 조합 6자리 또는 숫자 8자리" title="번호 입력 예시 : 영문/숫자 조합 6자리 또는 숫자 8자리"
 					style="width: 280px; text-transform: uppercase;">
 
 
@@ -616,11 +616,11 @@ label {
 					<table>
 						<tr>
 							<td>예매번호</td>
-							<td><input type="text" id="bookingNum" value="${tripData.bookingNum}" name="bookingNum" readonly="readonly"></td>	
+							<td><input type="text" id="bookingNum" name="bookingNum" readonly="readonly"></td>	
 						</tr>  
 						<tr>
 							<td>인원 수</td>
-							<td><input type="text" id="people" value="${people}" name="people" readonly="readonly" style="width:10px">명</td>
+							<td><input type="text" id="people" name="people" readonly="readonly" style="width:10px">명</td>
 						</tr> 
 						<tr>
 							<td>가는편 좌석</td>
@@ -634,6 +634,9 @@ label {
 					</table>
 				</div>
 			</div>
+			<div class="ajax" style="display: none;">
+				
+			</div>
 			<div class="modalInnerBottom">
 			 	오는편 좌석 선택
 			</div>
@@ -646,42 +649,6 @@ label {
 
 </div>
 	<script type="text/javascript">
-
-	
-	// Get the modal
-	var modal = document.getElementById("myModal");
-
-	// Get the button that opens the modal
-	var btn = document.getElementById("btn_search");
-
-	// Get the <span> element that closes the modal
-	var span = document.getElementsByClassName("close")[0];
-
-	// When the user clicks the button, open the modal 
-	btn.onclick = function() {
-	  modal.style.display = "block";
-	}
-
-	// When the user clicks on <span> (x), close the modal
-	span.onclick = function() {
-	  modal.style.display = "none";
-	}
-
-	// When the user clicks anywhere outside of the modal, close it
-	window.onclick = function(event) {
-	  if (event.target == modal) {
-	    modal.style.display = "none";
-	  }
-	}
-	
-	$("#btn_search").change(function(){	
-		if($("#chk1").is(":checked")){
-			$("#text1").attr('name','123');
-		}
-		else{
-			$("#text1").removeAttr('name');
-		}
-	});
 		
 		var depChecks=[]; // 가는 비행기의 좌석에 체크된 항목을 담을 배열
 		var arrChecks=[]; // 오는 비행기의 좌석에 체크된 항목을 담을 배열
@@ -782,8 +749,47 @@ label {
 					alert('가는편 비행기의 좌석을 확인');
 			}
 		});
-		$("#btn_search").click(function(){
+		/* $("#btn_search").click(function(){
 			$("#frm").submit();
+		}); */
+
+		$("#btn_search").click(function() {
+			var  bookingNum = $('#bookingNum').val();
+			$.get("./bookingCheck?bookingNum=" + bookingNum, function(data) {
+				$(".ajax").html(data);
+				var result = $(".ajax").find(".result").text();
+				if (result == 2) {
+					var people = $(".ajax").find(".people").text();
+					var depFNum = $(".ajax").find(".depFNum").text();
+					var arrFNum = $(".ajax").find(".arrFNum").text();
+					var tripData = $(".ajax").find(".tripData").text();
+					var booked = $(".ajax").find(".booked").text();
+					$("#myModal").css('display','block');
+					$("#people").val(people);
+					$("#depFNum").val(depFNum);
+					$("#arrFNum").val(arrFNum);
+					$("#tripData").val(tripData);
+					$("#booked").val(booked);
+					
+
+					
+					var span = document.getElementsByClassName("close")[0];
+					span.onclick = function() {
+						  $("#myModal").css('display','none');
+						}
+					window.onclick = function(event) {
+						  if (event.target == $("#myModal")) {
+						    $("#myModal").css('display','none');
+						  }
+						}		
+						
+				} else if (result == 1){
+					alert('이미 체크인 하셨습니다.');
+				} else {
+					alert('정보 조회에 실패했습니다. 예매번호를 확인해주세요.');
+				}
+				
+			});
 		});
 	</script>
 			
