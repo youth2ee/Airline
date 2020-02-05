@@ -37,7 +37,7 @@
 	</div>
 	<div class="tab tab1">
 		<ul>
-			<li style="width:33.333333333333336%"><a href="./limoBook" class="on"><span>[공항->도시]예매</span></a></li>
+			<li style="width:33.333333333333336%"><a href="./limoBook" class="on" style="background-color:rgb(198, 11, 21);"><span>[공항->도시]예매</span></a></li>
 			<li style="width:33.333333333333336%"><a href="./limoBook2"><span>[도시->공항]예매</span></a></li>
 			<li style="width:33.333333333333336%"><a href="../mypage/limo"><span>예매내역 조회</span></a></li>
 		</ul>
@@ -45,9 +45,11 @@
 	
 	<div class="contain_wrap">
 		<div class="containers contain">
-			<button class="add">예매추가</button>
-			<button class="del">선택삭제</button>
-			<button class="gobooks">예매하기</button>
+			<div style="width: 310px; height:50px; margin: 0 auto; margin-top: 20px;">
+				<button class="add">예매추가</button>
+				<button class="del">선택삭제</button>
+				<button class="gobooks">예매하기</button>
+			</div>
 	  		<div class="frm_wrap">
 			   <form action="./limoBook"  method="post" class="frm">
 			   <div>
