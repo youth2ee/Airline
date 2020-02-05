@@ -2,8 +2,7 @@
 
 .writeForm{
 	width: 1180px;
-    margin: 0px auto 100px;
-  
+    margin: 0px auto 100px; 
 }
 
 .writeForm h5{
@@ -24,7 +23,6 @@
     text-align: center;
     font-weight: normal;
     line-height: 1;
-	
 }
 
 .mar{
