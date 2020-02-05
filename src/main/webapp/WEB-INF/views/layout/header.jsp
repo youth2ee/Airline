@@ -43,18 +43,15 @@
 					<div class="r1"><i class='fas fa-comment-dots' style='font-size:30px'></i></div>
 					<div class="r1"><i class="material-icons" OnClick="location.href ='${pageContext.request.contextPath}/mypage/main'" style="font-size:33px; padding-top: 20px; cursor:pointer;">person_pin</i></div>
 					<div class="r1 tooltip1">
-
 					<i class='fas fa-search' id="sbtn" style='font-size:28px; padding-left: 3px;'></i>
 						<div class="tooltiptext1">
 							<div class="search__container">
 								<form action="${pageContext.request.contextPath}/indexSearch" id="frm2">
-
 							  		  <input class="search__input" type="text" placeholder="Search" name="search">
 							  		  <i class='fas fa-search' id="ssbtn"></i>
 							    </form>
 							</div>
 						</div>
-
 					</div>
 				</div>
 			</div>
@@ -66,9 +63,7 @@
 $('body').on('click', '#sbtn', function(){
 	$('.tooltiptext1').css("display", "inline-block");
 });
-
 $('body').on('click', '#ssbtn', function(){
 	$('#frm2').submit();
 });
 </script>
-
