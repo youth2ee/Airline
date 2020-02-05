@@ -44,13 +44,24 @@ public class MemberController {
 		}
 		
 		
-		
 		if(membersVO != null) {
 			session.setAttribute("member", membersVO);
 			mv.setViewName("redirect:../");
 		}else {
 			mv.setViewName("member/memberLogin");
 		}
+		
+		return mv;
+	}
+	
+	@GetMapping("memberLogout")
+	public ModelAndView memberLogout(HttpSession session) {
+		session.invalidate();
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("common/common_result");
+		mv.addObject("msg", "로그아웃이 완료되었습니다.");
+		mv.addObject("path", "../");
 		
 		return mv;
 	}

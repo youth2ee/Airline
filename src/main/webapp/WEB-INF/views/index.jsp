@@ -282,7 +282,7 @@ $(document).ready(function() {
 			</div>
 			<div class="section" id="section2"
 				style="background: url(https://flyasiana.com/C/pc/image/main/bg_section03.jpg); background-size: 1920px;">
-
+					
 			</div>
 			<div class="section" id="section3"
 				style="background: url(https://flyasiana.com/C/pc/image/main/bg_section05.jpg); background-size: 1920px;">
@@ -538,7 +538,7 @@ $('#arrloc').focus(function(){
 
 /* 검색 */
 $('body').on('blur', '.search__input', function(){
-		$('#frm').submit();
+		$('#frm2').submit();
  });
 
 
