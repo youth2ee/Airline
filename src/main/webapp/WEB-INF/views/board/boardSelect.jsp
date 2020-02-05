@@ -22,6 +22,22 @@
 	</div>
 </div>
 
+<!---- container ---->
+<div class = "container">
+	<h3>공지사항</h3>
+	<div class = "list_view">
+		<div class="list_view_title">
+			<div class="left">
+				<p class="title">신종 코로나바이러스 관련 항공권 변경/환불 규정 안내</p>
+			</div>
+		</div>
+	
+	</div>
+
+
+</div>
+
+
 
 
 </body>
