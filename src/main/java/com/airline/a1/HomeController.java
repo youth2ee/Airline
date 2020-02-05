@@ -212,7 +212,7 @@ public class HomeController {
 			  if(num > 10) {
 				  tcon = tcon.substring(num-10);
 			  } else {
-				  tcon = tcon.substring(num);
+				  tcon = tcon.substring(0);
 			}
 			  con.setTextContents(tcon);
 		  }

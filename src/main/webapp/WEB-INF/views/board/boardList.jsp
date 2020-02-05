@@ -7,13 +7,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
+<link href="../resources/css/header.css" rel="stylesheet">
 <c:import url="../template/boot.jsp"></c:import>
 <link rel="stylesheet" href="../resources/css/board/boardList.css">
 <link rel="stylesheet" href="../resources/css/asiana/reset.css">
 
 </head>
 <body>
+
+<header>
+<c:import url="../layout/header.jsp"></c:import>
+</header>
 
 <div class="location_bar">
 	<div class="inner">

@@ -290,8 +290,8 @@ playAlert = setInterval(function() {
 
     }, 5000);
 
-}); 
 }
+}); 
 
 
 
