@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -82,7 +83,39 @@ public class SeatController {
 		mv.addObject("depFlightNum", depFlightNum);
 		return mv;
 	}
-
+	
+	@GetMapping("bookingCheck")
+	public ModelAndView bookingCheck(String bookingNum) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		BookingTicketVO bookingTicketVO = new BookingTicketVO();
+		bookingTicketVO.setBookingNum(bookingNum);
+		List<BookingTicketVO> bookingTicketVOs = seatService.getBookData(bookingTicketVO);
+		if (bookingTicketVOs.size() == 0) {
+			mv.addObject("result", 0);
+		} else if (bookingTicketVOs.get(0).getFlightBNum() != null) {
+			mv.addObject("result", 1);
+		} else {
+			int people = seatService.getBookCount(bookingTicketVO);
+			int kindFlag = 0;
+			if (bookingTicketVOs.get(0).getKind().equals("왕복")) {
+				people = people / 2;
+				kindFlag = 1;
+			}
+			System.out.println("people : " + people);
+			List<SeatVO> depSeatVOs = seatService.depBookedSeat(bookingTicketVO);
+			List<SeatVO> arrSeatVOs = seatService.arrBookedSeat(bookingTicketVO);
+			List<SeatVO> seatVOs = seatService.getSeatData();
+			mv.addObject("result", 2);
+			mv.addObject("kind", kindFlag);
+			mv.addObject("people", people);
+			mv.addObject("depFNum", bookingTicketVOs.get(0).getDepFnum());
+			mv.addObject("arrFNum", bookingTicketVOs.get(0).getArrFnum());
+			mv.addObject("tripData", bookingTicketVOs.get(0));
+			mv.addObject("booked", seatVOs);
+		}
+		return mv;
+	}
+	
 	@GetMapping("seat")
 	public ModelAndView seat(String bookingNum) throws Exception {
 		ModelAndView mv = new ModelAndView();
