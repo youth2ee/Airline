@@ -138,11 +138,13 @@ li,.menu_wrap_Left,.menu_wrap_Right {
 
 #ssbtn {
 	position: absolute;
-	top: 23px;
+
+	top: 28px;
 	left: 191px;
-	font-size: 28px;
+	font-size: 20px;
 	padding-left: 3px;
-	color: red;
+	color: #d60815;
+
 }
 
 #ssbtn, #sbtn{
@@ -153,7 +155,6 @@ li,.menu_wrap_Left,.menu_wrap_Right {
 .tooltip1 {
 	position: relative;
 	display: inline-block;
-	border-bottom: 1px dotted black;
 }
 
 .tooltip1 .tooltiptext1 {
