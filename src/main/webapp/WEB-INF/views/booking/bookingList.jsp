@@ -410,16 +410,6 @@ $('body').on("click",'.atrcheck',function(){
 });
 
 
-/* 검색 */
-$('body').on('click', '#sbtn', function(){
-	$('.tooltiptext1').css("display", "inline-block");
-});
-
-
-$('body').on('click', '#ssbtn', function(){
-	$('#frm').submit();
-});
-
 </script>
 
 </body>

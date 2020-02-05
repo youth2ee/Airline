@@ -2,7 +2,9 @@ package com.airline.a1;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -36,6 +38,10 @@ public class HomeController {
 	
 	@Autowired
 	private BookingService bookingService;
+	
+	@Autowired
+	private CustomSchedule customSchedule;
+	
 
 	@GetMapping("/")
 	public String Home(Model model, Elements els, String airLine) throws Exception {
@@ -60,16 +66,16 @@ public class HomeController {
 	@GetMapping("indexSearch")
 	public void indexSearch(Model model, String search) throws Exception {
 		if (search != "") {
-			/* System.out.println(search); */
 			List<BoardVO> ar = searchService.searchTotalList(search);
 			
-			  for(BoardVO con:ar) { 
+			if(ar.size() > 0) {
+			  for(BoardVO con:ar) {
+				  
+				  if(con.getTextContents() != null) {
 				  String tcon = con.getTextContents();
 			  
 				  int num = tcon.indexOf(search);
 				  int tlen = tcon.length();
-				  
-				/* System.out.println(num); */
 				  
 				  if(num > 10) {
 					  tcon = tcon.substring(num-10);
@@ -77,7 +83,24 @@ public class HomeController {
 					  tcon = tcon.substring(0);
 				}
 				  con.setTextContents(tcon);
+				 }
 			  }
+		} else {
+			ar = new ArrayList<BoardVO>();
+		}
+			  
+			/*
+			 * SearchRankingVO newVO = searchService.rListSelect();
+			 * 
+			 * Map<String, Integer> tolist = searchService.listUpdate(newVO);
+			 * model.addAttribute("tolist", tolist);
+			 */
+			  
+			customSchedule.fixRateSchedule();
+			
+			Map<String, Integer> tolist = searchService.rListTwo();
+			model.addAttribute("tolist", tolist);
+			
 			 
 			model.addAttribute("search", search);
 			model.addAttribute("tlist", ar);
@@ -106,15 +129,10 @@ public class HomeController {
 			 * e.printStackTrace(); }
 			 */
 			
-			// string to extract keywords 
 			String strToExtrtKwrd = search; 
-			// init KeywordExtractor 
 			KeywordExtractor ke = new KeywordExtractor(); 
-			// extract keywords 
 			KeywordList kl = ke.extractKeyword(strToExtrtKwrd, true);
-			 
 
-			// print result
 			if(search.contains(" ")) {
 				if(kl.size() >= 4) {
 				  for(int i = 0; i < kl.size(); i++ ) {
@@ -132,11 +150,15 @@ public class HomeController {
 						  searchService.searchInsert(searchVO);
 					  	}
 					  
-					  
-					  
 					  }
 				}
 			}else {
+				
+				if(searchService.getType(search)) {
+					searchVO.setSvoca(search);
+					searchService.searchInsert(searchVO);
+				}else {
+					
 				if(kl.size() >= 3) {
 					  for(int i = 0; i < kl.size(); i++ ) {
 						  if(i == 1) {
@@ -179,6 +201,7 @@ public class HomeController {
 						  searchService.searchInsert(searchVO);
 					  }
 				}
+				}
 			}
 		}
 	}
@@ -211,23 +234,25 @@ public class HomeController {
 			  if(num > 10) {
 				  tcon = tcon.substring(num-10);
 			  } else {
-				  tcon = tcon.substring(num);
+				  tcon = tcon.substring(0);
 			}
 			  con.setTextContents(tcon);
 		  }
-		
 
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("cate", menu);
 		mv.addObject("list", ar);
 		mv.setViewName("layout/searchList");
 
 		return mv;
-
 	}
 	
 	@GetMapping("rlist")
 	public ModelAndView rlist() throws Exception {
 		ModelAndView mv = new ModelAndView();
+		
+		Map<String, Integer> tolist = searchService.rListTwo();
+		mv.addObject("tolist", tolist);
 		
 		List<SearchVO> cr = searchService.realList();
 		mv.addObject("rList", cr);
@@ -235,6 +260,7 @@ public class HomeController {
 		
 		return mv;
 	}
+	
 	
 	
 	//예약

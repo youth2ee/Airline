@@ -19,9 +19,11 @@ header {
 	width: 50px;
 	text-align: center;
 	vertical-align: 48px;
-	line-height: 48px; height : 48px;
-	background-color: white;
+	line-height: 48px; 
+	height : 48px;
+	background-color: #5f6062;
 	height: 48px;
+	color: white;
 }
 
 #hbhome > i{
@@ -64,6 +66,6 @@ header {
 }
 
 #hbselect>select:hover{
-	background-color: white;
-	color: black;
+	background-color: #6d6e70;
+	color: white;
 }

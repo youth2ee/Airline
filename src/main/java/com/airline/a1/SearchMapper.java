@@ -19,5 +19,7 @@ public interface SearchMapper {
 	public int searchInsert(SearchVO searchVO) throws Exception;
 	
 	public List<SearchVO> realList() throws Exception;
-	
+	public int rListInsert(SearchRankingVO searchRankingVO) throws Exception;
+	public SearchRankingVO rListSelect() throws Exception;
+	public List<SearchRankingVO> rListTwo() throws Exception;
 }
