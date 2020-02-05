@@ -28,24 +28,15 @@
 	<div class = "list_view">
 		<div class="list_view_title">
 			<div class="left">
-				<p class="title">신종 코로나바이러스 관련 항공권 변경/환불 규정 안내</p>
+				<p class="title">${vo.title}</p>
 			</div>
 			<div class="right">
-				<div class= "hit"><span>조회수  2,055</span></div>
-				<span class="date">2020.02.04</span>
+				<div class= "hit"><span>조회수 ${vo.hit}</span></div>
+				<span class="date">${vo.regDate}</span>
 			</div>
 		</div>
 			<div class="list_view_cont">
-				항공권 처리 안내
-
-
-					가. 아시아나항공 온라인 플랫폼 (PC /모바일웹, APP) 및 예약센터 구매 고객
-					-통합 예약 센터
-					한국 : +82-2-2669-8000, 미주 : +1-800-227-4262, 중국 : +86-10-8451-0101, 일본 : +81-3-5812-6600
-					기타 지점 연락처 : 바로가기 >>
-					
-					나. 그 외 (여행사, 대리점, 그외 예약사이트) 구매 고객
-					-해당 구매처 변경/환불 취소 가능
+				${vo.textContents}
 			</div>
 			<div class="list_view_ctrl">
 				<div>
@@ -64,6 +55,36 @@
 
 
 </div>
+
+<script type="text/javascript">
+
+function getParam(sname) {
+    var params = location.search.substr(location.search.indexOf("?") + 1);
+    var sval = "";
+	    params = params.split("&");
+
+    	for(var i=0; i<params.length; i++){
+	        temp = params[i].split("=");
+        if([temp[0]] == sname){ 
+            sval = temp[1]; 
+            }
+	    }
+	    return sval;
+	}
+
+	$('#btnList').click(function(){
+		var curpage= getParam("")
+		
+		if(getParam("dispCt") == 'all'){
+			location.href="./boardList";
+			}else{
+				alert("no");
+				}r
+
+		});
+
+
+</script>
 
 
 

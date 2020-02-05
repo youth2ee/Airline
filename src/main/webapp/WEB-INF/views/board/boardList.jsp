@@ -84,7 +84,7 @@
 					<li>
 						<div class="left">
 							<div class="title">
-								<a href="#">
+								<a href="./noticeSelect?num=${vo.num}&dispCt=all&curPage=${pager.curPage}&search=${pager.search}&kind=${pager.kind}">
 									<em>${vo.title}</em>
 								</a>
 							</div>

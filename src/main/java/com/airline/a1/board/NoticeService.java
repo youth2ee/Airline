@@ -96,5 +96,13 @@ public class NoticeService {
 		
 	}
 	
+	public NoticeVO noticeSelect(NoticeVO noticeVO)throws Exception{
+			return noticeMapper.noticeSelect(noticeVO);
+	}
+	
+	public NoticeVO subNoticeSelect(NoticeVO noticeVO)throws Exception{
+			return noticeMapper.subNoticeSelect(noticeVO);
+	}
+	
 	
 }

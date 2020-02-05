@@ -77,4 +77,44 @@
 </select>
 
 
+<resultMap type="com.airline.a1.board.NoticeVO" id="selectResult">
+		<id column="num" property="num"/>
+		<result column="title" property="title"/>
+		<result column="writer" property="writer"/>
+		<result column="contents" property="contents"/>
+		<result column="textContents" property="textContents"/>
+		<result column="regDate" property="regDate"/>
+		<result column="hit" property="hit"/>
+		<collection property="noticeFiles" javaType="java.util.ArrayList" ofType="com.airline.a1.board.NoticeFilesVO">
+			<id column="fnum" property="fnum"/>
+			<result column="num" property="num"/>
+			<result column="fname" property="fname"/>
+			<result column="oname" property="oname"/>
+		</collection>
+	</resultMap>
+
+<select id="noticeSelect" resultMap="selectResult" parameterType="com.airline.a1.board.NoticeVO">
+		   select N.*, F.* from notice N 
+				left join noticeFiles F	on N.num = F.num
+				where N.num = #{num}
+			union 
+     	   select N.*, F.* from notice N 
+				right join noticeFiles F on N.num = F.num          
+			where N.num = #{num}
+</select>
+
+<select id="subNoticeSelect" resultMap="selectResult" parameterType="com.airline.a1.board.NoticeVO">
+		   select N.*, F.* from notice N 
+				left join noticeFiles F	on N.num = F.num
+				where N.num = #{num} and N.cate = #{menu}
+			union 
+     	   select N.*, F.* from notice N 
+				right join noticeFiles F on N.num = F.num          
+			where N.num = #{num} and N.cate = #{menu}
+</select>
+
+<update id="noticeHit">
+	update notice set hit = hit+1 where num=#{num}
+</update>
+
 </mapper>

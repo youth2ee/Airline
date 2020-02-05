@@ -94,7 +94,7 @@
 					<li>
 						<div class="left">
 							<div class="title">
-								<a href="#">
+								<a href="./noticeSelect?num=${vo.num}&menu=EveryAir소식">
 									<em>${vo.title}</em>
 								</a>
 							</div>

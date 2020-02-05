@@ -1,6 +1,5 @@
 package com.airline.a1.board;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -204,18 +202,17 @@ public class NoticeController {
 	 */
 	 
 	 
-	  
-	  
-	  
-	  
-	  
+	    
 	  
 	  
 	/**** NoticeSelect ****/
 	  
 	  @GetMapping("noticeSelect")
-	  public ModelAndView NoticeSelect()throws Exception{
+	  public ModelAndView NoticeSelect(NoticeVO noticeVO)throws Exception{
 		  ModelAndView mv = new ModelAndView();
+		  NoticeVO noticeVO2= noticeService.noticeSelect(noticeVO);
+		  
+		  	mv.addObject("vo", noticeVO2);
 		  	mv.addObject("board", "notice");
 			mv.setViewName("board/boardSelect");
 				
@@ -223,6 +220,18 @@ public class NoticeController {
 		  
 	  }
 	 
+/*	  @GetMapping("noticeSelect")
+	  public ModelAndView NoticeSelect2(NoticeVO noticeVO)throws Exception{
+		  ModelAndView mv = new ModelAndView();
+		  NoticeVO noticeVO2= noticeService.subNoticeSelect(noticeVO);
+		  
+		  	mv.addObject("vo", noticeVO2);
+		  	mv.addObject("board", "notice");
+			mv.setViewName("board/boardSelect");
+				
+			return mv;*/
+		  
+	 // }
 	 
 
 }

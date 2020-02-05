@@ -23,4 +23,10 @@ public interface NoticeMapper {
 	public int noticeCount(Pager pager)throws Exception;
 	
 	public int noticeCount2(Pager pager)throws Exception;
+	
+	public NoticeVO noticeSelect(NoticeVO noticeVO)throws Exception;
+	
+	public NoticeVO subNoticeSelect(NoticeVO noticeVO)throws Exception;
+	
+	public void noticeHit(int num)throws Exception;
 }

@@ -20,6 +20,9 @@
 		</foreach>
 			 
 	</insert>
+<select id="noticeFileList" parameterType="java.lang.Integer" resultType="com.airline.a1.board.NoticeFilesVO">
+	select * from noticeFiles where num=#{num}
+</select>
 
 
 </mapper>
