@@ -16,11 +16,10 @@
 
 <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,600,700' rel='stylesheet' type='text/css'>
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-
+<c:import url="../layout/header.jsp"></c:import>
 </head>
 <body>
 
-<header><c:import url="../layout/header.jsp"></c:import></header>
 <div id="headerBottom">
 <div id="hbh">
 <div id="hbhome"><i class="fa fa-home"></i></div>
@@ -38,13 +37,15 @@
 </div>
 
 
-<button id="toggleButton">Toggle</button>
+
+
+<!-- <button id="toggleButton">Toggle</button> -->
 
 <ul class="timeline" id="timeline">
   <li class="li complete">
     <div class="timestamp">
-      <span class="author">온라인 체크인</span>
-      <span class="date">11/15/2014<span>
+      <span class="author txtc">온라인 체크인</span>
+      <span class="date">2014/11/15<span>
     </div>
     <div class="status">
       <h4> Shift Created </h4>
@@ -52,8 +53,8 @@
   </li>
   <li class="li complete">
     <div class="timestamp">
-      <span class="author">체크인 마감</span>
-      <span class="date">11/15/2014<span>
+      <span class="author txtc">체크인 마감</span>
+      <span class="date">2014/11/15<span>
     </div>
     <div class="status">
       <h4> Email Sent </h4>
@@ -61,8 +62,8 @@
   </li>
   <li class="li complete">
     <div class="timestamp">
-      <span class="author">탑승마감</span>
-      <span class="date">11/15/2014<span>
+      <span class="author txtc">탑승마감</span>
+      <span class="date">2014/11/15<span>
     </div>
     <div class="status">
       <h4> SIC Approval </h4>
@@ -70,8 +71,8 @@
   </li>
   <li class="li">
     <div class="timestamp">
-      <span class="author">출발</span>
-      <span class="date">TBD<span>
+      <span class="author">출발　</span>
+      <span class="date">TBD　<span>
     </div>
     <div class="status">
       <h4> Shift Completed </h4>
@@ -79,8 +80,8 @@
   </li>
     <li class="li">
     <div class="timestamp">
-      <span class="author">도착</span>
-      <span class="date">TBD<span>
+      <span class="author">도착　</span>
+      <span class="date">TBD　<span>
     </div>
     <div class="status">
       <h4> Shift Completed </h4>

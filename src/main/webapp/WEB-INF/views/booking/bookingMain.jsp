@@ -13,7 +13,7 @@
 <meta name="author" content="Colrolib">
 <meta name="keywords" content="Colrolib Templates">
 
-
+    <link href="../resources/css/mypage/mypageHeader.css" rel="stylesheet">
 <link href="../resources/css/reset.css" rel="stylesheet">
 <link href="../resources/css/header.css" rel="stylesheet">
 <c:import url="../template/boot.jsp"></c:import>
@@ -34,7 +34,7 @@
 <link rel="stylesheet" href="../resources/vendor/booking.css">
 
 <!-- Main CSS-->
-<link href="../resources/vendor/css/main.css" rel="stylesheet" media="all">
+<link href="../resources/vendor/css/bookingMain.css" rel="stylesheet" media="all">
 
 
 </head>
@@ -59,13 +59,11 @@
 
 <section>
 
-	<form method="post">
-		<input type="hidden" name="depLoc">
-	</form>
 	
 	<div class="card card-4">
 		<div class="tab-content">
 			<div class="tab-pane active" id="tab1">
+			<div class="tab_wrap">
 
 				<form method="post" action="./bookingMain" id="frm">
 
@@ -84,7 +82,6 @@
 							<label class="label">출발지:</label> <input
 								class="input--style-1 t1" type="text" name="depLoc"
 								placeholder="지역 또는 공항명" required="required" id="loc">
-							<!--   <input type="hidden" id="t2" readonly="readonly" name = "depLoc"> -->
 						</div>
 
 						<div class="input-group mid small">
@@ -95,16 +92,16 @@
 
 
 						<div class="input-group mid large">
-							<label class="label">탑승일:</label> <input class="input--style-1"
+							<label class="label">탑승일:</label> <input class="input--style-12"
 								type="text" name="date" placeholder="yyyy/mm/dd"
 								id="input-start">
 						</div>
 
-						<div class="input-group mid">
+						<div class="input-group mid last">
 
 							<label class="label">탑승객:</label>
 							<div class="input-group-icon" id="js-select-special">
-								<input class="input--style-1 input--style-1-small" type="text"
+								<input class="input--style-1-small" type="text"
 									name="traveller" value="성인 1, 아이 0" disabled="disabled"
 									id="info"> <i class="zmdi zmdi-chevron-down input-icon"
 									style="height: 100%; background-color: transparent;"></i>
@@ -114,24 +111,26 @@
 							<div class="dropdown-select">
 								<ul class="list-room">
 									<li class="list-room__item">
-
 										<ul class="list-person">
 											<li class="list-person__item"><span class="name">성인</span>
 												<div class="quantity quantity1">
-													<span class="minus" id="a_minus">-</span> <input
-														class="inputQty" type="number" min="0" value="1"
-														name="adult" id="adult"> <span class="plus">+</span>
-												</div></li>
+													<span class="minus" id="a_minus">-</span> 
+													<input class="inputQty" type="number" min="0" value="1" name="adult" id="adult"> 
+													<span class="plus">+</span>
+												</div>
+											</li>
+											
 											<li class="list-person__item"><span class="name">아이</span>
 												<div class="quantity quantity2">
-													<span class="minus">-</span> <input class="inputQty"
-														type="number" min="0" value="0" name="child" id="child">
+													<span class="minus">-</span> 
+													<input class="inputQty" type="number" min="0" value="0" name="child" id="child">
 													<span class="plus">+</span>
-												</div></li>
+												</div>
+											</li>
 										</ul>
 									</li>
 								</ul>
-								<div class="list-room__footer"></div>
+								
 							</div>
 						</div>
 
@@ -141,6 +140,7 @@
 
 					</div>
 				</form>
+			</div>
 			</div>
 		</div>
 	</div>

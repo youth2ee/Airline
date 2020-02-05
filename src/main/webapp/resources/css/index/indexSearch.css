@@ -389,6 +389,7 @@ header {
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
 	position: absolute;
     z-index: 1000;
+    	background-color: #f0f0f0;
 }
 
 #rtitle{
@@ -402,11 +403,13 @@ header {
 }
 
 .rlist_wrap{
-	width: 229px; 
-	margin: 0 auto; 
-	clear: both;
-	padding: 8px 0;
+width: 241px;
+    margin: 0 auto;
+    clear: both;
+    padding: 5px 0;
+    height: 35px;
 }
+
 
 .rcon{
 	float: left;
@@ -420,9 +423,23 @@ header {
 }
 
 .rmain{
-	width: 120px;
+	width: 100px;
 }
 
+
+.rcon > img {
+	width: 25px;
+}
+
+.rlast{
+text-align: center;
+    width: 67px;
+}
+
+.rup{
+float: left;
+    width: 13px;
+}
 
 
 .tcons{
@@ -441,13 +458,10 @@ color: white;
 
 /* 실시간 검색어 a */
 #rwrap{
-	background-color: #f0f0f0;
 	height: 303px;
 }
 
-.rlist_wrap{
-	height: 35px;
-}
+
 
  .rlist_wrap:hover, .rlist_wrap:active {
 	text-decoration: none; 
@@ -460,6 +474,7 @@ color: white;
 	font-weight: bold;
 	background-color: #f0f0f0;
 	font-size: 22px;
+		pointer-events: none;
 }
 
 .nolist{

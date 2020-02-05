@@ -33,4 +33,10 @@ insert into searchRanking values (#{rank1},#{rank2},#{rank3},#{rank4},#{rank5},#
 select * from searchRanking where rnum = (select max(rnum) from searchRanking)
 </select>
 
+<select id="rListTwo" resultType="com.airline.a1.SearchRankingVO">
+select * from searchRanking where rnum >= (select max(rnum)-1 from searchRanking) order by rnum desc;
+</select>
+
+
+
 </mapper>

@@ -1,17 +1,21 @@
 @charset "UTF-8";
 
-.bx-wrapper .bx-pager.bx-default-pager a{
-    background: #f96262;
+.bx-wrapper .bx-pager.bx-default-pager a {
+	background: #f96262;
 }
-.bx-wrapper .bx-pager.bx-default-pager a:hover, .bx-wrapper .bx-pager.bx-default-pager a.active, .bx-wrapper .bx-pager.bx-default-pager a:focus {
-    background: #fff;
+
+.bx-wrapper .bx-pager.bx-default-pager a:hover, .bx-wrapper .bx-pager.bx-default-pager a.active,
+	.bx-wrapper .bx-pager.bx-default-pager a:focus {
+	background: #fff;
 }
+
 .swiper-container {
-    width: 100%;
-    height: 180px;
-    margin: 20px auto;
-    top: 97px;
+	width: 100%;
+	height: 180px;
+	margin: 20px auto;
+	top: 97px;
 }
+
 .bx-wrapper {
 	border: none;
 	height: 500px;
@@ -47,135 +51,141 @@
 	-webkit-align-items: center;
 	align-items: center;
 }
-.swiper-slider{
+
+.swiper-slider {
 	width: 280px;
-	height : 180px;
+	height: 180px;
 }
+
 .txt1 {
 	float: right;
 }
 
-.resWrap{
-/* 	z-index: 1;
+.resWrap {
+	/* 	z-index: 1;
 	width: 1300px;
 	height: 300px;
 	margin: 0 auto;
 	background-color: black;
 	position: relative;
 	top: -198px; */
-	
 	z-index: 10000;
-    width: 1300px;
-    height: 250px;
-    margin: 0 auto;
-    background-color: #0000008c;
-    position: relative;
-    border-radius: 25px;
-    top: -85px;
+	width: 1300px;
+	height: 212px;
+	margin: 0 auto;
+	position: relative;
+	border-radius: 25px;
+	top: -85px;
+	background-color: rgba(191, 188, 188, 0.8);
 }
-	
-.weather{
+
+.weather {
 	margin: 0 auto;
 	width: 900px;
 	height: 400px;
 	background-color: rgba(136, 176, 75, 0.3);
 	margin-top: 200px;
-	
 }
 
-
-
 .credits__container {
-        margin-top: 24px;
-    }
+	margin-top: 24px;
+}
 
 .credits__text {
-        text-align: center;
-        font-size: 13px;
-        line-height: 18px;
-    }
+	text-align: center;
+	font-size: 13px;
+	line-height: 18px;
+}
 
 .credits__link {
-        color: #ff8b88;
-        text-decoration: none;
-        transition: color 250ms ease-in;
-    }
+	color: #ff8b88;
+	text-decoration: none;
+	transition: color 250ms ease-in;
+}
 
-.credits__link:hover,
-        .credits__link:focus {
-            color: rgb(191, 137, 135);
-        }
+.credits__link:hover, .credits__link:focus {
+	color: rgb(191, 137, 135);
+}
 
-
-.airLine_weather{
+.airLine_weather {
 	width: 300px;
 	height: 30px;
 	border-left: 5px solid #d05560;
 	margin-left: 30px;
 	margin-top: 30px;
 }
-.airLine_weather_text{
+
+.airLine_weather_text {
 	font-size: 25px;
 	margin-left: 15px;
 }
-.weather{
+
+.weather {
 	margin: 0 auto;
 	margin-left: 600px;
 	width: 700px;
 	height: 470px;
 	margin-top: 20px;
-	background-color:rgba(255,255,255,0.5);
+	background-color: rgba(255, 255, 255, 0.5);
 	position: absolute;
-	border-radius:50px;
-	top: 100px;  
+	border-radius: 50px;
+	top: 100px;
 }
-.weather_wrap{
+
+.weather_wrap {
 	width: 620px;
 	height: 350px;
 	margin-left: 140px;
-/* 	background-color:rgba(255,255,255,0.2); */
+	/* 	background-color:rgba(255,255,255,0.2); */
 	position: relative;
 }
-.weather_select_wrap{
+
+.weather_select_wrap {
 	float: right;
 	margin-bottom: 30px;
 	margin-right: 120px;
 }
-#weather_sel{
+
+#weather_sel {
 	background-color: #deeafc;
 	width: 200px;
 	height: 40px;
 	border: 2px solid rgb(89, 92, 160);
 	border-radius: 30px;
 	font-size: 17px;
-	font-weight: bold;  
+	font-weight: bold;
 }
 
 #weather_select {
 	background-color: transparent;
 }
-#weather_view{
+
+#weather_view {
 	margin-top: -300px;
 }
-.weather_view_wrap{
+
+.weather_view_wrap {
 	width: 300px;
 	height: 25px;
 	margin-left: 50px;
 	border-left: 5px solid #c05f88;
 }
-.weather_view_wrap2{
+
+.weather_view_wrap2 {
 	width: 300px;
 	height: 25px;
 	margin-left: 50px;
 	border-left: 5px solid #e5d07d;
 	margin-top: 20px;
 }
-.weather_view_wrap_text{
+
+.weather_view_wrap_text {
 	font-size: 20px;
 	margin-left: 13px;
-	font-weight: bold;  
+	font-weight: bold;
 }
-.weather_info{
+
+.weather_info {
 	margin-left: 50px;
 }
 
@@ -215,6 +225,7 @@
 .search {
 	position: absolute;
 	top: 157px;
+	left: -46px;
 	border-radius: 10px;
 	width: 222px;
 	background-color: white;

@@ -38,6 +38,10 @@ public class HomeController {
 	
 	@Autowired
 	private BookingService bookingService;
+	
+	@Autowired
+	private CustomSchedule customSchedule;
+	
 
 	@GetMapping("/")
 	public String Home(Model model, Elements els, String airLine) throws Exception {
@@ -64,7 +68,10 @@ public class HomeController {
 		if (search != "") {
 			List<BoardVO> ar = searchService.searchTotalList(search);
 			
-			  for(BoardVO con:ar) { 
+			if(ar.size() > 0) {
+			  for(BoardVO con:ar) {
+				  
+				  if(con.getTextContents() != null) {
 				  String tcon = con.getTextContents();
 			  
 				  int num = tcon.indexOf(search);
@@ -76,7 +83,11 @@ public class HomeController {
 					  tcon = tcon.substring(0);
 				}
 				  con.setTextContents(tcon);
+				 }
 			  }
+		} else {
+			ar = new ArrayList<BoardVO>();
+		}
 			  
 			/*
 			 * SearchRankingVO newVO = searchService.rListSelect();
@@ -85,7 +96,11 @@ public class HomeController {
 			 * model.addAttribute("tolist", tolist);
 			 */
 			  
-			  
+			customSchedule.fixRateSchedule();
+			
+			Map<String, Integer> tolist = searchService.rListTwo();
+			model.addAttribute("tolist", tolist);
+			
 			 
 			model.addAttribute("search", search);
 			model.addAttribute("tlist", ar);
@@ -138,6 +153,12 @@ public class HomeController {
 					  }
 				}
 			}else {
+				
+				if(searchService.getType(search)) {
+					searchVO.setSvoca(search);
+					searchService.searchInsert(searchVO);
+				}else {
+					
 				if(kl.size() >= 3) {
 					  for(int i = 0; i < kl.size(); i++ ) {
 						  if(i == 1) {
@@ -179,6 +200,7 @@ public class HomeController {
 						  }
 						  searchService.searchInsert(searchVO);
 					  }
+				}
 				}
 			}
 		}
@@ -229,23 +251,7 @@ public class HomeController {
 	public ModelAndView rlist() throws Exception {
 		ModelAndView mv = new ModelAndView();
 		
-		List<SearchVO> cr = searchService.realList();
-		mv.addObject("rList", cr);
-		mv.setViewName("layout/rlist");
-		
-		return mv;
-	}
-	
-	@PostMapping("rlist")
-	public ModelAndView rlist(SearchRankingVO newVO, String [] rank) throws Exception {
-		ModelAndView mv = new ModelAndView();
-		
-		System.out.println("ff");
-		System.out.println(rank[1]);
-		
-		Map<String, Integer> tolist = searchService.listUpdate(newVO);
-
-		searchService.rListInsert(newVO);
+		Map<String, Integer> tolist = searchService.rListTwo();
 		mv.addObject("tolist", tolist);
 		
 		List<SearchVO> cr = searchService.realList();
@@ -254,6 +260,7 @@ public class HomeController {
 		
 		return mv;
 	}
+	
 	
 	
 	//예약

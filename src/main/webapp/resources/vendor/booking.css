@@ -2,18 +2,21 @@
 
 /******************* bookingMain1 ********************/
 .mid {
-	width: 300px;
 	height: 50px;
 	float: left;
 	margin-right: 10px;
 }
 
 .large {
-	width: 315px;
+	width: 266px;
 }
 
 .small {
-	width: 280px;
+	width: 213px;
+}
+
+.last{
+	width: 200px;
 }
 
 #body {
@@ -31,19 +34,20 @@
 }
 
 .search {
-	position: absolute;
-	top: 157px;
-	border-radius: 10px;
-	width: 222px;
-	background-color: white;
-	font-size: 16px;
-	color: #666;
-	padding-left: 85px;
-	line-height: 36px;
+    position: absolute;
+    top: 367px;
+    left: 325px;
+    border-radius: 10px;
+    width: 213px;
+    background-color: white;
+    font-size: 16px;
+    color: #666;
+    padding-left: 85px;
+    line-height: 36px;
 }
 
 #deplocSearch {
-	margin-left: 335px;
+	margin-left: 327px;
 }
 
 .loctdd {
