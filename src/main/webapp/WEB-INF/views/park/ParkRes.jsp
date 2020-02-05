@@ -11,6 +11,7 @@
 <script src="../js/jquery.js"></script>
 <script src="../js/jquery.datetimepicker.full.min.js"></script>
 <link rel="stylesheet" href="../resources/css/park/parkRes.css">
+
 </head>
 <body>
 <div id="sub_content">
@@ -49,7 +50,7 @@
 									<div class="frow">
 										<p class="label"><span class="star">*</span> 차량 종류</p>
 										<ul class="chk_list">
-											<li><input type="radio" name="carKind" value="대형" id="parkngAr1" aria-required="true"> <label for="parkngAr1" class="r_label">일반 차량</label></li>
+											<li><input type="radio" name="carKind" value="대형" id="parkngAr1" checked="checked"> <label for="parkngAr1" class="r_label">일반 차량</label></li>
 											<li><input type="radio" name="carKind" value="소형" id="parkngAr2"> <label for="parkngAr2" class="r_label">소형 차량</label></li>
 										</ul>
 									</div>
@@ -71,24 +72,22 @@
 							</div>
 						</div>	
 						<div class="btn_area">
-						    <button type="button" id="btnNext" class="btn wine">다음단계</button>
+						    <button type="button" id="btnNext" class="btn wine" style="line-height: 37px;">다음단계</button>
 						</div>
 					</div>
 				<input type="hidden" id="iLotArea" name="iLotArea" value="2" aria-required="true">
 			</form>
 		</div>
-<form action="./parkCheck" method="get">
-<input type="date" name="startDate" id="startDate">
-<input type="date" name="endDate" id="endDate">
-<button>조회하기</button>
-</form>
 <script type="text/javascript">
 
-window.onload = function(){
+	var airport = '';
+	var startDate = '';
+	var endDate = '';
 	var today = new Date();
 	var dd = today.getDate();
 	var mm = today.getMonth()+1;
 	var yyyy = today.getFullYear();
+	var maxDate2 = '';
 	 if(dd<10){
 	        dd='0'+dd
 	    } 
@@ -98,9 +97,6 @@ window.onload = function(){
 
 	today = yyyy+'-'+mm+'-'+dd;
 
-	$("#startDate").attr('min', today);
-	$("#endDate").attr('min', today);
-}
 $.datetimepicker.setLocale('ko');
 $('#entvhclResveDate').datetimepicker({
  i18n:{
@@ -127,6 +123,28 @@ $('#entvhclResveDate').datetimepicker({
 }
 });
 
+$('#entvhclResveDate').change(function(){
+	startDate = $(this).val();
+	var ydm = startDate.split('-');
+
+	if(ydm[1] == 12){
+		ydm[0] = ydm[0]*1;
+		ydm[0] = ydm[0]+1;
+		ydm[0] = ''+ydm[0];
+		ydm[1] = 01;
+	}else{
+		ydm[1] = ydm[1]*1;
+		ydm[1] = ydm[1] + 1;
+		if(ydm[1] < 10){
+			ydm[1] = '0'+ydm[1];
+		}else{
+			ydm[1] = ''+ydm[1];
+		}
+	}
+	maxDate2 = ydm[0]+'-'+ydm[1]+'-'+ydm[2];
+
+});
+
 $('#lvvhclResveDate').datetimepicker({
 	 i18n:{
 	  ko:{
@@ -146,23 +164,27 @@ $('#lvvhclResveDate').datetimepicker({
 	 lang:'ko',
 	 onShow:function( ct ){
 		   this.setOptions({
+			maxDate:maxDate2,
 		    minDate:jQuery('#entvhclResveDate').val()?jQuery('#entvhclResveDate').val():false
 		   })
 		  }
 	});
+
 $("#btnNext").click(function(){
-	var airport = $("#airportCode").val();
-	var startDate = $("#entvhclResveDate").val();
-	var endDate = $('#lvvhclResveDate').val();
-	console.log(startDate);
-	if(airport == ""){
+	
+	airport = $("#airportCode").val();
+	startDate = $("#entvhclResveDate").val();
+	endDate = $('#lvvhclResveDate').val();
+	
+
+	if(airport == "" ){
 		alert('공항을 선택해 주세요');
 		$("#airportCode").focus();
-	}else if(startDate == ""){
+	}else if(startDate == "" || startDate < today){
 		//시작날
 		alert('예약 입차일시를 선택해주세요');
 		$("#entvhclResveDate").focus();
-	}else if(endDate == ""){
+	}else if(endDate == "" || endDate < startDate || endDate > maxDate2){
 		//종료
 		alert('예약 출차일시를 선택해주세요');
 		$('#lvvhclResveDate').focus();
