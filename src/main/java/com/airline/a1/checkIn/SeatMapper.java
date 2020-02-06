@@ -19,4 +19,5 @@ public interface SeatMapper {
 	public List<BookingTicketVO> getDepBnum(BookingTicketVO bookingTicketVO) throws Exception;
 	public int updateFlightNumDep(BookingTicketVO bookingTicketVO);
 	public List<ETicketVO> getEticket() throws Exception;
+	public BookingTicketVO getLoc(BookingTicketVO bookingTicketVO) throws Exception;
 }

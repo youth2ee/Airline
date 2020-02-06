@@ -5,6 +5,7 @@
 <html lang="KO">
 <head>
 
+<link href="../resources/css/header.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css"
 	href="https://flyasiana.com/C/pc/css/reset.css">
 <link rel="stylesheet" type="text/css"
@@ -18,6 +19,7 @@
 <link rel="stylesheet" type="text/css"
 	href="https://flyasiana.com//C/pc/css/corp.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <style type="text/css">
 * {
@@ -125,10 +127,12 @@ to {
 
 /* The Close Button */
 .close {
-	color: white;
-	float: right;
-	font-size: 28px;
-	font-weight: bold;
+	color: #6d6e70;
+    float: right;
+    font-size: 28px;
+    position: relative;
+    font-weight: bold;
+    bottom: 8px;
 }
 
 .close:hover, .close:focus {
@@ -139,8 +143,7 @@ to {
 
 .modal-header {
 	padding: 5px 16px;
-	background-color: #5cb85c;
-	color: white;
+    background-color: #f1f1f1;
 }
 
 .modal-body {
@@ -150,14 +153,10 @@ to {
 }
 
 .modal-footer {
-	/*   padding: 2px 16px;
-  background-color: #5cb85c;
-  color: white; */
 	padding: 15px 16px;
-	background-color: #5cb85c;
-	color: white;
-	margin-bottom: 15px;
-	text-align: right;
+    background-color: #bbbbbb;
+    color: black;
+    text-align: right;
 }
 
 .modalInnerWrap {
@@ -175,19 +174,22 @@ to {
 .modalInnerRight {
 	width: 45%;
 	height: 600px;
-	background-color: #607D8B;
 	float: left;
 	height: 85%;
 }
 
 .modalInnerRightTop {
 	height: 57%;
-	background-color: cadetblue;
+    padding: 15px;
+    margin-left: 10px;
+    border: 1px solid #d60815;
+    margin-bottom: 10px;
 }
 
 .modal-header2 {
-	background-color: aquamarine;
-	height: 95px;
+	    background-color: #d60815;
+    height: 95px;
+    color: white;
 }
 
 .modalInnerBottom {
@@ -205,10 +207,17 @@ to {
 }
 
 .nameView {
-	background-color: blueviolet;
-	height: 50px;
+	background-color: #d60815;
+    height: 50px;
 }
-
+.nameViewInner{
+	display: inline;
+    top: 10px;
+    position: relative;
+    left: 195px;
+    font-size: 20px;
+    color: white;
+}
 .seatView {
 	overflow-y: scroll;
 	/* height: -webkit-fill-available; */
@@ -226,7 +235,8 @@ to {
 
 .seatWarning {
 	height: 56px;
-	background-color: burlywood;
+	background-color: #6d6e70;
+	color: white;
 }
 
 .seat1 {
@@ -260,7 +270,13 @@ input[type=checkbox] {
 input[type=checkbox]:disabled {
 	display: none;
 }
-
+.direction {
+	text-align: center;
+    position: relative;
+    top: 30px;
+    left: 338px;
+    display: inline;
+}
 .bookable {
 	cursor: pointer;
 	display: inline-block;
@@ -331,12 +347,12 @@ label {
 }
 .depSeat,.arrSeat {
 	width: 250px;
-	margin: 0 auto;
+	margin-left: 83px;
 }
 .modalInnerBottom2 {
-    margin-top: 30px;
+	margin-top: 30px;
     float: left;
-    margin-left: 215px;
+    margin-left: 185px;
     text-align: center;
 }
 .depBookGo{
@@ -350,9 +366,101 @@ label {
     width: 150px;
     background-color: darkolivegreen;
 }
+.seatInfo_bookSeat{
+	margin-right: 15px;
+    float: left;
+
+}
+.modalInnerRightDown {
+	height: 334px;
+    padding: 15px;
+    box-sizing: border-box;
+    border: #E22B2A solid 1px;
+    margin-left: 10px;
+}
+
+.seatInfo_bookedSeat {
+	margin-top: 10px;
+}
+.modalInnerRightDown input {
+     background: transparent;
+ }
+ input[type="text"]:hover, input[type="password"]:hover, input[type="email"]:hover, input[type="number"]:hover {
+    border: none;
+    background-color: transparent;
+}
+#btn ,#btn2 ,#btn3 {
+	height: 50px;
+    border-radius: 4px;
+    background-color: #d60815;
+    border: none;
+    color: #FFFFFF;
+    font-size: 18px;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+#btn span, #btn2 span, #btn3 span {
+	cursor: pointer;
+	display: inline-block;
+	position: relative;
+	transition: 0.5s;
+}
+
+#btn span:after,  #btn3 span:after{
+	content: '\00bb';
+	position: absolute;
+	opacity: 0;
+	top: 0;
+	right: -20px;
+	transition: 0.5s;
+}
+#btn2 span:before {
+	content: '\00AB';
+  	position: absolute;
+  	opacity: 0;
+  	top: 0;
+  	left: -20px;
+ 	transition: 0.5s;
+}
+#btn:hover span,  #btn3:hover span{
+	padding-right: 25px;
+}
+#btn2:hover span{
+	padding-left: 25px;
+}
+#btn:hover span:after,  #btn3:hover span:after{
+	opacity: 1;
+	right: 0;
+}
+#btn2:hover span:before {
+	opacity: 1;
+	left: 0;
+}
+#btn2 {
+    position: relative;
+    float: left;
+    display: inline;
+    bottom: 11px;
+    width: 200px;
+}
+#btn3 {
+    position: relative;
+    left: 165px;
+    width: 200px;
+    bottom: 61px;
+}
+.warning {
+	position: relative;
+    top: 15px;
+    left: 120px;
+    font-size: 16px;
+    text-shadow: -1px 0 #6b6b6b, 0 1px #6b6b6b, 1px 0 #6b6b6b, 0 -1px #6b6b6b;
+}
 </style>
 <title>체크인/좌석배정│아시아나항공</title>
 <body>
+<c:import url="../layout/header.jsp" />
 <!-- util_wrap -->
 	<div class="container" id="container">
 		<h3>체크인</h3>
@@ -451,81 +559,10 @@ label {
 					<p class="col_black">어디서나 편리한 방법으로 체크인 하세요~</p>
 				</dd>
 				<dd class="full">
-					<div class="icon_wrap type03 col3">
-						<dl>
-							<dt>
-								<span class="icoset_m booking ico_ckin_01"></span>
-								<p class="tit">온라인 체크인</p>
-							</dt>
-							<dd class="desc">탑승권도 쉽고 빠르게</dd>
-							<dd>
-								<button type="button" class="btn_XS white"
-									id="btn_movePage_onlineCheckIn">자세히보기</button>
-							</dd>
-						</dl>
-						<dl>
-							<dt>
-								<span class="icoset_m booking ico_ckin_02"></span>
-								<p class="tit">오토체크인</p>
-							</dt>
-							<dd class="desc">
-								언제든지 신청만 해놓으면<br>출발 24시간 전에 자동으로!
-							</dd>
-							<dd>
-								<button type="button" class="btn_XS white"
-									id="btn_movePage_autoCheckIn">자세히보기</button>
-							</dd>
-						</dl>
-						<dl>
-							<dt>
-								<span class="icoset_m booking ico_ckin_03"></span>
-								<p class="tit">키오스크</p>
-							</dt>
-							<dd class="desc">
-								사전 체크인을 못했더라도,<br>공항에서도 빠르고 편리하게!
-							</dd>
-							<dd>
-								<button type="button" class="btn_XS white"
-									id="btn_movePage_keyOsk">자세히보기</button>
-							</dd>
-						</dl>
-					</div>
 				</dd>
 			</dl>
 		</div>
 
-		<div class="title_wrap_type3">
-			<h5>체크인/좌석배정 이용 가능 시간</h5>
-		</div>
-		<table class="table_list" id="tb_checkInTimeNotice">
-			<caption>
-				<strong>체크인/좌석배정 이용 가능 시간 표</strong>
-
-				<p>서비스 구분,국제선,국내선,온라인 체크인,좌석배정/오토체크인 로 구성된 표입니다.</p>
-			</caption>
-			<colgroup>
-				<col style="width: 33.3%" span="3">
-			</colgroup>
-			<thead>
-				<tr>
-					<th scope="col">서비스 구분</th>
-					<th scope="col">국제선</th>
-					<th scope="col">국내선</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<th scope="row" class="bg_gray">온라인 체크인</th>
-					<td>출발 48시간 전 ~ 1시간 전</td>
-					<td>출발 24시간 전 ~ 30분 전</td>
-				</tr>
-				<tr>
-					<th scope="row" class="bg_gray">좌석배정/오토체크인</th>
-					<td>출발 361일 전 ~ 48시간 전</td>
-					<td>출발 30일 전 ~ 24시간 전</td>
-				</tr>
-			</tbody>
-		</table>
 		<p class="col_brown mar_to10">* * 단, 미주 노선의 온라인 체크인은 출발 24시간 전부터
 			가능합니다.</p>
 
@@ -559,17 +596,17 @@ label {
   <div class="modal-content">
     <div class="modal-header">
       <span class="close">&times;</span>
-      <h2>좌석선택</h2>
+      <h2 style="color: #6d6e70;cursor: context-menu;">좌석선택</h2>
     </div>
     <div class="modal-header2">
-      <h2>김포 -> 제주</h2>
+      <h2 class="direction"><span id="depLoc"></span> → <span id="arrLoc"></span></h2>
     </div>
     <div class="modal-body">
     <form id="frm2" method="post">
 		<div class="modalInnerWrap">
 			<div class="modalInnerLeft">
 				<div class="left1">
-					<div class="nameView">이름</div>
+					<div class="nameView"><p class="nameViewInner"></p></div>
 						<div class="seatView">
 				<div class="depAir">
 				<div class="depSeat">
@@ -656,7 +693,7 @@ label {
 						</div>
 				</div>
 						</div>
-						<div class="seatWarning"> 좌석지정 유의사항 안내</div>
+						<div class="seatWarning"> <span class="warning"><i class="fa fa-warning" style="margin-right: 5px"></i>좌석지정 유의사항 안내</span></div>
 					</div>
 			</div>
 			<div class="modalInnerRight">
@@ -686,36 +723,25 @@ label {
 								<td>오는편 좌석</td> 
 								<td><input type="text" id="arrSeat" name="arrSeat" readonly="readonly"></td>
 						</tr>
-						<tr>
-							<td>depFnum</td> 
-							<td><input type="text" id="depFNum" name="depFNum" readonly="readonly"></td>
-						</tr>
-						<tr class="roundOnly">
-							<td>arrFnum</td> 
-							<td><input type="text" id="arrFNum" name="arrFNum" readonly="readonly"></td>
-						</tr>
-						<tr>
-							<td>kind</td> 
-							<td><input type="text" id="kind" name="kind" readonly="readonly"></td>
-						</tr>
 					</table>
+							<input type="text" id="depFNum" name="depFNum" readonly="readonly" hidden="hidden">
+							<input type="text" class="roundOnly" id="arrFNum" name="arrFNum" readonly="readonly" hidden="hidden">
+							<input type="text" id="kind" name="kind" readonly="readonly" hidden="hidden">
 				</div>
 			</div>
 			<div class="ajax" style="display: none;">
 				
 			</div>
-			<div class="modalInnerBottom">
-			 	오는편 좌석 선택
-			</div>
+			 	<p><button type="button" class="modalInnerBottom" id="btn"><span>선택 완료</span></button></p>
 			<div class="modalInnerBottom2" style="display: none">
-			 	<div class="depBookGo">버튼1</div>
-			 	<div class="bookOk">버튼2</div>
+			 	<p><button type="button" class="depBookGo" id="btn2"><span>좌석 변경</span></button></p>
+			 	<p><button type="button" class="bookOk" id="btn3"><span>체크인</span></button></p>
 			</div>
 		</div>
 		</form>
     </div>
     <div class="modal-footer">
-      <h3>KRW</h3>
+      <h3 class="tripDate"></h3>
     </div>
   </div>
 
@@ -724,6 +750,8 @@ label {
 
 		var depChecks=[]; // 가는 비행기의 좌석에 체크된 항목을 담을 배열
 		var arrChecks=[]; // 오는 비행기의 좌석에 체크된 항목을 담을 배열
+		var depLoc;
+		var arrLoc;
 		
 		$(function() { // 구매가능한 좌석만 호버 
 			$('.bookable').mouseover(function() {
@@ -807,10 +835,14 @@ label {
 					var arrFNum = $(".ajax").find(".arrFNum").text();
 					var tripData = $(".ajax").find(".tripData").text();
 					var booked = $(".ajax").find(".booked").text();
+					depLoc = $(".ajax").find(".depLoc").text();
+					arrLoc = $(".ajax").find(".arrLoc").text();
 					var depSeat = $(".ajax").find(".depSeat").text();
 					var arrSeat = $(".ajax").find(".arrSeat").text();
 					var bookingNum = $(".ajax").find(".bookingNum").text();
 					var kind = $(".ajax").find(".kind").text();
+					var id = $(".ajax").find(".id").text();
+					var tripDate = $(".ajax").find(".tripDate").text();
 					$("#myModal").css('display','block');
 					$("#people").val(people);
 					$("#tripData").val(tripData);
@@ -818,6 +850,10 @@ label {
 					$("#depFNum").val(depFNum);
 					$("#arrFNum").val(arrFNum);
 					$("#kind").val(kind);
+					$("#depLoc").html(depLoc);
+					$("#arrLoc").html(arrLoc);
+					$(".nameViewInner").html(id);
+					$(".tripDate").html(tripDate);
 					var depSplit = depSeat.split(",");
 					for(var i = 0; i < depSplit.length; i++){
 						var depSeat = depSplit[i].replace("[","").replace("]","").trim();
@@ -848,6 +884,8 @@ label {
 								$(".arrAir").css("display","block");
 								$(".modalInnerBottom").css('display','none');
 								$(".modalInnerBottom2").css('display','block');
+								$("#depLoc").html(arrLoc);
+								$("#arrLoc").html(depLoc);
 							} else {
 								alert('좌석을 선택하세요.');
 							}
@@ -873,12 +911,13 @@ label {
 			});
 		});
 		
-		
 		$(".depBookGo").click(function(){
 			$(".depAir").css("display","block");
 			$(".arrAir").css("display","none");
 			$(".modalInnerBottom").css('display','inline-block');
 			$(".modalInnerBottom2").css('display','none');
+			$("#depLoc").html(depLoc);
+			$("#arrLoc").html(arrLoc);
 		});
 		$(".bookOk").click(function(){
 			if($("#people").val() == $(".depAir input:checkbox:checked").length && $("#people").val() == $(".arrAir input:checkbox:checked").length){

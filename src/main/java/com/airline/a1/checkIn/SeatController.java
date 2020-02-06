@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.airline.a1.booking.BookingTicketVO;
+import com.airline.a1.booking.FlightDataVO;
 
 @Controller
 @RequestMapping("/checkIn/**")
@@ -91,8 +92,6 @@ public class SeatController {
 		BookingTicketVO bookingTicketVO = new BookingTicketVO();
 		bookingTicketVO.setBookingNum(bookingNum);
 		List<BookingTicketVO> bookingTicketVOs = seatService.getBookData(bookingTicketVO);
-		System.out.println(bookingTicketVOs.get(0).getDepFnum());
-		System.out.println(bookingTicketVOs.get(0).getArrFnum());
 		if (bookingTicketVOs.size() == 0) {
 			mv.addObject("result", 0);
 		} else if (bookingTicketVOs.get(0).getFlightBNum() != null) {
@@ -104,11 +103,8 @@ public class SeatController {
 				people = people / 2;
 				kindFlag = 1; // 왕복이면 kindFlag = 1
 			}
-			System.out.println("people : " + people);
 			List<SeatVO> depSeatVOs = seatService.depBookedSeat(bookingTicketVOs.get(0));
-			System.out.println("depSeatVOs : " + depSeatVOs.size());
 			List<SeatVO> arrSeatVOs = seatService.arrBookedSeat(bookingTicketVOs.get(0));
-			System.out.println("arrSeatVOs : " + arrSeatVOs.size());
 			List<SeatVO> seatVOs = seatService.getSeatData();
 			ArrayList<String> depSeat = new ArrayList<>();
 			ArrayList<String> arrSeat = new ArrayList<>();
@@ -121,16 +117,23 @@ public class SeatController {
 				System.out.println(arrSeatVOs.get(i).getSeatName());
 				arrSeat.add(arrSeatVOs.get(i).getSeatName());
 			}
+			bookingTicketVO = seatService.getLoc(bookingTicketVOs.get(0));
+			System.out.println("이름 : " + bookingTicketVOs.get(0).getId());
+			String tripDate = bookingTicketVO.getDepPlandTime().substring(0,8) + " ~ " +  bookingTicketVO.getArrPlandTime().substring(0,8);
 			mv.addObject("result", 2);
 			mv.addObject("kind", kindFlag);
 			mv.addObject("people", people);
 			mv.addObject("depFNum", bookingTicketVOs.get(0).getDepFnum());
 			mv.addObject("arrFNum", bookingTicketVOs.get(0).getArrFnum());
+			mv.addObject("depLoc", bookingTicketVO.getDepAirportNm());
+			mv.addObject("arrLoc", bookingTicketVO.getArrAirportNm());
+			mv.addObject("id",bookingTicketVOs.get(0).getId());
 			mv.addObject("tripData", bookingTicketVOs.get(0));
 			mv.addObject("booked", seatVOs);
 			mv.addObject("depSeat", depSeat);
 			mv.addObject("arrSeat", arrSeat);
 			mv.addObject("bookingNum",bookingNum);
+			mv.addObject("tripDate",tripDate);
 		}
 		return mv;
 	}
