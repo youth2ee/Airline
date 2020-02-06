@@ -213,6 +213,8 @@ to {
 	overflow-y: scroll;
 	/* height: -webkit-fill-available; */
 	height: 362px;
+	background: url('../resources/newni/backgroundTest.png');
+	background-attachment:local;
 }
 
 .seatView input {
@@ -228,7 +230,6 @@ to {
 }
 
 .seat1 {
-	background-color: beige;
 	width: inherit;
 	display: inline-table;
 	margin-left: 17px;
@@ -236,7 +237,6 @@ to {
 }
 
 .seat2 {
-	background-color: cornflowerblue;
 	width: inherit;
 	display: inline-table;
 	margin-left: 50px;
@@ -317,7 +317,6 @@ input[type=checkbox]:disabled {
 label {
 	margin-left: 5px;
 }
-
 .depAir::before {
 	content: "";
 	width: 20px;
@@ -333,7 +332,6 @@ label {
 .depSeat,.arrSeat {
 	width: 250px;
 	margin: 0 auto;
-	background-color: chartreuse;
 }
 .modalInnerBottom2 {
     margin-top: 30px;
@@ -372,7 +370,7 @@ label {
 				<select id="numTypeSelect" style="width: 200px" title="종류별 번호">
 					<option value="reservNo">예약번호</option>
 					<option value="ticketNo">항공권번호</option>
-				</select> <input type="text" id="bookingNum" value="Z60G00" name="bookingNum" maxlength="8" placeholder="영문/숫자 조합 6자리 또는 숫자 8자리" title="번호 입력 예시 : 영문/숫자 조합 6자리 또는 숫자 8자리"
+				</select> <input type="text" id="bookingNum" value="H59Y31" name="bookingNum" maxlength="8" placeholder="영문/숫자 조합 6자리 또는 숫자 8자리" title="번호 입력 예시 : 영문/숫자 조합 6자리 또는 숫자 8자리"
 					style="width: 280px; text-transform: uppercase;">
 
 
@@ -842,7 +840,29 @@ label {
 						  if (event.target == $("#myModal")) {
 						    $("#myModal").css('display','none');
 						  }
-						}		
+						}
+					if($("#kind").val() == 1){
+						$(".modalInnerBottom").click(function(){
+							if($("#people").val() == $(".depAir input:checkbox:checked").length){
+								$(".depAir").css("display","none");
+								$(".arrAir").css("display","block");
+								$(".modalInnerBottom").css('display','none');
+								$(".modalInnerBottom2").css('display','block');
+							} else {
+								alert('좌석을 선택하세요.');
+							}
+						});
+					} else {
+						$(".modalInnerBottom").text('좌석 선택 완료');
+						$(".roundOnly").html("");
+						$(".modalInnerBottom").click(function(){
+							if($("#people").val() == $(".depAir input:checkbox:checked").length){
+								$("#frm2").submit();
+							} else {
+								alert('좌석을 선택하세요.');
+							} 
+						});
+					}		
 						
 				} else if (result == 1){
 					alert('이미 체크인 하셨습니다.');
@@ -852,28 +872,7 @@ label {
 				
 			});
 		});
-		if($("#kind").val() == 1){
-			$(".modalInnerBottom").click(function(){
-				if($("#people").val() == $(".depAir input:checkbox:checked").length){
-					$(".depAir").css("display","none");
-					$(".arrAir").css("display","block");
-					$(".modalInnerBottom").css('display','none');
-					$(".modalInnerBottom2").css('display','block');
-				} else {
-					alert('좌석을 선택하세요.');
-				}
-			});
-		} else {
-			$(".modalInnerBottom").text('좌석 선택 완료');
-			$(".roundOnly").html("");
-			$(".modalInnerBottom").click(function(){
-				if($("#people").val() == $(".depAir input:checkbox:checked").length){
-					$("#frm2").submit();
-				} else {
-					alert('좌석을 선택하세요.');
-				} 
-			});
-		}
+		
 		
 		$(".depBookGo").click(function(){
 			$(".depAir").css("display","block");

@@ -106,15 +106,19 @@ public class SeatController {
 			}
 			System.out.println("people : " + people);
 			List<SeatVO> depSeatVOs = seatService.depBookedSeat(bookingTicketVOs.get(0));
+			System.out.println("depSeatVOs : " + depSeatVOs.size());
 			List<SeatVO> arrSeatVOs = seatService.arrBookedSeat(bookingTicketVOs.get(0));
+			System.out.println("arrSeatVOs : " + arrSeatVOs.size());
 			List<SeatVO> seatVOs = seatService.getSeatData();
 			ArrayList<String> depSeat = new ArrayList<>();
 			ArrayList<String> arrSeat = new ArrayList<>();
 			System.out.println(bookingTicketVOs.get(0).getArrFnum());
-			for(int i=0; i < depSeatVOs.size(); i++) {
+			for(int i = 0; i < depSeatVOs.size(); i++) {
 				System.out.println(depSeatVOs.get(i).getSeatName());
-				System.out.println(arrSeatVOs.get(i).getSeatName());
 				depSeat.add(depSeatVOs.get(i).getSeatName());
+			}
+			for(int i = 0; i < arrSeatVOs.size(); i++) {
+				System.out.println(arrSeatVOs.get(i).getSeatName());
 				arrSeat.add(arrSeatVOs.get(i).getSeatName());
 			}
 			mv.addObject("result", 2);
