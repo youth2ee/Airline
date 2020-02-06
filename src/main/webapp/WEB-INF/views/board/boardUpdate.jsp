@@ -85,7 +85,7 @@
 							<div 
 								style="position: absolute; width: 100%; height: 0px; z-index: -1;">
 							</div>
-							<input type="text" style="width: 646px" placeholder="파일첨부"
+							<input type="text" style="width: 646px" placeholder="파일첨부" value="${vo.noticeFiles[0].fname}"
 								 class="common addFileName" id="fileName1" readonly="readonly">
 							<button type="button"class="btn_detlete" id="btn_delete1">
 								<span class="hidden">삭제</span>
@@ -104,7 +104,7 @@
 							<div 
 								style="position: absolute; width: 100%; height: 0px; z-index: -1;">
 							</div>
-							<input type="text" style="width: 646px" placeholder="파일첨부"
+							<input type="text" style="width: 646px" placeholder="파일첨부" value="${vo.noticeFiles[1].fname}"
 								 class="common addFileName" id="fileName2" readonly="readonly">
 							<button type="button"class="btn_detlete" id="btn_delete2">
 								<span class="hidden">삭제</span>
@@ -123,7 +123,7 @@
 							<div 
 								style="position: absolute; width: 100%; height: 0px; z-index: -1;">
 							</div>
-							<input type="text" style="width: 646px" placeholder="파일첨부"
+							<input type="text" style="width: 646px" placeholder="파일첨부" value="${vo.noticeFiles[2].fname}"
 								 class="common addFileName" id="fileName3" readonly="readonly" >
 							<button type="button"class="btn_detlete" id="btn_delete3">
 								<span class="hidden">삭제</span>
