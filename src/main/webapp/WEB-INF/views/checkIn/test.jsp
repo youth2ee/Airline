@@ -372,7 +372,7 @@ label {
 				<select id="numTypeSelect" style="width: 200px" title="종류별 번호">
 					<option value="reservNo">예약번호</option>
 					<option value="ticketNo">항공권번호</option>
-				</select> <input type="text" id="bookingNum" value="M96X87" name="bookingNum" maxlength="8" placeholder="영문/숫자 조합 6자리 또는 숫자 8자리" title="번호 입력 예시 : 영문/숫자 조합 6자리 또는 숫자 8자리"
+				</select> <input type="text" id="bookingNum" value="Z60G00" name="bookingNum" maxlength="8" placeholder="영문/숫자 조합 6자리 또는 숫자 8자리" title="번호 입력 예시 : 영문/숫자 조합 6자리 또는 숫자 8자리"
 					style="width: 280px; text-transform: uppercase;">
 
 
@@ -684,9 +684,21 @@ label {
 							<td>가는편 좌석</td>
 							<td><input type="text" id="depSeat" name="depSeat" readonly="readonly"></td>
 						</tr>
+						<tr class="roundOnly">
+								<td>오는편 좌석</td> 
+								<td><input type="text" id="arrSeat" name="arrSeat" readonly="readonly"></td>
+						</tr>
 						<tr>
-							<td>오는편 좌석</td> 
-							<td><input type="text" id="arrSeat" name="arrSeat" readonly="readonly"></td>
+							<td>depFnum</td> 
+							<td><input type="text" id="depFNum" name="depFNum" readonly="readonly"></td>
+						</tr>
+						<tr class="roundOnly">
+							<td>arrFnum</td> 
+							<td><input type="text" id="arrFNum" name="arrFNum" readonly="readonly"></td>
+						</tr>
+						<tr>
+							<td>kind</td> 
+							<td><input type="text" id="kind" name="kind" readonly="readonly"></td>
 						</tr>
 					</table>
 				</div>
@@ -800,11 +812,14 @@ label {
 					var depSeat = $(".ajax").find(".depSeat").text();
 					var arrSeat = $(".ajax").find(".arrSeat").text();
 					var bookingNum = $(".ajax").find(".bookingNum").text();
-					
+					var kind = $(".ajax").find(".kind").text();
 					$("#myModal").css('display','block');
 					$("#people").val(people);
 					$("#tripData").val(tripData);
-					$('#bookingNum').val(bookingNum);
+					$(".modalInnerRightDown #bookingNum").val(bookingNum);
+					$("#depFNum").val(depFNum);
+					$("#arrFNum").val(arrFNum);
+					$("#kind").val(kind);
 					var depSplit = depSeat.split(",");
 					for(var i = 0; i < depSplit.length; i++){
 						var depSeat = depSplit[i].replace("[","").replace("]","").trim();
@@ -837,16 +852,29 @@ label {
 				
 			});
 		});
-		$(".modalInnerBottom").click(function(){
-			if($("#people").val() == $(".depAir input:checkbox:checked").length){
-				$(".depAir").css("display","none");
-				$(".arrAir").css("display","block");
-				$(".modalInnerBottom").css('display','none');
-				$(".modalInnerBottom2").css('display','block');
-			} else {
-				alert('좌석을 선택하세요.');
-			}
-		});
+		if($("#kind").val() == 1){
+			$(".modalInnerBottom").click(function(){
+				if($("#people").val() == $(".depAir input:checkbox:checked").length){
+					$(".depAir").css("display","none");
+					$(".arrAir").css("display","block");
+					$(".modalInnerBottom").css('display','none');
+					$(".modalInnerBottom2").css('display','block');
+				} else {
+					alert('좌석을 선택하세요.');
+				}
+			});
+		} else {
+			$(".modalInnerBottom").text('좌석 선택 완료');
+			$(".roundOnly").html("");
+			$(".modalInnerBottom").click(function(){
+				if($("#people").val() == $(".depAir input:checkbox:checked").length){
+					$("#frm2").submit();
+				} else {
+					alert('좌석을 선택하세요.');
+				} 
+			});
+		}
+		
 		$(".depBookGo").click(function(){
 			$(".depAir").css("display","block");
 			$(".arrAir").css("display","none");

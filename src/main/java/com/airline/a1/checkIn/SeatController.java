@@ -102,7 +102,7 @@ public class SeatController {
 			int kindFlag = 0;
 			if (bookingTicketVOs.get(0).getKind().equals("왕복")) {
 				people = people / 2;
-				kindFlag = 1;
+				kindFlag = 1; // 왕복이면 kindFlag = 1
 			}
 			System.out.println("people : " + people);
 			List<SeatVO> depSeatVOs = seatService.depBookedSeat(bookingTicketVOs.get(0));
@@ -180,13 +180,6 @@ public class SeatController {
 
 	@PostMapping("test")
 	public ModelAndView seat(SeatDataVO seatDataVO) throws Exception {
-		
-		System.out.println(seatDataVO);
-		
-		
-		
-		
-		
 		ModelAndView mv = new ModelAndView();
 		BookingTicketVO isCheck = new BookingTicketVO();
 		int depInsertCheck = 0;

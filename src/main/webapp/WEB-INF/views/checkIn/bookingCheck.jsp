@@ -8,3 +8,4 @@
 <div class="depSeat">${depSeat}</div>
 <div class="arrSeat">${arrSeat}</div>
 <div class="bookingNum">${bookingNum}</div>
+<div class="kind">${kind}</div>
