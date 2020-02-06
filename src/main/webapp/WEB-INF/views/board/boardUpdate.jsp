@@ -66,7 +66,7 @@
 		<td>
 			<div class="textarea_wrap">
 				<textarea name="contents" class="common textWrite summernote" id="contents" rows="4" cols="50" style="position: relative;">
-				${vo.contents}</textarea>	
+					<c:out value="${vo.textContents}"/></textarea>
 				<div class="txt_count">
 					<em id="counter"></em>
 					/4000자
@@ -158,9 +158,10 @@
 	<button id="btnTransfer">등록</button>
 </div>
 
-<textarea style="display: none;" name="textContents" id="rText">${vo.textContents}</textarea>
+<%-- <textarea style="display: none;" name="textContents" id="rText">${vo.textContents}</textarea> --%>
 
 <div id="hidden" style="display: none;"></div>
+<input type="hidden" id="ihidden" name="textContents">
 
 </form>
 
@@ -178,7 +179,7 @@
 			$('.summernote').summernote({
 					height:300,
 					
-				 	callbacks:{
+/* 				 	callbacks:{
 						onKeyup: function(e){
 							var markupStr = $('#contents').val();
 							$('#hidden').html(markupStr);
@@ -186,8 +187,8 @@
 							$('#hidden').val(markupStr);
 							alert(markupStr.length);
 							$('#counter').html(markupStr.length);
-							}
-					}  
+							} */
+					//}  
 				}); 
 		});
 	
@@ -269,11 +270,15 @@
 				$("#fileName3").val("");	
 	});
 	
-	$('.summernote').on('summernote.blur', function() {
+	$('.summernote').on('summernote.keyup', function() {
 		var markupStr = $('#contents').val();
-		$('#hidden').html(markupStr);
+		$('#contents').val("");
+		$('#contents').val(markupStr.trim());
+		
+		$('#hidden').html(markupStr.trim());
 		markupStr = $('#hidden').text();	
-		$('#ihidden').val(markupStr);
+		$('#ihidden').val(markupStr.trim());
+
 		//글자수 세기
 		$('#counter').html(markupStr.length);
 		

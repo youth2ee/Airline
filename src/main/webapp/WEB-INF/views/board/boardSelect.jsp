@@ -40,7 +40,7 @@
 			</div>
 		</div>
 			<div class="list_view_cont">
-				${vo.textContents}
+				${vo.contents}
 			</div>
 			<div class="list_view_ctrl">
 				<div>

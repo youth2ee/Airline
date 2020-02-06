@@ -64,7 +64,8 @@
 		</th>
 		<td>
 			<div class="textarea_wrap">
-				<textarea name="contents" class="common textWrite summernote" id="contents" rows="4" cols="50" style="position: relative;"></textarea>	
+				<textarea name="contents" class="common textWrite summernote" id="contents" rows="4" cols="50" style="position: relative;">
+				</textarea>	
 				
 				<div class="txt_count">
 					<em id="counter"></em>
@@ -167,21 +168,32 @@
 	
 <!------ new script ------->
 <script type="text/javascript">
+		var str = $("#contents").val();
+			str = str.replace(/(?:\r\n|\r|\n)/g, '<br />');
+			$("#text").html(str);
+
+
 	/**** SummerNote *****/
 	$(document).ready(function(){
+		var markupStr = '${vo.textContents}';
+		$('#counter').html(markupStr.length);
+		
 			$('.summernote').summernote({
-					height:300
-			/* 		 ,
-				 	callbacks:{
-						onImageUpload:function(files,editor){
-						uploadFile(files[0], this);						
-						},
-						 onMediaDelete:function(files, editor){
-							 deleteFile(files[0], this);
-						 }
-					}  */
-				}); 
+					height:300,				
+				}); 			
 		});
+
+
+	$('.summernote').on('summernote.keyup', function() {
+		var markupStr = $('#contents').val();
+		$('#contents').val("");
+		$('#contents').val(markupStr.trim());	
+		$('#hidden').html(markupStr.trim());
+		markupStr = $('#hidden').text();	
+		$('#ihidden').val(markupStr.trim());
+		//글자수 세기
+		$('#counter').html(markupStr.length);	
+	});
 	
 /* 	function uploadFile(file, editor) {
 		var formData = new FormData();
@@ -213,17 +225,6 @@
 	//}
 	
 		
-	// summernote.blur
-	$('.summernote').on('summernote.blur', function() {
-		var markupStr = $('#contents').val();
-		$('#hidden').html(markupStr);
-		markupStr = $('#hidden').text();
-	
-		$('#ihidden').val(markupStr);
-		//글자수 세기
-		$('#counter').html(markupStr.length);
-		
-	});
 	/***** 파일 추가 삭제 *****/
 	$('#attfile1').change(function(){
 		
@@ -267,13 +268,9 @@
 				$("#attfile3").val("");
 				$("#fileName3").val("");	
 	});
-	
-/**** 글자수세기 ****/
-/* $('#contents').keyup(function(){
-	var content = $(this).val();
-	$('#counter').html(content.length);
-	
-}); */
+
+
+
 </script>
 
 </body>

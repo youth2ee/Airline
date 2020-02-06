@@ -76,14 +76,17 @@ public class NoticeController {
 	
 	  @PostMapping("noticeWrite")
 	  public ModelAndView noticeWrite(NoticeVO noticeVO, MultipartFile[] file)throws Exception{
-		  
-	  ModelAndView mv = new ModelAndView(); 	  	  
-	  int result =noticeService.noticeWrite(noticeVO, file);
+			  
+		  ModelAndView mv = new ModelAndView(); 	  	
+		/* noticeVO.getContents().replaceAll("\r\n", "<br>"); */
+		/* noticeVO.setContents(noticeVO.getContents().replaceAll("\r\n", "<br>")); */
+		  int result =noticeService.noticeWrite(noticeVO, file);
 	  
 	  String msg = "작성에 실패하였습니다.다시 작성해주세요."; 
 	  String path = "../";
 	  
 	  if(result > 0) { 
+		  
 		  msg = "작성되었습니다."; 
 		  }
 	  
@@ -213,6 +216,7 @@ public class NoticeController {
 	  public ModelAndView NoticeSelect(NoticeVO noticeVO)throws Exception{
 		  ModelAndView mv = new ModelAndView();
 		  NoticeVO noticeVO2= noticeService.noticeSelect(noticeVO);
+		/* noticeVO2.setContents(noticeVO2.getContents().replaceAll("\r\n", "<br>")); */
 		  
 		  	mv.addObject("vo", noticeVO2);
 		  	mv.addObject("board", "notice");
