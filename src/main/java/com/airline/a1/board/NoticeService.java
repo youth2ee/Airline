@@ -97,6 +97,8 @@ public class NoticeService {
 	}
 	
 	public NoticeVO noticeSelect(NoticeVO noticeVO)throws Exception{
+			
+			noticeMapper.noticeHit(noticeVO.getNum()); 			
 			return noticeMapper.noticeSelect(noticeVO);
 	}
 	
@@ -104,6 +106,8 @@ public class NoticeService {
 			return noticeMapper.subNoticeSelect(noticeVO);
 	}
 
+
+	
 	
 	
 }

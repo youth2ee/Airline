@@ -42,6 +42,7 @@ body{
 .container{
 	width: 1180px;
     margin: 0px auto 100px;	
+    padding: 0px;
 }
 
 .container h3{
@@ -51,6 +52,35 @@ body{
     text-align: center;
     font-weight: normal;
     line-height: 1;	
+}
+
+.btn_area{
+	overflow: hidden;
+}
+
+.btn_area a{
+	float: right;
+    border-radius: 3px;
+    text-align: center;
+    font-size: 15px;
+    line-height: 45px;
+    width: 90px;
+    height: 45px;
+  /*   background-color: aquamarine; */
+    margin-left: 5px;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #fff;
+}
+
+#update_btn{
+	border: 1px solid #6d6e71;
+    background-color: #6d6e71;
+}
+
+#delete_btn{
+	border: 1px solid #d60815;
+    background-color: #d60815;
 }
 
 .list_view{

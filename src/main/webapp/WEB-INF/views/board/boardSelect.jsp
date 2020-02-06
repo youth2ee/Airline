@@ -25,6 +25,10 @@
 <!---- container ---->
 <div class = "container">
 	<h3>공지사항</h3>
+	<!-- <div class="btn_area">
+		<a href="#" id="delete_btn">삭제하기</a>
+		<a href= "#" id="update_btn">수정하기</a>
+	</div> -->
 	<div class = "list_view">
 		<div class="list_view_title">
 			<div class="left">
@@ -47,6 +51,10 @@
 					<span class="next">이전글</span>
 					<a>중국 일부 노선 비운항 및 감편 안내</a>
 				</div>
+			</div>
+			<div class="btn_area">
+					<a href="#" id="delete_btn">삭제하기</a>
+					<a href= "#" id="update_btn">수정하기</a>
 			</div>
 			<div class="btn_wrap">
 				<button id="btnList" type="button">목록보기</button>
