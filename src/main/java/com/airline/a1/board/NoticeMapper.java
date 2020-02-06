@@ -29,4 +29,10 @@ public interface NoticeMapper {
 	public NoticeVO subNoticeSelect(NoticeVO noticeVO)throws Exception;
 	
 	public void noticeHit(int num)throws Exception;
+	
+	public int noticeUpdate(BoardVO boardVO)throws Exception;
+	
+	public int noticeDelete(NoticeVO noticeVO)throws Exception;
+	
+	
 }

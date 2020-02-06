@@ -53,8 +53,8 @@
 				</div>
 			</div>
 			<div class="btn_area">
-					<a href="#" id="delete_btn">삭제하기</a>
-					<a href= "#" id="update_btn">수정하기</a>
+					<a href="./noticeDelete?num=${vo.num}" id="delete_btn">삭제하기</a>
+					<a href="./noticeUpdate?num=${vo.num}" id="update_btn">수정하기</a>
 			</div>
 			<div class="btn_wrap">
 				<button id="btnList" type="button">목록보기</button>

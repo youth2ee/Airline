@@ -4,25 +4,23 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="com.airline.a1.board.NoticeFilesMapper">
-
-
-<insert id="noticeFileWrite" parameterType="com.airline.a1.board.NoticeFilesVO">	
-		<!-- insert into noticeFiles
-		values
-			<foreach collection="list" item="item" separator=",">
+		<insert id="noticeFileWrite" parameterType="com.airline.a1.board.NoticeFilesVO">							 	 		
+				insert into noticeFiles values 
+				<foreach collection="list" item="item" separator=",">
 				(null, #{item.num}, #{item.fname}, #{item.oname})
-			</foreach> -->
-			 
-	<!-- 	insert into noticeFiles values(null,#{num},#{fname},#{oname}) -->	 
-		insert into noticeFiles values 
-		<foreach collection="list" item="item" separator=",">
-		(null, #{item.num}, #{item.fname}, #{item.oname})
-		</foreach>
-			 
-	</insert>
-<select id="noticeFileList" parameterType="java.lang.Integer" resultType="com.airline.a1.board.NoticeFilesVO">
-	select * from noticeFiles where num=#{num}
-</select>
+				</foreach>					 
+		</insert>
+		
+		
+		<select id="noticeFileList" parameterType="java.lang.Integer" resultType="com.airline.a1.board.NoticeFilesVO">
+				select * from noticeFiles where num=#{num}
+		</select>
 
+		<select id="noticeFileSelect" resultType="com.airline.a1.board.NoticeFilesVO" parameterType="com.airline.a1.board.NoticeFilesVO">
+				select * from noticeFiles where fnum=#{fnum}
+		</select>
 
+		<delete id="noticeFileDelete" parameterType="com.airline.a1.board.NoticeFilesVO">
+				delete from noticeFiles where fnum = #{fnum}
+		</delete>
 </mapper>

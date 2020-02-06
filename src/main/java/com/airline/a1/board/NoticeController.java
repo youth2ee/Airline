@@ -235,7 +235,38 @@ public class NoticeController {
 		  
 	 // }
 	  
+		@GetMapping("noticeUpdate")
+		public ModelAndView noticeUpdate(int num)throws Exception{
+			ModelAndView mv = new ModelAndView();
+			NoticeVO noticeVO = new NoticeVO();
+			noticeVO.setNum(num);
+			
+			noticeVO = noticeService.noticeSelect(noticeVO);
+			mv.addObject("board", "notice");
+			mv.addObject("vo", noticeVO);
+			mv.setViewName("board/boardUpdate");
+			
+			return mv;
+		}
+		
 	  
+	  
+	  @PostMapping("noticeUpdate")
+	  public ModelAndView noticeUpdate(NoticeVO noticeVO, MultipartFile[] file,HttpSession session)throws Exception{
+		  ModelAndView mv = new ModelAndView();
+		  
+		  int result = noticeService.noticeUpdate(noticeVO,file,session);
+		  
+		  if(result>0) {
+			  mv.addObject("message", "글이 수정되었습니다.");
+		  }else {
+			  mv.addObject("message", "수정에 실패하였습니다. 다시 시도해주세요.");
+		  }
+		  mv.addObject("path", "noticeList");
+		  mv.setViewName("board/common/result");
+		  
+		  return mv;
+	  }
 
 	 
 

@@ -8,7 +8,9 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.airline.a1.boardUtil.FilePathGenerator;
 import com.airline.a1.boardUtil.FileSaver;
@@ -26,17 +28,26 @@ public class NoticeService {
 	@Autowired
 	private FilePathGenerator filePathGenerator;
 	
+	/**** File ****/
 	public boolean summerfileDelete(String file, HttpSession session)throws Exception{
 	
 		String realPath = session.getServletContext().getRealPath("resources/upload/summerfile");
 		return fileSaver.fileDelete(realPath, file);
 	}
 	
-	
 	public String summerfile(MultipartFile file, HttpSession session)throws Exception{
 		String realPath = session.getServletContext().getRealPath("resources/upload/summerfile");
 		return fileSaver.save(realPath, file);
 	}
+	
+	public NoticeFilesVO NoticeFileSelect(NoticeFilesVO noticeFilesVO)throws Exception{
+		return noticeFilesMapper.noticeFileSelect(noticeFilesVO);
+	}
+	
+	public int NoticeFileDelete(NoticeFilesVO noticeFilesVO)throws Exception{
+		return noticeFilesMapper.noticeFileDelete(noticeFilesVO);
+	}
+	
 	
 	
 	public int noticeWrite(NoticeVO noticeVO, MultipartFile[] file)throws Exception{			
@@ -106,6 +117,51 @@ public class NoticeService {
 			return noticeMapper.subNoticeSelect(noticeVO);
 	}
 
+
+	
+	
+	public int noticeUpdate(NoticeVO noticeVO, MultipartFile[] file, HttpSession session)throws Exception{
+			String realPath = session.getServletContext().getRealPath("resources/upload/notice");
+			NoticeFilesVO noticeFilesVO = new NoticeFilesVO();
+			
+			noticeFilesVO.setNum(noticeVO.getNum());
+			
+			boolean check = false;
+			
+			int result = noticeMapper.noticeUpdate(noticeVO);	
+			 
+				if(file.length>0) {
+					
+					for(MultipartFile multipartFile: file) {
+							if(multipartFile.getSize()>0) {
+								check = true;
+								break;
+						}				
+					}//for끝
+					
+					if(check) {
+						List<NoticeFilesVO> noticeFilesVOs = new ArrayList<>(); 
+				/* File file2 = filePathGenerator.getUseClassPathResource("board"); */
+						
+						for(MultipartFile multipartFile:file) {
+							if(multipartFile.getSize()>0) {
+								String fileName = fileSaver.save(realPath, multipartFile);
+						/* NoticeFilesVO noticeFilesVO = new NoticeFilesVO(); */
+								noticeFilesVO.setNum(noticeVO.getNum());
+								noticeFilesVO.setFname(fileName);
+								noticeFilesVO.setOname(multipartFile.getOriginalFilename());
+								noticeFilesVOs.add(noticeFilesVO);
+							}
+						}
+						result = noticeFilesMapper.noticeFileWrite(noticeFilesVOs);			
+					}		
+				}		
+				return result; 		
+	}
+	
+	public int noticeDelete(NoticeVO noticeVO)throws Exception{
+			return noticeMapper.noticeDelete(noticeVO);	
+			}
 
 	
 	
