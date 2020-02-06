@@ -46,12 +46,15 @@ public class BookingService {
 		System.out.println(bookingTicketVO.getDepCoupon());
 		System.out.println(bookingTicketVO.getDepFnum());
 		
+		
 		FlightDataVO flightDataVO = new FlightDataVO();
 		flightDataVO.setFnum(bookingTicketVO.getDepFnum());
 		flightDataVO =  bookingMapper.oneSelect(flightDataVO);
 		System.out.println(flightDataVO.getEconomyCharge());
 		
+		
 		BookingPriceVO bookingPriceVO = new BookingPriceVO();
+		
 		bookingPriceVO.setPrice(Integer.parseInt(flightDataVO.getEconomyCharge()));
 		bookingPriceVO.setCouName(bookingTicketVO.getDepCoupon());
 		
@@ -84,7 +87,15 @@ public class BookingService {
 			
 			bookingPriceVO.setTotalPrice(total);
 		}
-
+		
+		//마일리지 적립금액 계산
+		int km = Integer.parseInt(flightDataVO.getFlightKm());
+		int mplus = km*6;
+		
+		bookingPriceVO.setMileagePlus(mplus);
+		
+		
+		
 		bookingTicketVO.setDepPriceVO(bookingPriceVO);
 			
 	//
@@ -128,6 +139,12 @@ public class BookingService {
 				
 				bookingPriceVO.setTotalPrice(total);
 			}
+			
+			//마일리지 적립금액 계산
+			km = Integer.parseInt(flightDataVO.getFlightKm());
+			mplus = km*6;
+			
+			bookingPriceVO.setMileagePlus(mplus);
 
 			bookingTicketVO.setArrPriceVO(bookingPriceVO);
 		}
@@ -181,4 +198,8 @@ public class BookingService {
 			System.out.println("예약번호(개인) : " + flightNum);
 			return flightNum;
 		}
+	
+	public int priceInsertOne(BookingPriceVO bookingPriceVO) throws Exception {
+		return bookingMapper.priceInsertOne(bookingPriceVO);
+	}
 }
