@@ -11,7 +11,10 @@ public class ImPayVO {
 
 	private String name;
 	private int amount;
+	private int mil;
 	
+	private String bpnum;
+
 	private MembersVO membersVO;
 
 	

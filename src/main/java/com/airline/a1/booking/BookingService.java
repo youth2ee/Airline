@@ -41,16 +41,10 @@ public class BookingService {
 	
 
 	public BookingTicketVO priceCount(BookingTicketVO bookingTicketVO) throws Exception {
-		System.out.println(bookingTicketVO.getKind());
-		
-		System.out.println(bookingTicketVO.getDepCoupon());
-		System.out.println(bookingTicketVO.getDepFnum());
-		
-		
 		FlightDataVO flightDataVO = new FlightDataVO();
 		flightDataVO.setFnum(bookingTicketVO.getDepFnum());
 		flightDataVO =  bookingMapper.oneSelect(flightDataVO);
-		System.out.println(flightDataVO.getEconomyCharge());
+		/* System.out.println(flightDataVO.getEconomyCharge()); */
 		
 		
 		BookingPriceVO bookingPriceVO = new BookingPriceVO();
@@ -60,14 +54,14 @@ public class BookingService {
 		
 		if (!bookingTicketVO.getDepCoupon().equals("개인할인 선택 안함")) {
 			double discount = Integer.parseInt(bookingTicketVO.getDepCoupon().substring(1, 3))*(0.01);
-			System.out.println(discount);
+			/* System.out.println(discount); */
 			int dprice = (int)(bookingPriceVO.getPrice()*discount);
 			int dtotal = bookingPriceVO.getPrice()-dprice;
 			
-			System.out.println(bookingPriceVO.getPrice()); //원가
-			System.out.println(dprice); //쿠폰할인가
-			System.out.println(dtotal); //쿠폰적용된 금액
-
+			/*
+			 * System.out.println(bookingPriceVO.getPrice()); //원가
+			 * System.out.println(dprice); //쿠폰할인가 System.out.println(dtotal); //쿠폰적용된 금액
+			 */
 			bookingPriceVO.setCouponDis(dprice);
 			
 			bookingPriceVO.setFuelTax(fuelTax);
@@ -104,7 +98,7 @@ public class BookingService {
 			flightDataVO = new FlightDataVO();
 			flightDataVO.setFnum(bookingTicketVO.getArrFnum());
 			flightDataVO =  bookingMapper.oneSelect(flightDataVO);
-			System.out.println(flightDataVO.getEconomyCharge());
+			/* System.out.println(flightDataVO.getEconomyCharge()); */
 			
 			bookingPriceVO = new BookingPriceVO();
 			bookingPriceVO.setPrice(Integer.parseInt(flightDataVO.getEconomyCharge()));
@@ -112,14 +106,14 @@ public class BookingService {
 			
 			if (!bookingTicketVO.getArrCoupon().equals("개인할인 선택 안함")) {
 				double discount = Integer.parseInt(bookingTicketVO.getArrCoupon().substring(1, 3))*(0.01);
-				System.out.println(discount);
+				/* System.out.println(discount); */
 				int dprice = (int)(bookingPriceVO.getPrice()*discount);
 				int dtotal = bookingPriceVO.getPrice()-dprice;
 				
-				System.out.println(bookingPriceVO.getPrice()); //원가
-				System.out.println(dprice); //쿠폰할인가
-				System.out.println(dtotal); //쿠폰적용된 금액
-
+				/*
+				 * System.out.println(bookingPriceVO.getPrice()); //원가
+				 * System.out.println(dprice); //쿠폰할인가 System.out.println(dtotal); //쿠폰적용된 금액
+				 */
 				bookingPriceVO.setCouponDis(dprice);
 				
 				bookingPriceVO.setFuelTax(fuelTax);
@@ -180,12 +174,13 @@ public class BookingService {
 		char bookNum3 = (char) ((int) (Math.random() * 26) + 65);
 		String bookNum4 = String.format("%02d%n", rand.nextInt(100)).replace("\r\n", "");
 		String bookNum = Character.toString(bookNum1) + bookNum2 + Character.toString(bookNum3) + bookNum4;
-		System.out.println("예매번호 : " + bookNum); // A00A00 형식
-		return bookNum;
+		/*
+		 * System.out.println("예매번호 : " + bookNum); // A00A00 형식
+		 */		return bookNum;
 	}
 	// 예약번호(각자 다른거) 생성 
 	public String flightNum(BookingTicketVO bookingTicketVO) throws Exception {
-		System.out.println("test");
+
 			Random rand = new Random();
 			String flightNum = bookingTicketVO.getDepInfo().getVihicleId();
 			// 편명에 "/" 제거 ex): HGG/1301 -> HGG1301
@@ -195,7 +190,7 @@ public class BookingService {
 			char filghtNum2 = (char) ((int) (Math.random() * 26) + 65);
 			// 편명 + 랜덤 알파벳 + 001~999 범위의 랜덤 숫자 ex): HGG1301/J/635 -> HGG1301J635
 			flightNum = flightNum +Character.toString(filghtNum2)+ filghtNum1; 
-			System.out.println("예약번호(개인) : " + flightNum);
+		/* System.out.println("예약번호(개인) : " + flightNum); */
 			return flightNum;
 		}
 	
