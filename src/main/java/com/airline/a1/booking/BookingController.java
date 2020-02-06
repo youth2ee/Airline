@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.zip.Adler32;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.airline.a1.member.MembersVO;
 
 @Controller
 @RequestMapping("/booking/**")
@@ -319,11 +322,14 @@ public class BookingController {
 	}
 
 	@PostMapping("bookingWrite")
-	public ModelAndView bookingWrite(BookingTicketVO bookingTicketVO) throws Exception {
+	public ModelAndView bookingWrite(BookingTicketVO bookingTicketVO, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		
+		MembersVO memberVO = new MembersVO();
+		memberVO = (MembersVO)session.getAttribute("member");
+		
 		// id
-		String id = "test";
+		String id = memberVO.getId();
 
 		/// bookingNum 만들기
 		String bookingNum = "";
@@ -332,14 +338,13 @@ public class BookingController {
 
 		//
 		String flightBNum = "";
-		String memberNum = "111";
 
 		// 어른
 		if (bookingTicketVO.getAdultList() != null) {
 			for (BookingTicketVO adult : bookingTicketVO.getAdultList()) {
 				adult.setBookingNum(bookingNum);
 				adult.setId(id);
-				adult.setMemberNum(memberNum);
+				adult.setMemberNum(adult.getMemberNum());
 
 				String kind = "편도";
 				if (bookingTicketVO.getKind().equals("왕복")) {
@@ -357,12 +362,6 @@ public class BookingController {
 				
 				bookingTicketVO.setDepInfo(bookingService.oneSelect(flightDataVO));
 
-				// flightnum 가는편 만들기
-				/*
-				 * flightBNum = bookingService.flightNum(adult);
-				 * adult.setFlightBNum(flightBNum); adult.setDepFBNum(flightBNum);
-				 */
-
 				adult.setResEmail(bookingTicketVO.getResEmail());
 				adult.setResECheck(bookingTicketVO.getResECheck());
 				adult.setResPhone(bookingTicketVO.getResPhone());
@@ -373,17 +372,31 @@ public class BookingController {
 				if (adult.getMonth().length() == 1) {
 					adult.setMonth("0" + adult.getMonth());
 				}
-				if (adult.getDay().length() == 1) {
+				if (adult.getDay().length() == 1 ) {
 					adult.setDay("0" + adult.getDay());
 				}
 				adult.setBirth(adult.getYear() + adult.getMonth() + adult.getDay());
 
+				//booking insert
 				bookingService.bookingInsert(adult);
+				
 
 				// 가격
 				bookingService.priceCount(adult);
 				adult = bookingService.priceCount(adult);
 
+				//bookingPrice Insert
+				adult.getDepPriceVO().setBookingNum(bookingNum);
+				adult.getDepPriceVO().setBnum(adult.getBnum());
+				
+				
+				adult.getDepPriceVO().setMemberNum(adult.getMemberNum());
+				adult.getDepPriceVO().setId(id);
+
+				bookingService.priceInsertOne(adult.getDepPriceVO());
+				
+				
+				
 				if (bookingTicketVO.getKind().equals("왕복")) {
 
 					int dep = adult.getDepFnum();
@@ -393,11 +406,6 @@ public class BookingController {
 
 					flightDataVO = new FlightDataVO();
 
-					// flightnum 오는편 만들기
-					/*
-					 * flightBNum = bookingService.flightNum(adult);
-					 * adult.setFlightBNum(flightBNum); adult.setArrFBNum(flightBNum);
-					 */
 
 					flightDataVO.setFnum(adult.getDepFnum());
 					adult.setArrInfo(bookingService.oneSelect(flightDataVO));
@@ -405,12 +413,23 @@ public class BookingController {
 					
 					adult.setBnum(null);
 					
+					//booking insert
 					bookingService.bookingInsert(adult);
 
 					// 가격
 					adult.setDepFnum(dep);
 					adult.setArrFnum(arr);
 					adult = bookingService.priceCount(adult);
+					
+					//bookingPrice Insert
+					adult.getArrPriceVO().setBookingNum(bookingNum);
+					adult.getArrPriceVO().setBnum(adult.getBnum());
+					
+					
+					adult.getArrPriceVO().setMemberNum(adult.getMemberNum());
+					adult.getArrPriceVO().setId(id);
+
+					bookingService.priceInsertOne(adult.getArrPriceVO());
 				
 				}
 			} // 어른 반복문 끝
@@ -421,7 +440,7 @@ public class BookingController {
 			for (BookingTicketVO child : bookingTicketVO.getChildList()) {
 				child.setBookingNum(bookingNum);
 				child.setId(id);
-				child.setMemberNum("111");
+				child.setMemberNum(child.getMemberNum());
 
 				String kind = "편도";
 				if (bookingTicketVO.getKind().equals("왕복")) {
@@ -459,11 +478,23 @@ public class BookingController {
 				}
 				child.setBirth(child.getYear() + child.getMonth() + child.getDay());
 
+				//booking insert
 				bookingService.bookingInsert(child);
 
 				// 가격
-				bookingService.priceCount(child);
 				child = bookingService.priceCount(child);
+				
+				//bookingPrice Insert
+				child.getDepPriceVO().setBookingNum(bookingNum);
+				child.getDepPriceVO().setBnum(child.getBnum());
+				
+				
+				child.getDepPriceVO().setMemberNum(child.getMemberNum());
+				child.getDepPriceVO().setId(id);
+
+				bookingService.priceInsertOne(child.getDepPriceVO());
+				
+				
 
 				// 왕복일때
 				if (bookingTicketVO.getKind().equals("왕복")) {
@@ -485,13 +516,23 @@ public class BookingController {
 
 					child.setBnum(null);
 					
+					//booking insert
 					bookingService.bookingInsert(child);
 
 					// 가격
 					child.setDepFnum(dep);
 					child.setArrFnum(arr);
-					bookingService.priceCount(child);
 					child = bookingService.priceCount(child);
+					
+					//bookingPrice Insert
+					child.getArrPriceVO().setBookingNum(bookingNum);
+					child.getArrPriceVO().setBnum(child.getBnum());
+					
+					
+					child.getArrPriceVO().setMemberNum(child.getMemberNum());
+					child.getArrPriceVO().setId(id);
+
+					bookingService.priceInsertOne(child.getArrPriceVO());
 				}
 			} // 어린이 반복문 끝
 		} // 어린이 끝
