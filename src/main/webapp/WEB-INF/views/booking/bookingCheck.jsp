@@ -198,11 +198,34 @@ ${bVO.arrInfo.vihicleId} ${bVO.arrInfo.airlineNm}<br>
 
 <hr>
 
+<div style="padding-bottom: 28px;"> 
+<div style="padding-bottom: 36px;">
+<div style="float: left; font-size: 20px; padding-right: 50px; width: 350px; text-align: right;">${member.id}님의 마일리지 :</div> 
+<div style="float: left; font-size: 20px; width: 108px; text-align: right; ">${member.mileage}점</div>
+</div>
+
+<div style="clear: both;">
+<div style="float: left; font-size: 20px; padding-right: 50px;  width: 350px; text-align: right;">사용할 마일리지 :</div>
+<div style="float: left; font-size: 20px;"><input type="text" id="muse" value="0" style="width: 90px;height: 26px;font-size: 20px;margin-top: 3px;">점</div>
+<div style="float: left; padding-left: 19px; margin-top: 3px;"> 
+<button id="use" style="margin-right: 10px;">사용</button> 
+<button id="useAll">전체 사용</button>
+</div>
+</div>
+
+</div>
+
+<hr style="clear: both;">
+
 <div id="priceDiv">
 <table id="tpriceTb">
 <tr>
-<td> 마일리지 확인 : ${member.mileage} </td>
-<td>항공 총 결제금액 : </td>
+<td style="text-align: right;">마일리지 할인 :</td>
+<td class="milCheck">0</td>
+</tr>
+
+<tr>
+<td style="text-align: right; ">항공 총 결제금액 : </td>
 <td class="tprice"></td>
 </tr>
 </table>
@@ -218,32 +241,84 @@ ${bVO.arrInfo.vihicleId} ${bVO.arrInfo.airlineNm}<br>
 
 
 
-<script type="text/javascript">
-var r = 0;
-$('.price').each(function (index, item) { 
-	console.log($(this).text()); 
-	var rt = $(this).text();
-	rt = rt.replace(',','');
-	rt = rt.replace('원','');
-	console.log(rt);
-	
-	var t = Number(rt);
-	r = r + t;
-	
-	console.log(addComma(r));
-});
-	$('.tprice').html(' '+addComma(r)+'원');
-	function addComma(num) {
-		  var regexp = /\B(?=(\d{3})+(?!\d))/g;
-		  return num.toString().replace(regexp, ',');
-		}
-	
-$('#btn').click(function(){
-/* 	window.open("../imPay/imPayList?name=항공권&amount="+r, "이니시스",  "width=825px, height=600px"); */
-window.open("../imPay/imPayList?name=항공권&amount="+100, "이니시스",  "width=825px, height=600px");
+	<script type="text/javascript">
+		var r = 0;
 
-});
-</script>
+		$('.price').each(function(index, item) {
+			console.log($(this).text());
+			var rt = $(this).text();
+			rt = rt.replace(',', '');
+			rt = rt.replace('원', '');
+			console.log(rt);
+
+			var t = Number(rt);
+			r = r + t;
+
+			console.log(addComma(r));
+		});
+
+		
+		var mil = 0;
+		function addComma(num) {
+			var regexp = /\B(?=(\d{3})+(?!\d))/g;
+			return num.toString().replace(regexp, ',');
+		}
+
+
+		$('.tprice').html(' ' + addComma(r) + '원');
+		
+		$('#use').click(function(){
+			mil = $('#muse').val();
+
+			if(mil > ${member.mileage}){
+				alert('사용가능한 마일리지를 입력해주세요.');
+				$('#muse').val(0);
+				mil = 0;
+			}
+			
+		    var regNumber = /^[0-9]*$/;
+		    if(!regNumber.test(mil)){
+		        alert('숫자만 입력하세요');
+		        $('#muse').val(0);
+		        mil = 0;
+		    }
+						
+			$('.milCheck').text(mil);
+			mil = Number(mil);
+			var rm = r - mil;
+			$('.tprice').html(' ' + addComma(rm) + '원');
+		});
+
+		$('#useAll').click(function(){
+			$('#muse').val(${member.mileage});
+			mil = $('#muse').val();
+			$('.milCheck').text(mil);
+			mil = Number(mil);
+			var rm = r - mil;
+			$('.tprice').html(' ' + addComma(rm) + '원');
+		});
+
+
+		var numList = [];
+		numList = ${numList};
+
+		var nlist = '';
+
+		$.each(numList, function(index, item) {
+			alert(item);
+
+			nlist = nlist + ',' + item;
+			
+		}); 
+		
+		
+
+		$('#btn').click(
+				function() {
+					/* 	window.open("../imPay/imPayList?name=항공권&amount="+r, "이니시스",  "width=825px, height=600px"); */
+					window.open("../imPay/imPayList?name=항공권&amount="+100+"&mil="+mil+"&bpnum="+nlist,"이니시스", "width=825px, height=600px");
+				});
+	</script>
 
 
 </body>

@@ -316,7 +316,7 @@ public class HomeController {
 	
 	
 	@GetMapping("sorttest")
-	public void sorttest() throws Exception{
+	public void sorttest() throws Exception {
 		
 	}
 

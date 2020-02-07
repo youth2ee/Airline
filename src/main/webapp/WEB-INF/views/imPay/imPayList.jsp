@@ -11,8 +11,6 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 
-<div class="hi"></div>
-
 
 <script type="text/javascript">
 
@@ -55,7 +53,9 @@ IMP.request_pay({
 				pg_tid:rsp.pg_tid,
 				paid_at:rsp.paid_at,
 				receipt_url:rsp.receipt_url,
-				apply_num:rsp.apply_num
+				apply_num:rsp.apply_num,
+				mil:'${VO.mil}'
+					
 			},
 			type : "GET",
 			url : "../imPay/imPayComplete",
