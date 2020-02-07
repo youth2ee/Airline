@@ -9,9 +9,10 @@ public interface LimoMapper {
 	
 	public int limoBook(LimoVO limoVO)throws Exception;
 	
-	public LimoVO myLimo(LimoVO limoVO)throws Exception;
+	public List<LimoVO> myLimo(LimoVO limoVO)throws Exception;
 	
 	public List<LimoInfoVO> limoInfo(LimoInfoVO limoInfoVO)throws Exception;
 
 	public List<LimoVO> limoSelect(LimoVO limoVO)throws Exception;
+	
 }

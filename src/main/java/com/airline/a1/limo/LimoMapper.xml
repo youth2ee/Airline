@@ -8,7 +8,7 @@
   	</select>
   	
   	<insert id="limoBook" parameterType="com.airline.a1.limo.LimoVO">
-  		insert into limo values(0, #{limoDate}, #{limoPrice}, #{id}, #{depLoc}, #{arrLoc}, #{limoTime}, #{seat}, #{person})
+  		insert into limo values(0, #{limoDate}, #{limoPrice}, #{id}, #{depLoc}, #{arrLoc}, #{limoTime}, #{seat}, #{person}, #{child})
   	</insert>
   	
   	<select id="limoInfo" parameterType="com.airline.a1.limo.LimoInfoVO" resultType="com.airline.a1.limo.LimoInfoVO">
@@ -20,4 +20,5 @@
   		(select * from limo where depLoc=#{depLoc} and arrLoc=#{arrLoc}) P 
   		where limoDate=#{limoDate} and limoTime=#{limoTime}
   	</select>
+  	
   </mapper>

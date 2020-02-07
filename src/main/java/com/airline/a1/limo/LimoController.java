@@ -22,7 +22,6 @@ public class LimoController {
 	
 	@GetMapping("limoHome")
 	public void limoHome() throws Exception{
-		
 	}
 	
 	@GetMapping("limoBook")
@@ -34,7 +33,7 @@ public class LimoController {
 	
 	
 	@PostMapping("limoBook")
-	public ModelAndView limoBook(Date [] limoDate, int [] limoPrice, String [] id, String [] depLoc, String [] arrLoc, String [] limoTime, String [] seat, int [] person) throws Exception{
+	public ModelAndView limoBook(Date [] limoDate, int [] limoPrice, String [] id, String [] depLoc, String [] arrLoc, String [] limoTime, String [] seat, int [] person, int [] child) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		int result = 0;
 		for (int i = 0; i < limoDate.length; i++) {
@@ -47,12 +46,13 @@ public class LimoController {
 			limoVO.setLimoTime(limoTime[i]);
 			limoVO.setSeat(seat[i]);
 			limoVO.setPerson(person[i]);
+			limoVO.setChild(child[i]);
 			limoService.limoBook(limoVO);
 		}
 		return mv;
 	}
 	@PostMapping("limoBook2")
-	public ModelAndView limoBook2(Date [] limoDate, int [] limoPrice, String [] id, String [] depLoc, String [] arrLoc, String [] limoTime, String [] seat, int [] person) throws Exception{
+	public ModelAndView limoBook2(Date [] limoDate, int [] limoPrice, String [] id, String [] depLoc, String [] arrLoc, String [] limoTime, String [] seat, int [] person, int [] child) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		int result = 0;
 		for (int i = 0; i < limoDate.length; i++) {
@@ -60,11 +60,12 @@ public class LimoController {
 			limoVO.setLimoDate(limoDate[i]);
 			limoVO.setLimoPrice(limoPrice[i]);
 			limoVO.setId(id[i]);
-			limoVO.setDepLoc(depLoc[i]);
-			limoVO.setArrLoc(arrLoc[i]);
+			limoVO.setDepLoc(arrLoc[i]);
+			limoVO.setArrLoc(depLoc[i]);
 			limoVO.setLimoTime(limoTime[i]);
 			limoVO.setSeat(seat[i]);
 			limoVO.setPerson(person[i]);
+			limoVO.setChild(child[i]);
 			limoService.limoBook(limoVO);
 		}
 		return mv;

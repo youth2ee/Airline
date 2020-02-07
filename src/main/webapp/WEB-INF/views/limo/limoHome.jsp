@@ -12,6 +12,11 @@
 <link rel="stylesheet" type="text/css" href="https://www.kobus.co.kr/css/spexp/layout.css?v=1.1">
 <link rel="stylesheet" type="text/css" href="https://www.kobus.co.kr/css/spexp/ui-style.css?v=1.0">
 <link rel="stylesheet" type="text/css" href="https://www.kobus.co.kr/css/spexp/content.css?v=1.5">
+<link rel="stylesheet" type="text/css" href="https://www.kobus.co.kr/css/reset.css">
+<link rel="stylesheet" type="text/css" href="https://www.kobus.co.kr/css/plugin.css">
+<link rel="stylesheet" type="text/css" href="https://www.kobus.co.kr/css/layout.css?v=0.2">
+<link rel="stylesheet" type="text/css" href="https://www.kobus.co.kr/css/content.css?v=0.5">
+<link rel="stylesheet" type="text/css" href="https://www.kobus.co.kr/css/ui.jqgrid.custom.css">
 </head>
 <c:import url="../template/boot.jsp"></c:import>
 		<body class="full">
@@ -83,7 +88,7 @@
 			
 		</div>
         <!-- // 20190910 추가 -->         
-<div class="main_top">
+<div class="main_top" style="height: 300px;">
 	<div class="main_content">
 		<div class="main_txtBox">
 			<p class="title">리무진버스 통합 예매</p>
@@ -93,33 +98,16 @@
 			<ul>
 				<li class="on"><a href="./limoBook">공항 -> 도시 예매</a></li>
 				<li class="on"><a href="./limoBook2">도시 -> 공항 예매 </a></li>
-				
-					
 			</ul>
 		</div>
 		<div class="tab_container">
 			<!-- 고속버스 예매 -->
 			<div tabindex="0" class="tabContent on">
 				<h2 class="ir">고속버스 예매</h2>
-				<div class="route_box">
-					<div class="tab_wrap tab_type1" id="rtrpYnAll">
-						<div class="tab_cont">
-							
-<!-- 							<p class="check" id="alcnSrchBtn"> -->
-<!-- 								버튼 활성화시 class추가 'active' -->
-<!-- 								<button type="button" class="btn_confirm ready noHover" onclick="fnAlcnSrch();" style="">조회하기</button> -->
-<!-- 								170103 class명 추가 class = "btn_confirm ready" -->
-<!-- 							</p> -->
-<!-- 							<p class="check" id="alcnSrchBtn"> -->
-<!-- 								버튼 활성화시 class추가 'active' -->
-<!-- 								<button type="button" class="btn_confirm ready noHover" onclick="fnAlcnSrch();" style="">조회하기</button> -->
-<!-- 								170103 class명 추가 class = "btn_confirm ready" -->
-<!-- 							</p> -->
-						</div>
-					</div>
-				</div>
 			</div>
 			<!-- //고속버스 예매 -->
+			
+			
 
 			<!-- 예매확인 -->
 			<div tabindex="0" class="tabContent">
@@ -273,16 +261,6 @@
 			}
 		}
 	</script>
-	<div class="family_site select-box">
-		<div class="selectricWrapper selectric-select"><div class="selectricHideSelect"><select name="" id="" title="관련사이트" class="select" onchange="familySite(this);" tabindex="0">
-			<option value="">관련사이트</option>
-			<option value="www.tago.go.kr">국가대중교통정보센터</option>
-			<option value="www.epassmobile.co.kr">고속버스모바일</option>
-			<option value="www.intis.or.kr">인천장애인콜택시</option>
-			<option value="www.centralcityseoul.co.kr">센트럴시티터미널</option>
-			<option value="txbus.t-money.co.kr">시외버스통합예매</option>
-		</select></div><div class="selectric"><p class="label">관련사이트</p><b class="button">▾</b></div><div class="selectricItems" tabindex="-1"><div class="selectricScroll"><ul><li class="selected">관련사이트</li><li class="">국가대중교통정보센터</li><li class="">고속버스모바일</li><li class="">인천장애인콜택시</li><li class="">센트럴시티터미널</li><li class="last">시외버스통합예매</li></ul></div></div><input class="selectricInput" tabindex="0"></div>
-	</div>
 	<div class="foot_bottom clfix">
 		<div class="foot_cont">
 			<p class="foot_menu">
@@ -292,12 +270,8 @@
 				<!-- <a href="/spexp/etc/cmsstpl/CmsStpl.do">전자금융거래 이용약관</a> -->
 				<a>고객센터 1644-9030</a>
 			</p>
-			<p class="foot_addr">서울특별시 서초구 신반포로 194 <span class="mo_block">통신판매업신고: 2009-서울서초 0587호 대표자 : 박명주</span></p>
-			<p class="foot_copy">COPYRIGHT© 2016. WWW.KOBUS.CO.KR . ALL RIGHT RESERVED</p>
-			<p class="foot_com">
-				<a href="#"><img src="/images/common/sfoot_com1.png" alt="KOBUS 전국고속버스운송사업조합"></a>
-				<a href="#"><img src="/images/common/sfoot_com2.png" alt="전국여객자동차터미널사업자협회"></a>
-			</p>
+			<p class="foot_addr">서울특별시 서초구 신반포로 194 <span class="mo_block">통신판매업신고: 2009-서울서초 0587호 대표자 : 박용주</span></p>
+			<p class="foot_copy">COPYRIGHT© 2016. WWW.AIRLINE.CO.KR . ALL RIGHT RESERVED</p>
 		</div>
 	</div>
 </div>

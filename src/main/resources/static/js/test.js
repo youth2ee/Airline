@@ -231,19 +231,19 @@
 
 // 편도 2회 예매 --------------------------------------------------------------------------------------------------------
 // 지난 날 막기 : date함수
-	var today = new Date();
-	var dd = today.getDate();
-	var mm = today.getMonth()+1;
-	var yyyy = today.getFullYear();
-	 if(dd<10){
-	        dd='0'+dd
-	    } 
-	    if(mm<10){
-	        mm='0'+mm
-	    } 
-	today = yyyy+'-'+mm+'-'+dd;
-	
-	$(".limoDate2").attr('min', today);
+//	var today = new Date();
+//	var dd = today.getDate();
+//	var mm = today.getMonth()+1;
+//	var yyyy = today.getFullYear();
+//	 if(dd<10){
+//	        dd='0'+dd
+//	    } 
+//	    if(mm<10){
+//	        mm='0'+mm
+//	    } 
+//	today = yyyy+'-'+mm+'-'+dd;
+//	
+//	$(".limoDate2").attr('min', today);
 	
 	var depLoc2 = "";
 	var limoDate2 = "";

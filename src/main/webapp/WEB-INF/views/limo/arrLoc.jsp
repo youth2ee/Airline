@@ -21,7 +21,7 @@
 		<option value="4">4</option>
 		<option value="5">5</option>
 	</select>
-	<select class="child child${sec}">
+	<select class="child child${sec}" name="child">
 		<option>인원(소인)</option>
 		<option value="0">0</option>
 		<option value="1">1</option>
