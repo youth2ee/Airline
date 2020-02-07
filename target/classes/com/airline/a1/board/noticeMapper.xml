@@ -13,12 +13,12 @@
 						<when test="kind == 'kt'">
 							where title like concat('%',#{search},'%')
 						</when>
-						<when test="kind == 'kc'">
+						<!-- <when test="kind == 'kc'">
 							where contents like concat('%',#{search},'%')
-						</when>
-					<!-- 	<otherwise>
-							where writer like concat('%', #{search},'%')
-						</otherwise> -->
+						</when> -->
+					<otherwise>
+							where contents like concat('%', #{search},'%')
+						</otherwise>
 					</choose>
 			</sql>
 			
@@ -36,15 +36,16 @@
 						@ROWNUM := @ROWNUM + 1 AS ROWNUM, 
 						N.*
 				 	from notice N,
-				 		(select @ROWNUM :=0) R
+				 		(select @ROWNUM :=#{startRow}) R
 				 	<include refid="bs"></include>
 				 	order by num desc) K
-			limit #{startRow}, 10 
+		 limit #{startRow},10
 		
 </select>
 
+
 <select id="subNoticeList" resultType="com.airline.a1.board.NoticeVO" parameterType="com.airline.a1.boardUtil.Pager">
- 	select * 
+  <!-- select * 
 			from (select
 						@ROWNUM := @ROWNUM + 1 AS ROWNUM, 
 						N.*
@@ -52,13 +53,27 @@
 				 		(select @ROWNUM :=0) R
 				 	<include refid="bs"></include>
 				 	order by num desc) K
-				 	where cate =#{cate}
-			limit #{startRow}, 10 
+				 	where cate =#{menu}
+				 limit #{startRow}, 10  -->
+				 
+		select @rnum:=@rnum+1 as NO, a.*
+   			 from
+    		(select * from notice 
+				<include refid="bs"></include> and cate=#{menu}
+			 order by num desc)a, 
+   			 (select @rnum:=#{startRow})b limit #{startRow},10				 			
 </select>
+
 
 <select id="noticeCount" resultType="java.lang.Integer" parameterType="com.airline.a1.boardUtil.Pager">
 		select count(ifnull(num,0)) from notice
 				<include refid="bs"></include>
+</select>
+
+<select id="noticeCount2" resultType="java.lang.Integer" parameterType="com.airline.a1.boardUtil.Pager">
+				
+			select count(ifnull(num,0)) from(select* from notice where cate=#{menu})N 
+			<include refid="bs"></include>	
 </select>
 
 

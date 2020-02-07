@@ -44,13 +44,24 @@ public class MemberController {
 		}
 		
 		
-		
 		if(membersVO != null) {
 			session.setAttribute("member", membersVO);
 			mv.setViewName("redirect:../");
 		}else {
 			mv.setViewName("member/memberLogin");
 		}
+		
+		return mv;
+	}
+	
+	@GetMapping("memberLogout")
+	public ModelAndView memberLogout(HttpSession session) {
+		session.invalidate();
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("common/common_result");
+		mv.addObject("msg", "로그아웃이 완료되었습니다.");
+		mv.addObject("path", "../");
 		
 		return mv;
 	}
@@ -71,7 +82,6 @@ public class MemberController {
 	@GetMapping("memberJoin")
 	public ModelAndView memberJointo(HttpServletRequest request) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		System.out.println(request.getHeader("Referer"));
 		if(request.getHeader("Referer") == null) {
 			mv.setViewName("common/common_result");
 			mv.addObject("msg", "약관 동의 후 진행해주세요.");
@@ -158,7 +168,6 @@ public class MemberController {
 	@ResponseBody
 	@PostMapping("memberidFindbyEmail")
 	public int memberidFindbyEmail(MembersVO membersVO, HttpServletRequest request, ModelMap mo, HttpSession session) throws Exception{
-		System.out.println("떴냐");
 		membersVO = memberService.memberidFindbyEmail(membersVO);
 		int id = 0;
 		if(membersVO != null) {

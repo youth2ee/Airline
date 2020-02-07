@@ -12,4 +12,8 @@ public interface parkMapper {
 	public pInfoVO parkWhere(pInfoVO pInfoVO) throws Exception;
 	
 	public int resInsert(pReservationVO pReservationVO) throws Exception;
+	
+	public List<pReservationVO> myReservation(pReservationVO pReservationVO) throws Exception;
+	
+	public pReservationVO resSelect(pReservationVO pReservationVO) throws Exception;
 }

@@ -14,5 +14,6 @@ public interface BookingMapper {
 	public FlightDataVO oneSelect(FlightDataVO flightDataVO) throws Exception;
 	public int bookingInsert(BookingTicketVO bookingTicketVO) throws Exception;
 	public List<BookingTicketVO> airportDepList(String depLoc)throws Exception;
+	public int priceInsertOne(BookingPriceVO bookingPriceVO) throws Exception;
 
 }

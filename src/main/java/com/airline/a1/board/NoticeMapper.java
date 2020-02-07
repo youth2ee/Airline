@@ -22,4 +22,5 @@ public interface NoticeMapper {
 	
 	public int noticeCount(Pager pager)throws Exception;
 	
+	public int noticeCount2(Pager pager)throws Exception;
 }

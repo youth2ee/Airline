@@ -31,5 +31,10 @@ now(), #{resEmail}, #{resECheck}, #{resPhone}, #{resPCheck}, #{gender}, #{name},
 </insert>
 
 
+<insert id="priceInsertOne" parameterType="com.airline.a1.booking.BookingPriceVO">
+insert into bookingPrice values (null, #{bookingNum}, #{bnum}, #{price},#{couName}, #{couponDis}, #{fuelTax},
+#{airportTax}, #{totalPrice}, null, #{mileagePlus}, #{memberNum}, #{id})
+</insert>
+
 
 </mapper>

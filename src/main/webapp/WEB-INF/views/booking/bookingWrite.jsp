@@ -346,19 +346,6 @@ ${arr[0]}년 ${arr[1]}월 ${arr[2]}일<br>
 </section>
 
 
-<script type="text/javascript">
-/* 검색 */
-$('body').on('click', '#sbtn', function(){
-	$('.tooltiptext1').css("display", "inline-block");
-});
-
-
-$('body').on('click', '#ssbtn', function(){
-	$('#frm').submit();
-});
-
-</script>
-
 
 </body>
 </html>

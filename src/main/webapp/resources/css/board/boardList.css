@@ -143,7 +143,7 @@ ul.tabs li{
     cursor: pointer;
     background: #6d6e70;
     text-align: center;
- 	padding-top: 20px; 
+ 	line-height: 60px;
 	border-left: 1px solid #fff;
 }
 ul.tabs li:hover{
@@ -153,6 +153,11 @@ ul.tabs li:hover{
 .tab-link span{
 	  color: #fff;
 	  font-size: 16px;
+}
+
+.tab-link a{
+	width: 100%;
+	height: 100%;
 }
 
 ul.tabs li.current{
@@ -201,9 +206,10 @@ ul.tabs li.current span{
     list-style: none;
 }
 
+/* tab-contents */
 .left{
 	float: left;
-	width: 905px;
+	width: 890px;
 	height: 57px;
 }
 
@@ -260,6 +266,10 @@ ul.tabs li.current span{
 .right_sub span{
 	color: #555555;
 
+}
+
+.txt{
+	height: 25px;
 }
 
 /****** paging ******/
