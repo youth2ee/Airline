@@ -127,7 +127,7 @@
 	</section>
 
 <script type="text/javascript">
-
+	$(".header_bottom_inner").css("background-color", "white");
 </script>
 
 </body>

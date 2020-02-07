@@ -532,7 +532,7 @@ $('#arrloc').focus(function(){
 
  /* 날씨입니다 지우지 마세여 ^8^*/
 
-$("#weather_select").click(function(){
+$("#weather_select").click(function(){ 
 			var weather = $("#weather_sel").val();
 			$.ajax({
 				type:'get',
