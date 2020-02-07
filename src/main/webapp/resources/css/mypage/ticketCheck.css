@@ -121,3 +121,87 @@ button {
 #headerBottom{
 	
 }
+
+.ticketInfo{
+	position: relative;
+    top: 10px;
+    width: 60%;
+    margin: auto;
+    height: 250px;
+    border: 1px solid #6d6e70;
+}
+.ticketInfoText1{
+	margin: 0;
+    color: #00518b;
+    font-size: 21px;
+    font-weight: 1000;
+    margin-left: 10px
+}
+.ticketInfoText2{
+	margin: 0;
+    font-size: 19px;
+    font-weight: bold;
+    color: #565656;
+    letter-spacing: -0.5px;
+    margin-left: 10px;
+}
+.ticketInfoText3{
+	margin: 0;
+    margin-left: 10px;
+    font-weight: 1000;
+    color: #1f1f1f;
+    font-size: 18px;
+}
+.depInfo, .arrInfo,.moreInfo{
+    display: inline-block;
+}
+.cancel {
+    color: #d60815;
+    font-size: 16px;
+    font-weight: bold;
+    position: relative;
+    left: 1050px;
+    top: 15px;
+    cursor: pointer;
+}
+.cancel:hover{
+    color: #d60815;
+    font-size: 16px;
+    font-weight: bold;
+    position: relative;
+    left: 1050px;
+    top: 15px;
+    cursor: pointer;
+}
+.bookingNum{
+	font-size: 19px;
+    font-weight: bold;
+    color: #565656;
+}
+.bookingList{
+	position: relative;
+    width: 60%;
+    margin: auto;
+    font-size: 20px;
+    font-weight: bolder;
+    color: grey;
+}
+.bookingInfo {
+	position: relative;
+    top: 10px;
+    width: 60%;
+    margin: auto;
+	
+}
+.bookingTable table{
+	border-top: black solid 2px;
+    border-bottom: black solid 2px;
+    width: 100%;
+}
+.bookingTable td{
+	border : 1px solid;
+	padding: 7px;
+}
+.bookingTable table first-child{
+	border : none;
+}

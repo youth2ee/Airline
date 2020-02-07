@@ -87,8 +87,61 @@
     </div>
   </li>
  </ul>      
-
-
+	<div>
+	<div class="bookingList">예매내역</div>
+		<div class="ticketInfo" style="display: none">
+			<div class="ticketText">
+				<div class="bookingNum">
+					<span class="bookingNum">S68U58</span>
+				</div>
+				<div class="depInfo"> 
+					<p class="ticketInfoText1">GMP</p>
+					<p class="ticketInfoText2">김포(Gimpo)</p>
+					<p class="ticketInfoText3">19JAN20(일) 06:10</p>
+					<p class="ticketInfoText3">OZ123A456</p>
+				</div>
+				<div class="arrInfo"> 
+					<p class="ticketInfoText1">CJU</p>
+					<p class="ticketInfoText2">제주(Jeju)</p>
+					<p class="ticketInfoText3">19JAN20(일) 07:20</p>
+					<p class="ticketInfoText3">OZ123A456</p>
+				</div>  
+				<div class="moreInfo"> 
+					<p class="ticketInfoText1">GMP → CJU</p>
+					<p class="ticketInfoText2">좌석 : D4</p>
+					<p class="ticketInfoText3">비행시간 : 48분</p>
+					<p class="ticketInfoText1">CJU → GMP</p>
+					<p class="ticketInfoText2">좌석 : F1</p>
+					<p class="ticketInfoText3">비행시간 : 48분</p>
+				</div> 
+				<div class="button_wrap">
+					<a class="cancel">예매 취소</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="bookingInfo">
+		<div class="bookingTable">
+			<table>
+				<tr class="tableTop">
+					<td>선택</td>
+					<td>출발일자</td>
+					<td>출발지→도착지</td>
+					<td>출발→도착시간</td>
+					<td>편명</td>
+					<td>좌석</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox"></td>
+					<td>2020-02-07 (금)</td>
+					<td>김포 → 제주</td>
+					<td>07:30 → 08:30</td>
+					<td>OZ123</td>
+					<td>C4</td>
+				</tr>
+			</table>
+		</div>
+	</div>
 <script type="text/javascript">
 var completes = document.querySelectorAll(".complete");
 var toggleButton = document.getElementById("toggleButton");
