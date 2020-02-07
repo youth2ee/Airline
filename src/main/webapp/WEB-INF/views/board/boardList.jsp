@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,7 +42,7 @@
 </div>
 
 <div id="container">
-	<h3>공지사항</h3>
+	<h3><a href="./noticeList">공지사항</a></h3>
 	<form id="frm" action="./${board}List">
 	<div class="total_search_input">
 		<div class="search_inner">
@@ -60,24 +61,24 @@
 	<div class="tab_wrap">
 		<ul class="tabs">
 			<li class="tab-link current" data-tab="tab-1">
-					<a href="./noticeList"><span>전체</span></a>		
+					<a href="./noticeList?curPage=1&search=${pager.search}&kind=${pager.kind}"><span>전체</span></a>		
 			</li>
 			
 			<li class="tab-link" data-tab="tab-2">					
-						<a href="./noticeList1?menu=EveryAir소식"><span class="val">EveryAir소식</span></a>		
+					<a href="./noticeList1?menu=EveryAir소식&curPage=1&search=${pager.search}&kind=${pager.kind}"><span class="val">EveryAir소식</span></a>		
 			</li>
 			
 			<li class="tab-link" data-tab="tab-3">
-				<a href="./noticeList2?menu=EveryAir클럽"> <span class="val">EveryAir클럽</span></a>
+				<a href="./noticeList1?menu=EveryAir클럽&curPage=1&search=${pager.search}&kind=${pager.kind}">  <span class="val">EveryAir클럽</span></a>
 			</li>
 			<li class="tab-link" data-tab="tab-4">
-				<a href="./noticeList3?menu=유류할증료"><span>유류할증료</span></a>
+				<a href="./noticeList1?menu=유류할증료&curPage=1&search=${pager.search}&kind=${pager.kind}"><span>유류할증료</span></a>
 			</li>
 			<li class="tab-link" data-tab="tab-5">
-				<a href="./noticeList4?menu=제휴사소식"><span>제휴사소식</span></a>
+				<a href="./noticeList1?menu=제휴사소식&curPage=1&search=${pager.search}&kind=${pager.kind}"><span>제휴사소식</span></a>
 			</li>
 			<li class="tab-link" data-tab="tab-6">
-				<a href="./noticeList5?menu=기타"><span>기타</span></a>
+				<a href="./noticeList1?menu=기타&curPage=1&search=${pager.search}&kind=${pager.kind}"><span>기타</span></a>
 			</li>
 		</ul>
 		</div>
@@ -144,6 +145,17 @@
 
 
 	<script type="text/javascript">		
+	$(document).ready(function() {
+			var list = '${fn:length(list)}';
+			var test = $('#searchText').val();
+
+				alert(test);
+				
+	if(${fn:length(list)} = 0 && test !=''){
+					alert('ok');
+			}
+	});
+		
 	
 		/* paging  */
 		$("#page${pager.curPage}").addClass("on");
@@ -195,7 +207,6 @@
 		
 			});	 
  */
-	 
 
 		
 	</script>

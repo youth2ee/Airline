@@ -139,84 +139,7 @@ public class NoticeController {
 		  mv.addObject("pager", pager);
 		  mv.setViewName("board/boardList1");
 		  return mv; 
-	  }
-	  
-	  @GetMapping("noticeList2")
-	  public ModelAndView noticeList2(Pager pager)throws Exception{
-		 
-		  List<BoardVO> ar = noticeService.subNoticeList(pager);
-		  ModelAndView mv = new ModelAndView(); 
-		  int totalCount = noticeService.noticeCount2(pager);
-		  	  
-		  mv.addObject("tc", totalCount); 
-		  mv.addObject("board", "notice");
-		  mv.addObject("list", ar);
-		  mv.addObject("pager", pager);
-		  mv.setViewName("board/boardList2");
-		  return mv; 
-	  }
-	  
-	  @GetMapping("noticeList3")
-	  public ModelAndView noticeList3(Pager pager)throws Exception{
-		 
-		  List<BoardVO> ar = noticeService.subNoticeList(pager);
-		  ModelAndView mv = new ModelAndView(); 
-		  int totalCount = noticeService.noticeCount2(pager);
-		  	  
-		  mv.addObject("tc", totalCount); 
-		  mv.addObject("board", "notice");
-		  mv.addObject("list", ar);
-		  mv.addObject("pager", pager);
-		  mv.setViewName("board/boardList3");
-		  return mv; 
-	  }
-	  
-	  @GetMapping("noticeList4")
-	  public ModelAndView noticeList4(Pager pager)throws Exception{
-		 
-		  List<BoardVO> ar = noticeService.subNoticeList(pager);
-		  ModelAndView mv = new ModelAndView(); 
-		  int totalCount = noticeService.noticeCount2(pager);
-		  	  
-		  mv.addObject("tc", totalCount); 
-		  mv.addObject("board", "notice");
-		  mv.addObject("list", ar);
-		  mv.addObject("pager", pager);
-		  mv.setViewName("board/boardList4");
-		  return mv; 
-	  }
-	 
-	  @GetMapping("noticeList5")
-	  public ModelAndView noticeList5(Pager pager)throws Exception{
-		 
-		  List<BoardVO> ar = noticeService.subNoticeList(pager);
-		  ModelAndView mv = new ModelAndView(); 
-		  int totalCount = noticeService.noticeCount2(pager);
-		  	  
-		  mv.addObject("tc", totalCount); 
-		  mv.addObject("board", "notice");
-		  mv.addObject("list", ar);
-		  mv.addObject("pager", pager);
-		  mv.setViewName("board/boardList5");
-		  return mv; 
-	  }
-	 
-	
-	/*List한번에 받기 
-	 * @GetMapping("subNoticeList") public ModelAndView subNoticeList(Pager
-	 * pager)throws Exception{
-	 * 
-	 * ModelAndView mv = new ModelAndView(); List<BoardVO> ar =
-	 * noticeService.subNoticeList(pager); int totalCount =
-	 * noticeService.noticeCount2(pager);
-	 * 
-	 * 
-	 * 
-	 * }
-	 */
-	 
-	 
-	    
+	  }	    
 	  
 	  
 	/**** NoticeSelect ****/
@@ -233,21 +156,6 @@ public class NoticeController {
 			return mv;
 		  
 	  }
-	 
-/*	  @GetMapping("noticeSelect")
-	  public ModelAndView NoticeSelect2(NoticeVO noticeVO)throws Exception{
-		  ModelAndView mv = new ModelAndView();
-		  NoticeVO noticeVO2= noticeService.subNoticeSelect(noticeVO);
-		  
-		  	mv.addObject("vo", noticeVO2);
-		  	mv.addObject("board", "notice");
-			mv.setViewName("board/boardSelect");
-				
-			return mv;*/
-		  
-	 // }
-	  
-	  
 	  
 	/**** Notice Update ****/
 	  
