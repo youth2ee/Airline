@@ -128,6 +128,7 @@
 
 <script type="text/javascript">
 	$(".header_bottom_inner").css("background-color", "white");
+	$("#hbhome").css("background-color", "#5f6062");
 </script>
 
 </body>
