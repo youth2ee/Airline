@@ -21,8 +21,11 @@
 th {
   text-align: center;
 }
-label {font-size:16px !important; color:#151515 !important;}	
-	</style>
+label {font-size:16px !important; color:#151515 !important;}
+.wine:hover{
+color: white;
+}
+</style>
 </head>
 <body>
 <header><c:import url="../layout/header.jsp"></c:import></header>

@@ -15,7 +15,9 @@
 	</div>
 </body>
 <script type="text/javascript">
-		var qrcode = new QRCode(document.getElementById("qrcode"), {
+
+
+	var qrcode = new QRCode(document.getElementById("qrcode"), {
 			text : $("#text").val(),
 			width : 128,
 			height : 128,

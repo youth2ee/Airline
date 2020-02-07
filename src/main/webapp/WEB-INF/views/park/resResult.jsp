@@ -8,8 +8,10 @@
 <title>Insert title here</title>
 <c:import url="../template/boot.jsp" />
 <link rel="stylesheet" href="../resources/css/park/parkRes.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/header.css">
 </head>
 <body>
+<c:import url="../layout/header.jsp" />
 <div id="sub_content">
 			<ul class="tab_menu">
 				<li class="s01"><span class="num">1</span>예약 정보 입력</li>
@@ -18,7 +20,7 @@
 			</ul>
 			<div id="step03" class="step on">														
 				<div class="section">
-					<div class="t_center" style="margin:10px;font-size:28px;font-weight:bold;color:#a70737;">주차 예약이 완료되었습니다.</div>
+					<div class="t_center" style="margin:10px;font-size:28px;font-weight:bold;color:#c60b15;">주차 예약이 완료되었습니다.</div>
 					<h3 class="stitle01">예약 요약<span>예약하신 내용은 문자로도 확인하실 수 있습니다.</span></h3>
 					<table class="table01">
 						<caption>예약 일시, 주차예상비용</caption>
@@ -74,7 +76,7 @@
 							<li>(예약 취소) 예약 입차시간 이후 2시간까지 예약 취소가 자유롭게 가능합니다.</li>
 							<li>(예약부도) 예약 입차 시간 이후 2시간 내 미입차시, 예약은 자동 취소됩니다.</li>
 							<li>(장애인 차량) 장애인 차량 주차면이 별도로 마련되어 있습니다. (엘리베이터 및 에스컬레이터 없음)</li>
-							<li>(주차요금) 주차요금은 실제 입출차 시간을 기준으로 부과됩니다. <a href="#" onclick="$.parkingCharge();" style="color:#a70737"><b>예상 주차요금 계산기</b></a></li>
+							<li>(주차요금) 주차요금은 실제 입출차 시간을 기준으로 부과됩니다. <a href="#" onclick="$.parkingCharge();" style="color:#c60b15"><b>예상 주차요금 계산기</b></a></li>
 							<li>(할인적용) 할인은 출차(유인, 무인) 시 증빙 후 적용됩니다.</li>
 							<li>(주차장 위치) 예약 주차장은 김포 국내선 제2주차장 2,3층입니다.</li>
 						</ul>
@@ -102,6 +104,9 @@ if(phone.length > 10){
 	var phoneThree = phone.substring(6,10);
 	$("#acCttpc").text(phoneOne+'-'+phoneTwo+'-'+phoneThree);
 }
+
+$(".fa-comment-dots").offset({top : 61});
+$(".fa-search").offset({top : 61});
 
 </script>
 </body>

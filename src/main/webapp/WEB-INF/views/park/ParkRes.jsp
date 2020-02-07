@@ -11,9 +11,15 @@
 <script src="../js/jquery.js"></script>
 <script src="../js/jquery.datetimepicker.full.min.js"></script>
 <link rel="stylesheet" href="../resources/css/park/parkRes.css">
-
+<link rel="stylesheet" type="text/css" href="../resources/css/header.css">
+<style type="text/css">
+.btn:hover {
+	color: white;
+}
+</style>
 </head>
 <body>
+<c:import url="../layout/header.jsp" />
 <div id="sub_content">
 			<ul class="tab_menu">
 				<li class="s01 on"><span class="num">1</span>예약 정보 입력</li>
@@ -97,6 +103,8 @@
 
 	today = yyyy+'-'+mm+'-'+dd;
 
+	$(".fa-comment-dots").offset({top : 61});
+	$(".fa-search").offset({top : 61});
 $.datetimepicker.setLocale('ko');
 $('#entvhclResveDate').datetimepicker({
  i18n:{

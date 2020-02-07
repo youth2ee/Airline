@@ -11,6 +11,7 @@
 	<c:import url="../template/boot.jsp"></c:import>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link href="../resources/css/mypage/park.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="../resources/css/header.css">
 	<style type="text/css">
 th {
   text-align: center;
@@ -25,7 +26,7 @@ line-height: 37px;
 	</style>
 </head>
 <body>
-<header></header>
+<c:import url="../layout/header.jsp" />
 <div id="headerBottom">
 <div id="hbh">
 <div id="hbhome"><i class="fa fa-home"></i></div>

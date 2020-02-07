@@ -13,8 +13,11 @@
 <link rel="stylesheet" type="text/css" href="https://flyasiana.com/C/pc/css/common.css">
 <link rel="stylesheet" type="text/css" href="https://flyasiana.com/C/pc/css/flyasiana.css">
 <link rel="stylesheet" type="text/css" href="https://flyasiana.com/C/pc/css/calendar.css">
+
+<link rel="stylesheet" type="text/css" href="../resources/css/header.css">
 </head>
 <body>
+<c:import url="../layout/header.jsp" />
 <div class="container" id="container">
 		<div class="mem_wrap">
 			<div class="indicator_wrap">
