@@ -17,7 +17,6 @@
 </head>
 <body>
 
-<!------- new --------->
 <div id="wrap_container">
 	<h3>글 수정하기</h3>
 </div>
@@ -48,7 +47,6 @@
 		</th>
 		<td>
 			<select id="cate" name="cate" class="cate common textWrite">
-			<!-- 	<option>선택하세요</option> -->
 				<option value="EveryAir소식"<c:if test="${vo.cate eq 'EveryAir소식'}">selected</c:if>>EveryAir소식</option>
 				<option value="EveryAir클럽"<c:if test="${vo.cate eq 'EveryAir클럽'}">selected</c:if>>EveryAir클럽</option>
 				<option value="유류할증료"<c:if test="${vo.cate eq '유류할증료'}">selected</c:if>>유류할증료</option>	
@@ -66,7 +64,7 @@
 		<td>
 			<div class="textarea_wrap">
 				<textarea name="contents" class="common textWrite summernote" id="contents" rows="4" cols="50" style="position: relative;">
-					<c:out value="${vo.textContents}"/></textarea>
+					${vo.contents}</textarea>
 				<div class="txt_count">
 					<em id="counter"></em>
 					/4000자
@@ -78,65 +76,30 @@
 		<th scope="row">
 			파일첨부 
 		</th>
-			<td>
-				<div class="jfile_wrap">
-						<input type="file" title="파일첨부" class = "addfile" id="attfile1" name="file">
+			<td>	 	
+				 	<c:forEach var="i" begin="1" end="3">
+				 	<div class="jfile_wrap">
+						<input type="file" title="파일첨부" class = "addfile" id="attfile${i}" name="file">
 						<div class="jfilestyle jfilestyle-corner ">
 							<div 
 								style="position: absolute; width: 100%; height: 0px; z-index: -1;">
 							</div>
-							<input type="text" style="width: 646px" placeholder="파일첨부" value="${vo.noticeFiles[0].fname}"
-								 class="common addFileName" id="fileName1" readonly="readonly">
-							<button type="button"class="btn_detlete" id="btn_delete1">
+							<c:set var="j" value="${i}"></c:set>
+							<input type="text" style="width: 646px" placeholder="파일첨부" value="${vo.noticeFiles[j-1].oname}"
+								 class="common addFileName" id="fileName${i}" readonly="readonly" >
+							<button type="button"class="btn_detlete btn_delete${i}" id="${vo.noticeFiles[j-1].fnum}">
 								<span class="hidden">삭제</span>
 							</button>
 							<span class="focus-jfilestyle" tabindex="0"> 
-							<label	for="attfile1"> 
-									<span class= "search">찾아보기</span>
+							<label	for="attfile${i}"> 
+									<span class= "search">수정하기</span>
 							</label>
-							</span>
-						</div>
-				 </div>
-					
-					<div class="jfile_wrap"> 
-						<input type="file" title="파일첨부" class = "addfile" id="attfile2" name="file">
-						<div class="jfilestyle jfilestyle-corner ">
-							<div 
-								style="position: absolute; width: 100%; height: 0px; z-index: -1;">
-							</div>
-							<input type="text" style="width: 646px" placeholder="파일첨부" value="${vo.noticeFiles[1].fname}"
-								 class="common addFileName" id="fileName2" readonly="readonly">
-							<button type="button"class="btn_detlete" id="btn_delete2">
-								<span class="hidden">삭제</span>
-							</button>
-							<span class="focus-jfilestyle" tabindex="0"> 
-							<label	for="attfile2"> 
-									<span class= "search">찾아보기</span>
-							</label>
-							</span>
-						</div>
-					</div>
-					
-					<div class="jfile_wrap">
-						<input type="file" title="파일첨부" class = "addfile" id="attfile3" name="file">
-						<div class="jfilestyle jfilestyle-corner ">
-							<div 
-								style="position: absolute; width: 100%; height: 0px; z-index: -1;">
-							</div>
-							<input type="text" style="width: 646px" placeholder="파일첨부" value="${vo.noticeFiles[2].fname}"
-								 class="common addFileName" id="fileName3" readonly="readonly" >
-							<button type="button"class="btn_detlete" id="btn_delete3">
-								<span class="hidden">삭제</span>
-							</button>
-							<span class="focus-jfilestyle" tabindex="0"> 
-							<label	for="attfile3"> 
-									<span class= "search">찾아보기</span>
-							</label>
-							</span>
+							</span>									
 						</div>
 				 	</div>
-					
-					<ul class= "list_type">
+				 	</c:forEach>
+				 	
+				 	<ul class= "list_type">
 						<li>
 							ㆍ 고객정보의 보호를 위해 첨부파일 기능 이용시, 개인정보 내용이 포함된 자료의 첨부는 지양하여 주십시오.(※ 탑승권, 항공권, 신분증 등)
 						</li>									
@@ -158,132 +121,181 @@
 	<button id="btnTransfer">등록</button>
 </div>
 
-<%-- <textarea style="display: none;" name="textContents" id="rText">${vo.textContents}</textarea> --%>
-
 <div id="hidden" style="display: none;"></div>
-<input type="hidden" id="ihidden" name="textContents">
+<input type="hidden" id="ihidden" name="textContents" value="${vo.textContents}">
 
 </form>
 
 </div>
 	
-<!------ new script ------->
-<script type="text/javascript">
-
-	/**** SummerNote *****/
-	$(document).ready(function(){
-		var markupStr = '${vo.textContents}';
 	
-		$('#counter').html(markupStr.length);
+<!------------------------------------------ script --------------------------------------->
 
-			$('.summernote').summernote({
-					height:300,
-					
-/* 				 	callbacks:{
-						onKeyup: function(e){
-							var markupStr = $('#contents').val();
-							$('#hidden').html(markupStr);
-							markupStr = $('#hidden').text();
-							$('#hidden').val(markupStr);
-							alert(markupStr.length);
-							$('#counter').html(markupStr.length);
-							} */
-					//}  
-				}); 
-		});
-	
-/* 	function uploadFile(file, editor) {
-		var formData = new FormData();
-		
-		formData.append('file', file);		
-		
-		$.ajax({
-			data: formData,
-			type:"POST", 
-			url:"./summerFile", 
-			enctype: "multipart/form-data",
-			contentType: false,
-			cache: false,
-			processData: false,
+	<script type="text/javascript">
 
-			
-			success:function(data){
-					
-				data = data.trim();
-					console.log(data);
-				data = '../resources/upload/summerfile/'+data;
-				$(editor).summernote('insertImage', data);
-			}
-			 ,
-			error:function(){		
+
+		/**** SummerNote *****/
+		
+			$(document).ready(function(){
+				var markupStr = '${vo.textContents}';
+				$('#counter').html(markupStr.length);
+		
+					$('.summernote').summernote({
+							height:300,
 							
-			} 
+						}); 
+				});
+		
+			$('.summernote').on('summernote.keyup', function() {
+				var markupStr = $('#contents').val();
+				$('#contents').val("");
+				$('#contents').val(markupStr.trim());
+				
+				$('#hidden').html(markupStr.trim());
+				markupStr = $('#hidden').text();	
+				$('#ihidden').val(markupStr.trim());
+		
+				//글자수 세기
+				$('#counter').html(markupStr.length);
+				
+			});
 			
-		}); */
-	//}
-
-	/***** 파일 추가 삭제 *****/
-	$('#attfile1').change(function(){
+			
+		/* 	function uploadFile(file, editor) {
+				var formData = new FormData();
+				
+				formData.append('file', file);		
+				
+				$.ajax({
+					data: formData,
+					type:"POST", 
+					url:"./summerFile", 
+					enctype: "multipart/form-data",
+					contentType: false,
+					cache: false,
+					processData: false,
 		
-	 	 if(window.FileReader){
-			var filename = $(this)[0].files[0].name;
-				}else{
-					var filename =$(this).val().split('/').pop().split('\\').pop();
-	 	 	 	}	 	
-			$('#fileName1').val(filename); 	
-	});
+					
+					success:function(data){
+							
+						data = data.trim();
+							console.log(data);
+						data = '../resources/upload/summerfile/'+data;
+						$(editor).summernote('insertImage', data);
+					}
+					 ,
+					error:function(){		
+									
+					} 
+					
+				}); */
+			//}
+
 	
-	$('#btn_delete1').click(function(){
-				$("#attfile1").val("");
-				$("#fileName1").val("");	
-	});
-
-
-	$('#attfile2').change(function(){
-		
-	 	 if(window.FileReader){
-			var filename = $(this)[0].files[0].name;
-				}else{
-					var filename =$(this).val().split('/').pop().split('\\').pop();
-	 	 	 	}	 	
-			$('#fileName2').val(filename); 	
-	});
 	
-	$('#btn_delete2').click(function(){
-				$("#attfile2").val("");
-				$("#fileName2").val("");	
-	});
+			
+			/***** 파일 추가 삭제 *****/
+			
+			$('#attfile1').change(function(){
 
+			 	 if(window.FileReader){
+					var filename = $(this)[0].files[0].name;
+						}else{
+							var filename =$(this).val().split('/').pop().split('\\').pop();
+			 	 	 	}	 	
+					$('#fileName1').val(filename); 	
+					
+					var fnum = $('.btn_delete1').attr("id");
+					$.post("./noticeFileDelete", {fnum:fnum}, function(data){
+						data = data.trim();
 
-	$('#attfile3').change(function(){
+						if(data =='1'){
+					
+						}
+					});
+			});
+			
+			$('.btn_delete1').click(function(){
+				var fnum = $('.btn_delete1').attr("id");
+				$.post("./noticeFileDelete", {fnum:fnum}, function(data){
+					data = data.trim();
+
+					if(data =='1'){
+				
+					}
+				});
+					$("#attfile1").val("");
+					$("#fileName1").val(""); 				
+			});
 		
-	 	 if(window.FileReader){
-			var filename = $(this)[0].files[0].name;
-				}else{
-					var filename =$(this).val().split('/').pop().split('\\').pop();
-	 	 	 	}	 	
-			$('#fileName3').val(filename); 	
-	});
-	
-	$('#btn_delete3').click(function(){
-				$("#attfile3").val("");
-				$("#fileName3").val("");	
-	});
-	
-	$('.summernote').on('summernote.keyup', function() {
-		var markupStr = $('#contents').val();
-		$('#contents').val("");
-		$('#contents').val(markupStr.trim());
 		
-		$('#hidden').html(markupStr.trim());
-		markupStr = $('#hidden').text();	
-		$('#ihidden').val(markupStr.trim());
+			$('#attfile2').change(function(){
+				
+			 	 if(window.FileReader){
+					var filename = $(this)[0].files[0].name;
+						}else{
+							var filename =$(this).val().split('/').pop().split('\\').pop();
+			 	 	 	}	 	
+					$('#fileName2').val(filename); 	
 
-		//글자수 세기
-		$('#counter').html(markupStr.length);
+					var fnum = $('.btn_delete2').attr("id");
+					$.post("./noticeFileDelete", {fnum:fnum}, function(data){
+						data = data.trim();
+
+						if(data =='1'){
+					
+						}
+						alert(data);
+					});
+			});
+			
+			$('.btn_delete2').click(function(){
+				var fnum = $('.btn_delete2').attr("id");
+				$.post("./noticeFileDelete", {fnum:fnum}, function(data){
+					data = data.trim();
+
+					if(data =='1'){
+				
+					}
+				});			
+						$("#attfile2").val("");
+						$("#fileName2").val("");	
+			});
+
+			
 		
-	});
+			$('#attfile3').change(function(){
+				
+			 	 if(window.FileReader){
+					var filename = $(this)[0].files[0].name;
+						}else{
+							var filename =$(this).val().split('/').pop().split('\\').pop();
+			 	 	 	}	 	
+					$('#fileName3').val(filename); 	
 
+					var fnum = $('.btn_delete3').attr("id");
+					$.post("./noticeFileDelete", {fnum:fnum}, function(data){
+						data = data.trim();
+
+						if(data =='1'){
+					
+						}
+						alert(data);
+					});
+			});
+			
+			$('.btn_delete3').click(function(){
+				var fnum = $('.btn_delete1').attr("id");
+				$.post("./noticeFileDelete", {fnum:fnum}, function(data){
+					data = data.trim();
+
+					if(data =='1'){
+				
+					}
+				});
+						$("#attfile3").val("");	
+						$("#fileName3").val("");	
+			});
 
 
 
@@ -291,3 +303,5 @@
 
 </body>
 </html>
+				 					 	
+				 	

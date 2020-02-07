@@ -6,12 +6,10 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -60,6 +58,19 @@ public class NoticeController {
 	}
 	
 	
+	
+	/**** File ****/
+	@PostMapping(value = "noticeFileDelete")
+	public ModelAndView noticeFileDelete(NoticeFilesVO noticeFilesVO)throws Exception{
+			ModelAndView mv = new ModelAndView();
+			int result = noticeService.NoticeFileDelete(noticeFilesVO);
+			mv.setViewName("board/common/common_ajaxResult");
+			mv.addObject("result", result);
+			
+			return mv;
+	}
+	
+	
 
 	
 	/**** NoticeWrite****/
@@ -78,8 +89,6 @@ public class NoticeController {
 	  public ModelAndView noticeWrite(NoticeVO noticeVO, MultipartFile[] file)throws Exception{
 			  
 		  ModelAndView mv = new ModelAndView(); 	  	
-		/* noticeVO.getContents().replaceAll("\r\n", "<br>"); */
-		/* noticeVO.setContents(noticeVO.getContents().replaceAll("\r\n", "<br>")); */
 		  int result =noticeService.noticeWrite(noticeVO, file);
 	  
 	  String msg = "작성에 실패하였습니다.다시 작성해주세요."; 
@@ -216,7 +225,6 @@ public class NoticeController {
 	  public ModelAndView NoticeSelect(NoticeVO noticeVO)throws Exception{
 		  ModelAndView mv = new ModelAndView();
 		  NoticeVO noticeVO2= noticeService.noticeSelect(noticeVO);
-		/* noticeVO2.setContents(noticeVO2.getContents().replaceAll("\r\n", "<br>")); */
 		  
 		  	mv.addObject("vo", noticeVO2);
 		  	mv.addObject("board", "notice");
@@ -238,6 +246,10 @@ public class NoticeController {
 			return mv;*/
 		  
 	 // }
+	  
+	  
+	  
+	/**** Notice Update ****/
 	  
 		@GetMapping("noticeUpdate")
 		public ModelAndView noticeUpdate(int num)throws Exception{
@@ -262,7 +274,7 @@ public class NoticeController {
 		  int result = noticeService.noticeUpdate(noticeVO,file,session);
 		  
 		  if(result>0) {
-			  mv.addObject("message", "글이 수정되었습니다.");
+			  mv.addObject("message", "게시글이 수정되었습니다.");
 		  }else {
 			  mv.addObject("message", "수정에 실패하였습니다. 다시 시도해주세요.");
 		  }
@@ -272,6 +284,24 @@ public class NoticeController {
 		  return mv;
 	  }
 
+	  
+	  
+	/**** noticeDelete ****/
+	
+	@GetMapping("noticeDelete")
+	public ModelAndView noticeDelete(NoticeVO noticeVO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = noticeService.noticeDelete(noticeVO);
+		if(result>0) {
+			mv.addObject("message", "게시글이 삭제되었습니다.");
+		}else {
+			mv.addObject("message", "삭제에 실패하였습니다. 다시 시도해주세요.");
+		}
+			mv.addObject("path","noticeList");
+			mv.setViewName("board/common/result");
+			
+			return mv;
+	}
 	 
 
 }

@@ -1,0 +1,232 @@
+@charset "UTF-8";
+
+.writeForm{
+	width: 1180px;
+    margin: 0px auto 100px; 
+}
+
+.writeForm h5{
+	font-size: 23px;
+    font-weight: normal;
+    color: #000;
+    line-height: 1;	
+}
+#wrap_container{
+	width: 1180px;
+    margin: 0px auto 100px;
+}
+
+#wrap_container h3{
+	margin: 60px 0 50px 0;
+    font-size: 40px;
+    color: #000;
+    text-align: center;
+    font-weight: normal;
+    line-height: 1;
+}
+
+.mar{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.mar span{
+	   color: #555;
+	   font-size: 15px;
+    line-height: normal;
+}
+
+.table_form{
+	border-top: 1px solid #666666;
+	width: 100%;
+	border-collapse: separate;
+    border-spacing: 0;
+}
+
+.table_form th{
+	
+    padding: 25px 25px;
+    border-bottom: 1px solid #ddd;
+    background-color: #9da0a6;
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    font-weight: normal;
+    	
+}
+
+
+.table_form td{
+	padding: 15px 25px;
+    border-bottom: 1px solid #ddd;
+}
+
+.common{
+	width: 100%;
+	border: 1px solid #f3f3f3;
+    border-bottom: 1px solid #ddd;
+    background-color: #f3f3f3;
+    font-size: 16px;
+}
+
+
+.full{
+	height: 44px;     
+    padding: 0 15px;
+    color: #222;
+    line-height: 40px;
+    margin-right: 0;
+}
+
+.cate{
+	width: 300px;
+	color: #222;
+    line-height: 40px;
+    height: 46px;
+    padding: 0 45px 0 15px;
+    background: #f3f3f3 url(/images/board/bg_select_arrow.png) no-repeat right 13px top 50%;
+    background-size: 12px 8px;
+     
+}
+
+.cate option{
+	padding: 0px 2px 1px;	
+}
+
+.textarea_wrap textarea{ 
+	height: 300px;
+    padding: 5px 15px;
+    box-sizing: border-box;
+    color: #000;
+    line-height: 24px;
+    text-indent: 0px;
+
+}
+
+.textWrite:hover {
+	border: 1px solid #d60815;
+	background-color: #fff;
+}
+
+.txt_count{
+	text-align: right;
+	font-size: 15px;
+}
+
+.txt_count em{
+	color: #000000;
+}
+
+
+.addfile{
+	position: absolute;
+	clip: rect(0px,0px,0px,0px);
+}
+
+
+.jfilestyle input[type="text"]{
+    color: #000;
+    width: 646px;
+    height: 44px;
+   	padding: 0 15px;
+   	margin-right: 10px;
+   	font-size: 16px;
+    line-height: 40px;
+    
+}
+
+.jfilestyle {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn_detlete{
+	display: inline-block;
+	position: absolute;
+    top: 15px;
+    /* right: 145px; */
+    right: 265px;
+	width: 20px;
+    height: 20px;
+    background-image: url(https://vochome.flyasiana.com/images/newVoc/btn_seat_unsel.png);
+    vertical-align: middle;
+    color: #222;
+    font-size: 15px;
+    line-height: normal;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+
+.search{
+	display: inline-block;
+	height: 46px;
+	padding: 0 30px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	line-height: 46px;
+	cursor: pointer;
+	box-sizing: border-box;
+	margin: 0;
+	font-weight: normal;
+	width: 117.2px;
+	vertical-align: middle;
+}
+
+.search:hover{
+	border: 1px solid #000000;
+}
+
+.addFileName{
+	cursor: default;
+}
+
+.addFileName:hover{
+	  background-color: #e8e8e8;
+	
+}
+
+.list_type{
+	margin-top: 15px;
+    line-height: 1.5;
+    font-size: 15px;
+    color: #555;
+	
+}
+
+.list_type >li{
+	margin-bottom: 10px;
+	
+}
+
+.btn_wrap{
+	margin-top: 50px;
+	text-align: center;
+	
+}
+
+#btnTransfer{
+	border: 1px solid #d60815;
+    background-color: #d60815;
+    color: #fff;
+	border-radius: 3px;
+	min-width: 150px;
+    padding: 13px 40px 14px;
+    font-size: 18px;
+    min-height: 56px;
+    line-height: 21px;
+    text-align: center;
+}
+
+#btnTransfer:hover{
+	border: 1px solid #b3000b;
+    background-color: #b3000b;	
+}
+
+#counter{
+	color: #000000;
+}
+}
