@@ -13,8 +13,12 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.sql.Date;
 import java.sql.PseudoColumnUsage;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -70,8 +74,14 @@ public class ParkService {
 		
 		return parkMapper.parkCheck(pReservationVO);
 	}
+	//마이페이지주차내역조회
+	public List<pReservationVO> myReservation(pReservationVO pReservationVO) throws Exception{
+		return parkMapper.myReservation(pReservationVO);
+	}
 	
-	
+	public pReservationVO resSelect(pReservationVO pReservationVO) throws Exception{
+		return parkMapper.resSelect(pReservationVO);
+	}
 	
 	//인천공항 주차정보 호출
 	public void test() throws Exception{
@@ -167,25 +177,12 @@ public class ParkService {
 			Document doc = dBuilder.parse(urlstr);
 			doc.getDocumentElement().normalize();
 			NodeList nList = doc.getElementsByTagName("item");
-			//System.out.println("Root element: " + doc.getDocumentElement().getNodeName());
-			//System.out.println("파싱할 리스트 수 : " + nList.getLength());
 			for (int temp = 0; temp < nList.getLength(); temp++) {
 				Node nNode = nList.item(temp);
 				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 
 					Element eElement = (Element) nNode;
-					// System.out.println(eElement.getTextContent());
 					ParkInfoVO parkInfoVO = new ParkInfoVO();
-//					System.out.println("######################");
-//					System.out.println("Airport Name  : " + getTagValue("aprEng", eElement));
-//					System.out.println("공항명  : " + getTagValue("aprKor", eElement));
-//					System.out.println("주차장명  : " + getTagValue("parkingAirportCodeName", eElement));
-//					System.out.println("주차공간 : " + getTagValue("parkingFullSpace", eElement));
-//					System.out.println("조회일  : " + getTagValue("parkingGetdate", eElement));
-//					System.out.println("조회시간  : " + getTagValue("parkingGettime", eElement));
-//					System.out.println("입고차량 수  : " + getTagValue("parkingIincnt", eElement));
-//					System.out.println("출고차량 수 : " + getTagValue("parkingIoutcnt", eElement));
-//					System.out.println("현주차수  : " + getTagValue("parkingIstay", eElement));
 					parkInfoVO.setAprEng(getTagValue("aprEng", eElement));
 					parkInfoVO.setAprKor(getTagValue("aprKor", eElement));
 					parkInfoVO.setParkingName(getTagValue("parkingAirportCodeName", eElement));
@@ -206,12 +203,18 @@ public class ParkService {
 	}
 	
 	
-	public void apiRest() throws Exception {
+	public void apiRest(int year, int month, List<String> rest) throws Exception {
 		
 		BufferedReader br = null;
-		List<ParkInfoVO> ar = new ArrayList<ParkInfoVO>();
 		try {
-			String urlstr = "http://apis.data.go.kr/B090041/openapi/service/SpcdeInfoService/getHoliDeInfo?serviceKey=QZHG0poXIbqgwOTVR4fiVzbVQ0Pmuz5lkYnHKmazdB%2F5VtUfkpt42I%2BSmw2F5XFUbX1%2Bmm8NaH5BLRz80XVUaA%3D%3D&solYear=2020&numOfRows=25";
+			String urlstr2 = "http://apis.data.go.kr/B090041/openapi/service/SpcdeInfoService/getHoliDeInfo?serviceKey=QZHG0poXIbqgwOTVR4fiVzbVQ0Pmuz5lkYnHKmazdB%2F5VtUfkpt42I%2BSmw2F5XFUbX1%2Bmm8NaH5BLRz80XVUaA%3D%3D&solYear=2020&numOfRows=25";
+			String urlstr = "";
+			if(month < 10) {
+				
+				urlstr = "http://apis.data.go.kr/B090041/openapi/service/SpcdeInfoService/getHoliDeInfo?serviceKey=QZHG0poXIbqgwOTVR4fiVzbVQ0Pmuz5lkYnHKmazdB%2F5VtUfkpt42I%2BSmw2F5XFUbX1%2Bmm8NaH5BLRz80XVUaA%3D%3D&solYear="+year+"&solMonth=0"+month;
+			}else {
+				urlstr = "http://apis.data.go.kr/B090041/openapi/service/SpcdeInfoService/getHoliDeInfo?serviceKey=QZHG0poXIbqgwOTVR4fiVzbVQ0Pmuz5lkYnHKmazdB%2F5VtUfkpt42I%2BSmw2F5XFUbX1%2Bmm8NaH5BLRz80XVUaA%3D%3D&solYear="+year+"&solMonth="+month;
+			}
 			URL url = new URL(urlstr);
 			HttpURLConnection urlconnection = (HttpURLConnection) url.openConnection();
 			urlconnection.setRequestMethod("GET");
@@ -223,27 +226,18 @@ public class ParkService {
 			Document doc = dBuilder.parse(urlstr);
 			doc.getDocumentElement().normalize();
 			NodeList nList = doc.getElementsByTagName("item");
-			System.out.println("Root element: " + doc.getDocumentElement().getNodeName());
-			System.out.println("파싱할 리스트 수 : " + nList.getLength());
 			for (int temp = 0; temp < nList.getLength(); temp++) {
 				Node nNode = nList.item(temp);
 				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 
 					Element eElement = (Element) nNode;
-					// System.out.println(eElement.getTextContent());
-					ParkInfoVO parkInfoVO = new ParkInfoVO();
-					System.out.println("######################");
-					System.out.println("dateKind  : " + getTagValue("dateKind", eElement));
-					System.out.println("dateName  : " + getTagValue("dateName", eElement));
-					System.out.println("isHoliday  : " + getTagValue("isHoliday", eElement));
-					System.out.println("locdate : " + getTagValue("locdate", eElement));
-					System.out.println("seq  : " + getTagValue("seq", eElement));
 
+					if(getTagValue("isHoliday", eElement).equals("Y")) {
+						rest.add(getTagValue("locdate", eElement));
+					}
 				} 
 			} 
-			System.out.println(result);
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
 		}
 	}
 	

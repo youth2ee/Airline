@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="../resources/css/header.css" rel="stylesheet">
 <link href="../resources/css/reset.css" rel="stylesheet">
 <link href="../resources/css/booking/bookingCheck.css" rel="stylesheet">
 <c:import url="../template/boot.jsp" />
@@ -18,10 +19,8 @@
 </head>
 <body>
 
-가격 확인하고
-결제 넘어가기 직전
 <header>
-header 
+<c:import url="../layout/header.jsp"></c:import>
 </header>
 
 <div id="top">
@@ -202,6 +201,7 @@ ${bVO.arrInfo.vihicleId} ${bVO.arrInfo.airlineNm}<br>
 <div id="priceDiv">
 <table id="tpriceTb">
 <tr>
+<td> 마일리지 확인 : ${member.mileage} </td>
 <td>항공 총 결제금액 : </td>
 <td class="tprice"></td>
 </tr>
@@ -239,7 +239,9 @@ $('.price').each(function (index, item) {
 		}
 	
 $('#btn').click(function(){
-	window.open("../imPay/imPayList?name=사과&amount="+r, "이니시스",  "width=825px, height=600px");
+/* 	window.open("../imPay/imPayList?name=항공권&amount="+r, "이니시스",  "width=825px, height=600px"); */
+window.open("../imPay/imPayList?name=항공권&amount="+100, "이니시스",  "width=825px, height=600px");
+
 });
 </script>
 

@@ -5,6 +5,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 476px;
+  background: #f0f0f0;
 }
 
 .li {
@@ -31,6 +33,7 @@
 .status h4 {
   font-weight: 600;
   padding: 10px;
+  color: #a7a8a9;
 }
 .status:before {
   content: "";
@@ -46,16 +49,21 @@
 }
 
 .li.complete .status {
-  border-top: 2px solid #66DC71;
+  border-top: 2px solid #d60815;
 }
 .li.complete .status:before {
-  background-color: #66DC71;
+  background-color: #d60815;
   border: none;
   transition: all 200ms ease-in;
 }
 .li.complete .status h4 {
-  color: #66DC71;
+  color: #6d6e70;
   padding: 10px;
+}
+
+.txtc{
+	color:#d60815;
+	font-weight: 700;
 }
 
 @media (min-device-width: 320px) and (max-device-width: 700px) {
@@ -80,7 +88,7 @@
     transition: all 200ms ease-in;
   }
 }
-html, body {
+/* html, body {
   width: 100%;
   height: 100%;
   display: flex;
@@ -88,7 +96,7 @@ html, body {
   font-family: "Titillium Web", sans serif;
   color: #758D96;
 }
-
+ */
 button {
   position: absolute;
   width: 100px;
@@ -109,3 +117,91 @@ button {
   background-color: #75C7F6;
 }
 
+
+#headerBottom{
+	
+}
+
+.ticketInfo{
+	position: relative;
+    top: 10px;
+    width: 60%;
+    margin: auto;
+    height: 250px;
+    border: 1px solid #6d6e70;
+}
+.ticketInfoText1{
+	margin: 0;
+    color: #00518b;
+    font-size: 21px;
+    font-weight: 1000;
+    margin-left: 10px
+}
+.ticketInfoText2{
+	margin: 0;
+    font-size: 19px;
+    font-weight: bold;
+    color: #565656;
+    letter-spacing: -0.5px;
+    margin-left: 10px;
+}
+.ticketInfoText3{
+	margin: 0;
+    margin-left: 10px;
+    font-weight: 1000;
+    color: #1f1f1f;
+    font-size: 18px;
+}
+.depInfo, .arrInfo,.moreInfo{
+    display: inline-block;
+}
+.cancel {
+    color: #d60815;
+    font-size: 16px;
+    font-weight: bold;
+    position: relative;
+    left: 1050px;
+    top: 15px;
+    cursor: pointer;
+}
+.cancel:hover{
+    color: #d60815;
+    font-size: 16px;
+    font-weight: bold;
+    position: relative;
+    left: 1050px;
+    top: 15px;
+    cursor: pointer;
+}
+.bookingNum{
+	font-size: 19px;
+    font-weight: bold;
+    color: #565656;
+}
+.bookingList{
+	position: relative;
+    width: 60%;
+    margin: auto;
+    font-size: 20px;
+    font-weight: bolder;
+    color: grey;
+}
+.bookingInfo {
+	position: relative;
+    top: 10px;
+    width: 60%;
+    margin: auto;
+	
+}
+.bookingTable table{
+	border-top: black solid 2px;
+    border-bottom: black solid 2px;
+    width: 100%;
+}
+.bookingTable td{
+	border : 1px solid;
+	padding: 7px;
+}
+.bookingTable table first-child{
+	border : none;
+}

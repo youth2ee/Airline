@@ -14,6 +14,7 @@ import com.airline.a1.board.NoticeFilesVO;
 import com.airline.a1.board.NoticeMapper;
 import com.airline.a1.board.NoticeService;
 import com.airline.a1.board.NoticeVO;
+import com.airline.a1.boardUtil.Pager;
 import com.airline.a1.limo.LimoService;
 import com.airline.a1.limo.LimoVO;
 
@@ -57,7 +58,7 @@ class BoardTest {
 		
 	}
 
-	@Test
+	//@Test
 	void noticeTest()throws Exception{
 		for(int i=0; i<10; i++) {
 			NoticeVO noticeVO = new NoticeVO();
@@ -65,6 +66,17 @@ class BoardTest {
 			noticeVO.setContents("contents"+i+i);
 			noticeMapper.noticeWrite(noticeVO);
 		}
+		
+	}
+	
+	@Test
+	void noticeList1Test(Pager pager)throws Exception{
+		pager.setSearch("한나");
+		pager.setMenu("EveryAir소식");
+		
+		noticeMapper.subNoticeList(pager);
+		assertNull(pager);
+		
 		
 	}
 

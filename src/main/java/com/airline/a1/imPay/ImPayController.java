@@ -34,7 +34,7 @@ public class ImPayController {
 	
 	
 	@RequestMapping("imPayComplete")
-	public void imPayComplete(ImPayResultVO imPayResultVO) {
+	public void imPayComplete(ImPayResultVO imPayResultVO, Model model) {
 		System.out.println(imPayResultVO.getSuccess());
 		System.out.println(imPayResultVO.getImp_uid());
 		System.out.println(imPayResultVO.getMerchant_uid());
@@ -47,7 +47,13 @@ public class ImPayController {
 		System.out.println(imPayResultVO.getPaid_at());
 		System.out.println(imPayResultVO.getReceipt_url());
 		System.out.println(imPayResultVO.getApply_num());
-
+		
+		
+		//member에서 마일리지 적립은 여기서 해결
+		
+		
+		
+		model.addAttribute("vo", imPayResultVO);
 	}
 	
 }

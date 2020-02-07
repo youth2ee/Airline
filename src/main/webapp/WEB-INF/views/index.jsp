@@ -25,7 +25,6 @@
 <!-- .../resources/vendor CSS-->
 <link href="../resources/vendor/select2/select2.min.css" rel="stylesheet" media="all">
 <link href="../resources/vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
-<link rel="stylesheet" href="../resources/vendor/booking.css">
 
 <!-- Main CSS-->
 <link href="../resources/vendor/css/main.css" rel="stylesheet" media="all">
@@ -87,16 +86,16 @@ $(document).ready(function() {
 							<img src="./images/index/index_pic2.jpg" style="width:1910px;">
 						</div>
 						<div style="height: 392px">
-							<img src="https://ozimg.flyasiana.com/temp/image/20191014/a84a6853-a8f4-4465-966a-0088daf7dd91.jpeg">
+							<img src="./images/index/index_pic3.png">
 						</div>
 						<div style="height: 392px">
-							<img src="https://ozimg.flyasiana.com/temp/image/20200103/d7d93511-23fd-4522-9c15-e7a05b8074d9.jpeg">
+							<img src="./images/index/index_pic4.png">
 						</div>
 						<div style="height: 392px">
-							<img src="https://ozimg.flyasiana.com/temp/image/20200107/820d1923-5e81-4cb3-acf1-4b136d914834.jpeg">
+							<img src="./images/index/index_pic5.png">
 						</div>
 						<div style="height: 392px">
-							<img src="https://ozimg.flyasiana.com/temp/image/20191206/eab6f90a-6051-4c1a-a854-37cdd0f6722f.jpeg">
+							<img src="./images/index/index_pic6.png">
 						</div>
 					</div>
 					
@@ -206,17 +205,17 @@ $(document).ready(function() {
 						<div class="swiper-container" style="height: max-content">
 							<div class="swiper-wrapper">
 								<div class="swiper-slide"
-									style="background: url('https://ozimg.flyasiana.com/main_banner/20200115_mini.jpg'); height: 180px; margin-right: 8px;">Slide
-									1</div>
+									style="background: url('./images/index/mainslider.jpg'); height: 180px; margin-right: 8px; background-size: cover;">
+									</div>
 								<div class="swiper-slide"
-									style="background: url('https://ozimg.flyasiana.com/image_fixed/destination/des_M_CJU.jpg'); height: 180px; margin-right: 8px;">Slide
-									2</div>
+									style="background: url('https://ozimg.flyasiana.com/image_fixed/destination/des_M_CJU.jpg'); height: 180px; margin-right: 8px;background-size: cover;">
+									</div>
 								<div class="swiper-slide"
-									style="background: url('https://ozimg.flyasiana.com/image_fixed/destination/des_M_FUK.jpg'); height: 180px; margin-right: 8px;">Slide
-									3</div>
+									style="background: url('https://ozimg.flyasiana.com/image_fixed/destination/des_M_FUK.jpg'); height: 180px; margin-right: 8px;background-size: cover;">
+									</div>
 								<div class="swiper-slide"
-									style="background: url('https://ozimg.flyasiana.com/image_fixed/destination/des_M_OKA.jpg'); height: 180px; margin-right: 8px;">Slide
-									4</div>
+									style="background: url('https://ozimg.flyasiana.com/image_fixed/destination/des_M_OKA.jpg');height: 180px; margin-right: 8px;background-size: cover;">
+									</div>
 							</div>
 							<!-- Add Pagination -->
 							<!-- <div class="swiper-pagination"></div> -->
@@ -234,8 +233,12 @@ $(document).ready(function() {
 			<div class="section" id="section1"
 				style="background: url(https://flyasiana.com/C/pc/image/main/bg_section02_default.jpg); background-size: 1920px">
 				<div class="intro">
-				<a href="https://www.weather.go.kr/w/index.do"><img alt="weather" src="../images/weather.png" style="width: 180px; height: 180px; margin-left: 1630px; margin-top: -60px; cursor: pointer;"></a>
-				<a href="https://www.weatheri.co.kr/forecast/forecast03.php?mNum=1&aircode=RKSI"><img alt="weather" src="../images/weather2.png" style="width: 60px; height: 60px; float: right; cursor: pointer;"></a>
+
+				<span style="float: right;">
+					<a href="https://www.weather.go.kr/w/index.do"><img alt="weather" src="../images/weather.png" style="width: 180px; height: 180px; margin-top: -60px; cursor: pointer;"></a>
+					<a href="https://www.weatheri.co.kr/forecast/forecast03.php?mNum=1&aircode=RKSI"><img alt="weather" src="../images/weather2.png" style="width: 60px; height: 60px; float: right; margin-right:50px; cursor: pointer;"></a>
+				</span>
+
 					<div class="weather">
 							<div class="airLine_weather">
 								<span class="airLine_weather_text">공항별 날씨정보</span>
@@ -255,7 +258,7 @@ $(document).ready(function() {
 									<option value="RKPC/제주공항/10">제주공항</option>
 								</select>
 	<!-- 							<button id="weather_select">선택</button> -->
-								<img alt="search" src="../images/search.png" style="width: 35px; height: 35px; cursor: pointer; top: 10px; position: relative;" id="weather_select">
+								<img alt="search" src="../images/search.png" style="width: 35px; height: 35px; cursor:pointer; top:-5px; position: relative;" id="weather_select">
 							</div>
 						</div>	
 							<div id="weather_view">
@@ -274,11 +277,12 @@ $(document).ready(function() {
 							</div>
 					</div>
 					
+
 				</div>
 			</div>
 			<div class="section" id="section2"
 				style="background: url(https://flyasiana.com/C/pc/image/main/bg_section03.jpg); background-size: 1920px;">
-
+					
 			</div>
 			<div class="section" id="section3"
 				style="background: url(https://flyasiana.com/C/pc/image/main/bg_section05.jpg); background-size: 1920px;">
@@ -331,7 +335,6 @@ $(document).ready(function() {
 		var myFullpage = new fullpage('#fullpage', {
 			//fixedElements: '#header',
 			navigation:true,
-			navigationTooltips: ['Page 1', 'Page 2', 'Page 3', 'Page 4'],
 			showActiveTooltip: true,
 			anchors : [ 'firstPage', 'secondPage', '3rdPage', '4rdPage' ], 
 			sectionsColor : [ '#FFFFFF', '#1BBC9B', '#7E8F7C' ],
@@ -366,9 +369,13 @@ $(document).ready(function() {
 			prevButton : '.swiper-button-prev',
 			slidesPerView : 5,
 			centeredSlides : true,
-			paginationClickable : true,
+		      pagination: {
+			        el: '.swiper-pagination',
+			        clickable: true,
+			      },
 			spaceBetween : 8,
-			loop : true
+			loop : true,
+		      freeMode: true,
 		});
 
 		$('.bxslider').bxSlider({
@@ -528,15 +535,41 @@ $('#arrloc').focus(function(){
 
 /* 예약 끝 */
 
+
 /* 검색 */
-$('body').on('click', '#sbtn', function(){
-	$('.tooltiptext1').css("display", "inline-block");
-});
+$('body').on('blur', '.search__input', function(){
+		$('#frm2').submit();
+ });
 
 
-$('body').on('click', '#ssbtn', function(){
-	$('#frm').submit();
-});
+ /* 날씨입니다 지우지 마세여 ^8^*/
+
+$("#weather_select").click(function(){
+			var weather = $("#weather_sel").val();
+			$.ajax({
+				type:'get',
+				url:"weather/weatherInfo",
+				async: false,
+				data:{
+					"airLine":weather
+				},
+				success: function(data){
+					data = data.trim();
+					$("#weather_view").html(data);
+				}
+			});
+			$("#weather_view tr").css("background-color", "transparent");
+			$("#weather_view td").css("background-color", "transparent");
+			$("#weather_view td").css("border-style", "hidden");
+			$("#weather_view td").css("font-weight","bold");
+			$("#weather_view td").css("vertical-align","middle");
+		});
+		$("#weather_view td").css("font-weight","bold");
+		$("#weather_view td").css("vertical-align","middle");
+		$("#weather_view tr").css("background-color", "transparent");
+		$("#weather_view td").css("background-color", "transparent");
+		$("#weather_view td").css("border-style", "hidden");
+
 
 
 		

@@ -6,8 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>My Page</title>
-    
     <link href="../resources/css/reset.css" rel="stylesheet">
+    <link href="../resources/css/header.css" rel="stylesheet">
     <link href="../resources/css/mypage/main.css" rel="stylesheet">
     <link href="../resources/css/mypage/mypageHeader.css" rel="stylesheet">
 	
@@ -30,7 +30,7 @@
 <body>
 
 
-<header></header>
+<header><c:import url="../layout/header.jsp"></c:import></header>
 <div id="headerBottom">
 <div id="hbh">
 <div id="hbhome"><i class="fa fa-home"></i></div>
@@ -59,14 +59,13 @@
 			
 			<div id="cardInfo">
 				<div>레벨</div>
-				<div>card 번호</div>
+				<div>회원번호 : ${member.memberNum}</div>
 				<div>바코드 / QR코드 / SMS</div>
 			</div>
 			
 			<div style="height: 30px; background-color: green;">
 				여기에는 공지사항을 넣어야하는데 하기싫다.
 			</div>
-			
 		</div>
 		
 		

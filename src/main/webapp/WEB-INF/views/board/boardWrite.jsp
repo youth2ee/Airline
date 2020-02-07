@@ -167,8 +167,6 @@
 	
 <!------ new script ------->
 <script type="text/javascript">
-
-
 	/**** SummerNote *****/
 	$(document).ready(function(){
 			$('.summernote').summernote({
@@ -198,7 +196,6 @@
 			contentType: false,
 			cache: false,
 			processData: false,
-
 			
 			success:function(data){
 					
@@ -223,13 +220,10 @@
 		markupStr = $('#hidden').text();
 	
 		$('#ihidden').val(markupStr);
-
 		//글자수 세기
 		$('#counter').html(markupStr.length);
 		
 	});
-
-
 	/***** 파일 추가 삭제 *****/
 	$('#attfile1').change(function(){
 		
@@ -245,8 +239,6 @@
 				$("#attfile1").val("");
 				$("#fileName1").val("");	
 	});
-
-
 	$('#attfile2').change(function(){
 		
 	 	 if(window.FileReader){
@@ -261,8 +253,6 @@
 				$("#attfile2").val("");
 				$("#fileName2").val("");	
 	});
-
-
 	$('#attfile3').change(function(){
 		
 	 	 if(window.FileReader){
@@ -279,14 +269,11 @@
 	});
 	
 /**** 글자수세기 ****/
-
 /* $('#contents').keyup(function(){
 	var content = $(this).val();
 	$('#counter').html(content.length);
 	
 }); */
-
-
 </script>
 
 </body>
