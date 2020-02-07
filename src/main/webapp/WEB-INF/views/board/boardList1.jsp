@@ -37,7 +37,7 @@
 
 <div id="container">
 	<h3>공지사항</h3>
-	
+	<h1>${vo.cate}</h1>
 	<!--- 검색 --->
 	<form id="frm" action="./${board}List1">
 	<div class="total_search_input">
@@ -48,7 +48,7 @@
 				<option id="kc" value="kc">내용</option>
 			</select>
 			<input type="hidden" id="curPage" value="1" name="curPage">
-			<input type="hidden" value="EveryAir소식" name="menu">
+			<input type="hidden" value="${param.menu}" name="menu">
 			<input type="text" name="search" id="searchText" class="common" placeholder="검색어를 입력하세요." value="${pager.search}">
 			<button id="btnSearch">검색</button>
 		</div>
@@ -63,24 +63,24 @@
 					<a href="./noticeList">
 						<span> 전체 </span></a>
 			</li>		
-			<li class="tab-link current" data-tab="tab-2">
-					<a href="./noticeList1?menu=EveryAir소식">
+			<li class="tab-link current" data-tab="tab-2"id="EveryAir소식">
+					<a href="./noticeList1?menu=EveryAir소식&curPage=1">
 						<span class="val"> EveryAir소식 </span></a>			
 			</li>			
-			<li class="tab-link" data-tab="tab-3">
-					<a href="./noticeList2?menu=EveryAir클럽">
+			<li class="tab-link" data-tab="tab-3" id="EveryAir클럽">
+					<a href="./noticeList1?menu=EveryAir클럽&curPage=1">
 						 <span class="val"> EveryAir클럽 </span></a>
 			</li>
-			<li class="tab-link" data-tab="tab-4">
-				<a href="./noticeList3?menu=유류할증료">
+			<li class="tab-link" data-tab="tab-4" id="유류할증료">
+				<a href="./noticeList1?menu=유류할증료&curPage=1">
 					<span> 유류할증료 </span></a>
 			</li>
-			<li class="tab-link" data-tab="tab-5">
-				<a href="./noticeList4?menu=제휴사소식">
+			<li class="tab-link" data-tab="tab-5" id="제휴사소식">
+				<a href="./noticeList1?menu=제휴사소식&curPage=1">
 					<span> 제휴사소식 </span></a>
 			</li>
-			<li class="tab-link" data-tab="tab-6">
-				<a href="./noticeList5?menu=기타">
+			<li class="tab-link" data-tab="tab-6" id="기타">
+				<a href="./noticeList1?menu=기타&curPage=1">
 					<span> 기타 </span></a>
 			</li>
 		</ul>
@@ -105,7 +105,7 @@
 					<li>
 						<div class="left">
 							<div class="title">
-								<a href="./noticeSelect?num=${vo.num}&menu=EveryAir소식">
+								<a href="./noticeSelect?num=${vo.num}&menu=${param.menu}&curPage=${pager.curPage}&search=${pager.search}&kind=${pager.kind}">
 									<em>${vo.title}</em>
 								</a>
 							</div>
@@ -137,13 +137,30 @@
 			<fmt:parseNumber var="pages" integerOnly="true" value="${tc/10}"/>			
 				<a href="./noticeList1?menu=EveryAir소식&curPage=${pages+1}" class="btn_last btn_common"></a>
 			</div>
-		</div>		
+		</div>	
+					
 	</div>
 </div>
 
 
 <!--- script --->
-	<script type="text/javascript">			
+	<script type="text/javascript">		
+
+	function getParameterByName(name) {
+		name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+		var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+		results = regex.exec(location.search);
+		return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+		}
+
+
+	 $(document).ready(function(){
+		var patId = getParameterByName('menu');
+				
+			$('ul.tabs li').removeClass('current');
+			$('#'+patId).addClass('current');
+	 });
+	 			
 
 	/** paging **/
 	$("#page${pager.curPage}").addClass("on");
@@ -154,18 +171,7 @@
 		}
 	$("#"+kind).prop("selected", true);
 	
-
-	/** tab **/
-	$('ul.tabs li').click(function(){
-		var tab_id = $(this).attr('data-tab');
-
-		$('ul.tabs li').removeClass('current');
-		$('.tab-content').removeClass('current');
-		
-		$(this).addClass('current');
-		$("#"+tab_id).addClass('current');
-	});
-			
+	
 	</script>
 	
 </body>

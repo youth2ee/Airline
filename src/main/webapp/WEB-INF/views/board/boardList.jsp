@@ -143,8 +143,7 @@
 
 
 
-	<script type="text/javascript">
-		
+	<script type="text/javascript">		
 	
 		/* paging  */
 		$("#page${pager.curPage}").addClass("on");
@@ -197,7 +196,7 @@
 			});	 
  */
 	 
-		
+
 		
 	</script>
 	

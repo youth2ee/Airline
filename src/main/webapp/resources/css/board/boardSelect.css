@@ -179,7 +179,7 @@ body{
     text-align: center;
 }
 
-.btn_wrap button{
+.btn_wrap a{
 	margin: 0 5px;
 	border: 1px solid #cccccc;
     background-color: #fff;
@@ -188,9 +188,12 @@ body{
     padding: 13px 40px 14px;
     font-size: 18px;
     min-height: 56px;
-    line-height: 21px;
+    /* line-height: 21px; */
+    line-height: 25px;
     border-radius: 3px;
     text-align: center;
+    cursor: pointer;
+    text-decoration: none;
 }
 
 #btnList:hover{

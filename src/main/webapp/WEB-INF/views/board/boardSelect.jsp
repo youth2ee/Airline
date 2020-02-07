@@ -57,7 +57,25 @@
 					<a href="./noticeUpdate?num=${vo.num}" id="update_btn">수정하기</a>
 			</div>
 			<div class="btn_wrap">
-				<button id="btnList" type="button">목록보기</button>
+					<c:if test="${empty param.menu}">
+					<a href="./noticeList?curPage=${param.curPage}&search=${param.search}&kind=${param.kind}" id="btnList" type="button">목록보기</a>
+					</c:if>
+					
+					<c:if test="${not empty param.menu}">
+					<a href="./noticeList1?menu=${param.menu}&curPage=${param.curPage}&search=${param.search}&kind=${param.kind}" id="btnList" type="button">목록보기</a>
+					</c:if>
+					<%-- <c:if test="${param.menu == 'EveryAir클럽'}">
+					<a href="./noticeList2?menu=${param.menu}&curPage=${param.curPage}&search=${param.search}&kind=${param.kind}" id="btnList" type="button">목록보기</a>
+					</c:if>
+					<c:if test="${param.menu == '유류할증료'}">
+					<a href="./noticeList3?menu=EveryAir소식&curPage=${param.curPage}&search=${param.search}&kind=${param.kind}" id="btnList" type="button">목록보기</a>
+					</c:if> --%>
+				<%-- 	<c:if test="${param.menu == '제휴사소식'}">
+					<a href="./noticeList4?menu=EveryAir소식&curPage=${param.curPage}&search=${param.search}&kind=${param.kind}" id="btnList" type="button">목록보기</a>
+					</c:if>
+					<c:if test="${param.menu == '기타'}">
+					<a href="./noticeList5?menu=EveryAir소식&curPage=${param.curPage}&search=${param.search}&kind=${param.kind}" id="btnList" type="button">목록보기</a>
+					</c:if> --%>
 			</div>
 	</div>
 
@@ -80,17 +98,17 @@ function getParam(sname) {
 	    return sval;
 	}
 
-	$('#btnList').click(function(){
+ /* 	$('#btnList').click(function(){
 		var curpage= getParam("")
 		
 		if(getParam("dispCt") == 'all'){
 			location.href="./boardList";
 			}else{
 				alert("no");
-				}r
+				}
 
-		});
-
+		}); */
+ 
 
 </script>
 

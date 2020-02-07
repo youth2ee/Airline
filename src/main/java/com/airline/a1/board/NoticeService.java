@@ -9,9 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.airline.a1.boardUtil.FilePathGenerator;
 import com.airline.a1.boardUtil.FileSaver;
@@ -49,7 +47,6 @@ public class NoticeService {
 	public int NoticeFileDelete(NoticeFilesVO noticeFilesVO)throws Exception{
 		return noticeFilesMapper.noticeFileDelete(noticeFilesVO);
 	}
-	
 	
 	
 	public int noticeWrite(NoticeVO noticeVO, MultipartFile[] file)throws Exception{			
