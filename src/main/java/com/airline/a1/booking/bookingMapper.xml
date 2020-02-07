@@ -36,10 +36,12 @@ insert into bookingPrice values (#{bpnum}, #{bookingNum}, #{bnum}, #{price},#{co
 #{airportTax}, #{totalPrice}, null ,null, #{mileagePlus}, #{memberNum}, #{id})
 </insert>
 
-<update id="priceInsertResult">
+<update id="priceInsertResult" parameterType="com.airline.a1.booking.BookingPriceVO">
 update bookingPrice set mileageMin=#{mileageMin}, totalAllPrice=#{totalAllPrice}
-where bpnum = #{bpnum};
+where bpnum = #{bpnum}
 </update>
+
+
 
 
 </mapper>

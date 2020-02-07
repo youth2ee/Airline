@@ -30,4 +30,23 @@
 		select * from members where name=#{name} and email=#{email}
 	</select>
 	
+	
+	<update id="memberMileageUpdate" parameterType="com.airline.a1.member.MembersVO">
+		update members set mileage=#{mileage} where id=#{id};
+	</update>
+	
+	<update id="updateMilplus" parameterType="com.airline.a1.booking.BookingPriceVO">
+	update members set
+	mileage =
+	(select R.* from
+	(select a.mileage + (select c.mileagePlus from bookingPrice c where c.bpnum = #{bpnum}) 
+	from members a where a.memberNum = (select b.memberNum from bookingPrice b where b.bpnum = #{bpnum})) R)
+	where memberNum = (select d.memberNum from bookingPrice d where d.bpnum = #{bpnum})
+	</update>
+
+	<update id="updateMilmin" parameterType="com.airline.a1.member.MembersVO">
+	update members set mileage=(select R.* from (select mileage from members where id=#{id}) R)- #{mileage}
+	where id = #{id}
+	</update>
+	
   </mapper>

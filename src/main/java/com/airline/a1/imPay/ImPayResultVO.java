@@ -19,5 +19,7 @@ public class ImPayResultVO {
 	private String apply_num;
 	
 	private int mil;
+	private String bpnum;
+	private int milplus;
 	
 }

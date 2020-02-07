@@ -12,6 +12,8 @@
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 
 
+<div class="hi"></div>
+
 <script type="text/javascript">
 
 var IMP = window.IMP; // 생략가능
@@ -43,10 +45,10 @@ IMP.request_pay({
   		$.ajax({
 			data : {
 				success:rsp.success,
-				imp_uid:rsp.imp_uid,
-				merchant_uid:rsp.merchant_uid,
+				imp_uid:'${VO.membersVO.id}',
+				merchant_uid:'${VO.milplus}',
 				pay_method:rsp.pay_method,
-				paid_amount:rsp.paid_amount,
+				paid_amount:'${VO.ramount}',
 				status:rsp.status,
 				name:rsp.name,
 				pg_provider:rsp.pg_provider,
@@ -54,8 +56,8 @@ IMP.request_pay({
 				paid_at:rsp.paid_at,
 				receipt_url:rsp.receipt_url,
 				apply_num:rsp.apply_num,
-				mil:'${VO.mil}'
-					
+				mil:'${VO.mil}',
+				bpnum:'${VO.bpnum}'
 			},
 			type : "GET",
 			url : "../imPay/imPayComplete",

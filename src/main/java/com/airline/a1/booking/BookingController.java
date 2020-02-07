@@ -545,6 +545,7 @@ public class BookingController {
 		mv.addObject("alist", bookingTicketVO.getAdultList());
 		mv.addObject("clist", bookingTicketVO.getChildList());
 		mv.addObject("numList", numList);
+		mv.addObject("milplus", bookingTicketVO.getAdultList().get(0).getDepPriceVO().getMileagePlus());
 		mv.setViewName("booking/bookingCheck");
 
 		return mv;
