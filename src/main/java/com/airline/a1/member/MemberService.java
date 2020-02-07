@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.Random;
 import org.springframework.stereotype.Service;
 
+import com.airline.a1.checkIn.ETicketVO;
+
 @Service
 public class MemberService {
 
@@ -56,5 +58,14 @@ public class MemberService {
 	//아이디찾기이메일
 	public MembersVO memberidFindbyEmail(MembersVO membersVO) throws Exception{
 		return memberMapper.memberidFindbyEmail(membersVO);
+	}
+	
+	// 예매목록 
+	public ETicketVO getBookingList(ETicketVO eTicketVO) throws Exception{
+		return memberMapper.getBookingList(eTicketVO);
+	}
+	// 예매목록상세
+	public ETicketVO getBookingMore(ETicketVO eTicketVO) throws Exception{
+		return memberMapper.getBookingMore(eTicketVO);
 	}
 }

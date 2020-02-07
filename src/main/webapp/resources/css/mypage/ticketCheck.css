@@ -196,12 +196,50 @@ button {
 .bookingTable table{
 	border-top: black solid 2px;
     border-bottom: black solid 2px;
-    width: 100%;
+    text-align: center;
 }
 .bookingTable td{
-	border : 1px solid;
 	padding: 7px;
 }
 .bookingTable table first-child{
 	border : none;
+}
+.tableTop{
+	background-color: #d60815;
+    color: white;
+    border-bottom: 1px solid black;
+}
+.td1 {
+	width: 50px;
+}
+.td2 {
+	width: 200px;
+}
+.td3 {
+	width: 200px;
+}
+.td4 {
+	width: 167px;
+}
+.td5 {
+	width: 120px;
+}
+.td6 {
+	width: 60px;
+}
+.td7 {
+	width: 100px;
+}
+.td8 {
+	width: 150px;
+}
+.td9 {
+	width: 170px;
+}
+.tableContents td:not(:first-child):not(:last-child){
+	border-left: solid 1px #b5b5b5;
+    border-right: solid 1px #b5b5b5;
+}
+.tableContents td {
+	border-bottom: solid 1px #b5b5b5;
 }

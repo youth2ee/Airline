@@ -2,6 +2,8 @@ package com.airline.a1.member;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.airline.a1.checkIn.ETicketVO;
+
 @Mapper
 public interface MemberMapper {
 	//로그인
@@ -18,4 +20,9 @@ public interface MemberMapper {
 	public MembersVO memberidFindbyPhone(MembersVO membersVO) throws Exception;
 	//아이디찾기이메일
 	public MembersVO memberidFindbyEmail(MembersVO membersVO) throws Exception;
+	
+	// 예매리스트 
+	public ETicketVO getBookingList(ETicketVO eTicketVO) throws Exception;
+	// 예매리스트상세 
+	public ETicketVO getBookingMore(ETicketVO eTicketVO) throws Exception;
 }

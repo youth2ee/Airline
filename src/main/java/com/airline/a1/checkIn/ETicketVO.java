@@ -21,5 +21,6 @@ public class ETicketVO {
 	private String arrCityCode;
 	private String arrCityEng;
 	private String seatName;
-
+	// 추가
+	private int totalPrice;
 }
