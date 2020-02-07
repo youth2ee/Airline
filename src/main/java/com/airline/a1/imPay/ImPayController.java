@@ -22,22 +22,20 @@ public class ImPayController {
 	@RequestMapping("imPayList")
 	public Model imPayList(ImPayVO imPayVO, HttpSession session ,Model model) {
 		
-		System.out.println(imPayVO.getMil());
-		System.out.println(imPayVO.getBpnum());
+		/*
+		 * System.out.println(imPayVO.getMil()); System.out.println(imPayVO.getBpnum());
+		 */
 		
-		String [] nlist = imPayVO.getBpnum().split(",");
+		/* String [] nlist = imPayVO.getBpnum().split(","); */
 		
-		int bpnum = 0; 
-		
-		for(String list : nlist) {
-			list = list.trim();
-			bpnum =  Integer.parseInt(list);
-			
-			
-			
-			
-		}
-		
+		/*
+		 * int bpnum = 0;
+		 * 
+		 * for(String list : nlist) { list = list.trim(); bpnum =
+		 * Integer.parseInt(list);
+		 * 
+		 * }
+		 */
 		
 		/*
 		 * System.out.println(imPayVO.getName());
@@ -47,7 +45,7 @@ public class ImPayController {
 		MembersVO membersVO = (MembersVO)session.getAttribute("member");
 		imPayVO.setMembersVO(membersVO);
 		
-		
+	
 		model.addAttribute("VO", imPayVO);
 		
 		return model;
@@ -58,6 +56,7 @@ public class ImPayController {
 	public void imPayComplete(ImPayResultVO imPayResultVO, Model model) {
 		
 		System.out.println(imPayResultVO.getMil());
+		System.out.println(imPayResultVO.getPaid_amount());
 		
 		/*
 		 * System.out.println(imPayResultVO.getSuccess());
