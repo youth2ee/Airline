@@ -48,11 +48,19 @@ label {
 	border: 2px solid white;
 	box-sizing: border-box;
 }
-
 .bookable {
 	text-align: center;
 	background-color: #eeefea;
 	font-size: 12px;
+}
+.etc{ 
+	background-color: #2a6bcf;
+	background-image: url("../images/disability.png");
+	background-size: 26px 40px;
+	background-position: center;
+	background-repeat: no-repeat;
+	opacity: 80%;
+	
 }
 .booked {
 	text-align: center;
@@ -66,15 +74,7 @@ label {
 	font-size: 12px;
 }
 
-.etc{ 
-	background-color: #2a6bcf;
-	background-image: url("../images/disability.png");
-	background-size: 26px 40px;
-	background-position: center;
-	background-repeat: no-repeat;
-	opacity: 80%;
-	
-}
+
 .인천공항{
 	width: 1000px;
 	height: 470px;

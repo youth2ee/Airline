@@ -16,4 +16,6 @@ public interface parkMapper {
 	public List<pReservationVO> myReservation(pReservationVO pReservationVO) throws Exception;
 	
 	public pReservationVO resSelect(pReservationVO pReservationVO) throws Exception;
+	
+	public int parkCancel(pReservationVO pReservationVO) throws Exception;
 }

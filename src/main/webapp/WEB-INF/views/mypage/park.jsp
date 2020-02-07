@@ -44,8 +44,8 @@ color: white;
 </div>
 </div>
 </div>
-<div id="sub_content">
-			<form id="resveForm" name="resveForm" class="needs-validation" novalidate="">
+		<div id="sub_content">
+			<form id="resveForm" name="resveForm" class="needs-validation">
 					<div class="search_form">
 						<div class="fbox">
 							<div class="col01">
@@ -66,7 +66,7 @@ color: white;
 			<div class="section">
 				<table class="board_table" id="grid">
 					<thead class="t_hidden">
-						<tr><th scope="col">예약번호</th>
+						<tr>
 						<th scope="col">공항</th>
 						<th scope="col">차량번호</th>
 						<th scope="col">이용예정일시</th>
@@ -77,13 +77,12 @@ color: white;
 					<tbody>
 					<c:forEach items="${list}" var="dto">
 						<tr>
-							<td class="t_hidden"><a style="color:#1E3269" onclick="location.href='parkSelect?pResNum=${dto.pResNum}'">7908BB0001/${dto.pResNum}</a></td>
 							<td class="t_hidden">${dto.airport}</td>
 							<td class="t_hidden">${dto.carNum}</td>
 							<td class="t_hidden">${dto.startDate} ~ ${dto.endDate}</td>
 							<td class="t_hidden">일반</td>
 							<td class="t_hidden">예약완료</td>
-							<td><button class="btn small wine" onclick="$.edit('11334')">예약변경</button><button class="btn small border" onclick="$.cancle('11334')">예약취소</button></td>
+							<td><button class="btn small wine" onclick="location.href='parkSelect?pResNum=${dto.pResNum}'">상세정보</button><button class="btn small border" onclick="deleteconfirm(${dto.pResNum})">예약취소</button></td>
 						
 						</tr>
 					</c:forEach>
@@ -135,6 +134,15 @@ $('#resveEndDt').datetimepicker({
 	 format:'Y-m-d',
 	 lang:'ko'
 	});
+
+function deleteconfirm(pResNum){
+	
+	if(confirm('정말 예약을 취소하시겠습니까?')){
+		location.href='./parkCancel?pResNum='+pResNum;
+	};
+	
+}
+
 </script>
 </body>
 

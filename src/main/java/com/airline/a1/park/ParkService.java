@@ -34,6 +34,10 @@ public class ParkService {
 	@Autowired
 	private parkMapper parkMapper;
 	
+	public int parkCancel(pReservationVO pReservationVO)throws Exception{
+		return parkMapper.parkCancel(pReservationVO);
+	}
+	
 	public void tttttt() throws Exception{
 		
 		 String url = "http://airport.koreatriptips.com/parking-lot.html";    //크롤링할 url지정

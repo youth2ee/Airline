@@ -1,6 +1,7 @@
 package com.airline.a1.mypage;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.airline.a1.member.MembersVO;
 import com.airline.a1.park.ParkService;
+import com.airline.a1.park.pInfoVO;
 import com.airline.a1.park.pReservationVO;
 
 @Controller
@@ -58,7 +60,18 @@ public class MypageController {
 	public void parkSelect(pReservationVO pReservationVO, Model model) throws Exception {
 		
 		pReservationVO = parkService.resSelect(pReservationVO);
+		pInfoVO pInfoVO = new pInfoVO();
+		pInfoVO.setaName(pReservationVO.getAirport());
+		pInfoVO = parkService.parkWhere(pInfoVO);
 		model.addAttribute("VO", pReservationVO);
+		model.addAttribute("park", pInfoVO);
+		List<Integer> etc = new ArrayList<Integer>();
+		if(pInfoVO.getEtc() !=null) {
+			for (int i = 0; i < pInfoVO.getEtc().split(",").length; i++) {
+				etc.add(Integer.parseInt(pInfoVO.getEtc().split(",")[i]));
+			}
+		}
+		model.addAttribute("etc", etc);
 		
 	}
 	

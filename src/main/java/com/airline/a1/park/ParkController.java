@@ -25,6 +25,26 @@ public class ParkController {
 	@Autowired
 	private ParkService parkService;
 	
+	@GetMapping("parkCancel")
+	public ModelAndView parkCancel(pReservationVO pReservationVO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		int result = parkService.parkCancel(pReservationVO);
+		if(result >0) {
+			mv.addObject("msg", "예약이 취소됐습니다.");
+			mv.addObject("path", "./park");
+			mv.setViewName("common/common_result");
+		}else {
+			mv.addObject("msg", "다시 시도해주세요.");
+			mv.addObject("path", "./park");
+			mv.setViewName("common/common_result");
+		}
+		
+		
+		return mv;
+	}
+	
+	
 	@RequestMapping("ParkMain")
 	public ModelAndView parkmain(ModelAndView mv) throws Exception{
 		//parkService.test();
