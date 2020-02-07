@@ -6,6 +6,8 @@
 <head>
 
 <link href="../resources/css/header.css" rel="stylesheet">
+<link href="../resources/css/reset.css" rel="stylesheet">
+<c:import url="../template/boot.jsp"></c:import>
 <link rel="stylesheet" type="text/css"
 	href="https://flyasiana.com/C/pc/css/reset.css">
 <link rel="stylesheet" type="text/css"
