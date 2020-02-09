@@ -55,7 +55,7 @@ ${bookingVO.arrLoc} <i class='fas fa-angle-right' style='font-size:10px;'></i> $
 
 
 <section>
-<div>
+<div id="dep">
 <div id="title">가는 여정</div>
 <div id="tmsg">${bookingVO.depLoc} <i class='fas fa-angle-right' style='font-size:48px;'></i> ${bookingVO.arrLoc}</div>
 
@@ -173,7 +173,7 @@ ${bookingVO.arrLoc} <i class='fas fa-angle-right' style='font-size:10px;'></i> $
 
 <hr>
 
-<div> 
+<div id="arr"> 
 <c:if test="${bookingVO.kind == '왕복'}">
 <div id="title">오는 여정</div>
 <div id="tmsg">${bookingVO.arrLoc} <i class='fas fa-angle-right' style='font-size:48px;'></i> ${bookingVO.depLoc}</div>
@@ -316,100 +316,248 @@ var d2 = $('.rd2').text();
 var d11 = $('.rd11').text();
 var d12 = $('.rd12').text();
 
-$('.date1').click(function(){
-	$(this).addClass('bact');
-	$(this).siblings().removeClass('bact');
-	
-	d1 = $(this).find('.d1').text().trim();
-	d2 = $(this).find('.d2').text().trim();
-	
-	//다른 날짜를 선택할때
-	$.ajax({
-		data : {
-			year:d1,
-			month:d2,
-			depLoc:'${bookingVO.depLoc}',
-			arrLoc:'${bookingVO.arrLoc}',
-			kind:'편도'
-			},
-		type : "GET",
-		url : "./booking/dateSelect",
-		success : function(data) {
-			data = data.trim();
-/* 
-			if(data == null){
-				$('#depT').html("");
+var depSelectDate = d1+d2;
+depSelectDate = depSelectDate.replace('년','').replace('월','').replace('일','').replace(' ','').trim();
+
+	$('.date2').each(
+			function(index, item) {
+				var rdate = $(this).find('.d11').text().trim().replace('년', '')
+						+ $(this).find('.d12').text().trim().replace('월', '')
+								.replace('일', '').replace(' ', '');
+
+				if (Number(depSelectDate) > Number(rdate)) {
+					$(this).css('cursor', 'none');
+					$(this).css('pointer-events', 'none');
+					$(this).css('color', '#e4dbdb');
 				}
-			 */
-			$('#depT').html(data);
-		}
-	}); 
-});
 
-$('.date2').click(function(){
-	$(this).addClass('bact');
-	$(this).siblings().removeClass('bact');
+				
+				
+			});
 
-	d11 = $(this).find('.d11').text().trim();
-	d12 = $(this).find('.d12').text().trim();
-	
-	//다른 날짜를 선택할때
-	$.ajax({
-		data : {
-			year:d11,
-			month:d12,
-			depLoc:'${bookingVO.arrLoc}',
-			arrLoc:'${bookingVO.depLoc}',
-			kind:'왕복'
+	$('.date1').click(function() {
+		$(this).addClass('bact');
+		$(this).siblings().removeClass('bact');
+
+		$('body').removeClass('cact');
+
+		d1 = $(this).find('.d1').text().trim();
+		d2 = $(this).find('.d2').text().trim();
+
+		//다른 날짜를 선택할때
+		$.ajax({
+			data : {
+				year : d1,
+				month : d2,
+				depLoc : '${bookingVO.depLoc}',
+				arrLoc : '${bookingVO.arrLoc}',
+				kind : '편도'
 			},
-		type : "GET",
-		url : "./booking/dateSelect",
-		success : function(data) {
-			data = data.trim();
-			 $('#arrT').html(data); 
+			type : "GET",
+			url : "./booking/dateSelect",
+			success : function(data) {
+				data = data.trim();
+				/* 
+				 if(data == null){
+				 $('#depT').html("");
+				 }
+				 */
+				$('#depT').html(data);
+				var depSelectDate = d1+d2;
+				depSelectDate = depSelectDate.replace('년','').replace('월','').replace('일','').replace(' ','').trim();
+
+					$('.date2').each(function(index, item) {
+								var rdate = $(this).find('.d11').text().trim().replace('년', '') + $(this).find('.d12').text().trim().replace('월', '').replace('일', '').replace(' ', '');
+
+								if (Number(depSelectDate) > Number(rdate)) {
+									$(this).css('cursor', 'none');
+									$(this).css('pointer-events', 'none');
+									$(this).css('color', '#e4dbdb');
+								}
+
+								if(Number(depSelectDate) == Number(rdate)){
+									
+									$(this).addClass('bact');
+									$(this).siblings().removeClass('bact');
+
+									d11 = $(this).find('.d11').text();
+									d12 = $(this).find('.d12').text();
+									
+
+									$.ajax({
+										data : {
+											year : d11,
+											month : d12,
+											depLoc : '${bookingVO.arrLoc}',
+											arrLoc : '${bookingVO.depLoc}',
+											kind : '왕복'
+										},
+										type : "GET",
+										url : "./booking/dateSelect",
+										success : function(data) {
+											data = data.trim();
+											$('#arrT').html(data);
+
+										}
+									}); 
+									
+								}
+
+
+								
+							});
+			}
+		});
+	});
+
+	$('.date2').click(function() {
+		$(this).addClass('bact');
+		$(this).siblings().removeClass('bact');
+
+		$(this).addClass('onec');
+		$('body').removeClass('cact');
+
+		d11 = $(this).find('.d11').text().trim();
+		d12 = $(this).find('.d12').text().trim();
+
+		//다른 날짜를 선택할때
+		$.ajax({
+			data : {
+				year : d11,
+				month : d12,
+				depLoc : '${bookingVO.arrLoc}',
+				arrLoc : '${bookingVO.depLoc}',
+				kind : '왕복'
+			},
+			type : "GET",
+			url : "./booking/dateSelect",
+			success : function(data) {
+				data = data.trim();
+				$('#arrT').html(data);
+
+				var depdate1 = $('.bact').find('.d1').text().replace('년','').trim();
+				var depdate2 = $('.bact').find('.d2').text().replace('월','').replace('일','').replace(' ','').trim();
+				var deptime = $('.act').find('.tiRight').text().replace(':','');
+
+				var depM = depdate1+depdate2+deptime;
+
+				alert(depM);
+
+				var arrdate1 = $('.bact').find('.d11').text().replace('년','').trim();
+				var arrdate2 = $('.bact').find('.d12').text().replace('월','').replace('일','').replace(' ','').trim();
+
+				var arrM = arrdate1+arrdate2;
+				
+				
+				$('#arrT').find('.atrcheck').each(function(){
+					
+						var arrtime = $(this).find('.tiLeft').text().replace(':','').trim();
+						var atotal = arrM + arrtime;
+						
+						if(Number(depM) > Number(atotal)){
+							$(this).addClass('cact');
+							$('.cact').find('td').css('color', '#e4dbdb');
+							$('.cact').find('td').find('i').css('color', '#e4dbdb');
+							$('.cact').find('td').find('img').addClass('grayt');
+						}
+						
+				});
+
+				$('body').on('click', '.cact', function(){
+					$('.ahide').css("display", "none");
+					$('.atrcheck').siblings().find('td').removeClass('act');
+					alert('출발하는 편의 도착시간 이후의 비행편을 선택해주세요.');
+				});
+				
+
+
+
+
+
+				
+
+			}
+		});
+	});
+
+	var dfnum = "";
+	var afnum = "";
+
+	$('body').on("click", '.dtrcheck', function() {
+		$('.dhide').css("display", "none");
+		$('.ahide').css("display", "none");
+
+		$('body').removeClass('cact');
+
+		$('.atrcheck').siblings().find('td').removeClass('act');
+
+		dfnum = $(this).find('.td1').find('.dfnum').val();
+
+		$('#dfnumf').val(dfnum);
+		$(this).find('td').addClass('act');
+		$(this).siblings().find('td').removeClass('act');
+
+		if ($(this).next('.dhide').css("display") == "none") {
+			$(this).next('.dhide').css("display", "table-row");
+		} else {
+			$(this).next('.dhide').css("display", "none");
 		}
-	}); 
-});
 
-var dfnum = "";
-var afnum = "";
+		var depdate1 = $(this).closest('#depW').siblings('#dateLine').find('.bact').find('.d1').text().replace('년','').trim();
+		var depdate2 = $(this).closest('#depW').siblings('#dateLine').find('.bact').find('.d2').text().replace('월','').replace('일','').replace(' ','').trim();
+		var deptime = $(this).find('.tiRight').text().replace(':','');
 
-$('body').on("click",'.dtrcheck',function(){
-	$('.dhide').css("display", "none");   
+		var depM = depdate1+depdate2+deptime;
+		
 
-	dfnum = $(this).find('.td1').find('.dfnum').val();
-	
-	$('#dfnumf').val(dfnum);
-	$(this).find('td').addClass('act');
-	$(this).siblings().find('td').removeClass('act');
+		var arrdate1 = $(this).closest('#dep').siblings('#arr').find('#arrW').siblings('#dateLine').find('.bact').find('.d11').text().replace('년','').trim();
+		var arrdate2 = $(this).closest('#dep').siblings('#arr').find('#arrW').siblings('#dateLine').find('.bact').find('.d12').text().replace('월','').replace('일','').replace(' ','').trim();
 
-    if($(this).next('.dhide').css("display") == "none"){   
-    	$(this).next('.dhide').css("display", "table-row");   
-    } else {  
-    	$(this).next('.dhide').css("display", "none");   
-    }  
+		var arrM = arrdate1+arrdate2;
+		
+		
+		$('#arrT').find('.atrcheck').each(function(){
+			
+				var arrtime = $(this).find('.tiLeft').text().replace(':','').trim();
+				var atotal = arrM + arrtime;
+				
+				if(Number(depM) > Number(atotal)){
+					$(this).addClass('cact');
+					$('.cact').find('td').css('color', '#e4dbdb');
+					$('.cact').find('td').find('i').css('color', '#e4dbdb');
+					$('.cact').find('td').find('img').addClass('grayt');
+				}
+				
+		});
 
-});
+		$('body').on('click', '.cact', function(){
+			$('.ahide').css("display", "none");
+			$('.atrcheck').siblings().find('td').removeClass('act');
+			alert('출발하는 편의 도착시간 이후의 비행편을 선택해주세요.');
+		});
+		
 
+		
 
+	});
 
-$('body').on("click",'.atrcheck',function(){
-	$('.ahide').css("display", "none");   
-	
-	afnum = $(this).find('.td1').find('.afnum').val();
-	
-	$('#afnumf').val(afnum);
-	$(this).find('td').addClass('act');
-	$(this).siblings().find('td').removeClass('act');
+	$('body').on("click", '.atrcheck', function() {
+		$('body').removeClass('cact');
+		
+		$('.ahide').css("display", "none");
 
-    if($(this).next('.ahide').css("display") == "none"){   
-    	$(this).next('.ahide').css("display", "table-row");   
-    } else {  
-    	$(this).next('.ahide').css("display", "none");   
-    }  
-});
+		afnum = $(this).find('.td1').find('.afnum').val();
 
+		$('#afnumf').val(afnum);
+		$(this).find('td').addClass('act');
+		$(this).siblings().find('td').removeClass('act');
 
+		if ($(this).next('.ahide').css("display") == "none") {
+			$(this).next('.ahide').css("display", "table-row");
+		} else {
+			$(this).next('.ahide').css("display", "none");
+		}
+	});
 </script>
 
 </body>

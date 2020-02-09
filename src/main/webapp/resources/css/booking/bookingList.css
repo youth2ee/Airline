@@ -86,7 +86,6 @@ section {
 #arrT {
 	width: 100%;
 	clear: both;
-	cursor: pointer;
 	font-size: 18px;
 }
 
@@ -215,10 +214,12 @@ top: 1465px;
 .dtrcheck td, .atrcheck td {
     padding: 10px 0;
     vertical-align: middle;
+    
 }
 
 .dtrcheck, .atrcheck {
 	border-bottom: 1px solid #e0dada; 
+	cursor: pointer;
 }
 
 .aimg {
@@ -250,4 +251,17 @@ top: 1465px;
 	display: none; 
 	background-color: salmon; 
 	height: 50px;
+}
+
+.cact{
+	
+}
+
+.grayt{
+	-webkit-filter: grayscale(80%);
+	filter: gray;
+}
+
+.onec{
+	cursor: pointer;
 }
