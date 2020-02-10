@@ -23,4 +23,6 @@ public class ETicketVO {
 	private String seatName;
 	// 추가
 	private int totalPrice;
+	private String id;
+	private String resDate;
 }

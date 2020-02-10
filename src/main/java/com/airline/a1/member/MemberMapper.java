@@ -15,14 +15,8 @@ public interface MemberMapper {
 	public int memberNumCheck(MembersVO membersVO) throws Exception;
 	//회원가입
 	public int memberJoin(MembersVO membersVO) throws Exception;
-	
 	//아이디찾기폰
 	public MembersVO memberidFindbyPhone(MembersVO membersVO) throws Exception;
 	//아이디찾기이메일
 	public MembersVO memberidFindbyEmail(MembersVO membersVO) throws Exception;
-	
-	// 예매리스트 
-	public ETicketVO getBookingList(ETicketVO eTicketVO) throws Exception;
-	// 예매리스트상세 
-	public ETicketVO getBookingMore(ETicketVO eTicketVO) throws Exception;
 }

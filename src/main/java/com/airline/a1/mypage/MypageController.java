@@ -10,7 +10,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.airline.a1.checkIn.ETicketVO;
+import com.airline.a1.checkIn.SeatVO;
 import com.airline.a1.member.MembersVO;
 import com.airline.a1.park.ParkService;
 import com.airline.a1.park.pReservationVO;
@@ -21,6 +24,8 @@ public class MypageController {
 	
 	@Autowired
 	private ParkService parkService;
+	@Autowired
+	private MypageService mypageService;
 	
 	@GetMapping("main")
 	public void main() {}
@@ -31,8 +36,45 @@ public class MypageController {
 	@GetMapping("mileage")
 	public void mileage() {}
 	
+	@GetMapping("bookingMore")
+	public ModelAndView bookingMore(String bookingNum) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		System.out.println(bookingNum);
+		ETicketVO eTicketVO = new ETicketVO();
+		eTicketVO.setBookingNum(bookingNum);
+		List<ETicketVO> eTicketVOs = mypageService.getBookingMore(eTicketVO);
+		List<SeatVO> seatVOs = mypageService.getBookingMoreSeat(eTicketVO);
+		String str = eTicketVOs.get(0).getDepPlandTime().substring(0,4) +"-"+eTicketVOs.get(0).getDepPlandTime().substring(4,6) + "-"
+				+eTicketVOs.get(0).getDepPlandTime().substring(6,8) ;
+		System.out.println(str);
+		System.out.println(eTicketVOs.get(0).getDepPlandTime());
+		
+		System.out.println(eTicketVOs.get(0).getArrPlandTime());
+		System.out.println(eTicketVOs.get(0).getDepAirportNm());
+		System.out.println(eTicketVOs.get(0).getArrAirportNm());
+		System.out.println(eTicketVOs.get(0).getVihicleId());
+		System.out.println(eTicketVOs.get(0).getTotalPrice());
+		System.out.println(eTicketVOs.get(0).getFlightBNum());
+		System.out.println(eTicketVOs.get(0).getName());
+		mv.addObject("bookingMore",eTicketVOs);
+		mv.addObject("seats",seatVOs);
+		mv.addObject("isCheckIn",seatVOs.size());
+		mv.addObject("count", eTicketVOs.size());
+		return mv;
+		
+	}
+	
 	@GetMapping("ticketCheck")
-	public void ticketCheck() {}
+	public ModelAndView ticketCheck(HttpSession session) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		ETicketVO eTicketVO = new ETicketVO();
+		MembersVO member = (MembersVO)session.getAttribute("member");
+		/* eTicketVO.setId(member.getId()); */
+		eTicketVO.setId("admin1234");
+		List<ETicketVO> eTicketVOs = mypageService.getBookingList(eTicketVO);
+		mv.addObject("bookList",eTicketVOs);
+		return mv;
+	}
 	
 	@GetMapping("park")
 	public void park(HttpSession session, pReservationVO pReservationVO,Model model) throws Exception {

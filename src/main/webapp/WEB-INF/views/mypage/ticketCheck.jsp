@@ -91,7 +91,7 @@
 	<div class="bookingList">예매내역</div>
 	<div class="bookingInfo">
 		<div class="bookingTable">
-			<table>
+			<!-- <table>
 				<tr class="tableTop">
 					<td class="td1">선택</td>
 					<td class="td2">출발일자</td>
@@ -125,13 +125,59 @@
 					<td>OZ123A456</td>
 					<td>LEE GAYOUNG</td>
 				</tr>
-			</table>
+			</table> -->
+			<div>
+				<c:forEach items="${bookList}" var="book" varStatus="i">
+					<p class="bookList"><span id="bookingNum">${book.bookingNum}</span> <span>${book.resDate}</span><span>${book.depAirportNm}</span><span>${book.arrAirportNm}</span></p>
+				</c:forEach>
+			</div>
+			<div class="ajax" style="display: none;">
+				
+			</div>
+			<div class="test"></div>
 		</div>
 	</div>
 <script type="text/javascript">
 var completes = document.querySelectorAll(".complete");
 var toggleButton = document.getElementById("toggleButton");
-
+	$(".bookList").click(function(){
+			$.get("./bookingMore?bookingNum=" + $(this).find('#bookingNum').text(),function(data) {
+				$(".ajax").html(data);
+				var count = $(".ajax").find(".count").text();
+				var rowItem = '<table class="open"><tr class="tableTop"><td class="td1">선택</td><td class="td2">출발일자</td><td class="td3">출발지 → 도착지</td><td class="td4">출발 → 도착시간</td><td class="td5">편명</td><td class="td6">좌석</td><td class="td7">운임</td><td class="td8">탑승번호</td><td class="td9">탑승자명</td></tr>';
+				for(var i = 1; i <= count ; i++){
+					var depPlandTime = $(".ajax").find(".depPlandTime"+i).text();
+					var depPlandTime2 = depPlandTime.substring(0,4) + "-" + depPlandTime.substring(4,6) + "-" + depPlandTime.substring(6,8);
+					var depPlandTime3 = depPlandTime.substring(8,10) + ":" + depPlandTime.substring(10,12);
+					var arrPlandTime = $(".ajax").find(".arrPlandTime"+i).text();
+					var arrPlandTime2 = arrPlandTime.substring(8,10) + ":" + arrPlandTime.substring(10,12);
+					var seatName = $(".ajax").find(".seatName"+i).text();
+					var flightBnum = $(".ajax").find(".flightBNum"+i).text();
+					var totalPrice = $(".ajax").find(".totalPrice"+i).text();
+					if(seatName == "")
+						seatName = "X";
+					if (flightBnum == "")
+						flightBnum = "X";
+					if(totalPrice == "0")
+						totalPrice = "운임정보없음";
+					rowItem += '<tr class="tableContents">';
+					rowItem += '<td><input type="checkbox"></td>';
+					rowItem += '<td>'+depPlandTime2+'</td>';
+					rowItem += '<td>'+$(".ajax").find(".depAirportNm"+i).text()+" → "+$(".ajax").find(".arrAirportNm"+i).text()+'</td>';
+					rowItem += '<td>'+depPlandTime3+" → "+arrPlandTime2+'</td>';
+					rowItem += '<td>'+$(".ajax").find(".vihicleId"+i).text()+'</td>';
+					rowItem += '<td>'+seatName+'</td>';
+					rowItem += '<td>'+totalPrice+'</td>';
+					rowItem += '<td>'+flightBnum+'</td>';
+					rowItem += '<td>'+$(".ajax").find(".name"+i).text()+'</td>';
+				
+				}
+				rowItem += '</table>';
+				$(".bookingTable").append(rowItem);
+				if($(".ajax").find(".isCheckIn").text() != 0)
+					alert('체크인 함');
+			});
+	});
 
 function toggleComplete(){
   var lastComplete = completes[completes.length - 1];

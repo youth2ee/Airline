@@ -2,11 +2,16 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  <mapper namespace="com.airline.a1.member.MemberMapper">
+  <mapper namespace="com.airline.a1.mypage.MypageMapper">
 	<select id="getBookingList" parameterType="com.airline.a1.checkIn.ETicketVO" resultType="com.airline.a1.checkIn.ETicketVO">
-		select * from bookingTicket where id=#{id};
+		select distinct bookingNum,resDate from bookingTicket join flightData on bookingTicket.depFnum = flightData.fnum where id=#{id};
 	</select>
 	<select id="getBookingMore" parameterType="com.airline.a1.checkIn.ETicketVO" resultType="com.airline.a1.checkIn.ETicketVO">
-		select fnum,bookingNum,flightBNum,name,id,depAirportNm,vihicleId,arrAirportNm,depPlandTime,arrPlandTime from flightData join bookingTicket on bookingTicket.depFnum = flightData.fnum where bookingNum = #{bookingNum};
+	<!-- 아래 주석은 운임 정보 있는 것 -->
+	<!-- select fnum,bookingTicket.bookingNum,flightBNum,name,bookingTicket.id,depAirportNm,vihicleId,arrAirportNm,depPlandTime,arrPlandTime,totalPrice from flightData join bookingTicket on bookingTicket.depFnum = flightData.fnum join bookingPrice on bookingPrice.bnum = bookingTicket.bnum where bookingTicket.bookingNum = #{bookingNum}; -->
+		select fnum,bookingNum,flightBNum,name,id,depAirportNm,vihicleId,arrAirportNm,depPlandTime,arrPlandTime from flightData join bookingTicket on bookingTicket.depFnum = flightData.fnum where bookingNum = #{bookingNum}<!--  order by depPlandTime asc -->;
+	</select>
+	<select id="getBookingMoreSeat" parameterType="com.airline.a1.checkIn.ETicketVO" resultType="com.airline.a1.checkIn.SeatVO">
+		select * from seat where bookingNum = #{bookingNum};
 	</select>
   </mapper>

@@ -60,12 +60,4 @@ public class MemberService {
 		return memberMapper.memberidFindbyEmail(membersVO);
 	}
 	
-	// 예매목록 
-	public ETicketVO getBookingList(ETicketVO eTicketVO) throws Exception{
-		return memberMapper.getBookingList(eTicketVO);
-	}
-	// 예매목록상세
-	public ETicketVO getBookingMore(ETicketVO eTicketVO) throws Exception{
-		return memberMapper.getBookingMore(eTicketVO);
-	}
 }

@@ -174,11 +174,9 @@ public class SeatController {
 				mv.addObject("tripData", bookingTicketVOs.get(0));
 				mv.addObject("booked", seatVOs);
 			} else {
-
 				mv.addObject("msg", msg);
 				mv.addObject("path", path);
 				mv.setViewName("common/common_result");
-
 			}
 		}
 		return mv;
