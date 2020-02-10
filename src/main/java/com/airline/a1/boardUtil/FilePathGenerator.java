@@ -2,7 +2,6 @@ package com.airline.a1.boardUtil;
 
 import java.io.File;
 
-import javax.annotation.Resource;
 import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowired;

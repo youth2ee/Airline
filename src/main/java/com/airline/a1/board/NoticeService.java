@@ -28,9 +28,11 @@ public class NoticeService {
 	@Autowired
 	private FilePathGenerator filePathGenerator;
 	
-	/**** File ****/
-	public boolean summerfileDelete(String file, HttpSession session)throws Exception{
 	
+	
+	/**** File ****/
+	
+	public boolean summerfileDelete(String file, HttpSession session)throws Exception{
 		String realPath = session.getServletContext().getRealPath("resources/upload/summerfile");
 		return fileSaver.fileDelete(realPath, file);
 	}
@@ -48,6 +50,10 @@ public class NoticeService {
 		return noticeFilesMapper.noticeFileDelete(noticeFilesVO);
 	}
 	
+	
+	
+	
+	/**** noticeWrite ****/
 	
 	public int noticeWrite(NoticeVO noticeVO, MultipartFile[] file)throws Exception{			
 		//file 유무검증 		
@@ -82,70 +88,74 @@ public class NoticeService {
 			return result; 	
 		}
 	
+	
+	
+	
+	/**** noticeList ****/
+	
 	public List<BoardVO> noticeList(Pager pager)throws Exception{
 		pager.makeRow();
 		pager.makePage(noticeMapper.noticeCount(pager));
-		return noticeMapper.noticeList(pager);
-		
+		return noticeMapper.noticeList(pager);		
 	}
 	
 	public List<BoardVO> subNoticeList(Pager pager)throws Exception{				 
 		pager.makeRow();
 		pager.makePage(noticeMapper.noticeCount2(pager));
 		return noticeMapper.subNoticeList(pager);
-		
 	}
 	
+	/* pager */
 	public int noticeCount(Pager pager)throws Exception{
-		 return noticeMapper.noticeCount(pager);
-		
+		return noticeMapper.noticeCount(pager);
 	}
 	
 	public int noticeCount2(Pager pager)throws Exception{
 		return noticeMapper.noticeCount2(pager);
-		
 	}
+	
+	
+	
+	
+	/**** noticeSelect ****/
 	
 	public NoticeVO noticeSelect(NoticeVO noticeVO)throws Exception{
-			
-			noticeMapper.noticeHit(noticeVO.getNum()); 			
-			return noticeMapper.noticeSelect(noticeVO);
+		noticeMapper.noticeHit(noticeVO.getNum()); 			
+		return noticeMapper.noticeSelect(noticeVO);
 	}
 	
-	public NoticeVO subNoticeSelect(NoticeVO noticeVO)throws Exception{
-			return noticeMapper.subNoticeSelect(noticeVO);
+	public List<BoardVO> listView(NoticeVO noticeVO)throws Exception{
+		return noticeMapper.listView(noticeVO);
 	}
 
-
 	
+	
+	
+	/**** noticeUpdate ****/
 	
 	public int noticeUpdate(NoticeVO noticeVO, MultipartFile[] file, HttpSession session)throws Exception{
 			String realPath = session.getServletContext().getRealPath("resources/upload/notice");
 			NoticeFilesVO noticeFilesVO = new NoticeFilesVO();
-			
-			noticeFilesVO.setNum(noticeVO.getNum());
-			
+			noticeFilesVO.setNum(noticeVO.getNum());			
 			boolean check = false;
-			
 			int result = noticeMapper.noticeUpdate(noticeVO);	
 			 
 				if(file.length>0) {
-					
 					for(MultipartFile multipartFile: file) {
 							if(multipartFile.getSize()>0) {
 								check = true;
 								break;
-						}				
+							}				
 					}//for끝
 					
 					if(check) {
 						List<NoticeFilesVO> noticeFilesVOs = new ArrayList<>(); 
-				/* File file2 = filePathGenerator.getUseClassPathResource("board"); */
+						/* File file2 = filePathGenerator.getUseClassPathResource("board"); */
 						
 						for(MultipartFile multipartFile:file) {
 							if(multipartFile.getSize()>0) {
 								String fileName = fileSaver.save(realPath, multipartFile);
-						/* NoticeFilesVO noticeFilesVO = new NoticeFilesVO(); */
+								/* NoticeFilesVO noticeFilesVO = new NoticeFilesVO(); */
 								noticeFilesVO.setNum(noticeVO.getNum());
 								noticeFilesVO.setFname(fileName);
 								noticeFilesVO.setOname(multipartFile.getOriginalFilename());
@@ -156,13 +166,16 @@ public class NoticeService {
 					}		
 				}		
 				return result; 		
-	}
+		}
+	
+	
+	
+	
+	/**** noticeDelete ****/
 	
 	public int noticeDelete(NoticeVO noticeVO)throws Exception{
 			return noticeMapper.noticeDelete(noticeVO);	
-			}
-
-	
+	}
 	
 	
 }

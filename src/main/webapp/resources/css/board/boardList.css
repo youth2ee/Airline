@@ -140,7 +140,7 @@ ul.tabs li{
 	line-height: 20px;
 	border-bottom: 1px solid #6d6e71;
     color: #d60815;
-    cursor: pointer;
+   /*  cursor: pointer; */
     background: #6d6e70;
     text-align: center;
  	line-height: 60px;
@@ -204,6 +204,10 @@ ul.tabs li.current span{
 	padding: 20px 25px 21px;
     border-bottom: 1px solid #ddd;
     list-style: none;
+    cursor:initial;
+}
+.bbs_list li:hover{
+background-color: #f7f7f7;
 }
 
 /* tab-contents */

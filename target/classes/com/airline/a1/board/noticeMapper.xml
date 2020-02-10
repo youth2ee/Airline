@@ -101,6 +101,7 @@
 							left join noticeFiles F	on N.num = F.num
 							where N.num = #{num}
 						union 
+						
 			     	   select N.*, F.* from notice N 
 							right join noticeFiles F on N.num = F.num          
 						where N.num = #{num}
@@ -129,6 +130,15 @@
 		<delete id="noticeDelete" parameterType="com.airline.a1.board.BoardVO">
 			delete from notice where num=#{num}
 		</delete>
+		
+		<select id="listView" resultType="com.airline.a1.board.BoardVO" parameterType="com.airline.a1.board.NoticeVO">
+			<![CDATA[select title,num from notice where num in(
+				(select num from notice where num < #{num} order by num desc limit 1),
+                (select num from notice where num > #{num} order by num  limit 1)
+            )]]>	
+		</select>
+		
+	
 </mapper>
 		
 		

@@ -29,6 +29,16 @@
 
 <form action="${board}Write" method="post" enctype="multipart/form-data">
 <table class="table_form">
+		<tr>
+		<th scope="row">
+				주요공지
+		</th>
+		<td>
+			<input type="checkbox" name="primary" id="primary" value="Y">
+			<label for="primary" class="chk"></label>
+		</td>	
+	</tr>
+	
 	<tr>
 		<th scope="row">
 				제목

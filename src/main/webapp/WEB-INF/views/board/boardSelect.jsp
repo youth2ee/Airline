@@ -45,11 +45,11 @@
 			<div class="list_view_ctrl">
 				<div>
 					<span class="prev">다음글</span>
-					<a>다음글이 없습니다.</a>
+					<a href="./noticeSelect?num=${list[1].num}&menu=${param.menu}&curPage=${param.curPage}&search=${param.search}&kind=${param.kind}">${list[1].title}</a>
 				</div>
 				<div>
 					<span class="next">이전글</span>
-					<a>중국 일부 노선 비운항 및 감편 안내</a>
+					<a>${list[0].title}</a>
 				</div>
 			</div>
 			<div class="btn_area">

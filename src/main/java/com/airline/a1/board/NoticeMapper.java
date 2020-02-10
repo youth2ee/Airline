@@ -34,5 +34,6 @@ public interface NoticeMapper {
 	
 	public int noticeDelete(NoticeVO noticeVO)throws Exception;
 	
+	public List<BoardVO> listView(NoticeVO noticeVO)throws Exception;
 	
 }

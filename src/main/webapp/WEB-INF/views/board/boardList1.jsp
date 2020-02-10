@@ -175,6 +175,7 @@
 		
 		/**** paging ****/
 		$("#page${pager.curPage}").addClass("on");
+		
 			var kind = '${pager.kind}';
 				if (kind == '') {
 						kind = "kt";

@@ -2,8 +2,10 @@ package com.airline.a1.board;
 
 import java.util.List;
 
+import javax.naming.NoInitialContextException;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -148,8 +150,10 @@ public class NoticeController {
 	  public ModelAndView NoticeSelect(NoticeVO noticeVO)throws Exception{
 		  ModelAndView mv = new ModelAndView();
 		  NoticeVO noticeVO2= noticeService.noticeSelect(noticeVO);
-		  
+		  List<BoardVO> ar =noticeService.listView(noticeVO);			
+		 	  
 		  	mv.addObject("vo", noticeVO2);
+		  	mv.addObject("list", ar);
 		  	mv.addObject("board", "notice");
 			mv.setViewName("board/boardSelect");
 				
@@ -157,10 +161,11 @@ public class NoticeController {
 		  
 	  }
 	  
+	  
 	/**** Notice Update ****/
 	  
 		@GetMapping("noticeUpdate")
-		public ModelAndView noticeUpdate(int num)throws Exception{
+		public ModelAndView noticeUpdate(int num, Pager pager)throws Exception{
 			ModelAndView mv = new ModelAndView();
 			NoticeVO noticeVO = new NoticeVO();
 			noticeVO.setNum(num);
