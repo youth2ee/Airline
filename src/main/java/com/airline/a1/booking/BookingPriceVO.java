@@ -18,6 +18,9 @@ public class BookingPriceVO {
 	private int airportTax;
 	
 	private int totalPrice;
+	
+	private int mileageMin;
+	
 	private int totalAllPrice;
 	
 	
