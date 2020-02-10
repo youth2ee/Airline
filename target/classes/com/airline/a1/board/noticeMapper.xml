@@ -61,7 +61,7 @@
 				   		from
 				    		(select * from notice 
 								<include refid="bs"></include> and cate=#{menu}
-							 order by num desc)a, 
+							 order by fix desc, num desc)a, 
 				   		 (select @rnum:=#{startRow})b limit #{startRow},10				 			
 		</select>
 
