@@ -23,19 +23,17 @@
 	
 	<div class="wrap main full"><!-- main page class="main" 추가 -->
 		<div class="util_top">
-			<h1><a href="/mainExp.do">리무진버스예매</a></h1>
+			<h1><a href="./limoHome">리무진버스예매</a></h1>
 			<div class="util clear">
 				<ul>
 					<!-- <li><a href="/spexp/mrs/mrsrecplist.do">영수증조회</a></li> -->
-					<li><a href="https://www.kobus.co.kr/mrs/mrsrecplist.do">영수증조회</a></li>
 					
 					
 						<!-- <li><a href="#" onclick="javascript:$('[data-remodal-id=popLogin]').remodal().open();">로그인</a></li> -->
-						<li><a href="https://www.kobus.co.kr/mbrs/lgn/loginMain.do"><span>로그인</span></a></li>
-						<li><a href="https://www.kobus.co.kr/mbrs/mbrsjoin/mbrsJoin.do">회원가입</a></li>
+						<li><a href="../member/memberLogin"><span>로그인</span></a></li>
+						<li><a href="../member/memberJoin">회원가입</a></li>
 					
 					
-					<!-- <li><a href="/spexp/mbrs/mbrsjoin/mbrsJoin.do">회원가입</a></li> -->
 				</ul>
 				<div class="select-box">
 					<div class="selectricWrapper"><div class="selectricHideSelect"><select name="lng_cd_navi" id="lng_cd_navi" title="다국어사이트 선택" tabindex="0">
@@ -49,11 +47,11 @@
 		</div>
 		
 
-<script type="text/javascript" src="/js/spexp/main/SpExpMain.js?v=1.3"></script>
+<script type="text/javascript" src="https://www.kobus.co.kr/js/spexp/main/SpExpMain.js?v=1.3"></script>
 
-<script type="text/javascript" src="/js/spexp/mrs/rotinf/SpExpRotInfPup.js?v=1.0"></script>
-<script type="text/javascript" src="/js/spexp/mrs/rotinf/SpExpRotInf.js?v=1.3"></script>
-<script type="text/javascript" src="/js/spexp/lgn/SpExpLgn.js?v=1.1"></script>
+<script type="text/javascript" src="https://www.kobus.co.kr/js/spexp/mrs/rotinf/SpExpRotInfPup.js?v=1.0"></script>
+<script type="text/javascript" src="https://www.kobus.co.kr/js/spexp/mrs/rotinf/SpExpRotInf.js?v=1.3"></script>
+<script type="text/javascript" src="https://www.kobus.co.kr/js/spexp/lgn/SpExpLgn.js?v=1.1"></script>
 
 
 

@@ -109,12 +109,12 @@
 								<th style="background: white; vertical-align: middle;">${limos.bookNum}</th>
 								<th style="background: white; vertical-align: middle;">${limos.limoDate}</th>
 								<th style="background: white; vertical-align: middle;">${limos.limoTime}</th>
-								<th style="background: white; vertical-align: middle;">${limos.seat}번</th>
+								<th style="background: white; vertical-align: middle;">${limos.seat}</th>
 								<th style="background: white; vertical-align: middle;">${limos.depLoc}</th>
 								<th style="background: white; vertical-align: middle;">${limos.arrLoc}</th>
-								<th style="background: white; vertical-align: middle;">${limos.person+limos.child}</th>
-								<th style="background: white; vertical-align: middle;">${limos.limoPrice}</th>
-								<th style="background: white; vertical-align: middle; cursor: pointer;"><button type="button" id="${limos.seat}" class="btn" data-toggle="modal" data-target="#myModal2">좌석보기</button></th>
+								<th style="background: white; vertical-align: middle;">${limos.person+limos.child}명</th>
+								<th style="background: white; vertical-align: middle;">${limos.limoPrice}원</th>
+								<th style="background: white; vertical-align: middle; cursor: pointer;"><button type="button" class="btn" id="${limos.seat}" data-toggle="modal" data-target="#myModal2">예매좌석보기</button></th>
 								
 	                        </tr>
 						</c:forEach>
@@ -225,7 +225,12 @@
 			$(this).removeClass('abcd');
 		});
 		var btn = $(this).attr("id");
-		$('.limo[title='+btn+']').addClass("abcd");
+		var seat = new Array();
+	  	seat = btn.split("번");
+	  	for(var i=0; i<seat.length;i++){
+			$('.limo[title='+seat[i]+']').addClass("abcd");
+		}
+		
 	});
 </script>
 

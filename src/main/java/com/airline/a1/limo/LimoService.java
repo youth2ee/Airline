@@ -14,12 +14,11 @@ public class LimoService {
 	public int limoBook(LimoVO limoVO)throws Exception {
 		String [] split = limoVO.getSeat().split("번");
 		int result = 0;
-		for (int i = 0; i < split.length; i++) {
-			split [i] = split [i].replace("번", "");
-			limoVO.setSeat(split[i]);
-			
-			result = limoMapper.limoBook(limoVO);
-		}
+//		for (int i = 0; i < split.length; i++) {
+//			split [i] = split [i].replace("번", "");
+//			limoVO.setSeat(split[i]);
+//		}
+		result = limoMapper.limoBook(limoVO);
 		return result;
 	}
 	

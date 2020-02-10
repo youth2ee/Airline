@@ -93,7 +93,6 @@ public class LimoController {
 
 	@GetMapping("disabled")
 	public ModelAndView disabled(LimoVO limoVO)throws Exception{
-		System.out.println("hi");
 		ModelAndView mv = new ModelAndView();
 		List<LimoVO> ar = limoService.limoSelect(limoVO);
 		mv.addObject("disabled", ar);
