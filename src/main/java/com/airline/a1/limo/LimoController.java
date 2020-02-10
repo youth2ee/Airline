@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.coyote.http11.Http11AprProtocol;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,7 @@ public class LimoController {
 	
 	
 	@PostMapping("limoBook")
-	public ModelAndView limoBook(Date [] limoDate, int [] limoPrice, String [] id, String [] depLoc, String [] arrLoc, String [] limoTime, String [] seat, int [] person, int [] child) throws Exception{
+	public ModelAndView limoBook(HttpSession session, Date [] limoDate, int [] limoPrice, String [] id, String [] depLoc, String [] arrLoc, String [] limoTime, String [] seat, int [] person, int [] child) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		int result = 0;
 		for (int i = 0; i < limoDate.length; i++) {

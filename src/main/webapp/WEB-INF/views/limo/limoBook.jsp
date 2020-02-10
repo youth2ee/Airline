@@ -27,9 +27,9 @@
 		<div class="sub_loc_area">
 				<a href="../" class="home" id="container" title="본문 시작지점">홈</a>
 			
-				<a href="./limoBook">승차권예매(공항->도시)</a>
+				<a href="./limoBook">승차권예매(공항→도시)</a>
 			
-				<a href="./limoBook2">승차권예매(도시->공항)</a>
+				<a href="./limoBook2">승차권예매(도시→공항)</a>
 			
 				<a href="../mypage/limo">나의 승차권 내역</a>
 			
@@ -37,8 +37,8 @@
 	</div>
 	<div class="tab tab1">
 		<ul>
-			<li style="width:33.333333333333336%"><a href="./limoBook" class="on" style="background-color:rgb(198, 11, 21);"><span>[공항->도시]예매</span></a></li>
-			<li style="width:33.333333333333336%"><a href="./limoBook2"><span>[도시->공항]예매</span></a></li>
+			<li style="width:33.333333333333336%"><a href="./limoBook" class="on" style="background-color:rgb(198, 11, 21);"><span>[공항→도시]예매</span></a></li>
+			<li style="width:33.333333333333336%"><a href="./limoBook2"><span>[도시→공항]예매</span></a></li>
 			<li style="width:33.333333333333336%"><a href="../mypage/limo"><span>예매내역 조회</span></a></li>
 		</ul>
 	</div>
