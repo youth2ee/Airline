@@ -84,20 +84,30 @@
 		</div>
 		<div id="tab-1" class="tab-content current">
 			<div class="bbs_list">
-				<ul>
-			<!-- 		<li class="bg_point">
+				<ul>					
+								
+					<c:forEach items="${list}" var = "vo">
+						<c:if test="${not empty vo.fix}">
+						<li class="bg_point">
 						<div class="left">
 							<div class="title">
-								<p class="txt"></p>
+								<a href="./noticeSelect?num=${vo.num}&dispCt=all&curPage=${pager.curPage}&search=${pager.search}&kind=${pager.kind}">
+									<span class="txt_notice">공지</span>
+									<em>${vo.title}</em>
+								</a>
 							</div>
+							<p class="txt">${vo.textContents}</p>
 						</div>
 						<div class="right">
-							<span class="views"></span>
-							<span class="date"></span>
+							<div class="right_sub">
+							<span class="views">조회수: ${vo.hit}</span>
+							<span class="date">${vo.regDate}</span>
+							</div>
 						</div>
-					</li> -->						
+					</li>
+					</c:if>
 					
-					<c:forEach items="${list}" var = "vo">
+					<c:if test="${empty vo.fix}">
 					<li>
 						<div class="left">
 							<div class="title">
@@ -114,6 +124,7 @@
 							</div>
 						</div>
 					</li>
+					</c:if>
 					</c:forEach>
 				 </ul>	
 			</div>

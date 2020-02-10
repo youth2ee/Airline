@@ -34,8 +34,8 @@
 				주요공지
 		</th>
 		<td>
-			<input type="checkbox" name="primary" id="primary" value="Y">
-			<label for="primary" class="chk"></label>
+			<input type="checkbox" name="fix" id="fix" value="Y">
+			<label for="fix" class="chk"></label>
 		</td>	
 	</tr>
 	

@@ -28,7 +28,7 @@
 
 		<insert id="noticeWrite" parameterType="com.airline.a1.board.BoardVO" useGeneratedKeys="true" keyProperty="num">	
 				insert into notice
-				values(#{num}, #{cate},#{title}, #{writer}, #{contents}, now(),0, #{textContents})
+				values(#{num}, #{cate},#{title}, #{writer}, #{contents}, now(),0, #{textContents}, #{fix})
 		</insert>
 
 
@@ -40,7 +40,7 @@
 							 	from notice N,
 							 		(select @ROWNUM :=#{startRow}) R
 							 	<include refid="bs"></include>
-							 	order by num desc) K
+							 	order by fix desc, num desc) K
 					 limit #{startRow},10
 		</select>
 
@@ -124,7 +124,7 @@
 		</update>
 		
 		<update id="noticeUpdate" parameterType="com.airline.a1.board.BoardVO">
-			update notice set cate=#{cate},title=#{title}, contents=#{contents}, textContents=#{textContents} where num=#{num}
+			update notice set cate=#{cate},title=#{title}, contents=#{contents}, textContents=#{textContents}, fix=#{fix} where num=#{num}
 		</update>
 		
 		<delete id="noticeDelete" parameterType="com.airline.a1.board.BoardVO">
@@ -139,6 +139,7 @@
 		</select>
 		
 	
+		
 </mapper>
 		
 		

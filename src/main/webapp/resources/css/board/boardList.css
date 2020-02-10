@@ -150,6 +150,25 @@ ul.tabs li:hover{
 	background: #4A4C4D;
 }
 
+.bg_point{
+	background: #f4f1ee;
+	
+}
+
+.txt_notice{
+	display: inline-block;
+    padding: 0 5px;
+    height: 20px;
+    border: 1px solid #d60815;
+    color: #d60815;
+    line-height: 20px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    margin-right: 7px;
+    box-sizing: content-box;
+} 
+	
 .tab-link span{
 	  color: #fff;
 	  font-size: 16px;
