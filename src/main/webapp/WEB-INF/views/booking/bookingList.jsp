@@ -336,6 +336,8 @@ depSelectDate = depSelectDate.replace('년','').replace('월','').replace('일',
 			});
 
 	$('.date1').click(function() {
+
+		
 		$(this).addClass('bact');
 		$(this).siblings().removeClass('bact');
 
@@ -470,11 +472,6 @@ depSelectDate = depSelectDate.replace('년','').replace('월','').replace('일',
 				});
 				
 
-
-
-
-
-				
 
 			}
 		});
