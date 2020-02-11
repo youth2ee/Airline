@@ -25,21 +25,47 @@ public class ParkController {
 	@Autowired
 	private ParkService parkService;
 	
+	@GetMapping("FindMyRes")
+	public void FindMyRes() throws Exception{
+		
+	}
+	
+	@PostMapping("FindMyRes")
+	public void resveForm(pReservationVO pReservationVO, String kind) throws Exception{
+		System.out.println(kind);
+		List<pReservationVO> ar = new ArrayList<>();
+		if(kind.equals("acPlate")) {
+			//차량번호
+			System.out.println("전화번호");
+			System.out.println(pReservationVO.getPassword());
+			System.out.println(pReservationVO.getPhone());
+			ar = parkService.FindMyResByPhone(pReservationVO);
+			
+		}else {
+			//전화번호
+			System.out.println("차량번호");
+			System.out.println(pReservationVO.getPassword());
+			System.out.println(pReservationVO.getCarNum());
+			ar = parkService.FindMyResByCarNum(pReservationVO);
+		}
+		
+		System.out.println(ar.size());
+	}
+	
 	@GetMapping("parkCancel")
 	public ModelAndView parkCancel(pReservationVO pReservationVO) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
-		int result = parkService.parkCancel(pReservationVO);
+		Integer result = parkService.parkCancel(pReservationVO);
 		if(result >0) {
 			mv.addObject("msg", "예약이 취소됐습니다.");
-			mv.addObject("path", "./park");
+			mv.addObject("path", "../mypage/park");
 			mv.setViewName("common/common_result");
 		}else {
 			mv.addObject("msg", "다시 시도해주세요.");
-			mv.addObject("path", "./park");
+			mv.addObject("path", "../mapage/park");
 			mv.setViewName("common/common_result");
 		}
-		
 		
 		return mv;
 	}

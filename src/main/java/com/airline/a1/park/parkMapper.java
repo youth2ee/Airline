@@ -17,5 +17,9 @@ public interface parkMapper {
 	
 	public pReservationVO resSelect(pReservationVO pReservationVO) throws Exception;
 	
-	public int parkCancel(pReservationVO pReservationVO) throws Exception;
+	public Integer parkCancel(pReservationVO pReservationVO) throws Exception;
+	
+	public List<pReservationVO> FindMyResByCarNum(pReservationVO pReservationVO) throws Exception;
+	
+	public List<pReservationVO> FindMyResByPhone(pReservationVO pReservationVO) throws Exception;
 }

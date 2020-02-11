@@ -34,7 +34,14 @@ public class ParkService {
 	@Autowired
 	private parkMapper parkMapper;
 	
-	public int parkCancel(pReservationVO pReservationVO)throws Exception{
+	public List<pReservationVO> FindMyResByCarNum(pReservationVO pReservationVO) throws Exception{
+		return parkMapper.FindMyResByCarNum(pReservationVO);
+	}
+	public List<pReservationVO> FindMyResByPhone(pReservationVO pReservationVO) throws Exception{
+		return parkMapper.FindMyResByPhone(pReservationVO);
+	}
+	
+	public Integer parkCancel(pReservationVO pReservationVO)throws Exception{
 		return parkMapper.parkCancel(pReservationVO);
 	}
 	

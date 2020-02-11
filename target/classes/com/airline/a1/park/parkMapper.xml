@@ -31,7 +31,16 @@
   		select * from pReservation where pResNum = #{pResNum}
   	</select>
   	
-  	<select id="parkCancel" parameterType="com.airline.a1.park.pReservationVO">
+  	<delete id="parkCancel" parameterType="com.airline.a1.park.pReservationVO">
   		delete from pReservation where pResNum = #{pResNum}
+  	</delete>
+  	
+  	<select id="FindMyResByCarNum" parameterType="com.airline.a1.park.pReservationVO" resultType="com.airline.a1.park.pReservationVO" >
+  		select * from pReservation where carNum = #{carNum} and password = #{password}
   	</select>
+  	
+  	<select id="FindMyResByPhone" parameterType="com.airline.a1.park.pReservationVO" resultType="com.airline.a1.park.pReservationVO" >
+  		select * from pReservation where phone = #{phone} and password = #{password}
+  	</select>
+  	
   </mapper>
