@@ -2,6 +2,7 @@ package com.airline.a1.imPay;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,17 +11,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.airline.a1.booking.BookingPriceVO;
+import com.airline.a1.booking.BookingService;
+import com.airline.a1.member.MemberService;
 import com.airline.a1.member.MembersVO;
 
 @Controller
 @RequestMapping("/imPay/**")
 public class ImPayController {
 	
+	@Autowired
+	private BookingService bookingService;
 	
+	@Autowired
+	private MemberService memberService;
 
 	
 	@RequestMapping("imPayList")
 	public Model imPayList(ImPayVO imPayVO, HttpSession session ,Model model) {
+		
+		System.out.println("1");
+		System.out.println(imPayVO.getRamount());
+		System.out.println(imPayVO.getMilplus());
 		
 		/*
 		 * System.out.println(imPayVO.getMil()); System.out.println(imPayVO.getBpnum());
@@ -53,30 +65,40 @@ public class ImPayController {
 	
 	
 	@RequestMapping("imPayComplete")
-	public void imPayComplete(ImPayResultVO imPayResultVO, Model model) {
+	public void imPayComplete(ImPayResultVO imPayResultVO, Model model) throws Exception {
 		
+		System.out.println("2");
+		System.out.println(imPayResultVO.getBpnum());
 		System.out.println(imPayResultVO.getMil());
 		System.out.println(imPayResultVO.getPaid_amount());
+		System.out.println(imPayResultVO.getMilplus());
+		System.out.println(imPayResultVO.getImp_uid());
+		System.out.println(imPayResultVO.getMerchant_uid());
 		
-		/*
-		 * System.out.println(imPayResultVO.getSuccess());
-		 * System.out.println(imPayResultVO.getImp_uid());
-		 * System.out.println(imPayResultVO.getMerchant_uid());
-		 * System.out.println(imPayResultVO.getPay_method());
-		 * System.out.println(imPayResultVO.getPaid_amount());
-		 * System.out.println(imPayResultVO.getStatus());
-		 * System.out.println(imPayResultVO.getName());
-		 * System.out.println(imPayResultVO.getPg_provider());
-		 * System.out.println(imPayResultVO.getPg_tid());
-		 * System.out.println(imPayResultVO.getPaid_at());
-		 * System.out.println(imPayResultVO.getReceipt_url());
-		 * System.out.println(imPayResultVO.getApply_num());
-		 */
+		String [] nlist = imPayResultVO.getBpnum().split(","); 
+		
+		BookingPriceVO bookingPriceVO = new BookingPriceVO();
+		bookingPriceVO.setMileageMin(imPayResultVO.getMil());
+		bookingPriceVO.setTotalAllPrice(imPayResultVO.getPaid_amount());
+		
+		for (int i = 1; i < nlist.length; i++) {
+			Integer bpnum = Integer.parseInt(nlist[i]);
+			
+			System.out.println(bpnum);
+			bookingPriceVO.setBpnum(bpnum);
+			
+			bookingService.priceInsertResult(bookingPriceVO);	
+			
+			memberService.updateMilplus(bookingPriceVO);
+		}
 		
 		
-		//member에서 마일리지 적립은 여기서 해결
+		MembersVO membersVO = new MembersVO();
+		membersVO.setId(imPayResultVO.getImp_uid());
+		membersVO.setMileage(Integer.parseInt(imPayResultVO.getMerchant_uid()));
 		
-		
+		memberService.updateMilmin(membersVO);
+	
 		
 		model.addAttribute("vo", imPayResultVO);
 	}

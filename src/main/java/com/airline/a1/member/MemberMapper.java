@@ -3,6 +3,8 @@ package com.airline.a1.member;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.airline.a1.checkIn.ETicketVO;
+import com.airline.a1.booking.BookingPriceVO;
+
 
 @Mapper
 public interface MemberMapper {
@@ -19,4 +21,10 @@ public interface MemberMapper {
 	public MembersVO memberidFindbyPhone(MembersVO membersVO) throws Exception;
 	//아이디찾기이메일
 	public MembersVO memberidFindbyEmail(MembersVO membersVO) throws Exception;
+
+	public int memberMileageUpdate(MembersVO membersVO) throws Exception;
+	
+	public int updateMilplus(BookingPriceVO bookingPriceVO) throws Exception;
+	public int updateMilmin(MembersVO membersVO) throws Exception;
+
 }
