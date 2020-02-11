@@ -120,7 +120,7 @@ public class NoticeService {
 	/**** noticeSelect ****/
 	
 	public NoticeVO noticeSelect(NoticeVO noticeVO)throws Exception{
-		noticeMapper.noticeHit(noticeVO.getNum()); 			
+		noticeMapper.noticeHit(noticeVO.getNum()); 	
 		return noticeMapper.noticeSelect(noticeVO);
 	}
 	

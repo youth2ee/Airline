@@ -165,12 +165,11 @@ public class NoticeController {
 	/**** Notice Update ****/
 	  
 		@GetMapping("noticeUpdate")
-		public ModelAndView noticeUpdate(int num, Pager pager)throws Exception{
+		public ModelAndView noticeUpdate(NoticeVO noticeVO, Pager pager)throws Exception{
 			ModelAndView mv = new ModelAndView();
-			NoticeVO noticeVO = new NoticeVO();
-			noticeVO.setNum(num);
-			
+			noticeVO.setNum(noticeVO.getNum());
 			noticeVO = noticeService.noticeSelect(noticeVO);
+		
 			mv.addObject("board", "notice");
 			mv.addObject("vo", noticeVO);
 			mv.setViewName("board/boardUpdate");
@@ -183,6 +182,7 @@ public class NoticeController {
 	  @PostMapping("noticeUpdate")
 	  public ModelAndView noticeUpdate(NoticeVO noticeVO, MultipartFile[] file,HttpSession session)throws Exception{
 		  ModelAndView mv = new ModelAndView();
+		  
 		  
 		  int result = noticeService.noticeUpdate(noticeVO,file,session);
 		  

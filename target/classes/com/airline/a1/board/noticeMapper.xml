@@ -81,12 +81,14 @@
 
 		<resultMap type="com.airline.a1.board.NoticeVO" id="selectResult">
 				<id column="num" property="num"/>
+				<result column="cate" property="cate"/>
 				<result column="title" property="title"/>
 				<result column="writer" property="writer"/>
 				<result column="contents" property="contents"/>
 				<result column="textContents" property="textContents"/>
 				<result column="regDate" property="regDate"/>
 				<result column="hit" property="hit"/>
+				<result column="fix" property="fix"/>
 				<collection property="noticeFiles" javaType="java.util.ArrayList" ofType="com.airline.a1.board.NoticeFilesVO">
 					<id column="fnum" property="fnum"/>
 					<result column="num" property="num"/>

@@ -19,7 +19,6 @@
 
 <div id="wrap_container">
 	<h3>글 수정하기</h3>
-	<h1>${vo.fix}</h1>
 </div>
 <div class="writeForm">
 <h5>내용 작성</h5>	
@@ -312,9 +311,9 @@
 		/**** checked 여부 ****/	
 	 	var check = '<c:out value="${vo.fix}"/>';
 
-		 	console.log(check);
-		
-		$("input[name='fix']").prop("checked", true); 
+		if(check == 'Y'){		
+			 $("input[name='fix']").prop("checked", true); 
+		}
 
 </script>
 
