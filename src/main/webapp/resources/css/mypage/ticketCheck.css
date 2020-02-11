@@ -243,3 +243,13 @@ button {
 .tableContents td {
 	border-bottom: solid 1px #b5b5b5;
 }
+.bookDesign{
+	border: 1px solid;
+    height: 120px;	
+}
+.dataViewDesign {
+	margin-bottom: 20px;	
+}
+.timeline {
+	height:200px; 
+}

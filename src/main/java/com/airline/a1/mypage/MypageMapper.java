@@ -14,4 +14,5 @@ public interface MypageMapper {
 	// 예매리스트상세 
 	public List<ETicketVO> getBookingMore(ETicketVO eTicketVO) throws Exception;
 	public List<SeatVO> getBookingMoreSeat(ETicketVO eTicketVO) throws Exception;
+	public int bookCancel(String bnum) throws Exception;
 }

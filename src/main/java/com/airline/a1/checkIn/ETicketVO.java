@@ -25,4 +25,5 @@ public class ETicketVO {
 	private int totalPrice;
 	private String id;
 	private String resDate;
+	private int bnum;
 }

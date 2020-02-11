@@ -25,4 +25,7 @@ public class MypageService {
 	public List<SeatVO> getBookingMoreSeat(ETicketVO eTicketVO) throws Exception{
 		return mypageMapper.getBookingMoreSeat(eTicketVO);
 	}
+	public int bookCancel(String bnum) throws Exception{
+		return mypageMapper.bookCancel(bnum);
+	}
 }

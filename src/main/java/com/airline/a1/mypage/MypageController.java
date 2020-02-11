@@ -36,6 +36,19 @@ public class MypageController {
 	@GetMapping("mileage")
 	public void mileage() {}
 	
+	@GetMapping("ticketCancel")
+	public ModelAndView bookCancel(String bnum) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		int result = mypageService.bookCancel(bnum);
+		String msg = "예매 취소에 실패했습니다.";
+		String path = "./ticketCheck";
+		if(result > 0)
+			msg = "예매가 취소되었습니다.";
+		mv.addObject("msg", msg);
+		mv.addObject("path", path);
+		mv.setViewName("common/common_result");
+		return mv;
+	}
 	@GetMapping("bookingMore")
 	public ModelAndView bookingMore(String bookingNum) throws Exception {
 		ModelAndView mv = new ModelAndView();
@@ -48,7 +61,6 @@ public class MypageController {
 				+eTicketVOs.get(0).getDepPlandTime().substring(6,8) ;
 		System.out.println(str);
 		System.out.println(eTicketVOs.get(0).getDepPlandTime());
-		
 		System.out.println(eTicketVOs.get(0).getArrPlandTime());
 		System.out.println(eTicketVOs.get(0).getDepAirportNm());
 		System.out.println(eTicketVOs.get(0).getArrAirportNm());
@@ -56,6 +68,7 @@ public class MypageController {
 		System.out.println(eTicketVOs.get(0).getTotalPrice());
 		System.out.println(eTicketVOs.get(0).getFlightBNum());
 		System.out.println(eTicketVOs.get(0).getName());
+		System.out.println(eTicketVOs.get(0).getKind());
 		mv.addObject("bookingMore",eTicketVOs);
 		mv.addObject("seats",seatVOs);
 		mv.addObject("isCheckIn",seatVOs.size());
@@ -70,7 +83,7 @@ public class MypageController {
 		ETicketVO eTicketVO = new ETicketVO();
 		MembersVO member = (MembersVO)session.getAttribute("member");
 		/* eTicketVO.setId(member.getId()); */
-		eTicketVO.setId("admin1234");
+		eTicketVO.setId("test");
 		List<ETicketVO> eTicketVOs = mypageService.getBookingList(eTicketVO);
 		mv.addObject("bookList",eTicketVOs);
 		return mv;
