@@ -19,7 +19,11 @@ public interface parkMapper {
 	
 	public Integer parkCancel(pReservationVO pReservationVO) throws Exception;
 	
+	public Integer parkCancel2(pReservationVO pReservationVO) throws Exception;
+	
 	public List<pReservationVO> FindMyResByCarNum(pReservationVO pReservationVO) throws Exception;
 	
 	public List<pReservationVO> FindMyResByPhone(pReservationVO pReservationVO) throws Exception;
+	
+	
 }

@@ -13,7 +13,7 @@
 <body>
 <c:import url="../layout/header.jsp" />
 <div id="sub_content">			
-			<form id="resveForm" name="resveForm" class="needs-validation" method="post">
+			<form id="resveForm" name="resveForm" class="needs-validation" action="./FindMyRes" method="post">
 					<legend>예약조회 로그인폼</legend>						
 					<div class="write_form">
 						<div class="frow">
@@ -25,7 +25,7 @@
 						</div>
 						<div class="frow">
 							<label for="acText" id="labelAcText" class="label"><span class="star">*</span> 차량번호</label>
-							<input type="text" id="acText" name="carNum" class="fsize01 m_full" aria-required="true" placeholder="예) 00가0000, 서울00가0000, 외교000000">
+							<input type="text" id="acText" name="carNum" class="fsize01 m_full" placeholder="예) 00가0000, 서울00가0000, 외교000000">
 						</div>
 						<div class="frow" style="display:none" id="divAcOthText">
 							<label for="acOthText" id="labelAcOthText" class="label"><span class="star">*</span> </label>
@@ -36,8 +36,8 @@
 							<input type="password" id="acPassword" name="password" class="fsize01 m_full" maxlength="4" placeholder="4자리(숫자가능, 예: 2019, 102a, nprs)" aria-required="true">
 						</div>
 						<div class="btn_area">
-							<button id="btnSignin" class="btn wine">예약조회</button>
-							<button id="btnForget" class="btn btn_step_move border">비밀번호찾기</button>
+							<button type="button" id="btnSignin" class="btn wine">예약조회</button>
+							<!-- <button type="button" id="btnForget" class="btn btn_step_move border">비밀번호찾기</button> -->
 						</div>
 					</div>							
 				<input type="hidden" id="acTextEnc" name="acTextEnc">
@@ -46,12 +46,21 @@
 		</div>
 <script type="text/javascript">
 $("#btnSignin").click(function(){
-
-	var serial = $("#resveForm").serialize();
-	alert(serial);
-	$("#resveForm").attr("action", "FindMyRes");
+	$("#resveForm").submit();
 });
 
+$("#crtfc1").click(function(){
+	var placeholder = $(this).attr('placeholder');
+	var label = $(this).attr('label');
+	$("#labelAcText").html('<span class="star">*</span> '+label+'</label>');
+	$("#acText").prop('placeholder', placeholder);
+});
+$("#crtfc2").click(function(){
+	var placeholder = $(this).attr('placeholder');
+	var label = $(this).attr('label');
+	$("#labelAcText").html('<span class="star">*</span> '+label+'</label>');
+	$("#acText").prop('placeholder', placeholder);
+});
 </script>
 </body>
 </html>

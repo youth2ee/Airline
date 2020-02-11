@@ -1,18 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-        <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-    <link href="../resources/css/reset.css" rel="stylesheet">
-    <link href="../resources/css/mypage/mypageHeader.css" rel="stylesheet">
-	<c:import url="../template/boot.jsp"></c:import>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link href="../resources/css/mypage/park.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="../resources/css/header.css">
-
+<link href="../resources/css/reset.css" rel="stylesheet">
+<link href="../resources/css/mypage/mypageHeader.css" rel="stylesheet">
+<c:import url="../template/boot.jsp"></c:import>
+<link href="../resources/css/mypage/park.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../resources/css/header.css">
 <style type="text/css">
 th {
   text-align: center;
@@ -100,21 +98,6 @@ label {
 </head>
 <body>
 <c:import url="../layout/header.jsp" />
-<div id="headerBottom">
-<div id="hbh">
-<div id="hbhome"><i class="fa fa-home"></i></div>
-<div id="hbselect">
-<select onchange="location.href=this.value">
-<option value="./main">나의 Every Air</option>
-<option value="./memberUpdate">회원정보수정</option>
-<option value="./mileage">마일리지</option>
-<option value="./ticketCheck">예매내역</option>
-<option selected="selected" value="./park">주차장 예약내역</option>
-<option value="./limo">리무진 예약내역</option>
-</select>
-</div>
-</div>
-</div>
 <div id="sub_content">
 			<form id="resveForm" name="resveForm" class="needs-validation" novalidate="">
 					<div class="section">
@@ -147,7 +130,7 @@ label {
 					</div>
  
 					<div class="btn_area">
-						<button type="button" id="btnList" class="btn border" onclick="location.href='./park'">목록</button>
+						<button type="button" id="btnList" class="btn border" onclick="location.href='./MyRes'">목록</button>
 						<button type="button" id="btnEdit" class="btn wine" style="" data-toggle="collapse" data-target="#coll">위치확인</button>
 						<button type="button" id="btnCncl" class="btn" style="" onclick="deleteconfirm(${VO.pResNum})">예약취소</button>
 					</div>
@@ -214,11 +197,7 @@ var myarea = $("#selected").val();
 $("#r"+myarea).addClass('booking');
 
 function deleteconfirm(pResNum){
-	
-	if(confirm('정말 예약을 취소하시겠습니까?')){
-		location.href='../park/parkCancel?pResNum='+pResNum;
-	};
-	
+	location.href='parkCancel?pResNum='+pResNum;
 }
 </script>
 </body>

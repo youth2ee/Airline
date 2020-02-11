@@ -7,11 +7,14 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
+import javax.mail.Session;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.bind.DefaultValue;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,51 +28,126 @@ public class ParkController {
 	@Autowired
 	private ParkService parkService;
 	
+	@GetMapping("parkSelect")
+	public void parkSelect(pReservationVO pReservationVO, Model model) throws Exception {
+		
+		pReservationVO = parkService.resSelect(pReservationVO);
+		pInfoVO pInfoVO = new pInfoVO();
+		pInfoVO.setaName(pReservationVO.getAirport());
+		pInfoVO = parkService.parkWhere(pInfoVO);
+		model.addAttribute("VO", pReservationVO);
+		model.addAttribute("park", pInfoVO);
+		List<Integer> etc = new ArrayList<Integer>();
+		if(pInfoVO.getEtc() !=null) {
+			for (int i = 0; i < pInfoVO.getEtc().split(",").length; i++) {
+				etc.add(Integer.parseInt(pInfoVO.getEtc().split(",")[i]));
+			}
+		}
+		model.addAttribute("etc", etc);
+		
+	}
+	
 	@GetMapping("FindMyRes")
-	public void FindMyRes() throws Exception{
+	public String FindMyRes(HttpSession session) throws Exception{
+		String path = "";
+		if(session.getAttribute("member") != null) {
+			path = "redirect:../mypage/park";
+		}else {
+			path = "park/FindMyRes";
+		}
+		return path;
+	}
+	
+	@GetMapping("MyRes")
+	public void MyRes() throws Exception{
 		
 	}
 	
 	@PostMapping("FindMyRes")
-	public void resveForm(pReservationVO pReservationVO, String kind) throws Exception{
-		System.out.println(kind);
+	public ModelAndView resveForm(pReservationVO pReservationVO, String kind, HttpSession session) throws Exception{
 		List<pReservationVO> ar = new ArrayList<>();
-		if(kind.equals("acPlate")) {
-			//차량번호
-			System.out.println("전화번호");
-			System.out.println(pReservationVO.getPassword());
-			System.out.println(pReservationVO.getPhone());
-			ar = parkService.FindMyResByPhone(pReservationVO);
-			
-		}else {
-			//전화번호
-			System.out.println("차량번호");
-			System.out.println(pReservationVO.getPassword());
-			System.out.println(pReservationVO.getCarNum());
-			ar = parkService.FindMyResByCarNum(pReservationVO);
-		}
+		ModelAndView mv = new ModelAndView();
 		
-		System.out.println(ar.size());
+			if(kind.equals("acPlate")) {
+				//차량번호
+				ar = parkService.FindMyResByCarNum(pReservationVO);
+			}else {
+				//전화번호
+				ar = parkService.FindMyResByPhone(pReservationVO);
+			}
+			
+			if(ar.size() >0) {
+				mv.addObject("list", ar);
+				session.setAttribute("list", ar);
+				mv.setViewName("park/MyRes");
+			}else {
+				mv.setViewName("common/common_result");
+				mv.addObject("msg", "조회 결과가 없습니다.");
+				mv.addObject("path", "./FindMyRes");
+			}
+
+		
+		
+		return mv;
+		
 	}
 	
 	@GetMapping("parkCancel")
-	public ModelAndView parkCancel(pReservationVO pReservationVO) throws Exception{
+	public ModelAndView parkCancel(pReservationVO pReservationVO, HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		if(session.getAttribute("member") != null) {
+			
+			
+			Integer result = parkService.parkCancel(pReservationVO);
+			if(result >0) {
+				mv.addObject("msg", "예약이 취소됐습니다.");
+				mv.addObject("path", "../mypage/park");
+				mv.setViewName("common/common_result");
+			}else {
+				mv.addObject("msg", "다시 시도해주세요.");
+				mv.addObject("path", "../mapage/park");
+				mv.setViewName("common/common_result");
+			}
+		
+		}else {
+			pReservationVO = parkService.resSelect(pReservationVO);
+			mv.addObject("VO", pReservationVO);
+			mv.setViewName("park/parkCancel");
+		}
+		return mv;
+	}
+	
+	@PostMapping("parkCancel")
+	public ModelAndView parkCancel(pReservationVO pReservationVO,ModelAndView mv) throws Exception{
+		int result = parkService.parkCancel2(pReservationVO);
+		if(result > 0 ) {
+			mv.addObject("msg", "예약을 취소했습니다.");
+			mv.addObject("path", "MyRes");
+		}else {
+			mv.addObject("msg", "다시 시도해주세요.");
+			mv.addObject("path", "MyRes");
+		}
+		mv.setViewName("common/common_result");
+		return mv;
+	}
+	
+/*	@GetMapping("parkCancel2")
+	public ModelAndView parkCancel2(pReservationVO pReservationVO) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		
 		Integer result = parkService.parkCancel(pReservationVO);
 		if(result >0) {
 			mv.addObject("msg", "예약이 취소됐습니다.");
-			mv.addObject("path", "../mypage/park");
+			mv.addObject("path", "park/ParkRes");
 			mv.setViewName("common/common_result");
 		}else {
 			mv.addObject("msg", "다시 시도해주세요.");
-			mv.addObject("path", "../mapage/park");
+			mv.addObject("path", "park/MyRes");
 			mv.setViewName("common/common_result");
 		}
 		
 		return mv;
-	}
-	
+	}*/
 	
 	@RequestMapping("ParkMain")
 	public ModelAndView parkmain(ModelAndView mv) throws Exception{
@@ -134,6 +212,8 @@ public class ParkController {
 	public ModelAndView resInsert(ModelAndView mv, pReservationVO pReservationVO) throws Exception{
 		if(pReservationVO.getId().equals("")) {
 			pReservationVO.setId(null);
+		}else {
+			pReservationVO.setPassword(null);
 		}
 		int result = parkService.resInsert(pReservationVO);
 		 
