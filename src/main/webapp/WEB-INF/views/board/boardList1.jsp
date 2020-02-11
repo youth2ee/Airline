@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -130,6 +131,19 @@
 								</div>
 							</li>
 							</c:if>
+							
+				 	<c:if test="${empty vo}">
+						<div>
+							<div class="total_search_txt">
+								<strong>조회하신 단어와 일치하는 게시물이 없습니다.</strong>
+							</div>
+							<div class="btn_wrap_ceType1">
+								<a href="./noticeList" id="btnList" type="button">전체리스트</a>
+							</div>
+						</div>
+							
+					</c:if> 
+							
 						</c:forEach>
 					</ul>
 				</div>

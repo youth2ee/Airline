@@ -124,9 +124,18 @@ public class NoticeService {
 		return noticeMapper.noticeSelect(noticeVO);
 	}
 	
-	public List<BoardVO> listView(NoticeVO noticeVO)throws Exception{
-		return noticeMapper.listView(noticeVO);
+	/*
+	 * public List<BoardVO> listView(NoticeVO noticeVO)throws Exception{ return
+	 * noticeMapper.listView(noticeVO); }
+	 */
+	
+	public NoticeVO prev(NoticeVO noticeVO)throws Exception{
+			return noticeMapper.prev(noticeVO);
 	}
+	
+	public NoticeVO next(NoticeVO noticeVO)throws Exception{
+			return noticeMapper.next(noticeVO);
+	}		
 
 	
 	

@@ -45,11 +45,13 @@
 			<div class="list_view_ctrl">
 				<div>
 					<span class="prev">다음글</span>
-					<a href="./noticeSelect?num=${list[1].num}&menu=${param.menu}&curPage=${param.curPage}&search=${param.search}&kind=${param.kind}">${list[1].title}</a>
+					 <a href="./noticeSelect?num=${next.num}&menu=${param.menu}&curPage=${param.curPage}&search=${param.search}&kind=${param.kind}">${next.title}</a>
+					<c:if test="${next eq null}"><a>다음글이 없습니다.</a></c:if>
 				</div>
 				<div>
 					<span class="next">이전글</span>
-					<a>${list[0].title}</a>
+					<a href="./noticeSelect?num=${prev.num}&menu=${param.menu}&curPage=${param.curPage}&search=${param.search}&kind=${param.kind}">${prev.title}</a>
+					<c:if test="${prev eq null}"><a>이전글이 없습니다.</a></c:if>
 				</div>
 			</div>
 			<div class="btn_area">
@@ -64,18 +66,6 @@
 					<c:if test="${not empty param.menu}">
 					<a href="./noticeList1?menu=${param.menu}&curPage=${param.curPage}&search=${param.search}&kind=${param.kind}" id="btnList" type="button">목록보기</a>
 					</c:if>
-					<%-- <c:if test="${param.menu == 'EveryAir클럽'}">
-					<a href="./noticeList2?menu=${param.menu}&curPage=${param.curPage}&search=${param.search}&kind=${param.kind}" id="btnList" type="button">목록보기</a>
-					</c:if>
-					<c:if test="${param.menu == '유류할증료'}">
-					<a href="./noticeList3?menu=EveryAir소식&curPage=${param.curPage}&search=${param.search}&kind=${param.kind}" id="btnList" type="button">목록보기</a>
-					</c:if> --%>
-				<%-- 	<c:if test="${param.menu == '제휴사소식'}">
-					<a href="./noticeList4?menu=EveryAir소식&curPage=${param.curPage}&search=${param.search}&kind=${param.kind}" id="btnList" type="button">목록보기</a>
-					</c:if>
-					<c:if test="${param.menu == '기타'}">
-					<a href="./noticeList5?menu=EveryAir소식&curPage=${param.curPage}&search=${param.search}&kind=${param.kind}" id="btnList" type="button">목록보기</a>
-					</c:if> --%>
 			</div>
 	</div>
 

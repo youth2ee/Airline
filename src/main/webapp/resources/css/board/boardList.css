@@ -295,6 +295,52 @@ background-color: #f7f7f7;
 	height: 25px;
 }
 
+
+/**** 검색결과 없음 ****/
+.total_search_txt{
+	padding: 181px 0 96px;
+    margin-bottom: 25px;
+    text-align: center;
+    border-top: 1px solid #666;
+    border-bottom: 1px solid #eee;
+    background: url(/images/board/total_no_data.png) 50% 90px no-repeat;
+	
+}
+
+.total_search_txt strong{
+	display: block;
+    padding-bottom: 4px;
+    font-size: 23px;
+	font-weight: bold;
+}
+
+.btn_wrap_ceType1{
+	margin-top: 50px;
+    text-align: center;
+}
+
+#btnList{
+	margin: 0 5px;
+	border: 1px solid #cccccc;
+    background-color: #fff;
+    color: #000;
+    min-width: 150px;
+    padding: 13px 40px 14px;
+    font-size: 18px;
+    min-height: 56px;
+    /* line-height: 21px; */
+    line-height: 25px;
+    border-radius: 3px;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+	
+}
+
+#btnList:hover{
+	    border: 1px solid #000000;
+}
+
 /****** paging ******/
 .paging{
 	display:block;

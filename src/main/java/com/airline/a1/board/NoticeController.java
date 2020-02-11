@@ -29,8 +29,14 @@ public class NoticeController {
 			return new NoticeVO();
 	}
 	
-
 	
+	@GetMapping(value = "noticeCaptchaImg")
+	public ModelAndView NoticeCaptchaImg()throws Exception{
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("board/boardCaptchaImg");
+		mv.addObject("board", "notice");
+		return mv;
+	}
 	
 	/**** summerNote ****/	
 	
@@ -150,10 +156,14 @@ public class NoticeController {
 	  public ModelAndView NoticeSelect(NoticeVO noticeVO)throws Exception{
 		  ModelAndView mv = new ModelAndView();
 		  NoticeVO noticeVO2= noticeService.noticeSelect(noticeVO);
-		  List<BoardVO> ar =noticeService.listView(noticeVO);			
-		 	  
+		  NoticeVO noticeVO3 = noticeService.next(noticeVO);
+		/* List<BoardVO> ar =noticeService.listView(noticeVO); */
+		
+		 noticeVO = noticeService.prev(noticeVO);
+		 
 		  	mv.addObject("vo", noticeVO2);
-		  	mv.addObject("list", ar);
+		  	mv.addObject("prev", noticeVO);
+		  	mv.addObject("next", noticeVO3);
 		  	mv.addObject("board", "notice");
 			mv.setViewName("board/boardSelect");
 				

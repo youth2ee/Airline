@@ -133,11 +133,19 @@
 			delete from notice where num=#{num}
 		</delete>
 		
-		<select id="listView" resultType="com.airline.a1.board.BoardVO" parameterType="com.airline.a1.board.NoticeVO">
+<!-- 		<select id="listView" resultType="com.airline.a1.board.BoardVO" parameterType="com.airline.a1.board.NoticeVO">
 			<![CDATA[select title,num from notice where num in(
 				(select num from notice where num < #{num} order by num desc limit 1),
                 (select num from notice where num > #{num} order by num  limit 1)
             )]]>	
+		</select> -->
+		
+		<select id="prev" resultType="com.airline.a1.board.NoticeVO" parameterType="com.airline.a1.board.NoticeVO">
+				<![CDATA[select title,num from notice where num < #{num} order by num desc limit 1]]>	
+		</select>
+		
+		<select id="next" resultType="com.airline.a1.board.NoticeVO" parameterType="com.airline.a1.board.NoticeVO">
+				<![CDATA[select title,num from notice where num > #{num} order by num asc limit 1]]>	
 		</select>
 		
 	

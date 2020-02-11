@@ -124,8 +124,22 @@
 							</div>
 						</div>
 					</li>
+					<%--  <c:if test="${not empty pager.search and empty vo.title}"> --%>				
 					</c:if>
+					<!-- empty list -->
+			<%-- 		<c:if test="${empty list}">
+						<div>
+							<div class="total_search_txt">
+								<strong>조회하신 단어와 일치하는 게시물이 없습니다.</strong>
+							</div>
+							<div class="btn_wrap_ceType1">
+								<a href="./noticeList" id="btnList" type="button">전체리스트</a>
+							</div>
+						</div>				
+					</c:if>  --%>
+					
 					</c:forEach>
+
 				 </ul>	
 			</div>
 			<div class="paging">
@@ -156,7 +170,7 @@
 
 
 	<script type="text/javascript">		
-	$(document).ready(function() {
+/* 	$(document).ready(function() {
 			var list = '${fn:length(list)}';
 			var test = $('#searchText').val();
 
@@ -165,7 +179,7 @@
 	if(${fn:length(list)} = 0 && test !=''){
 					alert('ok');
 			}
-	});
+	}); */
 		
 	
 		/* paging  */

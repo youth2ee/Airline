@@ -26,7 +26,7 @@
 <span>*은 필수항목입니다.</span>
 </div>
 
-<form action="${board}Update" method="post" enctype="multipart/form-data">
+<form action="${board}Update" method="post" enctype="multipart/form-data" id="frm">
 <table class="table_form">
 	<tr>
 		<th scope="row">
@@ -128,7 +128,7 @@
 </table>
 
 <div class="btn_wrap">
-	<button id="btnTransfer">등록</button>
+	<button id="btnTransfer" type="button">등록</button>
 </div>
 
 <div id="hidden" style="display: none;"></div>
@@ -315,6 +315,20 @@
 			 $("input[name='fix']").prop("checked", true); 
 		}
 
+		/**** Null 여뷰 ****/
+		$('#btnTransfer').click(function(){
+	 		var title = $('#title').val();
+			var cate = $("select[name=cate]").val();
+			var contents = $('#contents').val().trim();
+
+
+		 	if(title !=="" && cate !=="" && contents !==""){
+					 $('#frm').submit();
+			}else{
+					alert('필수사항을 입력해주세요.')
+			}
+			
+		});
 </script>
 
 </body>

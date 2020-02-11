@@ -17,7 +17,6 @@
 </head>
 <body>
 
-<!------- new --------->
 <div id="wrap_container">
 	<h3>글 작성하기</h3>
 </div>
@@ -27,7 +26,7 @@
 <span>*은 필수항목입니다.</span>
 </div>
 
-<form action="${board}Write" method="post" enctype="multipart/form-data">
+<form action="${board}Write" method="post" enctype="multipart/form-data" id = "frm">
 <table class="table_form">
 		<tr>
 		<th scope="row">
@@ -165,7 +164,7 @@
 </table>
 
 <div class="btn_wrap">
-	<button id="btnTransfer">등록</button>
+	<button id="btnTransfer" type="button">등록</button>
 </div>
 
 
@@ -250,6 +249,7 @@
 				$("#attfile1").val("");
 				$("#fileName1").val("");	
 	});
+	
 	$('#attfile2').change(function(){
 		
 	 	 if(window.FileReader){
@@ -280,6 +280,44 @@
 	});
 
 
+	/**** Null여부 ****/
+	$('#btnTransfer').click(function(){
+	
+		var title = $('#title').val();
+		var cate = $("select[name=cate]").val();
+		var contents = $('#contents').val();
+	
+		if(title !=="" && cate !=="" && contents !==""){
+						$('#frm').submit();
+		}else{
+					alert('필수사항을 입력해주세요.')
+			} 
+
+	});
+
+	/**** captcha ****/
+	$(document).ready(function() {
+		$.ajax({
+			url : "캡차API로직.jsp",
+			dataType:"json",
+			success : function(data) {
+				console.log(data.key);
+				$("#key").val(data.key);
+				$("#div01").html("<img src='captchaImage/"+data.captchaImageName+"'>");
+			}
+		});
+		$("#btn01").on("click",function(){
+			var form01Data = $("#form01").serialize();
+			console.log(form01Data);
+			$.ajax({
+				url : "캡차API로직.jsp",
+				data : form01Data,
+				dataType:"json",
+				success : function(data) {
+				}
+			});
+		});
+	});
 
 </script>
 
