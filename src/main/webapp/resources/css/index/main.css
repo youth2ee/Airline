@@ -389,7 +389,7 @@ caption, legend, .hidden {
 select.white {
     height: 40px;
     border: 1px solid #cdd1d3;
-    background: #fff url(./images/common/bg_select_arrow.png) no-repeat right 13px top 50%;
+    background: #fff url(/images/common/bg_select_arrow.png) no-repeat right 13px top 50%;
 }
 
 .calendar_layer .cal_status02 {
@@ -459,7 +459,7 @@ select {
     margin-right: 10px;
     border: 1px solid #f3f3f3;
     border-bottom: 1px solid #ddd;
-    background: #f3f3f3 url(./images/common/bg_select_arrow.png) no-repeat right 13px top 50%;
+    background: #f3f3f3 url(/images/common/bg_select_arrow.png) no-repeat right 13px top 50%;
     background-size: 12px 8px;
     color: #222;
     vertical-align: middle;
