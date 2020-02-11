@@ -12,7 +12,7 @@ public class CustomSchedule {
 	@Autowired
 	private SearchService searchService;
 
-	@Scheduled(fixedRate = 5000)
+	@Scheduled(fixedRate = 30000)
 	//@Scheduled(fixedRateString = "1000")
 	public void fixRateSchedule() throws Exception {
 		

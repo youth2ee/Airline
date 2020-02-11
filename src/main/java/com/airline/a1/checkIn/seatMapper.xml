@@ -31,6 +31,9 @@
 	<select id="getVihicleId" resultType="java.lang.String" parameterType="java.lang.String">
 		select vihicleId from flightData where fnum = #{fnum}
 	</select>
+	<select id="getLoc" resultType="com.airline.a1.booking.BookingTicketVO" parameterType="com.airline.a1.booking.BookingTicketVO">
+		select * from flightData where fnum = #{depFnum} 
+	</select>
 	<select id="getEticket" resultType="com.airline.a1.checkIn.ETicketVO">
 		select name, kind, flightBNum, bookingTicket.bookingNum, depAirportNm,
 		arrAirportNm, vihicleId, depPlandTime, arrPlandTime, flightTime,

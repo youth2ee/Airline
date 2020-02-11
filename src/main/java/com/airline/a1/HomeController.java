@@ -1,7 +1,9 @@
 package com.airline.a1;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -316,7 +318,7 @@ public class HomeController {
 	
 	
 	@GetMapping("sorttest")
-	public void sorttest() throws Exception{
+	public void sorttest() throws Exception {
 		
 	}
 
@@ -332,6 +334,13 @@ public class HomeController {
 
 		List<BookingTicketVO> ddates = new ArrayList<>();
 		List<BookingTicketVO> adates = new ArrayList<>();
+		
+		
+		//오늘 날짜
+		SimpleDateFormat format2 = new SimpleDateFormat ("yyyy년 MM월 dd일");
+		Calendar time = Calendar.getInstance();
+		String today = format2.format(time.getTime());
+		
 
 		if (bookingTicketVO.getKind().equals("편도")) {
 			ddate = date.substring(6) + date.substring(0, 2) + date.substring(3, 5);
@@ -418,6 +427,12 @@ public class HomeController {
 				// 2020-01-15T00:00
 				adates.add(arr);
 			}
+			
+			bookingTicketVO.setDepLoc(depLoc);
+			bookingTicketVO.setArrLoc(arrLoc);
+			
+			System.out.println(bookingTicketVO.getDepLoc());
+			System.out.println(bookingTicketVO.getArrLoc());
 		}
 
 		ModelAndView mv = new ModelAndView();
@@ -427,6 +442,7 @@ public class HomeController {
 		mv.addObject("Alist", adates);
 		mv.addObject("DairList", dairList);
 		mv.addObject("AairList", aairList);
+		mv.addObject("today", today);
 		mv.setViewName("booking/bookingList");
 
 		return mv;

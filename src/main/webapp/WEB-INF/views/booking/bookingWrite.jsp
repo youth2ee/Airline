@@ -24,45 +24,50 @@
 <div id="top">
 <div id="topWrap">
 <div id="top1">
-<i class="fa fa-plane" style="font-size:40px;color:white; padding-top: 20px;"></i><br>
-${bTVO.depInfo.depAirportNm} <i class='fas fa-angle-right' style='font-size:10px;'></i> ${bTVO.depInfo.arrAirportNm}<br>
-${bTVO.depInfo.vihicleId} ${bTVO.depInfo.airlineNm}<br>
+<i class="fa fa-plane" style="font-size:23px;color:white; padding-top: 18px; padding-bottom: 9px;"></i><br>
+<span style="font-size: 23px;">${bTVO.depInfo.depAirportNm}</span> <i class='fas fa-angle-right' style='font-size:23px; padding: 0 10px;'></i> <span style="font-size: 23px;">${bTVO.depInfo.arrAirportNm}</span><br>
+<div style="padding-bottom: 2px;">${bTVO.depInfo.airlineNm} (${bTVO.depInfo.vihicleId})</div><br>
+<div style="margin-top: -8px;">
 ${dep[0]}년 ${dep[1]}월 ${dep[2]}일<br>
-출발 : ${dep[3]}시 ${dep[4]}분<br>
-도착 : ${dep[8]}시 ${dep[9]}분<br>
-
+${dep[3]}시 ${dep[4]}분<i class='fas fa-angle-right' style='font-size:10px; padding: 0 5px;'></i>${dep[8]}시 ${dep[9]}분<br>
+</div>
 </div>
 
 
 
 <div id="top2">
 <c:if test="${bTVO.kind == '왕복'}">
-<i class="fa fa-plane" style="font-size:40px;color:white; padding-top: 20px;"></i><br>
-${bTVO.depInfo.arrAirportNm} <i class='fas fa-angle-right' style='font-size:10px;'></i> ${bTVO.depInfo.depAirportNm}<br>
-${bTVO.arrInfo.vihicleId} ${bTVO.arrInfo.airlineNm}<br>
+<i class="fa fa-plane" style="font-size:23px;color:white; padding-top: 18px; padding-bottom: 9px;"></i><br>
+<span style="font-size: 23px;">${bTVO.depInfo.arrAirportNm}</span> <i class='fas fa-angle-right' style='font-size:23px; padding: 0 10px;'></i> <span style="font-size: 23px;">${bTVO.depInfo.depAirportNm}</span><br>
+<div style="padding-bottom: 2px;">${bTVO.arrInfo.airlineNm} (${bTVO.arrInfo.vihicleId})</div><br>
+<div style="margin-top: -8px;">
 ${arr[0]}년 ${arr[1]}월 ${arr[2]}일<br>
-출발 : ${arr[3]}시 ${arr[4]}분<br>
-도착 : ${arr[8]}시 ${arr[9]}분<br>
+${arr[3]}시 ${arr[4]}분<i class='fas fa-angle-right' style='font-size:10px; padding: 0 5px;'></i>${arr[8]}시 ${arr[9]}분<br>
+</div>
 
 </c:if>
 </div>
 
 <div id="top3"> 
-<i class="material-icons" style="font-size:40px; color: white; padding-top: 20px;">person</i> 
+<i class="material-icons" style="font-size:31px; color: white; padding-top: 14px;">person</i>
+<div style="margin-top: 1px; font-size: 20px;">
 <c:if test="${bTVO.adult != 0}">
-<h5>성인 : ${bTVO.adult}명</h5>
+성인 : ${bTVO.adult}명
 </c:if>
 <c:if test="${bTVO.child != 0}">
-<h5>아동 : ${bTVO.child}명</h5>
+아동 : ${bTVO.child}명
 </c:if>
+</div>
 </div>
 
 <div id="top4">
-<i class='fas fa-credit-card' style="font-size:30px; color: white; padding-top: 24px;"></i>
+<i class='fas fa-credit-card' style="font-size:22px; color: white; padding-top: 17px;"></i>
+<div style="padding-bottom: 10px;">
 <h5>가는편 : ${bTVO.depInfo.economyCharge}원</h5>
 <c:if test="${bTVO.kind == '왕복'}">
 <h5>오는편 : ${bTVO.arrInfo.economyCharge}원</h5>
 </c:if>
+</div>
 </div>
 
 </div>
@@ -71,12 +76,11 @@ ${arr[0]}년 ${arr[1]}월 ${arr[2]}일<br>
 <div id="noti">
 <div id="notiWrap">
 <table>
-<tr><td>반드시 실제 탑승하실 분의 성명을 입력하십시오. (예약 후 변경이 불가합니다)</td></tr>
-<tr><td>외국 국적이신 경우 성함을 여권상 영문으로 입력하여 주시기 바랍니다. </td></tr>
-<tr><td>탑승 완료 후에는 소급하여 할인을 적용 받을 수 없으므로 할인 대상 손님께서는 항공권 구입, 탑승 시 할인 증빙서류를 소지하여 주시기 바랍니다.</td></tr>
-<tr><td>스타얼라이언스 회원사로 마일리지 적립을 원하는 경우 반드시 영문 성함으로 입력하여 주시기 바랍니다. 공동운항편은 스타얼라이언스 회원사로 마일리지 적립이 불가합니다.</td></tr>
-<tr><td>정보통신망법 제17조의2(법정대리인 동의의 확인방법) 강화 시행령에 따라 만 14세 미만 미성년자 예매 시 법정대리인의 동의 및 인증이 불가피하므로 14세 이상의 성인께서 로그인 후 예매진행을 해 주시기 바랍니다.</td></tr>
-<tr><td>임신 32주 이상의 임신부 고객은 탑승이 제한될 수 있으니 사전에 확인하시기 바랍니다. (37주 이상은 탑승불가)</td></tr>
+<tr><td style="padding-bottom: 5px;">반드시 실제 탑승하실 분의 성명을 입력하십시오. (예약 후 변경이 불가합니다)</td></tr>
+<tr><td style="padding-bottom: 5px;">외국 국적이신 경우 성함을 여권상 영문으로 입력하여 주시기 바랍니다. </td></tr>
+<tr><td style="padding-bottom: 5px;">탑승 완료 후에는 소급하여 할인을 적용 받을 수 없으므로 할인 대상 손님께서는 항공권 구입, 탑승 시 할인 증빙서류를 소지하여 주시기 바랍니다.</td></tr>
+<tr><td style="padding-bottom: 5px;">정보통신망법 제17조의2 시행령에 따라 만 14세 미만 미성년자 예매 시 법정대리인의 동의 및 인증이 불가피하므로 14세 이상의 성인께서 로그인 후 예매진행을 해 주시기 바랍니다.</td></tr>
+<tr><td style="padding-bottom: 5px;">임신 32주 이상의 임신부 고객은 탑승이 제한될 수 있으니 사전에 확인하시기 바랍니다. (37주 이상은 탑승불가)</td></tr>
 </table>
 </div>
 </div>
@@ -342,6 +346,17 @@ ${arr[0]}년 ${arr[1]}월 ${arr[2]}일<br>
 
 
 </form>
+
+<div class="gray_box" id="rev_dom_notice">
+			<h5>유의사항</h5>
+			<ul class="list_type2">
+				<li>예약 클래스에 따라 마일리지 적립이 불가하거나 적립률이 상이할 수 있으며, 실제 운항하는 항공사의 기준에 따라 적립이 이루어집니다.</li>
+				<li>해당 항공사 마일리지 적립 규정상 적립이 불가한 경우에는 회원번호를 입력하셔도 적립이 되지 않습니다.</li>
+				<li>현재 시스템 문제로, 숫자와 영문을 조합한 이메일 주소만 사용 가능합니다.</li>
+			</ul>
+		</div>
+
+
 
 </section>
 

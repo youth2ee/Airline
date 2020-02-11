@@ -12,7 +12,7 @@
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 
 
-
+<div class="hi"></div>
 
 <script type="text/javascript">
 
@@ -31,29 +31,6 @@ IMP.request_pay({
 }, function(rsp) {
     if ( rsp.success ) {
 
-  		$.ajax({
-			data : {
-				success:rsp.success,
-				imp_uid:rsp.imp_uid,
-				merchant_uid:rsp.merchant_uid,
-				pay_method:rsp.pay_method,
-				paid_amount:rsp.paid_amount,
-				status:rsp.status,
-				name:rsp.name,
-				pg_provider:rsp.pg_provider,
-				pg_tid:rsp.pg_tid,
-				paid_at:rsp.paid_at,
-				receipt_url:rsp.receipt_url,
-				apply_num:rsp.apply_num
-			},
-			type : "GET",
-			url : "../imPay/imPayComplete",
-			success : function(data) {
-				
-
-			}
-		}); 
-
         
         var msg = '결제가 완료되었습니다.';
         msg += '고유ID : ' + rsp.imp_uid;
@@ -61,15 +38,45 @@ IMP.request_pay({
         msg += '결제 금액 : ' + rsp.paid_amount;
         msg += '카드 승인번호 : ' + rsp.apply_num;
 
-        opener.parent.location="../imPay/imPayComplete";
-        self.close();
+/*         opener.parent.location="../imPay/imPayComplete";
+        self.close(); */
+        alert(msg);
+        
+  		$.ajax({
+			data : {
+				success:rsp.success,
+				imp_uid:'${VO.membersVO.id}',
+				merchant_uid:'${VO.milplus}',
+				pay_method:rsp.pay_method,
+				paid_amount:'${VO.ramount}',
+				status:rsp.status,
+				name:rsp.name,
+				pg_provider:rsp.pg_provider,
+				pg_tid:rsp.pg_tid,
+				paid_at:rsp.paid_at,
+				receipt_url:rsp.receipt_url,
+				apply_num:rsp.apply_num,
+				mil:'${VO.mil}',
+				bpnum:'${VO.bpnum}'
+			},
+			type : "GET",
+			url : "../imPay/imPayComplete",
+			success : function(data) {
+				$('.hi').html(data);
+
+			}
+		}); 
+
+        
         
     } else {
         var msg = '결제에 실패하였습니다.';
         msg += '에러내용 : ' + rsp.error_msg;
+        alert(msg);
+        location.href="../";
     }
     
-    alert(msg);
+    
 });
 
 

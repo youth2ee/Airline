@@ -4,7 +4,6 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import com.airline.a1.booking.FlightDataVO;
-@Repository
 @Mapper
 public interface AirportDataMapper {
 	public String searchAirport(int apId) throws Exception;
