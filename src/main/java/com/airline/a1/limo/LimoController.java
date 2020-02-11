@@ -1,6 +1,7 @@
 package com.airline.a1.limo;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -36,6 +37,7 @@ public class LimoController {
 	@PostMapping("limoBook")
 	public ModelAndView limoBook(HttpSession session, Date [] limoDate, int [] limoPrice, String [] id, String [] depLoc, String [] arrLoc, String [] limoTime, String [] seat, int [] person, int [] child) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		List<LimoVO> ar = new ArrayList<LimoVO>(); 
 		int result = 0;
 		for (int i = 0; i < limoDate.length; i++) {
 			LimoVO limoVO = new LimoVO();
@@ -49,12 +51,16 @@ public class LimoController {
 			limoVO.setPerson(person[i]);
 			limoVO.setChild(child[i]);
 			limoService.limoBook(limoVO);
+			ar.add(limoVO);
 		}
+		mv.addObject("vo", ar);
+		mv.setViewName("imPay/imPayComplete2");
 		return mv;
 	}
 	@PostMapping("limoBook2")
 	public ModelAndView limoBook2(Date [] limoDate, int [] limoPrice, String [] id, String [] depLoc, String [] arrLoc, String [] limoTime, String [] seat, int [] person, int [] child) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		List<LimoVO> ar = new ArrayList<LimoVO>();
 		int result = 0;
 		for (int i = 0; i < limoDate.length; i++) {
 			LimoVO limoVO = new LimoVO();
@@ -69,6 +75,8 @@ public class LimoController {
 			limoVO.setChild(child[i]);
 			limoService.limoBook(limoVO);
 		}
+		mv.addObject("vo", ar);
+		mv.setViewName("imPay/imPayComplete2");
 		return mv;
 	}
 	
@@ -96,7 +104,15 @@ public class LimoController {
 	public ModelAndView disabled(LimoVO limoVO)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		List<LimoVO> ar = limoService.limoSelect(limoVO);
-		mv.addObject("disabled", ar);
+		List<String> seat = new ArrayList<String>();
+		for(int i=0; i<ar.size(); i++) {
+			String [] r = ar.get(i).getSeat().split("번");
+			for (int j = 0; j < r.length; j++) {
+				r[j].replace("번", "");
+				seat.add(r[j]);
+			}
+		}
+		mv.addObject("disabled", seat);
 		mv.setViewName("limo/disabled");
 		return mv;
 	}
