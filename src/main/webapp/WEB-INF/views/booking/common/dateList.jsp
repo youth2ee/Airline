@@ -16,8 +16,6 @@
 	<td class="td7t">가격</td>  
 	<td class="td7t">예약좌석</td>
 </tr>
-
-
 <c:forEach items="${DairList}" var="dlist"> 
 <tr class="dtrcheck">
 	<td class="td3">
@@ -46,7 +44,7 @@
 	</td>
  
 	<td class="td2">
-		<div style="float: left; padding-left: 30px;">
+		<div style="float: left; padding-left: 30px;line-height: 73px;">
 		<c:if test="${dlist.airlineNm == '대한 항공'}">
 		<img alt="" src="../images/airline/1.png" style="width: 115px;">
 		</c:if>
@@ -82,15 +80,44 @@
 		</c:if>	
 		
 		</div>
-		<div style="float: left; padding-left: 10px;">${dlist.airlineNm}</div>
+		<div style="float: left; padding-left: 25px;line-height: 73px;">${dlist.airlineNm}</div>
 	</td> 
 	<td class="td1">${dlist.vihicleId}<input type="hidden" value="${dlist.fnum}" class="dfnum"></td> 
 	<td class="td7">${dlist.economyCharge}원</td>  
 	<td class="td7">${195 - dlist.seatTotal}</td> 
 </tr>
 
-<tr class="dhide"><td colspan="7">${dlist.fnum} ${dlist.flightKm}KM</td></tr>
+<tr class="dhide"><td colspan="7" style="vertical-align: middle;">
+
+
+<div style="width: 770px;margin: 0 auto;font-weight: bold; padding-left: 26px;">
+	
+	<div style="float: left; line-height: 34px; margin-right:40px;">
+		<div style="clear: both;">
+			<div style="float: left;">출발시간 :&nbsp</div> <div class="deptd" style="float: left;">${dlist.depPlandTime}</div>
+		</div>
+	</div>
+	
+	<div style="float: left; line-height: 34px; margin-right: 37px;">
+		<div style="clear: both;">
+			<div style="float: left;">도착시간 :&nbsp</div> <div class="arrtd" style="float: left;">${dlist.arrPlandTime}</div>
+		</div>
+	</div>
+	
+	<div style="float: left; line-height: 34px;">
+		<div style="clear: both;">
+			<div style="float: left;">이동거리 :&nbsp</div> <div class="km" style="float: left;">${dlist.flightKm}KM</div>
+		</div>
+	</div>
+</div>
+
+
+</td></tr>
 </c:forEach>
+
+
+
+
 </c:if>
 </c:if>
 
@@ -110,7 +137,6 @@
 	<td class="td7t">가격</td>  
 	<td class="td7t">예약좌석</td>
 </tr>
-
 <c:forEach items="${AairList}" var="alist"> 
 <tr class="atrcheck">
 	<td class="td3">
@@ -139,7 +165,7 @@
 	</td>
  
 	<td class="td2">
-			<div style="float: left;  padding-left: 30px;">
+			<div style="float: left;  padding-left: 30px; line-height: 73px;">
 		<c:if test="${alist.airlineNm == '대한 항공'}">
 		<img alt="" src="../images/airline/1.png" style="width: 115px;">
 		</c:if>
@@ -175,7 +201,7 @@
 		</c:if>	
 		
 		</div>
-		<div style="float: left; padding-left: 10px;">${alist.airlineNm}</div>
+		<div style="float: left; padding-left: 25px; line-height: 73px;">${alist.airlineNm}</div>
 	
 	</td> 
 	<td class="td1">${alist.vihicleId}<input type="hidden" value="${alist.fnum}" class="afnum"></td> 
@@ -183,7 +209,36 @@
 	<td class="td7">${195 - alist.seatTotal}</td>  
 </tr>
 
-<tr class="ahide"><td colspan="7">${alist.fnum}</td></tr>
+<tr class="ahide"><td colspan="7" style="vertical-align: middle;">
+
+<div style="width: 770px;margin: 0 auto;font-weight: bold; padding-left: 26px;">
+	
+	<div style="float: left; line-height: 34px; margin-right:40px;">
+		<div style="clear: both;">
+			<div style="float: left;">출발시간 :&nbsp</div> <div class="deptd" style="float: left;">${alist.depPlandTime}</div>
+		</div>
+	</div>
+	
+	<div style="float: left; line-height: 34px; margin-right: 37px;">
+		<div style="clear: both;">
+			<div style="float: left;">도착시간 :&nbsp</div> <div class="arrtd" style="float: left;">${alist.arrPlandTime}</div>
+		</div>
+	</div>
+	
+	<div style="float: left; line-height: 34px;">
+		<div style="clear: both;">
+			<div style="float: left;">이동거리 :&nbsp</div> <div class="km" style="float: left;">${alist.flightKm}KM</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+</td></tr>
 </c:forEach>
+
+
+
 </c:if>
 </c:if>
