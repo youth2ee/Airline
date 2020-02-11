@@ -54,6 +54,9 @@ public class SeatService {
 	public List<BookingTicketVO> getDepBnum(BookingTicketVO bookingTicketVO) throws Exception{
 		return seatMapper.getDepBnum(bookingTicketVO);
 	}
+	public BookingTicketVO getLoc(BookingTicketVO bookingTicketVO) throws Exception{
+		return seatMapper.getLoc(bookingTicketVO);
+	}
 
 	// 예약번호(각자 다른거) 생성
 	public String flightNum(String fnum) throws Exception {

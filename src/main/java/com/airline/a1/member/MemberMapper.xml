@@ -29,5 +29,4 @@
 	<select id="memberidFindbyEmail" parameterType="com.airline.a1.member.MembersVO" resultType="com.airline.a1.member.MembersVO">
 		select * from members where name=#{name} and email=#{email}
 	</select>
-	
   </mapper>

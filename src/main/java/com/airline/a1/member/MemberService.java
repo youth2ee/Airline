@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.Random;
 import org.springframework.stereotype.Service;
 
+import com.airline.a1.checkIn.ETicketVO;
+
 @Service
 public class MemberService {
 
@@ -57,4 +59,5 @@ public class MemberService {
 	public MembersVO memberidFindbyEmail(MembersVO membersVO) throws Exception{
 		return memberMapper.memberidFindbyEmail(membersVO);
 	}
+	
 }
