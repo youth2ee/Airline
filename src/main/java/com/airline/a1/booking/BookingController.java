@@ -93,12 +93,12 @@ public class BookingController {
 
 		if (bookingTicketVO.getKind().equals("편도")) {
 			ddate = date.substring(6) + date.substring(0, 2) + date.substring(3, 5);
-			System.out.println(ddate);
+			/* System.out.println(ddate); */
 			bookingTicketVO.setDepStartTime(ddate);
 			dairList = bookingService.airList(bookingTicketVO);
 
 			for (FlightDataVO flightDataVO : dairList) {
-				System.out.println(flightDataVO.getAirlineNm());
+				/* System.out.println(flightDataVO.getAirlineNm()); */
 				flightDataVO.setDepTime(flightDataVO.getDepPlandTime().substring(8, 10) + ":"
 						+ flightDataVO.getDepPlandTime().substring(10));
 				flightDataVO.setArrTime(flightDataVO.getArrPlandTime().substring(8, 10) + ":"
@@ -278,8 +278,10 @@ public class BookingController {
 		if (bookingTicketVO.getKind().equals("왕복")) {
 			List<String> arrTime = new ArrayList<String>();
 
-			System.out.println(bookingTicketVO.getArrInfo().getDepPlandTime());
-			System.out.println(bookingTicketVO.getArrInfo().getArrPlandTime());
+			/*
+			 * System.out.println(bookingTicketVO.getArrInfo().getDepPlandTime());
+			 * System.out.println(bookingTicketVO.getArrInfo().getArrPlandTime());
+			 */
 			
 			String adDate = bookingTicketVO.getArrInfo().getDepPlandTime();
 			String adYear = adDate.substring(0, 4);
@@ -324,6 +326,9 @@ public class BookingController {
 	@PostMapping("bookingWrite")
 	public ModelAndView bookingWrite(BookingTicketVO bookingTicketVO, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
+		
+		//bpnum 받기 위한 List
+		List<Integer> numList = new ArrayList<Integer>();
 		
 		MembersVO memberVO = new MembersVO();
 		memberVO = (MembersVO)session.getAttribute("member");
@@ -389,11 +394,11 @@ public class BookingController {
 				adult.getDepPriceVO().setBookingNum(bookingNum);
 				adult.getDepPriceVO().setBnum(adult.getBnum());
 				
-				
 				adult.getDepPriceVO().setMemberNum(adult.getMemberNum());
 				adult.getDepPriceVO().setId(id);
 
 				bookingService.priceInsertOne(adult.getDepPriceVO());
+				numList.add(adult.getDepPriceVO().getBpnum());
 				
 				
 				
@@ -425,11 +430,11 @@ public class BookingController {
 					adult.getArrPriceVO().setBookingNum(bookingNum);
 					adult.getArrPriceVO().setBnum(adult.getBnum());
 					
-					
 					adult.getArrPriceVO().setMemberNum(adult.getMemberNum());
 					adult.getArrPriceVO().setId(id);
 
 					bookingService.priceInsertOne(adult.getArrPriceVO());
+					numList.add(adult.getArrPriceVO().getBpnum());
 				
 				}
 			} // 어른 반복문 끝
@@ -488,12 +493,11 @@ public class BookingController {
 				child.getDepPriceVO().setBookingNum(bookingNum);
 				child.getDepPriceVO().setBnum(child.getBnum());
 				
-				
 				child.getDepPriceVO().setMemberNum(child.getMemberNum());
 				child.getDepPriceVO().setId(id);
 
 				bookingService.priceInsertOne(child.getDepPriceVO());
-				
+				numList.add(child.getDepPriceVO().getBpnum());
 				
 
 				// 왕복일때
@@ -528,11 +532,11 @@ public class BookingController {
 					child.getArrPriceVO().setBookingNum(bookingNum);
 					child.getArrPriceVO().setBnum(child.getBnum());
 					
-					
 					child.getArrPriceVO().setMemberNum(child.getMemberNum());
 					child.getArrPriceVO().setId(id);
 
 					bookingService.priceInsertOne(child.getArrPriceVO());
+					numList.add(child.getArrPriceVO().getBpnum());
 				}
 			} // 어린이 반복문 끝
 		} // 어린이 끝
@@ -540,6 +544,7 @@ public class BookingController {
 		mv.addObject("bVO", bookingTicketVO);
 		mv.addObject("alist", bookingTicketVO.getAdultList());
 		mv.addObject("clist", bookingTicketVO.getChildList());
+		mv.addObject("numList", numList);
 		mv.setViewName("booking/bookingCheck");
 
 		return mv;

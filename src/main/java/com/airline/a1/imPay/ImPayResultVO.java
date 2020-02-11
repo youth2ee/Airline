@@ -18,5 +18,6 @@ public class ImPayResultVO {
 	private String receipt_url;
 	private String apply_num;
 	
+	private int mil;
 	
 }

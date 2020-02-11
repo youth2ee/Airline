@@ -31,10 +31,15 @@ now(), #{resEmail}, #{resECheck}, #{resPhone}, #{resPCheck}, #{gender}, #{name},
 </insert>
 
 
-<insert id="priceInsertOne" parameterType="com.airline.a1.booking.BookingPriceVO">
-insert into bookingPrice values (null, #{bookingNum}, #{bnum}, #{price},#{couName}, #{couponDis}, #{fuelTax},
-#{airportTax}, #{totalPrice}, null, #{mileagePlus}, #{memberNum}, #{id})
+<insert id="priceInsertOne" parameterType="com.airline.a1.booking.BookingPriceVO" useGeneratedKeys="true" keyProperty="bpnum">
+insert into bookingPrice values (#{bpnum}, #{bookingNum}, #{bnum}, #{price},#{couName}, #{couponDis}, #{fuelTax},
+#{airportTax}, #{totalPrice}, null ,null, #{mileagePlus}, #{memberNum}, #{id})
 </insert>
+
+<update id="priceInsertResult">
+update bookingPrice set mileageMin=#{mileageMin}, totalAllPrice=#{totalAllPrice}
+where bpnum = #{bpnum};
+</update>
 
 
 </mapper>
