@@ -1,12 +1,15 @@
 package com.airline.a1.booking;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
 import java.util.zip.Adler32;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
@@ -17,6 +20,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.airline.a1.member.MembersVO;
 
 @Controller
 @RequestMapping("/booking/**")
@@ -77,6 +82,7 @@ public class BookingController {
 
 	@PostMapping("bookingMain")
 	public ModelAndView bookingMain(BookingTicketVO bookingTicketVO) throws Exception {
+		
 
 		String date = bookingTicketVO.getDate();
 		String ddate = "";
@@ -87,15 +93,23 @@ public class BookingController {
 
 		List<BookingTicketVO> ddates = new ArrayList<>();
 		List<BookingTicketVO> adates = new ArrayList<>();
+		
+		
+		//오늘 날짜
+		SimpleDateFormat format2 = new SimpleDateFormat ("yyyy년 MM월 dd일");
+		Calendar time = Calendar.getInstance();
+		String today = format2.format(time.getTime());
+		
 
 		if (bookingTicketVO.getKind().equals("편도")) {
 			ddate = date.substring(6) + date.substring(0, 2) + date.substring(3, 5);
-			System.out.println(ddate);
+			/* System.out.println(ddate); */
 			bookingTicketVO.setDepStartTime(ddate);
+			
 			dairList = bookingService.airList(bookingTicketVO);
 
 			for (FlightDataVO flightDataVO : dairList) {
-				System.out.println(flightDataVO.getAirlineNm());
+				/* System.out.println(flightDataVO.getAirlineNm()); */
 				flightDataVO.setDepTime(flightDataVO.getDepPlandTime().substring(8, 10) + ":"
 						+ flightDataVO.getDepPlandTime().substring(10));
 				flightDataVO.setArrTime(flightDataVO.getArrPlandTime().substring(8, 10) + ":"
@@ -124,10 +138,8 @@ public class BookingController {
 			dairList = bookingService.airList(bookingTicketVO);
 
 			for (FlightDataVO flightDataVO : dairList) {
-				flightDataVO.setDepTime(flightDataVO.getDepPlandTime().substring(8, 10) + ":"
-						+ flightDataVO.getDepPlandTime().substring(10));
-				flightDataVO.setArrTime(flightDataVO.getArrPlandTime().substring(8, 10) + ":"
-						+ flightDataVO.getArrPlandTime().substring(10));
+				flightDataVO.setDepTime(flightDataVO.getDepPlandTime().substring(8, 10) + ":" + flightDataVO.getDepPlandTime().substring(10));
+				flightDataVO.setArrTime(flightDataVO.getArrPlandTime().substring(8, 10) + ":" + flightDataVO.getArrPlandTime().substring(10));
 			}
 
 			//
@@ -142,15 +154,12 @@ public class BookingController {
 			aairList = bookingService.airList(bookingTicketVO);
 
 			for (FlightDataVO flightDataVO : aairList) {
-				flightDataVO.setDepTime(flightDataVO.getDepPlandTime().substring(8, 10) + ":"
-						+ flightDataVO.getDepPlandTime().substring(10));
-				flightDataVO.setArrTime(flightDataVO.getArrPlandTime().substring(8, 10) + ":"
-						+ flightDataVO.getArrPlandTime().substring(10));
+				flightDataVO.setDepTime(flightDataVO.getDepPlandTime().substring(8, 10) + ":" + flightDataVO.getDepPlandTime().substring(10));
+				flightDataVO.setArrTime(flightDataVO.getArrPlandTime().substring(8, 10) + ":" + flightDataVO.getArrPlandTime().substring(10));
 			}
 
 			for (int i = -5; i < 6; i++) { // 선택한 날 -5일 부터 5일 뒤까지
-				LocalDateTime ofDateTime = LocalDateTime.of(Integer.parseInt(date.substring(6, 10)),
-						Integer.parseInt(date.substring(0, 2)), Integer.parseInt(date.substring(3, 5)), 00, 00);
+				LocalDateTime ofDateTime = LocalDateTime.of(Integer.parseInt(date.substring(6, 10)),Integer.parseInt(date.substring(0, 2)), Integer.parseInt(date.substring(3, 5)), 00, 00);
 				LocalDateTime tomorrow = ofDateTime.plusDays(i);
 				String day = tomorrow.toString();
 
@@ -162,8 +171,7 @@ public class BookingController {
 				// 2020-01-15T00:00
 				ddates.add(dep);
 
-				LocalDateTime ofDateTime2 = LocalDateTime.of(Integer.parseInt(date.substring(19)),
-						Integer.parseInt(date.substring(13, 15)), Integer.parseInt(date.substring(16, 18)), 00, 00);
+				LocalDateTime ofDateTime2 = LocalDateTime.of(Integer.parseInt(date.substring(19)),Integer.parseInt(date.substring(13, 15)), Integer.parseInt(date.substring(16, 18)), 00, 00);
 				LocalDateTime tomorrow2 = ofDateTime2.plusDays(i);
 				String day2 = tomorrow2.toString();
 
@@ -175,6 +183,11 @@ public class BookingController {
 				// 2020-01-15T00:00
 				adates.add(arr);
 			}
+			
+			bookingTicketVO.setDepLoc(depLoc);
+			bookingTicketVO.setArrLoc(arrLoc);
+		
+			
 		}
 
 		ModelAndView mv = new ModelAndView();
@@ -184,6 +197,7 @@ public class BookingController {
 		mv.addObject("Alist", adates);
 		mv.addObject("DairList", dairList);
 		mv.addObject("AairList", aairList);
+		mv.addObject("today", today);
 		mv.setViewName("booking/bookingList");
 
 		return mv;
@@ -191,11 +205,21 @@ public class BookingController {
 
 	@GetMapping("dateSelect")
 	public ModelAndView dateSelect(BookingTicketVO bookingTicketVO) throws Exception {
+		
+		
+		
+		System.out.println(bookingTicketVO.getYear());
+		System.out.println(bookingTicketVO.getMonth());
+		System.out.println(bookingTicketVO.getDepLoc());
+		System.out.println(bookingTicketVO.getArrLoc());
+		
+		
+		
+		
 		List<FlightDataVO> dairList = new ArrayList<FlightDataVO>();
 		List<FlightDataVO> aairList = new ArrayList<FlightDataVO>();
 
-		String date = bookingTicketVO.getYear().substring(0, 4) + bookingTicketVO.getMonth().substring(0, 2)
-				+ bookingTicketVO.getMonth().substring(4, 6); //
+		String date = bookingTicketVO.getYear().substring(0, 4) + bookingTicketVO.getMonth().substring(0, 2) + bookingTicketVO.getMonth().substring(4, 6); //
 		bookingTicketVO.setDepStartTime(date);
 
 		dairList = bookingService.airList(bookingTicketVO);
@@ -275,8 +299,10 @@ public class BookingController {
 		if (bookingTicketVO.getKind().equals("왕복")) {
 			List<String> arrTime = new ArrayList<String>();
 
-			System.out.println(bookingTicketVO.getArrInfo().getDepPlandTime());
-			System.out.println(bookingTicketVO.getArrInfo().getArrPlandTime());
+			/*
+			 * System.out.println(bookingTicketVO.getArrInfo().getDepPlandTime());
+			 * System.out.println(bookingTicketVO.getArrInfo().getArrPlandTime());
+			 */
 			
 			String adDate = bookingTicketVO.getArrInfo().getDepPlandTime();
 			String adYear = adDate.substring(0, 4);
@@ -319,11 +345,17 @@ public class BookingController {
 	}
 
 	@PostMapping("bookingWrite")
-	public ModelAndView bookingWrite(BookingTicketVO bookingTicketVO) throws Exception {
+	public ModelAndView bookingWrite(BookingTicketVO bookingTicketVO, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		
+		//bpnum 받기 위한 List
+		List<Integer> numList = new ArrayList<Integer>();
+		
+		MembersVO memberVO = new MembersVO();
+		memberVO = (MembersVO)session.getAttribute("member");
+		
 		// id
-		String id = "test";
+		String id = memberVO.getId();
 
 		/// bookingNum 만들기
 		String bookingNum = "";
@@ -332,14 +364,13 @@ public class BookingController {
 
 		//
 		String flightBNum = "";
-		String memberNum = "111";
 
 		// 어른
 		if (bookingTicketVO.getAdultList() != null) {
 			for (BookingTicketVO adult : bookingTicketVO.getAdultList()) {
 				adult.setBookingNum(bookingNum);
 				adult.setId(id);
-				adult.setMemberNum(memberNum);
+				adult.setMemberNum(adult.getMemberNum());
 
 				String kind = "편도";
 				if (bookingTicketVO.getKind().equals("왕복")) {
@@ -357,12 +388,6 @@ public class BookingController {
 				
 				bookingTicketVO.setDepInfo(bookingService.oneSelect(flightDataVO));
 
-				// flightnum 가는편 만들기
-				/*
-				 * flightBNum = bookingService.flightNum(adult);
-				 * adult.setFlightBNum(flightBNum); adult.setDepFBNum(flightBNum);
-				 */
-
 				adult.setResEmail(bookingTicketVO.getResEmail());
 				adult.setResECheck(bookingTicketVO.getResECheck());
 				adult.setResPhone(bookingTicketVO.getResPhone());
@@ -373,17 +398,31 @@ public class BookingController {
 				if (adult.getMonth().length() == 1) {
 					adult.setMonth("0" + adult.getMonth());
 				}
-				if (adult.getDay().length() == 1) {
+				if (adult.getDay().length() == 1 ) {
 					adult.setDay("0" + adult.getDay());
 				}
 				adult.setBirth(adult.getYear() + adult.getMonth() + adult.getDay());
 
+				//booking insert
 				bookingService.bookingInsert(adult);
+				
 
 				// 가격
 				bookingService.priceCount(adult);
 				adult = bookingService.priceCount(adult);
 
+				//bookingPrice Insert
+				adult.getDepPriceVO().setBookingNum(bookingNum);
+				adult.getDepPriceVO().setBnum(adult.getBnum());
+				
+				adult.getDepPriceVO().setMemberNum(adult.getMemberNum());
+				adult.getDepPriceVO().setId(id);
+
+				bookingService.priceInsertOne(adult.getDepPriceVO());
+				numList.add(adult.getDepPriceVO().getBpnum());
+				
+				
+				
 				if (bookingTicketVO.getKind().equals("왕복")) {
 
 					int dep = adult.getDepFnum();
@@ -393,11 +432,6 @@ public class BookingController {
 
 					flightDataVO = new FlightDataVO();
 
-					// flightnum 오는편 만들기
-					/*
-					 * flightBNum = bookingService.flightNum(adult);
-					 * adult.setFlightBNum(flightBNum); adult.setArrFBNum(flightBNum);
-					 */
 
 					flightDataVO.setFnum(adult.getDepFnum());
 					adult.setArrInfo(bookingService.oneSelect(flightDataVO));
@@ -405,12 +439,23 @@ public class BookingController {
 					
 					adult.setBnum(null);
 					
+					//booking insert
 					bookingService.bookingInsert(adult);
 
 					// 가격
 					adult.setDepFnum(dep);
 					adult.setArrFnum(arr);
 					adult = bookingService.priceCount(adult);
+					
+					//bookingPrice Insert
+					adult.getArrPriceVO().setBookingNum(bookingNum);
+					adult.getArrPriceVO().setBnum(adult.getBnum());
+					
+					adult.getArrPriceVO().setMemberNum(adult.getMemberNum());
+					adult.getArrPriceVO().setId(id);
+
+					bookingService.priceInsertOne(adult.getArrPriceVO());
+					numList.add(adult.getArrPriceVO().getBpnum());
 				
 				}
 			} // 어른 반복문 끝
@@ -421,7 +466,7 @@ public class BookingController {
 			for (BookingTicketVO child : bookingTicketVO.getChildList()) {
 				child.setBookingNum(bookingNum);
 				child.setId(id);
-				child.setMemberNum("111");
+				child.setMemberNum(child.getMemberNum());
 
 				String kind = "편도";
 				if (bookingTicketVO.getKind().equals("왕복")) {
@@ -459,11 +504,22 @@ public class BookingController {
 				}
 				child.setBirth(child.getYear() + child.getMonth() + child.getDay());
 
+				//booking insert
 				bookingService.bookingInsert(child);
 
 				// 가격
-				bookingService.priceCount(child);
 				child = bookingService.priceCount(child);
+				
+				//bookingPrice Insert
+				child.getDepPriceVO().setBookingNum(bookingNum);
+				child.getDepPriceVO().setBnum(child.getBnum());
+				
+				child.getDepPriceVO().setMemberNum(child.getMemberNum());
+				child.getDepPriceVO().setId(id);
+
+				bookingService.priceInsertOne(child.getDepPriceVO());
+				numList.add(child.getDepPriceVO().getBpnum());
+				
 
 				// 왕복일때
 				if (bookingTicketVO.getKind().equals("왕복")) {
@@ -485,13 +541,23 @@ public class BookingController {
 
 					child.setBnum(null);
 					
+					//booking insert
 					bookingService.bookingInsert(child);
 
 					// 가격
 					child.setDepFnum(dep);
 					child.setArrFnum(arr);
-					bookingService.priceCount(child);
 					child = bookingService.priceCount(child);
+					
+					//bookingPrice Insert
+					child.getArrPriceVO().setBookingNum(bookingNum);
+					child.getArrPriceVO().setBnum(child.getBnum());
+					
+					child.getArrPriceVO().setMemberNum(child.getMemberNum());
+					child.getArrPriceVO().setId(id);
+
+					bookingService.priceInsertOne(child.getArrPriceVO());
+					numList.add(child.getArrPriceVO().getBpnum());
 				}
 			} // 어린이 반복문 끝
 		} // 어린이 끝
@@ -499,6 +565,8 @@ public class BookingController {
 		mv.addObject("bVO", bookingTicketVO);
 		mv.addObject("alist", bookingTicketVO.getAdultList());
 		mv.addObject("clist", bookingTicketVO.getChildList());
+		mv.addObject("numList", numList);
+		mv.addObject("milplus", bookingTicketVO.getAdultList().get(0).getDepPriceVO().getMileagePlus());
 		mv.setViewName("booking/bookingCheck");
 
 		return mv;

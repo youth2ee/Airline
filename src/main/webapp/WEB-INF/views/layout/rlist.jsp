@@ -4,6 +4,7 @@
 		<c:forEach items="${rList}" var="rl" varStatus="status">
 
 			<div class="rlist_wrap" OnClick="location.href ='./indexSearch?search=${rl.svoca}'" style="cursor:pointer;" >
+
 				<div class="rcon rrank">
 				<c:if test="${status.index + 1 eq 1}">
 					<img src="${pageContext.request.contextPath}/images/icon/1.png">
@@ -39,6 +40,7 @@
 				</div>
 				
 				<div> 
+
 				<div class="rcon rmain">${rl.svoca}</div>
 				<div class="rcon rlast">${rl.total}</div>
 				

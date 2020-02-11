@@ -7,8 +7,8 @@ import lombok.Data;
 public class BookingPriceVO {
 	
 	private int bpnum;
-	private String flightBNum;
-	private int fnum;
+	private String bookingNum;
+	private int bnum;
 	private int price;
 	
 	private String couName;
@@ -19,11 +19,13 @@ public class BookingPriceVO {
 	
 	private int totalPrice;
 	
+	private int mileageMin;
+	
+	private int totalAllPrice;
 	
 	
 	private int mileagePlus;
 	private String memberNum;
 	private String id;
-	
 	
 }

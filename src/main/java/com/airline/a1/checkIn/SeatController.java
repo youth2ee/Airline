@@ -2,9 +2,11 @@ package com.airline.a1.checkIn;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.airline.a1.booking.BookingTicketVO;
+import com.airline.a1.booking.FlightDataVO;
 
 @Controller
 @RequestMapping("/checkIn/**")
@@ -82,7 +85,59 @@ public class SeatController {
 		mv.addObject("depFlightNum", depFlightNum);
 		return mv;
 	}
-
+	
+	@GetMapping("bookingCheck")
+	public ModelAndView bookingCheck(String bookingNum) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		BookingTicketVO bookingTicketVO = new BookingTicketVO();
+		bookingTicketVO.setBookingNum(bookingNum);
+		List<BookingTicketVO> bookingTicketVOs = seatService.getBookData(bookingTicketVO);
+		if (bookingTicketVOs.size() == 0) {
+			mv.addObject("result", 0);
+		} else if (bookingTicketVOs.get(0).getFlightBNum() != null) {
+			mv.addObject("result", 1);
+		} else {
+			int people = seatService.getBookCount(bookingTicketVO);
+			int kindFlag = 0;
+			if (bookingTicketVOs.get(0).getKind().equals("왕복")) {
+				people = people / 2;
+				kindFlag = 1; // 왕복이면 kindFlag = 1
+			}
+			List<SeatVO> depSeatVOs = seatService.depBookedSeat(bookingTicketVOs.get(0));
+			List<SeatVO> arrSeatVOs = seatService.arrBookedSeat(bookingTicketVOs.get(0));
+			List<SeatVO> seatVOs = seatService.getSeatData();
+			ArrayList<String> depSeat = new ArrayList<>();
+			ArrayList<String> arrSeat = new ArrayList<>();
+			System.out.println(bookingTicketVOs.get(0).getArrFnum());
+			for(int i = 0; i < depSeatVOs.size(); i++) {
+				System.out.println(depSeatVOs.get(i).getSeatName());
+				depSeat.add(depSeatVOs.get(i).getSeatName());
+			}
+			for(int i = 0; i < arrSeatVOs.size(); i++) {
+				System.out.println(arrSeatVOs.get(i).getSeatName());
+				arrSeat.add(arrSeatVOs.get(i).getSeatName());
+			}
+			bookingTicketVO = seatService.getLoc(bookingTicketVOs.get(0));
+			System.out.println("이름 : " + bookingTicketVOs.get(0).getId());
+			String tripDate = bookingTicketVO.getDepPlandTime().substring(0,8) + " ~ " +  bookingTicketVO.getArrPlandTime().substring(0,8);
+			mv.addObject("result", 2);
+			mv.addObject("kind", kindFlag);
+			mv.addObject("people", people);
+			mv.addObject("depFNum", bookingTicketVOs.get(0).getDepFnum());
+			mv.addObject("arrFNum", bookingTicketVOs.get(0).getArrFnum());
+			mv.addObject("depLoc", bookingTicketVO.getDepAirportNm());
+			mv.addObject("arrLoc", bookingTicketVO.getArrAirportNm());
+			mv.addObject("id",bookingTicketVOs.get(0).getId());
+			mv.addObject("tripData", bookingTicketVOs.get(0));
+			mv.addObject("booked", seatVOs);
+			mv.addObject("depSeat", depSeat);
+			mv.addObject("arrSeat", arrSeat);
+			mv.addObject("bookingNum",bookingNum);
+			mv.addObject("tripDate",tripDate);
+		}
+		return mv;
+	}
+	
 	@GetMapping("seat")
 	public ModelAndView seat(String bookingNum) throws Exception {
 		ModelAndView mv = new ModelAndView();
@@ -119,18 +174,16 @@ public class SeatController {
 				mv.addObject("tripData", bookingTicketVOs.get(0));
 				mv.addObject("booked", seatVOs);
 			} else {
-
 				mv.addObject("msg", msg);
 				mv.addObject("path", path);
 				mv.setViewName("common/common_result");
-
 			}
 		}
 		return mv;
 
 	}
 
-	@PostMapping("seat")
+	@PostMapping("test")
 	public ModelAndView seat(SeatDataVO seatDataVO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		BookingTicketVO isCheck = new BookingTicketVO();

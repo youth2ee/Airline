@@ -7,11 +7,14 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <c:import url="../template/boot.jsp" />
+
 <link rel="stylesheet" type="text/css" href="https://flyasiana.com/C/pc/css/reset.css">
 <link rel="stylesheet" type="text/css" href="https://flyasiana.com/C/pc/css/layout.css">
 <link rel="stylesheet" type="text/css" href="https://flyasiana.com/C/pc/css/common.css">
 <link rel="stylesheet" type="text/css" href="https://flyasiana.com/C/pc/css/flyasiana.css">
 <link rel="stylesheet" type="text/css" href="https://flyasiana.com/C/pc/css/calendar.css">
+
+<link rel="stylesheet" type="text/css" href="../resources/css/header.css">
 
 <!-- <link rel="stylesheet" type="text/css" href="../resources/css/asiana/reset.css">
 <link rel="stylesheet" type="text/css" href="../resources/css/asiana/layout.css">
@@ -35,7 +38,7 @@
 </style>
 </head>
 <body>
-<%-- <c:import url="../template/hhhhheader.jsp" /> --%>
+<c:import url="../layout/header.jsp" />
 <form action="memberJoin" method="post" id="join_form">
 <div class="container" id="container">
 		<div class="mem_wrap">
@@ -550,6 +553,12 @@ $("#btn_confirm").click(function(){
 	
 });
 
+$("#input_pw").click(function (){
+	tooltipBlock();
+});
+$("#input_pw").blur(function(){
+	tooltipNone();
+});
 </script>
 </body>
 </html>

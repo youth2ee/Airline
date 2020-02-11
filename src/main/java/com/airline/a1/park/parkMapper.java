@@ -12,4 +12,18 @@ public interface parkMapper {
 	public pInfoVO parkWhere(pInfoVO pInfoVO) throws Exception;
 	
 	public int resInsert(pReservationVO pReservationVO) throws Exception;
+	
+	public List<pReservationVO> myReservation(pReservationVO pReservationVO) throws Exception;
+	
+	public pReservationVO resSelect(pReservationVO pReservationVO) throws Exception;
+	
+	public Integer parkCancel(pReservationVO pReservationVO) throws Exception;
+	
+	public Integer parkCancel2(pReservationVO pReservationVO) throws Exception;
+	
+	public List<pReservationVO> FindMyResByCarNum(pReservationVO pReservationVO) throws Exception;
+	
+	public List<pReservationVO> FindMyResByPhone(pReservationVO pReservationVO) throws Exception;
+	
+	
 }

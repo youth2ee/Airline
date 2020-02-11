@@ -73,8 +73,9 @@
 		</th>
 		<td>
 			<div class="textarea_wrap">
-				<textarea name="contents" class="common textWrite summernote" id="contents" rows="4" cols="50" style="position: relative;">
-				</textarea>	
+
+				<textarea name="contents" class="common textWrite summernote" id="contents" rows="4" cols="50" style="position: relative;"></textarea>	
+
 				
 				<div class="txt_count">
 					<em id="counter"></em>
@@ -177,10 +178,6 @@
 	
 <!------ new script ------->
 <script type="text/javascript">
-		var str = $("#contents").val();
-			str = str.replace(/(?:\r\n|\r|\n)/g, '<br />');
-			$("#text").html(str);
-
 
 	/**** SummerNote *****/
 	$(document).ready(function(){
@@ -233,7 +230,6 @@
 		}); */
 	//}
 	
-		
 	/***** 파일 추가 삭제 *****/
 	$('#attfile1').change(function(){
 		
@@ -249,7 +245,7 @@
 				$("#attfile1").val("");
 				$("#fileName1").val("");	
 	});
-	
+
 	$('#attfile2').change(function(){
 		
 	 	 if(window.FileReader){
@@ -278,6 +274,7 @@
 				$("#attfile3").val("");
 				$("#fileName3").val("");	
 	});
+
 
 
 	/**** Null여부 ****/
@@ -318,6 +315,7 @@
 			});
 		});
 	});
+
 
 </script>
 

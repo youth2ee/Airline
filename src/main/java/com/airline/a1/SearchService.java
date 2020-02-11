@@ -43,6 +43,14 @@ public class SearchService {
 		return searchMapper.realList();
 	}
 	
+
+	public int rankListUpdate(RankingVO rankingVO)throws Exception{
+		return searchMapper.rankListUpdate(rankingVO);
+	}
+	public SearchVO rankList() throws Exception{
+		return searchMapper.rankList();
+	}
+
 	public int rListInsert(SearchRankingVO searchRankingVO) throws Exception {
 		return searchMapper.rListInsert(searchRankingVO);
 	}
@@ -165,5 +173,6 @@ public class SearchService {
 
 	
 	
+
 	
 }

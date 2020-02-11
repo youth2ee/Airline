@@ -12,15 +12,16 @@ public class CustomSchedule {
 	@Autowired
 	private SearchService searchService;
 
-	@Scheduled(fixedRate = 5000)
+	@Scheduled(fixedRate = 30000)
 	//@Scheduled(fixedRateString = "1000")
 	public void fixRateSchedule() throws Exception {
 		
 	    List<SearchVO> ar = searchService.realList();
 		SearchRankingVO searchRankingVO = new SearchRankingVO();
 		
-	
-			//System.out.println("스케쥴링 실행중");
+
+		/* System.out.println("스케쥴링 실행중"); */
+
 		
 			 searchRankingVO.setRank1(ar.get(0).getSvoca());
 			 searchRankingVO.setRank2(ar.get(1).getSvoca());

@@ -59,14 +59,13 @@
 			
 			<div id="cardInfo">
 				<div>레벨</div>
-				<div>card 번호</div>
+				<div>회원번호 : ${member.memberNum}</div>
 				<div>바코드 / QR코드 / SMS</div>
 			</div>
 			
 			<div style="height: 30px; background-color: green;">
 				여기에는 공지사항을 넣어야하는데 하기싫다.
 			</div>
-			
 		</div>
 		
 		

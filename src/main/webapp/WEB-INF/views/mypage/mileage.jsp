@@ -6,7 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-    <link href="../resources/css/header.css" rel="stylesheet">
 <link href="../resources/css/reset.css" rel="stylesheet">
 <link href="../resources/css/mypage/mypageHeader.css" rel="stylesheet">
 <c:import url="../template/boot.jsp"></c:import>
@@ -14,7 +13,7 @@
 
 </head>
 <body>
-<header><c:import url="../layout/header.jsp"></c:import></header>
+<header></header>
 <div id="headerBottom">
 <div id="hbh">
 <div id="hbhome"><i class="fa fa-home"></i></div>

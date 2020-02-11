@@ -4,6 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.Random;
 import org.springframework.stereotype.Service;
 
+import com.airline.a1.checkIn.ETicketVO;
+
+import com.airline.a1.booking.BookingPriceVO;
+
+
 @Service
 public class MemberService {
 
@@ -57,4 +62,18 @@ public class MemberService {
 	public MembersVO memberidFindbyEmail(MembersVO membersVO) throws Exception{
 		return memberMapper.memberidFindbyEmail(membersVO);
 	}
+
+	public int memberMileageUpdate(MembersVO membersVO) throws Exception {
+		return memberMapper.memberMileageUpdate(membersVO);
+	}
+	
+	public int updateMilplus(BookingPriceVO bookingPriceVO) throws Exception {
+		return memberMapper.updateMilplus(bookingPriceVO);
+	}
+	
+	public int updateMilmin(MembersVO membersVO) throws Exception {
+		return memberMapper.updateMilmin(membersVO);
+	}
+
 }
+

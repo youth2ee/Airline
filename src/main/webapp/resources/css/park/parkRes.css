@@ -1,0 +1,564 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap');
+
+*{
+font-family: 'Noto Sans KR', sans-serif;
+}
+#sub_content {max-width:1240px; min-height:500px; margin:0 auto 65px; padding:50px; border:1px solid #dddddd; background:#fff;}
+
+ol, ul { list-style: none; }
+.tab_menu {overflow:hidden; margin:-50px -50px 50px; text-align:center;}
+.tab_menu li {float:left; position:relative; width:33.33%; padding-bottom:5px; font-size:22px; color:#a1a1a1; line-height:95px;}
+.tab_menu li:after {position:absolute; left:0; bottom:0; width:100%; height:10px; background:#b3b3b3; content:'';}
+.tab_menu li .num {display:inline-block; vertical-align:middle; width:32px; height:32px; margin-right:15px; border-radius:50%; font-weight:500; font-family: 'Roboto', sans-serif; font-size:18px; color:#fff; line-height:32px; background:#cbcbcb;}
+.tab_menu li+li {border-left:1px solid #fff;}
+.tab_menu li.s02:after {background:#919191;}
+.tab_menu li.on {color:#151515;}
+.tab_menu li.on .num {background:#c60b15;}
+.tab_menu li.on:after {background:#c60b15;}
+
+.stitle01 {margin-bottom:15px; font-size:26px; color:#151515; font-weight:500; vertical-align:middle;}
+.section {margin-bottom:50px;}
+.fcol_g {margin:-8px; font-size:0;}
+.fcol_g .fcol {display:inline-block; padding:8px; font-size:17px;}
+.write_form {border-top:2px solid #333333; font-size:17px; color:#444; line-height:1.625;}
+.frow {position:relative; padding:8px 10px 10px 260px; border-bottom:1px solid #d8d8da; vertical-align:top; line-height:40px;}
+
+
+/* tab */
+
+
+/* privacy */
+.privacy_box .scroll_box {max-height:600px; padding:35px; overflow-y:auto; border:1px solid #e2e2e2; font-size:17px; color:#444444; line-height:1.7;}
+.privacy_box .scroll_box h4 {margin-bottom:15px; font-size:24px; color:#222222; font-weight:500; line-height:1.3;}
+.privacy_box .agree_chk {padding:30px; border-bottom:1px solid #e2e2e2;}
+
+
+/* board list */
+.table01 {width:100%; border-top:2px solid #252628; text-align:left;}
+.table01 th,
+.table01 td {height:60px; padding:10px; border-bottom:1px solid #d8d8da; color:#151515; vertical-align:middle;}
+.table01 th {padding-left:30px; background:#f8f8f9;}
+.table01 td {border-left:1px solid #d8d8da;}
+
+
+.board_table {width:100%; border-top:2px solid #333333; font-size:17px; color:#777777; text-align:center; line-height:1.625; font-weight:400; word-break:break-all;}
+.board_table td, 
+.board_table th {height:60px; padding:10px 15px; line-height:1.4; border-bottom:1px solid #e2e2e2; vertical-align:middle;}
+.board_table tbody th {width:22.6%; padding:10px 30px; text-align:left; background:#f8f8f9;}
+.board_table thead th {color:#151515; background:#f8f8f9;}
+
+.faq dt,
+.faq dd {position:relative; min-height:40px; padding-left:40px; line-height:1.47;}
+.faq .q,
+.faq .a {position:absolute; top:0px; left:0; width:30px; height:30px; border-radius:50%; font-size:18px; color:#fff; line-height:30px; text-align:center; font-weight:500; background:#c60b15;}
+.faq .a {background:#424242;}
+
+
+
+
+/* search form */
+.search_form {margin-bottom:30px; padding:20px 40px; background:#f8f8f9;}
+.search_form .fbox {overflow:hidden; position:relative;}
+.search_form .col01 {float:left; width:65%; overflow:hidden; position:relative; padding-left:100px; padding-right:40px;}
+.search_form .col02 {float:left; width:35%; overflow:hidden; position:relative; padding-left:45px; padding-right:70px;}
+.search_form .label {position:absolute; top:0; left:0; line-height:40px;}
+.search_form select {width:100%;}
+.search_form .cal_wrap {float:left; width:47.5%;}
+.search_form .bar {float:left; width:5%;}
+.search_form .btn_submit {position:absolute; bottom:0; right:0;}
+
+
+/* write */
+.write_form {border-top:2px solid #333333; font-size:17px; color:#444; line-height:1.625;}
+.write_top .stitle02 {display:inline-block; margin-right:30px; line-height:40px;}
+.frow {position:relative; padding:8px 10px 10px 260px; border-bottom:1px solid #d8d8da; vertical-align:top; line-height:40px;}
+.frow * {vertical-align:middle;}
+.frow .label {position:absolute; top:0; left:0; width:245px; height:100%; padding:8px 15px 10px 35px; color:#151515; font-size:17px; font-weight:400; background:#f8f8f9;}
+
+.frow02 {position:relative; padding-left:110px; vertical-align:top; line-height:40px;}
+.frow02 * {vertical-align:middle;}
+.frow02 .label {position:absolute; top:0; left:0; width:110px; height:100%; color:#333333; font-size:17px; font-weight:400;}
+.frow02+.frow02 {margin-top:15px;}
+
+.frow.title {padding:10px 15px 10px 30px; font-size:20px; color:#222222; font-weight:500;}
+.star {color:#c60b15;}
+.bar {display:inline-block; width:5%; font-size:17px; color:#333333; line-height:40px; text-align:center;}
+.space {display:inline-block; width:5%; height:40px;}
+.fwrap {margin:0 -4px; font-size:0;}
+.fwrap+.fwrap {margin-top:8px;}
+.fcol {display:inline-block; padding:0 4px;}
+.frow input[type="text"],
+.frow input[type="password"],
+.frow select,
+.frow02 input[type="text"],
+.frow02 input[type="password"],
+.frow02 select {width:100%;}
+
+
+.cal_wrap {display:inline-block; position:relative; background:#fff;}
+.cal_wrap:after {position:absolute; top:50%; right:13px; width:24px; height:22px; margin-top:-11px; background:url('https://parking.airport.co.kr/images/resve/icon/icon_calendar.png') no-repeat right center; background-size:100% auto; content:'';}
+.cal_wrap input {position:relative; z-index:1; width:100%; background:transparent; cursor:pointer;}
+.cal_wrap .calendar {display:none; position:absolute; top:50px; left:0px; right:0px; z-index:110; max-width:345px; padding:17px; border-radius:20px; background:#fff; box-shadow: 3px 3px 3px 3px rgba(0,0,0,0.2);}
+.cal_wrap .calendar img {width:100%;}
+
+
+
+
+.verification_wrap {overflow:hidden;}
+.verification_wrap input[type="text"] {float:left; width:30%; margin-right:2%;}
+.verification_wrap .sbtn {float:left; min-width:auto; padding:0;}
+.verification_wrap .btn01 {width:31%;}
+.verification_wrap .btn02 {width:22%;}
+.verification_wrap .time_count {float:left; width:15%; text-align:center; line-height:40px;}
+
+
+.chk_list li {display:inline-block; margin-right:20px;}
+
+.fcol_g {margin:-8px; font-size:0;}
+.fcol_g .fcol {display:inline-block; padding:8px; font-size:17px;}
+
+.fcol_g02 {overflow:hidden; margin:-14px;}
+.fcol_g02 .fcol {float:left; padding:14px;}
+
+.agree_chk {padding-top:15px;}
+.agree_chk label {color:#666666;}
+
+.pw_search {padding:50px 40px; background:#f2f2f3;}
+
+/* text */
+.board_txt {padding-top:5px; text-align:left;}
+.board_t {display:inline-block; margin-left:20px; color:#666666;}
+
+
+
+/* paginate */
+.paginate {margin-top:30px; text-align:center;}
+.paginate p {display:inline-block;}
+.paginate a {float:left; width:40px; height:40px; margin:0 2px; border:1px solid #d6d6d6; font-size:16px; line-height:38px; text-align:center; color:#474747;}
+.paginate .direction {overflow:hidden; text-indent:-999px; background:no-repeat center;}
+.paginate .first {background-image:url('https://parking.airport.co.kr/images/resve/icon/icon_b_first.jpg');}
+.paginate .prev {margin-right:25px; background-image:url('https://parking.airport.co.kr/images/resve/icon/icon_b_prev.jpg');}
+.paginate .next {margin-left:25px; background-image:url('https://parking.airport.co.kr/images/resve/icon/icon_b_next.jpg');}
+.paginate .end {background-image:url('https://parking.airport.co.kr/images/resve/icon/icon_b_end.jpg');}
+.paginate a.active {background:#f5f5f5;}
+
+
+/* btn */
+.btn_area {margin-top:30px; text-align:center; font-size:0;}
+.btn_area p {display:inline-block;}
+.btn {display:inline-block; overflow:hidden; min-width:200px; height:53px; margin:4px; border:2px solid #424242 !important; border-radius:4px !important; font-size:20px; color:#fff; text-align:center; background:#424242;}
+.btn.small {min-width:60px; height:36px; margin:2px; padding:0 15px; border:1px solid #424242 !important; font-size:15px; line-height:34px;}
+.btn.normal {min-width:150px; height:43px; margin:2px; padding:0 25px; border:2px solid #424242 !important; font-size:17px; line-height:39px;}
+.sbtn.wine, .btn.wine {border-color:#c60b15 !important; background:#c60b15 !important;}
+.btn.border {border-color:#c60b15 !important; color:#c60b15 !important; background:#fff !important;}
+
+.sbtn {display:inline-block; min-width:60px; height:40px; padding:0 5px; font-size:15px; color:#fff; line-height:40px; text-align:center; background:#424242;}
+
+
+/* etc */
+.img_wrap {overflow:hidden;}
+.img_wrap span {display:block; position:relative; padding-bottom:117%;}
+.img_wrap img {position:absolute; top:0; left:0; width:100%; min-height:100%;}
+
+.icon {overflow:hidden; text-indent:-999px; background:no-repeat center; background-size:100% auto;}
+
+
+.info_list li {margin-bottom:7px;}
+.info_list strong {color:#515151;}
+
+@media all and (max-width: 1100px){
+	
+	/* board list */
+	.board_table {text-align:left;}
+
+	/* write */
+	.frow {padding-left:250px;}
+	.frow .label {width:235px;}
+	
+	.board_t {display:block; margin:5px 0 0;}
+
+	
+}
+@media all and (max-width: 767.88px){
+
+	
+	/* board list */
+	.table01 th,
+	.table01 td {height:40px; padding:10px;}
+
+	.board_table {font-size:14px;}
+	.board_table tbody th {width:35%;}
+	.board_table th,
+	.board_table tbody th,
+	.board_table td {height:45px; padding:10px;}
+	.board_table td.title {text-align:left;}
+
+	.faq dt,
+	.faq dd {min-height:35px; padding-left:28px;}
+	.faq .q,
+	.faq .a {width:22px; height:22px; line-height:22px; font-size:13px;}
+
+	
+
+	/* search form */
+	.search_form {padding:15px;}
+	.search_form .col01 {width:100%; padding-left:0; padding-right:0;}
+	.search_form .label {float:left; position:relative; width:100%;}
+	.search_form .col02 {width:100%; margin-top:8px; padding-left:0;}
+	.search_form .col02 .label {display:none;}
+	
+
+	/* paginate */
+	.paginate {margin-top:20px;}
+	.paginate a {width:30px; height:30px; margin:0 1px; line-height:28px; font-size:13px;}
+	.paginate .direction {background-size:cover;}
+	.paginate .prev {margin-right:7px;}
+	.paginate .next {margin-left:7px;}
+	.paginate .first,
+	.paginate .end {display:none;}
+
+	
+	/* write */
+	.table_wrap {overflow:hidden;}
+	.table_wrap table {margin-left:-1px;}
+	.write_form {font-size:14px;}
+	.write_top .stitle02 {margin-bottom:5px;}
+	.frow:not(.type02) {padding:15px 0; line-height:25px;}
+	.frow:not(.type02) .label {display:block; position:relative; width:auto; height:auto; padding:0 0 5px; color:#000; font-size:15px; font-weight:700; background:none;}
+	.frow.type02 {padding-left:120px; line-height:30px;}
+	.frow.type02 .label {background:none; padding-left:0px; font-weight:700; font-size:15px; line-height:35px;}
+		
+	.frow02 {padding:10px 0; line-height:25px;}
+	.frow02+.frow02 {margin-top:0px;}
+	.frow02 .label {display:block; position:relative; width:auto; height:auto; padding:0 0 5px; color:#000; font-size:15px; font-weight:700; background:none;}
+	.frow02 .label {font-size:15px;}
+	
+	.bar {font-size:14px;}	
+	.cal_wrap:after {background-size:18px auto;}
+	
+
+	.pw_search {padding:15px;}
+	
+	.fcol_g .fcol {font-size:14px;}
+	.chk_list li {margin-right:10px;}
+
+	
+
+
+	/* btn */
+	.btn_area {margin-top:25px;}
+	.btn {min-width:120px; height:40px; border:1px solid #424242 !important; font-size:14px; line-height:37px;}
+	.btn.normal {min-width:110px; height:34px; border:1px solid #c60b15 !important; font-size:14px; line-height:32px;}
+	.btn.small {height:30px; font-size:13px; line-height:28px;}
+	.sbtn {font-size:13px;}
+}
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700');
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: top;}
+/* HTML5 display-role reset for older browsers */
+article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary, form,fieldset { display: block;}
+fieldset { min-width: 100%; }
+audio,canvas,progress,video {display: inline-block;vertical-align: top;}
+audio:not([controls]) {display: none;height: 0}
+[hidden],template {display: none}
+body {}
+ol, ul { list-style: none; }
+blockquote, q { quotes: none; }
+blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; }
+table { border-spacing: 0; }
+a {color:inherit;}
+a, a:hover, a:active, a:focus {text-decoration: none;}
+abbr[title] {border-bottom: 1px dotted}
+em, address { font-style: normal;}
+b,strong {font-weight: 500}
+small {font-size: 80%}
+img {vertical-align: top; max-width:100%;}
+hr {box-sizing: content-box;height: 0}
+pre {overflow: auto}
+button {padding:0; border:0; cursor: pointer;overflow: visible; background:transparent;}
+button,input,optgroup,select,textarea {color: inherit; font: inherit;margin: 0;}
+button,select {text-transform: none}
+button,html input[type="button"],input[type="reset"],input[type="submit"] {-webkit-appearance: button;cursor: pointer;border:0;}
+button[disabled],html input[disabled] {cursor: default}
+input {line-height: normal}
+input[type="checkbox"],input[type="radio"] {box-sizing: border-box; padding: 0;}
+input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button {height: auto}
+input[type="search"] {-webkit-appearance: textfield;box-sizing: content-box;}
+input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration {-webkit-appearance: none}
+button::-moz-focus-inner,input::-moz-focus-inner {border: 0;padding: 0}
+
+table {border-collapse: collapse;border-spacing: 0}
+td,th {padding: 0}
+html {-ms-text-size-adjust:100%; -webkit-text-size-adjust:100%; height:100%;} /* -webkit-tap-highlight-color:transparent; */
+*{-webkit-tap-highlight-color:transparent;}
+html, body {font-family: 'Noto Sans KR','돋움',Dotum,'굴림',Gulim,Helvetica, 'Apple SD Gothic Neo',Tahoma, Geneva, sans-serif,verdana; font-size:17px; color:#222222; line-height:1.2; font-weight:400; word-break:keep-all; letter-spacing:-0.03em;}
+* {-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box}
+*:before,*:after {-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box}
+a:tel {text-decoration:none;}
+
+img {max-width:100%;}
+
+
+.blind, caption, legend{padding: 0; margin: 0; font-size: 0; width: 0; height: 0; line-height: 0; text-indent: -9999px;}
+.d_none {display:none;}
+
+.t_center { text-align: center !important; }
+.t_left { text-align: left !important; }
+.t_right { text-align: right !important; }
+.v_top { vertical-align: top !important }
+.v_middle { vertical-align: middle !important; }
+.f_left { float: left !important }
+.f_right { float: right !important }
+.clear_b { clear: both; }
+.clearfix{*zoom:1}.clearfix:after{content:""; display:block; clear:both}
+.relative {position:relative;}
+
+
+
+#skip_nav {position: fixed; left: 0; top: -50px; width: 100%; text-align: center; line-height: 40px; background: rgba(0, 0, 0, 0.5); color: #ffffff; font-size: 13px; z-index: 10000; transition: top 0.3s;}
+#skip_nav:focus {top: 0;}
+
+
+
+/* input */
+input[type="text"], input[type="password"], input[type="search"], input[type="number"], input[type="date"], input[type="datetime"], input[type="email"], input[type="tel"] {height:40px; margin:0; padding:0 10px; border:1px solid #d8d8da; font-size:16px; color:#151515;}
+input[type="file"] {height:40px; font-size:16px;}
+select {height:40px; padding-left:10px; padding-right:20px; border:1px solid #d8d8da; font-size:16px; color:#151515;}
+textarea {padding:10px; border:1px solid #d8d8da; font-size:16px; color:#151515;}
+select, textarea, input[type="text"], input[type="password"], input[type="search"], input[type="number"], input[type="date"], input[type="datetime"], input[type="email"], input[type="tel"],input[type="submit"] {
+	-webkit-border-radius:0;
+	border-radius: 0px; /* iOS 둥근모서리 제거 */
+    -webkit-appearance: none; /* 네이티브 외형 감추기 */
+    -moz-appearance: none;
+    appearance: none;	
+}
+select::-ms-expand {display: none;}
+select{	
+	background: #fff url('https://parking.airport.co.kr/images/resve/icon/icon_sel_arr02.jpg') 100% 50% no-repeat !important;	
+
+}
+label {font-size:16px; color:#151515;}
+
+
+input::-webkit-input-placeholder {color:#888888;}
+input:-moz-placeholder {color:#888888; opacity: 1;}
+input::-moz-placeholder {color:#888888; opacity: 1;}
+input::-ms-input-placeholder {color:#888888;}
+input:-ms-input-placeholder {color:#888888;}
+input::input-placeholder {color:#888888;}
+
+textarea::-webkit-input-placeholder {color:#888888;}
+textarea:-moz-placeholder {color:#888888; opacity: 1;}
+textarea::-moz-placeholder {color:#888888; opacity: 1;}
+textarea::-ms-input-placeholder {color:#888888;}
+textarea:-ms-input-placeholder {color:#888888;}
+textarea::input-placeholder {color:#888888;}
+
+
+
+.filebox {overflow:hidden; position:relative; height:40px; padding-right:93px;}
+.filebox input[type="file"] {position: absolute; top:-10px; left:0; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip:rect(0,0,0,0); border: 0; } 
+.filebox label {position:absolute; top:0; right:0px; width:85px; height:40px; color:#fff !important; text-align:center; font-size:16px; line-height:40px; background:#666666; cursor:pointer;}
+.filebox .upload_name {float:left; width:100%; border:1px solid #d2d2d2; color:#000000; background:#ffffff;}
+.filebox .btn_add {position:absolute; top:0; right:0; width:100px; height:40px; color:#fff; background:#6b6d6f;}
+
+
+.checkbox {display:inline-block; overflow:hidden; position:relative; font-size:20px; color:#222222; line-height:32px;}
+.checkbox * {vertical-align:middle;}
+.checkbox input {position:absolute; top:-100px; left:0;}
+.checkbox label {display:inline-block; position:relative; padding-left:44px;}
+.checkbox label em {color:#999999;}
+.checkbox label:before {position:absolute; top:0px; left:0; width:30px; height:30px; border:2px solid #e2e2e2; content:'';}
+.checkbox input:checked+label:before {border:0; background:url('https://parking.airport.co.kr/images/resve/icon/icon_checkbox.jpg') no-repeat 0 0; background-size:100% 100%;}
+
+
+.radio {display:inline-block; overflow:hidden; height:40px; position:relative; margin-right:16px; font-size:17px; color:#222222; line-height:40px; text-align:left;}
+.radio * {vertical-align:middle;}
+.radio input {position:absolute; top:-100px; left:0; width:0 !important;}
+.radio label {display:inline-block; position:relative; padding-left:24px;}
+.radio label em {color:#999999;}
+.radio label:before {position:absolute; top:11px; left:0; width:17px; height:17px; border:1px solid #dedede; border-radius:50%; content:'';}
+.radio input:checked+label:after {position:absolute; top:16px; left:5px; width:7px; height:7px; border-radius:50%; background:#333333; content:'';}
+.radio.txt_none {margin-right:0;}
+.radio.txt_none label {width:18px; padding:0; text-indent:-99999px;}
+
+
+
+
+/* color */
+.fc_black {color:#000 !important;}
+.fc_blue {color:#1d5b99 !important;}
+.fc_red {color:#c9161e !important;}
+.fc_wine {color:#c60b15 !important;}
+.fc_gray01 {color:#151515 !important;}
+.fc_gray02 {color:#888888 !important;}
+
+
+/* font-size */
+.fs17 {font-size:17px;}
+
+/* form size */
+
+
+
+/* common */
+.block {display:block;}
+.underline {text-decoration:underline;}
+.sr_only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.icon {display:inline-block; overflow:hidden; text-indent:-999px; vertical-align:middle; background:no-repeat center;}
+
+/* button */
+
+
+/* size */
+.full {width:100% !important;}
+.half {width:50% !important;}
+.quarter {width:25% !important;}
+.fauto {width:auto !important;}
+.fsize01 {display:inline-block; width:100%; max-width:340px;}
+.fsize02 {width:100%; max-width:470px;}
+.fsize03 {width:100%; max-width:150px;}
+
+.t_visible {display:none;}
+
+
+
+@media all and (max-width: 1100px){
+	.t_hidden {display:none;}	
+	.t_visible {display:block;}
+	.t_full {width:100% !important; max-width:100%;}
+}
+@media all and (max-width: 767.99px){
+	html, body {font-size:14px;}
+
+	input[type="text"], input[type="password"], input[type="search"], input[type="number"], input[type="date"], input[type="datetime"], input[type="email"], input[type="tel"], select,textarea {font-size:14px;}
+	
+	.checkbox {font-size:13px; line-height:20px;}
+	.checkbox label {padding-left:23px;}
+	.checkbox label:before {width:18px; height:18px; border-width:1px;}
+	
+
+	.radio {font-size:14px;}
+
+
+	.m_hidden {display:none;}
+
+	.m_full {width:100% !important; max-width:100%;}
+	.m_full+.m_full {margin-top:8px;}
+	.m_half {width:50% !important; max-width:50%;}
+
+	label {font-size:14px;}
+	
+	
+}
+.frow label{
+line-height: 41px;
+text-align: left;
+}
+.label{
+line-height: 41px;
+text-align: left;
+}
+#sub_visual {height:126px; background:url('https://parking.airport.co.kr/images/resve/sub/visual.jpg') no-repeat center; background-size:cover;}
+.ctitle {padding:40px 20px; font-size:38px; color:#151515; font-weight:700; text-align:center;}
+.stitle01 {margin-bottom:15px; font-size:26px; color:#151515; font-weight:500; vertical-align:middle;}
+.stitle01 span{font-size:16px; font-weight:300; display:inline-block; vertical-align:middle; padding-left:15px;}
+#sub_content {max-width:1240px; min-height:500px; margin:0 auto 65px; padding:50px; border:1px solid #dddddd; background:#fff;}
+
+.tab_menu {overflow:hidden; margin:-50px -50px 50px; text-align:center;}
+.tab_menu li {float:left; position:relative; width:33.33%; padding-bottom:5px; font-size:22px; color:#a1a1a1; line-height:95px;}
+.tab_menu li:after {position:absolute; left:0; bottom:0; width:100%; height:10px; background:#b3b3b3; content:'';}
+.tab_menu li .num {display:inline-block; vertical-align:middle; width:32px; height:32px; margin-right:15px; border-radius:50%; font-weight:500; font-family: 'Roboto', sans-serif; font-size:18px; color:#fff; line-height:32px; background:#cbcbcb;}
+.tab_menu li+li {border-left:1px solid #fff;}
+.tab_menu li.s02:after {background:#919191;}
+.tab_menu li.on {color:#151515;}
+.tab_menu li.on .num {background:#c60b15;}
+.tab_menu li.on:after {background:#c60b15;}
+
+.step {display:none;}
+.step.on {display:block;}
+
+.info_box {position:relative; min-height:300px; padding:34px;}
+.info_box:before {position:absolute; top:0; left:0; z-index:0; width:100%; height:100%; border:1px solid #d8d8da; content:'';}
+.info_box .btn_area {position:relative; z-index:2;}
+.info_box.type02 {padding:60px 34px;}
+.map_pop {display:none; position:absolute; top:0; left:0; z-index:10; width:100%; padding:12px; border:3px solid #c60b15; text-align:center; background:#fff;}
+.map_pop .btn_close {position:absolute; top:0; right:0;}
+.map_pop .map_box {height:100%; display: -ms-flexbox!important; display: flex!important; -ms-flex-align: center!important;  align-items: center!important;}
+.map_pop p {width:100%;}
+.map_pop img {}
+
+.guide{margin-bottom:50px; padding-left:18px;}
+.guide li{line-height:180%; color:#444;}
+.guide li label{letter-spacing:2px; font-weight:600; color:#222;}
+
+
+.section {margin-bottom:50px;}
+.ssection {margin-bottom:25px;}
+
+.scroll_box {overflow-y:scroll; height:125px; padding:20px; border:1px solid #d8d8da; color:#666666;}
+.border_box {padding:35px; border-top:1px solid #d8d8da; border-bottom:1px solid #d8d8da;}
+
+.dot_list {line-height:1.4;}
+.dot_list li {position:relative; padding-left:15px;}
+.dot_list li+li {margin-top:7px;}
+.dot_list li:before {position:absolute; top:9px; left:0; width:6px; height:6px; border-radius:50%; background:#c60b15; content:'';}
+
+/* 20191015 추가 */
+.dot_list2 {line-height:1.4; font-size:15px;}
+.dot_list2 li {color:#666;}
+.dot_list2 li strong{color:#c60b15;}
+.dot_list2 li img{width:100%;}
+
+.stit{font-size:19px; font-weight:600; margin-top:20px; margin-bottom:10px; position:relative; padding-left:20px;}
+.stit span{font-size:14px; color:#c60b15; position:absolute; left:0; top:3px;}
+/* 20191015 추가 */
+
+/* 2019.10.15 추가 */
+.map_box02 {overflow:hidden;padding:10px; border:1px solid #d8d8da;}
+.map_box02 > p {float:left; width:50%;}
+.map_box02 img {width:100%;}
+/* 2019.10.15 추가 */
+
+@media all and (max-width: 1100px){
+	#sub_visual {height:63px;}
+	.info_box,
+	.info_box.type02 {padding:30px;}
+}
+@media all and (max-width: 767.88px){
+	.ctitle {padding:20px 10px; font-size:20px;}
+	.stitle01 span{padding-left:0; font-size:13px; display:block; padding-top:3px;}
+	#sub_content {padding:25px 15px 50px;}
+
+	.tab_menu {margin:-15px -15px 30px;}
+	.tab_menu li {padding-bottom:2px; font-size:14px; line-height:50px;}
+	.tab_menu li:after {height:5px;}
+	.tab_menu li .num {width:20px; height:20px; margin-right:8px; font-size:11px; line-height:20px;}
+
+	
+	.section {margin-bottom:35px;}
+	.ssection {margin-bottom:15px;}
+
+	.border_box {padding:15px;}
+
+	.dot_list li {padding-left:10px;}
+	.dot_list li:before {top:6px; width:4px; height:4px;}
+
+	.info_box {padding:20px;}
+
+	.map_box02 p {width:100%;} /* 2019.10.15 추가 */
+}
+/*
+font는 기본 60%, 경우에따라서 70%,50%
+상하간격은 기본 50%
+*/

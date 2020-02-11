@@ -192,7 +192,7 @@ class AirlineApplicationTests {
 	}
 
 
-	//@Test
+	@Test
 	void apiTest3() throws Exception {
 		// 항공정보 + 운임
 		BufferedReader br = null;
@@ -208,7 +208,7 @@ class AirlineApplicationTests {
 					String urlstr = "http://openapi.tago.go.kr/openapi/service/DmstcFlightNvgInfoService/getFlightOpratInfoList?"
 							+ "serviceKey=iEDBbpkkNQN604mbzvOvbCbGl0rXiyk4SdUBO%2FqhREGGDL5QrF2SrrZzf3l2%2BUNCeiBD97RtxaPQZaL9VqVR%2Fg%3D%3D&"
 							+ "numOfRows=100&" + "depAirportId=" + depAp + "&" + "arrAirportId=" + arrAp + "&"
-							+ "depPlandTime=20200201"; // 출발일 // 항공사ID
+							+ "depPlandTime=20200218"; // 출발일 // 항공사ID
 
 					URL url = new URL(urlstr);
 					HttpURLConnection urlconnection = (HttpURLConnection) url.openConnection();
@@ -408,7 +408,7 @@ class AirlineApplicationTests {
 		return nValue.getNodeValue();
 	}
 
-	@Test
+	//@Test
 	void contextLoads() throws Exception {
 		assertNotNull(dataSource.getConnection());
 	}
