@@ -144,6 +144,21 @@
 			</div>
 		</div>
 	</div>
+	
+	<!-- 항공편 띄우기 -->
+	<table>
+	<c:forEach items="${flist}" var="f">
+	<tr>
+	<td>${f.vihicleId}</td>
+	<td>${f.airlineNm}</td>
+	<td>${f.depPlandTime}</td>
+	<td>${f.arrPlandTime}</td>
+	<td>${f.depAirportNm}</td>
+	<td>${f.arrAirportNm}</td>
+	</tr>
+	</c:forEach>
+	
+	</table>
 
 
 
@@ -161,6 +176,9 @@
 
 	<div id="depLocDiv"></div>
 	<!-- 공항검색끝 -->
+	
+	
+	
 	
 </section>
 

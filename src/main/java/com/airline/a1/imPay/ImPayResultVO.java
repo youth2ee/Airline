@@ -22,4 +22,6 @@ public class ImPayResultVO {
 	private String bpnum;
 	private int milplus;
 	
+	private String bnum;
+	
 }

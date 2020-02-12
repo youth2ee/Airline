@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.airline.a1.booking.BookingPriceVO;
 import com.airline.a1.checkIn.ETicketVO;
 import com.airline.a1.checkIn.SeatVO;
+import com.airline.a1.member.MembersVO;
 
 @Service
 public class MypageService {
@@ -27,5 +29,9 @@ public class MypageService {
 	}
 	public int bookCancel(String bnum) throws Exception{
 		return mypageMapper.bookCancel(bnum);
+	}
+	
+	public List<BookingPriceVO> mtotal(MembersVO membersVO) throws Exception{
+		return mypageMapper.mtotal(membersVO);
 	}
 }

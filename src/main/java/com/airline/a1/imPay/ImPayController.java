@@ -33,6 +33,7 @@ public class ImPayController {
 		System.out.println("1");
 		System.out.println(imPayVO.getRamount());
 		System.out.println(imPayVO.getMilplus());
+		System.out.println(imPayVO.getBnum());
 		
 		/*
 		 * System.out.println(imPayVO.getMil()); System.out.println(imPayVO.getBpnum());
@@ -74,6 +75,7 @@ public class ImPayController {
 		System.out.println(imPayResultVO.getMilplus());
 		System.out.println(imPayResultVO.getImp_uid());
 		System.out.println(imPayResultVO.getMerchant_uid());
+		System.out.println(imPayResultVO.getBnum());
 		
 		String [] nlist = imPayResultVO.getBpnum().split(","); 
 		

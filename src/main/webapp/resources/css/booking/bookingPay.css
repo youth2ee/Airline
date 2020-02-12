@@ -1,0 +1,51 @@
+@charset "UTF-8";
+#btn {
+cursor: pointer;
+    width: 200px;
+    height: 50px;
+    background-color: #d60815;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 100px;
+    margin: 0 auto;
+}
+
+#sec{
+	padding-top: 52px;
+	width: 825px;
+	margin: 0 auto;
+	height: 100%;
+}
+
+#msg{
+	width: 700px;
+	margin: 0 auto;
+    padding: 60px 0;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 40px;
+    text-align: center;
+}
+
+#bnum{
+width: 70%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 25px;
+    color: #5f5858;
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+#bdiv{
+	width: 70%;
+	 margin: 0 auto;
+    text-align: center;
+    padding-top: 66px;
+	
+}

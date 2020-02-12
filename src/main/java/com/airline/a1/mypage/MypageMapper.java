@@ -4,8 +4,10 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.airline.a1.booking.BookingPriceVO;
 import com.airline.a1.checkIn.ETicketVO;
 import com.airline.a1.checkIn.SeatVO;
+import com.airline.a1.member.MembersVO;
 
 @Mapper
 public interface MypageMapper {
@@ -15,4 +17,6 @@ public interface MypageMapper {
 	public List<ETicketVO> getBookingMore(ETicketVO eTicketVO) throws Exception;
 	public List<SeatVO> getBookingMoreSeat(ETicketVO eTicketVO) throws Exception;
 	public int bookCancel(String bnum) throws Exception;
+	
+	public List<BookingPriceVO> mtotal(MembersVO membersVO) throws Exception;  
 }
