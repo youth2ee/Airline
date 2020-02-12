@@ -43,7 +43,7 @@ public class MypageController {
 	public void mileage(HttpSession session) {
 		
 		MembersVO membersVO = (MembersVO)session.getAttribute("member");
-		List<Boo> mypageService.mtotal(membersVO);
+
 		
 	}
 	
