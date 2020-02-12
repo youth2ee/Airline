@@ -57,7 +57,8 @@ IMP.request_pay({
 				receipt_url:rsp.receipt_url,
 				apply_num:rsp.apply_num,
 				mil:'${VO.mil}',
-				bpnum:'${VO.bpnum}'
+				bpnum:'${VO.bpnum}',
+				bnum:'${VO.bnum}'
 			},
 			type : "GET",
 			url : "../imPay/imPayComplete",

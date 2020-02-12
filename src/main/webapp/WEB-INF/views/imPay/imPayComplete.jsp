@@ -2,7 +2,10 @@
     pageEncoding="UTF-8"%>
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 
-<table>
+<link href="../resources/css/reset.css" rel="stylesheet">
+<link href="../resources/css/booking/bookingPay.css" rel="stylesheet">
+
+<%-- <table>
 
 <tr><th>결제성공</th></tr>
 <tr><td style="color: fuchsia;">success</td><td style="background-color: maroon;">${vo.success} </td></tr>
@@ -18,10 +21,22 @@
 <tr><td style="color: fuchsia;">receipt_url </td><td style="background-color: maroon;">${vo.receipt_url} </td></tr>
 <tr><td style="color: fuchsia;">apply_num </td><td style="background-color: maroon;">${vo.apply_num} </td></tr>
 
-</table>
+</table> --%>
+
+<div id="sec">
+
+<div id="msg">결제가 완료되었습니다.</div>
+<hr>
+<div id="bnum">예매번호 :&nbsp${vo.bnum}</div>
+<div id="dbnum" style=" text-align: center;padding-bottom: 50px;">
+ 예매내역은 마이페이지에서 확인할 수 있습니다.
+</div>
+<hr>
+<div id="bdiv"><button id="btn">메인으로</button></div>
+
+</div>
 
 
-<button id="btn">메인으로</button>
 
 
 <script>

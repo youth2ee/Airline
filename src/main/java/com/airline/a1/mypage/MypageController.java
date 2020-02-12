@@ -40,7 +40,12 @@ public class MypageController {
 	public void memberUpdate() {}
 	
 	@GetMapping("mileage")
-	public void mileage() {}
+	public void mileage(HttpSession session) {
+		
+		MembersVO membersVO = (MembersVO)session.getAttribute("member");
+		List<Boo> mypageService.mtotal(membersVO);
+		
+	}
 	
 	@GetMapping("ticketCancel")
 	public ModelAndView bookCancel(String bnum) throws Exception {

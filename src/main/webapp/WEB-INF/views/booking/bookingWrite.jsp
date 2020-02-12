@@ -333,7 +333,8 @@ ${arr[3]}시 ${arr[4]}분<i class='fas fa-angle-right' style='font-size:10px; pa
 </div>
 
 <hr>
-<input type="button" id="btn" value="다음">
+<!-- <input type="button" id="btn" value="다음"> -->
+<input type="submit" id="btn" value="다음">
 
 <input type="hidden" name="kind" value="${bTVO.kind}">
 <input type="hidden" name="adult" value="${bTVO.adult}">
@@ -365,7 +366,7 @@ ${arr[3]}시 ${arr[4]}분<i class='fas fa-angle-right' style='font-size:10px; pa
 /* $('.rfchk').each(function(){
 
 
-  if($(this).val() == '여'){
+if($(this).val() == '여'){
 
 	  alert($(this).prop("checked"));
 	  alert($(this).next('.rfchk').val());
@@ -375,31 +376,31 @@ ${arr[3]}시 ${arr[4]}분<i class='fas fa-angle-right' style='font-size:10px; pa
 			alert('gg');
 	  }
 	  
-  }
+}
 	s
 		
 });
- 
- 
- $(document).ready(function(){
 
-  $(셀렉트박스 option).each(function(){
 
-    if($(this).val()=="${DB값}"){
+$(document).ready(function(){
 
-      $(this).attr("selected","selected"); // attr적용안될경우 prop으로 
+$(option).each(function(){
 
-    }
+  if($(this).val()=="왕복"){
 
-  });
+    $(this).attr("selected","selected"); // attr적용안될경우 prop으로 
+
+  }
 
 });
- 
- 
- */
+
+});
 
 
- $('.sb option:selected').val()
+*/
+
+
+/*  $('.sb option:selected').val() */
  
 
 

@@ -40,10 +40,10 @@
 
 #miname{
 	font-size: 30px;
-    margin-top: 15px;
     line-height: 30px;
     word-break: keep-all;
     color: white;
+    margin-top: 57px;
 }
 
 #miEname{
@@ -58,6 +58,7 @@
 	padding-top: 30px;
 	font-size: 23px;
 	color: white;
+	width: 301px;
 }
 
 
