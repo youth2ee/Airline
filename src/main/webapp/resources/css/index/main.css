@@ -512,3 +512,52 @@ input.input_cal{width:158px;border:1px solid #ccc; color:#222; background:#fff u
 	padding: 0 15px;
 	font-size: 16px;
 }
+
+
+/* 출도착조회 */
+
+.inquiry_wrapper .white_step_box{padding-bottom:25px;}
+.inquiry_wrapper .white_step_box .quick_step_wrap .input_wrap .shadow_layer.search_flight{left:235px;}
+.inquiry_wrapper .white_step_box .quick_step_wrap .input_wrap .shadow_layer.search_flight.to{left:470px;}
+.inquiry_wrapper .quick_step_wrap .btn_revsearch{width:156px;}
+.inquiry_wrapper .white_step_box{background:#fff;box-sizing:border-box;padding:40px;}
+.quick_step_wrap .input_wrap{position:relative; }
+.quick_step_wrap .input_wrap .ipt_elt{position:relative;}
+.quick_step_wrap .input_wrap .ipt_elt{position:relative; float:left; margin-right:20px;}
+.quick_step_wrap .input_wrap .ipt_elt:before{content:'';display:inline-block;position:absolute;right:5px;bottom:20px;width:20px;height:21px;background:url('https://flyasiana.com/C/pc/image/main/main_icoset.png') -80px -20px no-repeat;z-index:1;}
+.inquiry_wrapper .quick_step_wrap .input_wrap .ipt_elt input[type="text"]{height:46px;line-height:46px;border-bottom:2px solid #999;}
+.inquiry_wrapper .quick_step_wrap .input_wrap .ipt_elt input[type="text"]{height:46px;line-height:46px;border-bottom:2px solid #999;}
+.quick_step_wrap .input_wrap .ipt_elt input[type="text"]{position:relative;padding:0 25px 0 5px; margin-right:0; height:56px;line-height:56px;box-sizing:border-box; color:#222; border:none; border-bottom:2px solid #5c5f67; background:none; outline:none; cursor:pointer;font-size:16px;letter-spacing:0;z-index:2;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;}
+button.gray{border:1px solid #6d6e71;background-color:#6d6e71;color:#fff;}
+
+
+
+
+.departure_list_wrap{position:relative; margin-top:20px;height:auto; max-height:380px;overflow-y:auto;background:#fff;box-shadow:10px 10px 10px rgba(0,0,0,.07);}
+.departure_list_wrap .table_list thead tr th{background:#6d6e71;border-color:#999;}
+.departure_list_wrap .table_list tbody tr td {font-size:15px;}
+.departure_list_wrap .table_list tbody tr td, 
+.departure_list_wrap .table_list tbody tr th{padding:8px 25px;}
+.departure_list_wrap .status_scd td{color:#737373;}
+.departure_list_wrap .status_end td{background:#f7f7f7;color:#000;}
+.departure_list_wrap .sc_info{position:relative;}
+.departure_list_wrap .sc_info:after{display:block;content:'';clear:both;}
+.departure_list_wrap .sc_info dt{float:left;}
+.departure_list_wrap .sc_info dd.time{float:right;font-size:16px;font-family:'latofont',sans-serif;}
+.departure_list_wrap .sc_info dd.time .no_flight{font-size:15px;font-family:'Noto Sans KR';}
+.departure_list_wrap .sc_info dd .nextday{display:inline-block;min-width:45px;margin-left:15px;font-size:13px;color:#d60815;}
+.departure_list_wrap .flt_num{font-size:18px;color:#555;font-family:'latofont',sans-serif;font-weight:bold;}
+
+.flt_status{position:relative;}
+.flt_status p{color:#555;font-size:13px;}
+.flt_status.ico3 p {color:#d60815;font-weight:bold;}		/* 결항 텍스트 케이스 */
+.flt_status:before{display:inline-block;content:'';width:40px;height:40px;background:url('../image/sub/ico_flt_status.png') 0 0 no-repeat;}
+.flt_status.ico1:before{background-position:0 0;}
+.flt_status.ico2:before{background-position:0 -40px;}
+.flt_status.ico3:before{background-position:0 -80px;}
+.flt_status.ico4:before{background-position:0 -120px;}
+.flt_status.ico5:before{background-position:0 -160px;}
+.flt_status.ico6:before{background-position:0 -200px;}
+.flt_status.ico7:before{background-position:0 -240px;}
+
+
