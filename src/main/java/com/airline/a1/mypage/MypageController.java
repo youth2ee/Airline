@@ -13,12 +13,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.airline.a1.booking.BookingPriceVO;
 import com.airline.a1.checkIn.ETicketVO;
 import com.airline.a1.checkIn.SeatVO;
 import com.airline.a1.member.MembersVO;
 import com.airline.a1.park.ParkService;
 import com.airline.a1.park.pReservationVO;
-
+import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 import com.airline.a1.member.MembersVO;
 import com.airline.a1.park.ParkService;
 import com.airline.a1.park.pInfoVO;
@@ -40,7 +41,17 @@ public class MypageController {
 	public void memberUpdate() {}
 	
 	@GetMapping("mileage")
-	public void mileage() {}
+	public void mileage(HttpSession session, Model model) throws Exception {
+		
+		MembersVO membersVO = (MembersVO)session.getAttribute("member");
+
+		List<BookingPriceVO> bookingPriceVOs =  mypageService.mtotal(membersVO);
+	
+
+		model.addAttribute("blist", bookingPriceVOs);
+
+		
+	}
 	
 	@GetMapping("ticketCancel")
 	public ModelAndView bookCancel(String bnum) throws Exception {

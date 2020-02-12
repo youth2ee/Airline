@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.zip.Adler32;
@@ -74,6 +75,22 @@ public class BookingController {
 	public void bookingMain(Model model) throws Exception {
 		List<String> airport = bookingService.airportList();
 		model.addAttribute("airportList", airport);
+		
+		
+		//항공리스트
+		//현재시간
+		SimpleDateFormat format1 = new SimpleDateFormat ( "yyyyMMddHHMM");
+				
+		Date time = new Date();
+		String time1 = format1.format(time);
+		System.out.println(time1);
+		
+		FlightDataVO flightDataVO = new FlightDataVO();
+		flightDataVO.setDepPlandTime(time1);
+		
+		List<FlightDataVO> fList = bookingService.flightList(flightDataVO);
+		model.addAttribute("flist", fList);
+		
 	}
 
 	

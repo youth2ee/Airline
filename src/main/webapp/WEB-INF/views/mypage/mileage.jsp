@@ -7,13 +7,15 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="../resources/css/reset.css" rel="stylesheet">
+    <link href="../resources/css/header.css" rel="stylesheet">
 <link href="../resources/css/mypage/mypageHeader.css" rel="stylesheet">
+<link href="../resources/css/mypage/mileage.css" rel="stylesheet">
 <c:import url="../template/boot.jsp"></c:import>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
 <body>
-<header></header>
+<header><c:import url="../layout/header.jsp"></c:import></header>
 <div id="headerBottom">
 <div id="hbh">
 <div id="hbhome"><i class="fa fa-home"></i></div>
@@ -29,6 +31,37 @@
 </div>
 </div>
 </div>
+
+
+<section>
+
+<div style="width: 100%; text-align: center;"><h3 style="font-size: 40px; color: black;">마일리지 내역</h3></div>
+
+<table class="table_list tb_type2" id="table_0" style="margin: 50px 0;">
+<tr><th scope="row">현재 나의 마일리지</th><td>${member.mileage}</td></tr>
+</table>
+
+<table class="table_list tb_type2" id="table_0">
+<tr>
+<th scope="row">예매번호</th>
+<th scope="row">사용한 마일리지</th>
+<th scope="row">적립한 마일리지</th>
+</tr>
+<c:forEach items="${blist}" var="bl">
+<tr style="border: 1px solid #ddd;"><td style="text-align: center;
+    font-size: 15px;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 20px;
+    width: 35%;">${bl.bookingNum}</td><td style=" width: 35%;">- ${bl.mileageMin}</td><td style=" width: 35%;">+ ${bl.mileagePlus}</td></tr>
+
+</c:forEach>
+
+
+</table>
+
+</section>
 
 
 </body>

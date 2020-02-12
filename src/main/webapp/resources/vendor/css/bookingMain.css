@@ -1144,3 +1144,41 @@ display: none;
     width: 1068px;
     padding: 38px 0;
 }
+
+
+/* 리스트 */
+
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.table_list.tb_type2 tbody tr th, .table_list.tb_type2 tbody tr th label {
+    background: #6d6e70;
+    color: #fff;
+}
+
+.table_list.tb_type2 tbody tr td, .table_list.tb_type2 tbody tr th {
+    padding: 12px 25px;
+    font-size: 15px;
+}
+
+.table_list tbody tr:first-child th, .table_list tbody tr:first-child td {
+    border-top: 1px solid #ddd;
+}
+
+.table_list tbody tr td:first-child, .table_list tbody tr th:first-child {
+    border-left: none;
+}
+
+.table_list tbody tr td, .table_list tbody tr th {
+    position: relative;
+    padding: 15px 20px;
+    border-left: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    color: #000;
+    font-size: 16px;
+    font-weight: normal;
+   
