@@ -227,6 +227,47 @@ input[type=checkbox]:checked:hover + label{
 	
 }
 
+.txt_capcha{
+	padding: 6px 0;
+    color: #555555;
+}
+
+.capcha_wrap{
+	margin-top: 15px;
+    margin-left: 5px;
+}
+
+#capReload{
+	display: block;
+    align-content: center;
+}
+
+.captcha_box{
+	width: 222px;
+    text-transform: uppercase;
+    margin-left: 25px;
+    margin-top: 10px;
+    height: 46px;
+}
+
+.sp{
+	line-height: 15px;
+    display: block;
+    height: 15px;
+    margin: 17px 0 0 12px;
+    padding-left: 22px;
+    font-size: 15px;
+    color: #555555;
+    font-size: 16px;
+}
+
+.fa{
+	margin-right: 6px;
+}
+
+
+/**** btn ****/
+
 .btn_wrap{
 	margin-top: 50px;
 	text-align: center;

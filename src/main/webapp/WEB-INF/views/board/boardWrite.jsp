@@ -7,9 +7,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
+
 <c:import url="../template/boot.jsp"></c:import>
 <link rel="stylesheet" href="../resources/css/board/boardWrite.css">
 <link rel="stylesheet" href="../resources/css/asiana/reset.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
  <!-- summerNote -->
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote.min.js"></script>
@@ -162,6 +164,31 @@
 					</ul>
 				</td>
 	</tr>
+	<tr>
+		<th scope="row">
+				인증번호
+				<span>*</span>
+		</th>
+		<td>
+			<div>
+				<p class="txt_capcha">보안을 위해 아래 캡차 인증을 진행하세요</p>
+			</div>
+			<div class ="capcha_wrap">
+							<div id="captchaDiv"></div>
+							<div>
+								<button type="button" id="capReload">
+									<span class="sp"><i class="fa fa-repeat"></i>새로고침</span>
+								</button>
+						
+								<input type="text" name="captcha_key" id="value" required
+									class="captcha_box required common textWrite"> 
+								<button type="button" id="checkNo">확인</button>
+							
+							<input type="hidden" id="key" name="key">
+							</div>
+						</div>
+		</td>
+	</tr>
 </table>
 
 <div class="btn_wrap">
@@ -176,10 +203,15 @@
 
 </div>
 	
-<!------ new script ------->
+	
+	
+	
+	
+<!---------------------------------- Script ------------------------------------>
 <script type="text/javascript">
 
 	/**** SummerNote *****/
+	
 	$(document).ready(function(){
 		var markupStr = '${vo.textContents}';
 		$('#counter').html(markupStr.length);
@@ -230,7 +262,11 @@
 		}); */
 	//}
 	
+	
+	
+	
 	/***** 파일 추가 삭제 *****/
+	
 	$('#attfile1').change(function(){
 		
 	 	 if(window.FileReader){
@@ -277,7 +313,9 @@
 
 
 
+	
 	/**** Null여부 ****/
+	
 	$('#btnTransfer').click(function(){
 	
 		var title = $('#title').val();
@@ -292,29 +330,86 @@
 
 	});
 
+
+
+	
 	/**** captcha ****/
-	$(document).ready(function() {
+	
+		$('#capReload').on('click', function(){
+
+		$("#submit").attr('disabled',true);
 		$.ajax({
-			url : "캡차API로직.jsp",
-			dataType:"json",
+			 url : "captchaKey.do", 
+		//	dataType:"json",
 			success : function(data) {
-				console.log(data.key);
-				$("#key").val(data.key);
-				$("#div01").html("<img src='captchaImage/"+data.captchaImageName+"'>");
+				console.log(data);
+	//			var key = data;
+	//			location.href = "captchaImg.do?key="+key;
+				$('#key').val(data);
+				
+				getCaptchaImg();
+	
+			}, error : function(data){
+				console.log("error : "+data);
 			}
 		});
-		$("#btn01").on("click",function(){
-			var form01Data = $("#form01").serialize();
-			console.log(form01Data);
+	});
+	
+	$(document).ready(function() {
+		$.ajax({
+			url : "captchaKey.do",
+		//	dataType:"json",
+			success : function(data) {
+				console.log(data);
+	//			var key = data;
+	//			location.href = "captchaImg.do?key="+key;
+				$('#key').val(data);
+				
+				getCaptchaImg();
+	
+			}, error : function(data){
+				console.log("error : "+data);
+			}
+		});
+		
+	});
+	function getCaptchaImg(){
+		$(function(){
+		//	alert("이미지 캡차 메소드 실행 ");
+		var key = $("#key").val();
 			$.ajax({
-				url : "캡차API로직.jsp",
-				data : form01Data,
-				dataType:"json",
-				success : function(data) {
+				url: "captchaImg.do",
+				data: {key: key},
+				success: function(data){
+					$("#captchaDiv").html("<img src='${ contextPath }/resources/captchaImg/"+data+"'>").css('float','left');
 				}
 			});
 		});
-	});
+	}
+	
+	 $("#checkNo").on("click",function(){
+	//	var form01Data = $("#form01").serialize();
+	//	console.log(form01Data);
+		var key = $("#key").val();
+		var value = $("#value").val();
+		$.ajax({
+			url : "checkNo.do",
+			data : {key:key,value:value},
+			dataType:"json",
+			success : function(data) {
+				console.log(data.result);
+				if(data.result){
+					alert("성공");
+					$("#submit").attr('disabled',false);
+				}else{
+					alert("일치하지 않습니다. 다시 확인해주세요.");
+				}
+			},error : function(data){
+				alert("에러");
+				console.log(data);
+			}
+		});
+	}); 
 
 
 </script>
