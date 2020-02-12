@@ -293,28 +293,6 @@
 	});
 
 	/**** captcha ****/
-	$(document).ready(function() {
-		$.ajax({
-			url : "캡차API로직.jsp",
-			dataType:"json",
-			success : function(data) {
-				console.log(data.key);
-				$("#key").val(data.key);
-				$("#div01").html("<img src='captchaImage/"+data.captchaImageName+"'>");
-			}
-		});
-		$("#btn01").on("click",function(){
-			var form01Data = $("#form01").serialize();
-			console.log(form01Data);
-			$.ajax({
-				url : "캡차API로직.jsp",
-				data : form01Data,
-				dataType:"json",
-				success : function(data) {
-				}
-			});
-		});
-	});
 
 
 </script>
