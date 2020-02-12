@@ -26,5 +26,6 @@ public interface MemberMapper {
 	
 	public int updateMilplus(BookingPriceVO bookingPriceVO) throws Exception;
 	public int updateMilmin(MembersVO membersVO) throws Exception;
+	
 
 }

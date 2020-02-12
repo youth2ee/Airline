@@ -102,9 +102,9 @@ ${arr[3]}시 ${arr[4]}분<i class='fas fa-angle-right' style='font-size:10px; pa
 <tr> 
 <td class="bth">성별</td> 
 <td class="btb">
-<input type="radio" name="adultList[${status.index-1}].gender" value="여" id="womana${status.index}"> 
+<input type="radio" name="adultList[${status.index-1}].gender" value="여" id="womana${status.index}" class="rfchk" checked="checked"> 
 <label for="womana${status.index}">여자</label>
-<input type="radio" name="adultList[${status.index-1}].gender" value="남" id="mana${status.index}">  
+<input type="radio" name="adultList[${status.index-1}].gender" value="남" id="mana${status.index}" class="rfchk">  
 <label for="mana${status.index}">남자</label>
 </td>
 </tr>
@@ -213,9 +213,9 @@ ${arr[3]}시 ${arr[4]}분<i class='fas fa-angle-right' style='font-size:10px; pa
 <tr> 
 <td class="bth">성별</td> 
 <td class="btb">
-<input type="radio" name="childList[${status.index-1}].gender" value="여" id="womanc${status.index}"> 
+<input type="radio" name="childList[${status.index-1}].gender" value="여" id="womanc${status.index}" class="rfchk" checked="checked"> 
 <label for="womanc${status.index}">여자</label>
-<input type="radio" name="childList[${status.index-1}].gender" value="남" id="manc${status.index}">  
+<input type="radio" name="childList[${status.index-1}].gender" value="남" id="manc${status.index}" class="rfchk">  
 <label for="manc${status.index}">남자</label>
 </td>
 </tr>
@@ -231,7 +231,7 @@ ${arr[3]}시 ${arr[4]}분<i class='fas fa-angle-right' style='font-size:10px; pa
 <td class="btb"> 
 
 <select name="childList[${status.index-1}].year"> 
-<option selected="selected" >년</option>
+<option selected="selected">년</option>
 <c:forEach begin="1910" end="2020" varStatus="status1">
 <option>${status1.index}</option>
 </c:forEach>
@@ -333,7 +333,8 @@ ${arr[3]}시 ${arr[4]}분<i class='fas fa-angle-right' style='font-size:10px; pa
 </div>
 
 <hr>
-<button id="btn">다음</button>
+<!-- <input type="button" id="btn" value="다음"> -->
+<input type="submit" id="btn" value="다음">
 
 <input type="hidden" name="kind" value="${bTVO.kind}">
 <input type="hidden" name="adult" value="${bTVO.adult}">
@@ -359,6 +360,54 @@ ${arr[3]}시 ${arr[4]}분<i class='fas fa-angle-right' style='font-size:10px; pa
 
 
 </section>
+
+<script type="text/javascript">
+
+/* $('.rfchk').each(function(){
+
+
+if($(this).val() == '여'){
+
+	  alert($(this).prop("checked"));
+	  alert($(this).next('.rfchk').val());
+
+	  if($(this).prop("checked") == false && $(this).next('.rfchk').prop("checked") == false){
+
+			alert('gg');
+	  }
+	  
+}
+	s
+		
+});
+
+
+$(document).ready(function(){
+
+$(option).each(function(){
+
+  if($(this).val()=="왕복"){
+
+    $(this).attr("selected","selected"); // attr적용안될경우 prop으로 
+
+  }
+
+});
+
+});
+
+
+*/
+
+
+/*  $('.sb option:selected').val() */
+ 
+
+
+
+
+
+</script>
 
 
 

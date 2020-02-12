@@ -44,6 +44,7 @@
 
  	$('#capReload').on('click', function(){
 
+
 		$("#submit").attr('disabled',true);
 		$.ajax({
 			 url : "captchaKey.do", 

@@ -20,5 +20,4 @@ public interface BookingMapper {
 	public int priceInsertOne(BookingPriceVO bookingPriceVO) throws Exception;
 	public int priceInsertResult(BookingPriceVO bookingPriceVO) throws Exception;
 	
-	
 }

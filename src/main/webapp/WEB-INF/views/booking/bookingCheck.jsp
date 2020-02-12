@@ -320,7 +320,7 @@ ${bVO.arrInfo.vihicleId} ${bVO.arrInfo.airlineNm}<br>
 
 			
 					/* 	window.open("../imPay/imPayList?name=항공권&amount="+r, "이니시스",  "width=825px, height=600px"); */
-					window.open("../imPay/imPayList?name=항공권&amount="+100+"&mil="+mil+"&bpnum="+nlist+"&ramount="+rr+"&milplus="+${milplus},"이니시스", "width=825px, height=600px");
+					window.open("../imPay/imPayList?name=항공권&amount="+100+"&mil="+mil+"&bpnum="+nlist+"&ramount="+rr+"&milplus="+${milplus}+"&bnum="+'${bVO.bookingNum}',"이니시스", "width=825px, height=600px");
 				});
 	</script>
 

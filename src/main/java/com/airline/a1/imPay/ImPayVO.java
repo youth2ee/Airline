@@ -21,6 +21,7 @@ public class ImPayVO {
 	
 	private MembersVO membersVO;
 
+	private String bnum;
 	
 	
 	

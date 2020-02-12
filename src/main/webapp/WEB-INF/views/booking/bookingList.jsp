@@ -346,11 +346,11 @@ ${bookingVO.arrLoc} <i class='fas fa-angle-right' style='font-size:10px;'></i> $
 </c:if>
 </div>
 
-<form action="${pageContext.request.contextPath}/booking/bookingWritePre" method="post">
+<form action="${pageContext.request.contextPath}/booking/bookingWritePre" method="post" id="frm">
 
-<input type="hidden" name="depFnum" id="dfnumf">
+<input type="hidden" name="depFnum" id="dfnumf" value="0">
 <c:if test="${bookingVO.kind eq '왕복'}">
-<input type="hidden" name="arrFnum" id="afnumf">
+<input type="hidden" name="arrFnum" id="afnumf" value="0">
 </c:if>
 <input type="hidden" name="adult" value="${bookingVO.adult}">
 <input type="hidden" name="child" value="${bookingVO.child}">
@@ -359,7 +359,7 @@ ${bookingVO.arrLoc} <i class='fas fa-angle-right' style='font-size:10px;'></i> $
 <hr>
 
 <div style="text-align: right;">
-<button id="btn">다음</button>
+<input type="button" id="btn" value="다음">
 </div>
 </form>
 
@@ -758,6 +758,27 @@ depSelectDate = depSelectDate.replace('년','').replace('월','').replace('일',
 		$('.atrcheck').siblings().find('td').removeClass('act');
 		alert('출발하는 편의 도착시간 이후의 비행편을 선택해주세요.');
 	}); 
+
+
+	$('#btn').click(function(){
+
+		if('${bookingVO.kind}' == '편도'){
+			if($('#dfnumf').val() != 0){
+				$('#frm').submit();
+			} else {
+				alert('편도 항공편을 선택해주세요.');
+			}
+		}
+
+		if('${bookingVO.kind}' == '왕복'){
+			if($('#dfnumf').val() != 0 && $('#afnumf').val() != 0){
+				$('#frm').submit();
+			}else {
+				alert('왕복 항공편을 모두 선택해주세요.');
+			}
+		}
+
+	});
 	
 </script>
 
