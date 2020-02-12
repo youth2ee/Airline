@@ -46,6 +46,20 @@ update bookingPrice set mileageMin=#{mileageMin}, totalAllPrice=#{totalAllPrice}
 where bpnum = #{bpnum}
 </update>
 
+<!--  -->
+<select id="flightInfo" parameterType="com.airline.a1.booking.FlightDataVO" resultType="com.airline.a1.booking.FlightDataVO">
+select * from flightData
+where depAirportNm = #{depAirportNm} and arrAirportNm = #{arrAirportNm} and depPlandTime like concat('%',#{depPlandTime},'%')
+order by depPlandTime asc
+</select>
+
+<select id="flightList" parameterType="com.airline.a1.booking.FlightDataVO" resultType="com.airline.a1.booking.FlightDataVO">
+select * from flightData
+where depPlandTime > #{depPlandTime}
+order by depPlandTime asc
+limit 0, 20
+</select>
+
 
 
 

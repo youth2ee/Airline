@@ -203,5 +203,14 @@ public class BookingService {
 	public int priceInsertResult(BookingPriceVO bookingPriceVO) throws Exception{
 		return bookingMapper.priceInsertResult(bookingPriceVO);
 	}
-
+	
+	//
+	public List<FlightDataVO> flightInfo(FlightDataVO flightDataVO) throws Exception {
+		return bookingMapper.flightInfo(flightDataVO);
+	}
+	
+	public List<FlightDataVO> flightList(FlightDataVO flightDataVO) throws Exception {
+		return bookingMapper.flightList(flightDataVO);
+	}
+	
 }

@@ -61,10 +61,21 @@ public class HomeController {
 		List<String> airport = bookingService.airportList();
 		model.addAttribute("airportList", airport);
 		
-
 		return "index";
 	}
 
+	@GetMapping
+	public void flightdata() throws Exception {
+		
+		//출도착조회
+		FlightDataVO flightDataVO = new FlightDataVO();
+		List<FlightDataVO> dataVOs = bookingService.flightInfo(flightDataVO);
+		
+	}
+	
+	
+	
+	
 	@GetMapping("indexSearch")
 	public void indexSearch(Model model, String search) throws Exception {
 		if (search != "") {

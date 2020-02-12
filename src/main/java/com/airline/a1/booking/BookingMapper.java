@@ -20,4 +20,7 @@ public interface BookingMapper {
 	public int priceInsertOne(BookingPriceVO bookingPriceVO) throws Exception;
 	public int priceInsertResult(BookingPriceVO bookingPriceVO) throws Exception;
 	
+	public List<FlightDataVO> flightInfo(FlightDataVO flightDataVO) throws Exception;
+	public List<FlightDataVO> flightList(FlightDataVO flightDataVO) throws Exception;
+	
 }
