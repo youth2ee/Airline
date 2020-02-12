@@ -106,7 +106,7 @@
 	// 모달창 인원수에 맞게 좌석 선택시 선택완료 진행
 	$(".complete").click(function(){
 		var seat = "";
-		if(count < person){
+		if(count < person+child){
 			alert("인원수에 맞게 좌석을 선택해주세요");
 		}else{
 		$('.lim').each(function(){
@@ -114,7 +114,6 @@
 				seat = seat+this.value+'번';
 			}
 				$(".seat").val(seat);
-
 				$(".com2").click();
 			});
 		}
@@ -223,24 +222,23 @@
 	$(".gobooks").click(function(){
 		if(!$(".checkbox").prop("checked")){
 			alert("결제할 버스를 체크해주세요");
-		}else if($(".checkbox").prop("checked").length == 1){
+		}else{
 			if($(".limoDate").val() == ""){
 				alert("날짜를 선택해주세요");
-			}else if($(".depLoc option:eq(0)").prop("selected") || $(".depLoc2 option:eq(0)").prop("selected")){
+			}else if($(".depLoc option:eq(0)").prop("selected")){
 				alert("출발지가 선택되지 않았습니다.");
-			}else if($(".arrLoc option:eq(0)").prop("selected") || $(".arrLoc2 option:eq(0)").prop("selected")){
+			}else if($(".arrLoc option:eq(0)").prop("selected")){
 				alert("도착지가 선택되지 않았습니다.");
-			}else if($(".person option:eq(0)").prop("selected") || $(".person2 option:eq(0)").prop("selected")){
+			}else if($(".person option:eq(0)").prop("selected")){
 				alert("인원을 선택해주세요");
-			}else if($(".limoTime option:eq(0)").prop("selected") || $(".limoTime2 option:eq(0)").prop("selected")){
+			}else if($(".limoTime option:eq(0)").prop("selected")){
 				alert("출발시간을 선택해주세요");
-			}else if($(".seat").val() == "" || $(".seat2").val() == ""){
+			}else if($(".seat").val() == ""){
 				alert("좌석을 선택을 해주세요");
 			}else{
 				window.open("../imPay/imPayList2?name=리무진버스&amount="+100,"이니시스", "width=825px, height=600px");
 			}
 		}
-		
 	});
 
 	function yongju(){
@@ -389,7 +387,7 @@
 	// 모달창 인원수에 맞게 좌석 선택시 선택완료 진행
 	$(".complete2").click(function(){
 		var seat2 = "";
-		if(count2 < person2){
+		if(count2 < totalperson2){
 			alert("인원수에 맞게 좌석을 선택해주세요");
 		}else{
 		$('.lim2').each(function(){
@@ -397,7 +395,6 @@
 				seat2 = seat2+this.value+'번';
 			}
 				$(".seat2").val(seat2);
-
 				$(".com2").click();
 			});
 		}
