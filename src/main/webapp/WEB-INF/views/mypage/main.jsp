@@ -13,6 +13,7 @@
 	
 	<c:import url="../template/boot.jsp"></c:import>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="../resources/assets/circle.js"></script>
 	
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link href="//www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
@@ -52,20 +53,19 @@
 	
 		<div class="myInfoLeft">
 			<div> 
-				<div id="miname">${member.name} 님</div> 
-				<span id="miEname">(${member.id})</span>
+				<div id="miname">이가영 님</div> 
+				<span id="miEname">Lee Ga Young</span>
 			</div>
 			
 			<div id="cardInfo">
+				<div>레벨</div>
 				<div>회원번호 : ${member.memberNum}</div>
-				<div>전화번호 : ${member.phone}</div>
-				<div>이메일 : ${member.email}</div>
-				<div style="padding-top: 30px;">바코드 / QR코드 / SMS</div>
+				<div>바코드 / QR코드 / SMS</div>
 			</div>
 			
-<!-- 			<div style="height: 30px; background-color: green;">
+			<div style="height: 30px; background-color: green;">
 				여기에는 공지사항을 넣어야하는데 하기싫다.
-			</div> -->
+			</div>
 		</div>
 		
 		
@@ -74,10 +74,10 @@
 			<div class="page" style="width: 500px; margin: 0 auto;">
 				<div class="circles-container bg-white">
 					<div class="circlebar" data-circle-startTime=0
-						data-circle-maxValue="${member.mileage/20000*100}" data-circle-dialWidth=10
+						data-circle-maxValue="80" data-circle-dialWidth=10
 						data-circle-size="300px" data-circle-type="progress">
 						<div class="loader-bg">
-							<div class="text">88855</div>
+							<div class="text">00:00:00</div>
 						</div>
 					</div>
 				</div>
@@ -103,7 +103,7 @@ mypage
 		$(document).ready(function() {
 			var t2 = new Circlebar({
 				element : ".circlebar",
-				maxValue : 50000,
+				maxValue : 100,
 				fontColor : "#777",
 				fontSize : "25px",
 				skin : "white",
@@ -126,133 +126,6 @@ mypage
 			var s = document.getElementsByTagName('script')[0];
 			s.parentNode.insertBefore(ga, s);
 		})();
-
-
-		$(document).ready(function() {
-		    var prefs = {
-		        element: ".circlebar"
-		    };
-		    $('.circlebar').each(function() {
-		        prefs.element = $(this);
-		        new Circlebar(prefs);
-		    });
-		});
-
-		function Circlebar(prefs) {
-		    this.element = $(prefs.element);
-		    this.element.append('<div class="spinner-holder-one animate-0-25-a"><div class="spinner-holder-two animate-0-25-b"><div class="loader-spinner" style=""></div></div></div><div class="spinner-holder-one animate-25-50-a"><div class="spinner-holder-two animate-25-50-b"><div class="loader-spinner"></div></div></div><div class="spinner-holder-one animate-50-75-a"><div class="spinner-holder-two animate-50-75-b"><div class="loader-spinner"></div></div></div><div class="spinner-holder-one animate-75-100-a"><div class="spinner-holder-two animate-75-100-b"><div class="loader-spinner"></div></div></div>');
-		    this.value, this.maxValue, this.counter, this.dialWidth, this.size, this.fontSize, this.fontColor, this.skin, this.triggerPercentage, this.type, this.timer;
-		    // var attribs = this.element.find("div")[0].parentNode.dataset;
-		    var attribs = this.element[0].dataset,
-		        that = this;
-		    this.initialise = function() {
-		        that.value = parseInt(attribs.circleStarttime) || parseInt(prefs.startTime) || 0;
-		        that.maxValue = parseInt(attribs.circleMaxvalue) || parseInt(prefs.maxValue) || 80;
-		        that.counter = parseInt(attribs.circleCounter) || parseInt(prefs.counter) || 80;
-		        that.dialWidth = parseInt(attribs.circleDialwidth) || parseInt(prefs.dialWidth) || 10;
-		        that.size = attribs.circleSize || prefs.size || "150px";
-		        that.fontSize = attribs.circleFontsize || prefs.fontSize || "20px";
-		        that.fontColor = attribs.circleFontcolor || prefs.fontColor || "rgb(135, 206, 235)";
-		        that.skin = attribs.circleSkin || prefs.skin || " ";
-		        that.triggerPercentage = attribs.circleTriggerpercentage || prefs.triggerPercentage || false;
-		        that.type = attribs.circleType || prefs.type || "timer";
-
-
-		        that.element.addClass(that.skin).addClass('loader');
-		        that.element.find(".loader-bg").css("border-width", 20 + "px");
-		        that.element.find(".loader-spinner").css("border-width", 20 + "px");
-		        that.element.css({ "width": that.size, "height": that.size });
-		        that.element.find(".loader-bg .text")
-		            .css({ "font-size": that.fontSize, "color": that.fontColor });
-		    };
-		    this.initialise();
-		    this.renderProgress = function(progress) {
-		        progress = Math.floor(progress);
-		        var angle = 0;
-		        if (progress < 25) {
-		            angle = -90 + (progress / 100) * 360;
-		            that.element.find(".animate-0-25-b").css("transform", "rotate(" + angle + "deg)");
-		            if (that.triggerPercentage) {
-		                that.element.addClass('circle-loaded-0');
-		            }
-
-		        } else if (progress >= 25 && progress < 50) {
-		            angle = -90 + ((progress - 25) / 100) * 360;
-		            that.element.find(".animate-0-25-b").css("transform", "rotate(0deg)");
-		            that.element.find(".animate-25-50-b").css("transform", "rotate(" + angle + "deg)");
-		            if (that.triggerPercentage) {
-		                that.element.removeClass('circle-loaded-0').addClass('circle-loaded-25');
-		            }
-		        } else if (progress >= 50 && progress < 75) {
-		            angle = -90 + ((progress - 50) / 100) * 360;
-		            that.element.find(".animate-25-50-b, .animate-0-25-b").css("transform", "rotate(0deg)");
-		            that.element.find(".animate-50-75-b").css("transform", "rotate(" + angle + "deg)");
-		            if (that.triggerPercentage) {
-		                that.element.removeClass('circle-loaded-25').addClass('circle-loaded-50');
-		            }
-		        } else if (progress >= 75 && progress <= 100) {
-		            angle = -90 + ((progress - 75) / 100) * 360;
-		            that.element.find(".animate-50-75-b, .animate-25-50-b, .animate-0-25-b")
-		                .css("transform", "rotate(0deg)");
-		            that.element.find(".animate-75-100-b").css("transform", "rotate(" + angle + "deg)");
-		            if (that.triggerPercentage) {
-		                that.element.removeClass('circle-loaded-50').addClass('circle-loaded-75');
-		            }
-		        }
-		    };
-		    this.textFilter = function() {
-		        var percentage = 0,
-		            date = 0,
-		            text = that.element.find(".text");
-		        if (that.type == "timer") {
-		            that.timer = setInterval(function() {
-		                if (that.value < that.maxValue) {
-		                    that.value += parseInt(that.counter / 1000);
-		                    percentage = (that.value * 100) / that.maxValue;
-		                    that.renderProgress(percentage);
-		                    text[0].dataset.value = that.value;
-		                    date = new Date(null);
-		                    date.setSeconds(that.value); // specify value for seconds here
-		                    text.html(date.toISOString().substr(11, 8));
-		                } else {
-		                    clearInterval(that.timer);
-		                }
-		            }, (that.counter));
-		        }
-		        if (that.type == "progress") {
-		            function setDeceleratingTimeout(factor, times) {
-		                var internalCallback = function(counter) {
-		                    return function() {
-		                        if (that.value < that.maxValue && that.value < 100) {
-		                            that.value += 1;
-		                            that.renderProgress(that.value);
-		                            text[0].dataset.value = that.value;
-		                            text.html(${member.mileage} + "점");
-		                            setTimeout(internalCallback, ++counter * factor);
-		                        }
-		                    }
-		                }(times, 0);
-		                setTimeout(internalCallback, factor);
-		            };
-		            setDeceleratingTimeout(0.1, 100);
-		        }
-		    }
-		    this.textFilter();
-		    this.setValue = function(val) {
-		        text = that.element.find(".text");
-		        that.value = val;
-		        that.renderProgress(that.value);
-		        text[0].dataset.value = that.value;
-		        text.html(that.value);
-		    }
-		}
-
-		(function($) {
-		    $.fn.Circlebar = function(prefs) {
-		        prefs.element = this.selector;
-		        new Circlebar(prefs);
-		    };
-		})(jQuery);
 	</script>
 
 
