@@ -8,7 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.airline.a1.booking.FlightDataVO;
 import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 
 @Controller
@@ -47,9 +49,25 @@ public class AdminController {
 	@GetMapping("admin2_1")
 	public void admin2_1(Model model) throws Exception{
 		List<AirlineVO> airlineVOs = adminService.airlineList();
-		
 		model.addAttribute("alist", airlineVOs);
+		
+		List<FlightDataVO> flist = adminService.airallList();
+		model.addAttribute("flist", flist);
+		
 	}
+	
+	@GetMapping("admin2_1_layout")
+	public ModelAndView admin2_1_layout(FlightDataVO flightDataVO) throws Exception{
+		List<FlightDataVO> flist = adminService.airpartList(flightDataVO);
+		
+		ModelAndView mv = new ModelAndView();
+		
+		mv.addObject("flist", flist);
+		mv.setViewName("admin/common/admin2_1_layout");
+		
+		return mv;
+	}
+	
 	
 	@GetMapping("admin2_2")
 	public void admin2_2() throws Exception{

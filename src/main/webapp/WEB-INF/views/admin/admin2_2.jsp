@@ -13,14 +13,14 @@
   <meta name="author" content="">
 
  <title>AIRLINE ADMIN</title>
+  <c:import url="../template/boot.jsp"></c:import>
+  <link href="../resources/css/reset.css" rel="stylesheet">
   <!-- Custom fonts for this template-->
   <link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template-->
   <link href="${pageContext.request.contextPath}/resources/vendor/css/sb-admin-2.min.css" rel="stylesheet">
-  <c:import url="../template/boot.jsp"></c:import>
-  <link href="../resources/css/reset.css" rel="stylesheet">
 </head>
 
 
@@ -291,24 +291,25 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">영화관 관리</h1>
-          <p class="mb-4">영화관의 상세정보를 보여줍니다.</p>
+          <h1 class="h3 mb-2 text-gray-800">항공편 관리</h1>
+          <p class="mb-4">공항별 항공편 관리</p>
 
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">영화관 상세정보</h6>
+              <h6 class="m-0 font-weight-bold text-primary">공항별 항공편 현황</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>번호</th>
-                      <th>지역 </th>
-                      <th>이름</th>
-                      <th>주소</th>
-                      <th>전화번호</th>
+                      <th>편명</th>
+                      <th>출발공항</th>
+                      <th>도착공항</th>
+                      <th>항공사</th>
+                      <th>출발시간</th>
+                      <th>도착시간</th>
                     </tr>
                   </thead>
                   <tbody>

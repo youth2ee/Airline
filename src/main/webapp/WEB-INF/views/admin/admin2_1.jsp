@@ -13,6 +13,11 @@
   <meta name="author" content="">
 
  <title>AIRLINE ADMIN</title>
+ 
+   <c:import url="../template/boot.jsp"></c:import>
+  <link href="../resources/css/reset.css" rel="stylesheet">
+ <link href="../resources/css/admin/admin2_1.css" rel="stylesheet">
+ 
   <!-- Custom fonts for this template-->
   <link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -20,9 +25,6 @@
   <!-- Custom styles for this template-->
   <link href="${pageContext.request.contextPath}/resources/vendor/css/sb-admin-2.min.css" rel="stylesheet">
   
-  <c:import url="../template/boot.jsp"></c:import>
-  <link href="../resources/css/reset.css" rel="stylesheet">
- <link href="../resources/css/admin/admin2_1.css" rel="stylesheet">
 
 
 </head>
@@ -310,7 +312,7 @@
           
 
           <!-- DataTales Example -->
-          <div class="card shadow mb-4">
+          <div class="card shadow mb-4 dbt">
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">항공사별 항공편 현황</h6>
             </div>
@@ -319,23 +321,25 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>번호</th>
-                      <th>지역 </th>
-                      <th>이름</th>
-                      <th>주소</th>
-                      <th>전화번호</th>
+                      <th>편명</th>
+                      <th>항공사명</th>
+                      <th>출발지</th>
+                      <th>도착지</th>
+                      <th>출발시간</th>
+                      <th>도착시간</th>
                     </tr>
                   </thead>
                   <tbody>
-             <%--      <c:forEach items="${cinemalist}" var="clist">  --%>
+                   <c:forEach items="${flist}" var="f"> 
                     <tr>
-                      <td>1<%-- <a href="${pageContext.request.contextPath}/admin/admin_cinemaSelect?cinema_num=${clist.cinema_num}">${clist.cinema_num}</a> --%></td>
-                      <td>2</td>
-                      <td>2</td>
-                      <td>2</td>
-                      <td>2</td>
+                      <td>${f.vihicleId}</td>
+                      <td>${f.airlineNm}</td>
+                      <td>${f.depAirportNm}</td>
+                      <td>${f.arrAirportNm}</td>
+                      <td>${f.depPlandTime}</td>
+                      <td>${f.arrPlandTime}</td>
                     </tr>
-<%--                   </c:forEach> --%>
+                 </c:forEach> 
 
                   </tbody>
                 </table>
@@ -412,7 +416,21 @@
 
 $('.abtn').click(function(){
 
-	alert($(this).text());
+
+	$.ajax({
+		data : {
+			airlineNm : $(this).text()
+		},
+		type : "GET",
+		url : "./admin/admin2_1_layout",
+		success : function(data) {
+
+			$('.dbt').html(data);
+
+		}
+	});
+
+	
 	
 });
 
