@@ -315,17 +315,19 @@
 
 	
 	/**** Null여부 ****/
+	var check = false;
 	
 	$('#btnTransfer').click(function(){
 	
 		var title = $('#title').val();
 		var cate = $("select[name=cate]").val();
 		var contents = $('#contents').val();
-	
-		if(title !=="" && cate !=="" && contents !==""){
-						$('#frm').submit();
+
+		if(title !=="" && cate !=="" && contents !=="" && check == true){
+					 $('#frm').submit();
+						/* $("#btnTransfer").attr('disabled',false); */
 		}else{
-					alert('필수사항을 입력해주세요.')
+					alert('필수항목을 확인해주세요.')
 			} 
 
 	});
@@ -337,7 +339,8 @@
 	
 		$('#capReload').on('click', function(){
 
-		$("#submit").attr('disabled',true);
+		/* $("#btnTransfer").attr('disabled',true); */
+		
 		$.ajax({
 			 url : "captchaKey.do", 
 		//	dataType:"json",
@@ -399,8 +402,9 @@
 			success : function(data) {
 				console.log(data.result);
 				if(data.result){
-					alert("성공");
-					$("#submit").attr('disabled',false);
+					alert("인증되었습니다.");
+					check=true;
+					/* $("#btnTransfer").attr('disabled',false); */
 				}else{
 					alert("일치하지 않습니다. 다시 확인해주세요.");
 				}

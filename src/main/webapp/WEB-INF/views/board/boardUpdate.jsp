@@ -10,6 +10,7 @@
 <c:import url="../template/boot.jsp"></c:import>
 <link rel="stylesheet" href="../resources/css/board/boardWrite.css">
 <link rel="stylesheet" href="../resources/css/asiana/reset.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
  <!-- summerNote -->
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote.min.js"></script>
@@ -17,126 +18,124 @@
 </head>
 <body>
 
-<div id="wrap_container">
-	<h3>글 수정하기</h3>
-</div>
-<div class="writeForm">
-<h5>내용 작성</h5>	
-<div class="mar">
-<span>*은 필수항목입니다.</span>
-</div>
+	<div id="wrap_container">
+		<h3>글 수정하기</h3>
+	</div>
+	<div class="writeForm">
+		<h5>내용 작성</h5>	
+		<div class="mar">
+			<span>*은 필수항목입니다.</span>
+		</div>
 
-<form action="${board}Update" method="post" enctype="multipart/form-data" id="frm">
-<table class="table_form">
-	<tr>
-		<th scope="row">
-				주요공지
-		</th>
-		<td>
-			<input type="checkbox" name="fix" id="fix" value="Y">
-			<label for="fix" class="chk"></label>
-		</td>	
-	</tr>
+		<form action="${board}Update" method="post" enctype="multipart/form-data" id="frm">
+			<table class="table_form">
+				<tr>
+					<th scope="row">주요공지</th>
+					<td>
+						<input type="checkbox" name="fix" id="fix" value="Y">
+						<label for="fix" class="chk"></label>
+					</td>	
+				</tr>
 	
-	<tr>
-		<th scope="row">
-				제목
-			<span>*</span>
-		</th>
-		<td>
-			<input type="text" name="title" id="title" class="full common textWrite" value="${vo.title}">
-			<input type="hidden" id="writer" name="writer" value = "${member.id}">
-			<input type="hidden" id="num" name="num" value="${vo.num}">
-		</td>	
-	</tr>
+				<tr>
+					<th scope="row">제목<span>*</span></th>
+					<td>
+						<input type="text" name="title" id="title" class="full common textWrite" value="${vo.title}">
+						<input type="hidden" id="writer" name="writer" value = "${member.id}">
+						<input type="hidden" id="num" name="num" value="${vo.num}">
+					</td>	
+				</tr>
 	
-	<tr>
-		<th scope="row">
-				분류선택
-			<span>*</span>
-		</th>
-		<td>
-			<select id="cate" name="cate" class="cate common textWrite">
-				<option value="EveryAir소식"<c:if test="${vo.cate eq 'EveryAir소식'}">selected</c:if>>EveryAir소식</option>
-				<option value="EveryAir클럽"<c:if test="${vo.cate eq 'EveryAir클럽'}">selected</c:if>>EveryAir클럽</option>
-				<option value="유류할증료"<c:if test="${vo.cate eq '유류할증료'}">selected</c:if>>유류할증료</option>	
-				<option value="제휴사소식"<c:if test="${vo.cate eq '제휴사소식'}">selected</c:if>>제휴사소식</option>
-				<option value="기타"<c:if test="${vo.cate eq '기타'}">selected</c:if>>기타</option>		
-			</select>
-		</td>
-	</tr>
+				<tr>
+					<th scope="row">분류선택<span>*</span></th>
+					<td>
+						<select id="cate" name="cate" class="cate common textWrite">
+							<option value="EveryAir소식"<c:if test="${vo.cate eq 'EveryAir소식'}">selected</c:if>>EveryAir소식</option>
+							<option value="EveryAir클럽"<c:if test="${vo.cate eq 'EveryAir클럽'}">selected</c:if>>EveryAir클럽</option>
+							<option value="유류할증료"<c:if test="${vo.cate eq '유류할증료'}">selected</c:if>>유류할증료</option>	
+							<option value="제휴사소식"<c:if test="${vo.cate eq '제휴사소식'}">selected</c:if>>제휴사소식</option>
+							<option value="기타"<c:if test="${vo.cate eq '기타'}">selected</c:if>>기타</option>		
+						</select>
+					</td>
+				</tr>
 	
-	<tr>
-		<th scope="row">
-			내용
-			<span>*</span>
-		</th>
-		<td>
-			<div class="textarea_wrap">
-				<textarea name="contents" class="common textWrite summernote" id="contents" rows="4" cols="50" style="position: relative;">
-					${vo.contents}</textarea>
-				<div class="txt_count">
-					<em id="counter"></em>
-					/4000자
-				</div>	
-			</div>
-		</td>
-	</tr>	
-	<tr>
-		<th scope="row">
-			파일첨부 
-		</th>
-			<td>	 	
-				 	<c:forEach var="i" begin="1" end="3">
-				 	<div class="jfile_wrap">
-						<input type="file" title="파일첨부" class = "addfile" id="attfile${i}" name="file">
-						<div class="jfilestyle jfilestyle-corner ">
-							<div 
-								style="position: absolute; width: 100%; height: 0px; z-index: -1;">
-							</div>
-							<c:set var="j" value="${i}"></c:set>
-							<input type="text" style="width: 646px" placeholder="파일첨부" value="${vo.noticeFiles[j-1].oname}"
-								 class="common addFileName" id="fileName${i}" readonly="readonly" >
-							<button type="button"class="btn_detlete btn_delete${i}" id="${vo.noticeFiles[j-1].fnum}">
-								<span class="hidden">삭제</span>
-							</button>
-							<span class="focus-jfilestyle" tabindex="0"> 
-							<label	for="attfile${i}"> 
-									<span class= "search">수정하기</span>
-							</label>
-							</span>									
+				<tr>
+					<th scope="row">내용<span>*</span></th>
+					<td>
+						<div class="textarea_wrap">
+							<textarea name="contents" class="common textWrite summernote" id="contents" rows="4" cols="50" style="position: relative;">${vo.contents}</textarea>
+							<div class="txt_count">
+								<em id="counter"></em>
+										/4000자
+							</div>	
 						</div>
-				 	</div>
-				 	</c:forEach>
+					</td>
+				</tr>	
+				
+				<tr>
+					<th scope="row">파일첨부 </th>
+					<td>	 	
+				 		<c:forEach var="i" begin="1" end="3">
+				 			<div class="jfile_wrap">
+								<input type="file" title="파일첨부" class = "addfile" id="attfile${i}" name="file">
+								<div class="jfilestyle jfilestyle-corner ">
+									<div style="position: absolute; width: 100%; height: 0px; z-index: -1;"></div>
+								<c:set var="j" value="${i}"></c:set>
+									<input type="text" style="width: 646px" placeholder="파일첨부" value="${vo.noticeFiles[j-1].oname}"
+										 class="common addFileName" id="fileName${i}" readonly="readonly" >
+									<button type="button"class="btn_detlete btn_delete${i}" id="${vo.noticeFiles[j-1].fnum}">
+									<span class="hidden">삭제</span>
+									</button>
+									<span class="focus-jfilestyle" tabindex="0"> 
+									<label	for="attfile${i}"> 
+									<span class= "search">수정하기</span>
+									</label>
+									</span>									
+								</div>
+				 			</div>
+				 		</c:forEach>
 				 	
-				 	<ul class= "list_type">
-						<li>
-							ㆍ 고객정보의 보호를 위해 첨부파일 기능 이용시, 개인정보 내용이 포함된 자료의 첨부는 지양하여 주십시오.(※ 탑승권, 항공권, 신분증 등)
-						</li>									
-						<li>
-							ㆍ 파일명이 한글, 영문, 숫자를 제외한 다른 나라의 언어일 경우, 등록된 파일에 손상이 발생할 수 있습니다.
-						</li>						
-						<li>
-							ㆍ JPG, JPEG, DOC, DOCX, PPT, PPTX, TXT, PDF, PNG, XPS, XLS, XLSX, 파일 형태로 첨부하시기 바랍니다.
-						</li>
-						<li>
-							ㆍ 파일당 최대 5MB(음성/영상 파일은 최대 20MB)까지 첨부 가능합니다.
-						</li>
-					</ul>
+					 	<ul class= "list_type">
+							<li>ㆍ 고객정보의 보호를 위해 첨부파일 기능 이용시, 개인정보 내용이 포함된 자료의 첨부는 지양하여 주십시오.(※ 탑승권, 항공권, 신분증 등)</li>									
+							<li>ㆍ 파일명이 한글, 영문, 숫자를 제외한 다른 나라의 언어일 경우, 등록된 파일에 손상이 발생할 수 있습니다.</li>						
+							<li>ㆍ JPG, JPEG, DOC, DOCX, PPT, PPTX, TXT, PDF, PNG, XPS, XLS, XLSX, 파일 형태로 첨부하시기 바랍니다.</li>
+							<li>ㆍ 파일당 최대 5MB(음성/영상 파일은 최대 20MB)까지 첨부 가능합니다.</li>
+						</ul>		
+					</td>
+					
+			<tr>		
+				<th scope="row">인증번호<span>*</span></th>
+				<td>
+					<div>
+						<p class="txt_capcha">보안을 위해 아래 캡차 인증을 진행하세요</p>
+					</div>
+					<div class ="capcha_wrap">
+						<div id="captchaDiv"></div>
+					<div>
+					<button type="button" id="capReload">
+						<span class="sp"><i class="fa fa-repeat"></i>새로고침</span>
+					</button>	
+					<input type="text" name="captcha_key" id="value" required class="captcha_box required common textWrite"> 
+					<button type="button" id="checkNo">확인</button>		
+					<input type="hidden" id="key" name="key">
+					</div>
+					</div>
 				</td>
-	</tr>
-</table>
-
-<div class="btn_wrap">
-	<button id="btnTransfer" type="button">등록</button>
-</div>
-
-<div id="hidden" style="display: none;"></div>
-<input type="hidden" id="ihidden" name="textContents" value="${vo.textContents}">
-
-</form>
-
-</div>
+			</tr>			
+				
+		</table>
+		
+			<div class="btn_wrap">
+				<button id="btnTransfer" type="button">등록</button>
+			</div>
+	
+			<div id="hidden" style="display: none;"></div>
+			<input type="hidden" id="ihidden" name="textContents" value="${vo.textContents}">
+		</form>
+	</div>
+	
+	
+	
 	
 	
 <!------------------------------------------ script --------------------------------------->
@@ -316,22 +315,104 @@
 		}
 
 		/**** Null 여뷰 ****/
+		var check = false;
 		$('#btnTransfer').click(function(){
 	 		var title = $('#title').val();
 			var cate = $("select[name=cate]").val();
 			var contents = $('#contents').val().trim();
 
 
-		 	if(title !=="" && cate !=="" && contents !==""){
+		 	if(title !=="" && cate !=="" && contents !=="" && check ==true){
 					 $('#frm').submit();
 			}else{
-					alert('필수사항을 입력해주세요.')
+					alert('필수항목을 확인해주세요.')
 			}
 			
 		});
+
+
+		
+		/**** Captcha ****/
+		$('#capReload').on('click', function(){
+
+		/* $("#btnTransfer").attr('disabled',true); */
+		
+		$.ajax({
+			 url : "captchaKey.do", 
+		//	dataType:"json",
+			success : function(data) {
+				console.log(data);
+	//			var key = data;
+	//			location.href = "captchaImg.do?key="+key;
+				$('#key').val(data);
+				
+				getCaptchaImg();
+	
+			}, error : function(data){
+				console.log("error : "+data);
+			}
+		});
+	});
+	
+	$(document).ready(function() {
+		$.ajax({
+			url : "captchaKey.do",
+		//	dataType:"json",
+			success : function(data) {
+				console.log(data);
+	//			var key = data;
+	//			location.href = "captchaImg.do?key="+key;
+				$('#key').val(data);
+				
+				getCaptchaImg();
+	
+			}, error : function(data){
+				console.log("error : "+data);
+			}
+		});
+		
+	});
+	function getCaptchaImg(){
+		$(function(){
+		//	alert("이미지 캡차 메소드 실행 ");
+		var key = $("#key").val();
+			$.ajax({
+				url: "captchaImg.do",
+				data: {key: key},
+				success: function(data){
+					$("#captchaDiv").html("<img src='${ contextPath }/resources/captchaImg/"+data+"'>").css('float','left');
+				}
+			});
+		});
+	}
+	
+	 $("#checkNo").on("click",function(){
+	//	var form01Data = $("#form01").serialize();
+	//	console.log(form01Data);
+		var key = $("#key").val();
+		var value = $("#value").val();
+		$.ajax({
+			url : "checkNo.do",
+			data : {key:key,value:value},
+			dataType:"json",
+			success : function(data) {
+				console.log(data.result);
+				if(data.result){
+					alert("인증되었습니다.");
+					check=true;
+					/* $("#btnTransfer").attr('disabled',false); */
+				}else{
+					alert("일치하지 않습니다. 다시 확인해주세요.");
+				}
+			},error : function(data){
+				alert("에러");
+				console.log(data);
+			}
+		});
+	}); 
+		
 </script>
 
 </body>
 </html>
-				 					 	
-				 	
+				 					 	 	
