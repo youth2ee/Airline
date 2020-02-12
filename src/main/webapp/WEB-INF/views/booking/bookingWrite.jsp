@@ -91,7 +91,7 @@ ${arr[3]}시 ${arr[4]}분<i class='fas fa-angle-right' style='font-size:10px; pa
 <div id="tmsg">운임이 정상적으로 입력되었는지 최종확인 후, 운임 조건 및 규정을 확인하시기 바랍니다.</div>
 
 
-<form action="./bookingWrite" method="post">
+<form id="frm" action="./bookingWrite" method="post">
 <div> 
 
 <c:if test="${bTVO.adult != 0}">
@@ -112,8 +112,8 @@ ${arr[3]}시 ${arr[4]}분<i class='fas fa-angle-right' style='font-size:10px; pa
 <tr>
 <td class="bth">이름</td> 
 <td class="btb">
-<input type="text" placeholder="성(신분증언어)" name="adultList[${status.index-1}].lastName"> 
-<input type="text" placeholder="이름(신분증언어)" name="adultList[${status.index-1}].firstName"> 
+<input type="text" placeholder="성(신분증언어)" class="hannaName" name="adultList[${status.index-1}].lastName"> 
+<input type="text" placeholder="이름(신분증언어)" class="hannaName" name="adultList[${status.index-1}].firstName"> 
 </td>
 </tr>
 
@@ -121,21 +121,21 @@ ${arr[3]}시 ${arr[4]}분<i class='fas fa-angle-right' style='font-size:10px; pa
 <td class="bth">생년월일</td>
 <td class="btb"> 
 
-<select name="adultList[${status.index-1}].year"> 
+<select name="adultList[${status.index-1}].year" class="hn1"> 
 <option selected="selected">년</option>
 <c:forEach begin="1910" end="2020" varStatus="status1">
 <option>${status1.index}</option>
 </c:forEach>
 </select> 
 
-<select name="adultList[${status.index-1}].month"> 
+<select name="adultList[${status.index-1}].month" class="hn2"> 
 <option selected="selected">월</option>
 <c:forEach begin="01" end="12" varStatus="status2">
 <option>${status2.index}</option>
 </c:forEach>
 </select> 
 
-<select name="adultList[${status.index-1}].day"> 
+<select name="adultList[${status.index-1}].day" class="hn3"> 
 <option selected="selected">일</option>
 <c:forEach begin="01" end="31" varStatus="status3">
 <option>${status3.index}</option>
@@ -222,8 +222,8 @@ ${arr[3]}시 ${arr[4]}분<i class='fas fa-angle-right' style='font-size:10px; pa
 
 <tr>
 <td class="bth">이름</td> 
-<td class="btb"><input type="text" placeholder="성(신분증언어)" name="childList[${status.index-1}].lastName"> 
-<input type="text" placeholder="이름(신분증언어)" name="childList[${status.index-1}].firstName"> </td>
+<td class="btb"><input type="text" placeholder="성(신분증언어)" class="hannaName"  name="childList[${status.index-1}].lastName"> 
+<input type="text" placeholder="이름(신분증언어)" class="hannaName" name="childList[${status.index-1}].firstName"> </td>
 </tr>
 
 <tr>
@@ -314,7 +314,7 @@ ${arr[3]}시 ${arr[4]}분<i class='fas fa-angle-right' style='font-size:10px; pa
 <tr>
 <td class="bth">이메일</td>
 <td class="btb">
-<input type="email" name="resEmail">
+<input type="email" name="resEmail" class="hannaName"  >
 <input type="checkbox" name="resECheck" id="resECheck" checked="checked">
 <label for="resECheck">이메일 항공권 수신동의</label>
 </td>
@@ -323,7 +323,7 @@ ${arr[3]}시 ${arr[4]}분<i class='fas fa-angle-right' style='font-size:10px; pa
 <tr>
 <td class="bth">전화번호</td>
 <td class="btb">
-<input type="text" name="resPhone">
+<input type="text" name="resPhone" class="hannaName" >
 <input type="checkbox" name="resPCheck" id="resPCheck" checked="checked">
 <label for="resPCheck">SMS 수신 동의</label>
 </td>
@@ -333,8 +333,8 @@ ${arr[3]}시 ${arr[4]}분<i class='fas fa-angle-right' style='font-size:10px; pa
 </div>
 
 <hr>
-<!-- <input type="button" id="btn" value="다음"> -->
-<input type="submit" id="btn" value="다음">
+<input type="button" id="btn" value="다음">
+<!--<input type="submit" id="btn" value="다음">-->
 
 <input type="hidden" name="kind" value="${bTVO.kind}">
 <input type="hidden" name="adult" value="${bTVO.adult}">
@@ -360,6 +360,59 @@ ${arr[3]}시 ${arr[4]}분<i class='fas fa-angle-right' style='font-size:10px; pa
 
 
 </section>
+
+<script type="text/javascript">
+
+	var x = 0;
+	$('.hannaName').blur(function(){
+		if($(this).val()==""){
+			x=1;
+		}
+	});
+
+
+	$('#btn').click(function(){
+		x=0;
+		$('.hn1').each(function(){
+			if($('.hn1 option:eq(0)').prop('selected')){
+			x=3;
+			}
+		});
+		
+		$('.hn2').each(function(){
+			if($('.hn2 option:eq(0)').prop('selected')){
+			x=3;
+		}
+		});
+		
+		$('.hn3').each(function(){
+			if($('.hn3 option:eq(0)').prop('selected')){
+			x=3;
+		}
+		});
+
+		$('.hannaName').each(function(){
+			if($('.hannaName').val()==""){
+				x=1;
+			}
+		});
+
+
+		
+
+		if(x==1){
+			alert("빈 칸을 입력하세요.");
+		}else if(x==3){
+			alert("생년월일을 입력하세요.");
+
+		}else{
+			$("#frm").submit();
+		}
+
+	});
+
+
+</script>
 
 <script type="text/javascript">
 
