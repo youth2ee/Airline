@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.airline.a1.api.AirportMapper">
+  
+	
+	<update id="airportUpdate" parameterType="com.airline.a1.api.AirportVO">
+		update airport set cityKor=#{cityKor}, cityEng=#{cityEng}, cityCode=#{cityCode} where apName=#{apName}
+	</update>
+	
+	<select id="airportList" resultType="com.airline.a1.api.AirportVO">
+		select cityCode, apName from airport
+	</select>
+	
+	<update id="airUpdate" parameterType="com.airline.a1.booking.FlightDataVO">
+		update flightData set flightKm =#{flightKm}, flightTime=#{flightTime} where
+		fnum in (
+		select E.fnum from
+		(select C.*,D.cityCode arrCityCode
+		from (select A.*,B.cityCode depCityCode
+		from flightData A left outer join airport B on A.depAirportNm = B.apName) C
+		left outer join airport D
+		on C.arrAirportNm = D.apName) E
+		where depCityCode=#{depCityCode} and arrCityCode = #{arrCityCode});
+	</update>
+  
+  </mapper>

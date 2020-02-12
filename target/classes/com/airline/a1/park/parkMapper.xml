@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.airline.a1.park.parkMapper">
+  	<select id="parkCheck" parameterType="com.airline.a1.park.pReservationVO" resultType="com.airline.a1.park.pReservationVO">
+  		select P.* from (select * from pReservation where airport = #{airport}) P where 
+  		#{startDate} between startDate and endDate
+  		or  #{endDate} between startDate and endDate
+  		or <![CDATA[startDate >= #{startDate} and endDate <=#{endDate}]]>
+  		
+  	</select>
+  	
+  	<select id="parkWhere" parameterType="com.airline.a1.park.pInfoVO" resultType="com.airline.a1.park.pInfoVO">
+  		select * from pInfo where
+  		aName = #{aName}
+  	</select>
+  	
+  	<insert id="resInsert" parameterType="com.airline.a1.park.pReservationVO">
+  		insert into pReservation values (0, #{carNum}, curdate(), #{rate}, #{id},
+  		 #{startDate}, #{endDate}, #{areaNum}, #{airport}, #{phone}, #{password})
+  	</insert>
+  	
+  	<select id="myReservation" parameterType="com.airline.a1.park.pReservationVO" resultType="com.airline.a1.park.pReservationVO">
+  		select P.* from (select * from pReservation where id = #{id}) P where
+  		startDate between #{startDate} and #{endDate}
+  		or  endDate between #{startDate} and #{endDate}
+  	</select>
+  	
+  	<select id="resSelect" parameterType="com.airline.a1.park.pReservationVO" resultType="com.airline.a1.park.pReservationVO">
+  		select * from pReservation where pResNum = #{pResNum}
+  	</select>
+  	
+  	<delete id="parkCancel" parameterType="com.airline.a1.park.pReservationVO">
+  		delete from pReservation where pResNum = #{pResNum}
+  	</delete>
+  	
+  	<delete id="parkCancel2" parameterType="com.airline.a1.park.pReservationVO">
+  		delete from pReservation where pResNum = #{pResNum} and password = #{password}
+  	</delete>
+  	
+  	<select id="FindMyResByCarNum" parameterType="com.airline.a1.park.pReservationVO" resultType="com.airline.a1.park.pReservationVO" >
+  		select * from pReservation where carNum = #{carNum} and password = #{password}
+  	</select>
+  	
+  	<select id="FindMyResByPhone" parameterType="com.airline.a1.park.pReservationVO" resultType="com.airline.a1.park.pReservationVO" >
+  		select * from pReservation where phone = #{carNum} and password = #{password}
+  	</select>
+  	
+  </mapper>

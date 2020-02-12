@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.airline.a1.board.NoticeFilesMapper">
+		<insert id="noticeFileWrite" parameterType="com.airline.a1.board.NoticeFilesVO">							 	 		
+				insert into noticeFiles values 
+				<foreach collection="list" item="item" separator=",">
+				(null, #{item.num}, #{item.fname}, #{item.oname})
+				</foreach>					 
+		</insert>
+		
+		
+		<select id="noticeFileList" parameterType="java.lang.Integer" resultType="com.airline.a1.board.NoticeFilesVO">
+				select * from noticeFiles where num=#{num}
+		</select>
+
+		<select id="noticeFileSelect" resultType="com.airline.a1.board.NoticeFilesVO" parameterType="com.airline.a1.board.NoticeFilesVO">
+				select * from noticeFiles where fnum=#{fnum}
+		</select>
+
+		<delete id="noticeFileDelete" parameterType="com.airline.a1.board.NoticeFilesVO">
+				delete from noticeFiles where fnum = #{fnum}
+		</delete>
+</mapper>

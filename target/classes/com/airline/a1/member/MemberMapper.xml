@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.airline.a1.member.MemberMapper">
+	
+	<select id="memberLogin" parameterType="com.airline.a1.member.MembersVO" resultType="com.airline.a1.member.MembersVO">
+		select * from members where id=#{id} and pw =#{pw}
+	</select>
+		<select id="memberLogin2" parameterType="com.airline.a1.member.MembersVO" resultType="com.airline.a1.member.MembersVO">
+		select * from members where memberNum=#{id} and pw =#{pw}
+	</select>
+	
+	<insert id="memberJoin" parameterType="com.airline.a1.member.MembersVO">
+		insert into members values(#{id}, #{pw}, #{name}, #{phone}, #{email}, #{memberNum}, 0)
+	</insert>
+	
+	<select id="memberNumCheck" parameterType="com.airline.a1.member.MembersVO" resultType="java.lang.Integer">
+		select count(memberNum) from members where memberNum = #{memberNum}
+	</select>
+	
+	<select id="memberidCheck" parameterType="com.airline.a1.member.MembersVO" resultType="com.airline.a1.member.MembersVO">
+		select * from members where id=#{id}
+	</select>
+	
+	<select id="memberidFindbyPhone" parameterType="com.airline.a1.member.MembersVO" resultType="com.airline.a1.member.MembersVO">
+		select * from members where name=#{name} and phone=#{phone}
+	</select>
+	<select id="memberidFindbyEmail" parameterType="com.airline.a1.member.MembersVO" resultType="com.airline.a1.member.MembersVO">
+		select * from members where name=#{name} and email=#{email}
+	</select>
+
+	
+	
+	<update id="memberMileageUpdate" parameterType="com.airline.a1.member.MembersVO">
+		update members set mileage=#{mileage} where id=#{id};
+	</update>
+	
+	<update id="updateMilplus" parameterType="com.airline.a1.booking.BookingPriceVO">
+	update members set
+	mileage =
+	(select R.* from
+	(select a.mileage + (select c.mileagePlus from bookingPrice c where c.bpnum = #{bpnum}) 
+	from members a where a.memberNum = (select b.memberNum from bookingPrice b where b.bpnum = #{bpnum})) R)
+	where memberNum = (select d.memberNum from bookingPrice d where d.bpnum = #{bpnum})
+	</update>
+
+	<update id="updateMilmin" parameterType="com.airline.a1.member.MembersVO">
+	update members set mileage=(select R.* from (select mileage from members where id=#{id}) R)- #{mileage}
+	where id = #{id}
+	</update>
+	
+  </mapper>
