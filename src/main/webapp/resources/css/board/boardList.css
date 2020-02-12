@@ -140,7 +140,7 @@ ul.tabs li{
 	line-height: 20px;
 	border-bottom: 1px solid #6d6e71;
     color: #d60815;
-    cursor: pointer;
+   /*  cursor: pointer; */
     background: #6d6e70;
     text-align: center;
  	line-height: 60px;
@@ -150,6 +150,25 @@ ul.tabs li:hover{
 	background: #4A4C4D;
 }
 
+.bg_point{
+	background: #f4f1ee;
+	
+}
+
+.txt_notice{
+	display: inline-block;
+    padding: 0 5px;
+    height: 20px;
+    border: 1px solid #d60815;
+    color: #d60815;
+    line-height: 20px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    margin-right: 7px;
+    box-sizing: content-box;
+} 
+	
 .tab-link span{
 	  color: #fff;
 	  font-size: 16px;
@@ -204,6 +223,10 @@ ul.tabs li.current span{
 	padding: 20px 25px 21px;
     border-bottom: 1px solid #ddd;
     list-style: none;
+    cursor:initial;
+}
+.bbs_list li:hover{
+background-color: #f7f7f7;
 }
 
 /* tab-contents */
@@ -270,6 +293,52 @@ ul.tabs li.current span{
 
 .txt{
 	height: 25px;
+}
+
+
+/**** 검색결과 없음 ****/
+.total_search_txt{
+	padding: 181px 0 96px;
+    margin-bottom: 25px;
+    text-align: center;
+    border-top: 1px solid #666;
+    border-bottom: 1px solid #eee;
+    background: url(/images/board/total_no_data.png) 50% 90px no-repeat;
+	
+}
+
+.total_search_txt strong{
+	display: block;
+    padding-bottom: 4px;
+    font-size: 23px;
+	font-weight: bold;
+}
+
+.btn_wrap_ceType1{
+	margin-top: 50px;
+    text-align: center;
+}
+
+#btnList{
+	margin: 0 5px;
+	border: 1px solid #cccccc;
+    background-color: #fff;
+    color: #000;
+    min-width: 150px;
+    padding: 13px 40px 14px;
+    font-size: 18px;
+    min-height: 56px;
+    /* line-height: 21px; */
+    line-height: 25px;
+    border-radius: 3px;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+	
+}
+
+#btnList:hover{
+	    border: 1px solid #000000;
 }
 
 /****** paging ******/

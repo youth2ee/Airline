@@ -12,6 +12,6 @@ import lombok.Setter;
 public class NoticeVO extends BoardVO{
 	
 
-	private List<NoticeFilesVO> filed;
+	private List<NoticeFilesVO> noticeFiles;
 				
 }

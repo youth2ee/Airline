@@ -17,7 +17,6 @@
 </head>
 <body>
 
-<!------- new --------->
 <div id="wrap_container">
 	<h3>글 작성하기</h3>
 </div>
@@ -27,8 +26,18 @@
 <span>*은 필수항목입니다.</span>
 </div>
 
-<form action="${board}Write" method="post" enctype="multipart/form-data">
+<form action="${board}Write" method="post" enctype="multipart/form-data" id = "frm">
 <table class="table_form">
+		<tr>
+		<th scope="row">
+				주요공지
+		</th>
+		<td>
+			<input type="checkbox" name="fix" id="fix" value="Y">
+			<label for="fix" class="chk"></label>
+		</td>	
+	</tr>
+	
 	<tr>
 		<th scope="row">
 				제목
@@ -64,7 +73,9 @@
 		</th>
 		<td>
 			<div class="textarea_wrap">
+
 				<textarea name="contents" class="common textWrite summernote" id="contents" rows="4" cols="50" style="position: relative;"></textarea>	
+
 				
 				<div class="txt_count">
 					<em id="counter"></em>
@@ -154,7 +165,7 @@
 </table>
 
 <div class="btn_wrap">
-	<button id="btnTransfer">등록</button>
+	<button id="btnTransfer" type="button">등록</button>
 </div>
 
 
@@ -167,21 +178,28 @@
 	
 <!------ new script ------->
 <script type="text/javascript">
+
 	/**** SummerNote *****/
 	$(document).ready(function(){
+		var markupStr = '${vo.textContents}';
+		$('#counter').html(markupStr.length);
+		
 			$('.summernote').summernote({
-					height:300
-			/* 		 ,
-				 	callbacks:{
-						onImageUpload:function(files,editor){
-						uploadFile(files[0], this);						
-						},
-						 onMediaDelete:function(files, editor){
-							 deleteFile(files[0], this);
-						 }
-					}  */
-				}); 
+					height:300,				
+				}); 			
 		});
+
+
+	$('.summernote').on('summernote.keyup', function() {
+		var markupStr = $('#contents').val();
+		$('#contents').val("");
+		$('#contents').val(markupStr.trim());	
+		$('#hidden').html(markupStr.trim());
+		markupStr = $('#hidden').text();	
+		$('#ihidden').val(markupStr.trim());
+		//글자수 세기
+		$('#counter').html(markupStr.length);	
+	});
 	
 /* 	function uploadFile(file, editor) {
 		var formData = new FormData();
@@ -212,18 +230,6 @@
 		}); */
 	//}
 	
-		
-	// summernote.blur
-	$('.summernote').on('summernote.blur', function() {
-		var markupStr = $('#contents').val();
-		$('#hidden').html(markupStr);
-		markupStr = $('#hidden').text();
-	
-		$('#ihidden').val(markupStr);
-		//글자수 세기
-		$('#counter').html(markupStr.length);
-		
-	});
 	/***** 파일 추가 삭제 *****/
 	$('#attfile1').change(function(){
 		
@@ -239,6 +245,7 @@
 				$("#attfile1").val("");
 				$("#fileName1").val("");	
 	});
+
 	$('#attfile2').change(function(){
 		
 	 	 if(window.FileReader){
@@ -267,13 +274,27 @@
 				$("#attfile3").val("");
 				$("#fileName3").val("");	
 	});
+
+
+
+	/**** Null여부 ****/
+	$('#btnTransfer').click(function(){
 	
-/**** 글자수세기 ****/
-/* $('#contents').keyup(function(){
-	var content = $(this).val();
-	$('#counter').html(content.length);
+		var title = $('#title').val();
+		var cate = $("select[name=cate]").val();
+		var contents = $('#contents').val();
 	
-}); */
+		if(title !=="" && cate !=="" && contents !==""){
+						$('#frm').submit();
+		}else{
+					alert('필수사항을 입력해주세요.')
+			} 
+
+	});
+
+	/**** captcha ****/
+
+
 </script>
 
 </body>

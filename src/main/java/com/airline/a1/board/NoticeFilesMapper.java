@@ -11,4 +11,11 @@ public interface NoticeFilesMapper {
 
 		public int noticeFileWrite(List<NoticeFilesVO> noticeFilesVOs)throws Exception;
 		
+		public List<NoticeFilesVO> noticeFileList(int num)throws Exception;
+		
+		public NoticeFilesVO noticeFileSelect(NoticeFilesVO noticeFilesVO)throws Exception;
+		
+		public int noticeFileDelete(NoticeFilesVO noticeFilesVO)throws Exception;
+		 
+		
 }

@@ -61,35 +61,6 @@
     border-bottom: 1px solid #ddd;
 }
 
-#fix{
-	overflow: hidden;
-    width: 0;
-    height: 0;
-    font-size: 0;
-    line-height: 0;
-}
-
-.chk{
-	min-height: 20px;
-    padding: 0 40px 0 30px;
-	color: #222;
-    vertical-align: middle;
-    background: url(/images/board/bg_checkbox_default.png) no-repeat;
-    
-}
-
-.chk:hover{
-	 background: url(/images/board/bg_checkbox_hover.png) no-repeat;
-}
-
-input[type=checkbox]:checked + label{
-	  background: url(/images/board/bg_checkbox_check.png) no-repeat;
-}
-
-input[type=checkbox]:checked:hover + label{
-	  background: url(/images/board/bg_checkbox_checkover.png) no-repeat;
-}
-
 .common{
 	width: 100%;
 	border: 1px solid #f3f3f3;
@@ -97,6 +68,7 @@ input[type=checkbox]:checked:hover + label{
     background-color: #f3f3f3;
     font-size: 16px;
 }
+
 
 .full{
 	height: 44px;     
@@ -173,7 +145,8 @@ input[type=checkbox]:checked:hover + label{
 	display: inline-block;
 	position: absolute;
     top: 15px;
-    right: 145px;
+    /* right: 145px; */
+    right: 265px;
 	width: 20px;
     height: 20px;
     background-image: url(https://vochome.flyasiana.com/images/newVoc/btn_seat_unsel.png);
@@ -189,7 +162,7 @@ input[type=checkbox]:checked:hover + label{
 
 
 .search{
-	display: block;
+	display: inline-block;
 	height: 46px;
 	padding: 0 30px;
 	border: 1px solid #ccc;
@@ -199,6 +172,8 @@ input[type=checkbox]:checked:hover + label{
 	box-sizing: border-box;
 	margin: 0;
 	font-weight: normal;
+	width: 117.2px;
+	vertical-align: middle;
 }
 
 .search:hover{
