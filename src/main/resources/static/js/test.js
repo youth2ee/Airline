@@ -220,7 +220,55 @@
 	});
 
 	$(".gobooks").click(function(){
-		if(!$(".checkbox").prop("checked")){
+		
+		var check_count = 0;
+		var check_total = $(".checkbox").length;
+		var check_none = 0;
+		var checked_total = 0;
+		$(".checkbox").each(function(){
+			var this_check = $(this);
+			if($(this).prop("checked")){
+				checked_total = checked_total+1;
+				if(this_check.siblings("input[name=limoDate]").val()==""){
+					alert('날짜를 선택해주세요');
+					this_check.siblings("input[name=limoDate]").focus();
+				}else if(this_check.siblings("select[name=depLoc]").val()==""){
+					alert("출발지가 선택되지 않았습니다.");
+					this_check.siblings(".depLoc").focus();
+				}else if(this_check.siblings(".place").children("select[name=arrLoc]").val()==""){
+					alert("도착지가 선택되지 않았습니다.");
+				}else if(this_check.siblings(".place").children("select[name=person]").val()=="" && this_check.siblings(".place").children("select[name=child]").val()==""){
+					alert('탑승인원을 선택해주세요.');
+				}else if(this_check.siblings("select[name=limoTime]").val()==""){
+					alert('출발시간을 선택해주세요.');
+				}else if(this_check.siblings("input[name=seat]").val()==""){
+					alert('좌석을 선택해주세요.');
+				}else{
+					check_count = check_count+1;
+				}
+			}else{
+				check_none = check_none + 1;
+				
+				if(check_total == check_none){
+					alert('결제할 버스를 선택해주세요.');
+				}
+			}
+		});
+		console.log('체크한 수(검증완) :' +check_count);
+		console.log('체크박스 수 :' +check_total);
+		console.log('논체크 수 :' +check_none);
+		console.log('체크한 수 :' +checked_total);
+		if(check_count == checked_total){
+			alert('결제 진행');
+			window.open("../imPay/imPayList2?name=리무진버스&amount="+100,"이니시스", "width=825px, height=600px");
+		}
+		
+/*		if(check_count == 0){
+			alert('결제할 버스를 체크해주세요');
+		}*/
+		
+		
+		/*if(!$(".checkbox").prop("checked")){
 			alert("결제할 버스를 체크해주세요");
 		}else{
 			if($(".limoDate").val() == ""){
@@ -238,7 +286,9 @@
 			}else{
 				window.open("../imPay/imPayList2?name=리무진버스&amount="+100,"이니시스", "width=825px, height=600px");
 			}
-		}
+
+		}*/
+		
 	});
 
 	function yongju(){
