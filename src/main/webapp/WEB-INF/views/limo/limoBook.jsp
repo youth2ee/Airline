@@ -58,7 +58,7 @@
 					<input type="text" placeholder="예매자" name="id" value="${member.id}">
 					<input type="date" name="limoDate" class="limoDate datepicker" id="d1">
 					<select name="depLoc" class="depLoc">
-						<option>출발지</option>
+						<option value="">출발지</option>
 						<option value="인천공항" class="airLine">인천공항</option>
 						<option value="김포공항" class="airLine">김포공항</option>
 						<option value="양양공항" class="airLine">양양공항</option>
@@ -76,7 +76,7 @@
 					<span class="price1"></span>
 					<span class="price2"></span>
 					<select name="limoTime" class="limoTime">
-						<option>출발시간</option>
+						<option value="">출발시간</option>
 						<option value="06:00" class="time">06:00</option>
 						<option value="09:00" class="time">09:00</option>
 						<option value="12:00" class="time">12:00</option>
@@ -97,7 +97,7 @@
 								<input type="text" placeholder="예매자" name="id" value="${member.id}">
 								<input type="date" name="limoDate" class="limoDate2" id="d2">
 								<select name="depLoc" class="depLoc2">
-									<option>출발지</option>
+									<option value="">출발지</option>
 									<option value="인천공항" class="airLine2">인천공항</option>
 									<option value="김포공항" class="airLine2">김포공항</option>
 									<option value="양양공항" class="airLine2">양양공항</option>
@@ -113,7 +113,7 @@
 								<span class="place6"></span>
 								<input type="text" placeholder="가격" name="limoPrice" class="price2">
 								<select name="limoTime" class="limoTime2">
-									<option>출발시간</option>
+									<option value="">출발시간</option>
 									<option value="06:00" class="time2">06:00</option>
 									<option value="09:00" class="time2">09:00</option>
 									<option value="12:00" class="time2">12:00</option>
