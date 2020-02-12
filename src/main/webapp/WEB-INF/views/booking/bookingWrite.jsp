@@ -24,45 +24,50 @@
 <div id="top">
 <div id="topWrap">
 <div id="top1">
-<i class="fa fa-plane" style="font-size:40px;color:white; padding-top: 20px;"></i><br>
-${bTVO.depInfo.depAirportNm} <i class='fas fa-angle-right' style='font-size:10px;'></i> ${bTVO.depInfo.arrAirportNm}<br>
-${bTVO.depInfo.vihicleId} ${bTVO.depInfo.airlineNm}<br>
+<i class="fa fa-plane" style="font-size:23px;color:white; padding-top: 18px; padding-bottom: 9px;"></i><br>
+<span style="font-size: 23px;">${bTVO.depInfo.depAirportNm}</span> <i class='fas fa-angle-right' style='font-size:23px; padding: 0 10px;'></i> <span style="font-size: 23px;">${bTVO.depInfo.arrAirportNm}</span><br>
+<div style="padding-bottom: 2px;">${bTVO.depInfo.airlineNm} (${bTVO.depInfo.vihicleId})</div><br>
+<div style="margin-top: -8px;">
 ${dep[0]}년 ${dep[1]}월 ${dep[2]}일<br>
-출발 : ${dep[3]}시 ${dep[4]}분<br>
-도착 : ${dep[8]}시 ${dep[9]}분<br>
-
+${dep[3]}시 ${dep[4]}분<i class='fas fa-angle-right' style='font-size:10px; padding: 0 5px;'></i>${dep[8]}시 ${dep[9]}분<br>
+</div>
 </div>
 
 
 
 <div id="top2">
 <c:if test="${bTVO.kind == '왕복'}">
-<i class="fa fa-plane" style="font-size:40px;color:white; padding-top: 20px;"></i><br>
-${bTVO.depInfo.arrAirportNm} <i class='fas fa-angle-right' style='font-size:10px;'></i> ${bTVO.depInfo.depAirportNm}<br>
-${bTVO.arrInfo.vihicleId} ${bTVO.arrInfo.airlineNm}<br>
+<i class="fa fa-plane" style="font-size:23px;color:white; padding-top: 18px; padding-bottom: 9px;"></i><br>
+<span style="font-size: 23px;">${bTVO.depInfo.arrAirportNm}</span> <i class='fas fa-angle-right' style='font-size:23px; padding: 0 10px;'></i> <span style="font-size: 23px;">${bTVO.depInfo.depAirportNm}</span><br>
+<div style="padding-bottom: 2px;">${bTVO.arrInfo.airlineNm} (${bTVO.arrInfo.vihicleId})</div><br>
+<div style="margin-top: -8px;">
 ${arr[0]}년 ${arr[1]}월 ${arr[2]}일<br>
-출발 : ${arr[3]}시 ${arr[4]}분<br>
-도착 : ${arr[8]}시 ${arr[9]}분<br>
+${arr[3]}시 ${arr[4]}분<i class='fas fa-angle-right' style='font-size:10px; padding: 0 5px;'></i>${arr[8]}시 ${arr[9]}분<br>
+</div>
 
 </c:if>
 </div>
 
 <div id="top3"> 
-<i class="material-icons" style="font-size:40px; color: white; padding-top: 20px;">person</i> 
+<i class="material-icons" style="font-size:31px; color: white; padding-top: 14px;">person</i>
+<div style="margin-top: 1px; font-size: 20px;">
 <c:if test="${bTVO.adult != 0}">
-<h5>성인 : ${bTVO.adult}명</h5>
+성인 : ${bTVO.adult}명
 </c:if>
 <c:if test="${bTVO.child != 0}">
-<h5>아동 : ${bTVO.child}명</h5>
+아동 : ${bTVO.child}명
 </c:if>
+</div>
 </div>
 
 <div id="top4">
-<i class='fas fa-credit-card' style="font-size:30px; color: white; padding-top: 24px;"></i>
+<i class='fas fa-credit-card' style="font-size:22px; color: white; padding-top: 17px;"></i>
+<div style="padding-bottom: 10px;">
 <h5>가는편 : ${bTVO.depInfo.economyCharge}원</h5>
 <c:if test="${bTVO.kind == '왕복'}">
 <h5>오는편 : ${bTVO.arrInfo.economyCharge}원</h5>
 </c:if>
+</div>
 </div>
 
 </div>
@@ -71,12 +76,11 @@ ${arr[0]}년 ${arr[1]}월 ${arr[2]}일<br>
 <div id="noti">
 <div id="notiWrap">
 <table>
-<tr><td>반드시 실제 탑승하실 분의 성명을 입력하십시오. (예약 후 변경이 불가합니다)</td></tr>
-<tr><td>외국 국적이신 경우 성함을 여권상 영문으로 입력하여 주시기 바랍니다. </td></tr>
-<tr><td>탑승 완료 후에는 소급하여 할인을 적용 받을 수 없으므로 할인 대상 손님께서는 항공권 구입, 탑승 시 할인 증빙서류를 소지하여 주시기 바랍니다.</td></tr>
-<tr><td>스타얼라이언스 회원사로 마일리지 적립을 원하는 경우 반드시 영문 성함으로 입력하여 주시기 바랍니다. 공동운항편은 스타얼라이언스 회원사로 마일리지 적립이 불가합니다.</td></tr>
-<tr><td>정보통신망법 제17조의2(법정대리인 동의의 확인방법) 강화 시행령에 따라 만 14세 미만 미성년자 예매 시 법정대리인의 동의 및 인증이 불가피하므로 14세 이상의 성인께서 로그인 후 예매진행을 해 주시기 바랍니다.</td></tr>
-<tr><td>임신 32주 이상의 임신부 고객은 탑승이 제한될 수 있으니 사전에 확인하시기 바랍니다. (37주 이상은 탑승불가)</td></tr>
+<tr><td style="padding-bottom: 5px;">반드시 실제 탑승하실 분의 성명을 입력하십시오. (예약 후 변경이 불가합니다)</td></tr>
+<tr><td style="padding-bottom: 5px;">외국 국적이신 경우 성함을 여권상 영문으로 입력하여 주시기 바랍니다. </td></tr>
+<tr><td style="padding-bottom: 5px;">탑승 완료 후에는 소급하여 할인을 적용 받을 수 없으므로 할인 대상 손님께서는 항공권 구입, 탑승 시 할인 증빙서류를 소지하여 주시기 바랍니다.</td></tr>
+<tr><td style="padding-bottom: 5px;">정보통신망법 제17조의2 시행령에 따라 만 14세 미만 미성년자 예매 시 법정대리인의 동의 및 인증이 불가피하므로 14세 이상의 성인께서 로그인 후 예매진행을 해 주시기 바랍니다.</td></tr>
+<tr><td style="padding-bottom: 5px;">임신 32주 이상의 임신부 고객은 탑승이 제한될 수 있으니 사전에 확인하시기 바랍니다. (37주 이상은 탑승불가)</td></tr>
 </table>
 </div>
 </div>
@@ -87,7 +91,7 @@ ${arr[0]}년 ${arr[1]}월 ${arr[2]}일<br>
 <div id="tmsg">운임이 정상적으로 입력되었는지 최종확인 후, 운임 조건 및 규정을 확인하시기 바랍니다.</div>
 
 
-<form action="./bookingWrite" method="post">
+<form id="frm" action="./bookingWrite" method="post">
 <div> 
 
 <c:if test="${bTVO.adult != 0}">
@@ -98,9 +102,9 @@ ${arr[0]}년 ${arr[1]}월 ${arr[2]}일<br>
 <tr> 
 <td class="bth">성별</td> 
 <td class="btb">
-<input type="radio" name="adultList[${status.index-1}].gender" value="여" id="womana${status.index}"> 
+<input type="radio" name="adultList[${status.index-1}].gender" value="여" id="womana${status.index}" class="rfchk" checked="checked"> 
 <label for="womana${status.index}">여자</label>
-<input type="radio" name="adultList[${status.index-1}].gender" value="남" id="mana${status.index}">  
+<input type="radio" name="adultList[${status.index-1}].gender" value="남" id="mana${status.index}" class="rfchk">  
 <label for="mana${status.index}">남자</label>
 </td>
 </tr>
@@ -108,8 +112,8 @@ ${arr[0]}년 ${arr[1]}월 ${arr[2]}일<br>
 <tr>
 <td class="bth">이름</td> 
 <td class="btb">
-<input type="text" placeholder="성(신분증언어)" name="adultList[${status.index-1}].lastName"> 
-<input type="text" placeholder="이름(신분증언어)" name="adultList[${status.index-1}].firstName"> 
+<input type="text" placeholder="성(신분증언어)" class="hannaName" name="adultList[${status.index-1}].lastName"> 
+<input type="text" placeholder="이름(신분증언어)" class="hannaName" name="adultList[${status.index-1}].firstName"> 
 </td>
 </tr>
 
@@ -117,21 +121,21 @@ ${arr[0]}년 ${arr[1]}월 ${arr[2]}일<br>
 <td class="bth">생년월일</td>
 <td class="btb"> 
 
-<select name="adultList[${status.index-1}].year"> 
+<select name="adultList[${status.index-1}].year" class="hn1"> 
 <option selected="selected">년</option>
 <c:forEach begin="1910" end="2020" varStatus="status1">
 <option>${status1.index}</option>
 </c:forEach>
 </select> 
 
-<select name="adultList[${status.index-1}].month"> 
+<select name="adultList[${status.index-1}].month" class="hn2"> 
 <option selected="selected">월</option>
 <c:forEach begin="01" end="12" varStatus="status2">
 <option>${status2.index}</option>
 </c:forEach>
 </select> 
 
-<select name="adultList[${status.index-1}].day"> 
+<select name="adultList[${status.index-1}].day" class="hn3"> 
 <option selected="selected">일</option>
 <c:forEach begin="01" end="31" varStatus="status3">
 <option>${status3.index}</option>
@@ -209,17 +213,17 @@ ${arr[0]}년 ${arr[1]}월 ${arr[2]}일<br>
 <tr> 
 <td class="bth">성별</td> 
 <td class="btb">
-<input type="radio" name="childList[${status.index-1}].gender" value="여" id="womanc${status.index}"> 
+<input type="radio" name="childList[${status.index-1}].gender" value="여" id="womanc${status.index}" class="rfchk" checked="checked"> 
 <label for="womanc${status.index}">여자</label>
-<input type="radio" name="childList[${status.index-1}].gender" value="남" id="manc${status.index}">  
+<input type="radio" name="childList[${status.index-1}].gender" value="남" id="manc${status.index}" class="rfchk">  
 <label for="manc${status.index}">남자</label>
 </td>
 </tr>
 
 <tr>
 <td class="bth">이름</td> 
-<td class="btb"><input type="text" placeholder="성(신분증언어)" name="childList[${status.index-1}].lastName"> 
-<input type="text" placeholder="이름(신분증언어)" name="childList[${status.index-1}].firstName"> </td>
+<td class="btb"><input type="text" placeholder="성(신분증언어)" class="hannaName"  name="childList[${status.index-1}].lastName"> 
+<input type="text" placeholder="이름(신분증언어)" class="hannaName" name="childList[${status.index-1}].firstName"> </td>
 </tr>
 
 <tr>
@@ -227,7 +231,7 @@ ${arr[0]}년 ${arr[1]}월 ${arr[2]}일<br>
 <td class="btb"> 
 
 <select name="childList[${status.index-1}].year"> 
-<option selected="selected" >년</option>
+<option selected="selected">년</option>
 <c:forEach begin="1910" end="2020" varStatus="status1">
 <option>${status1.index}</option>
 </c:forEach>
@@ -310,7 +314,7 @@ ${arr[0]}년 ${arr[1]}월 ${arr[2]}일<br>
 <tr>
 <td class="bth">이메일</td>
 <td class="btb">
-<input type="email" name="resEmail">
+<input type="email" name="resEmail" class="hannaName"  >
 <input type="checkbox" name="resECheck" id="resECheck" checked="checked">
 <label for="resECheck">이메일 항공권 수신동의</label>
 </td>
@@ -319,7 +323,7 @@ ${arr[0]}년 ${arr[1]}월 ${arr[2]}일<br>
 <tr>
 <td class="bth">전화번호</td>
 <td class="btb">
-<input type="text" name="resPhone">
+<input type="text" name="resPhone" class="hannaName" >
 <input type="checkbox" name="resPCheck" id="resPCheck" checked="checked">
 <label for="resPCheck">SMS 수신 동의</label>
 </td>
@@ -329,7 +333,8 @@ ${arr[0]}년 ${arr[1]}월 ${arr[2]}일<br>
 </div>
 
 <hr>
-<button id="btn">다음</button>
+<input type="button" id="btn" value="다음">
+<!--<input type="submit" id="btn" value="다음">-->
 
 <input type="hidden" name="kind" value="${bTVO.kind}">
 <input type="hidden" name="adult" value="${bTVO.adult}">
@@ -343,7 +348,119 @@ ${arr[0]}년 ${arr[1]}월 ${arr[2]}일<br>
 
 </form>
 
+<div class="gray_box" id="rev_dom_notice">
+			<h5>유의사항</h5>
+			<ul class="list_type2">
+				<li>예약 클래스에 따라 마일리지 적립이 불가하거나 적립률이 상이할 수 있으며, 실제 운항하는 항공사의 기준에 따라 적립이 이루어집니다.</li>
+				<li>해당 항공사 마일리지 적립 규정상 적립이 불가한 경우에는 회원번호를 입력하셔도 적립이 되지 않습니다.</li>
+				<li>현재 시스템 문제로, 숫자와 영문을 조합한 이메일 주소만 사용 가능합니다.</li>
+			</ul>
+		</div>
+
+
+
 </section>
+
+<script type="text/javascript">
+
+	var x = 0;
+	$('.hannaName').blur(function(){
+		if($(this).val()==""){
+			x=1;
+		}
+	});
+
+
+	$('#btn').click(function(){
+		x=0;
+		$('.hn1').each(function(){
+			if($('.hn1 option:eq(0)').prop('selected')){
+			x=3;
+			}
+		});
+		
+		$('.hn2').each(function(){
+			if($('.hn2 option:eq(0)').prop('selected')){
+			x=3;
+		}
+		});
+		
+		$('.hn3').each(function(){
+			if($('.hn3 option:eq(0)').prop('selected')){
+			x=3;
+		}
+		});
+
+		$('.hannaName').each(function(){
+			if($('.hannaName').val()==""){
+				x=1;
+			}
+		});
+
+
+		
+
+		if(x==1){
+			alert("빈 칸을 입력하세요.");
+		}else if(x==3){
+			alert("생년월일을 입력하세요.");
+
+		}else{
+			$("#frm").submit();
+		}
+
+	});
+
+
+</script>
+
+<script type="text/javascript">
+
+/* $('.rfchk').each(function(){
+
+
+if($(this).val() == '여'){
+
+	  alert($(this).prop("checked"));
+	  alert($(this).next('.rfchk').val());
+
+	  if($(this).prop("checked") == false && $(this).next('.rfchk').prop("checked") == false){
+
+			alert('gg');
+	  }
+	  
+}
+	s
+		
+});
+
+
+$(document).ready(function(){
+
+$(option).each(function(){
+
+  if($(this).val()=="왕복"){
+
+    $(this).attr("selected","selected"); // attr적용안될경우 prop으로 
+
+  }
+
+});
+
+});
+
+
+*/
+
+
+/*  $('.sb option:selected').val() */
+ 
+
+
+
+
+
+</script>
 
 
 

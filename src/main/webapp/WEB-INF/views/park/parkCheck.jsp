@@ -7,13 +7,29 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 <link rel="stylesheet" href="../resources/css/park/parkRes.css">
-<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" type="text/css" href="../resources/css/reset.css">
+
+<link rel="stylesheet" type="text/css" href="../resources/css/header.css">
+
+<link rel="stylesheet" type="text/css" href="https://flyasiana.com/C/pc/css/reset.css">
+<link rel="stylesheet" type="text/css" href="https://flyasiana.com/C/pc/css/common.css">
+<link rel="stylesheet" type="text/css" href="https://flyasiana.com/C/pc/css/layout.css">
+<link rel="stylesheet" type="text/css" href="https://flyasiana.com/C/pc/css/flyasiana.css">
+<link rel="stylesheet" type="text/css" href="https://flyasiana.com/C/pc/css/calendar.css">
+
+<c:import url="../template/boot.jsp" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 <style type="text/css">
-*{
-font-family: 'Noto Sans KR', sans-serif !important;
+
+.btn:hover{
+color: white;
 }
-input[type="radio"] { /* 실제 라디오는 화면에서 숨김 */
+
+input[type="radio"] { 
 	position: absolute;
 	width: 1px;
 	height: 1px;
@@ -23,7 +39,8 @@ input[type="radio"] { /* 실제 라디오는 화면에서 숨김 */
 	clip: rect(0, 0, 0, 0);
 	border: 0
 }
-label { /* 주차구역 */
+
+label { 
 	cursor: pointer;
 	width: 30px;
 	height: 50px;
@@ -31,23 +48,12 @@ label { /* 주차구역 */
 	border: 2px solid white;
 	box-sizing: border-box;
 }
-.bookable { /*예매가능*/
+.bookable {
 	text-align: center;
 	background-color: #eeefea;
 	font-size: 12px;
 }
-.booked { /*이미 예매된 자리*/
-	text-align: center;
-	background-color: #666666;
-	font-size: 12px;
-}
-.booking { /*선택한자리*/
-	text-align: center;
-	background-color: #a70737 !important;
-	font-size: 12px;
-}
-
-.etc{ /* 장애인전용주차구역 */
+.etc{ 
 	background-color: #2a6bcf;
 	background-image: url("../images/disability.png");
 	background-size: 26px 40px;
@@ -56,6 +62,19 @@ label { /* 주차구역 */
 	opacity: 80%;
 	
 }
+.booked {
+	text-align: center;
+	background-color: #666666;
+	font-size: 12px;
+}
+
+.booking {
+	text-align: center;
+	background-color: #c60b15 !important;
+	font-size: 12px;
+}
+
+
 .인천공항{
 	width: 1000px;
 	height: 470px;
@@ -86,20 +105,10 @@ label { /* 주차구역 */
 	
 
 }
-
-
 </style>
-<link rel="stylesheet" type="text/css" href="https://flyasiana.com/C/pc/css/reset.css">
-<link rel="stylesheet" type="text/css" href="https://flyasiana.com/C/pc/css/common.css">
-<link rel="stylesheet" type="text/css" href="https://flyasiana.com/C/pc/css/layout.css">
-<link rel="stylesheet" type="text/css" href="https://flyasiana.com/C/pc/css/flyasiana.css">
-<link rel="stylesheet" type="text/css" href="https://flyasiana.com/C/pc/css/calendar.css">
-
 </head>
-<c:import url="../template/boot.jsp" />
-
 <body>
-<c:import url="../template/roading.jsp" />
+<c:import url="../layout/header.jsp" />
 <div id="sub_content">
 			<ul class="tab_menu">
 				<li class="s01"><span class="num">1</span>예약 정보 입력</li>
@@ -189,7 +198,7 @@ label { /* 주차구역 */
 									
 								</div>
 							</div>
-							<div class="fcol half t_full">
+							<div class="fcol half t_full" style="position: absolute;">
 								<div class="info_box">
 								    <p class="fc_wine" style="padding-bottom:10px;font-size:24px;">예약 전 반드시 읽어주세요</p>
 									<ul class="dot_list">
@@ -258,7 +267,7 @@ label { /* 주차구역 */
 							</c:forEach>
                         </div>
 						<div class="btn_area">
-						    <button type="button" id="btnNext" class="btn wine">예약하기</button>
+						    <button type="button" id="btnNext" class="btn wine" style="font-size: 20px;">예약하기</button>
 						</div>
 					</div>
 					<!-- //step02 -->					

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.airline.a1.send.MailService;
 import com.airline.a1.send.SmsService;
@@ -107,19 +108,22 @@ public class MemberController {
 	
 	//회원가입
 	@PostMapping("memberJoin")
-	public ModelAndView memberJoin(MembersVO membersVO) throws Exception{
+	public String memberJoin(MembersVO membersVO, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		int result = memberService.memberJoin(membersVO);
 		if(result >0) {
+			mv.addObject("memberVO", membersVO);
 			mv.setViewName("member/JoinFinish");
+			session.setAttribute("memberVO", membersVO);
+			return "redirect:./JoinFinish";
 		}else {
 			mv.setViewName("member/memberJoin");
+			return "redirect:/memberJoin";
 		}
-		return mv;
 	}
 	//회원가입 완료
 	@GetMapping("JoinFinish")
-	public void JoinFinish() throws Exception{
+	public void JoinFinish(ModelAndView mv) throws Exception{
 		
 	}
 	

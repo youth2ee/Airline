@@ -144,7 +144,36 @@
 			</div>
 		</div>
 	</div>
-
+	
+	<!-- 항공편 띄우기 -->
+	<div style="width: 100%;">
+	<div style="width: 70%; margin: 0 auto; text-align: center; padding: 50px 0;"><h5 style="font-size: 40px;
+    color: black;">출도착 항공편</h5></div>
+    
+    
+	<table class="table_list tb_type2" id="table_0" style=" width: 1200px; margin-left: 385px; text-align: center;">
+   	<tr>
+	<th scope="row" style="text-align: center;">편명</th>
+	<th scope="row" style="text-align: center;">항공사명</th>
+	<th scope="row" style="text-align: center;">출발시간</th>
+	<th scope="row" style="text-align: center;">도착시간</th>
+	<th scope="row" style="text-align: center;">출발지</th>
+	<th scope="row" style="text-align: center;">도착지</th>
+	</tr>
+    
+	<c:forEach items="${flist}" var="f">
+	<tr>
+	<td>${f.vihicleId}</td>
+	<td>${f.airlineNm}</td>
+	<td>${f.depPlandTime}</td>
+	<td>${f.arrPlandTime}</td>
+	<td>${f.depAirportNm}</td>
+	<td>${f.arrAirportNm}</td>
+	</tr>
+	</c:forEach>
+	
+	</table>
+	</div>
 
 
 	<!-- 공항검색 -->
@@ -161,6 +190,9 @@
 
 	<div id="depLocDiv"></div>
 	<!-- 공항검색끝 -->
+	
+	
+	
 	
 </section>
 

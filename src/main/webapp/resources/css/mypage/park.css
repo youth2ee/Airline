@@ -10,11 +10,11 @@
 .frow {position:relative; padding:8px 10px 10px 260px; border-bottom:1px solid #d8d8da; vertical-align:top; line-height:40px;}
 .frow .label {position:absolute; top:0; left:0; width:245px; height:100%; padding:8px 15px 10px 35px; color:#151515; font-size:17px; font-weight:400; background:#f8f8f9;}
 .frow * { vertical-align:middle;}
-.btn.border {border-color:#a70737 !important; color:#a70737 !important; background:#fff !important;}
+.btn.border {border-color:#c60b15 !important; color:#c60b15 !important; background:#fff !important;}
 .btn {display:inline-block; overflow:hidden; min-width:200px; height:53px; margin:4px; border:2px solid #424242 !important; border-radius:4px !important; font-size:20px; color:#fff; line-height:49px; text-align:center; background:#424242;}
-.sbtn.wine, .btn.wine {border-color:#a70737 !important; background:#a70737 !important;}
+.sbtn.wine, .btn.wine {border-color:#c60b15 !important; background:#c60b15 !important;}
 .btn.small {min-width:60px; height:36px; margin:2px; padding:0 15px; border:1px solid #424242 !important; font-size:15px; line-height:34px;}
-.sbtn.wine, .btn.wine {border-color:#a70737 !important; background:#a70737 !important;}
+.sbtn.wine, .btn.wine {border-color:#c60b15 !important; background:#c60b15 !important;}
 .search_form {margin-bottom:30px; padding:20px 40px; background:#f8f8f9;}
 .search_form .fbox {overflow:hidden; position:relative;}
 .search_form .col01 {float:left; width:65%; overflow:hidden; position:relative; padding-left:100px; padding-right:40px;}
@@ -60,7 +60,7 @@ input[type="text"], input[type="password"], input[type="search"], input[type="nu
 .faq dt,
 .faq dd {position:relative; min-height:40px; padding-left:40px; line-height:1.47;}
 .faq .q,
-.faq .a {position:absolute; top:0px; left:0; width:30px; height:30px; border-radius:50%; font-size:18px; color:#fff; line-height:30px; text-align:center; font-weight:500; background:#a70737;}
+.faq .a {position:absolute; top:0px; left:0; width:30px; height:30px; border-radius:50%; font-size:18px; color:#fff; line-height:30px; text-align:center; font-weight:500; background:#c60b15;}
 .faq .a {background:#424242;}
 
 
@@ -91,7 +91,7 @@ input[type="text"], input[type="password"], input[type="search"], input[type="nu
 .frow02+.frow02 {margin-top:15px;}
 
 .frow.title {padding:10px 15px 10px 30px; font-size:20px; color:#222222; font-weight:500;}
-.star {color:#a70737;}
+.star {color:#c60b15;}
 .bar {display:inline-block; width:5%; font-size:17px; color:#333333; line-height:40px; text-align:center;}
 .space {display:inline-block; width:5%; height:40px;}
 .fwrap {margin:0 -4px; font-size:0;}
@@ -159,8 +159,8 @@ input[type="text"], input[type="password"], input[type="search"], input[type="nu
 .btn {display:inline-block; overflow:hidden; min-width:200px; height:53px; margin:4px; border:2px solid #424242 !important; border-radius:4px !important; font-size:20px; color:#fff; line-height:49px; text-align:center; background:#424242;}
 .btn.small {min-width:60px; height:36px; margin:2px; padding:0 15px; border:1px solid #424242 !important; font-size:15px; line-height:34px;}
 .btn.normal {min-width:150px; height:43px; margin:2px; padding:0 25px; border:2px solid #424242 !important; font-size:17px; line-height:39px;}
-.sbtn.wine, .btn.wine {border-color:#a70737 !important; background:#a70737 !important;}
-.btn.border {border-color:#a70737 !important; color:#a70737 !important; background:#fff !important;}
+.sbtn.wine, .btn.wine {border-color:#c60b15 !important; background:#c60b15 !important;}
+.btn.border {border-color:#c60b15 !important; color:#c60b15 !important; background:#fff !important;}
 
 .sbtn {display:inline-block; min-width:60px; height:40px; padding:0 5px; font-size:15px; color:#fff; line-height:40px; text-align:center; background:#424242;}
 
@@ -258,7 +258,7 @@ input[type="text"], input[type="password"], input[type="search"], input[type="nu
 	/* btn */
 	.btn_area {margin-top:25px;}
 	.btn {min-width:120px; height:40px; border:1px solid #424242 !important; font-size:14px; line-height:37px;}
-	.btn.normal {min-width:110px; height:34px; border:1px solid #a70737 !important; font-size:14px; line-height:32px;}
+	.btn.normal {min-width:110px; height:34px; border:1px solid #c60b15 !important; font-size:14px; line-height:32px;}
 	.btn.small {height:30px; font-size:13px; line-height:28px;}
 	.sbtn {font-size:13px;}
 	

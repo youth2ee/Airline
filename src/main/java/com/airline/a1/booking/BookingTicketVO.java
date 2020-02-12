@@ -65,6 +65,8 @@ public class BookingTicketVO {
 	private String depAirportNm;
 	private String arrAirportNm;
 	
+	private String depPlandTime;
+	private String arrPlandTime;
 	//
 	private List<BookingTicketVO> adultList;
 	private List<BookingTicketVO> childList;

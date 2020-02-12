@@ -7,6 +7,8 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.airline.a1.imPay.ImPayResultVO;
+
 
 @Service
 public class BookingService {
@@ -197,4 +199,18 @@ public class BookingService {
 	public int priceInsertOne(BookingPriceVO bookingPriceVO) throws Exception {
 		return bookingMapper.priceInsertOne(bookingPriceVO);
 	}
+
+	public int priceInsertResult(BookingPriceVO bookingPriceVO) throws Exception{
+		return bookingMapper.priceInsertResult(bookingPriceVO);
+	}
+	
+	//
+	public List<FlightDataVO> flightInfo(FlightDataVO flightDataVO) throws Exception {
+		return bookingMapper.flightInfo(flightDataVO);
+	}
+	
+	public List<FlightDataVO> flightList(FlightDataVO flightDataVO) throws Exception {
+		return bookingMapper.flightList(flightDataVO);
+	}
+	
 }

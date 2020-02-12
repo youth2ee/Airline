@@ -756,7 +756,7 @@
             }
 
             html += '</tr>';
-            html += '<tr>';
+            html += '<tr class="test">';
 
             // add week number label
             if (this.showWeekNumbers || this.showISOWeekNumbers)

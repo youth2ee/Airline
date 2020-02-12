@@ -254,6 +254,7 @@ ${bVO.arrInfo.vihicleId} ${bVO.arrInfo.airlineNm}<br>
 			var t = Number(rt);
 			r = r + t;
 
+			
 			console.log(addComma(r));
 		});
 
@@ -305,18 +306,21 @@ ${bVO.arrInfo.vihicleId} ${bVO.arrInfo.airlineNm}<br>
 		var nlist = '';
 
 		$.each(numList, function(index, item) {
-			alert(item);
-
 			nlist = nlist + ',' + item;
 			
 		}); 
-		
-		
 
-		$('#btn').click(
-				function() {
+	
+
+		$('#btn').click(function() {
+
+			var rr = $('.tprice').text();
+			rr = rr.replace('원', '');
+			rr = rr.replace(',' , '');
+
+			
 					/* 	window.open("../imPay/imPayList?name=항공권&amount="+r, "이니시스",  "width=825px, height=600px"); */
-					window.open("../imPay/imPayList?name=항공권&amount="+100+"&mil="+mil+"&bpnum="+nlist,"이니시스", "width=825px, height=600px");
+					window.open("../imPay/imPayList?name=항공권&amount="+100+"&mil="+mil+"&bpnum="+nlist+"&ramount="+rr+"&milplus="+${milplus}+"&bnum="+'${bVO.bookingNum}',"이니시스", "width=825px, height=600px");
 				});
 	</script>
 

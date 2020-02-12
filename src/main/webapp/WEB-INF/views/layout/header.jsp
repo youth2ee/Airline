@@ -66,6 +66,7 @@
 							<div class="search__container">
 								<form action="${pageContext.request.contextPath}/indexSearch" id="frm2">
 
+
 							  	  <input class="search__input" type="text" placeholder="Search" name="search">
 							  	  <i class='fas fa-search' id="ssbtn"></i>
 
@@ -83,9 +84,11 @@
 $('body').on('click', '#sbtn', function(){
 	$('.tooltiptext1').css("display", "inline-block");
 });
+
 $('body').on('click', '#ssbtn', function(){
 	$('#frm2').submit();
 });
+
 
 $('body').on('click', '.mp', function(){
 	alert("로그인 해주세요.");

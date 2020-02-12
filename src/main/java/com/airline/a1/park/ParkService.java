@@ -34,6 +34,24 @@ public class ParkService {
 	@Autowired
 	private parkMapper parkMapper;
 	
+	
+	
+	public List<pReservationVO> FindMyResByCarNum(pReservationVO pReservationVO) throws Exception{
+		System.out.println("서비스");
+		return parkMapper.FindMyResByCarNum(pReservationVO);
+	}
+	public List<pReservationVO> FindMyResByPhone(pReservationVO pReservationVO) throws Exception{
+		return parkMapper.FindMyResByPhone(pReservationVO);
+	}
+	
+	public Integer parkCancel(pReservationVO pReservationVO)throws Exception{
+		return parkMapper.parkCancel(pReservationVO);
+	}
+	
+	public Integer parkCancel2(pReservationVO pReservationVO) throws Exception{
+		return parkMapper.parkCancel2(pReservationVO);	
+	}
+	
 	public void tttttt() throws Exception{
 		
 		 String url = "http://airport.koreatriptips.com/parking-lot.html";    //크롤링할 url지정
