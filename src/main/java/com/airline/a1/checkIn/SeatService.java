@@ -13,8 +13,8 @@ public class SeatService {
 	@Autowired
 	private SeatMapper seatMapper;
 	
-	public List<ETicketVO> getEticket() throws Exception{
-		return seatMapper.getEticket();
+	public List<ETicketVO> getEticket(ETicketVO eticketVO) throws Exception{
+		return seatMapper.getEticket(eticketVO);
 	}
 	public int seatBook(SeatVO seatVO) throws Exception {
 		int result = seatMapper.seatBook(seatVO);
