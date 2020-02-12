@@ -78,6 +78,7 @@
 							</div>
 						</div>	
 						<div class="btn_area">
+							<button type="button" id="btnList" class="btn border" onclick="location.href='./FindMyRes'">예약조회</button>
 						    <button type="button" id="btnNext" class="btn wine" style="line-height: 37px;">다음단계</button>
 						</div>
 					</div>
