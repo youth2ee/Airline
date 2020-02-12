@@ -48,13 +48,6 @@ public class AdminController {
 	public void admin2_1(Model model) throws Exception{
 		List<AirlineVO> airlineVOs = adminService.airlineList();
 		
-//		for(AirlineVO t:airlineVOs){
-//			System.out.println(t.getAName());
-//		
-//		}
-		
-		
-		
 		model.addAttribute("alist", airlineVOs);
 	}
 	

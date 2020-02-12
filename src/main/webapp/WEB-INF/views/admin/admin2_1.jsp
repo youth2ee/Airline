@@ -121,7 +121,7 @@
         <div id="collapseseven" class="collapse" aria-labelledby="headingseven" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">RESERVATION MANAGEMENT</h6>
-            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin3_1">공항별 항공편 관리</a>
+            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin3_1">예약 관리</a>
             <%-- <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_cinemaList"></a> --%>
           </div>
         </div>
