@@ -247,6 +247,19 @@
 	color: red;
 }
 
+#quickTraveller{
+	width: 220px;
+}
+
+#dropList{
+	width: 220px;
+}
+
+.list-person{
+	padding: 0 16px;
+}
+
+
 /* 웹체크인 */
 .search_box {
     position: relative;
@@ -297,12 +310,12 @@
 }
 
 input[type="text"], input[type="email"], input[type="password"], input[type="number"] {
-    height: 44px;
+   /*  height: 44px; */
     /* padding: 0 15px; */
-    margin-right: 10px;
+   /*  margin-right: 10px; */
     color: #222;
     /* font-size: 16px; */
-    line-height: 40px;
+  /*   line-height: 40px; */
 }
 
 .relative_calendar .btn_airport.type2 {
