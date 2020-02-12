@@ -55,7 +55,7 @@
 			   <div>
 			   	<div>
 			    	<input type="checkbox" value="frm_wrap" class="checkbox" style="display: inline-block;">
-					<input type="text" placeholder="예매자" name="id">
+					<input type="text" placeholder="예매자" name="id" value="${member.id}">
 					<input type="date" name="limoDate" class="limoDate datepicker" id="d1">
 					<select name="depLoc" class="depLoc">
 						<option>출발지</option>
@@ -94,7 +94,7 @@
 					  	<div class="frm_wrap2">
 						    <div class="here">
 						    	<input type="checkbox" value="frm_wrap2" class="checkbox" style="display: inline-block;">
-								<input type="text" placeholder="예매자" name="id">
+								<input type="text" placeholder="예매자" name="id" value="${member.id}">
 								<input type="date" name="limoDate" class="limoDate2" id="d2">
 								<select name="depLoc" class="depLoc2">
 									<option>출발지</option>

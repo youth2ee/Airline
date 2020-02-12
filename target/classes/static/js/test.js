@@ -221,8 +221,26 @@
 	});
 
 	$(".gobooks").click(function(){
-			
-			window.open("../imPay/imPayList2?name=리무진버스&amount="+100,"이니시스", "width=825px, height=600px");
+		if(!$(".checkbox").prop("checked")){
+			alert("결제할 버스를 체크해주세요");
+		}else if($(".checkbox").prop("checked").length == 1){
+			if($(".limoDate").val() == ""){
+				alert("날짜를 선택해주세요");
+			}else if($(".depLoc option:eq(0)").prop("selected") || $(".depLoc2 option:eq(0)").prop("selected")){
+				alert("출발지가 선택되지 않았습니다.");
+			}else if($(".arrLoc option:eq(0)").prop("selected") || $(".arrLoc2 option:eq(0)").prop("selected")){
+				alert("도착지가 선택되지 않았습니다.");
+			}else if($(".person option:eq(0)").prop("selected") || $(".person2 option:eq(0)").prop("selected")){
+				alert("인원을 선택해주세요");
+			}else if($(".limoTime option:eq(0)").prop("selected") || $(".limoTime2 option:eq(0)").prop("selected")){
+				alert("출발시간을 선택해주세요");
+			}else if($(".seat").val() == "" || $(".seat2").val() == ""){
+				alert("좌석을 선택을 해주세요");
+			}else{
+				window.open("../imPay/imPayList2?name=리무진버스&amount="+100,"이니시스", "width=825px, height=600px");
+			}
+		}
+		
 	});
 
 	function yongju(){

@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.airline.a1.member.MembersVO;
+
 @Controller
 @RequestMapping("limo/**")
 public class LimoController {
@@ -38,10 +40,12 @@ public class LimoController {
 	public ModelAndView limoBook(HttpSession session, Date [] limoDate, int [] limoPrice, String [] id, String [] depLoc, String [] arrLoc, String [] limoTime, String [] seat, int [] person, int [] child) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		List<LimoVO> ar = new ArrayList<LimoVO>(); 
-		
+		LimoVO limoVO = new LimoVO();
+		MembersVO membersVO = new MembersVO();
+		membersVO = (MembersVO)session.getAttribute("member");
+		limoVO.setId(membersVO.getId());
 		int result = 0;
 		for (int i = 0; i < limoDate.length; i++) {
-			LimoVO limoVO = new LimoVO();
 			limoVO.setLimoDate(limoDate[i]);
 			limoVO.setLimoPrice(limoPrice[i]);
 			limoVO.setId(id[i]);
@@ -52,19 +56,23 @@ public class LimoController {
 			limoVO.setPerson(person[i]);
 			limoVO.setChild(child[i]);
 			ar.add(limoVO);
-			limoService.limoBook(limoVO);
+			limoService.limoBook(limoVO);  
 		}
+		mv.addObject("member", membersVO);
 		mv.addObject("vo", ar);
 		mv.setViewName("imPay/imPayComplete2");
 		return mv;
 	}
 	@PostMapping("limoBook2")
-	public ModelAndView limoBook2(Date [] limoDate, int [] limoPrice, String [] id, String [] depLoc, String [] arrLoc, String [] limoTime, String [] seat, int [] person, int [] child) throws Exception{
+	public ModelAndView limoBook2(HttpSession session ,Date [] limoDate, int [] limoPrice, String [] id, String [] depLoc, String [] arrLoc, String [] limoTime, String [] seat, int [] person, int [] child) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		List<LimoVO> ar = new ArrayList<LimoVO>();
+		LimoVO limoVO = new LimoVO();
+		MembersVO membersVO = new MembersVO();
+		membersVO = (MembersVO)session.getAttribute("member");
+		limoVO.setId(membersVO.getId());
 		int result = 0;
 		for (int i = 0; i < limoDate.length; i++) {
-			LimoVO limoVO = new LimoVO();
 			limoVO.setLimoDate(limoDate[i]);
 			limoVO.setLimoPrice(limoPrice[i]);
 			limoVO.setId(id[i]);
@@ -77,6 +85,7 @@ public class LimoController {
 			ar.add(limoVO);
 			limoService.limoBook(limoVO);
 		}
+		mv.addObject("member", membersVO);
 		mv.addObject("vo", ar);
 		mv.setViewName("imPay/imPayComplete2");
 		return mv;
@@ -105,8 +114,6 @@ public class LimoController {
 	@GetMapping("disabled")
 	public ModelAndView disabled(LimoVO limoVO, HttpServletRequest httpServletRequest)throws Exception{
 		ModelAndView mv = new ModelAndView();
-		System.out.println(limoVO.getArrLoc());
-		System.out.println(limoVO.getDepLoc());
 		if(httpServletRequest.getHeader("Referer").equals("http://localhost/limo/limoBook2")) {
 			String dep = limoVO.getDepLoc();
 			String arr = limoVO.getArrLoc();
