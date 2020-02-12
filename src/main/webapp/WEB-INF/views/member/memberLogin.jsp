@@ -14,7 +14,7 @@
 <link rel="stylesheet" type="text/css" href="https://flyasiana.com/C/pc/css/common.css">
 <link rel="stylesheet" type="text/css" href="https://flyasiana.com/C/pc/css/flyasiana.css">
 <link rel="stylesheet" type="text/css" href="https://flyasiana.com/C/pc/css/calendar.css">
-
+<link rel="stylesheet" type="text/css" href="../resources/css/header.css">
  
 <!-- 
 <link rel="stylesheet" type="text/css" href="../resources/css/common/reset_p.css">
@@ -22,6 +22,7 @@
  -->
 </head>
 <body>
+<c:import url="../layout/header.jsp" />
 <div class="container" id="container">
 				<h3>로그인</h3> 
 				<form action="./memberLogin" method="post" id="loginform">

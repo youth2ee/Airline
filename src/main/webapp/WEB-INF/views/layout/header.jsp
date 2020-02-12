@@ -48,15 +48,14 @@
 				
 				<div class="menu_wrap_Right">
 					
-					<div class="r1">
-						<i class='fas fa-comment-dots' style='font-size:30px'></i>
-					</div>
+					<div class="r1"><i class='fas fa-comment-dots' style='font-size:30px'></i></div>
+					
 					<div class="r1">
 					<c:if test="${not empty member}">
-						<i class="material-icons" OnClick="location.href ='${pageContext.request.contextPath}/mypage/main'" style="font-size:33px; padding-top: 20px; cursor:pointer;">person_pin</i>
+					<i class="material-icons" OnClick="location.href ='${pageContext.request.contextPath}/mypage/main'" style="font-size:33px; padding-top: 20px; cursor:pointer;">person_pin</i>
 					</c:if>
 					<c:if test="${empty member}">
-						<i class="material-icons mp" style="font-size:33px; padding-top: 20px; cursor:pointer;">person_pin</i>
+					<i class="material-icons mp" style="font-size:33px; padding-top: 20px; cursor:pointer;">person_pin</i>
 					</c:if>
 					
 					</div>
@@ -66,6 +65,7 @@
 						<div class="tooltiptext1">
 							<div class="search__container">
 								<form action="${pageContext.request.contextPath}/indexSearch" id="frm2">
+
 
 							  	  <input class="search__input" type="text" placeholder="Search" name="search">
 							  	  <i class='fas fa-search' id="ssbtn"></i>
@@ -84,9 +84,11 @@
 $('body').on('click', '#sbtn', function(){
 	$('.tooltiptext1').css("display", "inline-block");
 });
+
 $('body').on('click', '#ssbtn', function(){
 	$('#frm2').submit();
 });
+
 
 $('body').on('click', '.mp', function(){
 	alert("로그인 해주세요.");
