@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.airline.a1.mypage.MypageMapper">
 	<select id="getBookingList" parameterType="com.airline.a1.checkIn.ETicketVO" resultType="com.airline.a1.checkIn.ETicketVO">
-		select distinct bookingNum,resDate from bookingTicket join flightData on bookingTicket.depFnum = flightData.fnum where id=#{id};
+		select distinct bookingNum,resDate from bookingTicket join flightData on bookingTicket.depFnum = flightData.fnum where id=#{id} order by resDate desc;
 	</select>
 	<select id="getBookingMore" parameterType="com.airline.a1.checkIn.ETicketVO" resultType="com.airline.a1.checkIn.ETicketVO">
 	<!-- 아래 주석은 운임 정보 있는 것 -->

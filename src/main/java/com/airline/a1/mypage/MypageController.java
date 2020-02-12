@@ -89,7 +89,7 @@ public class MypageController {
 		ETicketVO eTicketVO = new ETicketVO();
 		MembersVO member = (MembersVO)session.getAttribute("member");
 		/* eTicketVO.setId(member.getId()); */
-		eTicketVO.setId("test");
+		eTicketVO.setId("admin1234");
 		List<ETicketVO> eTicketVOs = mypageService.getBookingList(eTicketVO);
 		mv.addObject("bookList",eTicketVOs);
 		return mv;
