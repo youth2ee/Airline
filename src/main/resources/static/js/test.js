@@ -221,13 +221,20 @@
 	});
 
 	$(".gobooks").click(function(){
-		$(".checkbox").each(function(){
-			if(!$(this).prop("checked")){
-				$(this).parent().remove();
-			}
-			$(".frm").submit();
-		});
+			
+			window.open("../imPay/imPayList2?name=리무진버스&amount="+100,"이니시스", "width=825px, height=600px");
 	});
+
+	function yongju(){
+			if($("#hidden").val() =="용주형아"){
+				$(".checkbox").each(function(){
+					if(!$(this).prop("checked")){
+						$(this).parent().remove();
+					}
+				$(".frm").submit();
+			});
+		}
+	}	
 
 // 편도 2회 예매 --------------------------------------------------------------------------------------------------------
 // 지난 날 막기 : date함수
@@ -242,8 +249,8 @@
 //	        mm='0'+mm
 //	    } 
 //	today = yyyy+'-'+mm+'-'+dd;
-//	
-//	$(".limoDate2").attr('min', today);
+	
+	$(".limoDate2").attr('min', today);
 	
 	var depLoc2 = "";
 	var limoDate2 = "";

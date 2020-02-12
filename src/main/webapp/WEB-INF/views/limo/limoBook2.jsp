@@ -55,7 +55,7 @@
 			   <form action="./limoBook2"  method="post" class="frm">
 			    	<input type="checkbox" value="frm_wrap" class="checkbox" style="display: inline-block;">
 					<input type="text" placeholder="예매자" name="id">
-					<input type="date" name="limoDate" class="limoDate2 datepicker">
+					<input type="date" name="limoDate" class="limoDate datepicker">
 					<select name="depLoc" class="depLoc">
 						<option>도착지</option>
 						<option value="인천공항" class="airLine">인천공항</option>
@@ -184,11 +184,11 @@
 							<div class="select_limoDate_text" style="margin-left: 30px; font-size: 15px;"></div>
 						</div>
 						<div class="select_depLoc">
-							<div style="font-size: 21px; font-weight: bold; margin-bottom: 20px; margin-left: 30px;">출발지</div>
+							<div style="font-size: 21px; font-weight: bold; margin-bottom: 20px; margin-left: 30px;">도착지</div>
 							<div class="select_depLoc_text" style="margin-left: 30px; font-size: 15px;"></div>
 						</div>
 						<div class="select_arrLoc">
-							<div style="font-size: 21px; font-weight: bold; margin-bottom: 20px; margin-left: 30px;">도착지</div>
+							<div style="font-size: 21px; font-weight: bold; margin-bottom: 20px; margin-left: 30px;">출발지</div>
 							<div class="select_arrLoc_text" style="margin-left: 30px; font-size: 15px;"></div>
 						</div>
 						<div class="select_person">
@@ -300,7 +300,7 @@
 		  </div>
 </div>
 
-	
+<input type="hidden" id="hidden">
 <script src="../js/test.js"></script>
 </body>
 </html>

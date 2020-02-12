@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.airline.a1.limo.LimoVO;
 import com.airline.a1.member.MembersVO;
 
 @Controller
@@ -17,7 +18,47 @@ import com.airline.a1.member.MembersVO;
 public class ImPayController {
 	
 	
-
+	@RequestMapping("imPayComplete2")
+	public void imPayComplete2(Model model, LimoVO limoVO) {
+		
+		
+		
+		
+		//member에서 마일리지 적립은 여기서 해결
+		
+		model.addAttribute("vo", limoVO);
+	}
+	
+	@RequestMapping("imPayList2")
+	public Model imPayList2(ImPayVO imPayVO, HttpSession session, Model model) {
+		
+		/*
+		 * System.out.println(imPayVO.getMil()); System.out.println(imPayVO.getBpnum());
+		 */
+		
+		/* String [] nlist = imPayVO.getBpnum().split(","); */
+		
+		/*
+		 * int bpnum = 0;
+		 * 
+		 * for(String list : nlist) { list = list.trim(); bpnum =
+		 * Integer.parseInt(list);
+		 * 
+		 * }
+		 */
+		
+		/*
+		 * System.out.println(imPayVO.getName());
+		 * System.out.println(imPayVO.getAmount());
+		 */
+		
+		MembersVO membersVO = (MembersVO)session.getAttribute("member");
+		imPayVO.setMembersVO(membersVO);
+	
+		model.addAttribute("VO", imPayVO);
+		
+		return model;
+	}
 	
 	@RequestMapping("imPayList")
 	public Model imPayList(ImPayVO imPayVO, HttpSession session ,Model model) {
@@ -44,7 +85,6 @@ public class ImPayController {
 		
 		MembersVO membersVO = (MembersVO)session.getAttribute("member");
 		imPayVO.setMembersVO(membersVO);
-		
 	
 		model.addAttribute("VO", imPayVO);
 		
@@ -73,12 +113,8 @@ public class ImPayController {
 		 * System.out.println(imPayResultVO.getApply_num());
 		 */
 		
-		
 		//member에서 마일리지 적립은 여기서 해결
-		
-		
 		
 		model.addAttribute("vo", imPayResultVO);
 	}
-	
 }

@@ -302,6 +302,7 @@
 		    </div>
 		  </div>
 </div>
+<input type="hidden" id="hidden">
 
 <script src="../js/test.js"></script>
 </body>
