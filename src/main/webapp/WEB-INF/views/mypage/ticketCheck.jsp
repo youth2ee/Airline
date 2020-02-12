@@ -89,63 +89,28 @@
  </ul>      
 	<div>
 	<div class="bookingList">예매내역</div>
-		<div class="ticketInfo" style="display: none">
-			<div class="ticketText">
-				<div class="bookingNum">
-					<span class="bookingNum">S68U58</span>
-				</div>
-				<div class="depInfo"> 
-					<p class="ticketInfoText1">GMP</p>
-					<p class="ticketInfoText2">김포(Gimpo)</p>
-					<p class="ticketInfoText3">19JAN20(일) 06:10</p>
-					<p class="ticketInfoText3">OZ123A456</p>
-				</div>
-				<div class="arrInfo"> 
-					<p class="ticketInfoText1">CJU</p>
-					<p class="ticketInfoText2">제주(Jeju)</p>
-					<p class="ticketInfoText3">19JAN20(일) 07:20</p>
-					<p class="ticketInfoText3">OZ123A456</p>
-				</div>  
-				<div class="moreInfo"> 
-					<p class="ticketInfoText1">GMP → CJU</p>
-					<p class="ticketInfoText2">좌석 : D4</p>
-					<p class="ticketInfoText3">비행시간 : 48분</p>
-					<p class="ticketInfoText1">CJU → GMP</p>
-					<p class="ticketInfoText2">좌석 : F1</p>
-					<p class="ticketInfoText3">비행시간 : 48분</p>
-				</div> 
-				<div class="button_wrap">
-					<a class="cancel">예매 취소</a>
-				</div>
-			</div>
-		</div>
-	</div>
 	<div class="bookingInfo">
-		<div class="bookingTable">
-			<table>
-				<tr class="tableTop">
-					<td>선택</td>
-					<td>출발일자</td>
-					<td>출발지→도착지</td>
-					<td>출발→도착시간</td>
-					<td>편명</td>
-					<td>좌석</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox"></td>
-					<td>2020-02-07 (금)</td>
-					<td>김포 → 제주</td>
-					<td>07:30 → 08:30</td>
-					<td>OZ123</td>
-					<td>C4</td>
-				</tr>
-			</table>
-	<div class="bookingInfo">
-	<input type="text" id="cancel">
 		<div class="bookingTable">
 		
 				<c:forEach items="${bookList}" var="book" varStatus="i">
-					<p class="bookList bookDesign" id="${i.count}"><span id="bookingNum">${book.bookingNum}</span> <span>${book.resDate}</span><span>${book.depAirportNm}</span><span>${book.arrAirportNm}</span></p>
+					<div class="bookList bookDesign" id="${i.count}">
+						<span id="bookingNum" style="display: none">${book.bookingNum}</span>
+						<span class="bkn">예매번호 : ${book.bookingNum}</span>
+						<span class="bookDate">예매일 : ${book.resDate}</span>
+						<span class="depNm">${book.depAirportNm}</span>
+						<span class="arrNm">${book.arrAirportNm}</span>
+						<span class="flightTime">${book.flightTime}분</span>
+						<span class="arrNm2">${book.depAirportNm}</span>
+						<span class="depNm2">${book.arrAirportNm}</span>
+						<span class="flightTime2">${book.flightTime}분</span>
+						<div class="bar1"></div>
+						<div class="round1"></div>
+						<div>
+						<img class="airplaneImg" alt="" src="../resources/newni/airplane.png">
+						<img class="airplaneImg2" alt="" src="../resources/newni/airplane.png">
+						<div class="bar2"></div>
+						</div>
+					</div>
 					<div class="timelineView${i.count} toggle${i.count}" style="display: none"></div>
 					<div class="dataView${i.count} toggle${i.count} dataViewDesign" style="display: none"></div>
 				</c:forEach>
@@ -165,7 +130,7 @@ var toggleButton = document.getElementById("toggleButton");
 			$.get("./bookingMore?bookingNum=" + $(this).find('#bookingNum').text(),function(data) {
 				$(".ajax").html(data);
 				var count = $(".ajax").find(".count").text();
-				var rowItem = '<table class="open"><tr class="tableTop"><td class="td1">선택</td><td class="td2">출발일자</td><td class="td3">출발지 → 도착지</td><td class="td4">출발 → 도착시간</td><td class="td5">편명</td><td class="td6">좌석</td><td class="td7">운임</td><td class="td8">탑승번호</td><td class="td9">탑승자명</td></tr>';
+				var rowItem = '<table class="open"><tr class="tableTop"><td class="td1">eticket</td><td class="td2">출발일자</td><td class="td3">출발지 → 도착지</td><td class="td4">출발 → 도착시간</td><td class="td5">편명</td><td class="td6">좌석</td><td class="td7">운임</td><td class="td8">탑승번호</td><td class="td9">탑승자명</td></tr>';
 				for(var i = 1; i <= count ; i++){
 					var depPlandTime = $(".ajax").find(".depPlandTime"+i).text();
 					var depPlandTime2 = depPlandTime.substring(0,4) + "-" + depPlandTime.substring(4,6) + "-" + depPlandTime.substring(6,8);
@@ -178,15 +143,20 @@ var toggleButton = document.getElementById("toggleButton");
 					var seatName = $(".ajax").find(".seatName"+i).text();
 					var flightBnum = $(".ajax").find(".flightBNum"+i).text();
 					var totalPrice = $(".ajax").find(".totalPrice"+i).text();
+					var bookingNum = $(".ajax").find(".bookingNum"+i).text();
 					var bnum = $(".ajax").find(".bnum"+i).text();
+					var name = $(".ajax").find(".name"+i).text();
+					var flightBnum2 = $(".ajax").find(".flightBNum"+i).text();
 					if(seatName == "")
 						seatName = "X";
 					if (flightBnum == "")
 						flightBnum = "X";
+					else 
+						flightBnum = "체크인 완료";
 					if(totalPrice == "0")
 						totalPrice = "운임정보없음";
 					rowItem += '<tr class="tableContents">';
-					rowItem += '<td><input type="checkbox" class="cancelCheck" id="check"></td>';
+					rowItem += '<td><input type="button" value="출력" id="eticket"></td>';
 					rowItem += '<td style="display:none">'+bnum+'</td>';
 					rowItem += '<td>'+depPlandTime2+'</td>';
 					rowItem += '<td>'+$(".ajax").find(".depAirportNm"+i).text()+" → "+$(".ajax").find(".arrAirportNm"+i).text()+'</td>';
@@ -194,8 +164,8 @@ var toggleButton = document.getElementById("toggleButton");
 					rowItem += '<td>'+$(".ajax").find(".vihicleId"+i).text()+'</td>';
 					rowItem += '<td>'+seatName+'</td>';
 					rowItem += '<td>'+totalPrice+'</td>';
-					rowItem += '<td>'+flightBnum+'</td>';
-					rowItem += '<td>'+$(".ajax").find(".name"+i).text()+'</td>';
+					rowItem += '<td>'+flightBnum2+'</td>';
+					rowItem += '<td>'+name+'</td>';
 				}
 				rowItem += '</table>';
 				
@@ -207,12 +177,15 @@ var toggleButton = document.getElementById("toggleButton");
 				var depPlandTimeBackPrint = depPlandTimeBack.substring(0,4) + "-" + depPlandTimeBack.substring(4,6) + "-" + depPlandTimeBack.substring(6,8);
 				var arrPlandTimeGoPrint = arrPlandTimeGo.substring(0,4) + "-" + arrPlandTimeGo.substring(4,6) + "-" + arrPlandTimeGo.substring(6,8);
 				var arrPlandTimeBackPrint = arrPlandTimeBack.substring(0,4) + "-" + arrPlandTimeBack.substring(4,6) + "-" + arrPlandTimeBack.substring(6,8);
-				var depPlandTimeGo2 = depPlandTimeGo.substring(0,4)+"-"+ depPlandTimeGo.substring(4,6)+"-"+depPlandTimeGo.substring(6,8)+" "+depPlandTimeGo.substring(8,10) + ":" + depPlandTimeGo.substring(10,12);
-				var depPlandTimeBack2 = depPlandTimeBack.substring(0,4)+"-"+ depPlandTimeBack.substring(4,6)+"-"+depPlandTimeBack.substring(6,8)+" "+arrPlandTimeBack.substring(8,10) + ":" + arrPlandTimeBack.substring(10,12);
-				var arrPlandTimeGo2 = arrPlandTimeGo.substring(0,4)+"-"+ arrPlandTimeGo.substring(4,6)+"-"+arrPlandTimeGo.substring(6,8)+" "+arrPlandTimeGo.substring(8,10) + ":" + arrPlandTimeGo.substring(10,12);
-				var arrPlandTimeBack2 = arrPlandTimeBack.substring(0,4)+"-"+ arrPlandTimeBack.substring(4,6)+"-"+arrPlandTimeBack.substring(6,8)+" "+arrPlandTimeBack.substring(8,10) + ":" + arrPlandTimeBack.substring(10,12);
+				var depPlandTimeGo2 = depPlandTimeGo.substring(0,4)+"-"+ depPlandTimeGo.substring(4,6)+"-"+depPlandTimeGo.substring(6,8)+" "+depPlandTimeGo.substring(8,10) + ":" + depPlandTimeGo.substring(10);
+				var depPlandTimeBack2 = depPlandTimeBack.substring(0,4)+"-"+ depPlandTimeBack.substring(4,6)+"-"+depPlandTimeBack.substring(6,8)+" "+depPlandTimeBack.substring(8,10) + ":" + depPlandTimeBack.substring(10);
+				var arrPlandTimeGo2 = arrPlandTimeGo.substring(0,4)+"-"+ arrPlandTimeGo.substring(4,6)+"-"+arrPlandTimeGo.substring(6,8)+" "+arrPlandTimeGo.substring(8,10) + ":" + arrPlandTimeGo.substring(10);
+				var arrPlandTimeBack2 = arrPlandTimeBack.substring(0,4)+"-"+ arrPlandTimeBack.substring(4,6)+"-"+arrPlandTimeBack.substring(6,8)+" "+arrPlandTimeBack.substring(8,10) + ":" + arrPlandTimeBack.substring(10);
+				var depPlandTimeGo3 = depPlandTime.substring(0,8);
+				var arrPlandTimeGo3 = arrPlandTime.substring(0,8);
 				
-
+				var nowTime = String(new Date().getFullYear())+("0"+String(new Date().getMonth()+1)).slice(-2)+("0"+String(new Date().getDate())).slice(-2)+String(new Date().getHours())+String(new Date().getMinutes());
+				
 				/****** 가는편의 출발시간 30분전 구하기 (탑승 마감) *******/
 				var boardingClosureGo = new Date(depPlandTimeGo2);
 				boardingClosureGo.setMinutes(boardingClosureGo.getMinutes() - 30);
@@ -232,8 +205,9 @@ var toggleButton = document.getElementById("toggleButton");
 				var yesterYear = nowDate.getFullYear();
 				var yesterMonth = nowDate.getMonth() + 1;
 				var yesterDay = nowDate.getDate();
-				if(yesterMonth < 10){ yesterMonth = "0" + yesterMonth; }
-				if(yesterDay < 10) { yesterDay = "0" + yesterDay; }
+				if(yesterMonth < 10){ yesterMonth = "0" + yesterMonth;}
+				if(yesterDay < 10) { yesterDay = "0" + yesterDay;}
+				var depYesterDayGoNoHyphen = yesterYear + yesterMonth + yesterDay;
 				var depYesterDayGo = yesterYear + "-" + yesterMonth + "-" + yesterDay;
 				/*******************************************/
 				
@@ -244,27 +218,76 @@ var toggleButton = document.getElementById("toggleButton");
 				var yesterYear = nowDate.getFullYear();
 				var yesterMonth = nowDate.getMonth() + 1;
 				var yesterDay = nowDate.getDate();
-				if(yesterMonth < 10){ yesterMonth = "0" + yesterMonth; }
-				if(yesterDay < 10) { yesterDay = "0" + yesterDay; }
+				if(yesterMonth < 10){ yesterMonth = "0" + yesterMonth;}
+				if(yesterDay < 10) { yesterDay = "0" + yesterDay;}
+				var depYesterDayBackNoHyphen = yesterYear + yesterMonth + yesterDay;
 				var depYesterDayBack = yesterYear + "-" + yesterMonth + "-" + yesterDay;
 				/*******************************************/
 				
-				var timeline = '<ul class="timeline timeline1" id="timeline"><li class="li" id="checkInTimeline"> <div class="timestamp"><span class="author">온라인 체크인</span><span class="checkInDate" id='+depPlandTime4+'>X<span></div><div class="status"><h4> Online check in </h4></div></li>';
-				timeline += '<li class="li" id="checkInCloseTimeline"><div class="timestamp"><span class="author">체크인 마감</span><span class="checkInClose" id="'+depYesterDayGo+'">'+depYesterDayGo+'</span></div><div class="status"><h4> Check in closure </h4></div></li>';
-				timeline += '<li class="li" id="boardingCloseTimeline"><div class="timestamp"><span class="author">탑승마감</span><span class="boardingClose">'+depPlandTimeGoPrint+" "+boardingClosureGo+'<span></div><div class="status"><h4> Boarding closure </h4></div></li>';
-				timeline += '<li class="li"><div class="timestamp"><span class="author">출발</span><span class="date">'+depPlandTimeGo2+'</span></div><div class="status"><h4> Depart </h4></div></li>';
-				timeline += '<li class="li"><div class="timestamp"><span class="author">도착</span><span class="date">'+arrPlandTimeGo2+'<span></div><div class="status"><h4> Arrival </h4></div></li></ul>';
+				var timeline = '<ul class="timeline timeline1" id="timeline"><li class="li" id="checkInTimeline"> <div class="timestamp"><span class="author">온라인 체크인</span><span class="checkInDate">'+flightBnum+'<span></div><div class="status"><h4> Online check in </h4></div></li>';
+				timeline += '<li class="li" id="checkInCloseTimeline"><div class="timestamp"><span class="author">체크인 마감</span><span class="checkInClose" id="'+depYesterDayGoNoHyphen+'">'+depYesterDayGo+'</span></div><div class="status"><h4> Check in closure </h4></div></li>';
+				timeline += '<li class="li" id="boardingCloseTimeline"><div class="timestamp"><span class="author">탑승마감</span><span class="boardingClose" >'+depPlandTimeGoPrint+" "+boardingClosureGo+'<span></div><div class="status"><h4> Boarding closure </h4></div></li>';
+				timeline += '<li class="li" id="departTime"><div class="timestamp"><span class="author">출발</span><span class="depPlandTimeGo" id="'+depPlandTimeGo+'">'+depPlandTimeGo2+'</span></div><div class="status"><h4> Depart </h4></div></li>';
+				timeline += '<li class="li" id="arrivalTime"><div class="timestamp"><span class="author">도착</span><span class="arrPlandTimeGo" id="'+arrPlandTimeGo+'" >'+arrPlandTimeGo2+'<span></div><div class="status"><h4> Arrival </h4></div></li></ul>';
 				if( $(".ajax").find(".kind1").text() != '편도'){
-				timeline += '<ul class="timeline timeline2" id="timeline"><li class="li" id="checkInTimeline"> <div class="timestamp"><span class="author">온라인 체크인</span><span class="checkInDate" id='+depPlandTime4+'>X<span></div><div class="status"><h4> Online check in </h4></div></li>';
-				timeline += '<li class="li" id="checkInCloseTimeline"><div class="timestamp"><span class="author">체크인 마감</span><span class="checkInClose" id="'+depYesterDayBack+'">'+depYesterDayBack+'</span></div><div class="status"><h4> Check in closure </h4></div></li>';
+				timeline += '<ul class="timeline timeline2" id="timeline" ><li class="li" id="checkInTimeline"> <div class="timestamp"><span class="author">온라인 체크인</span><span class="checkInDate" >'+flightBnum+'</span></div><div class="status"><h4> Online check in </h4></div></li>';
+				timeline += '<li class="li" id="checkInCloseTimeline"><div class="timestamp"><span class="author">체크인 마감</span><span class="checkInClose" id="'+depYesterDayBackNoHyphen+'">'+depYesterDayBack+'</span></div><div class="status"><h4> Check in closure </h4></div></li>';
 				timeline += '<li class="li" id="boardingCloseTimeline"><div class="timestamp"><span class="author">탑승마감</span><span class="boardingClose">'+depPlandTimeBackPrint+" "+boardingClosureBack+'<span></div><div class="status"><h4> Boarding closure </h4></div></li>';
-				timeline += '<li class="li"><div class="timestamp"><span class="author">출발</span><span class="date">'+depPlandTimeBack2+'</span></div><div class="status"><h4> Depart </h4></div></li>';
-				timeline += '<li class="li"><div class="timestamp"><span class="author">도착</span><span class="date">'+arrPlandTimeBack2+'<span></div><div class="status"><h4> Arrival </h4></div></li></ul>';
+				timeline += '<li class="li" id="departTime"><div class="timestamp"><span class="author">출발</span><span class="depPlandTimeBack" id="'+depPlandTimeBack+'">'+depPlandTimeBack2+'</span></div><div class="status"><h4> Depart </h4></div></li>';
+				timeline += '<li class="li" id="arrivalTime"><div class="timestamp"><span class="author">도착</span><span class="arrPlandTimeBack" id="'+arrPlandTimeBack+'">'+arrPlandTimeBack2+'<span></div><div class="status"><h4> Arrival </h4></div></li></ul>';
 				}
+
+
 				$(".dataView"+num).html(rowItem);
 				$(".timelineView"+num).html(timeline);
+
+				var date = new Date();
+				var year = date.getFullYear();
+				var month = date.getMonth() + 1;
+				var day = date.getDate();
+				if((month+"").length < 2){
+					month = "0" + month;
+				} 
+				if((day+"").length < 2){
+					day = "0" + day;
+				} 
+
 				
-				
+				var getDate = String(year) + String(month) + String(day);
+				if($(".timelineView"+num).text()!=null){
+					
+					if ($(".timelineView"+num+" .timeline1 .checkInDate").text() != "X"){
+						
+					if($(".timelineView"+num+" .timeline1 .checkInDate").text() == "체크인 완료")
+						$(".timelineView"+num+" #checkInTimeline").addClass("complete");
+					if(Number(getDate) > $(".timelineView"+num+" .timeline1 .checkInClose").attr('id'))
+						$(".timelineView"+num+" .timeline1 #checkInCloseTimeline").addClass("complete");
+					if(nowTime > $(".timelineView"+num+" .timeline1 .boardingClose").text())
+						$(".timelineView"+num+" .timeline1 #boardingCloseTimeline").addClass("complete");
+					if(nowTime > $(".timelineView"+num+" .timeline1 .depPlandTimeGo").attr('id'))
+						$(".timelineView"+num+" .timeline1 #departTime").addClass("complete");
+					if(nowTime > $(".timelineView"+num+" .arrPlandTimeGo").attr('id'))
+						$(".timelineView"+num+" .timeline1 #arrivalTime").addClass("complete");
+						
+					if($(".timelineView"+num+" .timeline2 .checkInDate").text() == "체크인 완료")
+						$(".timelineView"+num+" #checkInTimeline").addClass("complete");
+					if(Number(getDate) > $(".timelineView"+num+" .timeline1 .checkInClose").attr('id'))
+						$(".timelineView"+num+" .timeline2 #checkInCloseTimeline").addClass("complete");
+					if(nowTime > $(".timelineView"+num+" .timeline1 .boardingClose").text())
+						$(".timelineView"+num+" .timeline2 #boardingCloseTimeline").addClass("complete");
+					if(nowTime > $(".timelineView"+num+" .timeline1 .depPlandTimeGo").attr('id'))
+						$(".timelineView"+num+" .timeline2 #departTime").addClass("complete");
+					if(nowTime > $(".timelineView"+num+" .arrPlandTimeGo").attr('id'))
+						$(".timelineView"+num+" .timeline2 #arrivalTime").addClass("complete");
+					}
+				}
+					
+				$(document).on('click', '#eticket', function(){
+					if($(".timelineView"+num+" .timeline1 .checkInDate").text() == "체크인 완료" && $(".timelineView"+num+" .timeline2 .checkInDate").text() == "체크인 완료")
+						window.open("../checkIn/eTicket?bookingNum="+bookingNum+"&name="+name,"eTicket","width=700, height=800, toolbar=no, menubar=no, scrollbars=no, resizable=yes")
+					else if($(".timelineView"+num+" .timeline1 .checkInDate").text() != "체크인 완료" && $(".timelineView"+num+" .timeline2 .checkInDate").text() != "체크인 완료")
+						alert('체크인 후 확인 가능합니다.');
+				});
 				
 				if($(".ajax").find(".isCheckIn").text() != 0)
 					$("#"+depPlandTime4).text(depPlandTime2);
@@ -283,7 +306,7 @@ var toggleButton = document.getElementById("toggleButton");
 	</c:forEach>
 	   	
 	});
-
+	
 	var date = new Date();
 	var year = date.getFullYear();
 	var month = date.getMonth() + 1;
@@ -294,6 +317,8 @@ var toggleButton = document.getElementById("toggleButton");
 	if((day+"").length < 2){
 		day = "0" + day;
 	} 
+
+	
 	var getDate = String(year) + String(month) + String(day);
 	if(Number(getDate) > $(".checkInDate").attr('id'))
 		$("#checkInTimeline").addClass("complete");

@@ -100,9 +100,22 @@ public class MypageController {
 		ETicketVO eTicketVO = new ETicketVO();
 		MembersVO member = (MembersVO)session.getAttribute("member");
 		/* eTicketVO.setId(member.getId()); */
-		eTicketVO.setId("test");
+		eTicketVO.setId("admin1234");
 		List<ETicketVO> eTicketVOs = mypageService.getBookingList(eTicketVO);
-		mv.addObject("bookList",eTicketVOs);
+		List<ETicketVO> eTicketVOs2 = new ArrayList<ETicketVO>();
+		
+		for(int i = 0; i < eTicketVOs.size(); i++) {
+			// 왕복이어도 정보는 가지지만 리스트에는 하나만 출력하기 (distinct 해도 정보가 달라서 두개씩나옴)
+			if (eTicketVOs.get(i).getKind().equals("왕복")) {
+				if (i < 15 && eTicketVOs.get(i).getBookingNum().equals(eTicketVOs.get(i + 1).getBookingNum())) {
+					eTicketVOs2.add(eTicketVOs.get(i));
+				}
+			}
+			else {
+				eTicketVOs2.add(eTicketVOs.get(i));
+			}
+		}
+		mv.addObject("bookList",eTicketVOs2);
 		return mv;
 	}
 	

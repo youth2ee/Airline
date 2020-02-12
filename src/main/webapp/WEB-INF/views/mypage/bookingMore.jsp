@@ -15,4 +15,5 @@
 	<div class="kind${status.count}">${booking.kind}</div>
 	<div class="flightBNum${status.count}">${booking.flightBNum}</div>
 	<div class="seatName${status.count}">${seats[status.index].seatName}</div>
+	<div class="bookingNum${status.count}">${booking.bookingNum}</div>
 </c:forEach>
