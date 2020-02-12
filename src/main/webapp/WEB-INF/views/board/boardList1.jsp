@@ -94,6 +94,19 @@
 			<div id="tab-2" class="tab-content test current">
 				<div class="bbs_list">
 					<ul>
+						<c:choose>
+						<c:when test="${empty list and not empty pager.search}">
+							<div>
+							<div class="total_search_txt">
+								<strong>조회하신 단어와 일치하는 게시물이 없습니다.</strong>
+							</div>
+							<div class="btn_wrap_ceType1">
+								<a href="./noticeList" id="btnList" type="button">전체리스트</a>
+							</div>
+						</div>				
+						</c:when>
+						
+						<c:otherwise>
 						<c:forEach items="${list}" var="vo">
 							<c:if test="${not empty vo.fix}">
 								<li class="bg_point">
@@ -130,21 +143,10 @@
 									</div>
 								</div>
 							</li>
-							</c:if>
-							
-				 	<c:if test="${empty vo}">
-						<div>
-							<div class="total_search_txt">
-								<strong>조회하신 단어와 일치하는 게시물이 없습니다.</strong>
-							</div>
-							<div class="btn_wrap_ceType1">
-								<a href="./noticeList" id="btnList" type="button">전체리스트</a>
-							</div>
-						</div>
-							
-					</c:if> 
-							
+							</c:if>					
 						</c:forEach>
+						</c:otherwise>			
+					</c:choose>	
 					</ul>
 				</div>
 

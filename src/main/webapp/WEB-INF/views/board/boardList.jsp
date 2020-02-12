@@ -85,7 +85,19 @@
 		<div id="tab-1" class="tab-content current">
 			<div class="bbs_list">
 				<ul>					
-								
+					<c:choose>	
+					<c:when test="${empty list and not empty pager.search}">
+							<div>
+							<div class="total_search_txt">
+								<strong>조회하신 단어와 일치하는 게시물이 없습니다.</strong>
+							</div>
+							<div class="btn_wrap_ceType1">
+								<a href="./noticeList" id="btnList" type="button">전체리스트</a>
+							</div>
+						</div>				
+					</c:when>	
+					
+					<c:otherwise>	
 					<c:forEach items="${list}" var = "vo">
 						<c:if test="${not empty vo.fix}">
 						<li class="bg_point">
@@ -107,39 +119,27 @@
 					</li>
 					</c:if>
 					
-					<c:if test="${empty vo.fix}">
-					<li>
-						<div class="left">
-							<div class="title">
-								<a href="./noticeSelect?num=${vo.num}&dispCt=all&curPage=${pager.curPage}&search=${pager.search}&kind=${pager.kind}">
-									<em>${vo.title}</em>
-								</a>
+						<c:if test="${empty vo.fix}">
+						<li>
+							<div class="left">
+								<div class="title">
+									<a href="./noticeSelect?num=${vo.num}&dispCt=all&curPage=${pager.curPage}&search=${pager.search}&kind=${pager.kind}">
+										<em>${vo.title}</em>
+									</a>
+								</div>
+								<p class="txt">${vo.textContents}</p>
 							</div>
-							<p class="txt">${vo.textContents}</p>
-						</div>
-						<div class="right">
-							<div class="right_sub">
-							<span class="views">조회수: ${vo.hit}</span>
-							<span class="date">${vo.regDate}</span>
+							<div class="right">
+								<div class="right_sub">
+								<span class="views">조회수: ${vo.hit}</span>
+								<span class="date">${vo.regDate}</span>
+								</div>
 							</div>
-						</div>
-					</li>
-					<%--  <c:if test="${not empty pager.search and empty vo.title}"> --%>				
-					</c:if>
-					<!-- empty list -->
-			<%-- 		<c:if test="${empty list}">
-						<div>
-							<div class="total_search_txt">
-								<strong>조회하신 단어와 일치하는 게시물이 없습니다.</strong>
-							</div>
-							<div class="btn_wrap_ceType1">
-								<a href="./noticeList" id="btnList" type="button">전체리스트</a>
-							</div>
-						</div>				
-					</c:if>  --%>
-					
-					</c:forEach>
-
+						</li>
+						</c:if>	
+						</c:forEach>
+						</c:otherwise>	
+					</c:choose>
 				 </ul>	
 			</div>
 			<div class="paging">
