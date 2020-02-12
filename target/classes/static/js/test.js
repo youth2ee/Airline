@@ -119,6 +119,19 @@
 		}
 	});
 	
+	// 날짜가 바뀌면 다른 값들 초기화
+	$("body").on("change", ".limoDate", function(){
+		$(".depLoc option:eq(0)").prop("selected", true);
+		$(".arrLoc option:eq(0)").prop("selected", true);
+		$(".person option:eq(0)").prop("selected", true);
+		$(".limoTime option:eq(0)").prop("selected", true);
+		$(".price").val("");
+		$(".seat").val("");
+		price = $(".arrLoc1 option:selected").attr('id');
+		price = price*1;
+	});
+	
+	
 	// 출발지가 바뀌면 다른 값들 초기화
 	var price = 0;
 	$("body").on("change", ".arrLoc1", function(){
@@ -128,6 +141,11 @@
 		$(".seat").val("");
 		price = $(".arrLoc1 option:selected").attr('id');
 		price = price*1;
+	});
+	
+	// 출발시간이 바뀌면 다른 값들 초기화
+	$("body").on("change", ".limoTime", function(){
+		$(".seat").val("");
 	});
 
 	// 대인 & 소인 가격 산출하기 : 소인가격 = 대인가격 * 0.8
@@ -147,6 +165,7 @@
 			$(".child option:eq(0)").prop("selected", true);
 			$(".price").val(cal1);
 		}
+		$(".seat").val("");
 	});
 	
 	$("body").on("change", ".child1", function(){
@@ -160,6 +179,7 @@
 			$(".child option:eq(0)").prop("selected", true);
 			$(".price").val(cal1);
 		}
+		$(".seat").val("");
 	});
 	
 	// 이용가능 좌석 빨간색 이미지로 바꾸기
@@ -231,13 +251,11 @@
 				checked_total = checked_total+1;
 				if(this_check.siblings("input[name=limoDate]").val()==""){
 					alert('날짜를 선택해주세요');
-					this_check.siblings("input[name=limoDate]").focus();
 				}else if(this_check.siblings("select[name=depLoc]").val()==""){
 					alert("출발지가 선택되지 않았습니다.");
-					this_check.siblings(".depLoc").focus();
-				}else if(this_check.siblings(".place").children("select[name=arrLoc]").val()==""){
+				}else if(this_check.siblings("span").children("select[name=arrLoc]").val()==""){
 					alert("도착지가 선택되지 않았습니다.");
-				}else if(this_check.siblings(".place").children("select[name=person]").val()=="" && this_check.siblings(".place").children("select[name=child]").val()==""){
+				}else if(this_check.siblings("span").children("select[name=person]").val()=="" && this_check.siblings("span").children("select[name=child]").val()==""){
 					alert('탑승인원을 선택해주세요.');
 				}else if(this_check.siblings("select[name=limoTime]").val()==""){
 					alert('출발시간을 선택해주세요.');
@@ -258,10 +276,54 @@
 		console.log('체크박스 수 :' +check_total);
 		console.log('논체크 수 :' +check_none);
 		console.log('체크한 수 :' +checked_total);
-		if(check_count == checked_total){
+		if(check_count == checked_total && check_count != 0){
 			alert('결제 진행');
 			window.open("../imPay/imPayList2?name=리무진버스&amount="+100,"이니시스", "width=825px, height=600px");
 		}
+	});
+		
+		$(".gobooks2").click(function(){
+			
+			var check_count = 0;
+			var check_total = $(".checkbox").length;
+			var check_none = 0;
+			var checked_total = 0;
+			$(".checkbox").each(function(){
+				var this_check = $(this);
+				if($(this).prop("checked")){
+					checked_total = checked_total+1;
+					if(this_check.siblings("input[name=limoDate]").val()==""){
+						alert('날짜를 선택해주세요');
+					}else if(this_check.siblings("select[name=depLoc]").val()==""){
+						alert("도착지가 선택되지 않았습니다.");
+					}else if(this_check.siblings("span").children("select[name=arrLoc]").val()==""){
+						alert("출발지가 선택되지 않았습니다.");
+					}else if(this_check.siblings("span").children("select[name=person]").val()=="" && this_check.siblings("span").children("select[name=child]").val()==""){
+						alert('탑승인원을 선택해주세요.');
+					}else if(this_check.siblings("select[name=limoTime]").val()==""){
+						alert('출발시간을 선택해주세요.');
+					}else if(this_check.siblings("input[name=seat]").val()==""){
+						alert('좌석을 선택해주세요.');
+					}else{
+						check_count = check_count+1;
+					}
+				}else{
+					check_none = check_none + 1;
+					
+					if(check_total == check_none){
+						alert('결제할 버스를 선택해주세요.');
+					}
+				}
+			});
+			console.log('체크한 수(검증완) :' +check_count);
+			console.log('체크박스 수 :' +check_total);
+			console.log('논체크 수 :' +check_none);
+			console.log('체크한 수 :' +checked_total);
+			if(check_count == checked_total && check_count != 0){
+				alert('결제 진행');
+				window.open("../imPay/imPayList2?name=리무진버스&amount="+100,"이니시스", "width=825px, height=600px");
+			}
+		});
 		
 /*		if(check_count == 0){
 			alert('결제할 버스를 체크해주세요');
@@ -289,7 +351,6 @@
 
 		}*/
 		
-	});
 
 	function yongju(){
 			if($("#hidden").val() =="용주형아"){
@@ -450,6 +511,19 @@
 		}
 	});
 	
+	
+	// 날짜가 바뀌면 다른 값들 초기화
+	$("body").on("change", ".limoDate2", function(){
+		$(".depLoc2 option:eq(0)").prop("selected", true);
+		$(".arrLoc2 option:eq(0)").prop("selected", true);
+		$(".person2 option:eq(0)").prop("selected", true);
+		$(".limoTime2 option:eq(0)").prop("selected", true);
+		$(".price2").val("");
+		$(".seat2").val("");
+		price = $(".arrLoc2 option:selected").attr('id');
+		price = price*1;
+	});
+	
 	// 출발지가 바뀌면 다른 값들 초기화
 	var price2 = 0;
 	$("body").on("change", ".arrLoc2", function(){
@@ -466,6 +540,11 @@
 		})
 		price2 = price2*1;
 		console.log(price2);	
+	});
+	
+	// 출발시간이 바뀌면 다른 값들 초기화
+	$("body").on("change", ".limoTime2", function(){
+		$(".seat2").val("");
 	});
 
 	// 대인 & 소인 가격 산출하기 : 소인가격 = 대인가격 * 0.8
@@ -490,6 +569,7 @@
 			$(".child2 option:eq(0)").prop("selected", true);
 			$(".price2").val(cal3);
 		}
+		$(".seat2").val("");
 	});
 	
 	$("body").on("change", ".child2", function(){
@@ -508,6 +588,7 @@
 			$(".child2 option:eq(0)").prop("selected", true);
 			$(".price2").val(cal3);
 		}
+		$(".seat2").val("");
 	});
 	
 	// 이용가능 좌석 빨간색 이미지로 바꾸기
@@ -550,5 +631,4 @@
 			}
 		});
 	});
-	
 	

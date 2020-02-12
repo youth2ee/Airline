@@ -49,7 +49,7 @@
 		<div style="width: 310px; height:50px; margin: 0 auto; margin-top: 20px;">
 			  <button class="add">예매추가</button>
 			  <button class="del">선택삭제</button>
-			  <button class="gobooks">예매하기</button>
+			  <button class="gobooks2">예매하기</button>
 		</div>
 	  		<div class="frm_wrap">
 			   <form action="./limoBook2"  method="post" class="frm">
@@ -57,7 +57,7 @@
 					<input type="text" placeholder="예매자" name="id" value="${member.id}">
 					<input type="date" name="limoDate" class="limoDate datepicker">
 					<select name="depLoc" class="depLoc">
-						<option>도착지</option>
+						<option value="">도착지</option>
 						<option value="인천공항" class="airLine">인천공항</option>
 						<option value="김포공항" class="airLine">김포공항</option>
 						<option value="양양공항" class="airLine">양양공항</option>
@@ -71,11 +71,11 @@
 					</select>
 					<span class="place"></span>
 					<span class="place2"></span>
-					<input type="text" placeholder="가격" name="limoPrice" class="price">
+					<input type="text" placeholder="가격" name="limoPrice" class="price" readonly="readonly">
 					<span class="price1"></span>
 					<span class="price2"></span>
 					<select name="limoTime" class="limoTime">
-						<option>출발시간</option>
+						<option value="">출발시간</option>
 						<option value="06:00" class="time">06:00</option>
 						<option value="09:00" class="time">09:00</option>
 						<option value="12:00" class="time">12:00</option>
@@ -96,7 +96,7 @@
 								<input type="text" placeholder="예매자" name="id" value="${member.id}">
 								<input type="date" name="limoDate" class="limoDate2 datepicker2" id="d2">
 								<select name="depLoc" class="depLoc2">
-									<option>출발지</option>
+									<option value="">출발지</option>
 									<option value="인천공항" class="airLine2">인천공항</option>
 									<option value="김포공항" class="airLine2">김포공항</option>
 									<option value="양양공항" class="airLine2">양양공항</option>
@@ -110,9 +110,9 @@
 								</select>
 								<span class="place4"></span>
 								<span class="place6"></span>
-								<input type="text" placeholder="가격" name="limoPrice" class="price2">
+								<input type="text" placeholder="가격" name="limoPrice" class="price2" readonly="readonly">
 								<select name="limoTime" class="limoTime2">
-									<option>출발시간</option>
+									<option value="">출발시간</option>
 									<option value="06:00" class="time2">06:00</option>
 									<option value="09:00" class="time2">09:00</option>
 									<option value="12:00" class="time2">12:00</option>

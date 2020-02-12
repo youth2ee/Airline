@@ -72,7 +72,7 @@
 					</select>
 					<span class="place"></span>
 					<span class="place2"></span>
-					<input type="text" placeholder="가격" name="limoPrice" class="price">
+					<input type="text" placeholder="가격" name="limoPrice" class="price" readonly="readonly">
 					<span class="price1"></span>
 					<span class="price2"></span>
 					<select name="limoTime" class="limoTime">
@@ -111,7 +111,7 @@
 								</select>
 								<span class="place4"></span>
 								<span class="place6"></span>
-								<input type="text" placeholder="가격" name="limoPrice" class="price2">
+								<input type="text" placeholder="가격" name="limoPrice" class="price2" readonly="readonly">
 								<select name="limoTime" class="limoTime2">
 									<option value="">출발시간</option>
 									<option value="06:00" class="time2">06:00</option>
