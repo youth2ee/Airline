@@ -438,6 +438,7 @@ $(document).ready(function() {
 			
 			<div class="section" id="section4" style="height: 500px;">
 <div class="footer" style="width: 100%; height: 300px; background-color: black;">테스트</div>
+<%-- <c:import url="../template/fffooter.jsp" /> --%>
 			</div>
 		</div>
 		<div class="footer" style="width: 100%; height: 300px; background-color: black;">테스트</div>

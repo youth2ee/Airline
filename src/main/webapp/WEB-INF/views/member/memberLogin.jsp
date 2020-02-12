@@ -295,7 +295,7 @@
 			</div>
 <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
-
+<c:import url="../template/fffooter.jsp"></c:import>
 <script type="text/javascript" src="https://flyasiana.com/C/pc/js/jquery-2.1.4.min.js"></script>
 <script type="text/javascript" src="https://flyasiana.com/C/pc/js/jquery-ui.min.js"></script>
 <script>
