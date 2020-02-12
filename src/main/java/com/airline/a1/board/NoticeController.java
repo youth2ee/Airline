@@ -43,16 +43,18 @@ public class NoticeController {
 	}
 	
 	
-	/**** 네이버 캡차 API 예제 - 키발급 ****/
-			@RequestMapping("captchaKey.do")
-			@ResponseBody
-			// 뷰페이지로 인지하지말고 데이터 자체로 인지하라고 선언 web context 안에 
-			// response객체안에 이 데이터를 넣어서 보내주면 값 으로 인지해서 넘어감. 
-			public void APIExamCaptchaNkey(HttpServletResponse response) {
-				
+	
+	
+	
+	/**** 네이버 캡차 API ****/
+	
+		@RequestMapping("captchaKey.do")
+		@ResponseBody
+		// 뷰페이지로 인지하지말고 데이터 자체로 인지하라고 선언 web context 안에 
+		// response객체안에 이 데이터를 넣어서 보내주면 값 으로 인지해서 넘어감. 
+		public void APIExamCaptchaNkey(HttpServletResponse response) {				
 				String clientId = "1ZAkgnqL4cplyLpj4uMb";// 애플리케이션 클라이언트 아이디값";
-				String clientSecret = "ADkTTIsKUp";// 애플리케이션 클라이언트 시크릿값";
-				
+				String clientSecret = "ADkTTIsKUp";// 애플리케이션 클라이언트 시크릿값";			
 				try {
 					String code = "0"; // 키 발급시 0, 캡차 이미지 비교시 1로 세팅
 					String apiURL = "https://openapi.naver.com/v1/captcha/nkey?code=" + code;
@@ -70,8 +72,7 @@ public class NoticeController {
 						br = new BufferedReader(new InputStreamReader(con.getInputStream()));
 					} else { // 에러 발생
 						br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
-					}
-					
+					}				
 					System.out.println("키발급 호출 상태 : "+responseCode);
 					
 					String inputLine;
@@ -79,8 +80,7 @@ public class NoticeController {
 					
 					while ((inputLine = br.readLine()) != null) {
 						resp.append(inputLine);
-					}
-					
+					}				
 					br.close();
 					
 					System.out.println("키발급 메소드 : " + resp.toString());
@@ -93,13 +93,11 @@ public class NoticeController {
 					if(key != null) {
 						out.append(key);
 						out.flush();
-					}
-					
-				//mv.addObject("key", key).setViewName("redirect:captchaImg.do");
+					}				
+					//mv.addObject("key", key).setViewName("redirect:captchaImg.do");
 				} catch (Exception e) {
 					System.out.println(e);
-				}
-				
+				}				
 //				JSONObject job = new JSONObject();
 //				job.put("no", 123);
 //				job.put("title", "test json object");
@@ -108,20 +106,18 @@ public class NoticeController {
 //				
 //				return job.toJSONString(); // 반환값이 원래는 기본적으로 String인데 JSON도 string으로 보내진다. 
 //											//주소로 찾아가지않고 제이슨객체를 들고가게 설정하기위해 @ResponseBody를 써준다 
-//				
-				
+//								
 				//return mv;
 			}
 
+			
 			// 네이버 캡차 API 예제 - 캡차 이미지 수신
 			@RequestMapping("captchaImg.do")
-			public void APIExamCaptchaImage(@RequestParam("key") String key, HttpServletResponse response, 
-											HttpServletRequest request) {
+			public void APIExamCaptchaImage(@RequestParam("key") String key, HttpServletResponse response, HttpServletRequest request) {
 				System.out.println("이미지 수신 메소드 : "+key);
 				
 				String clientId = "5UBafHl3pvkxVL8nbUOG";// 애플리케이션 클라이언트 아이디값";
-				String clientSecret = "mBBrORfZyt";// 애플리케이션 클라이언트 시크릿값";
-				
+				String clientSecret = "mBBrORfZyt";// 애플리케이션 클라이언트 시크릿값";				
 				try {
 					//String key = "CAPTCHA_KEY"; // https://openapi.naver.com/v1/captcha/nkey 호출로 받은 키값
 					String apiURL = "https://openapi.naver.com/v1/captcha/ncaptcha.bin?key=" + key;
@@ -147,9 +143,7 @@ public class NoticeController {
 						
 						if(!folder.exists()) {
 							folder.mkdirs(); // buploadFiles folder가없으면 만들어준다. 
-						}
-					
-						
+						}				
 						InputStream is = con.getInputStream();
 						int read = 0;
 						byte[] bytes = new byte[1024];
@@ -163,18 +157,14 @@ public class NoticeController {
 						
 						while ((read = is.read(bytes)) != -1) {
 							outputStream.write(bytes, 0, read);
-						}
-						
+						}						
 						is.close();
 						
 						PrintWriter out = response.getWriter();
 						
 						out.append(tempname+".jpg");
-						out.flush();
-						
-						
-					} else { // 에러 발생
-						
+						out.flush();					
+					} else { // 에러 발생						
 						br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
 						
 						String inputLine;
@@ -182,35 +172,29 @@ public class NoticeController {
 						
 						while ((inputLine = br.readLine()) != null) {
 							resp.append(inputLine);
-						}
-						
-						br.close();
-						
-					}
-					
+						}						
+						br.close();						
+					}					
 					System.out.println("정상호출 : "+responseCode);
 				} catch (Exception e) {
 					System.out.println(e);
-				}
-				
+				}				
 //				return "common/captchaApi/naverCaptcha";
 			}
 
+			
 			// 네이버 캡차 API 예제 - 입력값 비교
 			@RequestMapping("checkNo.do")
 			@ResponseBody 
-			public String APIExamCaptchaNkeyResult(String key, String value) {
-				
+			public String APIExamCaptchaNkeyResult(String key, String value) {			
 				String clientId = "5UBafHl3pvkxVL8nbUOG";// 애플리케이션 클라이언트 아이디값";
 				String clientSecret = "mBBrORfZyt";// 애플리케이션 클라이언트 시크릿값";
-				StringBuffer response = new StringBuffer();
-				
+				StringBuffer response = new StringBuffer();				
 				try {
 					String code = "1"; // 키 발급시 0, 캡차 이미지 비교시 1로 세팅
 					//String key = "CAPTCHA_KEY"; // 캡차 키 발급시 받은 키값
 					//String value = "USER_VALUE"; // 사용자가 입력한 캡차 이미지 글자값
-					String apiURL = "https://openapi.naver.com/v1/captcha/nkey?code=" + code + "&key=" + key + "&value="
-							+ value;
+					String apiURL = "https://openapi.naver.com/v1/captcha/nkey?code=" + code + "&key=" + key + "&value=" + value;
 
 					URL url = new URL(apiURL);
 					
@@ -226,39 +210,25 @@ public class NoticeController {
 						br = new BufferedReader(new InputStreamReader(con.getInputStream()));
 						//{"result":true,"responseTime":84.6}
 						System.out.println("입력값 비교 정상 호출 : "+br);
-					} else { // 에러 발생
-						
-						br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
-						
+					} else { // 에러 발생						
+						br = new BufferedReader(new InputStreamReader(con.getErrorStream()));						
 					}
 					String inputLine;
 					
 					while ((inputLine = br.readLine()) != null) {
 						response.append(inputLine);
-					}
-					
+					}			
 					br.close();
 					
-					System.out.println("입력값 비교 메소드 : "+response.toString());
-					
+					System.out.println("입력값 비교 메소드 : "+response.toString());					
 				} catch (Exception e) {
 					System.out.println(e);
 				}
 				return response.toString();
 			}
 	
-	
-	
-	
-	@GetMapping(value = "noticeCaptchaImg")
-	public ModelAndView NoticeCaptchaImg()throws Exception{
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("board/boardCaptchaImg");
-		mv.addObject("board", "notice");
-		return mv;
-	}
-	
-	
+			
+		
 	
 	/**** summerNote ****/	
 	
@@ -322,7 +292,7 @@ public class NoticeController {
 		  int result =noticeService.noticeWrite(noticeVO, file);
 	  
 	  String msg = "작성에 실패하였습니다.다시 작성해주세요."; 
-	  String path = "../";
+	  String path = "./noticeList";
 	  
 	  if(result > 0) { 
 		  

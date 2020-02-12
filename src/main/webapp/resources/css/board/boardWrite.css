@@ -265,6 +265,17 @@ input[type=checkbox]:checked:hover + label{
 	margin-right: 6px;
 }
 
+#checkNo{
+	width:60px;
+	height:46px;
+	border: 1px solid #6d6e71;
+    background-color: #6d6e71;
+    color: #fff;
+    vertical-align: bottom;
+    margin-left: 0px;
+    border-radius: 3px;
+	
+}
 
 /**** btn ****/
 
