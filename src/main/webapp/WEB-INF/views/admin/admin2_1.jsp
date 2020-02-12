@@ -19,6 +19,11 @@
 
   <!-- Custom styles for this template-->
   <link href="${pageContext.request.contextPath}/resources/vendor/css/sb-admin-2.min.css" rel="stylesheet">
+  
+  <c:import url="../template/boot.jsp"></c:import>
+  <link href="../resources/css/reset.css" rel="stylesheet">
+ <link href="../resources/css/admin/admin2_1.css" rel="stylesheet">
+
 
 </head>
 
@@ -116,7 +121,7 @@
         <div id="collapseseven" class="collapse" aria-labelledby="headingseven" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">RESERVATION MANAGEMENT</h6>
-            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin3_1">공항별 항공편 관리</a>
+            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin3_1">예약 관리</a>
             <%-- <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_cinemaList"></a> --%>
           </div>
         </div>
@@ -290,13 +295,24 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">영화관 관리</h1>
-          <p class="mb-4">영화관의 상세정보를 보여줍니다.</p>
+          <h1 class="h3 mb-2 text-gray-800">항공편 관리</h1>
+          <p class="mb-4">항공사별 항공편 관리</p>
+          
+         <c:forEach items="${alist}" var="an">
+ 		   <div class="abtn">${an.getAName()}</div>
+          </c:forEach> 
+     
+     <div style="clear: both;"></div>
+
+          
+          
+          
+          
 
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">영화관 상세정보</h6>
+              <h6 class="m-0 font-weight-bold text-primary">항공사별 항공편 현황</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -390,6 +406,24 @@
   <!-- Page level custom scripts -->
   <script src="${pageContext.request.contextPath}/resources/vendor/js/demo/datatables-demo.js"></script>
 
-</body>
 
+
+<script type="text/javascript">
+
+$('.abtn').click(function(){
+
+	alert($(this).text());
+	
+});
+
+
+
+
+
+
+</script>
+
+
+</body>
 </html>
+
