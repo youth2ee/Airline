@@ -55,7 +55,7 @@
 			   <form action="./limoBook2"  method="post" class="frm">
 			    	<input type="checkbox" value="frm_wrap" class="checkbox" style="display: inline-block;">
 					<input type="text" placeholder="예매자" name="id">
-					<input type="date" name="limoDate" class="limoDate datepicker">
+					<input type="date" name="limoDate" class="limoDate2 datepicker">
 					<select name="depLoc" class="depLoc">
 						<option>도착지</option>
 						<option value="인천공항" class="airLine">인천공항</option>
@@ -300,7 +300,7 @@
 		  </div>
 </div>
 
-	<input type="hidden" id="hidden">
+	
 <script src="../js/test.js"></script>
 </body>
 </html>
