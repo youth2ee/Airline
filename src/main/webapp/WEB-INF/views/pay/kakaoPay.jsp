@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>영화 그 이상의 감동 CGV</title>
+<title>AIRLINE Limos Pay</title>
 
 <style type="text/css">
 #btn{

@@ -51,7 +51,7 @@
 				<button class="gobooks">예매하기</button>
 			</div>
 	  		<div class="frm_wrap">
-			   <form action="./limoBook"  method="post" class="frm">
+			   <form action="./limoBook" method="post" class="frm">
 			   <div>
 			   	<div>
 			    	<input type="checkbox" value="frm_wrap" class="checkbox" style="display: inline-block;">
@@ -92,6 +92,7 @@
 				</div>
 					<div class="containers" style="display: none;">
 					  	<div class="frm_wrap2">
+					  	
 						    <div class="here">
 						    	<input type="checkbox" value="frm_wrap2" class="checkbox" style="display: inline-block;">
 								<input type="text" placeholder="예매자" name="id">
@@ -239,7 +240,7 @@
 		        </div>
 		        <div class="modal-body">
 			        <div class="modal_wrap">
-						<div class="limo_wrap" >
+						<div class="limo_wrap">
 							<div class="limo_seat">
 								<c:forEach begin="1" end="45" var="limo" varStatus="vo">
 									<c:choose>
@@ -303,6 +304,7 @@
 		  </div>
 </div>
 
+		      <input type="hidden" id="hidden">
 <script src="../js/test.js"></script>
 </body>
 </html>

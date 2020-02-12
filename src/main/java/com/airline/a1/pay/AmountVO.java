@@ -1,9 +1,8 @@
 package com.airline.a1.pay;
+
 public class AmountVO {
-	private Integer total;
-	private Integer tax_free;
-	private Integer vat;
-	private Integer discount;
+	
+	private Integer total, tax_free, vat, point, discount;
 
 	public Integer getTotal() {
 		return total;
@@ -29,6 +28,14 @@ public class AmountVO {
 		this.vat = vat;
 	}
 
+	public Integer getPoint() {
+		return point;
+	}
+
+	public void setPoint(Integer point) {
+		this.point = point;
+	}
+
 	public Integer getDiscount() {
 		return discount;
 	}
@@ -36,5 +43,8 @@ public class AmountVO {
 	public void setDiscount(Integer discount) {
 		this.discount = discount;
 	}
+	
+	
 
 }
+
