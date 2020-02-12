@@ -316,12 +316,17 @@ public class HomeController {
 		return check;
 	}
 	
-	
-	@GetMapping("sorttest")
-	public void sorttest() throws Exception {
+	@GetMapping("chat")
+	public void chat() throws Exception{
 		
 	}
-
+	
+	@GetMapping("chat2")
+	public void chat2() throws Exception{
+		
+	}
+	
+	
 	@PostMapping("bookingMain")
 	public ModelAndView bookingMain(BookingTicketVO bookingTicketVO) throws Exception {
 
