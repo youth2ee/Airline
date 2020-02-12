@@ -34,16 +34,27 @@
 
 
 <section>
-<table>
-<tr><td style="text-align: center; width: 1200px; padding-bottom: 50px;"><h3 style="font-size: 40px">마일리지 내역</h3></td></tr>
+
+<div style="width: 100%; text-align: center;"><h3 style="font-size: 40px; color: black;">마일리지 내역</h3></div>
+
+<table class="table_list tb_type2" id="table_0" style="margin: 50px 0;">
+<tr><th scope="row">현재 나의 마일리지</th><td>${member.mileage}</td></tr>
+</table>
+
+<table class="table_list tb_type2" id="table_0">
+<tr>
+<th scope="row">예매번호</th>
+<th scope="row">사용한 마일리지</th>
+<th scope="row">적립한 마일리지</th>
+</tr>
 <c:forEach items="${blist}" var="bl">
-<tr><td style="text-align: center;
+<tr style="border: 1px solid #ddd;"><td style="text-align: center;
     font-size: 15px;
-    text-align: left;
+    text-align: center;
     height: 40px;
-    border: 1px solid #ddd;
     line-height: 40px;
-    padding-left: 20px;">${bl.bookingNum}</td></tr>
+    padding-left: 20px;
+    width: 35%;">${bl.bookingNum}</td><td style=" width: 35%;">- ${bl.mileageMin}</td><td style=" width: 35%;">+ ${bl.mileagePlus}</td></tr>
 
 </c:forEach>
 

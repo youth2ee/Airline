@@ -20,13 +20,14 @@
 	
 	<!-- 마일리지 -->
 	<select id="mtotal" parameterType="com.airline.a1.member.MembersVO" resultType="com.airline.a1.booking.BookingPriceVO">
-select * from
-(select bookingNum, sum(mileagePlus) mileagePlus
-from bookingPrice
-where id=#{id}
-group by bookingNum) A left outer join 
-(select distinct bookingNum, mileagePlus from bookingPrice) B
+select distinct A.bookingNum, B.mileagePlus, C.mileageMin from
+(select bookingNum, bnum from bookingPrice where id=#{id} order by bnum) A 
+left outer join 
+(select bookingNum, sum(mileagePlus) mileagePlus from bookingPrice where id=#{id} group by bookingNum) B
 on A.bookingNum = B.bookingNum
+left outer join 
+(select distinct bookingNum, ifnull(mileageMin,0) mileageMin from bookingPrice where id=#{id}) C
+on B.bookingNum = C.bookingNum;
 	</select>
 	
 	
