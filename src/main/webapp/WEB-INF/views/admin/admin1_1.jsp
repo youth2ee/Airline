@@ -20,6 +20,9 @@
   <!-- Custom styles for this template-->
   <link href="${pageContext.request.contextPath}/resources/vendor/css/sb-admin-2.min.css" rel="stylesheet">
 
+
+	  <c:import url="../template/boot.jsp"></c:import>
+  <link href="../resources/css/reset.css" rel="stylesheet">
 </head>
 
 
