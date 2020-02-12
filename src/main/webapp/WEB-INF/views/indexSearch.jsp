@@ -217,6 +217,15 @@
 								$(this).html(tlist);
 
 							});
+
+					$('.ttitle').each(function(index) {
+						var tlist2 = $(this).text();
+						tlist2 = tlist2.replace(search, "<span class='tact'>" + search + "</span>");
+
+						$(this).html(tlist2);
+
+					});
+					
 				});
 
 
@@ -246,6 +255,15 @@
 								var tlist = $(this).text();
 								tlist = tlist.replace(search,"<span class='tact'>" + search + "</span>");
 										$(this).html(tlist);
+							});
+
+
+							$('.ttitle').each(function(index) {
+								var tlist2 = $(this).text();
+								tlist2 = tlist2.replace(search, "<span class='tact'>" + search + "</span>");
+
+								$(this).html(tlist2);
+
 							});
 						}
 					});

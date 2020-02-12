@@ -443,10 +443,12 @@ float: left;
 
 
 .tcons{
-	width:100%;
-	overflow: hidden;
- 	text-overflow: ellipsis;
- 	white-space: nowrap;
+width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: 25px;
+    margin-top: 10px;
 }
 
 .tact{
