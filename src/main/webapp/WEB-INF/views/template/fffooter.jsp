@@ -170,10 +170,8 @@
 	</div>
 	<div class="special_logo">
 		<ul>
-			
 			<li class="i_mecena"><span class="hidden">I love Mecenat 당사는 메세나활동을 통해 사회공헌을 실천하는 메세나기업입니다.</span></li>
 		</ul>
-		
 	</div>
 </address>
 		<!-- //address -->
