@@ -9,6 +9,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.airline.a1.board.BoardVO;
+import com.airline.a1.board.NoticeService;
+import com.airline.a1.boardUtil.Pager;
 import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 
 @Controller
@@ -23,6 +26,9 @@ public class AdminController {
 	
 	@Autowired
 	private AdminService adminService;
+	
+	@Autowired
+	private NoticeService noticeService;
 	
 	@GetMapping("adminmain")
 	public void adminmain() throws Exception{
@@ -62,7 +68,7 @@ public class AdminController {
 	}
 	
 	@GetMapping("admin4_1")
-	public void admin4_1() throws Exception{
+	public void admin4_1() throws Exception{ 
 		
 	}
 	

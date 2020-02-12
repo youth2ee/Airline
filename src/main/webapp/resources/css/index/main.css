@@ -70,7 +70,8 @@
 	position: relative;
 	top: -198px; */
 	z-index: 10000;
-	width: 1300px;
+	/* width: 1300px; */
+	width:64%;
 	height: 212px;
 	margin: 0 auto;
 	position: relative;
