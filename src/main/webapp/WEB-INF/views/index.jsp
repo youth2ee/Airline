@@ -138,7 +138,7 @@ $(document).ready(function() {
 							<input class="input--style-12" type="text" name="date" placeholder="yyyy/mm/dd" id="input-start">
 						</div>
 
-						<div class="input-group123 mid">
+						<div class="input-group123 mid" id="quickTraveller">
 
 							<label class="label">탑승객 :</label>
 							<div class="input-group-icon" id="js-select-special">
@@ -147,7 +147,7 @@ $(document).ready(function() {
 							</div>
 
 
-							<div class="dropdown-select">
+							<div class="dropdown-select" id="dropList">
 								<ul class="list-room">
 									<li class="list-room__item">
 										<ul class="list-person">

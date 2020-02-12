@@ -247,6 +247,17 @@
 	color: red;
 }
 
+#quickTraveller{
+	width: 220px;
+}
+
+#dropList{
+	width: 220px;
+}
+
+.list-person{
+	padding: 0 16px;
+}
 /* 웹체크인 */
 .search_box {
     position: relative;
