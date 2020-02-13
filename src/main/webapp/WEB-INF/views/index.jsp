@@ -138,7 +138,7 @@ $(document).ready(function() {
 							<input class="input--style-12" type="text" name="date" placeholder="yyyy/mm/dd" id="input-start">
 						</div>
 
-						<div class="input-group123 mid">
+						<div class="input-group123 mid" id="quickTraveller">
 
 							<label class="label">탑승객 :</label>
 							<div class="input-group-icon" id="js-select-special">
@@ -147,14 +147,14 @@ $(document).ready(function() {
 							</div>
 
 
-							<div class="dropdown-select">
+							<div class="dropdown-select" id="dropList">
 								<ul class="list-room">
 									<li class="list-room__item">
 										<ul class="list-person">
 											<li class="list-person__item"><span class="name">성인</span>
 												<div class="quantity quantity1">
 													<span class="minus" id="a_minus">-</span> 
-													<input class="inputQty" type="number" min="0" value="1" name="adult" id="adult"> 
+													<input class="inputQty qty" type="number" min="0" value="1" name="adult" id="adult"> 
 													<span class="plus">+</span>
 												</div>
 											</li>
@@ -162,7 +162,7 @@ $(document).ready(function() {
 											<li class="list-person__item"><span class="name">아이</span>
 												<div class="quantity quantity2">
 													<span class="minus">-</span> 
-													<input class="inputQty" type="number" min="0" value="0" name="child" id="child">
+													<input class="inputQty qty" type="number" min="0" value="0" name="child" id="child">
 													<span class="plus">+</span>
 												</div>
 											</li>

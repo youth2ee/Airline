@@ -12,14 +12,15 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
- <title>CGV ADMIN</title>
+ <title>AIRLINE ADMIN</title>
+  <c:import url="../template/boot.jsp"></c:import>
+  <link href="../resources/css/reset.css" rel="stylesheet">
   <!-- Custom fonts for this template-->
   <link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template-->
   <link href="${pageContext.request.contextPath}/resources/vendor/css/sb-admin-2.min.css" rel="stylesheet">
-
 </head>
 
 
@@ -66,9 +67,9 @@
         <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">SALES MANAGEMENT</h6>
-            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_moviedataList">항공사별 매출 관리</a>
-            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_moviedataList">공항별 매출 관리</a>
-            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_moviedataList">회원별 매출 관리</a>
+            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin1_1">항공사별 매출 관리</a>
+            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin1_2">공항별 매출 관리</a>
+            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin1_3">회원별 매출 관리</a>
           </div>
         </div>
       </li>
@@ -92,8 +93,8 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">FLIGHT MANAGEMENT</h6>
-            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_cinemaList">항공사별 항공편 관리</a>
-            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_cinemaInsert">공항별 항공편 관리</a>
+            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin2_1">항공사별 항공편 관리</a>
+            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin2_2">공항별 항공편 관리</a>
           </div>
         </div>
       </li>
@@ -115,9 +116,9 @@
         </a>
         <div id="collapseseven" class="collapse" aria-labelledby="headingseven" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">FLIGHT MANAGEMENT</h6>
-            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_cinemaList"></a>
-            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_cinemaInsert">공항별 항공편 관리</a>
+            <h6 class="collapse-header">RESERVATION MANAGEMENT</h6>
+            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin3_1">예약 관리</a>
+            <%-- <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_cinemaList"></a> --%>
           </div>
         </div>
       </li>
@@ -142,7 +143,7 @@
         <div id="collapsefour" class="collapse" aria-labelledby="headingfour" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
            <h6 class="collapse-header">SC MANAGEMENT</h6>
-            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_memberList">고객센터 관리</a>
+            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin4_1?curPage=1">고객센터 관리</a>
           </div>
         </div>
       </li>
@@ -167,8 +168,8 @@
         <div id="collapsefive" class="collapse" aria-labelledby="headingfive" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
            <h6 class="collapse-header">PARKING MANAGEMENT</h6>
-            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_storeList?store_package=1">공항별 주차 현황</a>
-            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_storeInsert">회원별 주차 현황</a>
+            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin5_1">공항별 주차 현황</a>
+            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin5_2">회원별 주차 현황</a>
           </div>
         </div>
       </li>
@@ -191,8 +192,8 @@
         <div id="collapseone" class="collapse" aria-labelledby="headingone" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
            <h6 class="collapse-header">LIMOUSINE MANAGEMENT</h6>
-            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_storeList?store_package=1">공항별 예약 현황</a>
-            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_storeInsert">회원별 리무진 예약 현황</a>
+            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin6_1">공항별 예약 현황</a>
+            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin6_2">회원별 리무진 예약 현황</a>
           </div>
         </div>
       </li>
@@ -215,11 +216,13 @@
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
            <h6 class="collapse-header">MEMBER MANAGEMENT</h6>
-            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_movieTimeList">회원 관리</a>
+            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin7_1">회원 관리</a>
           </div>
         </div>
       </li>
       
+      
+      <!-- 메뉴끝 -->
 
       
       

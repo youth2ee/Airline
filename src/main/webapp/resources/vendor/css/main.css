@@ -278,7 +278,8 @@ a:active {
 	float: left;
 	width: 110px;
 	line-height: 50px;
-	background: #6c7ae0;
+	/* background: #6c7ae0; */
+	background: #d60815;
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
@@ -293,7 +294,8 @@ a:active {
 }
 
 .btn-submit:hover {
-	background: #5866cc;
+	/* background: #5866cc; */
+	background: #a60612;
 }
 
 .m-t-0 {
@@ -434,7 +436,8 @@ display: none;
 }
 
 .daterangepicker td.in-range {
-	background: #ececff;
+	/* background: #ececff; */
+	background: #ffecec;
 }
 
 .daterangepicker td.today {
@@ -468,7 +471,8 @@ display: none;
 }
 
 .daterangepicker td.active, .daterangepicker td.active:hover {
-	background: #6c7ae0;
+	/* background: #6c7ae0; */
+	background: #d60815;
 }
 
 .dropdown-datepicker {
@@ -782,7 +786,8 @@ button {
 	-webkit-border-radius: 50%;
 	-moz-border-radius: 50%;
 	border-radius: 50%;
-	background: #00ad5f;
+	/* background: #00ad5f; */
+	background: #d60815;
 }
 
 /* ==========================================================================
@@ -837,8 +842,10 @@ button {
 }
 
 .minus:hover, .plus:hover {
-	background: #6c7ae0;
-	border-color: #6c7ae0;
+	/* background: #6c7ae0;
+	border-color: #6c7ae0; */	
+	background: #a60612;
+	border-color: #a60612;
 	color: #fff;
 }
 

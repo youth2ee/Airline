@@ -146,7 +146,10 @@ ${arr[3]}시 ${arr[4]}분<i class='fas fa-angle-right' style='font-size:10px; pa
 
 <tr>
 <td class="bth">회원번호(탑승객)</td>
-<td class="btb"><input type="text" placeholder="회원번호" name="adultList[${status.index-1}].memberNum"></td>
+<td class="btb">
+<input type="text" placeholder="회원번호" name="adultList[${status.index-1}].memberNum">
+<input type="button" value="회원번호 찾기" class="mbtn">
+</td>
 </tr>
 
 <tr>
@@ -358,6 +361,48 @@ ${arr[3]}시 ${arr[4]}분<i class='fas fa-angle-right' style='font-size:10px; pa
 		</div>
 
 
+<!-- 회원번호 찾기 -->
+<!-- Trigger/Open The Modal -->
+<button id="myBtn">Open Modal</button>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    
+    <div id="mtitle">회원번호 찾기</div>
+
+<table style="margin: 0 auto;">
+<tr>
+<td class="bth">이름</td>
+<td class="btb">
+<input type="text">
+</td>
+</tr>
+
+<tr>
+<td class="bth">아이디</td>
+<td class="btb">
+<input type="text">
+</td>
+</tr>
+
+<tr>
+<td class="bth">회원번호</td>
+<td class="btb">
+<input type="text">
+</td>
+</tr>
+
+</table>
+    
+    
+  </div>
+
+</div>
+
 
 </section>
 
@@ -398,10 +443,8 @@ ${arr[3]}시 ${arr[4]}분<i class='fas fa-angle-right' style='font-size:10px; pa
 		});
 
 
-		
-
 		if(x==1){
-			alert("빈 칸을 입력하세요.");
+			alert("모든 항목을 입력하세요.");
 		}else if(x==3){
 			alert("생년월일을 입력하세요.");
 
@@ -411,6 +454,26 @@ ${arr[3]}시 ${arr[4]}분<i class='fas fa-angle-right' style='font-size:10px; pa
 
 	});
 
+
+/* 회원번호 찾기 */
+
+$('.mbtn').click(function(){
+
+$('#myModal').css('display','block');
+
+$('.close').click(function(){
+	$('#myModal').css('display','none');
+});
+
+window.onclick = function(event) {
+	  if (event.target == $('#myModal')) {
+		  $('#myModal').css('display','none');
+	  }
+	}
+	
+});
+
+	
 
 </script>
 

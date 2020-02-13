@@ -278,13 +278,11 @@
 														style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #ff0000; line-height: 18px; vertical-align: top; padding: 5px 0; width: 200px; "
 														class="article" >
 														<p style="margin: 0; color: #565656; font-size: 10px; margin-left: 10px;">예약등급 : 일반석</p>
-														<p style="margin: 0;font-size: 10px;color: #565656;letter-spacing: -0.5px; margin-left: 10px;">운임 : 12000</p>
 														<p style="margin: 0;margin-left: 10px;color: #565656;font-size: 10px;">비행시간 : ${depInfo.flightTime }분</p>
 														</td>
 													<td colspan="2"
 														style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e; line-height: 18px; vertical-align: top; padding: 5px 0; ">
 														<p style="margin: 0; color: #565656; font-size: 10px; margin-left: 10px;">좌석번호 : ${depInfo.seatName}</p>
-														<p style="margin: 0;font-size: 10px;color: #565656;letter-spacing: -0.5px; margin-left: 10px;">마일리지 : 30</p>
 														<p style="margin: 0;margin-left: 10px;color: #565656;font-size: 10px;">항공권 유효기간 : 3개월</p>
 													</td>
 												</tr>
@@ -341,13 +339,13 @@
 														class="article" >
 														<p style="margin: 0; color: #00518b; font-size: 14px; font-weight: 1000; margin-left: 10px;">${arrInfo.depCityCode}</p>
 														<p style="margin: 0;font-size: 10px;font-weight: bold;color: #565656;letter-spacing: -0.5px; margin-left: 10px;">${arrInfo.depAirportNm} (${arrInfo.depCityEng})</p>
-														<p style="margin: 0;margin-left: 10px;font-weight: 1000;color: #1f1f1f;font-size: 12px;">07FEB20(금) 12:00</p>
+														<p style="margin: 0;margin-left: 10px;font-weight: 1000;color: #1f1f1f;font-size: 12px;">${arrInfo.depPlandTime} ${depTime2}</p>
 														</td>
 													<td colspan="2"
 														style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e; line-height: 18px; vertical-align: top; padding: 5px 0;  padding-top: 10px;">
 														<p style="margin: 0; color: #00518b; font-size: 14px; font-weight: 1000; margin-left: 10px;">${arrInfo.arrCityCode}</p>
 														<p style="margin: 0;font-size: 10px;font-weight: bold;color: #565656;letter-spacing: -0.5px; margin-left: 10px;">${arrInfo.arrAirportNm} (${arrInfo.arrCityEng})</p>
-														<p style="margin: 0;margin-left: 10px;font-weight: 1000;color: #1f1f1f;font-size: 12px;">07FEB20(금) 12:55</p>
+														<p style="margin: 0;margin-left: 10px;font-weight: 1000;color: #1f1f1f;font-size: 12px;">${arrInfo.arrPlandTime} ${arrTime2}</p>
 													</td>
 													<td
 														style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #1e2b33; line-height: 18px; vertical-align: top; padding: 5px 0; padding-right: 50px; padding-top: 10px;"
@@ -366,13 +364,11 @@
 														style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #ff0000; line-height: 18px; vertical-align: top; padding: 5px 0; width: 200px;"
 														class="article" >
 														<p style="margin: 0; color: #565656; font-size: 10px; margin-left: 10px;">예약등급 : 일반석</p>
-														<p style="margin: 0;font-size: 10px;color: #565656;letter-spacing: -0.5px; margin-left: 10px;">운임 : 12000</p>
 														<p style="margin: 0;margin-left: 10px;color: #565656;font-size: 10px;">비행시간 : ${arrInfo.flightTime}분</p>
 														</td>
 													<td colspan="2"
 														style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e; line-height: 18px; vertical-align: top; padding: 5px 0; ">
 														<p style="margin: 0; color: #565656; font-size: 10px; margin-left: 10px;">좌석번호 : ${arrInfo.seatName}</p>
-														<p style="margin: 0;font-size: 10px;color: #565656;letter-spacing: -0.5px; margin-left: 10px;">마일리지 : 30</p>
 														<p style="margin: 0;margin-left: 10px;color: #565656;font-size: 10px;">항공권 유효기간 : 3개월</p>
 													</td>
 												</tr>

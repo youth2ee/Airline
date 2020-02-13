@@ -48,7 +48,7 @@
 				
 				<div class="menu_wrap_Right">
 					
-					<div class="r1">
+										<div class="r1">
 					<i class='fas fa-comment-dots' style='font-size: 30px' onclick="window.open('${pageContext.request.contextPath}/chat2','아론','width=470, height=800');"></i>
 				</div>
 					
