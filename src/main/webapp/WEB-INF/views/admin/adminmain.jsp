@@ -143,7 +143,7 @@
         <div id="collapsefour" class="collapse" aria-labelledby="headingfour" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
            <h6 class="collapse-header">SC MANAGEMENT</h6>
-            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin4_1">고객센터 관리</a>
+            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin4_1?curPage=1">고객센터 관리</a>
           </div>
         </div>
       </li>

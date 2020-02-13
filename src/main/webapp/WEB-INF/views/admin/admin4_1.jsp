@@ -18,6 +18,8 @@
   <!-- Custom fonts for this template-->
   <link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+   <link href="../resources/css/admin/admin4_1.css" rel="stylesheet">
+  
 
   <!-- Custom styles for this template-->
   <link href="${pageContext.request.contextPath}/resources/vendor/css/sb-admin-2.min.css" rel="stylesheet">
@@ -291,36 +293,39 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">영화관 관리</h1>
-          <p class="mb-4">영화관의 상세정보를 보여줍니다.</p>
+          <h1 class="h3 mb-2 text-gray-800">고객센터 관리</h1>
+          <p class="mb-4">게시판의 상세정보를 보여줍니다.</p>
 
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">영화관 상세정보</h6>
+              <h6 class="m-0 font-weight-bold text-primary">게시판 상세정보</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
-                    <tr>
+                    <tr class="bar">
+                      <th>분류</th>
                       <th>번호</th>
-                      <th>지역 </th>
-                      <th>이름</th>
-                      <th>주소</th>
-                      <th>전화번호</th>
+                      <th>제목 </th>
+                      <th>조회수</th>
+                      <th>작성일</th>
+                      <th>관리</th>
                     </tr>
                   </thead>
                   <tbody>
-             <%--      <c:forEach items="${cinemalist}" var="clist">  --%>
-                    <tr>
-                      <td>1<%-- <a href="${pageContext.request.contextPath}/admin/admin_cinemaSelect?cinema_num=${clist.cinema_num}">${clist.cinema_num}</a> --%></td>
-                      <td>2</td>
-                      <td>2</td>
-                      <td>2</td>
-                      <td>2</td>
+            
+                   <c:forEach items="${list}" var="vo">
+                    <tr class ="bar2">
+                      <td>${vo.num}</td>
+                      <td>${vo.cate}<%-- <a href="${pageContext.request.contextPath}/admin/admin_cinemaSelect?cinema_num=${clist.cinema_num}">${clist.cinema_num}</a> --%></td>
+                      <td>${vo.title}</td>
+                      <td>${vo.hit}</td>
+                      <td>${vo.regDate}</td>
+                      <td><button>삭제하기</button></td>
                     </tr>
-<%--                   </c:forEach> --%>
+                    </c:forEach>
 
                   </tbody>
                 </table>
