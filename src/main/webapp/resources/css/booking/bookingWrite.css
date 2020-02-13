@@ -251,7 +251,7 @@ input[type="checkbox"] + label {
   padding: 20px;
   border: 1px solid #888;
   width: 38%; /* Could be more or less, depending on screen size */
-  height: 394px;
+  height: 360px;
 }
 
 /* The Close Button */
@@ -309,10 +309,30 @@ input[type="checkbox"] + label {
 }
 
 #modalfm{
-	display: block;
+display: block;
     width: 686px;
     height: 127px;
     background-color: #f3f3f3;
     margin: 0 auto;
-    margin-top: 20px;
+    margin-top: 15px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    line-height: 102px;
+}
+
+#ubtn{
+cursor: pointer;
+    width: 82px;
+    height: 28px;
+    background-color: gray;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 13px;
+    display: none;
+    margin: 0 auto;
+    margin-top: -46px;
+	
 }

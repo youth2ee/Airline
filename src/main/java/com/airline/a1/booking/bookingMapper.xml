@@ -61,6 +61,12 @@ limit 0, 20
 </select>
 
 
+<!-- 회원번호 찾기 -->
+<select id="searchMember" parameterType="com.airline.a1.member.MembersVO" resultType="com.airline.a1.member.MembersVO">
+select * from members
+where name=#{name} and id=#{id}
+</select>
+
 
 
 </mapper>

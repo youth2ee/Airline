@@ -40,7 +40,7 @@ IMP.request_pay({
 
 /*         opener.parent.location="../imPay/imPayComplete";
         self.close(); */
-        alert(msg);
+        
         
   		$.ajax({
 			data : {

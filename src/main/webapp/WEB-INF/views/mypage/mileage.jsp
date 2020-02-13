@@ -38,23 +38,29 @@
 <div style="width: 100%; text-align: center;"><h3 style="font-size: 40px; color: black;">마일리지 내역</h3></div>
 
 <table class="table_list tb_type2" id="table_0" style="margin: 50px 0;">
-<tr><th scope="row">현재 나의 마일리지</th><td>${member.mileage}</td></tr>
+<tr><th scope="row" style="width: 50%;">현재 나의 마일리지</th><td>${member.mileage}</td></tr>
 </table>
 
-<table class="table_list tb_type2" id="table_0">
+<table class="table_list tb_type2" id="table_0" style="margin-bottom: 30px;">
 <tr>
+<th scope="row">예매일</th>
 <th scope="row">예매번호</th>
 <th scope="row">사용한 마일리지</th>
 <th scope="row">적립한 마일리지</th>
 </tr>
 <c:forEach items="${blist}" var="bl">
-<tr style="border: 1px solid #ddd;"><td style="text-align: center;
+<tr style="border: 1px solid #ddd;">
+<td style="text-align: center;
     font-size: 15px;
     text-align: center;
     height: 40px;
     line-height: 40px;
     padding-left: 20px;
-    width: 35%;">${bl.bookingNum}</td><td style=" width: 35%;">- ${bl.mileageMin}</td><td style=" width: 35%;">+ ${bl.mileagePlus}</td></tr>
+">${bl.couName}</td>
+<td>${bl.bookingNum}</td>
+    <td>- ${bl.mileageMin}</td>
+    <td class="mplus" style="cursor: pointer;">+ ${bl.mileagePlus}</td>
+    </tr>
 
 </c:forEach>
 
@@ -63,6 +69,15 @@
 
 </section>
 
+
+<script type="text/javascript">
+
+$('.mplus').click(function(){
+
+	alert('hh');
+});
+
+</script>
 
 </body>
 </html>
