@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.airline.a1.booking.BookingTicketVO;
+import com.airline.a1.member.MembersVO;
 
 @Service
 public class SeatService {
@@ -72,7 +73,7 @@ public class SeatService {
 		//System.out.println("예약번호(개인) : " + flightNum);
 		return flightNum;
 	}
-
+	
 
 
 }

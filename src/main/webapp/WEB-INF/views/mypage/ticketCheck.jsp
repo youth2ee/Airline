@@ -157,8 +157,10 @@ var toggleButton = document.getElementById("toggleButton");
 					if(totalPrice == "0")
 						totalPrice = "운임정보없음";
 					rowItem += '<tr class="tableContents">';
-					rowItem += '<td><input type="button" value="출력" id="eticket"></td>';
+					rowItem += '<td><input type="button" value="출력" class="eticketBtn" id="eticket'+num+'"></td>';
 					rowItem += '<td style="display:none">'+bnum+'</td>';
+					rowItem += '<td style="display:none">'+bookingNum+'</td>';
+					rowItem += '<td style="display:none">'+$(".ajax").find(".kind"+i).text();+'</td>';
 					rowItem += '<td>'+depPlandTime2+'</td>';
 					rowItem += '<td>'+$(".ajax").find(".depAirportNm"+i).text()+" → "+$(".ajax").find(".arrAirportNm"+i).text()+'</td>';
 					rowItem += '<td>'+depPlandTime3+" → "+arrPlandTime2+'</td>';
@@ -256,9 +258,7 @@ var toggleButton = document.getElementById("toggleButton");
 				
 				var getDate = String(year) + String(month) + String(day);
 				if($(".timelineView"+num).text()!=null){
-					
 					if ($(".timelineView"+num+" .timeline1 .checkInDate").text() != "X"){
-						
 					if($(".timelineView"+num+" .timeline1 .checkInDate").text() == "체크인 완료")
 						$(".timelineView"+num+" #checkInTimeline").addClass("complete");
 					if(Number(getDate) > $(".timelineView"+num+" .timeline1 .checkInClose").attr('id'))
@@ -269,7 +269,6 @@ var toggleButton = document.getElementById("toggleButton");
 						$(".timelineView"+num+" .timeline1 #departTime").addClass("complete");
 					if(nowTime > $(".timelineView"+num+" .arrPlandTimeGo").attr('id'))
 						$(".timelineView"+num+" .timeline1 #arrivalTime").addClass("complete");
-						
 					if($(".timelineView"+num+" .timeline2 .checkInDate").text() == "체크인 완료")
 						$(".timelineView"+num+" #checkInTimeline").addClass("complete");
 					if(Number(getDate) > $(".timelineView"+num+" .timeline1 .checkInClose").attr('id'))
@@ -282,31 +281,32 @@ var toggleButton = document.getElementById("toggleButton");
 						$(".timelineView"+num+" .timeline2 #arrivalTime").addClass("complete");
 					}
 				}
-				$(document).on('click', '#eticket', function(){
-					if($(".timelineView"+num+" .timeline1 .checkInDate").text() == "체크인 완료" && $(".timelineView"+num+" .timeline2 .checkInDate").text() == "체크인 완료")
-						window.open("../checkIn/eTicket?bookingNum="+bookingNum+"&name="+name,"eTicket","width=700, height=800, toolbar=no, menubar=no, scrollbars=no, resizable=yes")
-					else if($(".timelineView"+num+" .timeline1 .checkInDate").text() != "체크인 완료" && $(".timelineView"+num+" .timeline2 .checkInDate").text() != "체크인 완료")
-						alert('체크인 후 확인 가능합니다.');
-				});
+				
 				
 				if($(".ajax").find(".isCheckIn").text() != 0)
 					$("#"+depPlandTime4).text(depPlandTime2);
 			});
 			$(".toggle"+num).toggle(500);
+
+			$(document).on('click', '#eticket'+num, function(){
+				var eticketBookingNum = $(this).closest('td').next().next().text();
+				var eticketKind = $(this).closest('td').next().next().next().text();
+				var eticketName = $(this).closest('td').next().next().next().next().next().next().next().next().next().next().next().text();
+				cancelList.push($(this).closest('td').next().text());
+				if(eticketKind == "왕복"){
+				if($(".timelineView"+num+" .timeline1 .checkInDate").text() == "체크인 완료" && $(".timelineView"+num+" .timeline2 .checkInDate").text() == "체크인 완료")
+					window.open("../checkIn/eTicket?bookingNum="+eticketBookingNum+"&name="+eticketName,"eTicket","width=700, height=800, toolbar=no, menubar=no, scrollbars=no, resizable=yes")
+				else if($(".timelineView"+num+" .timeline1 .checkInDate").text() != "체크인 완료" && $(".timelineView"+num+" .timeline2 .checkInDate").text() != "체크인 완료")
+					alert('체크인 후 확인 가능합니다.');
+				} else {
+					if($(".timelineView"+num+" .timeline1 .checkInDate").text() == "체크인 완료")
+						window.open("../checkIn/eTicket?bookingNum="+eticketBookingNum+"&name="+eticketName,"eTicket","width=700, height=800, toolbar=no, menubar=no, scrollbars=no, resizable=yes")
+					else if($(".timelineView"+num+" .timeline1 .checkInDate").text() != "체크인 완료")
+						alert('체크인 후 확인 가능합니다.');
+				}
+			});
 	});
-	$(document).on('click', 'input[id=check]', function(){
-	   	alert($(this).closest('td').next().text());
-	   	if($(this).is(":checked"))
-		   	cancelList.push($(this).closest('td').next().text());
-	   	else if ($(this).not(":checked")) 
-	   		cancelList.splice(cancelList.indexOf($(this).closest('td').next().text()),1);
-   		console.log(cancelList);
-	<c:forEach items='cancelList' var='cancel'>
-	$("#cancel").val(${cancel}); // 선택한 좌석을 파라미터로 넘기기 위해 input에 담아줌
-	</c:forEach>
-	   	
-	});
-	
+
 	var date = new Date();
 	var year = date.getFullYear();
 	var month = date.getMonth() + 1;
@@ -351,12 +351,6 @@ var toggleButton = document.getElementById("toggleButton");
 
 });
 	
-function toggleComplete(){
-  var lastComplete = completes[completes.length - 1];
-  lastComplete.classList.toggle('complete');
-}
-
-toggleButton.onclick = toggleComplete;
 </script>
 
 </body>
