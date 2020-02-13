@@ -49,18 +49,17 @@
 <th scope="row">적립한 마일리지</th>
 </tr>
 <c:forEach items="${blist}" var="bl">
-<tr style="border: 1px solid #ddd;">
+<tr style="border: 1px solid #ddd;" class="mtr">
 <td style="text-align: center;
     font-size: 15px;
     text-align: center;
     height: 40px;
     line-height: 40px;
-    padding-left: 20px;
-">${bl.couName}</td>
-<td>${bl.bookingNum}</td>
-    <td>- ${bl.mileageMin}</td>
-    <td class="mplus" style="cursor: pointer;">+ ${bl.mileagePlus}</td>
-    </tr>
+    padding-left: 20px;">${bl.couName}</td>
+<td class="btd">${bl.bookingNum}</td>
+<td>- ${bl.mileageMin}</td>
+<td>+ <span class="mplus" style="cursor: pointer;">${bl.mileagePlus}</span></td>
+</tr>
 
 </c:forEach>
 
@@ -74,7 +73,21 @@
 
 $('.mplus').click(function(){
 
-	alert('hh');
+	alert($(this).closest('.mtr').find('.btd').text());
+
+
+/* 	$.ajax({
+		data : {
+			id : '${member.id}',
+			bookingNum : $(this).closest('.mtr').find('.btd').text()
+		},
+		type : "GET",
+		url : "./milplus",
+		success : function(data) {
+
+		}
+	}); */
+	
 });
 
 </script>
