@@ -522,8 +522,8 @@
 		$("#print").click(function(){
              window.print();     
 		});
-		$("#bcTarget").barcode("997456669", "codabar",{barWidth:1, barHeight:30});
-		
+		$("#bcTarget").barcode("${memberNum}", "codabar",{barWidth:1, barHeight:30});
+		console.log("${arrInfo}");
 		function getUUID() { // UUID v4 generator in JavaScript (RFC4122 compliant)
 			  return 'xxxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
 			    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 3 | 8);

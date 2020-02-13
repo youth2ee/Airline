@@ -250,8 +250,8 @@ input[type="checkbox"] + label {
   margin: 8% auto; /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
-  width: 50%; /* Could be more or less, depending on screen size */
-  height: 500px;
+  width: 38%; /* Could be more or less, depending on screen size */
+  height: 394px;
 }
 
 /* The Close Button */
@@ -272,9 +272,47 @@ input[type="checkbox"] + label {
 
 /* 모달 안 */
 #mtitle {
-    padding: 6px 0;
+    padding: 10px 0;
     text-align: center;
     font-weight: bolder;
     font-size: 40px;
+    margin-bottom: 23px;
 }
 
+.mbth {
+	padding: 25px 25px;
+	border-bottom: 1px solid #ddd;
+	background-color: #6d6e70;
+	color: #fff;
+	font-size: 16px;
+	text-align: center;
+	font-weight: normal;
+	width: 180px;
+}
+
+.mbtb {
+	padding: 15px 25px;
+	border-bottom: 1px solid #ddd;
+	border-top: 1px solid #ddd;
+}
+
+.mbtn2{
+	cursor: pointer;
+	width: 110px;
+	height: 44px;
+	background-color: #d60815;
+	border: none;
+	color: white;
+	text-align: center;
+	text-decoration: none;
+	font-size: 16px;
+}
+
+#modalfm{
+	display: block;
+    width: 686px;
+    height: 127px;
+    background-color: #f3f3f3;
+    margin: 0 auto;
+    margin-top: 20px;
+}

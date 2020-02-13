@@ -20,12 +20,13 @@
 					<ul>
 						<c:if test="${not empty member}">
 						<li OnClick="location.href ='${pageContext.request.contextPath}/member/memberLogout'" style="cursor:pointer;">로그아웃</li>
+						<li class="li1" OnClick="location.href ='${pageContext.request.contextPath}/mypage/main'" style="cursor:pointer;">마이페이지</li>
 						</c:if>
 						<c:if test="${empty member}">
 						<li OnClick="location.href ='${pageContext.request.contextPath}/member/memberLogin'" style="cursor:pointer;">로그인</li>
-						</c:if>
-					
 						<li class="li1" OnClick="location.href ='${pageContext.request.contextPath}/member/memberAgree'" style="cursor:pointer;">회원가입</li>
+						</c:if>
+						
 						<li class="li1" OnClick="location.href ='${pageContext.request.contextPath}/notice/noticeList'" style="cursor:pointer;">고객센터</li>
 					</ul>				
 				</div>
@@ -40,7 +41,7 @@
 			
 				<div class="menu_wrap">
 					<div class="menu1" OnClick="location.href ='${pageContext.request.contextPath}/booking/bookingMain'" style="cursor:pointer;">항공권예약</div>
-					<div class="menu1" OnClick="location.href ='${pageContext.request.contextPath}/checkIn/test'" style="cursor:pointer;">웹체크인</div>
+					<div class="menu1" OnClick="location.href ='${pageContext.request.contextPath}/checkIn/checkInPage'" style="cursor:pointer;">웹체크인</div>
 					<div class="menu1" OnClick="location.href ='${pageContext.request.contextPath}/park/ParkRes'" style="cursor:pointer;">주차장예약</div>
 					<div class="menu1" OnClick="location.href ='${pageContext.request.contextPath}/limo/limoHome'" style="cursor:pointer;">리무진예약</div>
 				</div>

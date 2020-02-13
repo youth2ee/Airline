@@ -376,29 +376,30 @@ ${arr[3]}시 ${arr[4]}분<i class='fas fa-angle-right' style='font-size:10px; pa
 
 <table style="margin: 0 auto;">
 <tr>
-<td class="bth">이름</td>
-<td class="btb">
+<td class="mbth">이름</td>
+<td class="mbtb">
 <input type="text">
 </td>
 </tr>
 
 <tr>
-<td class="bth">아이디</td>
-<td class="btb">
+<td class="mbth">아이디</td>
+<td class="mbtb">
 <input type="text">
 </td>
 </tr>
 
-<tr>
-<td class="bth">회원번호</td>
-<td class="btb">
+<!-- <tr>
+<td class="mbth">회원번호</td>
+<td class="mbtb">
 <input type="text">
 </td>
-</tr>
-
+</tr> -->
 </table>
     
-    
+<div style="width: 50%;margin-left: 273px;margin-top: 32px;"><input type="button" value="찾기" style="margin: 0 auto;" class="mbtn2"></div>
+<div id="modalfm"> 회원님의 회원번호는  <span style="color: #d60815;">111-111-111</span> 입니다. </div>
+
   </div>
 
 </div>
@@ -459,6 +460,10 @@ ${arr[3]}시 ${arr[4]}분<i class='fas fa-angle-right' style='font-size:10px; pa
 
 $('.mbtn').click(function(){
 
+	$('.modal-content').css('height','394px');
+	$('#modalfm').css('display','none');
+	
+
 $('#myModal').css('display','block');
 
 $('.close').click(function(){
@@ -470,6 +475,14 @@ window.onclick = function(event) {
 		  $('#myModal').css('display','none');
 	  }
 	}
+	
+});
+
+
+$('.mbtn2').click(function(){
+
+	$('.modal-content').css('height','512px');
+	$('#modalfm').css('display','block');
 	
 });
 

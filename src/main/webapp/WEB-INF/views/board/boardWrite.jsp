@@ -12,6 +12,8 @@
 <link rel="stylesheet" href="../resources/css/board/boardWrite.css">
 <link rel="stylesheet" href="../resources/css/asiana/reset.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="../resources/css/header.css" rel="stylesheet">
+<link href="../resources/css/mypage/mypageHeader.css" rel="stylesheet">
  <!-- summerNote -->
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote.min.js"></script>
@@ -19,6 +21,30 @@
 </head>
 <body>
 
+<header>
+<c:import url="../layout/header.jsp"></c:import>
+</header>
+
+
+
+<div id="headerBottom">
+<div id="hbh">
+<div id="hbhome"><i class="fa fa-home"></i></div>
+<div id="hbselect">
+<select onchange="location.href=this.value">
+<option selected="selected" value="./main">나의 Every Air</option>
+<option value="./memberUpdate">회원정보수정</option>
+<option value="./mileage">마일리지</option>
+<option value="./ticketCheck">예매내역</option>
+<option value="./park">주차장 예약내역</option>
+<option value="./limo">리무진 예약내역</option>
+</select>
+</div>
+</div>
+
+</div>
+
+<!---- container ---->
 <div id="wrap_container">
 	<h3>글 작성하기</h3>
 </div>

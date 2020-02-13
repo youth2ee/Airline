@@ -20,6 +20,7 @@ import com.airline.a1.park.ParkInfoVO;
 import com.airline.a1.park.ParkService;
 import com.airline.a1.park.pInfoVO;
 import com.airline.a1.park.pReservationVO;
+import com.airline.a1.checkIn.ETicketVO;
 import com.airline.a1.board.BoardVO;
 import com.airline.a1.board.NoticeService;
 import com.airline.a1.board.NoticeVO;
@@ -95,13 +96,21 @@ public class AdminController {
 	}
 	
 	@GetMapping("admin3_1")
-	public void admin3_1() throws Exception{
-		
+	public ModelAndView admin3_1() throws Exception{
+		ModelAndView mv = new ModelAndView();
+		List<ETicketVO> eTicketVOs = adminService.getBookingInfo();
+		for(int i = 0; i < eTicketVOs.size(); i++) {
+			if (eTicketVOs.get(i).getFlightBNum() == null)
+				eTicketVOs.get(i).setFlightBNum("X");
+		}
+		mv.addObject("books",eTicketVOs);
+		return mv;
 	}
 	
 	@GetMapping("admin4_1")
-	public void admin4_1(Model model, Pager pager) throws Exception{
-		List<BoardVO> ar = noticeService.noticeList(pager);	
+	public void admin4_1(Model model) throws Exception{
+		List<NoticeVO> ar = noticeService.adminNoticeList();	
+		model.addAttribute("board", "notice");
 		model.addAttribute("list", ar);
 	}
 	
