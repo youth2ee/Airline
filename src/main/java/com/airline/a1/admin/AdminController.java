@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.airline.a1.board.BoardVO;
 import com.airline.a1.board.NoticeService;
+import com.airline.a1.board.NoticeVO;
 import com.airline.a1.boardUtil.Pager;
 import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 
@@ -68,8 +69,9 @@ public class AdminController {
 	}
 	
 	@GetMapping("admin4_1")
-	public void admin4_1() throws Exception{ 
-		
+	public void admin4_1(Model model, Pager pager) throws Exception{
+		List<BoardVO> ar = noticeService.noticeList(pager);	
+		model.addAttribute("list", ar);
 	}
 	
 	@GetMapping("admin5_1")

@@ -315,16 +315,17 @@
                     </tr>
                   </thead>
                   <tbody>
-             <%--      <c:forEach items="${cinemalist}" var="clist">  --%>
+            
+                   <c:forEach items="${list}" var="vo">
                     <tr class ="bar2">
-                      <td>1<%-- <a href="${pageContext.request.contextPath}/admin/admin_cinemaSelect?cinema_num=${clist.cinema_num}">${clist.cinema_num}</a> --%></td>
-                      <td>2</td>
-                      <td>2</td>
-                      <td>2</td>
-                      <td>2</td>
-                      <td>2</td>
+                      <td>${vo.num}</td>
+                      <td>${vo.cate}<%-- <a href="${pageContext.request.contextPath}/admin/admin_cinemaSelect?cinema_num=${clist.cinema_num}">${clist.cinema_num}</a> --%></td>
+                      <td>${vo.title}</td>
+                      <td>${vo.hit}</td>
+                      <td>${vo.regDate}</td>
+                      <td><button>삭제하기</button></td>
                     </tr>
-<%--                   </c:forEach> --%>
+                    </c:forEach>
 
                   </tbody>
                 </table>
