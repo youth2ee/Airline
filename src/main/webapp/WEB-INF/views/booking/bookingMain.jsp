@@ -151,7 +151,7 @@
     color: black;">출도착 항공편</h5></div>
 
 
-	<table class="table_list tb_type2" id="table_0" style=" width: 1200px; margin-left: 385px; text-align: center;">
+	<table class="table_list tb_type2" id="table_0" style=" width: 1200px; margin-left: 385px; text-align: center; margin-bottom: 50px;">
    	<tr>
 	<th scope="row" style="text-align: center;">편명</th>
 	<th scope="row" style="text-align: center;">항공사명</th>
