@@ -284,10 +284,10 @@
 }
 
 .search_box select, .search_box input[type="text"] {
-    margin-right: 5px;
+/*     margin-right: 5px;
     background-color: #fff;
     border: 1px solid #ccc;
-    text-overflow: ellipsis;
+    text-overflow: ellipsis; */
 }
 
 .relative_calendar {
@@ -394,10 +394,10 @@ caption, legend, .hidden {
 }
 
 .search_box select, .search_box input[type="text"] {
-    margin-right: 5px;
+    /* margin-right: 5px;
     background-color: #fff;
     border: 1px solid #ccc;
-    text-overflow: ellipsis;
+    text-overflow: ellipsis; */
 }
 
 select.white {
@@ -770,9 +770,9 @@ to {
 }
 
 input[type="text"] {
-	border: none;
+	/* border: none;
 	cursor: unset;
-	font-size: 17px;
+	font-size: 17px; */
 }
 
 input:focus {
