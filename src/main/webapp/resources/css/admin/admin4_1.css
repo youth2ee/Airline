@@ -1,9 +1,38 @@
 @charset "UTF-8";
 
+.h3{
+	margin-left: 10px;
+}
+
+.mb-4{
+	margin-left: 10px;
+	
+}
 .bar th{
 	text-align: center;
 }
 
 .bar2 td{
 	text-align: center;
+}
+
+#writeBtn{
+	border: 1px solid #d60815;
+    background-color: #d60815;
+    color: #fff;
+	padding: 12px 46px 12px 30px;
+    min-height: 46px;
+    line-height: 17px;
+    border-radius: 3px;
+	margin-left: 10px;
+	margin-bottom: 25px;
+}
+
+.btnWrite{
+	background: url(/images/board/icon_popup_white.png) no-repeat right 30px center;
+}
+
+#writeBtn:hover{
+	border: 1px solid #b3000b;
+    background-color: #b3000b;
 }

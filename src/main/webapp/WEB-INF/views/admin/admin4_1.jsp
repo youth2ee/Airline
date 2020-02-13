@@ -295,12 +295,13 @@
           <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800">고객센터 관리</h1>
           <p class="mb-4">게시판의 상세정보를 보여줍니다.</p>
+            <button id="writeBtn" class="btnWrite" type="button" onclick="location.href='../notice/noticeWrite'">게시물작성</button>
 
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">게시판 상세정보</h6>
-            </div>
+            </div>           
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -320,7 +321,7 @@
                     <tr class ="bar2">
                       <td>${vo.num}</td>
                       <td>${vo.cate}<%-- <a href="${pageContext.request.contextPath}/admin/admin_cinemaSelect?cinema_num=${clist.cinema_num}">${clist.cinema_num}</a> --%></td>
-                      <td>${vo.title}</td>
+                      <td><a href="${pageContext.request.contextPath}/notice/noticeSelect?num=${vo.num}">${vo.title}</a></td>
                       <td>${vo.hit}</td>
                       <td>${vo.regDate}</td>
                       <td><button type="button" onclick="location.href='../notice/noticeDelete2?num=${vo.num}'">삭제하기</button></td>
