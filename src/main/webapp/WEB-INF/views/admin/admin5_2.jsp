@@ -291,10 +291,300 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">영화관 관리</h1>
-          <p class="mb-4">영화관의 상세정보를 보여줍니다.</p>
+          <h1 class="h3 mb-2 text-gray-800">예약주차장 관리</h1>
+          <p class="mb-4">예약주차장의 상세정보를 보여줍니다.</p>
+          <!-- 김포공항 -->
+		  <h2 class="h4 mb-2 text-gray-800">김포공항 예약주차장</h2>
+          <div class="row">
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-m font-weight-bold text-primary text-uppercase mb-1">지난달 수익 (${lastmonth})</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">
+                      <c:forEach items="${last}" var="vo" end="0">
+                      	<fmt:setLocale value="ko_KR"/><fmt:formatNumber type="currency" value="${vo.rate}" />
+                      </c:forEach>
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                       <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-          <!-- DataTales Example -->
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-m font-weight-bold text-success text-uppercase mb-1">이번달 예상 수익 (${thismonth})</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">
+                      <c:forEach items="${thism}" var="vo" end="0">
+                      	<fmt:setLocale value="ko_KR"/><fmt:formatNumber type="currency" value="${vo.rate}" />
+                      </c:forEach>
+                      
+                      
+                      </div>
+                      
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-m font-weight-bold text-info text-uppercase mb-1">오늘의 이용률</div>
+                      <div class="row no-gutters align-items-center">
+                        <div class="col-auto">
+                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><c:forEach items="${pInfo}" var="vo" end="0">${vo.margin}%</c:forEach>
+                          </div>
+                        </div>
+                        <div class="col">
+                          <div class="progress progress-sm mr-2">
+                            <div class="progress-bar bg-info" role="progressbar" style="width: <c:forEach items="${pInfo}" var="vo" end="0">${vo.margin}</c:forEach>%" aria-valuenow="<c:forEach items="${pInfo}" var="vo" end="0">${vo.margin}</c:forEach>" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pending Requests Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-m font-weight-bold text-warning text-uppercase mb-1">오늘의 출/입 차량 대수 </div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">
+                      <c:forEach items="${out}" var="vo" end="0" varStatus="var">
+                      			출차 : ${vo.areaNum}대, 입차 : ${in[var.index].areaNum}대
+                      </c:forEach>
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-comments fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 김포공항 -->
+          <!-- 인천공항 -->
+		  <h2 class="h4 mb-2 text-gray-800">제주공항 예약주차장</h2>
+          <div class="row">
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-m font-weight-bold text-primary text-uppercase mb-1">지난달 수익 (${lastmonth})</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">
+                      
+                      <c:forEach items="${last}" var="vo" begin="1" end="1">
+                      	<fmt:setLocale value="ko_KR"/><fmt:formatNumber type="currency" value="${vo.rate}" />
+                      </c:forEach>
+                      
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                       <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-m font-weight-bold text-success text-uppercase mb-1">이번달 예상 수익 (${thismonth})</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">
+                      <c:forEach items="${thism}" var="vo" begin="1" end="1">
+                      	<fmt:setLocale value="ko_KR"/><fmt:formatNumber type="currency" value="${vo.rate}" />
+                      </c:forEach>
+                      
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-m font-weight-bold text-info text-uppercase mb-1">오늘의 이용률</div>
+                      <div class="row no-gutters align-items-center">
+                        <div class="col-auto">
+                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><c:forEach items="${pInfo}" var="vo" begin="1" end="1">${vo.margin}</c:forEach>%</div>
+                        </div>
+                        <div class="col">
+                          <div class="progress progress-sm mr-2">
+                            <div class="progress-bar bg-info" role="progressbar" style="width:<c:forEach items="${pInfo}" var="vo" begin="1" end="1">${vo.margin}</c:forEach>%" aria-valuenow="<c:forEach items="${pInfo}" var="vo" begin="1" end="1">${vo.margin}</c:forEach>" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pending Requests Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-m font-weight-bold text-warning text-uppercase mb-1">오늘의 출/입 차량 대수 </div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">
+                      <c:forEach items="${out}" var="vo" begin="1" end="1" varStatus="var">
+                      			출차 : ${vo.areaNum}대, 입차 : ${in[var.index].areaNum}대
+                      </c:forEach>
+                      
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-comments fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 인천공항 -->
+          <!-- 제주공항 -->
+		  <h2 class="h4 mb-2 text-gray-800">인천공항 예약주차장</h2>
+          <div class="row">
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-m font-weight-bold text-primary text-uppercase mb-1">지난달 수익 (${lastmonth})</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">
+                      <c:forEach items="${last}" var="vo" begin="2" end="2">
+                      	<fmt:setLocale value="ko_KR"/><fmt:formatNumber type="currency" value="${vo.rate}" />
+                      </c:forEach>
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                       <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-m font-weight-bold text-success text-uppercase mb-1">이번달 예상 수익 (${thismonth})</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">
+                      <c:forEach items="${thism}" var="vo" begin="2" end="2">
+                      	<fmt:setLocale value="ko_KR"/><fmt:formatNumber type="currency" value="${vo.rate}" />
+                      </c:forEach>                      
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-m font-weight-bold text-info text-uppercase mb-1">오늘의 이용률</div>
+                      <div class="row no-gutters align-items-center">
+                        <div class="col-auto">
+                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><c:forEach items="${pInfo}" var="vo" begin="2" end="2">${vo.margin}</c:forEach>%</div>
+                        </div>
+                        <div class="col">
+                          <div class="progress progress-sm mr-2">
+                            <div class="progress-bar bg-info" role="progressbar" style="width: <c:forEach items="${pInfo}" var="vo" begin="2" end="2">${vo.margin}</c:forEach>%" aria-valuenow="<c:forEach items="${pInfo}" var="vo" begin="2" end="2">${vo.margin}</c:forEach>" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pending Requests Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-m font-weight-bold text-warning text-uppercase mb-1">오늘의 출/입 차량 대수 </div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">
+                      <c:forEach items="${out}" var="vo" begin="2" end="2" varStatus="var">
+                      			출차 : ${vo.areaNum}대, 입차 : ${in[var.index].areaNum}대
+                      </c:forEach>                      
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-comments fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 제주공항 -->
+
+<%--           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">영화관 상세정보</h6>
@@ -312,21 +602,21 @@
                     </tr>
                   </thead>
                   <tbody>
-             <%--      <c:forEach items="${cinemalist}" var="clist">  --%>
+                  <c:forEach items="${cinemalist}" var="clist"> 
                     <tr>
-                      <td>1<%-- <a href="${pageContext.request.contextPath}/admin/admin_cinemaSelect?cinema_num=${clist.cinema_num}">${clist.cinema_num}</a> --%></td>
+                      <td>1<a href="${pageContext.request.contextPath}/admin/admin_cinemaSelect?cinema_num=${clist.cinema_num}">${clist.cinema_num}</a></td>
                       <td>2</td>
                       <td>2</td>
                       <td>2</td>
                       <td>2</td>
                     </tr>
-<%--                   </c:forEach> --%>
+                  </c:forEach>
 
                   </tbody>
                 </table>
               </div>
             </div>
-          </div>
+          </div> --%>
 
         </div>
         <!-- /.container-fluid -->

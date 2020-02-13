@@ -34,7 +34,29 @@ public class ParkService {
 	@Autowired
 	private parkMapper parkMapper;
 	
+	public List<pReservationVO> parkOut() throws Exception{
+		return parkMapper.parkOut();
+	}
 	
+	public List<pReservationVO> parkIn() throws Exception{
+		return parkMapper.parkIn();
+	}
+	
+	public List<pInfoVO> parkInfo() throws Exception{
+		return parkMapper.parkInfo();
+	}
+	
+	public List<pReservationVO> today() throws Exception{
+		return parkMapper.today();
+	}
+	
+	public List<pReservationVO> lastMonthEarn(String pm) throws Exception{
+		return parkMapper.lastMonthEarn(pm);
+	}
+	
+	public List<pReservationVO> thisMonthEarn(String tm)throws Exception{
+		return parkMapper.thisMonthEarn(tm);
+	}
 	
 	public List<pReservationVO> FindMyResByCarNum(pReservationVO pReservationVO) throws Exception{
 		System.out.println("서비스");
@@ -57,10 +79,7 @@ public class ParkService {
 		 String url = "http://airport.koreatriptips.com/parking-lot.html";    //크롤링할 url지정
 	     org.jsoup.nodes.Document doc = null; 
 	     //Document에는 페이지의 전체 소스가 저장된다
-	     
-	     
 		try {
-			 
             doc = Jsoup.connect(url).get();
            //Elements els = doc.select("body > table:nth-child(4) > tbody > tr:nth-child(3) > td:nth-child(2) > table > tbody > tr:nth-child(3) > td > table");
             System.out.println(doc.toString());
@@ -183,7 +202,7 @@ public class ParkService {
 		BufferedReader br = null;
 		List<ParkInfoVO> ar = new ArrayList<ParkInfoVO>();
 		try {
-			String urlstr = "http://openapi.airport.co.kr/service/rest/AirportParking/airportparkingRT?ServiceKey=QZHG0poXIbqgwOTVR4fiVzbVQ0Pmuz5lkYnHKmazdB%2F5VtUfkpt42I%2BSmw2F5XFUbX1%2Bmm8NaH5BLRz80XVUaA%3D%3D&schAirportCode=GMP";
+			String urlstr = "http://openapi.airport.co.kr/service/rest/AirportParking/airportparkingRT?serviceKey=QZHG0poXIbqgwOTVR4fiVzbVQ0Pmuz5lkYnHKmazdB%2F5VtUfkpt42I%2BSmw2F5XFUbX1%2Bmm8NaH5BLRz80XVUaA%3D%3D";
 			URL url = new URL(urlstr);
 			HttpURLConnection urlconnection = (HttpURLConnection) url.openConnection();
 			urlconnection.setRequestMethod("GET");

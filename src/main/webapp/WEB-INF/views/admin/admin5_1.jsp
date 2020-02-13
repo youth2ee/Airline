@@ -169,7 +169,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
            <h6 class="collapse-header">PARKING MANAGEMENT</h6>
             <a class="collapse-item active" href="${pageContext.request.contextPath}/admin/admin5_1">공항별 주차 현황</a>
-            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin5_2">회원별 주차 현황</a>
+            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin5_2">예약 주차 현황</a>
           </div>
         </div>
       </li>
@@ -291,36 +291,37 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">영화관 관리</h1>
-          <p class="mb-4">영화관의 상세정보를 보여줍니다.</p>
+          <h1 class="h3 mb-2 text-gray-800">주차장 관리</h1>
+          <p class="mb-4">전국공항 주차장의 상세정보를 보여줍니다.</p>
 
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">영화관 상세정보</h6>
+              <h6 class="m-0 font-weight-bold text-primary" style="float: left;">주차장 상세정보</h6><span style="float: right;">조회일시 : <c:forEach items="${list}" var="vo" end="0">${vo.parkingGetdate} ${vo.parkingGettime}</c:forEach></span>
             </div>
             <div class="card-body">
+            
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>번호</th>
-                      <th>지역 </th>
-                      <th>이름</th>
-                      <th>주소</th>
-                      <th>전화번호</th>
+                      <th>공항명</th>
+                      <th>주차장명 </th>
+                      <th>출차량 / 입차량</th>
+                      <th>이용 중인 자리 / 전체 주차 공간</th>
+                      <th>이용률(%)</th>
                     </tr>
                   </thead>
                   <tbody>
-             <%--      <c:forEach items="${cinemalist}" var="clist">  --%>
+             		<c:forEach items="${list}" var="vo">
                     <tr>
-                      <td>1<%-- <a href="${pageContext.request.contextPath}/admin/admin_cinemaSelect?cinema_num=${clist.cinema_num}">${clist.cinema_num}</a> --%></td>
-                      <td>2</td>
-                      <td>2</td>
-                      <td>2</td>
-                      <td>2</td>
+                      <td>${vo.aprKor}</td>
+                      <td>${vo.parkingName}</td>
+                      <td>${vo.parkingIoutcnt} / ${vo.parkingIincnt}</td>
+                      <td>${vo.parkingIstay} / ${vo.parkingFullSpace}</td>
+                      <td><fmt:formatNumber value="${vo.parkingIstay/vo.parkingFullSpace * 100}" pattern="0.00"/>%</td>
                     </tr>
-<%--                   </c:forEach> --%>
+                   </c:forEach>
 
                   </tbody>
                 </table>

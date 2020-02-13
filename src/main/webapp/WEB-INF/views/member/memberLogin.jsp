@@ -70,7 +70,7 @@
 									
 
 								<div class="id_save_wrap" id="memchk" style="padding-top:0px">
-									<input type="checkbox" id="chkSaveID">
+									<input type="checkbox" id="chkSaveID" checked="checked">
 									<label for="chkSaveID" id="labelSaveID" class="id_save">아이디 저장</label> 
 								</div>
 
@@ -302,7 +302,24 @@
 
 //로그인버튼 클릭 시 폼 전송
 $("#btnLogin").click(function(){
-	$("#loginform").submit();
+	
+    if($("#chkSaveID").is(":checked")){ // ID 저장하기 체크했을 때,
+        var userInputId = $("#txtID").val();
+        var loginType = $('input[name="loginType"]:checked').val();
+        alert(loginType);
+        setCookie("userInputId", userInputId, 7); // 7일 동안 쿠키 보관
+        setCookie("loginType", loginType, 7);
+    }else{ // ID 저장하기 체크 해제 시,
+        deleteCookie("userInputId");
+        deleteCookie("loginType");
+	}
+	
+
+	if($("#txtID").val()!="" && $("#txtPW").val()!=""){
+		$("#loginform").submit();
+	}else{
+		alert('아이디와 비밀번호를 모두 입력해주세요.');
+	}
 });
 
 
@@ -375,6 +392,53 @@ $("#txtID").keyup(function(){
 
 });
 
+	//아이디 기억하기
+	var userInputId = getCookie("userInputId");//저장된 쿠기값 가져오기
+	var loginType = getCookie("loginType");
+	$("#txtID").val(userInputId);
+
+	$('input[value='+loginType+']').attr("checked",true);
+
+	if($("#loginType_ID").prop('checked')){
+		$("#txtID").prop('title', '아이디 입력');
+		$("#txtID").prop('placeholder', '아이디 입력');
+		$("#labelSaveID").text('아이디 저장');
+		$("#txtID").attr('maxlength', 100);
+	}else{
+		$("#txtID").prop('title', '회원번호 입력');
+		$("#txtID").prop('placeholder', '회원번호 입력');
+		$("#txtID").attr('maxlength', 11);
+		$("#labelSaveID").text('회원번호 저장');
+	}
+	
+
+function setCookie(cookieName, value, exdays){
+    var exdate = new Date();
+    exdate.setDate(exdate.getDate() + exdays);
+    var cookieValue = escape(value) + ((exdays==null) ? "" : "; expires=" + exdate.toGMTString());
+    document.cookie = cookieName + "=" + cookieValue;
+}
+ 
+function deleteCookie(cookieName){
+    var expireDate = new Date();
+    expireDate.setDate(expireDate.getDate() - 1);
+    document.cookie = cookieName + "= " + "; expires=" + expireDate.toGMTString();
+}
+ 
+function getCookie(cookieName) {
+    cookieName = cookieName + '=';
+    var cookieData = document.cookie;
+    var start = cookieData.indexOf(cookieName);
+    var cookieValue = '';
+    if(start != -1){
+        start += cookieName.length;
+        var end = cookieData.indexOf(';', start);
+        if(end == -1)end = cookieData.length;
+        cookieValue = cookieData.substring(start, end);
+    }
+    return unescape(cookieValue);
+}
+//아이디 기억하기 끝
 
 </script>
 
