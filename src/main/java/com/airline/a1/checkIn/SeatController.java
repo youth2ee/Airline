@@ -36,9 +36,9 @@ public class SeatController {
 	}
 
 	@GetMapping("eTicket")
-	public ModelAndView eTicket() throws Exception {
+	public ModelAndView eTicket(ETicketVO eticketVO) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		List<ETicketVO> eTicketVOs = seatService.getEticket();
+		List<ETicketVO> eTicketVOs = seatService.getEticket(eticketVO);
 		if(eTicketVOs.size() == 0) {
 			mv.addObject("msg", "탑승정보가 존재하지 않습니다.");
 			mv.setViewName("common/common_result_close");
@@ -47,6 +47,7 @@ public class SeatController {
 		String memberNum = null; // 바코드에 쓸 회원번호(나중에 세션으로 받기)
 		int kind = 0; // 0 -> 편도 / 1 -> 왕복 
 		ETicketVO depInfo = eTicketVOs.get(0);
+		ETicketVO arrInfo = eTicketVOs.get(1);
 		String dateData = depInfo.getDepPlandTime();
 		String depTime = dateData.substring(8, 10) + ":" + dateData.substring(10, 12);
 		dateData = dateData.substring(6, 8) + monthModi(dateData) + dateData.substring(2, 4) + "("
@@ -57,13 +58,30 @@ public class SeatController {
 		dateData2 = dateData2.substring(6, 8) + monthModi(dateData2) + dateData2.substring(2, 4)+ "("
 				+ getDate(dateData2) + ")";
 		depInfo.setArrPlandTime(dateData2);
+		
+		String dateData3 = arrInfo.getDepPlandTime();
+		String depTime2 = dateData3.substring(8, 10) + ":" + dateData3.substring(10, 12);
+		dateData3 = dateData3.substring(6, 8) + monthModi(dateData3) + dateData3.substring(2, 4) + "("
+				+ getDate(dateData3) + ")";
+		arrInfo.setDepPlandTime(dateData3);
+		String dateData4 = arrInfo.getArrPlandTime();
+		System.out.println(dateData4);
+		String arrTime2 = dateData4.substring(8, 10) + ":" + dateData4.substring(10, 12);
+		dateData4 = dateData4.substring(6, 8) + monthModi(dateData4) + dateData4.substring(2, 4)+ "("
+				+ getDate(dateData4) + ")";
+		arrInfo.setArrPlandTime(dateData4);
+		
+		
 		mv.addObject("arrTime", arrTime);
+		mv.addObject("arrTime2", arrTime2);
 		if (depInfo.getKind().equals("왕복")) {
 			mv.addObject("arrInfo", eTicketVOs.get(1));
 			kind = 1;
 		} 
 		mv.addObject("depInfo", eTicketVOs.get(0));
+		mv.addObject("arrInfo", eTicketVOs.get(1));
 		mv.addObject("depTime", depTime);
+		mv.addObject("depTime2", depTime2);
 		mv.addObject("kind",kind);
 		return mv;
 	}

@@ -167,7 +167,7 @@
       <h2 class="direction"><span id="depLoc"></span> → <span id="arrLoc"></span></h2>
     </div>
     <div class="modal-body">
-    <form id="frm2" method="post">
+    <form id="frm3" method="post" action="./test">
 		<div class="modalInnerWrap">
 			<div class="modalInnerLeft">
 				<div class="left1">
@@ -270,25 +270,6 @@
 					</div>
 				</div>
 				<div class="modalInnerRightDown">
-					<table>
-						<tr>
-							<td>예매번호</td>
-							<td><input type="text" id="bookingNum" name="bookingNum" readonly="readonly"></td>	
-						</tr>  
-						<tr>
-							<td>인원 수</td>
-							<td><input type="text" id="people" name="people" readonly="readonly" style="width:10px">명</td>
-						</tr> 
-						<tr>
-							<td>가는편 좌석</td>
-							<td><input type="text" id="depSeat" name="depSeat" readonly="readonly"></td>
-						</tr>
-						<c:if test="${kind eq 1}">
-						<tr>
-							<td>오는편 좌석</td> 
-							<td><input type="text" id="arrSeat" name="arrSeat" readonly="readonly"></td>
-						</tr></c:if>
-					</table>
 								<div> 예매번호  <span class="spanBookingNum"></span><input type="text" id="bookingNum" name="bookingNum"
 										readonly="readonly" hidden="hidden">
 								</div>
@@ -312,8 +293,6 @@
 			<div class="ajax" style="display: none;">
 				
 			</div>
-			<div class="modalInnerBottom">
-			 	오는편 좌석 선택
 			 	<p><button type="button" class="modalInnerBottom" id="btn"><span>선택 완료</span></button></p>
 			<div class="modalInnerBottom2" style="display: none">
 			 	<p><button type="button" class="depBookGo" id="btn2"><span>좌석 변경</span></button></p>
@@ -392,7 +371,6 @@
 					$("#depSeat").val(${depCheck}); // 선택한 좌석을 파라미터로 넘기기 위해 input에 담아줌
 				</c:forEach>
 			}
-
 			if($(this).closest("div").parent().attr("class") == "arrSeat"){
 				if($(this).is(":checked")) {
 					arrChecks.push($(this).attr('title'));
@@ -404,7 +382,6 @@
 				</c:forEach>
 			}
 		});
-
 		$("#btn_search").click(function() {
 			var  bookingNum = $('#bookingNum').val();
 			$.get("./bookingCheck?bookingNum=" + bookingNum, function(data) {
@@ -478,7 +455,7 @@
 						$(".roundOnly").html("");
 						$(".modalInnerBottom").click(function(){
 							if($("#people").val() == $(".depAir input:checkbox:checked").length){
-								$("#frm2").submit();
+								$("#frm3").submit();
 							} else {
 								alert('좌석을 선택하세요.');
 							} 
@@ -504,53 +481,11 @@
 		});
 		$(".bookOk").click(function(){
 			if($("#people").val() == $(".depAir input:checkbox:checked").length && $("#people").val() == $(".arrAir input:checkbox:checked").length){
-				$("#frm2").submit();
+				$("#frm3").submit();
 			}
 			else{
 				alert('좌석 선택이 완료되지 않았습니다.');
 			}
-		});
-		/* $("#btn_search").click(function(){
-			$("#frm").submit();
-		}); */
-
-		$("#btn_search").click(function() {
-			var  bookingNum = $('#bookingNum').val();
-			$.get("./bookingCheck?bookingNum=" + bookingNum, function(data) {
-				$(".ajax").html(data);
-				var result = $(".ajax").find(".result").text();
-				if (result == 2) {
-					var people = $(".ajax").find(".people").text();
-					var depFNum = $(".ajax").find(".depFNum").text();
-					var arrFNum = $(".ajax").find(".arrFNum").text();
-					var tripData = $(".ajax").find(".tripData").text();
-					var booked = $(".ajax").find(".booked").text();
-					$("#myModal").css('display','block');
-					$("#people").val(people);
-					$("#depFNum").val(depFNum);
-					$("#arrFNum").val(arrFNum);
-					$("#tripData").val(tripData);
-					$("#booked").val(booked);
-					
-
-					
-					var span = document.getElementsByClassName("close")[0];
-					span.onclick = function() {
-						  $("#myModal").css('display','none');
-						}
-					window.onclick = function(event) {
-						  if (event.target == $("#myModal")) {
-						    $("#myModal").css('display','none');
-						  }
-						}		
-						
-				} else if (result == 1){
-					alert('이미 체크인 하셨습니다.');
-				} else {
-					alert('정보 조회에 실패했습니다. 예매번호를 확인해주세요.');
-				}
-				
-			});
 		});
 	</script>
 			

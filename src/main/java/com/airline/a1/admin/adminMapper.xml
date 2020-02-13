@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.airline.a1.admin.AdminMapper">
+  
+	<select id="airlineList" resultType="com.airline.a1.admin.AirlineVO">
+	select aName from airline order by aName asc
+	</select>
+	
+	<select id="airallList" resultType="com.airline.a1.booking.FlightDataVO">
+	select * from flightData 
+	order by depPlandTime desc
+	</select>
+	
+	
+	<select id="airpartList" parameterType="com.airline.a1.booking.FlightDataVO" resultType="com.airline.a1.booking.FlightDataVO">
+	select * from flightData 
+	where airlineNm=#{airlineNm}
+	order by depPlandTime desc
+	</select>
+	
+	
+	
+	
+  
+  </mapper>
