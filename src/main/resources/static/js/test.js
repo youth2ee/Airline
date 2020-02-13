@@ -236,9 +236,9 @@
 				}else if(this_check.siblings("select[name=depLoc]").val()==""){
 					alert("출발지가 선택되지 않았습니다.");
 					this_check.siblings(".depLoc").focus();
-				}else if(this_check.siblings(".place").children("select[name=arrLoc]").val()==""){
+				}else if(this_check.siblings("span").children("select[name=arrLoc]").val()==""){
 					alert("도착지가 선택되지 않았습니다.");
-				}else if(this_check.siblings(".place").children("select[name=person]").val()=="" && this_check.siblings(".place").children("select[name=child]").val()==""){
+				}else if(this_check.siblings("span").children("select[name=person]").val()=="" && this_check.siblings("span").children("select[name=child]").val()==""){
 					alert('탑승인원을 선택해주세요.');
 				}else if(this_check.siblings("select[name=limoTime]").val()==""){
 					alert('출발시간을 선택해주세요.');
@@ -259,7 +259,7 @@
 		console.log('체크박스 수 :' +check_total);
 		console.log('논체크 수 :' +check_none);
 		console.log('체크한 수 :' +checked_total);
-		if(check_count == checked_total){
+		if(check_count == checked_total && check_count != 0 ){
 			alert('결제 진행');
 			window.open("../imPay/imPayList2?name=리무진버스&amount="+100,"이니시스", "width=825px, height=600px");
 		}
