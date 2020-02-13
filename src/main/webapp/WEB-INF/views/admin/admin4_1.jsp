@@ -307,9 +307,9 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr class="bar">
-                      <th>분류</th>
                       <th>번호</th>
-                      <th>제목 </th>
+                      <th>분류</th>
+                      <th>제목 </th>                  
                       <th>조회수</th>
                       <th>작성일</th>
                       <th>관리</th>
@@ -318,14 +318,20 @@
                   <tbody>
             
                    <c:forEach items="${list}" var="vo">
-                    <tr class ="bar2">
+                    <tr class ="bar2 list${vo.num}" id="bar2">
                       <td>${vo.num}</td>
                       <td>${vo.cate}<%-- <a href="${pageContext.request.contextPath}/admin/admin_cinemaSelect?cinema_num=${clist.cinema_num}">${clist.cinema_num}</a> --%></td>
                       <td><a href="${pageContext.request.contextPath}/notice/noticeSelect?num=${vo.num}">${vo.title}</a></td>
                       <td>${vo.hit}</td>
-                      <td>${vo.regDate}</td>
-                      <td><button type="button" onclick="location.href='../notice/noticeDelete2?num=${vo.num}'">삭제하기</button></td>
+                      <td>${vo.regDate}</td>             
+                      <td>
+                      	 <button type="button" id="updateBtn" onclick="location.href='${pageContext.request.contextPath}/notice/noticeUpdate?num=${vo.num}'">수정하기</button>
+                     	 <button type="button" onclick="location.href='../notice/noticeDelete2?num=${vo.num}'">삭제하기</button>
+                      </td>
                     </tr>
+                 <%--    <tr class="adminCon list2${vo.num}">
+                    	<td colspan="7" id='k'>${vo.contents}</td>               
+                    </tr> --%>
                     </c:forEach>
 
                   </tbody>
@@ -396,6 +402,7 @@
 
   <!-- Page level custom scripts -->
   <script src="${pageContext.request.contextPath}/resources/vendor/js/demo/datatables-demo.js"></script>
+
 
 </body>
 

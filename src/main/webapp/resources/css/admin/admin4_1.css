@@ -36,3 +36,7 @@
 	border: 1px solid #b3000b;
     background-color: #b3000b;
 }
+
+#updateBtn{
+	margin-right: 10px;
+}
