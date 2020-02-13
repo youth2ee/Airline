@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-        <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,6 +28,13 @@
 .modal-content{
 	width: 420px;
 }
+.header_bottom_inner{
+	background-color: white;
+}
+#hbhome{
+	background-color: #5f6062;
+}
+
 </style>
 </head>
 <body>
@@ -121,16 +129,29 @@
 					</tbody>
 					</table>
 					
-					
 					<div class="tbl_bod btn_r cart_result" style="width: 1170px;">
 						<ul>
-							<li style="float: right;">탑승 인원<br><strong class="txt_blu"><span id="totalTxt"></span><span>대인 1명</span><br><span>소인 1명</span></strong></li>
+						<c:forEach items="${limo}" var="limos">
+							<input type="hidden" value="${limos.limoPrice}" class="limos_price">
+							<input type="hidden" value="${limos.person}" class="limos_person">
+							<input type="hidden" value="${limos.child}" class="limos_child">						
+						</c:forEach>
+							<li style="float: right;">총 탑승 인원<br>
+								<strong class="txt_blu">
+									<span id="totalTxt"></span><br>
+									<span id="totalTxt2"></span>
+								</strong>
+							</li>
 <!-- 							<li>인원<br><strong><span id="totalTxt0">0 명</span></strong><span class="bg2">&nbsp;</span></li> -->
-							<li style="float: right;">결제하신 금액<br><strong class="txt_red"><span id="totalTxt1">32,000 원</span></strong></li>
+							<li style="float: right;">총 결제하신 금액<br>
+								<strong class="txt_red">
+									<span id="totalTxt1"></span>
+								</strong>
+							</li>
 						</ul>
 					</div>
 					<div class="btn_r">
-						<a href="javascript:btnCreadit();" class="btn_blue_ang" style="background: url('http://www.letskorail.com/images/btn_bg_blue.gif'); margin-right: 130px;"><span>예매좌석 보기</span></a>
+						<a href="../limo/limoHome" class="btn_blue_ang" style="background: url('http://www.letskorail.com/images/btn_bg_blue.gif'); margin-right: 130px;"><span>예매하러 가기</span></a>
 					</div>
 
 				<!-- //cont_info -->
@@ -217,8 +238,6 @@
 	
 
 <script type="text/javascript">
-	$(".header_bottom_inner").css("background-color", "white");
-	$("#hbhome").css("background-color", "#5f6062");
 
 	$('.btn').click(function(){
 		$(".limo").each(function(){
@@ -230,8 +249,36 @@
 	  	for(var i=0; i<seat.length;i++){
 			$('.limo[title='+seat[i]+']').addClass("abcd");
 		}
-		
 	});
+
+	var sum = 0;
+	$('.limos_price').each(function(){
+		var a = $(this).val();
+		a=a*1;
+		sum = sum + a;
+	});
+	    sum = sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		$("#totalTxt1").html(sum+'원');
+
+	var sum2 = 0;
+	$(".limos_person").each(function(){
+		var a = $(this).val();
+		a=a*1;
+		sum2 = sum2 + a;
+		$("#totalTxt").html('대인 : '+sum2+'명');
+	});
+	
+	var sum3 = 0;
+	$(".limos_child").each(function(){
+		var a = $(this).val();
+		a=a*1;
+		sum3 = sum3 + a;
+		$("#totalTxt2").html('소인 : '+sum3+'명');
+	});
+	
+
+
+		
 </script>
 
 </body>
