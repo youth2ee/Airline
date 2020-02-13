@@ -34,26 +34,7 @@ public class ImPayController {
 		System.out.println(imPayVO.getRamount());
 		System.out.println(imPayVO.getMilplus());
 		System.out.println(imPayVO.getBnum());
-		
-		/*
-		 * System.out.println(imPayVO.getMil()); System.out.println(imPayVO.getBpnum());
-		 */
-		
-		/* String [] nlist = imPayVO.getBpnum().split(","); */
-		
-		/*
-		 * int bpnum = 0;
-		 * 
-		 * for(String list : nlist) { list = list.trim(); bpnum =
-		 * Integer.parseInt(list);
-		 * 
-		 * }
-		 */
-		
-		/*
-		 * System.out.println(imPayVO.getName());
-		 * System.out.println(imPayVO.getAmount());
-		 */
+
 		
 		MembersVO membersVO = (MembersVO)session.getAttribute("member");
 		imPayVO.setMembersVO(membersVO);
@@ -66,41 +47,67 @@ public class ImPayController {
 	
 	
 	@RequestMapping("imPayComplete")
-	public void imPayComplete(ImPayResultVO imPayResultVO, Model model) throws Exception {
+	public void imPayComplete(ImPayResultVO imPayResultVO, Model model, HttpSession session) throws Exception {
 		
 		System.out.println("2");
 		System.out.println(imPayResultVO.getBpnum());
 		System.out.println(imPayResultVO.getMil());
 		System.out.println(imPayResultVO.getPaid_amount());
-		System.out.println(imPayResultVO.getMilplus());
-		System.out.println(imPayResultVO.getImp_uid());
-		System.out.println(imPayResultVO.getMerchant_uid());
+		System.out.println(imPayResultVO.getImp_uid()); //id
+		System.out.println(imPayResultVO.getMerchant_uid()); //milplus
 		System.out.println(imPayResultVO.getBnum());
 		
 		String [] nlist = imPayResultVO.getBpnum().split(","); 
 		
 		BookingPriceVO bookingPriceVO = new BookingPriceVO();
 		bookingPriceVO.setMileageMin(imPayResultVO.getMil());
+		bookingPriceVO.setMileagePlus(Integer.parseInt(imPayResultVO.getMerchant_uid()));
 		bookingPriceVO.setTotalAllPrice(imPayResultVO.getPaid_amount());
+		
+		System.out.println("빠질 마일리지 1");
+		System.out.println(bookingPriceVO.getMileageMin());
+		
+		System.out.println("더할 마일리지 1");
+		System.out.println(bookingPriceVO.getMileagePlus());
+		
+		
 		
 		for (int i = 1; i < nlist.length; i++) {
 			Integer bpnum = Integer.parseInt(nlist[i]);
 			
-			System.out.println(bpnum);
 			bookingPriceVO.setBpnum(bpnum);
 			
-			bookingService.priceInsertResult(bookingPriceVO);	
+			System.out.println("빠지는 마일리지 게시판에 등록");
+			System.out.println(bookingPriceVO.getMileageMin());
 			
+			bookingService.priceInsertResult(bookingPriceVO);	
 			memberService.updateMilplus(bookingPriceVO);
 		}
+		
+		MembersVO memVo2 =  (MembersVO)session.getAttribute("member");
+		memVo2 = memberService.memberLogin(memVo2);
+		System.out.println("인서트된 후 마일리지");
+		System.out.println(memVo2.getMileage());
 		
 		
 		MembersVO membersVO = new MembersVO();
 		membersVO.setId(imPayResultVO.getImp_uid());
-		membersVO.setMileage(Integer.parseInt(imPayResultVO.getMerchant_uid()));
+		membersVO.setMileage(bookingPriceVO.getMileageMin());
+		
+		System.out.println("빠질 마일리지");
+		System.out.println(membersVO.getMileage());
 		
 		memberService.updateMilmin(membersVO);
-	
+		
+		MembersVO memVo =  (MembersVO)session.getAttribute("member");
+		memVo = memberService.memberLogin(memVo);
+		
+		System.out.println("결과적 마일리지");
+		System.out.println(memVo.getMileage());
+		
+		System.out.println();
+		
+		session.setAttribute("member", memVo);
 		
 		model.addAttribute("vo", imPayResultVO);
 	}
