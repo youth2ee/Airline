@@ -69,23 +69,12 @@ public class MypageController {
 	@GetMapping("bookingMore")
 	public ModelAndView bookingMore(String bookingNum) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		System.out.println(bookingNum);
 		ETicketVO eTicketVO = new ETicketVO();
 		eTicketVO.setBookingNum(bookingNum);
 		List<ETicketVO> eTicketVOs = mypageService.getBookingMore(eTicketVO);
 		List<SeatVO> seatVOs = mypageService.getBookingMoreSeat(eTicketVO);
 		String str = eTicketVOs.get(0).getDepPlandTime().substring(0,4) +"-"+eTicketVOs.get(0).getDepPlandTime().substring(4,6) + "-"
 				+eTicketVOs.get(0).getDepPlandTime().substring(6,8) ;
-		System.out.println(str);
-		System.out.println(eTicketVOs.get(0).getDepPlandTime());
-		System.out.println(eTicketVOs.get(0).getArrPlandTime());
-		System.out.println(eTicketVOs.get(0).getDepAirportNm());
-		System.out.println(eTicketVOs.get(0).getArrAirportNm());
-		System.out.println(eTicketVOs.get(0).getVihicleId());
-		System.out.println(eTicketVOs.get(0).getTotalPrice());
-		System.out.println(eTicketVOs.get(0).getFlightBNum());
-		System.out.println(eTicketVOs.get(0).getName());
-		System.out.println(eTicketVOs.get(0).getKind());
 		mv.addObject("bookingMore",eTicketVOs);
 		mv.addObject("seats",seatVOs);
 		mv.addObject("isCheckIn",seatVOs.size());
@@ -100,21 +89,21 @@ public class MypageController {
 		ETicketVO eTicketVO = new ETicketVO();
 		MembersVO member = (MembersVO)session.getAttribute("member");
 		/* eTicketVO.setId(member.getId()); */
-		eTicketVO.setId("admin1234");
+		eTicketVO.setId("test");
 		List<ETicketVO> eTicketVOs = mypageService.getBookingList(eTicketVO);
 		List<ETicketVO> eTicketVOs2 = new ArrayList<ETicketVO>();
 		
 		for(int i = 0; i < eTicketVOs.size(); i++) {
 			// 왕복이어도 정보는 가지지만 리스트에는 하나만 출력하기 (distinct 해도 정보가 달라서 두개씩나옴)
 			if (eTicketVOs.get(i).getKind().equals("왕복")) {
-				if (i < 15 && eTicketVOs.get(i).getBookingNum().equals(eTicketVOs.get(i + 1).getBookingNum())) {
+				if (i < eTicketVOs.size()-1 && eTicketVOs.get(i).getBookingNum().equals(eTicketVOs.get(i + 1).getBookingNum())) {
 					eTicketVOs2.add(eTicketVOs.get(i));
 				}
 			}
 			else {
 				eTicketVOs2.add(eTicketVOs.get(i));
 			}
-		}
+		} 
 		mv.addObject("bookList",eTicketVOs2);
 		return mv;
 	}
