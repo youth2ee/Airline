@@ -97,8 +97,9 @@ public class AdminController {
 	}
 	
 	@GetMapping("admin4_1")
-	public void admin4_1(Model model, Pager pager) throws Exception{
-		List<BoardVO> ar = noticeService.noticeList(pager);	
+	public void admin4_1(Model model) throws Exception{
+		List<NoticeVO> ar = noticeService.adminNoticeList();	
+		model.addAttribute("board", "notice");
 		model.addAttribute("list", ar);
 	}
 	

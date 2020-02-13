@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -164,11 +165,14 @@
 	
 
 	<c:forEach items="${flist}" var="f">
+	<c:set var="date" value="${f.depPlandTime}"/>
+	<c:set var="date2" value="${f.arrPlandTime}"/>
+	
 	<tr>
 	<td>${f.vihicleId}</td>
 	<td>${f.airlineNm}</td>
-	<td>${f.depPlandTime}</td>
-	<td>${f.arrPlandTime}</td>
+	<td>${fn:substring(date,0,4)}년${fn:substring(date,4,6)}월${fn:substring(date,6,8)}일${fn:substring(date,8,10)}시${fn:substring(date,10,12)}분</td>
+	<td>${fn:substring(date2,0,4)}년${fn:substring(date2,4,6)}월${fn:substring(date2,6,8)}일${fn:substring(date2,8,10)}시${fn:substring(date2,10,12)}분</td>
 	<td>${f.depAirportNm}</td>
 	<td>${f.arrAirportNm}</td>
 	</tr>

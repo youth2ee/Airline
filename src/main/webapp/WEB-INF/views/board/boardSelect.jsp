@@ -9,18 +9,34 @@
 	<c:import url="../template/boot.jsp"></c:import>
 	<link rel="stylesheet" href="../resources/css/board/boardSelect.css">
 	<link rel="stylesheet" href="../resources/css/asiana/reset.css">
+	<link href="../resources/css/header.css" rel="stylesheet">
+	<link href="../resources/css/mypage/mypageHeader.css" rel="stylesheet">
 </head>
 <body>
-<div class="location_bar">
-	<div class="inner">
-		<a href="#" class="home"></a>
-		<select onchange="if(this.value) location.href=(this.value);" id="location_select">
-			<option>공지사항</option>
-			<option>고객의말씀</option>
-			<option></option>
-		</select>	
-	</div>
+
+<header>
+<c:import url="../layout/header.jsp"></c:import>
+</header>
+
+
+
+<div id="headerBottom">
+<div id="hbh">
+<div id="hbhome"><i class="fa fa-home"></i></div>
+<div id="hbselect">
+<select onchange="location.href=this.value">
+<option selected="selected" value="./main">나의 Every Air</option>
+<option value="./memberUpdate">회원정보수정</option>
+<option value="./mileage">마일리지</option>
+<option value="./ticketCheck">예매내역</option>
+<option value="./park">주차장 예약내역</option>
+<option value="./limo">리무진 예약내역</option>
+</select>
 </div>
+</div>
+
+</div>
+
 
 <!---- container ---->
 <div class = "container">
@@ -54,10 +70,12 @@
 					<c:if test="${prev eq null}"><a>이전글이 없습니다.</a></c:if>
 				</div>
 			</div>
+			<c:if test="${member.id eq 'admin'}">
 			<div class="btn_area">
 					<a href="./noticeDelete?num=${vo.num}" id="delete_btn">삭제하기</a>
 					<a href="./noticeUpdate?num=${vo.num}" id="update_btn">수정하기</a>
 			</div>
+			</c:if>
 			<div class="btn_wrap">
 					<c:if test="${empty param.menu}">
 					<a href="./noticeList?curPage=${param.curPage}&search=${param.search}&kind=${param.kind}" id="btnList" type="button">목록보기</a>

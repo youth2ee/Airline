@@ -6,6 +6,8 @@
 <mapper namespace="com.airline.a1.board.NoticeMapper">
 
 
+
+		<!-- 검색 -->
 		<sql id="bs">
 					<choose>
 						<when test="kind == 'ka'">
@@ -25,13 +27,18 @@
 			</sql>
 			
 			
-
+			
+			
+		<!-- noticeWrite -->
 		<insert id="noticeWrite" parameterType="com.airline.a1.board.BoardVO" useGeneratedKeys="true" keyProperty="num">	
 				insert into notice
 				values(#{num}, #{cate},#{title}, #{writer}, #{contents}, now(),0, #{textContents}, #{fix})
 		</insert>
 
 
+
+
+		<!-- noticeList -->
 		<select id="noticeList" resultType="com.airline.a1.board.NoticeVO" parameterType="com.airline.a1.boardUtil.Pager">			
 				 select * 
 						from (select
@@ -64,13 +71,17 @@
 							 order by fix desc, num desc)a, 
 				   		 (select @rnum:=#{startRow})b limit #{startRow},10				 			
 		</select>
+		<select id="adminNoticeList" resultType="com.airline.a1.board.NoticeVO" parameterType="com.airline.a1.board.NoticeVO">
+				select * from notice
+		</select>
 
 
+
+		<!-- Pager -->
 		<select id="noticeCount" resultType="java.lang.Integer" parameterType="com.airline.a1.boardUtil.Pager">
 				select count(ifnull(num,0)) from notice
 					<include refid="bs"></include>
 		</select>
-
 
 		<select id="noticeCount2" resultType="java.lang.Integer" parameterType="com.airline.a1.boardUtil.Pager">				
 					select count(ifnull(num,0)) from(select* from notice where cate=#{menu})N 
@@ -78,8 +89,14 @@
 		</select>
 
 
+		<!-- 조회수 -->
+		<update id="noticeHit">
+			update notice set hit = hit+1 where num=#{num}
+		</update>
 
-		<resultMap type="com.airline.a1.board.NoticeVO" id="selectResult">
+
+
+			<resultMap type="com.airline.a1.board.NoticeVO" id="selectResult">
 				<id column="num" property="num"/>
 				<result column="cate" property="cate"/>
 				<result column="title" property="title"/>
@@ -97,7 +114,9 @@
 				</collection>
 			</resultMap>
 			
-
+			
+			
+			<!-- noticeSelect -->
 			<select id="noticeSelect" resultMap="selectResult" parameterType="com.airline.a1.board.NoticeVO">
 					   select N.*, F.* from notice N 
 							left join noticeFiles F	on N.num = F.num
@@ -121,36 +140,36 @@
 			</select>
 
 
-		<update id="noticeHit">
-			update notice set hit = hit+1 where num=#{num}
-		</update>
-		
-		<update id="noticeUpdate" parameterType="com.airline.a1.board.BoardVO">
-			update notice set cate=#{cate},title=#{title}, contents=#{contents}, textContents=#{textContents}, fix=#{fix} where num=#{num}
-		</update>
-		
-		<delete id="noticeDelete" parameterType="com.airline.a1.board.BoardVO">
-			delete from notice where num=#{num}
-		</delete>
-		
-<!-- 		<select id="listView" resultType="com.airline.a1.board.BoardVO" parameterType="com.airline.a1.board.NoticeVO">
-			<![CDATA[select title,num from notice where num in(
-				(select num from notice where num < #{num} order by num desc limit 1),
-                (select num from notice where num > #{num} order by num  limit 1)
-            )]]>	
-		</select> -->
-		
-		<select id="prev" resultType="com.airline.a1.board.NoticeVO" parameterType="com.airline.a1.board.NoticeVO">
-				<![CDATA[select title,num from notice where num < #{num} order by num desc limit 1]]>	
-		</select>
-		
-		<select id="next" resultType="com.airline.a1.board.NoticeVO" parameterType="com.airline.a1.board.NoticeVO">
-				<![CDATA[select title,num from notice where num > #{num} order by num asc limit 1]]>	
-		</select>
-		
-	
-		
-</mapper>
-		
-		
+			<!-- 이전글, 다음글 -->
+			<select id="prev" resultType="com.airline.a1.board.NoticeVO" parameterType="com.airline.a1.board.NoticeVO">
+					<![CDATA[select title,num from notice where num < #{num} order by num desc limit 1]]>	
+			</select>
+			
+			<select id="next" resultType="com.airline.a1.board.NoticeVO" parameterType="com.airline.a1.board.NoticeVO">
+					<![CDATA[select title,num from notice where num > #{num} order by num asc limit 1]]>	
+			</select>
 
+			<!-- <select id="listView" resultType="com.airline.a1.board.BoardVO" parameterType="com.airline.a1.board.NoticeVO">
+				<![CDATA[select title,num from notice where num in(
+					(select num from notice where num < #{num} order by num desc limit 1),
+	                (select num from notice where num > #{num} order by num  limit 1)
+	            )]]>	
+			</select> -->
+
+
+
+		
+			<!-- noticeUpdate -->
+			<update id="noticeUpdate" parameterType="com.airline.a1.board.BoardVO">
+				update notice set cate=#{cate},title=#{title}, contents=#{contents}, textContents=#{textContents}, fix=#{fix} where num=#{num}
+			</update>
+		
+		
+		
+			<!-- noticeDelete -->
+			<delete id="noticeDelete" parameterType="com.airline.a1.board.BoardVO">
+				delete from notice where num=#{num}
+			</delete>
+			
+		
+</mapper>	

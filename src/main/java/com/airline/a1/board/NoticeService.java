@@ -104,6 +104,11 @@ public class NoticeService {
 		pager.makePage(noticeMapper.noticeCount2(pager));
 		return noticeMapper.subNoticeList(pager);
 	}
+
+	public List<NoticeVO> adminNoticeList()throws Exception{
+				return noticeMapper.adminNoticeList();
+	}
+
 	
 	/* pager */
 	public int noticeCount(Pager pager)throws Exception{
