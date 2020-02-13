@@ -696,6 +696,7 @@ $('body').on('blur', '.search__input', function(){
 
  /* 날씨입니다 지우지 마세여 ^8^*/
 
+//검색버튼으로 날씨조회
 $("#weather_select").click(function(){
 			var weather = $("#weather_sel").val();
 			$.ajax({
@@ -715,7 +716,31 @@ $("#weather_select").click(function(){
 			$("#weather_view td").css("border-style", "hidden");
 			$("#weather_view td").css("font-weight","bold");
 			$("#weather_view td").css("vertical-align","middle");
-		});
+});
+
+//셀렉트값 변경시 날씨조회
+$("#weather_sel").change(function(){
+	var weather = $("#weather_sel").val();
+	$.ajax({
+		type:'get',
+		url:"weather/weatherInfo",
+		async: false,
+		data:{
+			"airLine":weather
+		},
+		success: function(data){
+			data = data.trim();
+			$("#weather_view").html(data);
+		}
+	});
+	$("#weather_view tr").css("background-color", "transparent");
+	$("#weather_view td").css("background-color", "transparent");
+	$("#weather_view td").css("border-style", "hidden");
+	$("#weather_view td").css("font-weight","bold");
+	$("#weather_view td").css("vertical-align","middle");
+});
+
+
 		$("#weather_view td").css("font-weight","bold");
 		$("#weather_view td").css("vertical-align","middle");
 		$("#weather_view tr").css("background-color", "transparent");

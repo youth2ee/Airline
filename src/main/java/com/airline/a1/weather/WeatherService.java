@@ -19,7 +19,6 @@ public class WeatherService {
 		
 		String els2 = els.toString().replace("..", "https://www.weatheri.co.kr");
 		els2 = els2.replace("CAVOK", "<img src=\"https://www.weatheri.co.kr/images/icon_2013_01/01.png\" width=\"70\" alt=\"맑음\">");
-		System.out.println(url);
 		return els2;
 	}
 	
