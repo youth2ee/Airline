@@ -374,7 +374,7 @@ ${arr[3]}시 ${arr[4]}분<i class='fas fa-angle-right' style='font-size:10px; pa
     
     <div id="mtitle">회원번호 찾기</div>
 
-<table style="margin-left: 111px;">
+<table style="margin: 0 auto;">
 <tr>
 <td class="bth">이름</td>
 <td class="btb">
