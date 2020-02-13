@@ -323,7 +323,7 @@
                       <td>${vo.title}</td>
                       <td>${vo.hit}</td>
                       <td>${vo.regDate}</td>
-                      <td><button>삭제하기</button></td>
+                      <td><button type="button" onclick="location.href='../notice/noticeDelete2?num=${vo.num}'">삭제하기</button></td>
                     </tr>
                     </c:forEach>
 

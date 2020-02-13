@@ -20,6 +20,8 @@ public interface NoticeMapper {
 	
 	public List<BoardVO> subNoticeList(Pager pager)throws Exception;
 	
+	public List<NoticeVO> adminNoticeList()throws Exception;
+	
 	public int noticeCount(Pager pager)throws Exception;
 	
 	public int noticeCount2(Pager pager)throws Exception;

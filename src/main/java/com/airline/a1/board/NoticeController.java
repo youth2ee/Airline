@@ -417,6 +417,21 @@ public class NoticeController {
 			
 			return mv;
 	}
+	
+	@GetMapping("noticeDelete2")
+	public ModelAndView noticeDelete2(NoticeVO noticeVO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = noticeService.noticeDelete(noticeVO);
+		if(result>0) {
+			mv.addObject("message", "게시글이 삭제되었습니다.");
+		}else {
+			mv.addObject("message", "삭제에 실패하였습니다. 다시 시도해주세요.");
+		}
+			mv.addObject("path","../admin/admin4_1");
+			mv.setViewName("board/common/result");
+			
+			return mv;
+	}
 	 
 
 }
