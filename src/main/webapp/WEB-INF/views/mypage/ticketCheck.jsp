@@ -13,7 +13,7 @@
 <c:import url="../template/boot.jsp"></c:import>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-
+<link href="../resources/css/header.css" rel="stylesheet">
 <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,600,700' rel='stylesheet' type='text/css'>
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 <style type="text/css">
@@ -23,7 +23,7 @@
 <body>
 
 
-<header></header>
+<c:import url="../layout/header.jsp" />
 <div id="headerBottom">
 <div id="hbh">
 <div id="hbhome"><i class="fa fa-home"></i></div>
@@ -41,55 +41,7 @@
 </div>
 
 
-<button id="toggleButton">Toggle</button>
 
-<ul class="timeline" id="timeline">
-  <li class="li" id="checkInTimeline">
-    <div class="timestamp">
-      <span class="author">온라인 체크인</span>
-      <span class="checkInDate" id="20200111">2020-01-11<span>
-    </div>
-    <div class="status">
-      <h4> Online check in </h4>
-    </div>
-  </li>
-  <li class="li" id="checkInCloseTimeline">
-    <div class="timestamp">
-      <span class="author">체크인 마감</span>
-      <span class="checkInClose" id="20200118">2020-01-18<span>
-    </div>
-    <div class="status">
-      <h4> Check in closure </h4>
-    </div>
-  </li>
-  <li class="li" id="boardingCloseTimeline">
-    <div class="timestamp">
-      <span class="author">탑승마감</span>
-      <span class="boardingClose">20200212<span>
-    </div>
-    <div class="status">
-      <h4> Boarding closure </h4>
-    </div>
-  </li>
-  <li class="li">
-    <div class="timestamp">
-      <span class="author">출발</span>
-      <span class="date">TBD<span>
-    </div>
-    <div class="status">
-      <h4> Depart </h4>
-    </div>
-  </li>
-    <li class="li">
-    <div class="timestamp">
-      <span class="author">도착</span>
-      <span class="date">TBD<span>
-    </div>
-    <div class="status">
-      <h4> Arrival </h4>
-    </div>
-  </li>
- </ul>      
 	<div>
 	<div class="bookingList">예매내역</div>
 	<div class="bookingInfo">
@@ -122,7 +74,12 @@
 					<div class="timelineView${i.count} toggle${i.count}" style="display: none"></div>
 					<div class="dataView${i.count} toggle${i.count} dataViewDesign" style="display: none"></div>
 				</c:forEach>
+				<c:if test="${!empty bookList}">
 				 <button class="btn more-trigger">더보기</button>
+				 </c:if>
+				 <c:if test="${empty bookList}">
+				 	<p class="noBook">예매 하신 내역이 없습니다.</p>
+				 </c:if>
 			</div>
 			<div class="ajax" style="display: none">
 				

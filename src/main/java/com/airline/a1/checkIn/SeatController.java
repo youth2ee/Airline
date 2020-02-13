@@ -92,7 +92,7 @@ public class SeatController {
 
 	}
 
-	@GetMapping("test")
+	@GetMapping("checkInPage")
 	public void test() {
 
 	}
@@ -201,7 +201,7 @@ public class SeatController {
 
 	}
 
-	@PostMapping("test")
+	@PostMapping("checkInPage")
 	public ModelAndView seat(SeatDataVO seatDataVO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		BookingTicketVO isCheck = new BookingTicketVO();

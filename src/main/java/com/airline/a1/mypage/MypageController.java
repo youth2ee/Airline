@@ -88,8 +88,8 @@ public class MypageController {
 		ModelAndView mv = new ModelAndView();
 		ETicketVO eTicketVO = new ETicketVO();
 		MembersVO member = (MembersVO)session.getAttribute("member");
-		/* eTicketVO.setId(member.getId()); */
-		eTicketVO.setId("test");
+		eTicketVO.setId(member.getId()); 
+		/* eTicketVO.setId("test"); */
 		List<ETicketVO> eTicketVOs = mypageService.getBookingList(eTicketVO);
 		List<ETicketVO> eTicketVOs2 = new ArrayList<ETicketVO>();
 		

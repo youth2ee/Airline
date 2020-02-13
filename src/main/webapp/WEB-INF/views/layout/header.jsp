@@ -40,7 +40,7 @@
 			
 				<div class="menu_wrap">
 					<div class="menu1" OnClick="location.href ='${pageContext.request.contextPath}/booking/bookingMain'" style="cursor:pointer;">항공권예약</div>
-					<div class="menu1" OnClick="location.href ='${pageContext.request.contextPath}/checkIn/test'" style="cursor:pointer;">웹체크인</div>
+					<div class="menu1" OnClick="location.href ='${pageContext.request.contextPath}/checkIn/checkInPage'" style="cursor:pointer;">웹체크인</div>
 					<div class="menu1" OnClick="location.href ='${pageContext.request.contextPath}/park/ParkRes'" style="cursor:pointer;">주차장예약</div>
 					<div class="menu1" OnClick="location.href ='${pageContext.request.contextPath}/limo/limoHome'" style="cursor:pointer;">리무진예약</div>
 				</div>

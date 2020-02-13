@@ -291,36 +291,46 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">영화관 관리</h1>
-          <p class="mb-4">영화관의 상세정보를 보여줍니다.</p>
+          <h1 class="h3 mb-2 text-gray-800">예약 관리</h1>
+          <p class="mb-4">예약 상세정보를 보여줍니다.</p>
 
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">영화관 상세정보</h6>
+              <h6 class="m-0 font-weight-bold text-primary">예약 상세정보</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>번호</th>
-                      <th>지역 </th>
+                      <th>예매고유번호</th>
+                      <th>예매번호</th>
+                      <th>체크인번호 </th>
+                      <th>유형</th>
+                      <th>출발지</th>
+                      <th>도착지</th>
+                      <th>출발일</th>
+                      <th>도착일</th>
                       <th>이름</th>
-                      <th>주소</th>
-                      <th>전화번호</th>
+                      <th>아이디</th>
                     </tr>
                   </thead>
                   <tbody>
-             <%--      <c:forEach items="${cinemalist}" var="clist">  --%>
+            <c:forEach items="${books}" var="book">
                     <tr>
-                      <td>1<%-- <a href="${pageContext.request.contextPath}/admin/admin_cinemaSelect?cinema_num=${clist.cinema_num}">${clist.cinema_num}</a> --%></td>
-                      <td>2</td>
-                      <td>2</td>
-                      <td>2</td>
-                      <td>2</td>
+                      <td>${book.bnum}<%-- <a href="${pageContext.request.contextPath}/admin/admin_cinemaSelect?cinema_num=${clist.cinema_num}">${clist.cinema_num}</a> --%></td>
+                      <td>${book.bookingNum}</td>
+                      <td>${book.flightBNum}</td>
+                      <td>${book.kind}</td>
+                      <td>${book.depAirportNm}</td>
+                      <td>${book.arrAirportNm}</td>
+                      <td>${book.depPlandTime}</td>
+                      <td>${book.arrPlandTime}</td>
+                      <td>${book.name}</td>
+                      <td>${book.id}</td>
                     </tr>
-<%--                   </c:forEach> --%>
+ 			</c:forEach>
 
                   </tbody>
                 </table>

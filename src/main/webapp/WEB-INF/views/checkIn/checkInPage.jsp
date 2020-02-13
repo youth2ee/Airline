@@ -38,7 +38,7 @@
 			<li>팝업 차단 해제 후 이용해주시기 바랍니다.</li>
 		</ul>
 		<div class="search_box mar_to10">
-		<form id="frm" action="./test" method="post">
+		<form id="frm" action="./checkInPage" method="post">
 			<div class="inner alC">
 				<select id="numTypeSelect" style="width: 200px" title="종류별 번호">
 					<option value="reservNo">예약번호</option>
@@ -48,14 +48,6 @@
 
 
 				<div class="relative_calendar">
-					<div class="calendar_wrap">
-						<input type="text" id="departureDate1"
-							class="datepicker input_cal" placeholder="탑승일 선택" title="탑승일"
-							data-dateformat="y.mm.dd D" style="width: 158px;"
-							data-type="single_checkin"> <a
-							class="btn_airport type2 calendar_focus" id="calendar_focus1"><span
-							class="hidden">탑승일 선택 달력보기</span></a>
-					</div>
 
 					<div class="calendar_layer">
 						<h4 class="hidden">달력</h4>
@@ -167,7 +159,7 @@
       <h2 class="direction"><span id="depLoc"></span> → <span id="arrLoc"></span></h2>
     </div>
     <div class="modal-body">
-    <form id="frm3" method="post" action="./test">
+    <form id="frm3" method="post" action="./checkInPage">
 		<div class="modalInnerWrap">
 			<div class="modalInnerLeft">
 				<div class="left1">
