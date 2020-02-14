@@ -18,6 +18,8 @@ import com.airline.a1.booking.BookingPriceVO;
 import com.airline.a1.booking.BookingTicketVO;
 import com.airline.a1.checkIn.ETicketVO;
 import com.airline.a1.checkIn.SeatVO;
+import com.airline.a1.limo.LimoService;
+import com.airline.a1.limo.LimoVO;
 import com.airline.a1.member.MembersVO;
 import com.airline.a1.park.ParkService;
 import com.airline.a1.park.pReservationVO;
@@ -35,6 +37,9 @@ public class MypageController {
 	private ParkService parkService;
 	@Autowired
 	private MypageService mypageService;
+	
+	@Autowired
+	private LimoService limoService;
 	
 	@GetMapping("main")
 	public ModelAndView main(HttpSession session) throws Exception {
@@ -195,7 +200,12 @@ public class MypageController {
 	}
 	
 	@GetMapping("limo")
-	public void limo() {}
+	public void limo(HttpSession session, LimoVO limoVO, Model model) throws Exception{
+		MembersVO membersVO = (MembersVO)session.getAttribute("member");
+		limoVO.setId(membersVO.getId());
+		List<LimoVO> ar = limoService.myLimo(limoVO);
+		model.addAttribute("limo", ar);
+	}
 	
 	
 	@GetMapping("test")
