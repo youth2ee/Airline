@@ -170,7 +170,7 @@ public class MypageController {
 		model.addAttribute("etc", etc);
 		
 	}
-	
+
 	
 	@GetMapping("test")
 	public void test () {}
