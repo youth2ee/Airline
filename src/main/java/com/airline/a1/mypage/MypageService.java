@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.airline.a1.booking.BookingPriceVO;
+import com.airline.a1.booking.BookingTicketVO;
 import com.airline.a1.checkIn.ETicketVO;
 import com.airline.a1.checkIn.SeatVO;
 import com.airline.a1.member.MembersVO;
@@ -35,4 +36,8 @@ public class MypageService {
 		return mypageMapper.mtotal(membersVO);
 	}
 	
+	
+	public List<BookingTicketVO> bnumSearch(BookingTicketVO bookingTicketVO) throws Exception{
+		return mypageMapper.bnumSearch(bookingTicketVO);
+	}
 }

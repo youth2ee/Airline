@@ -25,4 +25,5 @@ public interface BookingMapper {
 	
 	public MembersVO searchMember(MembersVO membersVO) throws Exception;
 	
+	
 }

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.airline.a1.booking.BookingPriceVO;
+import com.airline.a1.booking.BookingTicketVO;
 import com.airline.a1.checkIn.ETicketVO;
 import com.airline.a1.checkIn.SeatVO;
 import com.airline.a1.member.MembersVO;
@@ -42,15 +43,27 @@ public class MypageController {
 	
 	@GetMapping("mileage")
 	public void mileage(HttpSession session, Model model) throws Exception {
-		
 		MembersVO membersVO = (MembersVO)session.getAttribute("member");
-
 		List<BookingPriceVO> bookingPriceVOs =  mypageService.mtotal(membersVO);
-	
-
 		model.addAttribute("blist", bookingPriceVOs);
-
+	}
+	
+	@GetMapping("milplus")
+	public ModelAndView milplus(BookingTicketVO bookingTicketVO) throws Exception {
 		
+		System.out.println("들어오니");
+		
+		List<BookingTicketVO> nlist = mypageService.bnumSearch(bookingTicketVO);
+		
+		for(BookingTicketVO n:nlist) {
+			System.out.println(n);
+		}
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("nlist", nlist);
+		mv.setViewName("mypage/common/millayout");
+		
+		return mv;
 	}
 	
 	@GetMapping("ticketCancel")

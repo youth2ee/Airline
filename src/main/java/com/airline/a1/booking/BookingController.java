@@ -79,22 +79,39 @@ public class BookingController {
 		
 		//항공리스트
 		//현재시간
-		SimpleDateFormat format1 = new SimpleDateFormat ( "yyyyMMddHHMM");
-				
-		Date time = new Date();
-		String time1 = format1.format(time);
-		System.out.println(time1);
+		
+		//
+		String today = null;
+		Date date = new Date();
+		
+		
+		SimpleDateFormat sdformat = new SimpleDateFormat("yyyyMMddHHmm"); 
+		String now = sdformat.format(date); // 포맷변경 (년월일 시분초) 
+	
+		// Java 시간 더하기 
+		Calendar cal = Calendar.getInstance();
+									 
+		cal.setTime(date); // 10분 빼기 
+		cal.add(Calendar.MINUTE, -10); 
+		today = sdformat.format(cal.getTime()); 
 		
 		FlightDataVO flightDataVO = new FlightDataVO();
-		flightDataVO.setDepPlandTime(time1);
+		flightDataVO.setDepPlandTime(today);
+		
+		cal.setTime(date); // 10분 더하기 
+		cal.add(Calendar.MINUTE, +10); 
+		String later = sdformat.format(cal.getTime()); 
+		
 		
 		List<FlightDataVO> fList = bookingService.flightList(flightDataVO);
 		model.addAttribute("flist", fList);
 		
+		model.addAttribute("ttime", now);
+		model.addAttribute("later", later);
+		
 	}
 
 	
-
 
 
 	@PostMapping("bookingMain")

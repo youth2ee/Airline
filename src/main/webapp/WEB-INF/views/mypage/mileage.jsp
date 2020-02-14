@@ -41,12 +41,17 @@
 <tr><th scope="row" style="width: 50%;">현재 나의 마일리지</th><td>${member.mileage}</td></tr>
 </table>
 
-<table class="table_list tb_type2" id="table_0" style="margin-bottom: 30px;">
+<table class="table_list tb_type2 showt" id="table_0" style="margin-bottom: 30px;">
 <tr>
-<th scope="row">예매일</th>
-<th scope="row">예매번호</th>
-<th scope="row">사용한 마일리지</th>
-<th scope="row">적립한 마일리지</th>
+<th scope="row" style="width: 20%;
+    vertical-align: middle;">예매일</th>
+<th scope="row" style="width: 20%;
+    vertical-align: middle;">예매번호</th>
+<th scope="row" style="vertical-align: middle;
+    width: 30%;">사용한 마일리지</th>
+<th scope="row" style="width: 30%;">적립한 마일리지<br>
+<span style="font-size: 12px;">(클릭하면 마일리지가 적립된 아이디를 확인하실 수 있습니다.)</span>
+</th>
 </tr>
 <c:forEach items="${blist}" var="bl">
 <tr style="border: 1px solid #ddd;" class="mtr">
@@ -58,13 +63,48 @@
     padding-left: 20px;">${bl.couName}</td>
 <td class="btd">${bl.bookingNum}</td>
 <td>- ${bl.mileageMin}</td>
-<td>+ <span class="mplus" style="cursor: pointer;">${bl.mileagePlus}</span></td>
+<td>+ <span class="mplus" style="cursor: pointer; padding: 6px;">${bl.mileagePlus}</span></td>
 </tr>
 
 </c:forEach>
 
+</table>
+
+
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close" style="font-size: 34px;">&times;</span>
+    
+    <div id="mtitle">적립된 회원번호</div>
+    
+    <div id="mcon">
+    
+<table style="margin: 0 auto;">
+<tr>
+<td class="mbth">예매번호</td>
+<td class="mbtb mbnum">
+
+</td>
+</tr>
+
+<tr>
+<td class="mbth">회원번호</td>
+<td class="mbtb mbmnum">
+
+</td>
+</tr>
 
 </table>
+    </div>
+  </div>
+</div>
+
+<div style="width: 100%; text-align: center;">  
+  <button id="next">더보기</button>
+</div>
+
 
 </section>
 
@@ -73,10 +113,25 @@
 
 $('.mplus').click(function(){
 
-	alert($(this).closest('.mtr').find('.btd').text());
+	$('#myModal').css('display','block');
 
+	$('.close').click(function(){
+		$('#myModal').css('display','none');
+	});
 
-/* 	$.ajax({
+	window.onclick = function(event) {
+		  if (event.target == $('#myModal')) {
+			  $('#myModal').css('display','none');
+		  }
+		}
+
+	
+
+	/* alert($(this).closest('.mtr').find('.btd').text()); */
+	
+	var bpnum = $(this).closest('.mtr').find('.btd').text();
+
+ 	$.ajax({
 		data : {
 			id : '${member.id}',
 			bookingNum : $(this).closest('.mtr').find('.btd').text()
@@ -85,10 +140,39 @@ $('.mplus').click(function(){
 		url : "./milplus",
 		success : function(data) {
 
+			$('.mbnum').text(bpnum);
+			$('.mbmnum').text(data);
+
 		}
-	}); */
+	}); 
 	
 });
+
+
+//더보기
+$(document).ready(function(){
+
+      var list = $(".showt tr");
+      var numToShow = 6;
+      var button = $("#next");
+      var numInList = list.length;
+      list.hide();
+      if (numInList > numToShow) {
+        button.show();
+      }
+      list.slice(0, numToShow).show();
+
+      button.click(function(){
+          var showing = list.filter(':visible').length;
+          list.slice(showing - 1, showing + numToShow).fadeIn();
+          var nowShowing = list.filter(':visible').length;
+          if (nowShowing >= numInList) {
+            button.hide();
+          }
+      });
+
+});
+
 
 </script>
 

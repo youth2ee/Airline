@@ -49,5 +49,11 @@
 	</select>
 	
 	
+		
+	<select id="bnumSearch" parameterType="com.airline.a1.booking.BookingTicketVO" resultType="com.airline.a1.booking.BookingTicketVO">
+	select distinct memberNum from bookingTicket where bookingNum = #{bookingNum}
+	</select>
+	
+	
 	
   </mapper>

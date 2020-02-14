@@ -218,4 +218,6 @@ public class BookingService {
 		return bookingMapper.searchMember(membersVO);
 	}
 	
+
+	
 }

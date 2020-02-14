@@ -536,7 +536,7 @@ $('#0title').html($("#0name").val());
 $('#1title').html($("#1name").val());
 $('#2title').html($("#2name").val());
 
-console.log()
+
 
 // Pie Chart Example
 var ctx = document.getElementById("myPieChart");
@@ -604,7 +604,7 @@ var ctx = document.getElementById("myAreaChart");
 var myLineChart = new Chart(ctx, {
   type: 'line',
   data: {
-    labels: [$('#0cname').val(), $('#1cname').val(),$('#2cname').val(), $('#3cname').val() , $('#4cname').val(), $('#5cname').val(), $('#6cname').val()],
+    labels: [2, $('#1cname').val(),$('#2cname').val(), $('#3cname').val() , $('#4cname').val(), $('#5cname').val(), $('#6cname').val()],
     datasets: [{
       label: "판매량",
       lineTension: 0.3,
