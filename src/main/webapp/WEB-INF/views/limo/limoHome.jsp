@@ -17,9 +17,25 @@
 <link rel="stylesheet" type="text/css" href="https://www.kobus.co.kr/css/layout.css?v=0.2">
 <link rel="stylesheet" type="text/css" href="https://www.kobus.co.kr/css/content.css?v=0.5">
 <link rel="stylesheet" type="text/css" href="https://www.kobus.co.kr/css/ui.jqgrid.custom.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/header.css">
+<style type="text/css">
+.main_top{
+	background-color: #cc474e;
+}
+.tab_nav li.on a{
+	background-color: white;
+	color: black;
+	border-color: red;
+	border: solid 2px #c7121c;
+}
+.r1{
+	color: black;
+}
+</style>
 </head>
 <c:import url="../template/boot.jsp"></c:import>
-		<body class="full">
+<body class="full">
+<c:import url="../layout/header.jsp" />
 	
 	<div class="wrap main full"><!-- main page class="main" 추가 -->
 		<div class="util_top">
@@ -29,8 +45,8 @@
 					<!-- <li><a href="/spexp/mrs/mrsrecplist.do">영수증조회</a></li> -->
 					
 						<!-- <li><a href="#" onclick="javascript:$('[data-remodal-id=popLogin]').remodal().open();">로그인</a></li> -->
-						<li><a href="../member/memberLogin"><span>로그인</span></a></li>
-						<li><a href="../member/memberJoin">회원가입</a></li>
+<!-- 						<li><a href="../member/memberLogin"><span>로그인</span></a></li> -->
+<!-- 						<li><a href="../member/memberJoin">회원가입</a></li> -->
 				</ul>
 			</div>			
 		</div>
@@ -440,6 +456,9 @@
 	</form>    
 </div>
 </div>
-
+<script type="text/javascript">
+	$(".material-icons").css("padding-top", "18px");
+	$(".fa-search").css("padding-top", "");
+</script>
 </body>
 </html>

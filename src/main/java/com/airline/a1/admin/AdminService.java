@@ -52,4 +52,8 @@ public class AdminService {
 	public Integer limoTodaySum() throws Exception{
 		return adminMapper.limoTodaySum();
 	}
+	
+	public List<LimoVO> limoMember()throws Exception{
+		return adminMapper.limoMember();
+	}
 }

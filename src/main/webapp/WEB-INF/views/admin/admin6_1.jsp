@@ -193,8 +193,8 @@
         <div id="collapseone" class="collapse show" aria-labelledby="headingone" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
            <h6 class="collapse-header">LIMOUSINE MANAGEMENT</h6>
-            <a class="collapse-item active" href="${pageContext.request.contextPath}/admin/admin6_1">공항별 예약 현황</a>
-            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin6_2">회원별 리무진 예약 현황</a>
+            <a class="collapse-item active" href="${pageContext.request.contextPath}/admin/admin6_1">회원별 리무진 예약 현황</a>
+            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin6_2">공항별 예약 현황</a>
           </div>
         </div>
       </li>
@@ -292,12 +292,9 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">리무진 관리</h1>
-          <p class="mb-4">리무진의 상세정보를 보여줍니다.</p>
+          <h1 class="h3 mb-2 text-gray-800">회원별 리무진 예약현황</h1>
+          <p class="mb-4">회원별 리무진 예약의 상세정보를 보여줍니다.</p>
           
-          <c:forEach items="${limo}" var="limos">
- 		  	<div class="abtn">${limos.id}</div>
-          </c:forEach> 
      
      		<div style="clear: both;"></div>
           
@@ -305,30 +302,34 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">리무진 상세정보</h6>
+              <h6 class="m-0 font-weight-bold text-primary">회원 상세정보</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
-                    <tr>
+                    <tr style="text-align: center;">
+                      <th>회원 ID</th>
                       <th>예매번호</th>
                       <th>탑승일</th>
                       <th>탑승시간</th>
                       <th>출발지</th>
                       <th>도착지</th>
+                      <th>좌석</th>
                     </tr>
                   </thead>
                   <tbody>
-             <%--      <c:forEach items="${cinemalist}" var="clist">  --%>
-                    <tr>
-                      <td>1<%-- <a href="${pageContext.request.contextPath}/admin/admin_cinemaSelect?cinema_num=${clist.cinema_num}">${clist.cinema_num}</a> --%></td>
-                      <td>2</td>
-                      <td>2</td>
-                      <td>2</td>
-                      <td>2</td>
+                  <c:forEach items="${limoMember}" var="limos">
+                    <tr style="text-align: center;">
+                      <td>${limos.id}</td>
+                      <td>${limos.bookNum}</td>
+                      <td>${limos.limoDate}</td>
+                      <td>${limos.limoTime}</td>
+                      <td>${limos.depLoc}</td>
+                      <td>${limos.arrLoc}</td>
+                      <td>${limos.seat}</td>
                     </tr>
-<%--                   </c:forEach> --%>
+                  </c:forEach>
 
                   </tbody>
                 </table>

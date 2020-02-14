@@ -235,7 +235,7 @@ $(document).ready(function() {
 				<div class="intro">
 
 				<span style="float: right;">
-					<a href="https://www.weather.go.kr/w/index.do"><img alt="weather" src="../images/weather.png" style="width: 180px; height: 180px; margin-top: -60px; cursor: pointer;"></a>
+					<a href="https://www.weather.go.kr/w/index.do"><img alt="weather" src="../images/weather.png" style="width: 180px; height: 180px; margin-top: -50px; cursor: pointer;"></a>
 					<a href="https://www.weatheri.co.kr/forecast/forecast03.php?mNum=1&aircode=RKSI"><img alt="weather" src="../images/weather2.png" style="width: 60px; height: 60px; float: right; margin-right:50px; cursor: pointer;"></a>
 				</span>
 
@@ -258,7 +258,7 @@ $(document).ready(function() {
 									<option value="RKPC/제주공항/10">제주공항</option>
 								</select>
 	<!-- 							<button id="weather_select">선택</button> -->
-								<img alt="search" src="../images/search.png" style="width: 35px; height: 35px; cursor:pointer; top:-5px; position: relative;" id="weather_select">
+<!-- 								<img alt="search" src="../images/search.png" style="width: 35px; height: 35px; cursor:pointer; top:-5px; position: relative;" id="weather_select"> -->
 							</div>
 						</div>	
 							<div id="weather_view">
@@ -2540,7 +2540,8 @@ $('body').on('blur', '.search__input', function(){
 
  /* 날씨입니다 지우지 마세여 ^8^*/
 
-$("#weather_select").click(function(){ 
+ 
+$("#weather_sel").click(function(){ 
 			var weather = $("#weather_sel").val();
 			$.ajax({
 				type:'get',

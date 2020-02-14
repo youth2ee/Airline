@@ -198,8 +198,8 @@
         <div id="collapseone" class="collapse show" aria-labelledby="headingone" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
            <h6 class="collapse-header">LIMOUSINE MANAGEMENT</h6>
-            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin6_1">공항별 예약 현황</a>
-            <a class="collapse-item active" href="${pageContext.request.contextPath}/admin/admin6_2">회원별 리무진 예약 현황</a>
+            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin6_1">회원별 리무진 예약 현황</a>
+            <a class="collapse-item active" href="${pageContext.request.contextPath}/admin/admin6_2">공항별 예약 현황</a>
           </div>
         </div>
       </li>
@@ -296,8 +296,8 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">리무진버스 관리</h1>
-          <p class="mb-4">리무진버스의 상세정보를 보여줍니다.</p>
+          <h1 class="h3 mb-2 text-gray-800">공항별 리무진버스 관리</h1>
+          <p class="mb-4">공항별 리무진버스의 상세정보를 보여줍니다.</p>
 
           <!-- 전체 리무진 버스 내역 확인 -->
           <div class="card shadow mb-4">
@@ -395,7 +395,7 @@
             </div>
             <div class="card-header py-3">
             <div class="contain">
-				<h2>공항별 리무진 매출내역</h2>
+				<h4>공항별 리무진 매출내역</h4>
 				<p>EVERYAIR의 국내 10개 공항에 대한 매출정보를 확인하실 수 있습니다.</p>
 			
 				<ul class="nav nav-tabs" style="margin-bottom: 20px;">
