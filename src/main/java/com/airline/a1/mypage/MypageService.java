@@ -43,6 +43,5 @@ public class MypageService {
 	
 	public List<BookingTicketVO> bnumSearch(BookingTicketVO bookingTicketVO) throws Exception{
 		return mypageMapper.bnumSearch(bookingTicketVO);
-
 	}
 }

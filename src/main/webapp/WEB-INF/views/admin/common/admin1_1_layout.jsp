@@ -4,7 +4,7 @@
     <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <div class="card-header py-3">
-	<h6 class="m-0 font-weight-bold text-primary">${smlist.airlineNm} 매출 현황</h6>
+	<h6 class="m-0 font-weight-bold text-primary"><span style="color: #d60815; font-weight: bolder; font-size: 22px;">${smlist.airlineNm} (${smlist.vihicleId}/${smlist.depPlandTime})</span> 매출 현황 </h6>
 </div>
 
 

@@ -299,7 +299,6 @@
           <h1 class="h3 mb-2 text-gray-800">매출 관리</h1>
           <p class="mb-4">항공사별 매출 관리</p>
           
-          
           <c:forEach items="${alist}" var="an">
  		   <div class="abtn">${an.getAName()}</div>
           </c:forEach> 
