@@ -22,6 +22,10 @@ public class AdminService {
 		return adminMapper.airlineList();	
 	}
 	
+	public List<AirportVO> airportList() throws Exception {
+		return adminMapper.airportList();	
+	}
+	
 	public List<FlightDataVO> airpartList(FlightDataVO flightDataVO) throws Exception {
 		return adminMapper.airpartList(flightDataVO);
 	}
@@ -32,7 +36,19 @@ public class AdminService {
 	public List<ETicketVO> getBookingInfo() throws Exception {
 		return adminMapper.getBookingInfo();
 	}
+
 	public List<MembersVO> getMemberList() throws Exception{
 		return adminMapper.getMemberList();
+
+	
+	//전체매출
+	public List<FlightDataVO> saleterm(FlightDataVO flightDataVO) throws Exception {
+		return adminMapper.saleterm(flightDataVO);
+	}
+
+	
+	public List<FlightDataVO> saletermAir(FlightDataVO flightDataVO) throws Exception {
+		return adminMapper.saleterm(flightDataVO);
+
 	}
 }

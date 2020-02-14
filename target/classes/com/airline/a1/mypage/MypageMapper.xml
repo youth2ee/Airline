@@ -47,6 +47,29 @@
         on Z.bookingNum = Q.bookingNum
         order by Z.bnum desc) F;
 	</select>
+	<select id="recentMileage" parameterType="com.airline.a1.member.MembersVO" resultType="com.airline.a1.booking.BookingPriceVO">
+		select distinct bookingNum, mileagePlus, mileageMin, resDate as couName
+		from (select distinct Q.resDate, Z.* from
+		(select distinct A.bookingNum, B.mileagePlus, C.mileageMin, A.bnum from 
+		(select bookingNum, bnum from bookingPrice where id=#{id} order by bnum desc) A 
+		left outer join 
+		(select bookingNum, sum(mileagePlus) mileagePlus from bookingPrice where id=#{id} group by bookingNum) B 
+		on A.bookingNum = B.bookingNum 
+		left outer join 
+		(select distinct bookingNum, ifnull(mileageMin,0) mileageMin from bookingPrice where id=#{id}) C 
+		on B.bookingNum = C.bookingNum) Z 
+        left outer join bookingTicket Q
+        on Z.bookingNum = Q.bookingNum
+        order by Z.bnum desc) F limit 6;
+	</select>
+	<update id="updateMember" parameterType="com.airline.a1.member.MembersVO" >
+		update members set name=#{name},phone=#{phone},email=#{email} where id = #{id};
+	</update>
+	
+		
+	<select id="bnumSearch" parameterType="com.airline.a1.booking.BookingTicketVO" resultType="com.airline.a1.booking.BookingTicketVO">
+	select distinct memberNum from bookingTicket where bookingNum = #{bookingNum}
+	</select>
 	
 	
 	

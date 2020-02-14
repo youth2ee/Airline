@@ -437,6 +437,7 @@ px
 	margin-bottom: 25px;
 	border: 1px solid #0000003d;
 	padding-top: 28px;
+	cursor: pointer;
 }
 
 .dataViewDesign {
@@ -596,10 +597,14 @@ width: 27px;
     color: #808080;
 }
 .eticketBtn {
-	    color: white;
-    background-color: #d60815;
+	color: white;
+    background-color: #3a3a3a;
     border: none;
     border-radius: 3px;
     width: 45px;
     height: 25px;
+}
+
+.th{
+	background-color: gray;
 }

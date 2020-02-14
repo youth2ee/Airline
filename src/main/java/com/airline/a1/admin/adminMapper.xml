@@ -22,12 +22,59 @@
 	</select>
 	
 	<select id="getBookingInfo" parameterType="com.airline.a1.checkIn.ETicketVO" resultType="com.airline.a1.checkIn.ETicketVO">
-		select depPlandTime,arrPlandTime,kind,bookingTicket.bnum,fnum,bookingTicket.bookingNum,flightBNum,name,bookingTicket.id,depAirportNm,vihicleId,arrAirportNm,depPlandTime,arrPlandTime,totalPrice from flightData join bookingTicket on bookingTicket.depFnum = flightData.fnum join bookingPrice on bookingPrice.bnum = bookingTicket.bnum;
+		select depPlandTime,arrPlandTime,kind,bookingTicket.bnum,fnum,bookingTicket.bookingNum,flightBNum,name,bookingTicket.id,depAirportNm,vihicleId,arrAirportNm,depPlandTime,arrPlandTime,totalPrice 
+		from flightData join bookingTicket 
+		on bookingTicket.depFnum = flightData.fnum 
+		join bookingPrice 
+		on bookingPrice.bnum = bookingTicket.bnum
+	</select>
+
+
+<!-- 매출관리 -->
+	<select id="saleterm" parameterType="com.airline.a1.booking.FlightDataVO" resultType="com.airline.a1.booking.FlightDataVO">
+	select Z.aId vihicleId, Z.aName airlineNm, Z.aCode depPlandTime, Y.airlineNm, ifnull(Y.a, 0) arrPlandTime 
+	from (select * from airline order by aName asc) Z
+	left outer join 
+	(select airlineNm, sum(totalAllPrice) a from 
+	(select distinct A.bookingNum, ifnull(A.totalAllPrice,0) totalAllPrice, B.resDate, B.depFnum, C.* 
+	from bookingPrice A
+	left join bookingTicket B
+	on A.bnum = B.bnum
+	left join flightData C
+	on B.depFnum = C.fnum
+	where DATE_FORMAT(resDate, '%Y-%m-%d %H:%i') BETWEEN #{depPlandTime} AND #{arrPlandTime}) D
+	group by D.airlineNm
+	order by airlineNm asc) Y
+	on Z.aName = Y.airlineNm
+	where Z.aName like concat(#{airlineNm}, '%')
+	order by Z.aName asc
 	</select>
 	
 	<select id="getMemberList" resultType="com.airline.a1.member.MembersVO">
 		select * from members where id != 'admin' order by id asc
 	</select>
 	
+	<select id="saletermAir" parameterType="com.airline.a1.booking.FlightDataVO" resultType="com.airline.a1.booking.FlightDataVO">
+	select Z.cityEng vihicleId, Z.apName airlineNm, Z.cityCode depPlandTime, Y.depAirportNm, ifnull(Y.a, 0) arrPlandTime 
+	from (select * from airport order by apName asc) Z
+	left outer join 
+	(select depAirportNm, sum(totalAllPrice) a from 
+	(select distinct A.bookingNum, ifnull(A.totalPrice,0) totalAllPrice, B.resDate, B.depFnum, C.* 
+	from bookingPrice A
+	left join bookingTicket B
+	on A.bnum = B.bnum
+	left join flightData C
+	on B.depFnum = C.fnum
+	where DATE_FORMAT(resDate, '%Y-%m-%d %H:%i') BETWEEN #{depPlandTime} AND #{arrPlandTime}) D
+	group by D.depAirportNm
+	order by depAirportNm asc) Y
+	on Z.apName = Y.depAirportNm
+	where Z.apName like concat(#{airlineNm}, '%')
+	order by Z.apName asc
+	</select>
+	
+	<select id="airportList" resultType="com.airline.a1.admin.AirportVO">
+	select * from airport order by apName asc
+	</select>
   
   </mapper>

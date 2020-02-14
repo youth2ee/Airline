@@ -81,3 +81,162 @@ section {
     0%   { transform: scale(0) }
     100%  { transform: scale(1) }
 }
+.openQr{
+	cursor: pointer;
+}
+.mypageInfo {
+	background-color: #e4e4e4;;
+	width: 75%;
+	height: 1200px;
+	margin: 0 auto;
+}
+.wrapper {
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+	grid-auto-rows: 100px;
+	height: 905px;
+	background-color:  #e4e4e4;
+	width: 65%;
+	margin: 0 auto;
+	grid-gap: 15px;
+}
+
+.box1 { 
+    grid-column-start: 1;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 3;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);}
+
+.box2  {
+	background-color: aquamarine;
+	grid-column-start: 1;
+	grid-column-end: 4;
+	grid-row-start: 3;
+	grid-row-end: 9;
+}
+.box3{
+	grid-column-start: 7;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    background-color: #6d6e70;
+    cursor: pointer;
+}
+.box4 {
+	grid-column-start: 4;
+    grid-column-end: 7;
+    grid-row-start: 9;
+    grid-row-end: 7;
+    background-color: white;
+    cursor: pointer;
+}
+.box5{
+	grid-column-start: 4;
+    grid-column-end: 7;
+    grid-row-start: 3;
+    grid-row-end: 7;
+    background-color: white;
+}
+.box3 span{
+	color: white;
+    font-size: 25px;
+    position: absolute;
+    margin-left: 55px;
+    margin-top: 40px;
+}
+.mileData{
+	color: #3c3c3c;
+    font-size: 25px;
+    position: absolute;
+    margin-left: 55px;
+    margin-top: 40px;
+}
+.box4 span{
+	color: #3c3c3c;
+    font-size: 25px;
+    position: absolute;
+    margin-left: 55px;
+    margin-top: 40px;
+}
+.bar{
+	height: 2px;
+    width: 520px;
+    background-color: #3c3c3c;
+    position: absolute;
+    margin-left: 50px;
+    margin-top: 90px;
+    z-index: 5000;
+}
+.plus{
+	position: absolute;
+    margin-left: 540px;
+    margin-top: 29px;
+    font-size: 36px;
+    color: black;
+    font-weight: 100;
+    cursor: pointer;
+}
+.noMileData{
+	margin-left: 180px;
+    margin-top: 235px;
+    font-size: 17px;
+}
+.threeImage {
+	vertical-align: middle;
+	width: 60px;
+	position: absolute;
+	margin-left: 305px;
+	margin-top: 125px;
+}
+.fourImage {
+    vertical-align: middle;
+    width: 60px;
+    position: absolute;
+    margin-left: 520px;
+    margin-top: 125px;
+}
+.box1_box1 {
+	grid-column-start: 1;
+	grid-column-end: 1;
+	grid-row-start: 1;
+	grid-row-end: 5;
+	background-color: white;
+	cursor: pointer;
+}
+.box1_box1 span{
+	color: #3c3c3c;
+    font-size: 25px;
+    position: absolute;
+    margin-left: 55px;
+    margin-top: 40px;
+}
+.box1_box2 {
+	grid-column-start: 2;
+	grid-column-end: 5;
+	grid-row-start: 1;
+	grid-row-end: 5;
+	background-color: white;
+	cursor: pointer;
+}
+.box1_box2 span{
+	color: #3c3c3c;
+    font-size: 25px;
+    position: absolute;
+    margin-left: 55px;
+    margin-top: 40px;
+}
+.bar2{
+	height: 183px;
+    position: absolute;
+    margin-left: 363px;
+    margin-top: 18px;
+    border-right: 1px solid #e2e2e2;
+    width: 50px;
+}
+.table_list{
+	margin-top: 115px;
+    margin-left: 50px;
+    width: 517px;
+}

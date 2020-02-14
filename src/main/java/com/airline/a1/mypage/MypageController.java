@@ -10,12 +10,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.airline.a1.booking.BookingPriceVO;
+import com.airline.a1.booking.BookingTicketVO;
 import com.airline.a1.checkIn.ETicketVO;
 import com.airline.a1.checkIn.SeatVO;
+import com.airline.a1.limo.LimoService;
+import com.airline.a1.limo.LimoVO;
 import com.airline.a1.member.MembersVO;
 import com.airline.a1.park.ParkService;
 import com.airline.a1.park.pReservationVO;
@@ -34,25 +38,73 @@ public class MypageController {
 	@Autowired
 	private MypageService mypageService;
 	
+	@Autowired
+	private LimoService limoService;
+	
 	@GetMapping("main")
-	public void main() {}
+	public ModelAndView main(HttpSession session) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		MembersVO membersVO = (MembersVO) session.getAttribute("member");
+		List<BookingPriceVO> bookingPriceVOs = mypageService.recentMileage(membersVO);
+		mv.addObject("mile",bookingPriceVOs);
+		return mv;
+	}
 	
 	@GetMapping("memberUpdate")
-	public void memberUpdate() {}
+	public void memberUpdate() {
+	}
+	@PostMapping("memberUpdate")
+	public ModelAndView memberUpdate(MembersVO membersVO,HttpSession session) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		int result = mypageService.updateMember(membersVO);
+		String msg = "정보수정 실패";
+		String path = "./memberUpdate";
+		if(result > 0) {
+			MembersVO membersVO2 = (MembersVO) session.getAttribute("member");
+			membersVO2.setName(membersVO.getName());
+			membersVO2.setPhone(membersVO.getPhone());
+			membersVO2.setEmail(membersVO.getEmail());
+			msg = "정보수정 완료";
+			session.setAttribute("member",membersVO2);
+		}
+		mv.addObject("msg", msg);
+		mv.addObject("path", path);
+		mv.setViewName("common/common_result");
+		return mv;
+	}
 	
 	@GetMapping("mileage")
 	public void mileage(HttpSession session, Model model) throws Exception {
-		
 		MembersVO membersVO = (MembersVO)session.getAttribute("member");
-
 		List<BookingPriceVO> bookingPriceVOs =  mypageService.mtotal(membersVO);
-	
-
 		model.addAttribute("blist", bookingPriceVOs);
-
-		
 	}
 	
+	@GetMapping("milplus")
+	public ModelAndView milplus(BookingTicketVO bookingTicketVO) throws Exception {
+		
+		System.out.println("들어오니");
+		
+		List<BookingTicketVO> nlist = mypageService.bnumSearch(bookingTicketVO);
+		
+		for(BookingTicketVO n:nlist) {
+			System.out.println(n);
+		}
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("nlist", nlist);
+		mv.setViewName("mypage/common/millayout");
+		
+		return mv;
+	}
+	@GetMapping("openQrcode")
+	public void openQrcode() throws Exception{
+		
+	}
+	@GetMapping("openBarcode")
+	public void openBarcode() throws Exception{
+		
+	}
 	@GetMapping("ticketCancel")
 	public ModelAndView bookCancel(String bnum) throws Exception {
 		ModelAndView mv = new ModelAndView();
@@ -148,7 +200,12 @@ public class MypageController {
 	}
 	
 	@GetMapping("limo")
-	public void limo() {}
+	public void limo(HttpSession session, LimoVO limoVO, Model model) throws Exception{
+		MembersVO membersVO = (MembersVO)session.getAttribute("member");
+		limoVO.setId(membersVO.getId());
+		List<LimoVO> ar = limoService.myLimo(limoVO);
+		model.addAttribute("limo", ar);
+	}
 	
 	
 	@GetMapping("test")

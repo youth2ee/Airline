@@ -147,9 +147,11 @@
 	</div>
 	
 	<!-- 항공편 띄우기 -->
-		<div style="width: 100%;">
-	<div style="width: 70%; margin: 0 auto; text-align: center; padding: 50px 0;"><h5 style="font-size: 40px;
-    color: black;">출도착 항공편</h5></div>
+	<div style="width: 100%;">
+	<div style="width: 70%; margin: 0 auto; text-align: center; padding: 50px 0;">
+	<h5 style="font-size: 40px;color: black;">출도착 항공편</h5>
+	<div class="nowtime" style="padding-top: 20px;">현재시간 넣기</div>
+	</div>
 
 
 	<table class="table_list tb_type2" id="table_0" style=" width: 1200px; margin-left: 385px; text-align: center; margin-bottom: 50px;">
@@ -160,6 +162,7 @@
 	<th scope="row" style="text-align: center;">도착시간</th>
 	<th scope="row" style="text-align: center;">출발지</th>
 	<th scope="row" style="text-align: center;">도착지</th>
+	<th scope="row" style="text-align: center;">탑승현황</th>
 	</tr>
 
 	
@@ -168,13 +171,16 @@
 	<c:set var="date" value="${f.depPlandTime}"/>
 	<c:set var="date2" value="${f.arrPlandTime}"/>
 	
-	<tr>
+	<tr class="lasttime">
 	<td>${f.vihicleId}</td>
 	<td>${f.airlineNm}</td>
-	<td>${fn:substring(date,0,4)}년${fn:substring(date,4,6)}월${fn:substring(date,6,8)}일${fn:substring(date,8,10)}시${fn:substring(date,10,12)}분</td>
-	<td>${fn:substring(date2,0,4)}년${fn:substring(date2,4,6)}월${fn:substring(date2,6,8)}일${fn:substring(date2,8,10)}시${fn:substring(date2,10,12)}분</td>
+	<td class="deptime">${fn:substring(date,0,4)}년${fn:substring(date,4,6)}월${fn:substring(date,6,8)}일 ${fn:substring(date,8,10)}시${fn:substring(date,10,12)}분</td>
+	<td class="arrtime">${fn:substring(date2,0,4)}년${fn:substring(date2,4,6)}월${fn:substring(date2,6,8)}일 ${fn:substring(date2,8,10)}시${fn:substring(date2,10,12)}분</td>
 	<td>${f.depAirportNm}</td>
 	<td>${f.arrAirportNm}</td>
+	<td class="arrived">
+	<img src="../images/booking/13.png" style="width: 40px;">
+	</td>
 	</tr>
 	</c:forEach>	
 	
@@ -372,6 +378,40 @@ $('#arrloc').focus(function(){
 							}	
 				});	 			
 });
+
+
+$('.deptime').each(function(){
+
+	
+	var time = $(this).text().replace('년','').replace('월','').replace('일','').replace(' ','').replace('시','').replace('분','');
+
+	time = Number(time);
+
+	var today = Number(${ttime});
+	var later = Number(${later});
+
+	if(time < today){
+		$(this).closest('.lasttime').find('td').css('color','#c7c2c2');
+		$(this).siblings('.arrived').html('<i class="material-icons" style="font-size:36px">airplanemode_active</i>');
+
+		$(this).siblings('.arrived').html('<img src="../images/booking/11.png" style="width: 40px;">')
+	}
+
+	if(time >= today && time < later){
+		$(this).closest('.lasttime').find('td').css('color','#d60815');
+		$(this).closest('.lasttime').find('td').css('font-weight','bolder');
+
+		$(this).siblings('.arrived').html('<img src="../images/booking/12.png" style="width: 40px;">')
+	}
+	
+});
+
+
+//현재시간
+let today = new Date();   
+$('.nowtime').text("현재시간 "+": "+today.toLocaleDateString()+" "+today.toLocaleTimeString());
+
+
 
 
 

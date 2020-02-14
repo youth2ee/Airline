@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.airline.a1.booking.BookingPriceVO;
+import com.airline.a1.booking.BookingTicketVO;
 import com.airline.a1.checkIn.ETicketVO;
 import com.airline.a1.checkIn.SeatVO;
 import com.airline.a1.member.MembersVO;
@@ -23,16 +24,27 @@ public class MypageService {
 	public List<ETicketVO> getBookingMore(ETicketVO eTicketVO) throws Exception {
 		return mypageMapper.getBookingMore(eTicketVO);
 	}
-	
-	public List<SeatVO> getBookingMoreSeat(ETicketVO eTicketVO) throws Exception{
+
+	public List<SeatVO> getBookingMoreSeat(ETicketVO eTicketVO) throws Exception {
 		return mypageMapper.getBookingMoreSeat(eTicketVO);
 	}
-	public int bookCancel(String bnum) throws Exception{
+
+	public int bookCancel(String bnum) throws Exception {
 		return mypageMapper.bookCancel(bnum);
 	}
-	
-	public List<BookingPriceVO> mtotal(MembersVO membersVO) throws Exception{
+
+	public List<BookingPriceVO> mtotal(MembersVO membersVO) throws Exception {
 		return mypageMapper.mtotal(membersVO);
 	}
-	
+
+	public int updateMember(MembersVO membersVO) throws Exception {
+		return mypageMapper.updateMember(membersVO);
+	}
+
+	public List<BookingTicketVO> bnumSearch(BookingTicketVO bookingTicketVO) throws Exception{
+		return mypageMapper.bnumSearch(bookingTicketVO);
+	}
+	public List<BookingPriceVO> recentMileage(MembersVO membersVO) throws Exception {
+		return mypageMapper.recentMileage(membersVO);
+	}
 }

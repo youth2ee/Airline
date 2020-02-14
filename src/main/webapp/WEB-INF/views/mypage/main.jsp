@@ -24,7 +24,31 @@
     <link rel="stylesheet" type="text/css" href="../resources/assets/skins/firecircle.css">
     <link rel="stylesheet" type="text/css" href="../resources/assets/skins/whitecircle.css">
     <link rel="stylesheet" type="text/css" href="../resources/assets/skins/simplecircle.css">
-	
+	<style type="text/css">
+		body {
+			background-color: #e4e4e4;
+		}
+		.header_bottom_inner {
+			background-color: white;
+		}
+		td, th {
+			padding: 10px;
+		}
+		.thBook{
+		    text-align: center;
+		}
+		.thMile{
+			text-align: right;
+		}
+		th {
+			background-color: #6d6e70;
+			color: white;
+			border: 1px solid #6d6e70;
+		}
+		td {
+		    border: 1px solid #e8e8e8;
+		}
+</style>
 </head>
 <body>
 
@@ -52,7 +76,7 @@
 	
 		<div class="myInfoLeft">
 			<div> 
-				<div id="miname">${member.name} 님</div> 
+				<div id="miname">${member.name}님</div> 
 				<span id="miEname">(${member.id})</span>
 			</div>
 			
@@ -60,7 +84,7 @@
 				<div>회원번호 : ${member.memberNum}</div>
 				<div>전화번호 : ${member.phone}</div>
 				<div>이메일 : ${member.email}</div>
-				<div style="padding-top: 30px;">바코드 / QR코드 / SMS</div>
+				<div style="padding-top: 30px;">바코드 / <span class="openQr">QR코드</span> / SMS</div>
 			</div>
 			
 <!-- 			<div style="height: 30px; background-color: green;">
@@ -83,11 +107,51 @@
 				</div>
 			</div>
 		</div>
-		
 		<div class="myInfoRight"></div>
 		
 	</div>
 	</div>
+		<div class="wrapper">
+		<div class="bar2"></div>
+		  <div class="box1">
+		  	<div class="box1_box1">
+		  		<span>리무진 예약 내역</span>
+		  		<img alt="" src="../resources/newni/van.png" class="threeImage">
+		  	</div>
+		  	<div class="box1_box2">
+		  		<span> 주차장 예약 내역</span>
+		  		<img alt="" src="../resources/newni/carParking.png" class="threeImage">
+		  	</div>
+		  </div>
+		  <div class="box2">Two</div>
+		  <div class="box3"><span>항공권 예약 현황</span>
+		  	<img alt="" src="../resources/newni/passport.png" class="threeImage">
+		  </div>
+		  <div class="box4"> <span>회원 정보 변경</span>
+		  	<img alt="" src="../resources/newni/replace.png" class="fourImage">
+		  </div>
+		  <div class="box5"><span class="mileData">최근 마일리지 현황</span>
+		  	<div class="bar"></div>
+		  	<b class="plus">+</b>
+		  	<c:if test="${!empty mile}">
+		  	<div>
+				<table class="table_list tb_type2" id="table_0">
+				<tr>
+				<th scope="row" class="th thBook">예매번호</th>
+				<th scope="row" class="th thMile">사용한 마일리지</th>
+				<th scope="row" class="th thMile">적립한 마일리지</th>
+				</tr>
+				<c:forEach items="${mile}" var="bl">
+					<tr ><td class="thBook">${bl.bookingNum}</td><td style=" width: 35%;" class="thMile">- ${bl.mileageMin}</td><td style=" width: 35%;" class="thMile">+ ${bl.mileagePlus}</td></tr>
+					</c:forEach>
+				</table>
+			</div>
+			</c:if>
+			<c:if test="${empty mile }">
+		  	<p class="noMileData">적립/사용 내역이 존재하지 않습니다.</p>
+		  	</c:if>
+		  </div>
+		</div>
 
 <section>
 
@@ -253,6 +317,28 @@ mypage
 		        new Circlebar(prefs);
 		    };
 		})(jQuery);
+		
+		$(".openQr").click(function(){
+			window.open("./openQrcode","qrcode","width=300, height=400, toolbar=no, menubar=no, scrollbars=no, resizable=yes");
+					
+		});
+		
+		$(".box1_box1").click(function(){
+			location.href = './limo';
+		});
+		$(".box1_box2").click(function(){
+			location.href = './park';
+		});
+		$(".box3").click(function(){
+			location.href = './ticketCheck';
+		});
+		$(".box4").click(function(){
+			location.href = './memberUpdate';
+		});
+		$(".plus").click(function(){
+			location.href = './mileage';
+		});
+		
 	</script>
 
 

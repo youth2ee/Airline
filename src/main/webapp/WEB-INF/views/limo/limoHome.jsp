@@ -12,69 +12,55 @@
 <link rel="stylesheet" type="text/css" href="https://www.kobus.co.kr/css/spexp/layout.css?v=1.1">
 <link rel="stylesheet" type="text/css" href="https://www.kobus.co.kr/css/spexp/ui-style.css?v=1.0">
 <link rel="stylesheet" type="text/css" href="https://www.kobus.co.kr/css/spexp/content.css?v=1.5">
+<link rel="stylesheet" type="text/css" href="https://www.kobus.co.kr/css/reset.css">
+<link rel="stylesheet" type="text/css" href="https://www.kobus.co.kr/css/plugin.css">
+<link rel="stylesheet" type="text/css" href="https://www.kobus.co.kr/css/layout.css?v=0.2">
+<link rel="stylesheet" type="text/css" href="https://www.kobus.co.kr/css/content.css?v=0.5">
+<link rel="stylesheet" type="text/css" href="https://www.kobus.co.kr/css/ui.jqgrid.custom.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/header.css">
+<style type="text/css">
+.main_top{
+	background-color: #cc474e;
+}
+.tab_nav li.on a{
+	background-color: white;
+	color: black;
+	border-color: red;
+	border: solid 2px #c7121c;
+}
+.r1{
+	color: black;
+}
+</style>
 </head>
 <c:import url="../template/boot.jsp"></c:import>
-		<body class="full">
+<body class="full">
+<c:import url="../layout/header.jsp" />
 	
 	<div class="wrap main full"><!-- main page class="main" 추가 -->
 		<div class="util_top">
-			<h1><a href="/mainExp.do">리무진버스예매</a></h1>
+			<h1><a href="./limoHome">리무진버스예매</a></h1>
 			<div class="util clear">
 				<ul>
 					<!-- <li><a href="/spexp/mrs/mrsrecplist.do">영수증조회</a></li> -->
-					<li><a href="https://www.kobus.co.kr/mrs/mrsrecplist.do">영수증조회</a></li>
-					
 					
 						<!-- <li><a href="#" onclick="javascript:$('[data-remodal-id=popLogin]').remodal().open();">로그인</a></li> -->
-						<li><a href="https://www.kobus.co.kr/mbrs/lgn/loginMain.do"><span>로그인</span></a></li>
-						<li><a href="https://www.kobus.co.kr/mbrs/mbrsjoin/mbrsJoin.do">회원가입</a></li>
-					
-					
-					<!-- <li><a href="/spexp/mbrs/mbrsjoin/mbrsJoin.do">회원가입</a></li> -->
+<!-- 						<li><a href="../member/memberLogin"><span>로그인</span></a></li> -->
+<!-- 						<li><a href="../member/memberJoin">회원가입</a></li> -->
 				</ul>
-				<div class="select-box">
-					<div class="selectricWrapper"><div class="selectricHideSelect"><select name="lng_cd_navi" id="lng_cd_navi" title="다국어사이트 선택" tabindex="0">
-						<option value="KO" selected="selected">한국어</option>
-						<option value="EN">English</option>
-						<option value="CN">中文</option>
-						<option value="JP">日本語</option>
-					</select></div><div class="selectric"><p class="label">한국어</p><b class="button">▾</b></div><div class="selectricItems" tabindex="-1"><div class="selectricScroll"><ul><li class="selected">한국어</li><li class="">English</li><li class="">中文</li><li class="last">日本語</li></ul></div></div><input class="selectricInput" tabindex="0"></div>
-				</div>
 			</div>			
 		</div>
 		
 
-<script type="text/javascript" src="/js/spexp/main/SpExpMain.js?v=1.3"></script>
+<script type="text/javascript" src="https://www.kobus.co.kr/js/spexp/main/SpExpMain.js?v=1.3"></script>
 
-<script type="text/javascript" src="/js/spexp/mrs/rotinf/SpExpRotInfPup.js?v=1.0"></script>
-<script type="text/javascript" src="/js/spexp/mrs/rotinf/SpExpRotInf.js?v=1.3"></script>
-<script type="text/javascript" src="/js/spexp/lgn/SpExpLgn.js?v=1.1"></script>
-
-
+<script type="text/javascript" src="https://www.kobus.co.kr/js/spexp/mrs/rotinf/SpExpRotInfPup.js?v=1.0"></script>
+<script type="text/javascript" src="https://www.kobus.co.kr/js/spexp/mrs/rotinf/SpExpRotInf.js?v=1.3"></script>
+<script type="text/javascript" src="https://www.kobus.co.kr/js/spexp/lgn/SpExpLgn.js?v=1.1"></script>
 
 
-<form name="rotInfFrm" id="rotInfFrm" method="post" action="/mrs/alcnSrch.do">
-	<input type="hidden" name="deprCd" id="deprCd" value=""><!-- 출발지코드 -->
-	<input type="hidden" name="deprNm" id="deprNm" value=""><!-- 출발지명 -->
-	<input type="hidden" name="arvlCd" id="arvlCd" value=""><!-- 도착지코드 -->
-	<input type="hidden" name="arvlNm" id="arvlNm" value=""><!-- 도착지명 -->
-	<input type="hidden" name="tfrCd" id="tfrCd" value=""><!-- 환승지코드 -->
-	<input type="hidden" name="tfrNm" id="tfrNm" value=""><!-- 환승지명 -->
-	<input type="hidden" name="tfrArvlFullNm" id="tfrArvlFullNm" value=""><!-- 환승지포함 도착지 명 -->
-	<input type="hidden" name="pathDvs" id="pathDvs" value="sngl"><!-- 직통sngl,환승trtr,왕복rtrp -->
-	<input type="hidden" name="pathStep" id="pathStep" value="1"><!-- 왕복,환승 가는편순번 -->
-	<input type="hidden" name="pathStepRtn" id="pathStepRtn" value=""><!-- 왕복,환승 가는편순번 -->
-	<input type="hidden" name="crchDeprArvlYn" id="crchDeprArvlYn" value="N"><!-- 출도착지 스왑여부 -->
-	<input type="hidden" name="deprDtm" id="deprDtm" value="20200123"><!-- 가는날(편도,왕복) -->
-	<input type="hidden" name="deprDtmAll" id="deprDtmAll" value="2020. 1. 23. 목"><!-- 가는날(편도,왕복) -->
-	<input type="hidden" name="arvlDtm" id="arvlDtm" value="20200123"><!-- 오는날(왕복) -->
-	<input type="hidden" name="arvlDtmAll" id="arvlDtmAll" value="2020. 1. 23. 목"><!-- 오는날(왕복) -->
-	<input type="hidden" name="busClsCd" id="busClsCd" value="0"><!-- 버스등급 -->
-	<input type="hidden" name="abnrData" id="abnrData" value=""><!-- 결과값여부 -->
-	<input type="hidden" name="prmmDcYn" id="prmmDcYn" value="N"><!-- 시외우등할인대상노선 -->
-	<input type="hidden" name="takeTime" id="takeTime" value="0"><!-- 시외우등할인대상노선 -->
-	<input type="hidden" name="spexp" id="spexp" value="Y"><!-- 특송플레그 -->
-</form>
+
+
 <div class="loading" id="loading" style="height: 80%; top: 100px;"><p class="load" style="margin-left: -53px;"></p></div>
  <!-- // 20190910 추가 -->  
 	<div class="pop_dimmed"></div>
@@ -83,7 +69,7 @@
 			
 		</div>
         <!-- // 20190910 추가 -->         
-<div class="main_top">
+<div class="main_top" style="height: 300px;">
 	<div class="main_content">
 		<div class="main_txtBox">
 			<p class="title">리무진버스 통합 예매</p>
@@ -91,87 +77,23 @@
 		</div>
 		<div class="tab_nav">
 			<ul>
-				<li class="on"><a href="./limoBook">공항 -> 도시 예매</a></li>
-				<li class="on"><a href="./limoBook2">도시 -> 공항 예매 </a></li>
-				
-					
+				<li class="on"><a href="./limoBook">공항 → 도시 예매</a></li>
+				<li class="on"><a href="./limoBook2">도시 → 공항 예매 </a></li>
 			</ul>
 		</div>
 		<div class="tab_container">
 			<!-- 고속버스 예매 -->
 			<div tabindex="0" class="tabContent on">
 				<h2 class="ir">고속버스 예매</h2>
-				<div class="route_box">
-					<div class="tab_wrap tab_type1" id="rtrpYnAll">
-						<div class="tab_cont">
-							
-<!-- 							<p class="check" id="alcnSrchBtn"> -->
-<!-- 								버튼 활성화시 class추가 'active' -->
-<!-- 								<button type="button" class="btn_confirm ready noHover" onclick="fnAlcnSrch();" style="">조회하기</button> -->
-<!-- 								170103 class명 추가 class = "btn_confirm ready" -->
-<!-- 							</p> -->
-<!-- 							<p class="check" id="alcnSrchBtn"> -->
-<!-- 								버튼 활성화시 class추가 'active' -->
-<!-- 								<button type="button" class="btn_confirm ready noHover" onclick="fnAlcnSrch();" style="">조회하기</button> -->
-<!-- 								170103 class명 추가 class = "btn_confirm ready" -->
-<!-- 							</p> -->
-						</div>
-					</div>
-				</div>
 			</div>
 			<!-- //고속버스 예매 -->
+			
 
 			<!-- 예매확인 -->
 			<div tabindex="0" class="tabContent">
 				<h2 class="ir">예매확인</h2>
 				<!-- 로그인 -->
 				
-					<div class="ticket_login_wrap">
-						<div class="ticket_login custom_input">
-							<form id="lgnFrm" name="lgnFrm">
-								<input type="hidden" id="returnUrl" name="returnUrl" value="/mrs/mrscfm.do">
-								<input type="hidden" id="popUpDvs" name="popUpDvs" value="N">
-								<div class="member">
-									<div class="login_title">
-										<h3>회원 로그인</h3>
-									</div>
-									<div class="box_inputForm">
-										<strong>아이디</strong> <span class="box_label"> <label for="usrId">아이디를 입력하세요</label> <input type="text" name="usrId" id="usrId" class="input">
-										</span>
-									</div>
-									<div class="box_inputForm">
-										<strong>비밀번호</strong> <span class="box_label"> <label for="usrPwd">비밀번호를 입력하세요</label> <input type="password" name="usrPwd" id="usrPwd" class="input" onkeydown="fnUsrSubmit();">
-										</span>
-									</div>
-									<button type="button" class="btnL btn_confirm ready noHover" id="usrLgnBtn" onclick="fnlogin();">로그인</button>
-									<!-- noHover -->
-									<div class="login_forgot">
-	                                    <a href="/spexp/mbrs/lgn/lgnSearchId.do">아이디 찾기</a>
-	                                    <a href="/spexp/mbrs/lgn/lgnSearchPwd.do">비밀번호 찾기</a>
-									</div>
-								</div>
-							</form>
-							<form id="lgnNonUsrFrm" name="lgnNonUsrFrm">
-								<input type="hidden" id="returnUrl" name="returnUrl" value="/mrs/mrscfm.do?vltlCnt=Y">
-								<input type="hidden" id="popUpDvs" name="popUpDvs" value="N">
-								<div class="no_member">
-									<div class="login_title">
-										<h3>비회원 예매확인</h3>
-									</div>
-									<div class="box_inputForm">
-										<strong>휴대폰 번호</strong> <span class="box_label"> <label for="nombrsid">휴대폰번호를 입력하세요</label> <input type="text" name="nombrsid" id="nombrsid" class="input">
-										</span>
-									</div>
-									<div class="box_inputForm">
-										<strong>비밀번호</strong> <span class="box_label"> <label for="nombrspass">비밀번호를 입력하세요</label> <input type="password" name="nombrspass" id="nombrspass" class="input" onkeydown="fnNonUsrSubmit();">
-										</span>
-									</div>
-									<button type="button" class="btnL btn_confirm ready noHover" id="nonUsrLgnBtn" onclick="NonUsrInsert();">조회하기</button>
-									<!-- noHover -->
-								</div>
-							</form>
-						</div>
-					</div>
 				
 				<!-- // 로그인 -->
 			</div>
@@ -273,16 +195,6 @@
 			}
 		}
 	</script>
-	<div class="family_site select-box">
-		<div class="selectricWrapper selectric-select"><div class="selectricHideSelect"><select name="" id="" title="관련사이트" class="select" onchange="familySite(this);" tabindex="0">
-			<option value="">관련사이트</option>
-			<option value="www.tago.go.kr">국가대중교통정보센터</option>
-			<option value="www.epassmobile.co.kr">고속버스모바일</option>
-			<option value="www.intis.or.kr">인천장애인콜택시</option>
-			<option value="www.centralcityseoul.co.kr">센트럴시티터미널</option>
-			<option value="txbus.t-money.co.kr">시외버스통합예매</option>
-		</select></div><div class="selectric"><p class="label">관련사이트</p><b class="button">▾</b></div><div class="selectricItems" tabindex="-1"><div class="selectricScroll"><ul><li class="selected">관련사이트</li><li class="">국가대중교통정보센터</li><li class="">고속버스모바일</li><li class="">인천장애인콜택시</li><li class="">센트럴시티터미널</li><li class="last">시외버스통합예매</li></ul></div></div><input class="selectricInput" tabindex="0"></div>
-	</div>
 	<div class="foot_bottom clfix">
 		<div class="foot_cont">
 			<p class="foot_menu">
@@ -292,12 +204,8 @@
 				<!-- <a href="/spexp/etc/cmsstpl/CmsStpl.do">전자금융거래 이용약관</a> -->
 				<a>고객센터 1644-9030</a>
 			</p>
-			<p class="foot_addr">서울특별시 서초구 신반포로 194 <span class="mo_block">통신판매업신고: 2009-서울서초 0587호 대표자 : 박명주</span></p>
-			<p class="foot_copy">COPYRIGHT© 2016. WWW.KOBUS.CO.KR . ALL RIGHT RESERVED</p>
-			<p class="foot_com">
-				<a href="#"><img src="/images/common/sfoot_com1.png" alt="KOBUS 전국고속버스운송사업조합"></a>
-				<a href="#"><img src="/images/common/sfoot_com2.png" alt="전국여객자동차터미널사업자협회"></a>
-			</p>
+			<p class="foot_addr">서울특별시 서초구 신반포로 194 <span class="mo_block">통신판매업신고: 2009-서울서초 0587호 대표자 : 박용주</span></p>
+			<p class="foot_copy">COPYRIGHT© 2016. WWW.AIRLINE.CO.KR . ALL RIGHT RESERVED</p>
 		</div>
 	</div>
 </div>
@@ -336,7 +244,7 @@
 	<div class="cont">
 		<div class="place"> <!-- focus -->
 			<ul>
-				<li id="popDeprChc"> <!--  class="focuson" -->
+				<li id="popDeprChc"> <!--  clas	s="focuson" -->
 					<span class="stit">출발지</span>
 					<p class="text empty"><span class="empty_txt">선택</span><span class="val_txt" id="popDeprNmSpn"></span></p>
 				</li>
@@ -548,6 +456,9 @@
 	</form>    
 </div>
 </div>
-
+<script type="text/javascript">
+	$(".material-icons").css("padding-top", "18px");
+	$(".fa-search").css("padding-top", "");
+</script>
 </body>
 </html>
