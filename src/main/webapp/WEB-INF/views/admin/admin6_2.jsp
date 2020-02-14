@@ -5,12 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style type="text/css">
-.nav-tabs>li{
-	width: 159px;
-	text-align: center;
-}
-</style>
+
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -20,7 +15,6 @@
  <title>AIRLINE ADMIN</title>
   <c:import url="../template/boot.jsp"></c:import>
   <link href="../resources/css/reset.css" rel="stylesheet">
-  <link href="../resources/css/admin/admin6_2.css" rel="stylesheet">
   <!-- Custom fonts for this template-->
   <link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -198,8 +192,8 @@
         <div id="collapseone" class="collapse show" aria-labelledby="headingone" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
            <h6 class="collapse-header">LIMOUSINE MANAGEMENT</h6>
-            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin6_1">회원별 리무진 예약 현황</a>
-            <a class="collapse-item active" href="${pageContext.request.contextPath}/admin/admin6_2">공항별 예약 현황</a>
+            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin6_1">공항별 예약 현황</a>
+            <a class="collapse-item active" href="${pageContext.request.contextPath}/admin/admin6_2">회원별 리무진 예약 현황</a>
           </div>
         </div>
       </li>
@@ -287,6 +281,7 @@
                 </a>
               </div>
             </li>
+
           </ul>
 
         </nav>
@@ -296,211 +291,42 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">공항별 리무진버스 관리</h1>
-          <p class="mb-4">공항별 리무진버스의 상세정보를 보여줍니다.</p>
+          <h1 class="h3 mb-2 text-gray-800">영화관 관리</h1>
+          <p class="mb-4">영화관의 상세정보를 보여줍니다.</p>
 
-          <!-- 전체 리무진 버스 내역 확인 -->
+          <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">리무진버스 매출내역</h6>
+              <h6 class="m-0 font-weight-bold text-primary">영화관 상세정보</h6>
             </div>
             <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>번호</th>
+                      <th>지역 </th>
+                      <th>이름</th>
+                      <th>주소</th>
+                      <th>전화번호</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+             <%--      <c:forEach items="${cinemalist}" var="clist">  --%>
+                    <tr>
+                      <td>1<%-- <a href="${pageContext.request.contextPath}/admin/admin_cinemaSelect?cinema_num=${clist.cinema_num}">${clist.cinema_num}</a> --%></td>
+                      <td>2</td>
+                      <td>2</td>
+                      <td>2</td>
+                      <td>2</td>
+                    </tr>
+<%--                   </c:forEach> --%>
 
-	          <div class="row">
-	
-	            <!-- Earnings (Monthly) Card Example -->
-	            <div class="col-xl-3 col-md-6 mb-4">
-	              <div class="card border-left-primary shadow h-100 py-2">
-	                <div class="card-body">
-	                  <div class="row no-gutters align-items-center">
-	                    <div class="col mr-2">
-	                      <div class="text-m font-weight-bold text-primary text-uppercase mb-1">티켓 판매액(2020년 2월 기준)</div>
-	                      <div class="h5 mb-0 font-weight-bold text-gray-800">
-	                      	<fmt:formatNumber type="currency" value="${SumTotal}"/>
-	                      </div>
-	                    </div>
-	                    <div class="col-auto">
-	                       <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-	                    </div>
-	                  </div>
-	                </div>
-	              </div>
-	            </div>
-	
-	            <!-- Earnings (Monthly) Card Example -->
-	            <div class="col-xl-3 col-md-6 mb-4">
-	              <div class="card border-left-success shadow h-100 py-2">
-	                <div class="card-body">
-	                  <div class="row no-gutters align-items-center">
-	                    <div class="col mr-2">
-	                      <div class="text-m font-weight-bold text-success text-uppercase mb-1">리무진 버스 수</div>
-	                      <div class="h5 mb-0 font-weight-bold text-gray-800">
-	                      140개
-	                      </div>
-	                    </div>
-	                    <div class="col-auto">
-	                   	 <i class="fas fa-comments fa-2x text-gray-300"></i>
-	                    </div>
-	                  </div>
-	                </div>
-	              </div>
-	            </div>
-	
-	            <!-- Earnings (Monthly) Card Example -->
-	            <div class="col-xl-3 col-md-6 mb-4">
-	              <div class="card border-left-info shadow h-100 py-2">
-	                <div class="card-body">
-	                  <div class="row no-gutters align-items-center">
-	                    <div class="col mr-2">
-	                      <div class="text-m font-weight-bold text-info text-uppercase mb-1">티켓 판매액(금일기준)</div>
-	                      <div class="h5 mb-0 font-weight-bold text-gray-800">
-	                      	<fmt:formatNumber type="currency" value="${limoTodaySum}" />
-	                      </div>
-	                    </div>
-	                    <div class="col-auto">
-	                      <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-	                    </div>
-	                  </div>
-	                </div>
-	              </div>
-	            </div>
-	
-		            <!-- Pending Requests Card Example -->
-		            <div class="col-xl-3 col-md-6 mb-4">
-		              <div class="card border-left-warning shadow h-100 py-2">
-		                <div class="card-body">
-		                  <div class="row no-gutters align-items-center">
-		                    <div class="col mr-2">
-		                      <div class="text-m font-weight-bold text-warning text-uppercase mb-1">예매 인원(금일기준)</div>
-		                      <div class="h5 mb-0 font-weight-bold text-gray-800">
-		                      ${PersonSum}명
-		                      </div>
-		                    </div>
-		                    <div class="col-auto">
-		                      <i class="fas fa-comments fa-2x text-gray-300"></i>
-		                    </div>
-		                  </div>
-		                </div>
-		              </div>
-		            </div>
-	          </div>
-              
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
-          
-          <!-- 공항별 리무진 버스 내역 확인 -->
-          <div class="card shadow mb-4">
-            <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">공항별 리무진 버스 정보</h6>
-            </div>
-            <div class="card-header py-3">
-            <div class="contain">
-				<h4>공항별 리무진 매출내역</h4>
-				<p>EVERYAIR의 국내 10개 공항에 대한 매출정보를 확인하실 수 있습니다.</p>
-			
-				<ul class="nav nav-tabs" style="margin-bottom: 20px;">
-					<li class="active"><a data-toggle="tab" href="#menu0">인천공항</a></li>
-			   		<li><a data-toggle="tab" href="#menu1">김포공항</a></li>
-			   		<li><a data-toggle="tab" href="#menu2">양양공항</a></li>
-			   		<li><a data-toggle="tab" href="#menu3">청주공항</a></li>
-			   		<li><a data-toggle="tab" href="#menu4">대구공항</a></li>
-			   		<li><a data-toggle="tab" href="#menu5">무안공항</a></li>
-			   		<li><a data-toggle="tab" href="#menu6">여수공항</a></li>
-			   		<li><a data-toggle="tab" href="#menu7">김해공항</a></li>
-			   		<li><a data-toggle="tab" href="#menu8">울산공항</a></li>
-			   		<li><a data-toggle="tab" href="#menu9">제주공항</a></li>
-			  	</ul>
-				
-			  	<div class="tab-content">
-				<c:forEach items="${limo}" var="limos" varStatus="li">
-			    	<div id="menu${li.index}" class="tab-pane fade in active">
-      					<div class="row">
-				            <!-- Earnings (Monthly) Card Example -->
-				            <div class="col-xl-3 col-md-6 mb-4">
-				              <div class="card border-left-primary shadow h-100 py-2">
-				                <div class="card-body">
-				                  <div class="row no-gutters align-items-center">
-				                    <div class="col mr-2">
-				                      <div class="text-m font-weight-bold text-primary text-uppercase mb-1">티켓 판매액(2020년 2월 기준)</div>
-				                      <div class="h5 mb-0 font-weight-bold text-gray-800">
-				                      		<fmt:formatNumber type="currency" value="${limos}"/>
-				                      </div>
-				                    </div>
-				                    <div class="col-auto">
-				                       <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-				                    </div>
-				                  </div>
-				                </div>
-				              </div>
-				            </div>
-				
-				            <!-- Earnings (Monthly) Card Example -->
-				            <div class="col-xl-3 col-md-6 mb-4">
-				              <div class="card border-left-success shadow h-100 py-2">
-				                <div class="card-body">
-				                  <div class="row no-gutters align-items-center">
-				                    <div class="col mr-2">
-				                      <div class="text-m font-weight-bold text-success text-uppercase mb-1">리무진 버스 수</div>
-				                      <div class="h5 mb-0 font-weight-bold text-gray-800">
-				                      	14개
-				                      </div>
-				                    </div>
-				                    <div class="col-auto">
-				                   	 <i class="fas fa-comments fa-2x text-gray-300"></i>
-				                    </div>
-				                  </div>
-				                </div>
-				              </div>
-				            </div>
-				
-				            <!-- Earnings (Monthly) Card Example -->
-				            <div class="col-xl-3 col-md-6 mb-4">
-				              <div class="card border-left-info shadow h-100 py-2">
-				                <div class="card-body">
-				                  <div class="row no-gutters align-items-center">
-				                    <div class="col mr-2">
-				                      <div class="text-m font-weight-bold text-info text-uppercase mb-1">티켓 판매액(금일기준)</div>
-				                      <div class="h5 mb-0 font-weight-bold text-gray-800">
-				                      	<fmt:formatNumber type="currency" value="${todaySum[li.index]}" />
-				                      </div>
-				                    </div>
-				                    <div class="col-auto">
-				                      <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-				                    </div>
-				                  </div>
-				                </div>
-				              </div>
-				            </div>
-				
-				            <!-- Pending Requests Card Example -->
-				            <div class="col-xl-3 col-md-6 mb-4">
-				              <div class="card border-left-warning shadow h-100 py-2">
-				                <div class="card-body">
-				                  <div class="row no-gutters align-items-center">
-				                    <div class="col mr-2">
-				                      <div class="text-m font-weight-bold text-warning text-uppercase mb-1">예매 인원(금일기준)</div>
-				                      <div class="h5 mb-0 font-weight-bold text-gray-800">
-				                      	${SumPerson[li.index]}명
-				                      </div>
-				                    </div>
-				                    <div class="col-auto">
-				                      <i class="fas fa-comments fa-2x text-gray-300"></i>
-				                    </div>
-				                  </div>
-				                </div>
-				              </div>
-				            </div>
-	         		 </div>
-  				  </div>
-				</c:forEach>
-				    
-  				</div>
-			</div>
-		</div>
-	</div>
-          
-          
-          
 
         </div>
         <!-- /.container-fluid -->
@@ -564,10 +390,7 @@
 
   <!-- Page level custom scripts -->
   <script src="${pageContext.request.contextPath}/resources/vendor/js/demo/datatables-demo.js"></script>
-<script type="text/javascript">
-$("#content > div > div:nth-child(4) > div:nth-child(2) > div > ul > li:nth-child(1) > a").click();
 
-</script>
 </body>
 
 </html>

@@ -157,7 +157,7 @@ input, select{
 	border-radius: 10px;
 	color: white;
 }
-.gobooks, .gobooks2{
+.gobooks{
 	background-color: white;
 	border: 2px solid #c60b15;
 	width: 100px;

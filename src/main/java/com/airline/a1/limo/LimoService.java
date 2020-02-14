@@ -11,14 +11,19 @@ public class LimoService {
 	@Autowired
 	private LimoMapper limoMapper;
 	
+	public LimoVO myLimo(LimoVO limoVO)throws Exception{
+		return limoMapper.myLimo(limoVO);
+	}
+	
 	public int limoBook(LimoVO limoVO)throws Exception {
 		String [] split = limoVO.getSeat().split("번");
 		int result = 0;
-//		for (int i = 0; i < split.length; i++) {
-//			split [i] = split [i].replace("번", "");
-//			limoVO.setSeat(split[i]);
-//		}
-		result = limoMapper.limoBook(limoVO);
+		for (int i = 0; i < split.length; i++) {
+			split [i] = split [i].replace("번", "");
+			limoVO.setSeat(split[i]);
+			
+			result = limoMapper.limoBook(limoVO);
+		}
 		return result;
 	}
 	
@@ -28,10 +33,6 @@ public class LimoService {
 	
 	public List<LimoVO> limoSelect(LimoVO limoVO)throws Exception{
 		return limoMapper.limoSelect(limoVO);
-	}
-	
-	public List<LimoVO> myLimo(LimoVO limoVO)throws Exception{
-		return limoMapper.myLimo(limoVO);
 	}
 
 }

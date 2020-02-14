@@ -14,15 +14,8 @@ public class LimoVO {
 	private String limoTime;
 	private String seat;
 	private int person;
-	private int child;
 	
 
-	public int getChild() {
-		return child;
-	}
-	public void setChild(int child) {
-		this.child = child;
-	}
 	public int getPerson() {
 		return person;
 	}
