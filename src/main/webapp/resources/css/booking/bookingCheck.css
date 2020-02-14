@@ -4,9 +4,20 @@ header{
 }
 
 section{
-	width: 1200px;
+	/* width: 1215px; */
 	margin: 0 auto;	
+	padding-left: 300px;
+    padding-right: 300px;
 }
+
+#muse{
+	text-align: center;
+}
+
+.milCheck{
+	padding-left: 20px;
+}
+
 
 #top{
 	height: 170px;
@@ -87,7 +98,7 @@ section{
 
 .tprice{
 	color: #d60815;
-	padding-left: 5px;
+	padding-left: 20px;
 	text-align: right;
 }
 
