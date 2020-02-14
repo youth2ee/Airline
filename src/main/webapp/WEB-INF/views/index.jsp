@@ -500,7 +500,7 @@ $(document).ready(function() {
 				<!-- 출도착조회 -->
 				<div class="slide_inner">
 
-					<div class="section_copy" style="display: none;">
+					<div class="section_copy checkbox_text">
 						<h2>출도착 조회</h2>
 						<p class="desc">취항지 출도착 스케줄을 상세하게 확인하실 수 있습니다.</p>
 					</div>

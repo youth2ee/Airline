@@ -126,11 +126,12 @@
 }
 
 .text5 p {
-	margin-left: 123px
+	margin-left: 123px;
 }
 
 .text5 span{
-	color: #d60815;;
+	color: #d60815;
+	font-weight: bolder;
 }
 
 .text6{
