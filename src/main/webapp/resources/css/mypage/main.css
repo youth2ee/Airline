@@ -121,7 +121,7 @@ section {
     grid-column-end: 5;
     grid-row-start: 1;
     grid-row-end: 3;
-    background-color: dimgrey;
+    background-color: #6d6e70;
     cursor: pointer;
 }
 .box4 {
@@ -234,4 +234,9 @@ section {
     margin-top: 18px;
     border-right: 1px solid #e2e2e2;
     width: 50px;
+}
+.table_list{
+	margin-top: 115px;
+    margin-left: 50px;
+    width: 517px;
 }

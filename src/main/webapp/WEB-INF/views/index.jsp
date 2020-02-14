@@ -288,9 +288,8 @@ $(document).ready(function() {
 			<div class="inner alC">
 				<select id="numTypeSelect" style="width: 200px" title="종류별 번호">
 					<option value="reservNo">예약번호</option>
-					<option value="ticketNo">항공권번호</option>
-				</select> <input type="text" id="bookingNum" name="bookingNum" maxlength="8" placeholder="영문/숫자 조합 6자리 또는 숫자 8자리" title="번호 입력 예시 : 영문/숫자 조합 6자리 또는 숫자 8자리" style="width: 280px; text-transform: uppercase;">
-
+				</select> <input type="text" id="bookingNum" name="bookingNum" maxlength="8" placeholder="영문/숫자 조합 6자리 또는 숫자 8자리" title="번호 입력 예시 : 영문/숫자 조합 6자리 또는 숫자 8자리"
+					style="width: 280px; text-transform: uppercase;">
 
 				<div class="relative_calendar">
 					<div class="calendar_wrap">

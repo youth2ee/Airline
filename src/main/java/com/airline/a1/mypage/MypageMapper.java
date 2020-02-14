@@ -25,4 +25,6 @@ public interface MypageMapper {
 
 	public List<BookingTicketVO> bnumSearch(BookingTicketVO bookingTicketVO) throws Exception;
 
+	
+	public List<BookingPriceVO> recentMileage(MembersVO membersVO) throws Exception;
 }
