@@ -306,7 +306,6 @@ $("#btnLogin").click(function(){
     if($("#chkSaveID").is(":checked")){ // ID 저장하기 체크했을 때,
         var userInputId = $("#txtID").val();
         var loginType = $('input[name="loginType"]:checked').val();
-        alert(loginType);
         setCookie("userInputId", userInputId, 7); // 7일 동안 쿠키 보관
         setCookie("loginType", loginType, 7);
     }else{ // ID 저장하기 체크 해제 시,
