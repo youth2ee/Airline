@@ -3,16 +3,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
 <!-- Required meta tags-->
 <meta charset="UTF-8">
-<meta name="viewport"
+<!-- <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="Colrolib Templates">
 <meta name="author" content="Colrolib">
-<meta name="keywords" content="Colrolib Templates">
+<meta name="keywords" content="Colrolib Templates"> -->
 
     <link href="../resources/css/mypage/mypageHeader.css" rel="stylesheet">
 <link href="../resources/css/reset.css" rel="stylesheet">

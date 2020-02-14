@@ -14,6 +14,11 @@
 	order by depPlandTime desc
 	</select>
 	
+<!-- 	<select id="airallList" resultType="com.airline.a1.booking.FlightDataVO">
+	select * from flightData 
+	order by depPlandTime desc
+	</select> -->
+	
 	
 	<select id="airpartList" parameterType="com.airline.a1.booking.FlightDataVO" resultType="com.airline.a1.booking.FlightDataVO">
 	select * from flightData 

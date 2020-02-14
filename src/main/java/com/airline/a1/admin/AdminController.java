@@ -230,6 +230,7 @@ public class AdminController {
 		  
 		  List<FlightDataVO> smlist = adminService.saletermAir(flightDataVO);
 		  
+		  
 		  //주 
 		  //2020-01-26 ~ 2020-02-01
 		  flightDataVO.setDepPlandTime("2020-02-11");
@@ -297,45 +298,45 @@ public class AdminController {
 		  flightDataVO.setDepPlandTime("2020-02-01");
 		  flightDataVO.setArrPlandTime("2020-02-29 23:59:59");
 		  
-		  List<FlightDataVO> smlist = adminService.saleterm(flightDataVO);
+		  List<FlightDataVO> smlist = adminService.saletermAir(flightDataVO);
 		  
 		  //주 
 		  //2020-01-26 ~ 2020-02-01
 		  flightDataVO.setDepPlandTime("2020-01-26");
 		  flightDataVO.setArrPlandTime("2020-02-01 23:59:59");
 		  
-		  List<FlightDataVO> sw1list = adminService.saleterm(flightDataVO);
+		  List<FlightDataVO> sw1list = adminService.saletermAir(flightDataVO);
 		  
 		  //2020-02-02 ~ 2020-02-08
 		  flightDataVO.setDepPlandTime("2020-02-02");
 		  flightDataVO.setArrPlandTime("2020-02-08 23:59:59");
 		  
-		  List<FlightDataVO> sw2list = adminService.saleterm(flightDataVO);
+		  List<FlightDataVO> sw2list = adminService.saletermAir(flightDataVO);
 		  
 		  //2020-02-09 ~ 2020-02-15
 		  flightDataVO.setDepPlandTime("2020-02-09");
 		  flightDataVO.setArrPlandTime("2020-02-15 23:59:59");
 		  
-		  List<FlightDataVO> sw3list = adminService.saleterm(flightDataVO);
+		  List<FlightDataVO> sw3list = adminService.saletermAir(flightDataVO);
 		  
 		  //2020-02-16 ~ 2020-02-22
 		  flightDataVO.setDepPlandTime("2020-02-16");
 		  flightDataVO.setArrPlandTime("2020-02-22 23:59:59");
 		  
-		  List<FlightDataVO> sw4list = adminService.saleterm(flightDataVO);
+		  List<FlightDataVO> sw4list = adminService.saletermAir(flightDataVO);
 		  
 		  //2020-02-23 ~ 2020-02-29
 		  flightDataVO.setDepPlandTime("2020-02-23");
 		  flightDataVO.setArrPlandTime("2020-02-29 23:59:59");
 		  
-		  List<FlightDataVO> sw5list = adminService.saleterm(flightDataVO);
+		  List<FlightDataVO> sw5list = adminService.saletermAir(flightDataVO);
 
 		  
 		  //일 오늘 2020-02-01 ~ 2020-02-01 23:59:59
 		  flightDataVO.setDepPlandTime(today);
 		  flightDataVO.setArrPlandTime(today+" 23:59:59");
 		  
-		  List<FlightDataVO> sdlist = adminService.saleterm(flightDataVO);
+		  List<FlightDataVO> sdlist = adminService.saletermAir(flightDataVO);
 		  
 		  
 		
@@ -348,10 +349,10 @@ public class AdminController {
 		mv.addObject("sdlist", sdlist.get(0));
 		
 		
-		List<AirlineVO> airlineVOs = adminService.airlineList();
+		List<AirportVO> airlineVOs = adminService.airportList();
 		mv.addObject("alist", airlineVOs);
 		
-		mv.setViewName("admin/common/admin1_1_layout");
+		mv.setViewName("admin/common/admin1_2_layout");
 		
 		return mv;
 	}
@@ -394,6 +395,22 @@ public class AdminController {
 	public void admin2_2() throws Exception{
 		
 	}
+	
+	@GetMapping("admin2_2_layout")
+	public ModelAndView admin2_2_layout(FlightDataVO flightDataVO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		List<FlightDataVO> flist = adminService.airpartList(flightDataVO);
+		mv.addObject("flist", flist);
+		
+		List<AirlineVO> airlineVOs = adminService.airlineList();
+		mv.addObject("alist", airlineVOs);
+		
+		mv.setViewName("admin/common/admin2_1_layout");
+		
+		return mv;
+	}
+	
+	
 	
 	@GetMapping("admin3_1")
 	public ModelAndView admin3_1() throws Exception{

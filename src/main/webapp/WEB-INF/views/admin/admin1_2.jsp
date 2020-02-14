@@ -506,6 +506,10 @@ var an8 ='';
 var an9 ='';
 var an10 ='';
 var an11 ='';
+var an12 ='';
+var an13 ='';
+var an14 ='';
+var an15 ='';
 
 var pn1 ='';
 var pn2 ='';
@@ -518,6 +522,10 @@ var pn8 ='';
 var pn9 ='';
 var pn10 ='';
 var pn11 ='';
+var pn12 ='';
+var pn13 ='';
+var pn14 ='';
+var pn15 ='';
 
 
 <c:forEach items="${smlist}" var="m" varStatus="status">
@@ -530,7 +538,7 @@ pn${status.index +1} = '${m.arrPlandTime}';
 var myLineChart = new Chart(ctx, {
   type: 'line',
   data: {
-    labels: [an1, an2, an3, an4, an5, an6, an7, an8, an9, an10, an11],
+    labels: [an1, an2, an3, an4, an5, an6, an7, an8, an9, an10, an11, an12, an13, an14, an15],
     datasets: [{
       label: "판매량",
       lineTension: 0.3,
@@ -544,7 +552,7 @@ var myLineChart = new Chart(ctx, {
       pointHoverBorderColor: "rgba(214, 8, 21, 1)",
       pointHitRadius: 10,
       pointBorderWidth: 2,
-      data: [pn1, pn2, pn3, pn4, pn5, pn6, pn7, pn8, pn9, pn10, pn11],
+      data: [pn1, pn2, pn3, pn4, pn5, pn6, pn7, pn8, pn9, pn10, pn11, pn12, pn13, pn14, pn15],
     }],
   },
   options: {
@@ -567,7 +575,7 @@ var myLineChart = new Chart(ctx, {
           drawBorder: false
         },
         ticks: {
-          maxTicksLimit: 11
+          maxTicksLimit: 15
         }
       }],
       yAxes: [{
@@ -630,6 +638,11 @@ var an8 ='';
 var an9 ='';
 var an10 ='';
 var an11 ='';
+var an12 ='';
+var an13 ='';
+var an14 ='';
+var an15 ='';
+
 
 var pn1 ='';
 var pn2 ='';
@@ -642,6 +655,10 @@ var pn8 ='';
 var pn9 ='';
 var pn10 ='';
 var pn11 ='';
+var pn12 ='';
+var pn13 ='';
+var pn14 ='';
+var pn15 ='';
 
 
 <c:forEach items="${swlist}" var="m" varStatus="status">
@@ -654,21 +671,21 @@ pn${status.index +1} = '${m.arrPlandTime}';
 var myLineChart = new Chart(ctx2, {
   type: 'line',
   data: {
-    labels: [an1, an2, an3, an4, an5, an6, an7, an8, an9, an10, an11],
-    datasets: [{
-      label: "판매량",
-      lineTension: 0.3,
-      backgroundColor: "rgba(214, 8, 21, 0.05)",
-      borderColor: "rgba(214, 8, 21, 1)",
-      pointRadius: 3,
-      pointBackgroundColor: "rgba(214, 8, 21, 1)",
-      pointBorderColor: "rgba(214, 8, 21, 1)",
-      pointHoverRadius: 3,
-      pointHoverBackgroundColor: "rgba(214, 8, 21, 1)",
-      pointHoverBorderColor: "rgba(214, 8, 21, 1)",
-      pointHitRadius: 10,
-      pointBorderWidth: 2,
-      data: [pn1, pn2, pn3, pn4, pn5, pn6, pn7, pn8, pn9, pn10, pn11],
+	    labels: [an1, an2, an3, an4, an5, an6, an7, an8, an9, an10, an11, an12, an13, an14, an15],
+	    datasets: [{
+	      label: "판매량",
+	      lineTension: 0.3,
+	      backgroundColor: "rgba(214, 8, 21, 0.05)",
+	      borderColor: "rgba(214, 8, 21, 1)",
+	      pointRadius: 3,
+	      pointBackgroundColor: "rgba(214, 8, 21, 1)",
+	      pointBorderColor: "rgba(214, 8, 21, 1)",
+	      pointHoverRadius: 3,
+	      pointHoverBackgroundColor: "rgba(214, 8, 21, 1)",
+	      pointHoverBorderColor: "rgba(214, 8, 21, 1)",
+	      pointHitRadius: 10,
+	      pointBorderWidth: 2,
+	      data: [pn1, pn2, pn3, pn4, pn5, pn6, pn7, pn8, pn9, pn10, pn11, pn12, pn13, pn14, pn15],
     }],
   },
   options: {
@@ -691,7 +708,7 @@ var myLineChart = new Chart(ctx2, {
           drawBorder: false
         },
         ticks: {
-          maxTicksLimit: 11
+          maxTicksLimit: 15
         }
       }],
       yAxes: [{
@@ -755,6 +772,11 @@ var an8 ='';
 var an9 ='';
 var an10 ='';
 var an11 ='';
+var an12 ='';
+var an13 ='';
+var an14 ='';
+var an15 ='';
+
 
 var pn1 ='';
 var pn2 ='';
@@ -767,6 +789,10 @@ var pn8 ='';
 var pn9 ='';
 var pn10 ='';
 var pn11 ='';
+var pn12 ='';
+var pn13 ='';
+var pn14 ='';
+var pn15 ='';
 
 
 <c:forEach items="${sdlist}" var="m" varStatus="status">
@@ -779,21 +805,21 @@ pn${status.index +1} = '${m.arrPlandTime}';
 var myLineChart = new Chart(ctx3, {
   type: 'line',
   data: {
-    labels: [an1, an2, an3, an4, an5, an6, an7, an8, an9, an10, an11],
-    datasets: [{
-      label: "판매량",
-      lineTension: 0.3,
-      backgroundColor: "rgba(214, 8, 21, 0.05)",
-      borderColor: "rgba(214, 8, 21, 1)",
-      pointRadius: 3,
-      pointBackgroundColor: "rgba(214, 8, 21, 1)",
-      pointBorderColor: "rgba(214, 8, 21, 1)",
-      pointHoverRadius: 3,
-      pointHoverBackgroundColor: "rgba(214, 8, 21, 1)",
-      pointHoverBorderColor: "rgba(214, 8, 21, 1)",
-      pointHitRadius: 10,
-      pointBorderWidth: 2,
-      data: [pn1, pn2, pn3, pn4, pn5, pn6, pn7, pn8, pn9, pn10, pn11],
+	    labels: [an1, an2, an3, an4, an5, an6, an7, an8, an9, an10, an11, an12, an13, an14, an15],
+	    datasets: [{
+	      label: "판매량",
+	      lineTension: 0.3,
+	      backgroundColor: "rgba(214, 8, 21, 0.05)",
+	      borderColor: "rgba(214, 8, 21, 1)",
+	      pointRadius: 3,
+	      pointBackgroundColor: "rgba(214, 8, 21, 1)",
+	      pointBorderColor: "rgba(214, 8, 21, 1)",
+	      pointHoverRadius: 3,
+	      pointHoverBackgroundColor: "rgba(214, 8, 21, 1)",
+	      pointHoverBorderColor: "rgba(214, 8, 21, 1)",
+	      pointHitRadius: 10,
+	      pointBorderWidth: 2,
+	      data: [pn1, pn2, pn3, pn4, pn5, pn6, pn7, pn8, pn9, pn10, pn11, pn12, pn13, pn14, pn15],
     }],
   },
   options: {
@@ -816,7 +842,7 @@ var myLineChart = new Chart(ctx3, {
           drawBorder: false
         },
         ticks: {
-          maxTicksLimit: 11
+          maxTicksLimit: 15
         }
       }],
       yAxes: [{

@@ -48,7 +48,7 @@ public class AdminService {
 
 	
 	public List<FlightDataVO> saletermAir(FlightDataVO flightDataVO) throws Exception {
-		return adminMapper.saleterm(flightDataVO);
+		return adminMapper.saletermAir(flightDataVO);
 
 	}
 }
