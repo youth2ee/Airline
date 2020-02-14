@@ -257,26 +257,61 @@ var toggleButton = document.getElementById("toggleButton");
 
 				
 				var getDate = String(year) + String(month) + String(day);
+
+				var getBoardingCloseTime = $(".timelineView"+num+" .timeline1 .boardingClose").text();
+				var boardingYear = getBoardingCloseTime.substring(0,4);
+				var boardingMonth = getBoardingCloseTime.substring(5,7);
+				var boardingDate = getBoardingCloseTime.substring(8,10);
+				var boardingTime = getBoardingCloseTime.substring(10);
+				boardingTime = boardingTime.trim().split(":");
+				var boardingHour = boardingTime[0];
+				var boardingMinute = boardingTime[1];
+				if((boardingMonth+"").length < 2){
+					boardingMonth = "0" + month;
+				} 
+				if((boardingDate+"").length < 2){
+					boardingDate = "0" + boardingDate;
+				} 
+				if((boardingHour+"").length < 2){
+					boardingHour = "0" + boardingHour;
+				} 
+				if((boardingMinute+"").length < 2){
+					boardingMinute = "0" + boardingMinute;
+				} 
+				getBoardingCloseTime = boardingYear+boardingMonth+boardingDate+boardingHour+boardingMinute;
+
+				
+				
 				if($(".timelineView"+num).text()!=null){
 					if ($(".timelineView"+num+" .timeline1 .checkInDate").text() != "X"){
+						
 					if($(".timelineView"+num+" .timeline1 .checkInDate").text() == "체크인 완료")
 						$(".timelineView"+num+" #checkInTimeline").addClass("complete");
+					
 					if(Number(getDate) > $(".timelineView"+num+" .timeline1 .checkInClose").attr('id'))
 						$(".timelineView"+num+" .timeline1 #checkInCloseTimeline").addClass("complete");
-					if(nowTime > $(".timelineView"+num+" .timeline1 .boardingClose").text())
+					
+					if(nowTime > getBoardingCloseTime)
 						$(".timelineView"+num+" .timeline1 #boardingCloseTimeline").addClass("complete");
+					
 					if(nowTime > $(".timelineView"+num+" .timeline1 .depPlandTimeGo").attr('id'))
 						$(".timelineView"+num+" .timeline1 #departTime").addClass("complete");
+					
 					if(nowTime > $(".timelineView"+num+" .arrPlandTimeGo").attr('id'))
 						$(".timelineView"+num+" .timeline1 #arrivalTime").addClass("complete");
+					
 					if($(".timelineView"+num+" .timeline2 .checkInDate").text() == "체크인 완료")
 						$(".timelineView"+num+" #checkInTimeline").addClass("complete");
+					
 					if(Number(getDate) > $(".timelineView"+num+" .timeline1 .checkInClose").attr('id'))
 						$(".timelineView"+num+" .timeline2 #checkInCloseTimeline").addClass("complete");
-					if(nowTime > $(".timelineView"+num+" .timeline1 .boardingClose").text())
+					
+					if(nowTime > getBoardingCloseTime)
 						$(".timelineView"+num+" .timeline2 #boardingCloseTimeline").addClass("complete");
+					
 					if(nowTime > $(".timelineView"+num+" .timeline1 .depPlandTimeGo").attr('id'))
 						$(".timelineView"+num+" .timeline2 #departTime").addClass("complete");
+					
 					if(nowTime > $(".timelineView"+num+" .arrPlandTimeGo").attr('id'))
 						$(".timelineView"+num+" .timeline2 #arrivalTime").addClass("complete");
 					}

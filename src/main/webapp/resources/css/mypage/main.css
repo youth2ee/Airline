@@ -72,7 +72,7 @@
 section {
 	width: 1200px;
 	margin: 0 auto;
-	margin-bottom: 100px;
+	margin-bottom: 30px;
 }
 .circles-container{
 	animation: scale1 1s ;
@@ -110,7 +110,7 @@ section {
 	grid-template-columns: repeat(2, 1fr);}
 
 .box2  {
-	background-color: aquamarine;
+	background-color: white;
 	grid-column-start: 1;
 	grid-column-end: 4;
 	grid-row-start: 3;
@@ -239,4 +239,11 @@ section {
 	margin-top: 115px;
     margin-left: 50px;
     width: 517px;
+}
+.vdo{
+	width: 100%;
+}
+.hanok{
+	width: 99.9%;
+    height: 325px;
 }
