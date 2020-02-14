@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -38,7 +39,27 @@ public class MypageController {
 	public void main() {}
 	
 	@GetMapping("memberUpdate")
-	public void memberUpdate() {}
+	public void memberUpdate() {
+	}
+	@PostMapping("memberUpdate")
+	public ModelAndView memberUpdate(MembersVO membersVO,HttpSession session) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		int result = mypageService.updateMember(membersVO);
+		String msg = "정보수정 실패";
+		String path = "./memberUpdate";
+		if(result > 0) {
+			MembersVO membersVO2 = (MembersVO) session.getAttribute("member");
+			membersVO2.setName(membersVO.getName());
+			membersVO2.setPhone(membersVO.getPhone());
+			membersVO2.setEmail(membersVO.getEmail());
+			msg = "정보수정 완료";
+			session.setAttribute("member",membersVO2);
+		}
+		mv.addObject("msg", msg);
+		mv.addObject("path", path);
+		mv.setViewName("common/common_result");
+		return mv;
+	}
 	
 	@GetMapping("mileage")
 	public void mileage(HttpSession session, Model model) throws Exception {
@@ -52,7 +73,14 @@ public class MypageController {
 
 		
 	}
-	
+	@GetMapping("openQrcode")
+	public void openQrcode() throws Exception{
+		
+	}
+	@GetMapping("openBarcode")
+	public void openBarcode() throws Exception{
+		
+	}
 	@GetMapping("ticketCancel")
 	public ModelAndView bookCancel(String bnum) throws Exception {
 		ModelAndView mv = new ModelAndView();

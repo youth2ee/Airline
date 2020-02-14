@@ -30,6 +30,9 @@
 		on B.bookingNum = C.bookingNum
 	</select>
 	
+	<update id="updateMember" parameterType="com.airline.a1.member.MembersVO">
+		update members set name=#{name},phone=#{phone},email=#{email} where id = #{id};
+	</update>
 	
 	
   </mapper>

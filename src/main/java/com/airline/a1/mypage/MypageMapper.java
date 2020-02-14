@@ -19,4 +19,5 @@ public interface MypageMapper {
 	public int bookCancel(String bnum) throws Exception;
 	
 	public List<BookingPriceVO> mtotal(MembersVO membersVO) throws Exception;  
+	public int updateMember(MembersVO membersVO) throws Exception;
 }

@@ -24,7 +24,14 @@
     <link rel="stylesheet" type="text/css" href="../resources/assets/skins/firecircle.css">
     <link rel="stylesheet" type="text/css" href="../resources/assets/skins/whitecircle.css">
     <link rel="stylesheet" type="text/css" href="../resources/assets/skins/simplecircle.css">
-	
+	<style type="text/css">
+		body {
+			background-color: #e4e4e4;
+		}
+		.header_bottom_inner {
+		background-color: white;
+		}
+</style>
 </head>
 <body>
 
@@ -52,7 +59,7 @@
 	
 		<div class="myInfoLeft">
 			<div> 
-				<div id="miname">${member.name} 님</div> 
+				<div id="miname">${member.name}님</div> 
 				<span id="miEname">(${member.id})</span>
 			</div>
 			
@@ -60,7 +67,7 @@
 				<div>회원번호 : ${member.memberNum}</div>
 				<div>전화번호 : ${member.phone}</div>
 				<div>이메일 : ${member.email}</div>
-				<div style="padding-top: 30px;">바코드 / QR코드 / SMS</div>
+				<div style="padding-top: 30px;">바코드 / <span class="openQr">QR코드</span> / SMS</div>
 			</div>
 			
 <!-- 			<div style="height: 30px; background-color: green;">
@@ -83,11 +90,33 @@
 				</div>
 			</div>
 		</div>
-		
 		<div class="myInfoRight"></div>
 		
 	</div>
 	</div>
+		<div class="wrapper">
+		  <div class="box1">
+		  	<div class="box1_box1">
+		  		<span>리무진 예약 내역</span>
+		  		<img alt="" src="../resources/newni/van.png" class="threeImage">
+		  	</div>
+		  	<div class="box1_box2">
+		  		<span> 주차장 예약 내역</span>
+		  		<img alt="" src="../resources/newni/carParking.png" class="threeImage">
+		  	</div>
+		  </div>
+		  <div class="box2">Two</div>
+		  <div class="box3"><span>항공권 예약 현황</span>
+		  	<img alt="" src="../resources/newni/passport.png" class="threeImage">
+		  </div>
+		  <div class="box4"> <span>회원 정보 변경</span>
+		  	<img alt="" src="../resources/newni/replace.png" class="fourImage">
+		  </div>
+		  <div class="box5"><span>최근 마일리지 현황</span>
+		  	<div class="bar"></div>
+		  	<b class="plus">+</b>
+		  </div>
+		</div>
 
 <section>
 
@@ -253,6 +282,11 @@ mypage
 		        new Circlebar(prefs);
 		    };
 		})(jQuery);
+		
+		$(".openQr").click(function(){
+			window.open("./openQrcode","qrcode","width=300, height=400, toolbar=no, menubar=no, scrollbars=no, resizable=yes");
+					
+		});
 	</script>
 
 
