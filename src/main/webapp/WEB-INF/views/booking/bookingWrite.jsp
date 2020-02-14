@@ -147,7 +147,7 @@ ${arr[3]}시 ${arr[4]}분<i class='fas fa-angle-right' style='font-size:10px; pa
 <tr>
 <td class="bth">회원번호(탑승객)</td>
 <td class="btb">
-<input type="text" placeholder="회원번호" name="adultList[${status.index-1}].memberNum">
+<input type="text" placeholder="회원번호" name="adultList[${status.index-1}].memberNum" class="mnum" readonly="readonly">
 <input type="button" value="회원번호 찾기" class="mbtn">
 </td>
 </tr>
@@ -258,7 +258,7 @@ ${arr[3]}시 ${arr[4]}분<i class='fas fa-angle-right' style='font-size:10px; pa
 
 <tr>
 <td class="bth">회원번호(탑승객)</td>
-<td class="btb"><input type="text" placeholder="회원번호" name="childList[${status.index-1}].memberNum"></td>
+<td class="btb"><input type="text" placeholder="회원번호" name="childList[${status.index-1}].memberNum" class="mnum" readonly="readonly"></td>
 </tr>
 
 <tr>
@@ -317,7 +317,7 @@ ${arr[3]}시 ${arr[4]}분<i class='fas fa-angle-right' style='font-size:10px; pa
 <tr>
 <td class="bth">이메일</td>
 <td class="btb">
-<input type="email" name="resEmail" class="hannaName"  >
+<input type="email" name="resEmail" class="hannaName" id="re" >
 <input type="checkbox" name="resECheck" id="resECheck" checked="checked">
 <label for="resECheck">이메일 항공권 수신동의</label>
 </td>
@@ -326,7 +326,7 @@ ${arr[3]}시 ${arr[4]}분<i class='fas fa-angle-right' style='font-size:10px; pa
 <tr>
 <td class="bth">전화번호</td>
 <td class="btb">
-<input type="text" name="resPhone" class="hannaName" >
+<input type="text" name="resPhone" class="hannaName" id="rp" maxlength="13" onKeyup="inputPhoneNumber(this)">
 <input type="checkbox" name="resPCheck" id="resPCheck" checked="checked">
 <label for="resPCheck">SMS 수신 동의</label>
 </td>
@@ -362,8 +362,6 @@ ${arr[3]}시 ${arr[4]}분<i class='fas fa-angle-right' style='font-size:10px; pa
 
 
 <!-- 회원번호 찾기 -->
-<!-- Trigger/Open The Modal -->
-<button id="myBtn">Open Modal</button>
 
 <!-- The Modal -->
 <div id="myModal" class="modal">
@@ -378,14 +376,14 @@ ${arr[3]}시 ${arr[4]}분<i class='fas fa-angle-right' style='font-size:10px; pa
 <tr>
 <td class="mbth">이름</td>
 <td class="mbtb">
-<input type="text">
+<input type="text" id="mname">
 </td>
 </tr>
 
 <tr>
 <td class="mbth">아이디</td>
 <td class="mbtb">
-<input type="text">
+<input type="text" id="mid">
 </td>
 </tr>
 
@@ -397,8 +395,13 @@ ${arr[3]}시 ${arr[4]}분<i class='fas fa-angle-right' style='font-size:10px; pa
 </tr> -->
 </table>
     
-<div style="width: 50%;margin-left: 273px;margin-top: 32px;"><input type="button" value="찾기" style="margin: 0 auto;" class="mbtn2"></div>
-<div id="modalfm"> 회원님의 회원번호는  <span style="color: #d60815;">111-111-111</span> 입니다. </div>
+<div style="    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 15px;">
+<input type="button" value="찾기" style="margin: 0 auto;" class="mbtn2"></div>
+<div id="modalfm"></div>
+<div style="    width: 100%;"><input type="button" value="사용하기"  id="ubtn"></div>
 
   </div>
 
@@ -444,6 +447,15 @@ ${arr[3]}시 ${arr[4]}분<i class='fas fa-angle-right' style='font-size:10px; pa
 		});
 
 
+		if($('#re').val() == ''){
+			x=1;
+		}
+
+		if($('#rp').val() == ''){
+			x=1;
+		}
+
+
 		if(x==1){
 			alert("모든 항목을 입력하세요.");
 		}else if(x==3){
@@ -456,11 +468,20 @@ ${arr[3]}시 ${arr[4]}분<i class='fas fa-angle-right' style='font-size:10px; pa
 	});
 
 
+	
+
+
 /* 회원번호 찾기 */
 
 $('.mbtn').click(function(){
 
-	$('.modal-content').css('height','394px');
+
+	$('#mname').val('');
+	$('#mid').val('');
+	$(this).prev('.mnum').val('');
+	$('#ubtn').css('display','none');
+
+	$('.modal-content').css('height','360px');
 	$('#modalfm').css('display','none');
 	
 
@@ -475,64 +496,115 @@ window.onclick = function(event) {
 		  $('#myModal').css('display','none');
 	  }
 	}
-	
-});
 
 
-$('.mbtn2').click(function(){
+var thi = $(this);
 
-	$('.modal-content').css('height','512px');
+
+
+$('body').on('click', '.mbtn2', function(){
+	$('.modal-content').css('height','491px');
 	$('#modalfm').css('display','block');
+	$('#ubtn').css('display','none');
+
+ 	$.ajax({
+		data : {
+			name : $('#mname').val().trim(),
+			id : $('#mid').val().trim()
+		},
+		type : "GET",
+		url : "./booking/searchm",
+		success : function(data) {
+
+			data = data.trim();
+
+			if(data != "0"){
+				$('#modalfm').css('line-height','102px');
+				$('#modalfm').html(' 회원님의 회원번호는  <span style="color: #d60815;" id="mnump"></span> 입니다.')
+				$('#mnump').text(data);
+				$('#ubtn').css('display','block');
+
+				/* $(this).prev('.mnum').val(data); */
+
+					$('body').on('click','#ubtn', function(){
+				       thi.prev('.mnum').val(data);
+				       $('#myModal').css('display','none');
+					});
+				
+			} else {
+
+				$('#modalfm').css('line-height','121px');
+				$('#modalfm').text('회원번호가 존재하지 않습니다.');
+			}
+	
+
+		}
+	});  
+	
+	
+});
+	
+}); //회원번호 찾기
+ function inputPhoneNumber(obj) {
+
+
+	 var regexp = /^[0-9]*$/;
+
+		 if( !regexp.test(obj.value) ) {
+		 	obj.value = obj.value.replace(/[^0-9]/g, "");
+		 }
+	 
+
+    var number = obj.value.replace(/[^0-9]/g, "");
+    var phone = "";
+
+
+    if(number.length < 4) {
+        return number;
+    } else if(number.length < 7) {
+        phone += number.substr(0, 3);
+        phone += "-";
+        phone += number.substr(3);
+    } else if(number.length < 11) {
+        phone += number.substr(0, 3);
+        phone += "-";
+        phone += number.substr(3, 3);
+        phone += "-";
+        phone += number.substr(6);
+    } else {
+        phone += number.substr(0, 3);
+        phone += "-";
+        phone += number.substr(3, 4);
+        phone += "-";
+        phone += number.substr(7);
+    }
+    obj.value = phone.substring(0,13);
+
+} 
+
+
+$('#rp').blur(function(){
+
+	if($(this).val().length > 12 ){
+
+		tel_check($(this).val());
+	}
+
 	
 });
 
-	
-
-</script>
-
-<script type="text/javascript">
-
-/* $('.rfchk').each(function(){
 
 
-if($(this).val() == '여'){
+function tel_check(str){
 
-	  alert($(this).prop("checked"));
-	  alert($(this).next('.rfchk').val());
+var regTel = /^(01[016789]{1}|070|02|0[3-9]{1}[0-9]{1})-[0-9]{3,4}-[0-9]{4}$/;
 
-	  if($(this).prop("checked") == false && $(this).next('.rfchk').prop("checked") == false){
-
-			alert('gg');
-	  }
-	  
+if(!regTel.test(str)) {
+	alert('올바른 전화번호를 입력하세요.');
+	return false;
 }
-	s
-		
-});
-
-
-$(document).ready(function(){
-
-$(option).each(function(){
-
-  if($(this).val()=="왕복"){
-
-    $(this).attr("selected","selected"); // attr적용안될경우 prop으로 
-
-  }
-
-});
-
-});
-
-
-*/
-
-
-/*  $('.sb option:selected').val() */
- 
-
-
+return true;
+}
 
 
 

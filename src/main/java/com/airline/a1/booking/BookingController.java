@@ -407,6 +407,9 @@ public class BookingController {
 
 				adult.setResEmail(bookingTicketVO.getResEmail());
 				adult.setResECheck(bookingTicketVO.getResECheck());
+				
+				//전화번호 수정
+				bookingTicketVO.setResPhone(bookingTicketVO.getResPhone().replace("-", ""));
 				adult.setResPhone(bookingTicketVO.getResPhone());
 				adult.setResPCheck(bookingTicketVO.getResPCheck());
 
@@ -508,6 +511,9 @@ public class BookingController {
 
 				child.setResEmail(bookingTicketVO.getResEmail());
 				child.setResECheck(bookingTicketVO.getResECheck());
+				
+				//전화번호 수정
+				bookingTicketVO.setResPhone(bookingTicketVO.getResPhone().replace("-", ""));
 				child.setResPhone(bookingTicketVO.getResPhone());
 				child.setResPCheck(bookingTicketVO.getResPCheck());
 
@@ -593,6 +599,21 @@ public class BookingController {
 	public void bookingCheck() {
 	}
 	
+	
+	//회원번호 검증 : booking write에서 사용
+	@ResponseBody
+	@GetMapping("searchm")
+	public String searchm(MembersVO membersVO) throws Exception {
+		
+		membersVO = bookingService.searchMember(membersVO);
+		
+		if(membersVO != null) {
+			return membersVO.getMemberNum();
+		}else {
+			return "0";
+		}
+		
+	}
 	
 	
 

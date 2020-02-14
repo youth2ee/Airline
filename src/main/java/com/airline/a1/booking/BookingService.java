@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.airline.a1.imPay.ImPayResultVO;
+import com.airline.a1.member.MembersVO;
 
 
 @Service
@@ -213,5 +214,8 @@ public class BookingService {
 		return bookingMapper.flightList(flightDataVO);
 	}
 	
+	public MembersVO searchMember(MembersVO membersVO) throws Exception{
+		return bookingMapper.searchMember(membersVO);
+	}
 	
 }
