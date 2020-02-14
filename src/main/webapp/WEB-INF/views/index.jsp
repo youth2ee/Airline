@@ -29,6 +29,8 @@
 <!-- Main CSS-->
 <link href="../resources/vendor/css/main.css" rel="stylesheet" media="all">
 
+<!-- icon -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 <script type="text/javascript">
 $(document).ready(function() {
@@ -509,15 +511,16 @@ $(document).ready(function() {
 							<div class="white_step_box">
 								
 								<div class="quick_step_wrap">
-									<div class="input_wrap" name="itineraryF">
+									<div class="input_wrap" name="itineraryF" id="inquiry_wrap">
 														
 										<div class="ipt_elt loct spot_proven">
 											<input type="hidden" id="departureAreaF" name="departureAreaF" value="">
 											<input type="hidden" id="departureAirportF" name="departureAirportF" value="">
 											<input type="hidden" id="departureCityF" name="departureCityF" value="">
 											<input type="hidden" id="departureCityNameF" name="departureCityNameF" value="">
-											<label for="txtDepartureAirportF" class="spot_place" id="labelDepartureAirportF" name="spot_place" style="opacity: 1;">출발지</label>
-											<input type="text" id="txtDepartureAirportF" name="txtDepartureAirportF" class="spotentry ui-autocomplete-input" deparrtype="dep" style="width:215px;" autocomplete="off">
+										<label for="txtDepartureAirportF" class="spot_place" id="labelDepartureAirportF" name="spot_place" style="opacity: 1;">
+											<i class="material-icons place">place</i> </label>
+											<input type="text" id="txtDepartureAirportF" name="txtDepartureAirportF" class="spotentry ui-autocomplete-input" deparrtype="dep" placeholder="출발지" style="width:215px;" autocomplete="off">
 											<input type="hidden" name="default" area="" airport="">	
 											<a href="javascript:sharpNothig();" class="btn_airport airport_open" id="btn_depAllAirport1" name="btn_layer1" seg="dep1" deparrtype="dep" onclick="javascript:showAirportLayer(this, 'F');"><span class="hidden">전체도시보기</span></a>
 										</div>
@@ -544,8 +547,8 @@ $(document).ready(function() {
 											<input type="hidden" id="arrivalAirportF" name="arrivalAirportF" value="">
 											<input type="hidden" id="arrivalCityF" name="arrivalCityF" value="">
 											<input type="hidden" id="arrivalCityNameF" name="arrivalCityNameF" value="">
-											<label for="txtArrivalAirportF" class="spot_place" id="labelArrivalAirportF" name="spot_place" style="opacity: 1;">도착지</label>
-											<input type="text" id="txtArrivalAirportF" name="txtArrivalAirportF" class="spotentry" deparrtype="arr" style="width:215px;">
+											<label for="txtArrivalAirportF" class="spot_place" id="labelArrivalAirportF" name="spot_place" style="opacity: 1;"><i class="material-icons place">place</i></label>
+											<input type="text" id="txtArrivalAirportF" placeholder="도착지" name="txtArrivalAirportF" class="spotentry" deparrtype="arr" style="width:215px;">
 											<input type="hidden" name="default" area="" airport="">
 											<a href="javascript:sharpNothig();" class="btn_airport airport_open" id="btn_arrAllAirport1" name="btn_layer1" seg="arr1" deparrtype="arr" onclick="javascript:showAirportLayer(this, 'F');"><span class="hidden">전체도시보기</span></a>
 										</div>
@@ -597,10 +600,10 @@ $(document).ready(function() {
 										</div>
 													
 						
-										<button type="button" id="searchDepArr" class="btn_M gray btn_revsearch">출도착 조회</button>
+										<button type="button" id="searchDepArr" class="btn_M red btn_revsearch">출도착 조회</button>
 									</div>
-									<p class="exam_txt">
-										<span class="text_type1 ext3">출발지 기준일</span>
+									<p class="exam_txt" style="overflow: hidden;">
+										<span class="text_type1 ext3">ㆍ출발지 기준일</span>
 									</p>									
 								</div>
 								
