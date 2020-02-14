@@ -146,7 +146,7 @@ section {
     margin-left: 55px;
     margin-top: 40px;
 }
-.box5 span{
+.mileData{
 	color: #3c3c3c;
     font-size: 25px;
     position: absolute;
@@ -178,6 +178,11 @@ section {
     font-weight: 100;
     cursor: pointer;
 }
+.noMileData{
+	margin-left: 180px;
+    margin-top: 235px;
+    font-size: 17px;
+}
 .threeImage {
 	vertical-align: middle;
 	width: 60px;
@@ -198,6 +203,7 @@ section {
 	grid-row-start: 1;
 	grid-row-end: 5;
 	background-color: white;
+	cursor: pointer;
 }
 .box1_box1 span{
 	color: #3c3c3c;
@@ -212,6 +218,7 @@ section {
 	grid-row-start: 1;
 	grid-row-end: 5;
 	background-color: white;
+	cursor: pointer;
 }
 .box1_box2 span{
 	color: #3c3c3c;
@@ -219,4 +226,12 @@ section {
     position: absolute;
     margin-left: 55px;
     margin-top: 40px;
+}
+.bar2{
+	height: 183px;
+    position: absolute;
+    margin-left: 363px;
+    margin-top: 18px;
+    border-right: 1px solid #e2e2e2;
+    width: 50px;
 }

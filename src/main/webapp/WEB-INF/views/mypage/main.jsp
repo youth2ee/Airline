@@ -95,6 +95,7 @@
 	</div>
 	</div>
 		<div class="wrapper">
+		<div class="bar2"></div>
 		  <div class="box1">
 		  	<div class="box1_box1">
 		  		<span>리무진 예약 내역</span>
@@ -112,9 +113,10 @@
 		  <div class="box4"> <span>회원 정보 변경</span>
 		  	<img alt="" src="../resources/newni/replace.png" class="fourImage">
 		  </div>
-		  <div class="box5"><span>최근 마일리지 현황</span>
+		  <div class="box5"><span class="mileData">최근 마일리지 현황</span>
 		  	<div class="bar"></div>
 		  	<b class="plus">+</b>
+		  	<p class="noMileData">적립/사용 내역이 존재하지 않습니다.</p>
 		  </div>
 		</div>
 
@@ -287,6 +289,23 @@ mypage
 			window.open("./openQrcode","qrcode","width=300, height=400, toolbar=no, menubar=no, scrollbars=no, resizable=yes");
 					
 		});
+		
+		$(".box1_box1").click(function(){
+			location.href = './limo';
+		});
+		$(".box1_box2").click(function(){
+			location.href = './park';
+		});
+		$(".box3").click(function(){
+			location.href = './ticketCheck';
+		});
+		$(".box4").click(function(){
+			location.href = './memberUpdate';
+		});
+		$(".plus").click(function(){
+			location.href = './mileage';
+		});
+		
 	</script>
 
 
