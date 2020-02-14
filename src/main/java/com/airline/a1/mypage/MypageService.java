@@ -34,5 +34,7 @@ public class MypageService {
 	public List<BookingPriceVO> mtotal(MembersVO membersVO) throws Exception{
 		return mypageMapper.mtotal(membersVO);
 	}
-	
+	public int updateMember(MembersVO membersVO) throws Exception{
+		return mypageMapper.updateMember(membersVO);
+	}
 }
