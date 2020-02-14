@@ -123,7 +123,12 @@
 		  		<img alt="" src="../resources/newni/carParking.png" class="threeImage">
 		  	</div>
 		  </div>
-		  <div class="box2">Two</div>
+		  <div class="box2">
+			 <video autoplay muted loop id="myVideo" class="vdo">
+				<source src="../resources/newni/video4.mp4" type="video/mp4">
+			</video>
+			<img alt="" src="../resources/newni/hanok.jpg" class="hanok">
+		  </div>
 		  <div class="box3"><span>항공권 예약 현황</span>
 		  	<img alt="" src="../resources/newni/passport.png" class="threeImage">
 		  </div>
@@ -156,7 +161,6 @@
 <section>
 
 
-mypage
 
 </section>
 <footer></footer>
