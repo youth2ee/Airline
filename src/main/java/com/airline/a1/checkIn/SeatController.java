@@ -8,6 +8,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.airline.a1.booking.BookingTicketVO;
 import com.airline.a1.booking.FlightDataVO;
+import com.airline.a1.member.MembersVO;
 
 @Controller
 @RequestMapping("/checkIn/**")
@@ -36,7 +39,7 @@ public class SeatController {
 	}
 
 	@GetMapping("eTicket")
-	public ModelAndView eTicket(ETicketVO eticketVO) throws Exception {
+	public ModelAndView eTicket(ETicketVO eticketVO,HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		List<ETicketVO> eTicketVOs = seatService.getEticket(eticketVO);
 		if(eTicketVOs.size() == 0) {
@@ -44,10 +47,14 @@ public class SeatController {
 			mv.setViewName("common/common_result_close");
 			return mv;
 		}
-		String memberNum = null; // 바코드에 쓸 회원번호(나중에 세션으로 받기)
+		
+		MembersVO membersVO = (MembersVO) session.getAttribute("member");
+		String[] strs = membersVO.getMemberNum().split("-");
+		String str = strs[0] + strs[1] + strs[2];
+		 
 		int kind = 0; // 0 -> 편도 / 1 -> 왕복 
 		ETicketVO depInfo = eTicketVOs.get(0);
-		ETicketVO arrInfo = eTicketVOs.get(1);
+	
 		String dateData = depInfo.getDepPlandTime();
 		String depTime = dateData.substring(8, 10) + ":" + dateData.substring(10, 12);
 		dateData = dateData.substring(6, 8) + monthModi(dateData) + dateData.substring(2, 4) + "("
@@ -58,30 +65,30 @@ public class SeatController {
 		dateData2 = dateData2.substring(6, 8) + monthModi(dateData2) + dateData2.substring(2, 4)+ "("
 				+ getDate(dateData2) + ")";
 		depInfo.setArrPlandTime(dateData2);
-		
-		String dateData3 = arrInfo.getDepPlandTime();
-		String depTime2 = dateData3.substring(8, 10) + ":" + dateData3.substring(10, 12);
-		dateData3 = dateData3.substring(6, 8) + monthModi(dateData3) + dateData3.substring(2, 4) + "("
-				+ getDate(dateData3) + ")";
-		arrInfo.setDepPlandTime(dateData3);
-		String dateData4 = arrInfo.getArrPlandTime();
-		System.out.println(dateData4);
-		String arrTime2 = dateData4.substring(8, 10) + ":" + dateData4.substring(10, 12);
-		dateData4 = dateData4.substring(6, 8) + monthModi(dateData4) + dateData4.substring(2, 4)+ "("
-				+ getDate(dateData4) + ")";
-		arrInfo.setArrPlandTime(dateData4);
-		
-		
 		mv.addObject("arrTime", arrTime);
-		mv.addObject("arrTime2", arrTime2);
+		
 		if (depInfo.getKind().equals("왕복")) {
-			mv.addObject("arrInfo", eTicketVOs.get(1));
+			ETicketVO arrInfo = eTicketVOs.get(1);
+			System.out.println(arrInfo);
+			String dateData3 = arrInfo.getDepPlandTime();
+			String depTime2 = dateData3.substring(8, 10) + ":" + dateData3.substring(10, 12);
+			dateData3 = dateData3.substring(6, 8) + monthModi(dateData3) + dateData3.substring(2, 4) + "("
+					+ getDate(dateData3) + ")";
+			arrInfo.setDepPlandTime(dateData3);
+			String dateData4 = arrInfo.getArrPlandTime();
+			System.out.println(dateData4);
+			String arrTime2 = dateData4.substring(8, 10) + ":" + dateData4.substring(10, 12);
+			dateData4 = dateData4.substring(6, 8) + monthModi(dateData4) + dateData4.substring(2, 4)+ "("
+					+ getDate(dateData4) + ")";
+			arrInfo.setArrPlandTime(dateData4);
+			mv.addObject("arrTime2", arrTime2);
+			mv.addObject("depTime2", depTime2);
+			mv.addObject("arrInfo", arrInfo);
 			kind = 1;
 		} 
+		mv.addObject("memberNum",str);
 		mv.addObject("depInfo", eTicketVOs.get(0));
-		mv.addObject("arrInfo", eTicketVOs.get(1));
 		mv.addObject("depTime", depTime);
-		mv.addObject("depTime2", depTime2);
 		mv.addObject("kind",kind);
 		return mv;
 	}
@@ -92,7 +99,7 @@ public class SeatController {
 
 	}
 
-	@GetMapping("test")
+	@GetMapping("checkInPage")
 	public void test() {
 
 	}
@@ -201,7 +208,7 @@ public class SeatController {
 
 	}
 
-	@PostMapping("test")
+	@PostMapping("checkInPage")
 	public ModelAndView seat(SeatDataVO seatDataVO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		BookingTicketVO isCheck = new BookingTicketVO();

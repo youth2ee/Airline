@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import com.airline.a1.booking.BookingTicketVO;
+import com.airline.a1.member.MembersVO;
 @Repository
 @Mapper
 public interface SeatMapper {

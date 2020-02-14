@@ -441,3 +441,7 @@ modalInnerRightDown input[type="text"]{
 .goSeat, .backSeat{
 	border-bottom: 1px red solid;
 }
+input[type="text"]:hover{
+	    border: 1px solid #ccc;
+    background-color: white;
+}

@@ -9,34 +9,34 @@
 					<span>그룹사 바로가기</span>
 				</a>
 				<ul class="site_list" style="display: none;">
-					<li><a rel="noopener noreferrer" href="http://www.kumhoasiana.co.kr/" target="_blank" title="새창" onclick="action_logging_common('CUT_01'); action_outLogging_common($(this).attr('href'));">금호아시아나그룹</a></li>
+					<li><a rel="noopener noreferrer" href="http://www.kumhoasiana.co.kr/" target="_blank" title="새창" onclick="action_logging_common('CUT_01'); action_outLogging_common($(this).attr('href'));">금호에브리에어그룹</a></li>
 					<li><a rel="noopener noreferrer" href="http://www.kumhobuslines.co.kr" target="_blank" title="새창" onclick="action_logging_common('CUT_01'); action_outLogging_common($(this).attr('href'));">금호고속</a></li>
 					<li><a rel="noopener noreferrer" href="http://www.usquare.co.kr/" target="_blank" title="새창" onclick="action_logging_common('CUT_01'); action_outLogging_common($(this).attr('href'));">금호터미널</a></li>
 					<li><a rel="noopener noreferrer" href="http://www.kumhoenc.com" target="_blank" title="새창" onclick="action_logging_common('CUT_01'); action_outLogging_common($(this).attr('href'));">금호건설</a></li>
-					<li><a rel="noopener noreferrer" href="http://www.asianaidt.com" target="_blank" title="새창" onclick="action_logging_common('CUT_01'); action_outLogging_common($(this).attr('href'));">아시아나IDT</a></li>
+					<li><a rel="noopener noreferrer" href="http://www.asianaidt.com" target="_blank" title="새창" onclick="action_logging_common('CUT_01'); action_outLogging_common($(this).attr('href'));">에브리에어IDT</a></li>
 					<li><a rel="noopener noreferrer" href="http://www.kumhoresort.co.kr" target="_blank" title="새창" onclick="action_logging_common('CUT_01'); action_outLogging_common($(this).attr('href'));">금호리조트</a></li>
 					<li><a rel="noopener noreferrer" href="http://www.airbusan.com/AB/airbusan/main_kr.jsp" target="_blank" title="새창" onclick="action_logging_common('CUT_01'); action_outLogging_common($(this).attr('href'));">에어부산</a></li>
-					<li><a rel="noopener noreferrer" href="http://www.asianaairport.com/" target="_blank" title="새창" onclick="action_logging_common('CUT_01'); action_outLogging_common($(this).attr('href'));">아시아나에어포트</a></li>
-					<li><a rel="noopener noreferrer" href="http://www.asianasabre.co.kr/" target="_blank" title="새창" onclick="action_logging_common('CUT_01'); action_outLogging_common($(this).attr('href'));">아시아나세이버</a></li>
+					<li><a rel="noopener noreferrer" href="http://www.asianaairport.com/" target="_blank" title="새창" onclick="action_logging_common('CUT_01'); action_outLogging_common($(this).attr('href'));">에브리에어에어포트</a></li>
+					<li><a rel="noopener noreferrer" href="http://www.asianasabre.co.kr/" target="_blank" title="새창" onclick="action_logging_common('CUT_01'); action_outLogging_common($(this).attr('href'));">에브리에어세이버</a></li>
 					<li><a rel="noopener noreferrer" href="http://www.flyairseoul.com/" target="_blank" title="새창" onclick="action_logging_common('CUT_01'); action_outLogging_common($(this).attr('href'));">에어서울</a></li>
-					<li><a rel="noopener noreferrer" href="http://www.kacf.net/" target="_blank" title="새창" onclick="action_logging_common('CUT_01'); action_outLogging_common($(this).attr('href'));">금호아시아나문화재단</a></li>
-					<li><a rel="noopener noreferrer" href="https://www.kumhoasianaedu.com" target="_blank" title="새창" onclick="action_logging_common('CUT_01'); action_outLogging_common($(this).attr('href'));">금호아시아나인재개발원</a></li>
+					<li><a rel="noopener noreferrer" href="http://www.kacf.net/" target="_blank" title="새창" onclick="action_logging_common('CUT_01'); action_outLogging_common($(this).attr('href'));">금호에브리에어문화재단</a></li>
+					<li><a rel="noopener noreferrer" href="https://www.kumhoasianaedu.com" target="_blank" title="새창" onclick="action_logging_common('CUT_01'); action_outLogging_common($(this).attr('href'));">금호에브리에어인재개발원</a></li>
 				</ul>
 			</div>
 			<div class="group_icon">
 				<ul>
-					<li><a class="ico_01" rel="noopener noreferrer" href="http://www.kumhoasiana.co.kr/" target="_blank" title="새창" onclick="action_logging_common('CUT_01'); action_outLogging_common($(this).attr('href'));"><div class="tip"><span>금호아시아나그룹</span></div></a></li>
+					<li><a class="ico_01" rel="noopener noreferrer" href="http://www.kumhoasiana.co.kr/" target="_blank" title="새창" onclick="action_logging_common('CUT_01'); action_outLogging_common($(this).attr('href'));"><div class="tip"><span>금호에브리에어그룹</span></div></a></li>
 					<li><a class="ico_02" rel="noopener noreferrer" href="http://www.kumhobuslines.co.kr" target="_blank" title="새창" onclick="action_logging_common('CUT_01'); action_outLogging_common($(this).attr('href'));"><div class="tip"><span>금호고속</span></div></a></li>
 					<li><a class="ico_03" rel="noopener noreferrer" href="http://www.usquare.co.kr/" target="_blank" title="새창" onclick="action_logging_common('CUT_01'); action_outLogging_common($(this).attr('href'));"><div class="tip"><span>금호터미널</span></div></a></li>
 					<li><a class="ico_04" rel="noopener noreferrer" href="http://www.kumhoenc.com" target="_blank" title="새창" onclick="action_logging_common('CUT_01'); action_outLogging_common($(this).attr('href'));"><div class="tip"><span>금호건설</span></div></a></li>
-					<li><a class="ico_05" rel="noopener noreferrer" href="http://www.asianaidt.com" target="_blank" title="새창" onclick="action_logging_common('CUT_01'); action_outLogging_common($(this).attr('href'));"><div class="tip"><span>아시아나IDT</span></div></a></li>
+					<li><a class="ico_05" rel="noopener noreferrer" href="http://www.asianaidt.com" target="_blank" title="새창" onclick="action_logging_common('CUT_01'); action_outLogging_common($(this).attr('href'));"><div class="tip"><span>에브리에어IDT</span></div></a></li>
 					<li><a class="ico_06" rel="noopener noreferrer" href="http://www.kumhoresort.co.kr" target="_blank" title="새창" onclick="action_logging_common('CUT_01'); action_outLogging_common($(this).attr('href'));"><div class="tip"><span>금호리조트</span></div></a></li>
 					<li><a class="ico_07" rel="noopener noreferrer" href="http://www.airbusan.com/AB/airbusan/main_kr.jsp" target="_blank" title="새창" onclick="action_logging_common('CUT_01'); action_outLogging_common($(this).attr('href'));"><div class="tip"><span>에어부산</span></div></a></li>
-					<li><a class="ico_08" rel="noopener noreferrer" href="http://www.asianaairport.com" target="_blank" title="새창" onclick="action_logging_common('CUT_01'); action_outLogging_common($(this).attr('href'));"><div class="tip"><span>아시아나에어포트</span></div></a></li>
-					<li><a class="ico_09" rel="noopener noreferrer" href="http://www.asianasabre.co.kr/" target="_blank" title="새창" onclick="action_logging_common('CUT_01'); action_outLogging_common($(this).attr('href'));"><div class="tip"><span>아시아나세이버</span></div></a></li>
+					<li><a class="ico_08" rel="noopener noreferrer" href="http://www.asianaairport.com" target="_blank" title="새창" onclick="action_logging_common('CUT_01'); action_outLogging_common($(this).attr('href'));"><div class="tip"><span>에브리에어에어포트</span></div></a></li>
+					<li><a class="ico_09" rel="noopener noreferrer" href="http://www.asianasabre.co.kr/" target="_blank" title="새창" onclick="action_logging_common('CUT_01'); action_outLogging_common($(this).attr('href'));"><div class="tip"><span>에브리에어세이버</span></div></a></li>
 					<li><a class="ico_10" rel="noopener noreferrer" href="http://www.flyairseoul.com/" target="_blank" title="새창" onclick="action_logging_common('CUT_01'); action_outLogging_common($(this).attr('href'));"><div class="tip"><span>에어서울</span></div></a></li>
-					<li><a class="ico_11" rel="noopener noreferrer" href="http://www.kacf.net/" target="_blank" title="새창" onclick="action_logging_common('CUT_01'); action_outLogging_common($(this).attr('href'));"><div class="tip"><span>금호아시아나문화재단</span></div></a></li>
-					<li><a class="ico_12" rel="noopener noreferrer" href="https://www.kumhoasianaedu.com" target="_blank" title="새창" onclick="action_logging_common('CUT_01'); action_outLogging_common($(this).attr('href'));"><div class="tip"><span>금호아시아나인재개발원</span></div></a></li>
+					<li><a class="ico_11" rel="noopener noreferrer" href="http://www.kacf.net/" target="_blank" title="새창" onclick="action_logging_common('CUT_01'); action_outLogging_common($(this).attr('href'));"><div class="tip"><span>금호에브리에어문화재단</span></div></a></li>
+					<li><a class="ico_12" rel="noopener noreferrer" href="https://www.kumhoasianaedu.com" target="_blank" title="새창" onclick="action_logging_common('CUT_01'); action_outLogging_common($(this).attr('href'));"><div class="tip"><span>금호에브리에어인재개발원</span></div></a></li>
 				</ul>
 			</div>
 		</div>
@@ -51,7 +51,7 @@
 	<dd>
 		
 				<ul>
-					<li><a href="javascript:sharpNothig();" onclick="action_logging_common('FOOTER_01'); cms.goToLink('/C/KR/KO/cms/contents/menu/CM201802220000728490');">아시아나항공 소개</a></li>
+					<li><a href="javascript:sharpNothig();" onclick="action_logging_common('FOOTER_01'); cms.goToLink('/C/KR/KO/cms/contents/menu/CM201802220000728490');">에브리에어항공 소개</a></li>
 					<li><a href="javascript:sharpNothig();" onclick="action_logging_common('FOOTER_01'); cms.goToLink('/C/KR/KO/cms/contents/menu/CM201802220000728511');">지속가능경영</a></li>
 					<li><a href="javascript:sharpNothig();" onclick="action_logging_common('FOOTER_01'); cms.goToLink('/C/KR/KO/company/pr-channel/news-release/list');">홍보채널</a></li>
 				</ul>
@@ -87,7 +87,7 @@
 		</ul>
 		<ul>
 			<li><a href="javascript:sharpNothig();" onclick="action_logging_common('FOOTER_01'); cms.goToLink('/C/KR/KO/company/terms/terms');">이용약관</a></li>
-			<li><a href="javascript:sharpNothig();" onclick="action_logging_common('FOOTER_01'); cms.goToLink('/C/KR/KO/cms/contents/menu/CM201802220000728397?layerId=asiana_rule');">아시아나클럽 규정</a></li>
+			<li><a href="javascript:sharpNothig();" onclick="action_logging_common('FOOTER_01'); cms.goToLink('/C/KR/KO/cms/contents/menu/CM201802220000728397?layerId=asiana_rule');">에브리에어클럽 규정</a></li>
 			
 			
 		</ul>
@@ -122,11 +122,11 @@
 			<div class="fr">
 				<ul class="sns_list">
 					
-		<li><a class="facebook" href="https://www.facebook.com/flyasiana" rel="noopener noreferrer" target="_blank" title="새창" onclick="action_logging_common('FOOTER_05'); action_outLogging_common($(this).attr('href'));"><span class="hidden">아시아나항공 페이스북</span></a></li>
-		<li><a class="google" href="https://plus.google.com/+asianaairlineskorea" rel="noopener noreferrer" target="_blank" title="새창" onclick="action_logging_common('FOOTER_05'); action_outLogging_common($(this).attr('href'));"><span class="hidden">아시아나항공 구글</span></a></li>
-		<li><a class="twitter" href="https://twitter.com/FlyAsiana" rel="noopener noreferrer" target="_blank" title="새창" onclick="action_logging_common('FOOTER_05'); action_outLogging_common($(this).attr('href'));"><span class="hidden">아시아나항공 트위터</span></a></li>
-		<li><a class="instagram" href="https://www.instagram.com/flyasiana/" rel="noopener noreferrer" target="_blank" title="새창" onclick="action_logging_common('FOOTER_05'); action_outLogging_common($(this).attr('href'));"><span class="hidden">아시아나항공 인스타그램</span></a></li>
-		<li><a class="kakaostory" href="https://story.kakao.com/ch/asianaairlines" rel="noopener noreferrer" target="_blank" title="새창" onclick="action_logging_common('FOOTER_05'); action_outLogging_common($(this).attr('href'));"><span class="hidden">아시아나항공 카카오스토리</span></a></li>
+		<li><a class="facebook" href="https://www.facebook.com/flyasiana" rel="noopener noreferrer" target="_blank" title="새창" onclick="action_logging_common('FOOTER_05'); action_outLogging_common($(this).attr('href'));"><span class="hidden">에브리에어항공 페이스북</span></a></li>
+		<li><a class="google" href="https://plus.google.com/+asianaairlineskorea" rel="noopener noreferrer" target="_blank" title="새창" onclick="action_logging_common('FOOTER_05'); action_outLogging_common($(this).attr('href'));"><span class="hidden">에브리에어항공 구글</span></a></li>
+		<li><a class="twitter" href="https://twitter.com/FlyAsiana" rel="noopener noreferrer" target="_blank" title="새창" onclick="action_logging_common('FOOTER_05'); action_outLogging_common($(this).attr('href'));"><span class="hidden">에브리에어항공 트위터</span></a></li>
+		<li><a class="instagram" href="https://www.instagram.com/flyasiana/" rel="noopener noreferrer" target="_blank" title="새창" onclick="action_logging_common('FOOTER_05'); action_outLogging_common($(this).attr('href'));"><span class="hidden">에브리에어항공 인스타그램</span></a></li>
+		<li><a class="kakaostory" href="https://story.kakao.com/ch/asianaairlines" rel="noopener noreferrer" target="_blank" title="새창" onclick="action_logging_common('FOOTER_05'); action_outLogging_common($(this).attr('href'));"><span class="hidden">에브리에어항공 카카오스토리</span></a></li>
 	
 				</ul>
 			</div>
@@ -141,7 +141,7 @@
 		
 				<li>
 					<ul>
-						<li><strong class="corp">아시아나항공㈜</strong> 대표이사 사장 한창수</li>
+						<li><strong class="corp">에브리에어항공㈜</strong> 대표이사 사장 한창수</li>
 						<li>사업자등록번호 <a class="link" href="http://www.ftc.go.kr/www/bizCommView.do?key=232&amp;apv_perm_no=2006315010030202822&amp;pageUnit=10&amp;searchCnd=wrkr_no&amp;searchKrwd=1048117480&amp;pageIndex=1" target="_blank" rel="noopener noreferrer" title="새창" onclick="action_logging_common('FOOTER_06'); action_outLogging_common($(this).attr('href'));">104-81-17480</a></li>
 						<li>통신판매업 신고 제 16-2822</li>
 					</ul>
@@ -150,19 +150,19 @@
 					<ul>
 						<li>서울특별시 강서구 오정로 443-83</li>
 						<li>예약 1588-8000 / 02-2669-8000</li>
-						<li>아시아나클럽 1588-8180 / 02-2669-8180</li>
+						<li>에브리에어클럽 1588-8180 / 02-2669-8180</li>
 					</ul>
 				</li>
 				<li>
 					<ul>
 						<li>개인정보보호책임자 여객전략 상무 임선진</li>
-						<li>서버 위치 : 아시아나IDT㈜ 전산센터</li>
+						<li>서버 위치 : 에브리에어IDT㈜ 전산센터</li>
 					</ul>
 				</li>
 			
 	</ul>
 	<div class="copy_area">
-		<p class="copy">© ASIANA AIRLINES. All rights reserved.</p>
+		<p class="copy">© EVERYAIR AIRLINES. All rights reserved.</p>
 		<button type="button" class="btn_popup" onclick="action_logging_common('FOOTER_06'); cms.goToLink('/C/KR/KO/cms/contents/menu/CM201802220000728520?menuId=CM201802220000728520', '_blank');">지점연락처</button>
 		
 			<button type="button" class="btn_popup" onclick="action_logging_common('FOOTER_06'); cms.goToLink('/C/KR/KO/cms/contents/menu/CM201802220000728514?menuId=CM201802220000728514&amp;tabId=tab_01_04', '_blank');">제보실</button>
@@ -170,10 +170,8 @@
 	</div>
 	<div class="special_logo">
 		<ul>
-			
 			<li class="i_mecena"><span class="hidden">I love Mecenat 당사는 메세나활동을 통해 사회공헌을 실천하는 메세나기업입니다.</span></li>
 		</ul>
-		
 	</div>
 </address>
 		<!-- //address -->

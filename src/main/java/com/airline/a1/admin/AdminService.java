@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.airline.a1.booking.FlightDataVO;
+import com.airline.a1.checkIn.ETicketVO;
 
 
 
@@ -26,6 +27,9 @@ public class AdminService {
 	
 	public List<FlightDataVO> airallList() throws Exception {
 		return adminMapper.airallList();
+	}
+	public List<ETicketVO> getBookingInfo() throws Exception {
+		return adminMapper.getBookingInfo();
 	}
 	
 }

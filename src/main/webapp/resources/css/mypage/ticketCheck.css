@@ -193,6 +193,7 @@ button {
 	font-size: 20px;
 	font-weight: bolder;
 	color: grey;
+	margin-top: 30px;
 }
 
 .bookingInfo {
@@ -263,44 +264,168 @@ button {
 }
 
 .tableContents
+
+
+
+
  
+
+
+
+
 td
+
+
+
+
+
+
+
+
 :not
+
+
+
+
  
+
+
+
+
 (
 :first-child
+
+
+
+
  
+
+
+
+
 )
 :not
+
+
+
+
  
+
+
+
+
 (
 :last-child
+
+
+
+
  
+
+
+
+
 ){
 border-left
+
+
+
+
+
+
+
+
 :
+
+
+
+
  
+
+
+
+
 solid
+
+
+
+
  
+
+
+
+
 1
 px
- 
-#b5b5b5
-;
 
-	
+
+
+
+ 
+
+
+
+
+#b5b5b5
+
+
+
+
+
+
+
+
+;
 border-right
+
+
+
+
+
+
+
+
 :
+
+
+
+
  
+
+
+
+
 solid
+
+
+
+
  
+
+
+
+
 1
 px
+
+
+
+
  
+
+
+
+
 #b5b5b5
+
+
+
+
+
+
+
+
 ;
-
-
 }
 .tableContents td {
 	border-bottom: solid 1px #b5b5b5;
@@ -325,134 +450,156 @@ px
 .bkn {
 	position: relative;
 	top: 60px;
-	left: 120px;
+	left: 68px;
+	font-size: 20px;
 }
 
 .bookDate {
 	position: relative;
-	top: 100px;
+	top: 88px;
+	left: -103px;
+	font-size: 20px;
 }
 
 .flightTime {
-	font-size: 14px;
-	position: relative;
-	top: 14px;
-	left: 275px;
+font-size: 14px;
+    position: relative;
+    top: 14px;
+    left: 204px;
 }
 
 .depNm {
 	font-size: 18px;
-	position: relative;
-	top: 40px;
-	left: 180px;
+    position: relative;
+    top: 41px;
+    left: 87px;
 }
 
 .arrNm {
-	font-size: 18px;
-	position: relative;
-	left: 506px;
-	top: 40px;
+font-size: 18px;
+    position: relative;
+    left: 460px;
+    top: 40px;
 }
 
 .depNm2 {
 	font-size: 18px;
-	position: relative;
-	top: 120px;
-	left: 38px;
+    position: relative;
+    top: 120px;
+    left: -56px;
 }
 
 .arrNm2 {
-	font-size: 18px;
-	position: relative;
-	left: 437px;
-	top: 123px;
+    font-size: 18px;
+    position: relative;
+    left: 390px;
+    top: 123px;
 }
 
 .flightTime2 {
-	font-size: 14px;
-	position: relative;
-	left: 178px;
-	top: 92px;
+font-size: 14px;
+    position: relative;
+    left: 98px;
+    top: 92px;
 }
 
 .bar1 {
-	/* height: 2px;
+height: 2px;
     background: #d60815;
-    width: 31%;
+    width: 28%;
     position: relative;
-    left: 385px;
-    top: 53px; */
-	height: 2px;
-	background: #d60815;
-	width: 24%;
-	position: relative;
-	left: 467px;
-	top: 30px;
+    left: 475px;
+    top: 30px;
 }
 
 .round1 {
-	width: 15px;
+    width: 15px;
     background-color: white;
     border-radius: 50px;
     border: #d60815 2.5px solid;
     height: 15px;
     position: relative;
-    left: 599px;
-    top: 22px;
+    left: 630px;
+    top: -227px;
 }
 
 .round2 {
-	width: 15px;
-	height: 15px;
-	background-color: white;
-	border-radius: 50px;
-	border: #d60815 2.5px solid;
-	position: relative;
-	left: 734px;
-	top: 29px;
+width: 15px;
+    background-color: white;
+    border-radius: 50px;
+    border: #d60815 2.5px solid;
+    height: 15px;
+    position: relative;
+    left: 631px;
+    top: -162px;
+    z-index: 500;
 }
 
 .bar2 {
-	height: 2px;
-	background: #d60815;
-	width: 24%;
-	position: relative;
-	left: 467px;
-	top: 80px;
-}
-
-.round3 {
-	width: 15px;
-	background-color: white;
-	border-radius: 50px;
-	border: #d60815 2.5px solid;
-	height: 15px;
-	position: relative;
-	left: 370px;
-	top: 44px;
-}
-
-.round4 {
-	width: 15px;
-	height: 15px;
-	background-color: white;
-	border-radius: 50px;
-	border: #d60815 2.5px solid;
-	position: relative;
-	left: 734px;
-	top: 29px;
+height: 2px;
+    background: #d60815;
+    width: 28%;
+    position: relative;
+    left: 475px;
+    top: -197px;
 }
 
 .airplaneImg {
-	width: 27px;
-	position: relative;
-	left: 752px;
-	top: -0.5px;
+width: 27px;
+    position: relative;
+    left: 806px;
+    top: -265.5px;
 }
 
 .airplaneImg2 {
-	width: 27px;
+    width: 27px;
+    position: relative;
+    left: 775px;
+    top: -183.5px;
+}
+
+.bar3 {
+	height: 248px;
 	position: relative;
-	left: 722px;
-	top: 94.5px;
+	border-right: #c1c1c1 3px dotted;
+	width: 349px;
+	top: -58px;
+	left: -46px;
+}
+
+.list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.list .li {
+	position: relative;
+	margin-bottom: 10px;
+}
+.more-trigger{
+	background-color: #d60815;
+    color: white;
+    width: 500px;
+    height: 45px;
+    margin-left: 340px;
+    margin-top: 15px;
+        margin-bottom: 100px;
+}
+.btn :hover, .more-trigger:hover{
+    color: white;
+}
+.noBook{
+	margin-top: 130px;
+    text-align: center;
+    font-size: 20px;
+    color: #808080;
+}
+.eticketBtn {
+	    color: white;
+    background-color: #d60815;
+    border: none;
+    border-radius: 3px;
+    width: 45px;
+    height: 25px;
 }

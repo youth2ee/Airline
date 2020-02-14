@@ -7,6 +7,14 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface parkMapper {
 	
+	public List<pReservationVO> parkOut() throws Exception;
+	
+	public List<pReservationVO> parkIn() throws Exception;
+	
+	public List<pInfoVO> parkInfo() throws Exception;
+	
+	public List<pReservationVO> today() throws Exception;
+	
 	public List<pReservationVO> parkCheck(pReservationVO pReservationVO) throws Exception;
 	
 	public pInfoVO parkWhere(pInfoVO pInfoVO) throws Exception;
@@ -25,5 +33,7 @@ public interface parkMapper {
 	
 	public List<pReservationVO> FindMyResByPhone(pReservationVO pReservationVO) throws Exception;
 	
+	public List<pReservationVO> lastMonthEarn(String pm) throws Exception;
 	
+	public List<pReservationVO> thisMonthEarn(String tm) throws Exception;
 }
