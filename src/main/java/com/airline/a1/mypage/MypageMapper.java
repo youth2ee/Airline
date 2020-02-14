@@ -20,4 +20,6 @@ public interface MypageMapper {
 	
 	public List<BookingPriceVO> mtotal(MembersVO membersVO) throws Exception;  
 	public int updateMember(MembersVO membersVO) throws Exception;
+	
+	public List<BookingPriceVO> recentMileage(MembersVO membersVO) throws Exception;
 }

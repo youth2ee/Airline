@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.airline.a1.booking.BookingPriceVO;
+import com.airline.a1.booking.BookingTicketVO;
 import com.airline.a1.checkIn.ETicketVO;
 import com.airline.a1.checkIn.SeatVO;
 import com.airline.a1.member.MembersVO;
@@ -36,7 +37,13 @@ public class MypageController {
 	private MypageService mypageService;
 	
 	@GetMapping("main")
-	public void main() {}
+	public ModelAndView main(HttpSession session) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		MembersVO membersVO = (MembersVO) session.getAttribute("member");
+		List<BookingPriceVO> bookingPriceVOs = mypageService.recentMileage(membersVO);
+		mv.addObject("mile",bookingPriceVOs);
+		return mv;
+	}
 	
 	@GetMapping("memberUpdate")
 	public void memberUpdate() {

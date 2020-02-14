@@ -37,4 +37,8 @@ public class MypageService {
 	public int updateMember(MembersVO membersVO) throws Exception{
 		return mypageMapper.updateMember(membersVO);
 	}
+	
+	public List<BookingPriceVO> recentMileage(MembersVO membersVO) throws Exception{
+		return mypageMapper.recentMileage(membersVO);
+	}
 }
