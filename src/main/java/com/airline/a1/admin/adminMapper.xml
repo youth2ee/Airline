@@ -26,7 +26,7 @@
 		from flightData join bookingTicket 
 		on bookingTicket.depFnum = flightData.fnum 
 		join bookingPrice 
-		on bookingPrice.bnum = bookingTicket.bnum;
+		on bookingPrice.bnum = bookingTicket.bnum
 	</select>
 
 

@@ -16,7 +16,9 @@
 <style type="text/css">
 .abcd{
  background-image: url("../images/limoPic/seatAfter.png") !important;
-
+}
+.contain_wrap2{
+	margin-bottom: 100px;
 }
 </style>
 </head>

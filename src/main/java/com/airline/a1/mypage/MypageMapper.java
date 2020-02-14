@@ -27,4 +27,7 @@ public interface MypageMapper {
 
 	
 	public List<BookingPriceVO> recentMileage(MembersVO membersVO) throws Exception;
+	
+	
+	
 }
