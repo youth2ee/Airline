@@ -105,15 +105,6 @@ public class AdminController {
 	public void admin5_2() throws Exception{
 		
 	}
-	
-	@GetMapping("admin6_1")
-	public ModelAndView admin6_1(LimoVO limoVO) throws Exception{
-		ModelAndView mv = new ModelAndView();
-		List<LimoVO> ar = adminService.limoMember();
-		mv.addObject("limoMember", ar);
-		
-		return mv;
-	}
 
 	@GetMapping("admin6_2")
 	public ModelAndView admin6_2(LimoVO limoVO) throws Exception{
@@ -145,6 +136,11 @@ public class AdminController {
 		mv.addObject("limoTodaySum", result6);
 		
 		return mv;
+		
+	}
+	
+	@GetMapping("admin6_1")
+	public void admin6_1() throws Exception{
 		
 	}
 	

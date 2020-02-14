@@ -58,10 +58,6 @@
 		where limoDate = curdate()
 	</select>
 	
-	<select id="limoMember" resultType="com.airline.a1.limo.LimoVO">
-		select * from limo order by id desc;
-	</select>
-	
 	
 	
   

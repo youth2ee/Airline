@@ -12,7 +12,6 @@
 <link rel="stylesheet" type="text/css" href="https://etk.srail.co.kr/css/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="https://etk.srail.co.kr/css/skin/etk_kr/sub.css">
 <link rel="stylesheet" type="text/css" href="https://etk.srail.co.kr/css/searchTicket.css">
-<link rel="stylesheet" type="text/css" href="../resources/css/header.css">
 <style type="text/css">
 .abcd{
  background-image: url("../images/limoPic/seatAfter.png") !important;
@@ -21,8 +20,7 @@
 </style>
 </head>
 <body>
-<c:import url="../layout/header.jsp" />
-<c:import url="../template/boot.jsp"></c:import>
+	<c:import url="../template/boot.jsp"></c:import>
 <!------------ 공항에서 도시로 이동할 경우  ------------>
 	<div class="sub_tit_area">
 		<h2>AIRLINE 리무진버스 예매</h2>

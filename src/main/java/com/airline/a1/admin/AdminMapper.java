@@ -22,5 +22,4 @@ public interface AdminMapper {
 	public Integer personSum()throws Exception;
 	public Integer todaySum(String airport)throws Exception;
 	public Integer limoTodaySum()throws Exception;
-	public List<LimoVO> limoMember()throws Exception;
 }
