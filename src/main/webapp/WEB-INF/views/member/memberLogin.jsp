@@ -59,7 +59,7 @@
 
 								<div class="input_wrap">
 									<input type="text" id="txtID" name="id" placeholder="아이디 입력" title="아이디 입력" style="width:500px;"> 
-									<input type="password" id="txtPW" name="pw" placeholder="비밀번호 입력" title="비밀번호 입력" style="width:500px;" autocomplete="off"> 
+									<input type="password" id="txtPW" name="pw" placeholder="비밀번호 입력" title="비밀번호 입력" style="width:500px;" autocomplete="off" onkeyup="enterkey();"> 
 								</div>
 
 								
@@ -99,7 +99,7 @@
 
 								
 
-								<div class="sns_btn_wrap ">
+<!-- 								<div class="sns_btn_wrap ">
 									<ul>
 										<li class="btn_kakao">
 											<a href="#" id="btnSNSLogin_kakao"><strong>카카오톡</strong>간편로그인</a> 
@@ -113,7 +113,7 @@
 											<a href="#" id="btnSNSLogin_naver"><strong>네이버</strong>간편로그인</a> 
 										</li>
 									</ul>
-								</div>
+								</div> -->
 							</div>
 							
 
@@ -306,7 +306,6 @@ $("#btnLogin").click(function(){
     if($("#chkSaveID").is(":checked")){ // ID 저장하기 체크했을 때,
         var userInputId = $("#txtID").val();
         var loginType = $('input[name="loginType"]:checked').val();
-        alert(loginType);
         setCookie("userInputId", userInputId, 7); // 7일 동안 쿠키 보관
         setCookie("loginType", loginType, 7);
     }else{ // ID 저장하기 체크 해제 시,
@@ -439,7 +438,12 @@ function getCookie(cookieName) {
     return unescape(cookieValue);
 }
 //아이디 기억하기 끝
-
+function enterkey() {
+        if (window.event.keyCode == 13) {
+             // 엔터키가 눌렸을 때 실행할 내용
+        	$("#btnLogin").click();
+        }
+}
 </script>
 
 </body>

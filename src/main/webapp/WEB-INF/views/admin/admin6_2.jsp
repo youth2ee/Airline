@@ -175,7 +175,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
            <h6 class="collapse-header">PARKING MANAGEMENT</h6>
             <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin5_1">공항별 주차 현황</a>
-            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin5_2">회원별 주차 현황</a>
+            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin5_2">예약 주차장 현황</a>
           </div>
         </div>
       </li>

@@ -48,7 +48,8 @@
 $("#btnSignin").click(function(){
 	$("#resveForm").submit();
 });
-
+$(".fa-comment-dots").offset({top: 61});
+$(".fa-search").offset({top: 61});
 $("#crtfc1").click(function(){
 	var placeholder = $(this).attr('placeholder');
 	var label = $(this).attr('label');
