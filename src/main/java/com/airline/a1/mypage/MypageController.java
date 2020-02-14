@@ -37,7 +37,13 @@ public class MypageController {
 	private MypageService mypageService;
 	
 	@GetMapping("main")
-	public void main() {}
+	public ModelAndView main(HttpSession session) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		MembersVO membersVO = (MembersVO) session.getAttribute("member");
+		List<BookingPriceVO> bookingPriceVOs = mypageService.recentMileage(membersVO);
+		mv.addObject("mile",bookingPriceVOs);
+		return mv;
+	}
 	
 	@GetMapping("memberUpdate")
 	public void memberUpdate() {

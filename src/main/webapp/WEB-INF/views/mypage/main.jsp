@@ -29,7 +29,24 @@
 			background-color: #e4e4e4;
 		}
 		.header_bottom_inner {
-		background-color: white;
+			background-color: white;
+		}
+		td, th {
+			padding: 10px;
+		}
+		.thBook{
+		    text-align: center;
+		}
+		.thMile{
+			text-align: right;
+		}
+		th {
+			background-color: #6d6e70;
+			color: white;
+			border: 1px solid #6d6e70;
+		}
+		td {
+		    border: 1px solid #e8e8e8;
 		}
 </style>
 </head>
@@ -116,7 +133,23 @@
 		  <div class="box5"><span class="mileData">최근 마일리지 현황</span>
 		  	<div class="bar"></div>
 		  	<b class="plus">+</b>
+		  	<c:if test="${!empty mile}">
+		  	<div>
+				<table class="table_list tb_type2" id="table_0">
+				<tr>
+				<th scope="row" class="th thBook">예매번호</th>
+				<th scope="row" class="th thMile">사용한 마일리지</th>
+				<th scope="row" class="th thMile">적립한 마일리지</th>
+				</tr>
+				<c:forEach items="${mile}" var="bl">
+					<tr ><td class="thBook">${bl.bookingNum}</td><td style=" width: 35%;" class="thMile">- ${bl.mileageMin}</td><td style=" width: 35%;" class="thMile">+ ${bl.mileagePlus}</td></tr>
+					</c:forEach>
+				</table>
+			</div>
+			</c:if>
+			<c:if test="${empty mile }">
 		  	<p class="noMileData">적립/사용 내역이 존재하지 않습니다.</p>
+		  	</c:if>
 		  </div>
 		</div>
 
