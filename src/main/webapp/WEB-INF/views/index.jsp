@@ -50,7 +50,6 @@ $(document).ready(function() {
 
 .closebtn {
 	margin-left: 15px;
-	color: white;
 	font-weight: bold;
 	float: right;
 	font-size: 22px;
@@ -66,7 +65,11 @@ $(document).ready(function() {
 </head>
 <div class="alert">
   <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-  <strong>신종 코로나 바이러스</strong>&nbsp주의 하세여
+  <!-- <strong>신종 코로나 바이러스</strong>&nbsp주의 하세여 -->
+  <p class="strong">
+  			코로나19 관련 국가별 입국 제한 현황
+  	<a href="#" style="text-decoration: underline;">자세히보기</a>
+  </p>
 </div>
 <header id="header">
 	<c:import url="./layout/header.jsp" />
@@ -619,15 +622,15 @@ $(document).ready(function() {
 				
 			</div>
 			
-			<div class="section" id="section4" style="height: 500px;">
+			<%-- <div class="section" id="section4" style="height: 500px;">
 <div class="footer" style="width: 100%; height: 300px; background-color: black;">테스트</div>
-<%-- <c:import url="../template/fffooter.jsp" /> --%>
+<c:import url="../template/fffooter.jsp" />
 			</div>
 		</div>
-		<div class="footer" style="width: 100%; height: 300px; background-color: black;">테스트</div>
-	</div>
+		<div class="footer" style="width: 100%; height: 300px; background-color: black;">테스트</div> --%>
+	</div> 
 
-
+</div>
 	<!-- 전반적인 CSS -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>

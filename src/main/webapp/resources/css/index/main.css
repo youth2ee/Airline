@@ -1,5 +1,28 @@
 @charset "UTF-8";
 
+.closebtn{
+	    margin-right: 350px;
+	   color:  #6d6e71;
+}
+.strong{
+	margin-left: 360px;
+	background: url('/images/board/bul_tri1_white.png') no-repeat 0 5px;
+	vertical-align: middle;
+	font-size: 15px;
+	line-height: 22px;
+	background-position: 0 2px;
+	text-align: left;
+	padding-left: 30px;
+	color: #000;
+}
+
+.strong a{
+	background: url(/images/board/icon_arrow1_black.png) no-repeat 100% 50%;
+	color: #000;
+	margin-left: 5px;
+	padding: 0 12px 0 0;
+}
+
 .bx-wrapper .bx-pager.bx-default-pager a {
 	background: #f96262;
 }
