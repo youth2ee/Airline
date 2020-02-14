@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.airline.a1.limo.LimoService;
+import com.airline.a1.limo.LimoVO;
 import com.airline.a1.booking.BookingPriceVO;
 import com.airline.a1.checkIn.ETicketVO;
 import com.airline.a1.checkIn.SeatVO;
@@ -31,6 +33,8 @@ public class MypageController {
 	
 	@Autowired
 	private ParkService parkService;
+	@Autowired
+	private LimoService limoService;
 	@Autowired
 	private MypageService mypageService;
 	
@@ -108,6 +112,15 @@ public class MypageController {
 		return mv;
 	}
 	
+	
+	@GetMapping("limo")
+	public void limo(HttpSession session, LimoVO limoVO, Model model) throws Exception{
+		MembersVO membersVO = (MembersVO)session.getAttribute("member");
+		limoVO.setId(membersVO.getId());
+		List<LimoVO> ar = limoService.myLimo(limoVO);
+		model.addAttribute("limo", ar);
+	}
+	
 	@GetMapping("park")
 	public void park(HttpSession session, pReservationVO pReservationVO,Model model) throws Exception {
 		
@@ -146,9 +159,6 @@ public class MypageController {
 		model.addAttribute("etc", etc);
 		
 	}
-	
-	@GetMapping("limo")
-	public void limo() {}
 	
 	
 	@GetMapping("test")
