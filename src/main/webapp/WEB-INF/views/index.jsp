@@ -78,25 +78,69 @@ $(document).ready(function() {
 					<!-- 슬라이드 맘에 안들면 여기서부터 -->
 
 
-					<div class="bxslider">
+					<div class="bxslider"  style="position: relative;">
 						<div style="height: 392px;">
 							<img src="./images/index/index_pic1.jpg">
+							<div style="left: 1225px;  bottom: 233px; font-size: 5em; color:white; font-weight: bold; position: absolute;">
+
+							어디로 떠나볼까요?
+							
+							</div>
 						</div>
 						<div style="height: 392px;">
 							<img src="./images/index/index_pic2.jpg" style="width:1910px;">
+							<div style="left: 400px; width: 450px; bottom: 140px; font-size: 1.8em; color:black; font-weight: bold; position: absolute;">
+							<p style="color: red; margin-bottom: 10px;">함께 여행을 떠나요</p>
+							
+							 EveryAir가 항공권, 주차권, 리무진 예약까지 간편하게 해결해 드릴게요 
+							
+							</div>
 						</div>
 						<div style="height: 392px">
 							<img src="./images/index/index_pic3.png">
+							<div style="left: 1010px; width: 657px; bottom: 180px; font-size: 1.8em; color:white; font-weight: bold; position: absolute;">
+
+							<p style="color: darkblue; margin-bottom: 5px; font-size: 30px; font-weight: bolder;">나만의 완벽한 여행을 계획하세요</p>
+							
+							 EveryAir에서 가장 편리한 공항의 항공편, 주차권, 리무진을 검색해 보세요 
+							
+							</div>
 						</div>
 						<div style="height: 392px">
 							<img src="./images/index/index_pic4.png">
+							<div style="left: 100px; bottom: 227px; font-size: 1.8em; color:white; font-weight: bold; position: absolute;">
+
+							 <p style="color: purple; margin-bottom: 5px; font-size: 30px; font-weight: bolder;">2020 EveryAir LIKE</p>
+							
+							 하루 한번, EveryAir와 함께 떠나는 365일 국내여행
+							
+							</div>
 						</div>
 						<div style="height: 392px">
 							<img src="./images/index/index_pic5.png">
+							<!-- <div style="left: 1030px; width: 428px; bottom: 213px; font-size: 1.8em; color:orange; font-weight: bold; position: absolute;">
+							 <p style="color: white; margin-bottom: 12px; font-size: larger;">EveryAir 웹 체크인</p>
+							
+							 좌석 선택부터 탑승권 발급까지 빠르고 간편하게 이용해 보세요! -->
+							<div style="left: 1081px; bottom: 231px; font-size: 3.0em; color:white; font-weight: bold; position: absolute;">
+							새로워진 EveryAir에
+							<p style="margin-left: 123px">오신 것을 환영합니다!</p>
+							
+							</div>
 						</div>
 						<div style="height: 392px">
 							<img src="./images/index/index_pic6.png">
+							<!-- <div style="left: 860px; bottom: 156px; font-size: 4.0em; color:white; font-weight: bold; position: absolute;">
+							새로워진 EveryAir에
+							<p style="margin-left: 100px">오신 것을 환영합니다!</p> -->
+							<div style="left: 1078px; width: 428px; bottom: 191px; font-size: 1.8em; color:white; font-weight: bold; position: absolute;">
+							<p style="color: red; margin-bottom: 12px; font-size: larger;">EveryAir 웹 체크인</p>
+							
+							 좌석 선택부터 탑승권 발급까지 빠르고 간편하게 이용해 보세요!
+							
+							</div>
 						</div>
+						
 					</div>
 					
 					
