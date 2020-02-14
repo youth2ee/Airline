@@ -47,6 +47,7 @@ header {
 	color: white;
 	border-spacing: 0;
 	border-collapse: collapse;
+	border-left: none;
 }
 
 #hbselect>select.current.open:after {
