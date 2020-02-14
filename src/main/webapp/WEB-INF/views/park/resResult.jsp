@@ -108,6 +108,14 @@ if(phone.length > 10){
 $(".fa-comment-dots").offset({top : 61});
 $(".fa-search").offset({top : 61});
 
+
+$("#btnHome").click(function(){
+	location.href='./ParkRes';
+});
+
+$("#btnMgmt").click(function(){
+	location.href='./FindMyRes';
+});
 </script>
 </body>
 </html>

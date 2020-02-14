@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.airline.a1.booking.FlightDataVO;
 import com.airline.a1.checkIn.ETicketVO;
+import com.airline.a1.member.MembersVO;
 
 
 @Repository
@@ -19,7 +20,9 @@ public interface AdminMapper {
 	public List<FlightDataVO> airpartList(FlightDataVO flightDataVO) throws Exception;
 	public List<FlightDataVO> airallList() throws Exception;
 	public List<ETicketVO> getBookingInfo() throws Exception;
-	
+
+	public List<MembersVO> getMemberList() throws Exception;
+
 	public List<FlightDataVO> saleterm(FlightDataVO flightDataVO) throws Exception;
 	public List<FlightDataVO> saletermAir(FlightDataVO flightDataVO) throws Exception;
 	

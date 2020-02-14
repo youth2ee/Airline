@@ -199,13 +199,13 @@ label {
 								</div>
 							</div>
 							<div class="fcol half t_full" style="position: absolute;">
-								<div class="info_box">
+								<div class="info_box" style="width: 612px;">
 								    <p class="fc_wine" style="padding-bottom:10px;font-size:24px;">예약 전 반드시 읽어주세요</p>
 									<ul class="dot_list">
 										<li>(예약 기간) 최소 1일부터 최장 1개월까지 예약이 가능합니다.</li>
 										<li>(예약 취소) 예약 입차시간 이후 2시간까지 예약 취소가 자유롭게 가능합니다.</li>
 										<li>(예약부도) 예약 입차 시간 이후 2시간 내 미입차시, 예약은 자동 취소됩니다.</li>
-										<li>(장애인 차량) 장애인 차량 주차면이 별도로 마련되어 있습니다. (엘리베이터 및 에스컬레이터 없음)</li>
+										<li>(장애인 차량) 장애인 차량 주차면이 별도로 마련되어 있습니다.<br>(엘리베이터 및 에스컬레이터 없음)</li>
 										<li>(주차요금) 주차요금은 실제 입출차 시간을 기준으로 부과됩니다.</li>
 									</ul>
 								</div>

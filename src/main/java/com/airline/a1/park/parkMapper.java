@@ -36,4 +36,6 @@ public interface parkMapper {
 	public List<pReservationVO> lastMonthEarn(String pm) throws Exception;
 	
 	public List<pReservationVO> thisMonthEarn(String tm) throws Exception;
+	
+	public List<pReservationVO> parkfinalcheck(pReservationVO pReservationVO) throws Exception;
 }

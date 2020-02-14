@@ -84,4 +84,11 @@
 		group by A.airport
   	</select>
   	
+  	
+  	<select id="parkfinalcheck" parameterType="com.airline.a1.park.pReservationVO" resultType="com.airline.a1.park.pReservationVO">
+  		select P.* from (select * from pReservation where airport = #{airport} and areaNum=#{areaNum}) P where 
+  		#{startDate} between startDate and endDate
+  		or  #{endDate} between startDate and endDate
+  		or <![CDATA[startDate >= #{startDate} and endDate <=#{endDate}]]>
+  	</select>
   </mapper>

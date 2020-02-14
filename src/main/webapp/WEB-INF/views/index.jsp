@@ -328,7 +328,7 @@ $(document).ready(function() {
 				</select> <input type="text" id="bookingNum" name="bookingNum" maxlength="8" placeholder="영문/숫자 조합 6자리 또는 숫자 8자리" title="번호 입력 예시 : 영문/숫자 조합 6자리 또는 숫자 8자리"
 					style="text-transform: uppercase;">
 
-				<div class="relative_calendar">
+<!-- 				<div class="relative_calendar">
 					<div class="calendar_wrap">
 						<input type="text" id="departureDate1" class="datepicker input_cal" placeholder="탑승일 선택" title="탑승일" data-dateformat="y.mm.dd D" style="width: 158px;" data-type="single_checkin"> <a class="btn_airport type2 calendar_focus" id="calendar_focus1"><span class="hidden">탑승일 선택 달력보기</span></a>
 					</div>
@@ -341,7 +341,7 @@ $(document).ready(function() {
 						<div class="compareCalendar"></div>
 						<a href="javascript:sharpNothig();" class="cal_status02">탑승일</a> <a href="javascript:sharpNothig();" class="cal_reset"><span class="hidden">달력 새로고침</span></a> <a href="javascript:sharpNothig();" class="btn_cal_close"><span class="hidden">닫기</span></a>
 					</div>
-				</div>
+				</div> -->
 				<button type="button" id="btn_search" class="btn_M red">조회하기</button>
 			</div>
 			</form>
