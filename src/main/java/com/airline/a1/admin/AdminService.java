@@ -32,4 +32,9 @@ public class AdminService {
 		return adminMapper.getBookingInfo();
 	}
 	
+	//전체매출
+	public List<FlightDataVO> saleterm(FlightDataVO flightDataVO) throws Exception {
+		return adminMapper.saleterm(flightDataVO);
+	}
+	
 }

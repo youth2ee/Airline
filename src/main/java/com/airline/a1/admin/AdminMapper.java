@@ -17,4 +17,7 @@ public interface AdminMapper {
 	public List<FlightDataVO> airpartList(FlightDataVO flightDataVO) throws Exception;
 	public List<FlightDataVO> airallList() throws Exception;
 	public List<ETicketVO> getBookingInfo() throws Exception;
+	
+	public List<FlightDataVO> saleterm(FlightDataVO flightDataVO) throws Exception;
+	
 }
