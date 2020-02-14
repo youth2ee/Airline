@@ -9,11 +9,7 @@
 		<div class="header_top_inner">
 			<div class="header_top_menu">
 				<div class="menu_topwrap">
-					<ul>
-						<li>1</li>
-						<li class="li1">2</li>
-						<li class="li1">3</li>
-					</ul>
+				
 				</div>
 				
 				<div class="menu_topwrap2">

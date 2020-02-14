@@ -29,6 +29,8 @@
 <!-- Main CSS-->
 <link href="../resources/vendor/css/main.css" rel="stylesheet" media="all">
 
+<!-- icon -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 <script type="text/javascript">
 $(document).ready(function() {
@@ -48,7 +50,6 @@ $(document).ready(function() {
 
 .closebtn {
 	margin-left: 15px;
-	color: white;
 	font-weight: bold;
 	float: right;
 	font-size: 22px;
@@ -64,7 +65,13 @@ $(document).ready(function() {
 </head>
 <div class="alert">
   <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-  <strong>우한폐렴</strong>대충 주의하라는 글
+
+  <!-- <strong>신종 코로나 바이러스</strong>&nbsp주의 하세여 -->
+  <p class="strong">
+  			코로나19 관련 국가별 입국 제한 현황
+  	<a href="${pageContext.request.contextPath}/notice/noticeSelect?num=132" style="text-decoration: underline;">자세히보기</a>
+  </p>
+
 </div>
 <header id="header">
 	<c:import url="./layout/header.jsp" />
@@ -78,25 +85,49 @@ $(document).ready(function() {
 					<!-- 슬라이드 맘에 안들면 여기서부터 -->
 
 
-					<div class="bxslider">
+					<div class="bxslider"  style="position: relative;">
 						<div style="height: 392px;">
 							<img src="./images/index/index_pic1.jpg">
+							<div class="text text1">
+							어디로 떠나볼까요?							
+							</div>
 						</div>
 						<div style="height: 392px;">
 							<img src="./images/index/index_pic2.jpg" style="width:1910px;">
+							<div class= "text text2">
+							<p>함께 여행을 떠나요</p>							
+							 EveryAir가 항공권, 주차권, 리무진 예약까지 간편하게 해결해 드릴게요 							
+							</div>
 						</div>
 						<div style="height: 392px">
 							<img src="./images/index/index_pic3.png">
+							<div class="text text3">
+							<p>나만의 완벽한 여행을 계획하세요</p>						
+							 EveryAir에서 가장 편리한 공항의 항공편, 주차권, 리무진을 검색해 보세요 					
+							</div>
 						</div>
 						<div style="height: 392px">
 							<img src="./images/index/index_pic4.png">
+							<div class="text text4">
+							 <p>2020 EveryAir LIKE</p>					
+							 하루 한번, EveryAir와 함께 떠나는 365일 국내여행							
+							</div>
 						</div>
 						<div style="height: 392px">
-							<img src="./images/index/index_pic5.png">
+							<img src="./images/index/index_pic5.png">					
+							<div class="text text5">
+							새로워진 <span>EveryAir</span>에
+							<p>오신 것을 환영합니다!</p>			
+							</div>
 						</div>
 						<div style="height: 392px">
-							<img src="./images/index/index_pic6.png">
+							<img src="./images/index/index_pic6.png">						
+							<div class="text text6">
+							<p>EveryAir 웹 체크인</p>			
+							 좌석 선택부터 탑승권 발급까지 빠르고 간편하게 이용해 보세요!							
+							</div>
 						</div>
+						
 					</div>
 					
 					
@@ -282,14 +313,20 @@ $(document).ready(function() {
 			</div>
 			<div class="section" id="section2"
 				style="background: url(https://flyasiana.com/C/pc/image/main/bg_section03.jpg); background-size: 1920px;">
-				
+
+				<div class="checkbox_text">
+					<h2>체크인</h2>
+					<p>원하시는 좌석의 탑승권을 미리 발급받고 공항에서 대기시간을 줄이세요.</p>
+				</div>
+				<!-- 체크인 -->
+
 				<div class="search_box mar_to10">
 		<form id="frm" action="./test" method="post">
 			<div class="inner alC">
 				<select id="numTypeSelect" style="width: 200px" title="종류별 번호">
 					<option value="reservNo">예약번호</option>
 				</select> <input type="text" id="bookingNum" name="bookingNum" maxlength="8" placeholder="영문/숫자 조합 6자리 또는 숫자 8자리" title="번호 입력 예시 : 영문/숫자 조합 6자리 또는 숫자 8자리"
-					style="width: 280px; text-transform: uppercase;">
+					style="text-transform: uppercase;">
 
 				<div class="relative_calendar">
 					<div class="calendar_wrap">
@@ -2278,16 +2315,140 @@ $(document).ready(function() {
 			<div class="section" id="section3"
 				style="background: url(https://flyasiana.com/C/pc/image/main/bg_section05.jpg); background-size: 1920px;">
 
+				<!-- 출도착조회 -->
+				<div class="slide_inner">
+
+					<div class="section_copy checkbox_text">
+						<h2>출도착 조회</h2>
+						<p class="desc">취항지 출도착 스케줄을 상세하게 확인하실 수 있습니다.</p>
+					</div>
+
+					<!-- 출도착 조회 -->
+					
+						<div class="inquiry_wrapper" id="inquiryDeparture" style="margin-top: 50px;">
+							<div class="white_step_box">
+								
+								<div class="quick_step_wrap">
+									<div class="input_wrap" name="itineraryF" id="inquiry_wrap">
+														
+										<div class="ipt_elt loct spot_proven">
+											<input type="hidden" id="departureAreaF" name="departureAreaF" value="">
+											<input type="hidden" id="departureAirportF" name="departureAirportF" value="">
+											<input type="hidden" id="departureCityF" name="departureCityF" value="">
+											<input type="hidden" id="departureCityNameF" name="departureCityNameF" value="">
+										<label for="txtDepartureAirportF" class="spot_place" id="labelDepartureAirportF" name="spot_place" style="opacity: 1;">
+											<i class="material-icons place">place</i> </label>
+											<input type="text" id="txtDepartureAirportF" name="txtDepartureAirportF" class="spotentry ui-autocomplete-input" deparrtype="dep" placeholder="출발지" style="width:215px;" autocomplete="off">
+											<input type="hidden" name="default" area="" airport="">	
+											<a href="javascript:sharpNothig();" class="btn_airport airport_open" id="btn_depAllAirport1" name="btn_layer1" seg="dep1" deparrtype="dep" onclick="javascript:showAirportLayer(this, 'F');"><span class="hidden">전체도시보기</span></a>
+										</div>
+										<div class="shadow_layer search_flight" name="shadow_layer" style="display: none;">
+											<div class="inner">
+												<div class="search_layer">
+													<div class="search_lately" name="search_lately">
+														<p class="title">최근 검색</p>
+														
+													<div class="empty_box" name="empty_box">최근 검색한 노선이 없습니다.</div></div>
+													<div class="route_list search_auto" id="divDepAirportACF" name="search_auto" target="txtDepartureAirportF" style="display: none;">
+														<p class="title">자동 완성</p>
+														<div class="empty_box" name="empty_box">매칭되는 공항이 없습니다.</div>
+													<ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-1" tabindex="0" style="display: none;"></ul></div>
+												</div>
+												<input type="hidden" name="default" area="" airport="">
+												<button type="button" class="btn_popup airport_open" id="btn_depAllAirport1" name="btn_layer1" seg="dep1" deparrtype="dep" onclick="javascript:showAirportLayer(this, 'F');">전체도시보기</button>
+											</div>
+											<a href="javascript:sharpNothig();" class="layer_close"><span class="hidden">닫기</span></a>
+										</div>		
+										
+										<div class="ipt_elt loct spot_destin">
+											<input type="hidden" id="arrivalAreaF" name="arrivalAreaF" value="">
+											<input type="hidden" id="arrivalAirportF" name="arrivalAirportF" value="">
+											<input type="hidden" id="arrivalCityF" name="arrivalCityF" value="">
+											<input type="hidden" id="arrivalCityNameF" name="arrivalCityNameF" value="">
+											<label for="txtArrivalAirportF" class="spot_place" id="labelArrivalAirportF" name="spot_place" style="opacity: 1;"><i class="material-icons place">place</i></label>
+											<input type="text" id="txtArrivalAirportF" placeholder="도착지" name="txtArrivalAirportF" class="spotentry" deparrtype="arr" style="width:215px;">
+											<input type="hidden" name="default" area="" airport="">
+											<a href="javascript:sharpNothig();" class="btn_airport airport_open" id="btn_arrAllAirport1" name="btn_layer1" seg="arr1" deparrtype="arr" onclick="javascript:showAirportLayer(this, 'F');"><span class="hidden">전체도시보기</span></a>
+										</div>
+										<div class="shadow_layer search_flight to" style="display: none;">
+											<div class="inner">
+												<div class="search_layer">
+													<div class="search_lately" name="search_lately">
+														<p class="title">최근 검색</p>
+														
+													</div>
+													<div class="route_list search_auto" id="divArrAirportACF" name="search_auto" target="txtArrivalAirportF" style="display: none;">
+														<p class="title">자동 완성</p>
+														<div class="empty_box" name="empty_box">매칭되는 공항이 없습니다.</div>
+													</div>
+												</div>
+												<input type="hidden" name="default" area="" airport="">
+												<button type="button" class="btn_popup airport_open" id="btn_arrAllAirport1" name="btn_layer1" seg="arr1" deparrtype="arr" onclick="javascript:showAirportLayer(this, 'F');">전체도시보기</button>
+											</div>
+											<a href="javascript:sharpNothig();" class="layer_close"><span class="hidden">닫기</span></a>
+										</div>			
+										
+										<div class="shadow_layer case2 select_airport" id="depAllAirportF" name="allAirportF" style="display: none;">
+											<div class="inner">
+												<h4 class="hidden">공항 선택</h4>
+												<h5 class="hidden">국제선</h5>
+												<div class="flights_list national">
+								
+												</div>
+												<div class="recent_search_wrap">
+													<h4>최근 검색</h4>
+													<div class="recent_srch_box" name="recent_srch_box"><ul><li class="return" val="KR,서울 / 김포,GMP,SEL,서울-KR,광주,KWJ,KWJ,광주,undefined-202002130000,undefined,undefined,undefined,undefined" data-itinerary="GMP-KWJ"><a href="#none"><span>서울 / 김포<var>GMP</var></span><span>광주<var>KWJ</var></span></a><button type="button" class="btn_detlete" name="btn_delete" onclick="javascript:deleteSearchLatelyData(this, 'searchLatelyDatasArrDep_KRKO', 'GMP-KWJ', 'dep');"><span class="hidden">삭제</span></button></li></ul></div>
+													<div class="btn_area">
+														<button type="button" class="btn_M gray" onclick="javascript:clickNextStep('allAirportF', 'F');">다음</button>
+													</div>
+												</div>
+											</div>
+											<a href="javascript:sharpNothig();" class="layer_close">
+												<span class="hidden">닫기</span>
+											</a>
+										</div>
+										
+										<div class="ipt_elt flt_date">
+											<select title="출발일" style="width:215px" class="select_date" id="searchDate">
+												<option value="20200213">2020.02.13</option>
+												<option value="20200212" selected="selected">2020.02.12</option>
+												<option value="20200211">2020.02.11</option>
+												<option value="20200210">2020.02.10</option>
+											</select>
+										</div>
+													
+						
+										<button type="button" id="searchDepArr" class="btn_M red btn_revsearch">출도착 조회</button>
+									</div>
+									<p class="exam_txt" style="overflow: hidden;">
+										<span class="text_type1 ext3">ㆍ출발지 기준일</span>
+									</p>									
+								</div>
+								
+							</div>
+						</div>
+						<a href="javascript:sharpNothig();" class="btn_fold open2" id="foldSection4" style="display: inline-block;"><span class="hidden">조회영역 펼치기</span></a>
+						
+						<div id="searchDepArrResult" class="departure_list_wrap" style="display: none;">
+							
+						</div>
+											<!-- 출도착 조회 -->
+						</div>
+				
+
 			</div>
 			
-			<div class="section" id="section4" style="height: 500px;">
+			<%-- <div class="section" id="section4" style="height: 500px;">
 <div class="footer" style="width: 100%; height: 300px; background-color: black;">테스트</div>
+
+<c:import url="../template/fffooter.jsp" />
+
 			</div>
 		</div>
-		<div class="footer" style="width: 100%; height: 300px; background-color: black;">테스트</div>
-	</div>
+		<div class="footer" style="width: 100%; height: 300px; background-color: black;">테스트</div> --%>
+	</div> 
 
-
+</div>
 	<!-- 전반적인 CSS -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>

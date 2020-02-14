@@ -1,5 +1,28 @@
 @charset "UTF-8";
 
+.closebtn{
+	    margin-right: 350px;
+	   color:  #6d6e71;
+}
+.strong{
+	margin-left: 360px;
+	background: url('/images/board/bul_tri1_white.png') no-repeat 0 5px;
+	vertical-align: middle;
+	font-size: 15px;
+	line-height: 22px;
+	background-position: 0 2px;
+	text-align: left;
+	padding-left: 30px;
+	color: #000;
+}
+
+.strong a{
+	background: url(/images/board/icon_arrow1_black.png) no-repeat 100% 50%;
+	color: #000;
+	margin-left: 5px;
+	padding: 0 12px 0 0;
+}
+
 .bx-wrapper .bx-pager.bx-default-pager a {
 	background: #f96262;
 }
@@ -60,6 +83,96 @@
 .txt1 {
 	float: right;
 }
+
+/* text */
+
+.text{
+	font-weight: bold; 
+	position: absolute;
+}
+
+.text1{
+	left: 1225px;  
+	bottom: 233px; 
+	font-size: 5em; 
+	color:white;
+}
+
+.text2{
+	left: 400px; 
+	width: 450px; 
+	bottom: 140px; 
+	font-size: 1.8em; 
+	color:black;
+}
+
+.text2 p{
+	color: #f6396c; 
+	margin-bottom: 10px;
+}
+
+.text3{
+	left: 1010px; 
+	width: 657px; 
+	bottom: 180px; 
+	font-size: 1.8em; 
+	color:white; 	
+}
+
+.text3 p{
+	color: darkblue; 
+	margin-bottom: 5px; 
+	font-size: 30px; 
+	font-weight: bolder;	
+}
+
+.text4{
+	left: 100px; 
+	bottom: 227px; 
+	font-size: 1.8em; 
+	color:white; 
+}
+
+.text4 p{
+	color: purple; 
+	margin-bottom: 5px; 
+	font-size: 30px; 
+	font-weight: bolder;
+}
+
+.text5{
+	left: 1070px; 
+	bottom: 231px; 
+	font-size: 3.0em; 
+	color:white;
+	
+}
+
+.text5 p {
+	margin-left: 123px;
+}
+
+.text5 span{
+	color: #d60815;
+	font-weight: bolder;
+}
+
+.text6{
+	left: 1078px; 
+	width: 428px; 
+	bottom: 191px; 
+	font-size: 1.8em; 
+	color:white;
+	
+}
+
+.text6 p {
+	color: red; 
+	margin-bottom: 12px; 
+	font-size: larger;	
+}
+/* text 끝 */
+
 
 .resWrap {
 	/* 	z-index: 1;
@@ -262,6 +375,25 @@
 
 
 /* 웹체크인 */
+.checkbox_text{
+	width: 1180px;
+    height: 100px;
+    margin: 0 auto;
+    margin-top: 240px;
+    text-align: center;
+    color: black;
+    
+}
+
+.checkbox_text h2{
+	font-size: 50px;
+	margin-bottom: 20px;
+}
+
+.checkbox_text p{
+	font-size: 20px;
+}
+
 .search_box {
     position: relative;
     margin-bottom: 20px;
@@ -272,22 +404,50 @@
 	width : 1100px;
 	position: relative;
     left: 400px;
-    top: 300px;
+    top: 70px;
 }
 
 .search_box .inner {
     padding: 40px;
+    background-color: white;
 }
 
 .alC {
     text-align: center !important;
 }
 
-.search_box select, .search_box input[type="text"] {
+#numTypeSelect{
 /*     margin-right: 5px;
     background-color: #fff;
     border: 1px solid #ccc;
     text-overflow: ellipsis; */
+    width: 200px;
+    background-color: #f3f3f3;
+    margin-bottom: 6px;
+    margin-right: 10px;
+    font-size: 15px;
+}
+
+#numTypeSelect:hover{
+	border: 1px solid #d60815;
+    background-color: #fff;
+    
+}
+
+#bookingNum{
+	width: 320px;
+	background-color: #f3f3f3;
+	border: 1px solid #f3f3f3;
+    border-bottom: 1px solid #ddd;
+}
+
+#bookingNum:hover{
+	border: 1px solid #d60815;
+    background-color: #fff;
+}
+
+#btn_search{
+	    margin-left: 5px;
 }
 
 .relative_calendar {
@@ -538,6 +698,47 @@ input.input_cal{width:158px;border:1px solid #ccc; color:#222; background:#fff u
 
 
 /* 출도착조회 */
+.white_step_box{
+	width: 1180px;
+    margin: 0 auto;
+}
+
+.spot_place{
+    opacity: 1;
+    bottom: 30px;
+    color: #555;
+    height: 1px;
+    left: 60px;
+    font-size: 16px;
+    position: absolute;
+}
+
+.place{
+	margin-left: 120px;
+    vertical-align: bottom;
+}
+
+#inquiry_wrap{
+	padding-left: 120px;
+}
+
+.ext3{
+	float: right;
+    min-width: 223px;
+    margin-right: 290px;
+    margin-top: 5px;
+    font-weight: 700;
+}
+
+.red:hover{
+	background: #a60612
+}
+
+#searchDate:hover{
+	    border: 1px solid #d60815;
+    background-color: #fff;
+	
+}
 
 .inquiry_wrapper .white_step_box{padding-bottom:25px;}
 .inquiry_wrapper .white_step_box .quick_step_wrap .input_wrap .shadow_layer.search_flight{left:235px;}
@@ -1038,8 +1239,8 @@ modalInnerRightDown input[type="text"]{
 	border-bottom: 1px red solid;
 }
 input[type="text"]:hover{
-	    border: 1px solid #ccc;
-    background-color: white;
+	/*     border: 1px solid #ccc;
+    background-color: white; */
 }
 #bookingNum {
 	 height: 44px;
