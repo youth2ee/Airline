@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.airline.a1.booking.FlightDataVO;
 import com.airline.a1.checkIn.ETicketVO;
+import com.airline.a1.member.MembersVO;
 
 
 
@@ -31,5 +32,7 @@ public class AdminService {
 	public List<ETicketVO> getBookingInfo() throws Exception {
 		return adminMapper.getBookingInfo();
 	}
-	
+	public List<MembersVO> getMemberList() throws Exception{
+		return adminMapper.getMemberList();
+	}
 }

@@ -34,6 +34,10 @@ public class ParkService {
 	@Autowired
 	private parkMapper parkMapper;
 	
+	public List<pReservationVO> parkfinalcheck(pReservationVO pReservationVO) throws Exception{
+		return parkMapper.parkfinalcheck(pReservationVO);
+	}
+	
 	public List<pReservationVO> parkOut() throws Exception{
 		return parkMapper.parkOut();
 	}

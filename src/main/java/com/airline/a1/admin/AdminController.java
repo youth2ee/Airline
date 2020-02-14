@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import org.aspectj.lang.annotation.Before;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Conditional;
 import org.springframework.stereotype.Controller;
@@ -21,6 +22,7 @@ import com.airline.a1.park.ParkService;
 import com.airline.a1.park.pInfoVO;
 import com.airline.a1.park.pReservationVO;
 import com.airline.a1.checkIn.ETicketVO;
+import com.airline.a1.member.MembersVO;
 import com.airline.a1.board.BoardVO;
 import com.airline.a1.board.NoticeService;
 import com.airline.a1.board.NoticeVO;
@@ -46,6 +48,7 @@ public class AdminController {
 	
 	@Autowired
 	private ParkService parkService;
+	
 	
 	@GetMapping("adminmain")
 	public void adminmain() throws Exception{
@@ -164,8 +167,16 @@ public class AdminController {
 	}
 	
 	@GetMapping("admin7_1")
-	public void admin7_1() throws Exception{
-		
+	public void admin7_1(Model model) throws Exception{
+		List<MembersVO> ar = adminService.getMemberList();
+		for (MembersVO members : ar) {
+			if (members.getPhone().length() ==11) {
+				members.setPhone(members.getPhone().substring(0, 3)+"-"+members.getPhone().substring(3, 7)+"-"+members.getPhone().substring(7, 11));
+			}else {
+				members.setPhone(members.getPhone().substring(0, 3)+"-"+members.getPhone().substring(3, 6)+"-"+members.getPhone().substring(6, 10));
+			}
+		}
+		model.addAttribute("list", ar);
 	}
 
 }

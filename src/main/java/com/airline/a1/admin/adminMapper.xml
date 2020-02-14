@@ -25,7 +25,9 @@
 		select depPlandTime,arrPlandTime,kind,bookingTicket.bnum,fnum,bookingTicket.bookingNum,flightBNum,name,bookingTicket.id,depAirportNm,vihicleId,arrAirportNm,depPlandTime,arrPlandTime,totalPrice from flightData join bookingTicket on bookingTicket.depFnum = flightData.fnum join bookingPrice on bookingPrice.bnum = bookingTicket.bnum;
 	</select>
 	
-	
+	<select id="getMemberList" resultType="com.airline.a1.member.MembersVO">
+		select * from members where id != 'admin' order by id asc
+	</select>
 	
   
   </mapper>
