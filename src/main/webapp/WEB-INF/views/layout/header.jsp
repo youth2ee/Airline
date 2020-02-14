@@ -20,12 +20,13 @@
 					<ul>
 						<c:if test="${not empty member}">
 						<li OnClick="location.href ='${pageContext.request.contextPath}/member/memberLogout'" style="cursor:pointer;">로그아웃</li>
+						<li class="li1" OnClick="location.href ='${pageContext.request.contextPath}/mypage/main'" style="cursor:pointer;">마이페이지</li>
 						</c:if>
 						<c:if test="${empty member}">
 						<li OnClick="location.href ='${pageContext.request.contextPath}/member/memberLogin'" style="cursor:pointer;">로그인</li>
-						</c:if>
-					
 						<li class="li1" OnClick="location.href ='${pageContext.request.contextPath}/member/memberAgree'" style="cursor:pointer;">회원가입</li>
+						</c:if>
+						
 						<li class="li1" OnClick="location.href ='${pageContext.request.contextPath}/notice/noticeList'" style="cursor:pointer;">고객센터</li>
 					</ul>				
 				</div>
