@@ -8,7 +8,21 @@ section {
 	width: 1200px;
 	margin: 0 auto;
 	margin-bottom: 100px;
+	
 }
+
+/* #muse{
+	text-align: center;
+	background-color: red;
+}
+
+.milCheck{
+	padding-left: 20px;
+}
+
+.tprice{
+	padding-left: 20px;
+} */
 
 #top {
 	height: 170px;

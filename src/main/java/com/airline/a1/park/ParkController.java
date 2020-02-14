@@ -86,46 +86,63 @@ public class ParkController {
 				mv.addObject("path", "./FindMyRes");
 			}
 
-		
-		
+	
 		return mv;
 		
 	}
 	
 	@GetMapping("parkCancel")
-	public ModelAndView parkCancel(pReservationVO pReservationVO, HttpSession session) throws Exception{
+	public ModelAndView parkCancel(pReservationVO pReservationVO, HttpSession session,HttpServletRequest request) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		if(session.getAttribute("member") != null) {
-			
-			
-			Integer result = parkService.parkCancel(pReservationVO);
-			if(result >0) {
-				mv.addObject("msg", "예약이 취소됐습니다.");
-				mv.addObject("path", "../mypage/park");
-				mv.setViewName("common/common_result");
-			}else {
-				mv.addObject("msg", "다시 시도해주세요.");
-				mv.addObject("path", "../mapage/park");
-				mv.setViewName("common/common_result");
-			}
 		
+		if(request.getHeader("Referer") != null) {
+			
+			if(session.getAttribute("member") != null) {
+				
+				Integer result = parkService.parkCancel(pReservationVO);
+				if(result >0) {
+					mv.addObject("msg", "예약이 취소됐습니다.");
+					mv.addObject("path", "../mypage/park");
+					mv.setViewName("common/common_result");
+				}else {
+					mv.addObject("msg", "다시 시도해주세요.");
+					mv.addObject("path", "../mapage/park");
+					mv.setViewName("common/common_result");
+				}
+				
+			}else {
+				pReservationVO = parkService.resSelect(pReservationVO);
+				mv.addObject("VO", pReservationVO);
+				mv.setViewName("park/parkCancel");
+			}
+			
 		}else {
-			pReservationVO = parkService.resSelect(pReservationVO);
-			mv.addObject("VO", pReservationVO);
-			mv.setViewName("park/parkCancel");
+			mv.addObject("msg", "올바른 접근이 아닙니다.");
+			mv.addObject("path", "FindMyRes");
+			mv.setViewName("common/common_result");
 		}
+		
+		
 		return mv;
 	}
 	
 	@PostMapping("parkCancel")
-	public ModelAndView parkCancel(pReservationVO pReservationVO,ModelAndView mv) throws Exception{
-		int result = parkService.parkCancel2(pReservationVO);
-		if(result > 0 ) {
-			mv.addObject("msg", "예약을 취소했습니다.");
-			mv.addObject("path", "MyRes");
+	public ModelAndView parkCancel(pReservationVO pReservationVO, HttpServletRequest request) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		if(request.getHeader("Referer") != null) {
+		
+			int result = parkService.parkCancel2(pReservationVO);
+			if(result > 0 ) {
+				mv.addObject("msg", "예약을 취소했습니다.");
+				mv.addObject("path", "MyRes");
+			}else {
+				mv.addObject("msg", "다시 시도해주세요.");
+				mv.addObject("path", "MyRes");
+			}
+			
 		}else {
-			mv.addObject("msg", "다시 시도해주세요.");
-			mv.addObject("path", "MyRes");
+			mv.addObject("msg", "올바른 접근이 아닙니다.");
+			mv.addObject("path", "park/MyRes");
 		}
 		mv.setViewName("common/common_result");
 		return mv;
@@ -209,22 +226,35 @@ public class ParkController {
 	}
 	
 	@PostMapping("resInsert")
-	public ModelAndView resInsert(ModelAndView mv, pReservationVO pReservationVO) throws Exception{
-		if(pReservationVO.getId().equals("")) {
-			pReservationVO.setId(null);
+	public ModelAndView resInsert(ModelAndView mv, pReservationVO pReservationVO, HttpServletRequest request) throws Exception{
+		
+		
+		
+		if(parkService.parkfinalcheck(pReservationVO).isEmpty()) {
+			
+			if(pReservationVO.getId().equals("")) {
+				pReservationVO.setId(null);
+			}else {
+				pReservationVO.setPassword(null);
+			}
+			int result = parkService.resInsert(pReservationVO);
+			 
+			if(result > 0) {
+				mv.addObject("info", pReservationVO);
+				mv.setViewName("park/resResult");
+			}else {
+				mv.addObject("msg", "예약에 실패하였습니다. 다시 진행해주세요");
+				mv.setViewName("common/common_result");
+				mv.addObject("path", "./ParkRes");
+			}
 		}else {
-			pReservationVO.setPassword(null);
-		}
-		int result = parkService.resInsert(pReservationVO);
-		 
-		if(result > 0) {
-			mv.addObject("info", pReservationVO);
-			mv.setViewName("park/resResult");
-		}else {
+			System.out.println(request.getAttribute("Referer"));
 			mv.addObject("msg", "예약에 실패하였습니다. 다시 진행해주세요");
-			mv.setViewName("common/commonResult");
 			mv.addObject("path", "./ParkRes");
+			mv.setViewName("common/common_result");
 		}
+		
+		
 		
 		return mv;
 	}

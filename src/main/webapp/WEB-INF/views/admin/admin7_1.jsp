@@ -169,7 +169,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
            <h6 class="collapse-header">PARKING MANAGEMENT</h6>
             <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin5_1">공항별 주차 현황</a>
-            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin5_2">회원별 주차 현황</a>
+            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin5_2">예약 주차장 현황</a>
           </div>
         </div>
       </li>
@@ -304,23 +304,25 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>번호</th>
-                      <th>지역 </th>
+                      <th>아이디</th>
+                      <th>회원번호</th>
                       <th>이름</th>
-                      <th>주소</th>
-                      <th>전화번호</th>
+                      <th>연락처</th>
+                      <th>이메일</th>
+                      <th>마일리지</th>
                     </tr>
                   </thead>
                   <tbody>
-             <%--      <c:forEach items="${cinemalist}" var="clist">  --%>
+					<c:forEach items="${list}" var="vo">
                     <tr>
-                      <td>1<%-- <a href="${pageContext.request.contextPath}/admin/admin_cinemaSelect?cinema_num=${clist.cinema_num}">${clist.cinema_num}</a> --%></td>
-                      <td>2</td>
-                      <td>2</td>
-                      <td>2</td>
-                      <td>2</td>
+                      <td>${vo.id}</td>
+                      <td>${vo.memberNum}</td>
+                      <td>${vo.name}</td>
+                      <td>${vo.phone}</td>
+                      <td>${vo.email}</td>
+                      <td>${vo.mileage}</td>
                     </tr>
-<%--                   </c:forEach> --%>
+                    </c:forEach>
 
                   </tbody>
                 </table>
