@@ -68,7 +68,7 @@ $(document).ready(function() {
   <!-- <strong>신종 코로나 바이러스</strong>&nbsp주의 하세여 -->
   <p class="strong">
   			코로나19 관련 국가별 입국 제한 현황
-  	<a href="#" style="text-decoration: underline;">자세히보기</a>
+  	<a href="${pageContext.request.contextPath}/notice/noticeSelect?num=132" style="text-decoration: underline;">자세히보기</a>
   </p>
 </div>
 <header id="header">
