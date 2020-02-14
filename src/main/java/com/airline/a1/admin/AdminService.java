@@ -39,7 +39,7 @@ public class AdminService {
 
 	public List<MembersVO> getMemberList() throws Exception{
 		return adminMapper.getMemberList();
-
+	}
 	
 	//전체매출
 	public List<FlightDataVO> saleterm(FlightDataVO flightDataVO) throws Exception {
