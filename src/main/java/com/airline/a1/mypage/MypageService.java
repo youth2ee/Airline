@@ -38,7 +38,7 @@ public class MypageService {
 
 	public int updateMember(MembersVO membersVO) throws Exception{
 		return mypageMapper.updateMember(membersVO);
-
+	}
 	
 	
 	public List<BookingTicketVO> bnumSearch(BookingTicketVO bookingTicketVO) throws Exception{
