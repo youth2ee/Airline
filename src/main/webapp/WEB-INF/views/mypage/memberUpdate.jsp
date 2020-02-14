@@ -47,23 +47,23 @@
 				<tbody>
 					<tr>
 						<th scope="row">회원번호</th>
-						<td>776&nbsp;699&nbsp;818</td>
+						<td>${member.memberNum}</td>
 						<th scope="row">아이디</th>
-						<td>daze123</td>
+						<td>${member.id}</td>
 					</tr>
 
 					<tr>
 						<th scope="row">이름(한글)</th>
-						<td>임윤희</td>
+						<td>${member.name}</td>
 						<td style="border: 1px solid white;"></td>
 						<td></td>
 					</tr>
 
 					<tr>
 						<th scope="row">휴대전화</th>
-						<td>010-4735-2699</td>
+						<td>${member.phone}</td>
 						<th scope="row">이메일</th>
-						<td>daze123@hanmail.net</td>
+						<td>${member.email}</td>
 					</tr>
 
 				</tbody>

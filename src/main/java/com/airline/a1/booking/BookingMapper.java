@@ -23,4 +23,6 @@ public interface BookingMapper {
 	public List<FlightDataVO> flightInfo(FlightDataVO flightDataVO) throws Exception;
 	public List<FlightDataVO> flightList(FlightDataVO flightDataVO) throws Exception;
 	
+	public MembersVO searchMember(MembersVO membersVO) throws Exception;
+	
 }
