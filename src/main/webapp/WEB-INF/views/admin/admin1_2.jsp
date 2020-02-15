@@ -296,9 +296,17 @@
           <h1 class="h3 mb-2 text-gray-800">매출 관리</h1>
           <p class="mb-4">공항별 매출 관리</p>
           
+          <div style="width: 100%; margin-bottom: 30px;">
           <c:forEach items="${alist}" var="an">
- 		   <div class="abtn">${an.apName}</div>
+ 		   <div class="btn btn-danger btn-icon-split" style="margin-right: 5px; margin-left: 5px;'">
+ 		   <span class="icon text-white-50">
+                      <i class="fas fa-map-marker"></i>
+           </span>
+           <span class="text">${an.apName}</span>
+ 		   
+ 		   </div>
           </c:forEach> 
+     	  </div>
      
      <div style="clear: both;"></div>
           
@@ -445,11 +453,11 @@
 
 <script type="text/javascript">
 
-$('body').on ('click','.abtn',function(){
+$('body').on ('click','.btn',function(){
 
 	$.ajax({
 		data : {
-			airlineNm : $(this).text()
+			airlineNm : $(this).find('.text').text()
 		},
 		type : "GET",
 		url : "./admin/admin1_2_layout",
