@@ -134,9 +134,6 @@ $('.mplus').click(function(){
 		url : "./milplus",
 		success : function(data) {
 
-			alert(bpnum);
-			alert(data);
-
 			$('.mbnum').text(bpnum);
 			$('.mbmnum').text(data);
 

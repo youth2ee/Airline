@@ -91,7 +91,7 @@ ${bVO.arrInfo.vihicleId} ${bVO.arrInfo.airlineNm}<br>
 <td>출발지</td>
 <td>도착지</td>
 <td>원가</td>
-<td class="cnm">쿠폰명</td>
+<td class="cnmh">쿠폰명</td>
 <td>할인내역</td>
 <td>유류할증료</td>
 <td>공항이용료</td>
@@ -148,7 +148,7 @@ ${bVO.arrInfo.vihicleId} ${bVO.arrInfo.airlineNm}<br>
 <td>출발지</td>
 <td>도착지</td>
 <td>원가</td>
-<td class="cnm">쿠폰명</td>
+<td class="cnmh">쿠폰명</td>
 <td>할인내역</td>
 <td>유류할증료</td>
 <td>공항이용료</td>

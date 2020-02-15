@@ -383,6 +383,8 @@ ${bookingVO.arrLoc} <i class='fas fa-angle-right' style='font-size:10px;'></i> $
 
 <script type="text/javascript">
 
+$('.far fa-clock').css('color','black');
+
 //
 var d1 = $('.rd1').text();
 var d2 = $('.rd2').text();
@@ -616,12 +618,11 @@ depSelectDate = depSelectDate.replace('년','').replace('월','').replace('일',
 
 	$('body').on("click", '.dtrcheck', function() {
 
+
 		var km = $(this).next('.dhide').find('.km').text();
 		
 		var deptd = $(this).next('.dhide').find('.deptd').text();
-
 		var n = deptd.indexOf("년");
-
 		if(n == -1){
 			var ddy = deptd.substring(0,4);
 			var ddm = deptd.substring(4,6);
@@ -630,8 +631,6 @@ depSelectDate = depSelectDate.replace('년','').replace('월','').replace('일',
 			var ddmi = deptd.substring(10);
 		    var dnew = ddy+'년 '+ddm+'월 '+ddd+'일 '+ddh+'시 '+ddmi+'분 ';
 		    $(this).next('.dhide').find('.deptd').text(dnew);
-
-
 			var arrtd = $(this).next('.dhide').find('.arrtd').text();
 			var ady = arrtd.substring(0,4);
 			var adm = arrtd.substring(4,6);
@@ -646,17 +645,12 @@ depSelectDate = depSelectDate.replace('년','').replace('월','').replace('일',
 		
 		$('.dhide').css("display", "none");
 		$('.ahide').css("display", "none");
-
 		$('body').removeClass('cact');
-
 		$('.atrcheck').siblings().find('td').removeClass('act');
-
 		dfnum = $(this).find('.td1').find('.dfnum').val();
-
 		$('#dfnumf').val(dfnum);
 		$(this).find('td').addClass('act');
 		$(this).siblings().find('td').removeClass('act');
-
 		if ($(this).next('.dhide').css("display") == "none") {
 			$(this).next('.dhide').css("display", "table-row");
 		} else {
@@ -678,9 +672,8 @@ depSelectDate = depSelectDate.replace('년','').replace('월','').replace('일',
 		
 		$('#arrT').find('.atrcheck').each(function(){
 			$(this).find('td').removeClass('block');
-			$(this).find('td').find('i').css('color','#d60815');
+			$(this).find('td').find('.material-icons').css('color','#d60815');
 			$(this).find('td').find('img').removeClass('grayt');
-			
 			
 				var arrtime = $(this).find('.tiLeft').text().replace(':','').trim();
 				var atotal = arrM + arrtime;
@@ -702,9 +695,7 @@ depSelectDate = depSelectDate.replace('년','').replace('월','').replace('일',
 		var km = $(this).next('.ahide').find('.km').text();
 		
 		var deptd = $(this).next('.ahide').find('.deptd').text();
-
 		var n = deptd.indexOf("년");
-
 		if(n == -1){
 			var ddy = deptd.substring(0,4);
 			var ddm = deptd.substring(4,6);
@@ -724,33 +715,25 @@ depSelectDate = depSelectDate.replace('년','').replace('월','').replace('일',
 		    $(this).next('.ahide').find('.arrtd').text(anew);
 		    
 		}
-
 		
 		$('body').removeClass('cact');
 		
 		$('.ahide').css("display", "none");
-
 		afnum = $(this).find('.td1').find('.afnum').val();
-
-
  		if ($(this).next('.ahide').css("display") == "none") {
 			$(this).next('.ahide').css("display", "table-row");
-
 			
 		} else if($(this).next('.ahide').css("display") == "table-row"){
 			$(this).next('.ahide').css("display", "none");
 			alert("dd");
-
 			
 		} 
-
 		
 		$('#afnumf').val(afnum);
 		$(this).find('td').addClass('act');
 		$(this).siblings().find('td').removeClass('act');
-
-
 	});
+
 
 
 	$('body').on('click', '.cact', function(){

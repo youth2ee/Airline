@@ -382,9 +382,16 @@ public class BookingController {
 		// 어른
 		if (bookingTicketVO.getAdultList() != null) {
 			for (BookingTicketVO adult : bookingTicketVO.getAdultList()) {
+				System.out.println("dd");
+				System.out.println(adult.getGender());
+				System.out.println(adult.getMemberNum());
+				
 				adult.setBookingNum(bookingNum);
 				adult.setId(id);
-				adult.setMemberNum(adult.getMemberNum());
+				/* adult.setMemberNum(adult.getMemberNum()); */
+				
+				System.out.println("회원번호");
+				System.out.println(adult.getMemberNum());
 
 				String kind = "편도";
 				if (bookingTicketVO.getKind().equals("왕복")) {
@@ -420,6 +427,11 @@ public class BookingController {
 				}
 				adult.setBirth(adult.getYear() + adult.getMonth() + adult.getDay());
 
+				
+				System.out.println("dda");
+				System.out.println(adult.getGender());
+				System.out.println(adult.getMemberNum());
+				
 				//booking insert
 				bookingService.bookingInsert(adult);
 				
@@ -483,7 +495,7 @@ public class BookingController {
 			for (BookingTicketVO child : bookingTicketVO.getChildList()) {
 				child.setBookingNum(bookingNum);
 				child.setId(id);
-				child.setMemberNum(child.getMemberNum());
+				/* child.setMemberNum(child.getMemberNum()); */
 
 				String kind = "편도";
 				if (bookingTicketVO.getKind().equals("왕복")) {
