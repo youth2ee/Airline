@@ -349,7 +349,7 @@
 			var contents = $('#contents').val().trim();
 
 
-		 	if(title !=="" && cate !=="" && contents !=="" && check ==true){
+		 	if(title !=="" && cate !=="" && contents !=="" /* && check ==true */){
 					 $('#frm').submit();
 			}else{
 					alert('필수항목을 확인해주세요.')

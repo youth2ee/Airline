@@ -24,7 +24,7 @@
 
 
 
-<div id="headerBottom">
+<!-- <div id="headerBottom">
 <div id="hbh">
 <div id="hbhome"><i class="fa fa-home"></i></div>
 <div id="hbselect">
@@ -39,7 +39,7 @@
 </div>
 </div>
 
-</div>
+</div> -->
 
 <div id="container">
 	<h3><a href="./noticeList">공지사항</a></h3>
@@ -142,8 +142,9 @@
 					</c:choose>
 				 </ul>	
 			</div>
+			<c:choose>
+				<c:when test="${not empty list}">
 			<div class="paging">
-			
 			<a href="./noticeList?curPage=1" class="btn_first btn_common">
 			</a>
 		
@@ -161,10 +162,14 @@
 			<fmt:parseNumber var="pages" integerOnly="true" value="${tc/10}"/>			
 			<a href="./noticeList?curPage=${pages+1}" class="btn_last btn_common"></a>
 		</div>
-					
+			</c:when>
+			</c:choose>		
 		</div>		
 
+
 </div>
+
+  
 
 
 
