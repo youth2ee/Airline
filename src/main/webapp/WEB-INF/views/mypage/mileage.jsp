@@ -56,12 +56,11 @@
 
 </tr>
 <c:forEach items="${blist}" var="bl">
-<tr style="border: 1px solid #ddd;"><td style="text-align: center;
+<tr style="border: 1px solid #ddd;" class="mtr"><td style="text-align: center;
     font-size: 15px;
     text-align: center;
     height: 40px;
     line-height: 40px;
-
     padding-left: 20px;">${bl.couName}</td>
 <td class="btd">${bl.bookingNum}</td>
 <td>- ${bl.mileageMin}</td>
@@ -74,35 +73,30 @@
 </table>
 
 
-<div id="myModal" class="modal">
+		<div id="myModal" class="modal">
 
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span class="close" style="font-size: 34px;">&times;</span>
-    
-    <div id="mtitle">적립된 회원번호</div>
-    
-    <div id="mcon">
-    
-<table style="margin: 0 auto;">
-<tr>
-<td class="mbth">예매번호</td>
-<td class="mbtb mbnum">
+			<!-- Modal content -->
+			<div class="modal-content">
+				<span class="close" style="font-size: 34px;">&times;</span>
 
-</td>
-</tr>
+				<div id="mtitle">적립된 회원번호</div>
+				<div id="mcon">
 
-<tr>
-<td class="mbth">회원번호</td>
-<td class="mbtb mbmnum">
+					<table style="margin: 0 auto;">
+						<tr>
+							<td class="mbth">예매번호</td>
+							<td class="mbtb mbnum"></td>
+						</tr>
 
-</td>
-</tr>
+						<tr>
+							<td class="mbth">회원번호</td>
+							<td class="mbtb mbmnum"></td>
+						</tr>
 
-</table>
-    </div>
-  </div>
-</div>
+					</table>
+				</div>
+			</div>
+		</div>
 
 <div style="width: 100%; text-align: center;">  
   <button id="next">더보기</button>
@@ -128,10 +122,6 @@ $('.mplus').click(function(){
 			  $('#myModal').css('display','none');
 		  }
 		}
-
-	
-
-	/* alert($(this).closest('.mtr').find('.btd').text()); */
 	
 	var bpnum = $(this).closest('.mtr').find('.btd').text();
 
@@ -143,6 +133,9 @@ $('.mplus').click(function(){
 		type : "GET",
 		url : "./milplus",
 		success : function(data) {
+
+			alert(bpnum);
+			alert(data);
 
 			$('.mbnum').text(bpnum);
 			$('.mbmnum').text(data);

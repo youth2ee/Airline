@@ -76,14 +76,10 @@ public class BookingController {
 		List<String> airport = bookingService.airportList();
 		model.addAttribute("airportList", airport);
 		
-		
 		//항공리스트
 		//현재시간
-		
-		//
 		String today = null;
 		Date date = new Date();
-		
 		
 		SimpleDateFormat sdformat = new SimpleDateFormat("yyyyMMddHHmm"); 
 		String now = sdformat.format(date); // 포맷변경 (년월일 시분초) 
@@ -108,7 +104,6 @@ public class BookingController {
 		
 		model.addAttribute("ttime", now);
 		model.addAttribute("later", later);
-		
 	}
 
 	
@@ -240,16 +235,6 @@ public class BookingController {
 	@GetMapping("dateSelect")
 	public ModelAndView dateSelect(BookingTicketVO bookingTicketVO) throws Exception {
 		
-		
-		
-		System.out.println(bookingTicketVO.getYear());
-		System.out.println(bookingTicketVO.getMonth());
-		System.out.println(bookingTicketVO.getDepLoc());
-		System.out.println(bookingTicketVO.getArrLoc());
-		
-		
-		
-		
 		List<FlightDataVO> dairList = new ArrayList<FlightDataVO>();
 		List<FlightDataVO> aairList = new ArrayList<FlightDataVO>();
 
@@ -333,11 +318,6 @@ public class BookingController {
 		if (bookingTicketVO.getKind().equals("왕복")) {
 			List<String> arrTime = new ArrayList<String>();
 
-			/*
-			 * System.out.println(bookingTicketVO.getArrInfo().getDepPlandTime());
-			 * System.out.println(bookingTicketVO.getArrInfo().getArrPlandTime());
-			 */
-			
 			String adDate = bookingTicketVO.getArrInfo().getDepPlandTime();
 			String adYear = adDate.substring(0, 4);
 			String adMonth = adDate.substring(4, 6);
@@ -521,11 +501,6 @@ public class BookingController {
 				bookingTicketVO.setDepInfo(bookingService.oneSelect(flightDataVO));
 
 				// flightnum 가는편 만들기
-				/*
-				 * flightBNum = bookingService.flightNum(child);
-				 * child.setFlightBNum(flightBNum); child.setDepFBNum(flightBNum);
-				 */
-
 				child.setResEmail(bookingTicketVO.getResEmail());
 				child.setResECheck(bookingTicketVO.getResECheck());
 				
@@ -564,10 +539,6 @@ public class BookingController {
 				// 왕복일때
 				if (bookingTicketVO.getKind().equals("왕복")) {
 					// flightnum 오는편 만들기
-					/*
-					 * flightBNum = bookingService.flightNum(child);
-					 * child.setFlightBNum(flightBNum); child.setArrFBNum(flightBNum);
-					 */
 					int dep = child.getDepFnum();
 					int arr = child.getArrFnum();
 					child.setDepFnum(arr);

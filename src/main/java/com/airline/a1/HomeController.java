@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -61,6 +62,37 @@ public class HomeController {
 		List<String> airport = bookingService.airportList();
 		model.addAttribute("airportList", airport);
 		
+		
+		//출도착 조회
+		Date date = new Date();
+		SimpleDateFormat sdformat = new SimpleDateFormat("yyyy.MM.dd"); 
+		String now = sdformat.format(date);
+		model.addAttribute("t_3", now);
+		
+		Calendar cal = Calendar.getInstance();
+		
+		cal.setTime(date);
+		cal.add(Calendar.DAY_OF_YEAR, -2);
+		String t_1 = sdformat.format(cal.getTime());
+		
+		cal.setTime(date);
+		cal.add(Calendar.DAY_OF_YEAR, -1);
+		String t_2 = sdformat.format(cal.getTime());
+		
+		cal.setTime(date);
+		cal.add(Calendar.DAY_OF_YEAR, 1);
+		String t_4 = sdformat.format(cal.getTime());
+		
+		cal.setTime(date);
+		cal.add(Calendar.DAY_OF_YEAR, 2);
+		String t_5 = sdformat.format(cal.getTime());
+
+		model.addAttribute("t_1", t_1);
+		model.addAttribute("t_2", t_2);
+		model.addAttribute("t_4", t_4);
+		model.addAttribute("t_5", t_5);
+		
+		
 		return "index";
 	}
 
@@ -105,13 +137,6 @@ public class HomeController {
 		} else {
 			ar = new ArrayList<BoardVO>();
 		}
-			  
-			/*
-			 * SearchRankingVO newVO = searchService.rListSelect();
-			 * 
-			 * Map<String, Integer> tolist = searchService.listUpdate(newVO);
-			 * model.addAttribute("tolist", tolist);
-			 */
 			  
 			customSchedule.fixRateSchedule();
 			

@@ -4,14 +4,13 @@ header{
 }
 
 section{
-	/* width: 1215px; */
+	width: 1215px;
 	margin: 0 auto;	
-	padding-left: 300px;
-    padding-right: 300px;
+
 }
 
 #muse{
-	text-align: center;
+	text-align: right;
 }
 
 .milCheck{
@@ -80,14 +79,21 @@ section{
 
 .btb > td{
 	padding:20px 0;
-	border-bottom: 1px solid white;
+/* 	border-bottom: 1px solid white; */
 	border-top: 1px solid white;
 	text-align: center;
 	background-color: #f1f1f1;
+		width: 100px;
 }
 
 .cnm{
-	white-space: nowrap;
+overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 169px;
+    /* white-space: pre-line; */
+    display: block;
+	
 }
 
 #tpriceTb{

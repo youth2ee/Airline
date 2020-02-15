@@ -446,7 +446,6 @@ ${arr[3]}시 ${arr[4]}분<i class='fas fa-angle-right' style='font-size:10px; pa
 			}
 		});
 
-
 		if($('#re').val() == ''){
 			x=1;
 		}
@@ -454,7 +453,6 @@ ${arr[3]}시 ${arr[4]}분<i class='fas fa-angle-right' style='font-size:10px; pa
 		if($('#rp').val() == ''){
 			x=1;
 		}
-
 
 		if(x==1){
 			alert("모든 항목을 입력하세요.");
@@ -464,17 +462,13 @@ ${arr[3]}시 ${arr[4]}분<i class='fas fa-angle-right' style='font-size:10px; pa
 		}else{
 			$("#frm").submit();
 		}
-
 	});
 
-
-	
 
 
 /* 회원번호 찾기 */
 
 $('.mbtn').click(function(){
-
 
 	$('#mname').val('');
 	$('#mid').val('');
@@ -485,11 +479,11 @@ $('.mbtn').click(function(){
 	$('#modalfm').css('display','none');
 	
 
-$('#myModal').css('display','block');
-
-$('.close').click(function(){
-	$('#myModal').css('display','none');
-});
+	$('#myModal').css('display','block');
+	
+	$('.close').click(function(){
+		$('#myModal').css('display','none');
+	});
 
 window.onclick = function(event) {
 	  if (event.target == $('#myModal')) {
@@ -497,10 +491,7 @@ window.onclick = function(event) {
 	  }
 	}
 
-
 var thi = $(this);
-
-
 
 $('body').on('click', '.mbtn2', function(){
 	$('.modal-content').css('height','491px');
@@ -524,8 +515,6 @@ $('body').on('click', '.mbtn2', function(){
 				$('#mnump').text(data);
 				$('#ubtn').css('display','block');
 
-				/* $(this).prev('.mnum').val(data); */
-
 					$('body').on('click','#ubtn', function(){
 				       thi.prev('.mnum').val(data);
 				       $('#myModal').css('display','none');
@@ -536,28 +525,23 @@ $('body').on('click', '.mbtn2', function(){
 				$('#modalfm').css('line-height','121px');
 				$('#modalfm').text('회원번호가 존재하지 않습니다.');
 			}
-	
-
 		}
 	});  
-	
-	
 });
 	
-}); //회원번호 찾기
- function inputPhoneNumber(obj) {
+});
 
+//회원번호 찾기
+ function inputPhoneNumber(obj) {
 
 	 var regexp = /^[0-9]*$/;
 
 		 if( !regexp.test(obj.value) ) {
 		 	obj.value = obj.value.replace(/[^0-9]/g, "");
 		 }
-	 
 
     var number = obj.value.replace(/[^0-9]/g, "");
     var phone = "";
-
 
     if(number.length < 4) {
         return number;
@@ -579,31 +563,24 @@ $('body').on('click', '.mbtn2', function(){
         phone += number.substr(7);
     }
     obj.value = phone.substring(0,13);
-
 } 
 
 
 $('#rp').blur(function(){
-
 	if($(this).val().length > 12 ){
-
 		tel_check($(this).val());
 	}
-
-	
 });
 
 
-
 function tel_check(str){
-
-var regTel = /^(01[016789]{1}|070|02|0[3-9]{1}[0-9]{1})-[0-9]{3,4}-[0-9]{4}$/;
-
-if(!regTel.test(str)) {
-	alert('올바른 전화번호를 입력하세요.');
-	return false;
-}
-return true;
+	var regTel = /^(01[016789]{1}|070|02|0[3-9]{1}[0-9]{1})-[0-9]{3,4}-[0-9]{4}$/;
+	
+	if(!regTel.test(str)) {
+		alert('올바른 전화번호를 입력하세요.');
+		return false;
+	}
+	return true;
 }
 
 
