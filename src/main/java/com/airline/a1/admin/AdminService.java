@@ -54,4 +54,16 @@ public class AdminService {
 	public List<FlightDataVO> airportpartList(FlightDataVO flightDataVO) throws Exception {
 		return adminMapper.airportpartList(flightDataVO);
 	}
+	
+	public Integer tprice(FlightDataVO flightDataVO) throws Exception {
+		return adminMapper.tprice(flightDataVO);
+	}
+	
+	public Double trate(FlightDataVO flightDataVO) throws Exception {
+		return adminMapper.trate(flightDataVO);
+	}
+
+	public Integer ftotal(FlightDataVO flightDataVO) throws Exception {
+		return adminMapper.ftotal(flightDataVO);
+	}
 }

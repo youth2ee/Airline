@@ -378,6 +378,12 @@ public class BookingController {
 
 		//
 		String flightBNum = "";
+		
+		for(BookingTicketVO a: bookingTicketVO.getAdultList()) {
+			System.out.println(a.getMemberNum());
+		}
+		
+		
 
 		// 어른
 		if (bookingTicketVO.getAdultList() != null) {

@@ -394,10 +394,8 @@ ${arr[3]}시 ${arr[4]}분<i class='fas fa-angle-right' style='font-size:10px; pa
 </tr> -->
 				</table>
 
-				<div
-					style="width: 100%; margin: 0 auto; text-align: center; padding-top: 15px;">
-					<input type="button" value="찾기" style="margin: 0 auto;"
-						class="mbtn2">
+				<div style="width: 100%; margin: 0 auto; text-align: center; padding-top: 15px;">
+					<input type="button" value="찾기" style="margin: 0 auto;" class="mbtn2">
 				</div>
 				<div id="modalfm"></div>
 				<div style="width: 100%;">
@@ -413,67 +411,15 @@ ${arr[3]}시 ${arr[4]}분<i class='fas fa-angle-right' style='font-size:10px; pa
 
 <script type="text/javascript">
 
-	var x = 0;
-	$('.hannaName').blur(function(){
-		if($(this).val()==""){
-			x=1;
-		}
-	});
-
-
-	$('#btn').click(function(){
-		x=0;
-		$('.hn1').each(function(){
-			if($('.hn1 option:eq(0)').prop('selected')){
-			x=3;
-			}
-		});
-		
-		$('.hn2').each(function(){
-			if($('.hn2 option:eq(0)').prop('selected')){
-			x=3;
-		}
-		});
-		
-		$('.hn3').each(function(){
-			if($('.hn3 option:eq(0)').prop('selected')){
-			x=3;
-		}
-		});
-
-		$('.hannaName').each(function(){
-			if($('.hannaName').val()==""){
-				x=1;
-			}
-		});
-
-		if($('#re').val() == ''){
-			x=1;
-		}
-
-		if($('#rp').val() == ''){
-			x=1;
-		}
-
-		if(x==1){
-			alert("모든 항목을 입력하세요.");
-		}else if(x==3){
-			alert("생년월일을 입력하세요.");
-
-		}else{
-			$("#frm").submit();
-		}
-	});
-
-
-
 /* 회원번호 찾기 */
 
 $('.mbtn').click(function(){
 
+	var thi = $(this);
+	alert(thi.prop('class'));
+
 	$('#mname').val('');
 	$('#mid').val('');
-	$(this).prev('.mnum').val('');
 	$('#ubtn').css('display','none');
 
 	$('.modal-content').css('height','360px');
@@ -492,9 +438,14 @@ window.onclick = function(event) {
 	  }
 	}
 
-var thi = $(this);
+alert(2);
+alert(thi.prop('class'));
 
 $('body').on('click', '.mbtn2', function(){
+
+	alert(3);
+	alert(thi.prop('class'));
+	
 	$('.modal-content').css('height','491px');
 	$('#modalfm').css('display','block');
 	$('#ubtn').css('display','none');
@@ -517,7 +468,11 @@ $('body').on('click', '.mbtn2', function(){
 				$('#ubtn').css('display','block');
 
 					$('body').on('click','#ubtn', function(){
-				       thi.prev('.mnum').val(data);
+
+						alert(4);
+						alert(thi.prop('class'));
+						
+						thi.parent('.btb').find('.mnum').val(data);
 				       $('#myModal').css('display','none');
 					});
 				
@@ -584,6 +539,58 @@ function tel_check(str){
 	return true;
 }
 
+
+var x = 0;
+$('.hannaName').blur(function(){
+	if($(this).val()==""){
+		x=1;
+	}
+});
+
+
+$('#btn').click(function(){
+	x=0;
+	$('.hn1').each(function(){
+		if($('.hn1 option:eq(0)').prop('selected')){
+		x=3;
+		}
+	});
+	
+	$('.hn2').each(function(){
+		if($('.hn2 option:eq(0)').prop('selected')){
+		x=3;
+	}
+	});
+	
+	$('.hn3').each(function(){
+		if($('.hn3 option:eq(0)').prop('selected')){
+		x=3;
+	}
+	});
+
+	$('.hannaName').each(function(){
+		if($('.hannaName').val()==""){
+			x=1;
+		}
+	});
+
+	if($('#re').val() == ''){
+		x=1;
+	}
+
+	if($('#rp').val() == ''){
+		x=1;
+	}
+
+	if(x==1){
+		alert("모든 항목을 입력하세요.");
+	}else if(x==3){
+		alert("생년월일을 입력하세요.");
+
+	}else{
+		$("#frm").submit();
+	}
+});
 
 
 </script>

@@ -52,9 +52,38 @@ public class AdminController {
 	
 	
 	@GetMapping("adminmain")
-	public void adminmain() throws Exception{
+	public void adminmain(Model model) throws Exception{
 		
+		FlightDataVO flightDataVO = new FlightDataVO();
+		
+		flightDataVO.setAirlineNm("");
+		
+		  SimpleDateFormat format1 = new SimpleDateFormat ("yyyy-MM-dd");
+		  Date time = new Date(); 
+		  String today = format1.format(time); //오늘 날짜
+		
+		  flightDataVO.setDepPlandTime(today);
+		  flightDataVO.setArrPlandTime(today+" 23:59:59");
+		  Integer tprice = adminService.tprice(flightDataVO);
+		  model.addAttribute("tprice", tprice);
+		  
+		  flightDataVO.setDepPlandTime("2020-02-01");
+		  flightDataVO.setArrPlandTime("2020-02-29 23:59:59");
+		  Integer mprice = adminService.tprice(flightDataVO);
+		  model.addAttribute("mprice", mprice);
+		  
+		  format1 = new SimpleDateFormat ("yyyyMMdd");
+		  today = format1.format(time);
+		  flightDataVO.setDepPlandTime(today);
+		 
+		  // flightDataVO.setDepPlandTime("20200120");
+		  Double trate = adminService.trate(flightDataVO);
+		  model.addAttribute("trate", trate);
+
+		  Integer ftotal = adminService.ftotal(flightDataVO);
+		  model.addAttribute("ftotal", ftotal);
 	}
+	
 	
 	@GetMapping("admin1_1")
 	public void admin1_1(Model model) throws Exception{
@@ -71,7 +100,6 @@ public class AdminController {
 		  Date time = new Date(); 
 		  String today = format1.format(time); //오늘 날짜
 		 		
-
 		  //월 
 		  //2020-02-01 ~ 2020-02-29
 		  flightDataVO.setDepPlandTime("2020-02-01");
@@ -92,12 +120,9 @@ public class AdminController {
 		  
 		  List<FlightDataVO> sdlist = adminService.saleterm(flightDataVO);
 		  
-		  
 		  model.addAttribute("smlist", smlist);
 		  model.addAttribute("swlist", swlist);
 		  model.addAttribute("sdlist", sdlist);
-		
-		
 	}
 	
 	@GetMapping("admin1_1_layout")
