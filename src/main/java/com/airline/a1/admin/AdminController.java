@@ -86,29 +86,6 @@ public class AdminController {
 		  
 		  List<FlightDataVO> swlist = adminService.saleterm(flightDataVO);
 		  
-		/*
-		 * //2020-02-02 ~ 2020-02-08 flightDataVO.setDepPlandTime("2020-02-02");
-		 * flightDataVO.setArrPlandTime("2020-02-08");
-		 * 
-		 * List<FlightDataVO> sw2list = adminService.saleterm(flightDataVO);
-		 * 
-		 * //2020-02-09 ~ 2020-02-15 flightDataVO.setDepPlandTime("2020-02-09");
-		 * flightDataVO.setArrPlandTime("2020-02-15");
-		 * 
-		 * List<FlightDataVO> sw3list = adminService.saleterm(flightDataVO);
-		 * 
-		 * //2020-02-16 ~ 2020-02-22 flightDataVO.setDepPlandTime("2020-02-16");
-		 * flightDataVO.setArrPlandTime("2020-02-22");
-		 * 
-		 * List<FlightDataVO> sw4list = adminService.saleterm(flightDataVO);
-		 * 
-		 * //2020-02-23 ~ 2020-02-29 flightDataVO.setDepPlandTime("2020-02-23");
-		 * flightDataVO.setArrPlandTime("2020-02-29");
-		 * 
-		 * List<FlightDataVO> sw5list = adminService.saleterm(flightDataVO);
-		 */
-
-		  
 		  //일 오늘 2020-02-01 ~ 2020-02-01 23:59:59
 		  flightDataVO.setDepPlandTime(today);
 		  flightDataVO.setArrPlandTime(today+" 23:59:59");
@@ -118,11 +95,6 @@ public class AdminController {
 		  
 		  model.addAttribute("smlist", smlist);
 		  model.addAttribute("swlist", swlist);
-		/*
-		 * model.addAttribute("sw2list", sw2list); model.addAttribute("sw3list",
-		 * sw3list); model.addAttribute("sw4list", sw4list);
-		 * model.addAttribute("sw5list", sw5list);
-		 */
 		  model.addAttribute("sdlist", sdlist);
 		
 		
@@ -238,29 +210,6 @@ public class AdminController {
 		  
 		  List<FlightDataVO> swlist = adminService.saletermAir(flightDataVO);
 		  
-		/*
-		 * //2020-02-02 ~ 2020-02-08 flightDataVO.setDepPlandTime("2020-02-02");
-		 * flightDataVO.setArrPlandTime("2020-02-08");
-		 * 
-		 * List<FlightDataVO> sw2list = adminService.saleterm(flightDataVO);
-		 * 
-		 * //2020-02-09 ~ 2020-02-15 flightDataVO.setDepPlandTime("2020-02-09");
-		 * flightDataVO.setArrPlandTime("2020-02-15");
-		 * 
-		 * List<FlightDataVO> sw3list = adminService.saleterm(flightDataVO);
-		 * 
-		 * //2020-02-16 ~ 2020-02-22 flightDataVO.setDepPlandTime("2020-02-16");
-		 * flightDataVO.setArrPlandTime("2020-02-22");
-		 * 
-		 * List<FlightDataVO> sw4list = adminService.saleterm(flightDataVO);
-		 * 
-		 * //2020-02-23 ~ 2020-02-29 flightDataVO.setDepPlandTime("2020-02-23");
-		 * flightDataVO.setArrPlandTime("2020-02-29");
-		 * 
-		 * List<FlightDataVO> sw5list = adminService.saleterm(flightDataVO);
-		 */
-
-		  
 		  //일 오늘 2020-02-01 ~ 2020-02-01 23:59:59
 		  flightDataVO.setDepPlandTime(today);
 		  flightDataVO.setArrPlandTime(today+" 23:59:59");
@@ -270,11 +219,6 @@ public class AdminController {
 		  
 		  model.addAttribute("smlist", smlist);
 		  model.addAttribute("swlist", swlist);
-		/*
-		 * model.addAttribute("sw2list", sw2list); model.addAttribute("sw3list",
-		 * sw3list); model.addAttribute("sw4list", sw4list);
-		 * model.addAttribute("sw5list", sw5list);
-		 */
 		  model.addAttribute("sdlist", sdlist);
 		
 	}
@@ -374,6 +318,8 @@ public class AdminController {
 		List<FlightDataVO> flist = adminService.airallList();
 		model.addAttribute("flist", flist);
 		
+		
+		
 	}
 	
 	@GetMapping("admin2_1_layout")
@@ -392,20 +338,28 @@ public class AdminController {
 	
 	
 	@GetMapping("admin2_2")
-	public void admin2_2() throws Exception{
+	public void admin2_2(Model model) throws Exception{
+		List<AirportVO> airlineVOs = adminService.airportList();
+		model.addAttribute("alist", airlineVOs);
+		
+		List<FlightDataVO> flist = adminService.airallList();
+		model.addAttribute("flist", flist);
 		
 	}
 	
 	@GetMapping("admin2_2_layout")
 	public ModelAndView admin2_2_layout(FlightDataVO flightDataVO) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		List<FlightDataVO> flist = adminService.airpartList(flightDataVO);
+		List<FlightDataVO> flist = adminService.airportpartList(flightDataVO);
 		mv.addObject("flist", flist);
 		
 		List<AirlineVO> airlineVOs = adminService.airlineList();
 		mv.addObject("alist", airlineVOs);
 		
-		mv.setViewName("admin/common/admin2_1_layout");
+		
+		
+		
+		mv.setViewName("admin/common/admin2_2_layout");
 		
 		return mv;
 	}

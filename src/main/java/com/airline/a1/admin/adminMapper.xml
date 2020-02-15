@@ -26,6 +26,13 @@
 	order by depPlandTime desc
 	</select>
 	
+	<select id="airportpartList" parameterType="com.airline.a1.booking.FlightDataVO" resultType="com.airline.a1.booking.FlightDataVO">
+	select * from flightData
+	where depAirportNm = #{depAirportNm}
+	order by depPlandTime desc
+	</select>
+	
+	
 	<select id="getBookingInfo" parameterType="com.airline.a1.checkIn.ETicketVO" resultType="com.airline.a1.checkIn.ETicketVO">
 		select depPlandTime,arrPlandTime,kind,bookingTicket.bnum,fnum,bookingTicket.bookingNum,flightBNum,name,bookingTicket.id,depAirportNm,vihicleId,arrAirportNm,depPlandTime,arrPlandTime,totalPrice 
 		from flightData join bookingTicket 

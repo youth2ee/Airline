@@ -14,11 +14,6 @@
 
  <title>AIRLINE ADMIN</title>
 
- 
-    <c:import url="../template/boot.jsp"></c:import>
-  <link href="../resources/css/reset.css" rel="stylesheet">
- <link href="../resources/css/admin/admin2_1.css" rel="stylesheet">
- 
    <!-- Custom fonts for this template-->
   <link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -26,10 +21,13 @@
   <!-- Custom styles for this template-->
   <link href="${pageContext.request.contextPath}/resources/vendor/css/sb-admin-2.min.css" rel="stylesheet">
  
+  <link href="../resources/css/reset.css" rel="stylesheet">
+ <link href="../resources/css/admin/admin2_1.css" rel="stylesheet">
+    <c:import url="../template/boot.jsp"></c:import>
 
 
 </head>
-<c:import url="../template/roading.jsp"></c:import>
+
 
 <body id="page-top">
 
@@ -247,8 +245,11 @@
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
 
+
+
       <!-- Main Content -->
       <div id="content">
+     
 
         <!-- Topbar -->
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
@@ -295,7 +296,8 @@
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
-        <div class="container-fluid dbt">
+        <div class="container-fluid">
+         <c:import url="../template/roading.jsp"></c:import>
 
           <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800">항공편 관리</h1>
@@ -315,7 +317,7 @@
               <h6 class="m-0 font-weight-bold text-primary">항공사별 항공편 현황</h6>
             </div>
             <div class="card-body">
-              <div class="table-responsive">
+              <div class="table-responsive dbt">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>

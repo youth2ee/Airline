@@ -294,7 +294,7 @@
 
           <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800">매출 관리</h1>
-          <p class="mb-4">항공사별 매출 관리</p>
+          <p class="mb-4">공항별 매출 관리</p>
           
           <c:forEach items="${alist}" var="an">
  		   <div class="abtn">${an.apName}</div>
@@ -308,7 +308,7 @@
           <div class="card shadow mb-4 dbt">
             
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">항공사별 매출 현황</h6>
+              <h6 class="m-0 font-weight-bold text-primary">공항별 매출 현황</h6>
             </div>
             
             
@@ -319,7 +319,7 @@
               <div class="card shadow mb-4" style="width: 1596px;">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" style="width: 1594px;">
-                  <h6 class="m-0 font-weight-bold text-primary">항공사별 2월 매출 (2020년 2월 기준)</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">공항별 2월 매출 (2020년 2월 기준)</h6>
           
                 </div>
                 <!-- Card Body -->
@@ -336,7 +336,7 @@
               <div class="card shadow mb-4" style="width: 1596px;">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" style="width: 1594px;">
-                  <h6 class="m-0 font-weight-bold text-primary">항공사별 이번주 매출 (2020월 02월 11일 ~ 2020년 02월 17일 기준)</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">공항별 이번주 매출 (2020월 02월 11일 ~ 2020년 02월 17일 기준)</h6>
           
                 </div>
                 <!-- Card Body -->
@@ -354,7 +354,7 @@
               <div class="card shadow mb-4" style="width: 1596px;">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" style="width: 1594px;">
-                  <h6 class="m-0 font-weight-bold text-primary">항공사별 오늘 매출 (2020년 02월 17일 기준)</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">공항별 오늘 매출 (2020년 02월 17일 기준)</h6>
           
                 </div>
                 <!-- Card Body -->
