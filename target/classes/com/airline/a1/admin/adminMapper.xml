@@ -26,14 +26,13 @@
 	order by depPlandTime desc
 	</select>
 	
-
 	<select id="airportpartList" parameterType="com.airline.a1.booking.FlightDataVO" resultType="com.airline.a1.booking.FlightDataVO">
 	select * from flightData
 	where depAirportNm = #{depAirportNm}
 	order by depPlandTime desc
 	</select>
 	
-
+	
 	<select id="getBookingInfo" parameterType="com.airline.a1.checkIn.ETicketVO" resultType="com.airline.a1.checkIn.ETicketVO">
 		select depPlandTime,arrPlandTime,kind,bookingTicket.bnum,fnum,bookingTicket.bookingNum,flightBNum,name,bookingTicket.id,depAirportNm,vihicleId,arrAirportNm,depPlandTime,arrPlandTime,totalPrice 
 		from flightData join bookingTicket 
@@ -62,12 +61,10 @@
 	where Z.aName like concat(#{airlineNm}, '%')
 	order by Z.aName asc
 	</select>
-
 	
 	<select id="getMemberList" resultType="com.airline.a1.member.MembersVO">
 		select * from members where id != 'admin' order by id asc
 	</select>
-
 	
 	<select id="saletermAir" parameterType="com.airline.a1.booking.FlightDataVO" resultType="com.airline.a1.booking.FlightDataVO">
 	select Z.cityEng vihicleId, Z.apName airlineNm, Z.cityCode depPlandTime, Y.depAirportNm, ifnull(Y.a, 0) arrPlandTime 
@@ -91,6 +88,5 @@
 	<select id="airportList" resultType="com.airline.a1.admin.AirportVO">
 	select * from airport order by apName asc
 	</select>
-
   
   </mapper>
