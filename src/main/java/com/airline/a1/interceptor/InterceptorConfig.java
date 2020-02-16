@@ -39,7 +39,10 @@ public class InterceptorConfig implements WebMvcConfigurer {
 		
 			//로그인안되어 있으면 memberPage못가게 하기
 			registry.addInterceptor(memberInterceptor)
-			.addPathPatterns("/member/memberPage");
+			.addPathPatterns("/booking/*")
+			.addPathPatterns("/bookingMain")
+			.addPathPatterns("/mypage/*")
+			.excludePathPatterns("booking/bookingMain");
 			
 			registry.addInterceptor(noticeInterceptor)
 			.addPathPatterns("/notice/noticeWrite");

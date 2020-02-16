@@ -111,6 +111,9 @@
 
 $('.mplus').click(function(){
 
+	$('.mbnum').text('');
+	$('.mbmnum').text('');
+
 	$('#myModal').css('display','block');
 
 	$('.close').click(function(){

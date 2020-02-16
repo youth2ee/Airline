@@ -46,14 +46,14 @@
 <div id="hbh">
 <div id="hbhome"><i class="fa fa-home"></i></div>
 <div id="hbselect">
-<select onchange="location.href=this.value">
+<!-- <select onchange="location.href=this.value">
 <option selected="selected" value="./main">나의 Every Air</option>
 <option value="./memberUpdate">회원정보수정</option>
 <option value="./mileage">마일리지</option>
 <option value="./ticketCheck">예매내역</option>
 <option value="./park">주차장 예약내역</option>
 <option value="./limo">리무진 예약내역</option>
-</select>
+</select> -->
 </div>
 </div>
 </div>

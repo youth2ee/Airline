@@ -20,7 +20,7 @@ public class MemberInterceptor extends HandlerInterceptorAdapter{
 			return true;
 		}else {
 			//현재위치는 memberPage이므로 
-			response.sendRedirect("./memberLogin");
+			response.sendRedirect("/member/memberLogin");
 			return false;
 		}
 	}//boolean타입으로 리턴 : true-controller로 보낸다  / false-controller로 안보낸다

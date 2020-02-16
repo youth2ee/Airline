@@ -25,5 +25,6 @@ public interface BookingMapper {
 	
 	public MembersVO searchMember(MembersVO membersVO) throws Exception;
 	
+	public List<FlightDataVO> indexdep(FlightDataVO flightDataVO) throws Exception;
 	
 }
