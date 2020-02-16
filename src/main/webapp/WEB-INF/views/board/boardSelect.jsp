@@ -20,7 +20,7 @@
 
 
 
-<div id="headerBottom">
+<!-- <div id="headerBottom">
 <div id="hbh">
 <div id="hbhome"><i class="fa fa-home"></i></div>
 <div id="hbselect">
@@ -35,7 +35,7 @@
 </div>
 </div>
 
-</div>
+</div> -->
 
 
 <!---- container ---->
@@ -82,7 +82,8 @@
 					</c:if>
 					
 					<c:if test="${not empty param.menu}">
-					<a href="./noticeList1?menu=${param.menu}&curPage=${param.curPage}&search=${param.search}&kind=${param.kind}" id="btnList" type="button">목록보기</a>
+					<a href="./noticeList1?menu=${param.menu}&curPage=${param.curPage}&search=${param.search}&kind=${param.kind}" 
+					id="btnList" type="button">목록보기</a>
 					</c:if>
 			</div>
 	</div>

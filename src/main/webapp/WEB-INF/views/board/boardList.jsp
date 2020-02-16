@@ -62,23 +62,26 @@
 		<ul class="tabs">
 			<li class="tab-link current" data-tab="tab-1">
 					<a href="./noticeList?curPage=1&search=${pager.search}&kind=${pager.kind}"><span>전체</span></a>		
-			</li>
-			
+			</li>			
 			<li class="tab-link" data-tab="tab-2">					
-					<a href="./noticeList1?menu=EveryAir소식&curPage=1&search=${pager.search}&kind=${pager.kind}"><span class="val">EveryAir소식</span></a>		
-			</li>
-			
+					<a href="./noticeList1?menu=EveryAir소식&curPage=1&search=${pager.search}&kind=${pager.kind}">
+					<span class="val">EveryAir소식</span></a>		
+			</li>			
 			<li class="tab-link" data-tab="tab-3">
-				<a href="./noticeList1?menu=EveryAir클럽&curPage=1&search=${pager.search}&kind=${pager.kind}">  <span class="val">EveryAir클럽</span></a>
+				<a href="./noticeList1?menu=EveryAir클럽&curPage=1&search=${pager.search}&kind=${pager.kind}">  
+				<span class="val">EveryAir클럽</span></a>
 			</li>
 			<li class="tab-link" data-tab="tab-4">
-				<a href="./noticeList1?menu=유류할증료&curPage=1&search=${pager.search}&kind=${pager.kind}"><span>유류할증료</span></a>
+				<a href="./noticeList1?menu=유류할증료&curPage=1&search=${pager.search}&kind=${pager.kind}">
+				<span>유류할증료</span></a>
 			</li>
 			<li class="tab-link" data-tab="tab-5">
-				<a href="./noticeList1?menu=제휴사소식&curPage=1&search=${pager.search}&kind=${pager.kind}"><span>제휴사소식</span></a>
+				<a href="./noticeList1?menu=제휴사소식&curPage=1&search=${pager.search}&kind=${pager.kind}">
+				<span>제휴사소식</span></a>
 			</li>
 			<li class="tab-link" data-tab="tab-6">
-				<a href="./noticeList1?menu=기타&curPage=1&search=${pager.search}&kind=${pager.kind}"><span>기타</span></a>
+				<a href="./noticeList1?menu=기타&curPage=1&search=${pager.search}&kind=${pager.kind}">
+				<span>기타</span></a>
 			</li>
 		</ul>
 		</div>

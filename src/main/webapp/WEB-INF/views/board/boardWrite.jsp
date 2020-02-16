@@ -27,7 +27,7 @@
 
 
 
-<div id="headerBottom">
+<!-- <div id="headerBottom">
 <div id="hbh">
 <div id="hbhome"><i class="fa fa-home"></i></div>
 <div id="hbselect">
@@ -42,7 +42,7 @@
 </div>
 </div>
 
-</div>
+</div> -->
 
 <!---- container ---->
 <div id="wrap_container">

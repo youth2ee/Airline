@@ -75,9 +75,11 @@
 					<a href="./noticeList1?menu=EveryAir소식&curPage=1&search=${pager.search}&kind=${pager.kind}"> <span
 						class="val"> EveryAir소식 </span></a>
 				</li>
+				
 				<li class="tab-link" data-tab="tab-3" id="EveryAir클럽">
-					<a href="./noticeList1?menu=EveryAir클럽&curPage=1&search=${pager.search}&kind=${pager.kind}"> <span
-						class="val"> EveryAir클럽 </span></a></li>
+					<a href="./noticeList1?menu=EveryAir클럽&curPage=1&search=${pager.search}&kind=${pager.kind}"> 
+					<span class="val"> EveryAir클럽 </span></a></li>
+					
 				<li class="tab-link" data-tab="tab-4" id="유류할증료">
 					<a href="./noticeList1?menu=유류할증료&curPage=1&search=${pager.search}&kind=${pager.kind}"> <span> 유류할증료
 					</span></a></li>
