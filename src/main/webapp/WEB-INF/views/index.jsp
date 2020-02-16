@@ -138,7 +138,7 @@ $(document).ready(function() {
 		<div class="tab-content">
 			<div class="tab-pane active" id="tab1">
 
-				<form method="post" action="./bookingMain" id="frm">
+				<form method="post" action="./booking/bookingMain" id="frm">
 
 					<div class="radio-row" style="margin-bottom: 20px;">
 							<label class="radio-container m-r-45">왕복 
@@ -536,7 +536,6 @@ $(document).ready(function() {
 										</div>
 										<script type="text/javascript">
 											$('#txtDepartureAirportF').click(function(){
-													alert('gg');
 
 												});
 										</script>
@@ -572,7 +571,6 @@ $(document).ready(function() {
 										
 										<script type="text/javascript">
 											$('#txtArrivalAirportF').click(function(){
-													alert('gg');
 
 												});
 										</script>
@@ -638,10 +636,57 @@ $(document).ready(function() {
 						
 						<div id="searchDepArrResult" class="departure_list_wrap" style="display: none;"> -->
 						
+						<div style="display: none; width: 100%;" id="deptt">
+						
+						<div style="width: 1180px; padding: 10px; background-color:#eee; margin: 0 auto; margin-top: 10px;text-align: center; height: 434.44px; line-height: 434.44px;" id="te">
+						
+						</div>
+						
+						</div>
+						
 						
 							
 						</div>
-											<!-- 출도착 조회 -->
+						<!-- 출도착 조회 -->
+						
+						<script type="text/javascript">
+							$('#searchDepArr').click(function(){
+
+								$('.slide_inner').css('top','40px');
+								$('#deptt').css('display','block');
+								var soptsel =  $('#searchDate option:selected').val().replace('.','').replace('.','').trim();
+								var dc = $('#txtDepartureAirportF').val();
+								var ac = $('#txtArrivalAirportF').val();
+								
+
+  								$.ajax({
+									data : {
+										depAirportNm : dc,
+										arrAirportNm : ac,
+										depPlandTime : soptsel
+									},
+									type : "GET",
+									url : "/indexdep",
+									success : function(data) {
+
+										alert('모야');
+										$('#te').html(data);
+
+									}
+								}); 
+
+								
+							});
+						
+
+						</script>
+						
+						
+						
+						
+						
+						
+						
 						</div>
 				
 

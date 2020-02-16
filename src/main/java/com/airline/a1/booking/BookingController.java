@@ -73,6 +73,7 @@ public class BookingController {
 
 	@GetMapping("bookingMain")
 	public void bookingMain(Model model) throws Exception {
+		
 		List<String> airport = bookingService.airportList();
 		model.addAttribute("airportList", airport);
 		
@@ -433,11 +434,6 @@ public class BookingController {
 				}
 				adult.setBirth(adult.getYear() + adult.getMonth() + adult.getDay());
 
-				
-				System.out.println("dda");
-				System.out.println(adult.getGender());
-				System.out.println(adult.getMemberNum());
-				
 				//booking insert
 				bookingService.bookingInsert(adult);
 				

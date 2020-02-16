@@ -439,22 +439,22 @@
           <!-- Content Row -->
           <div class="row"> --%>
           
-          
+<!--           
           <div>
           <h1> 여기에 돟영상 넣을래 귀찮아 </h1>
-          </div>
-          
-          <video autoplay muted loop id="myVideo">
-  <source src="rain.mp4" type="video/mp4">
-  Your browser does not support HTML5 video.
+          </div> -->
+
+<div style="padding: 30px;">
+<video autoplay muted loop id="myVideo" >
+  <source src="../images/airline.mp4" type="video/mp4">
 </video>
 
 <div class="content">
-  <h1>Heading</h1>
-  <p>Lorem ipsum dolor sit amet, an his etiam torquatos. Tollit soleat phaedrum te duo, eum cu recteque expetendis neglegentur. Cu mentitum maiestatis persequeris pro, pri ponderum tractatos ei. Id qui nemore latine molestiae, ad mutat oblique delicatissimi pro.</p>
+  <h1>Every Air</h1>
+  <p>Enjoy your flight</p>
   <button id="myBtn" onclick="myFunction()">Pause</button>
 </div>
-          
+</div>          
           
           <script>
 var video = document.getElementById("myVideo");
@@ -562,7 +562,7 @@ function myFunction() {
   <!-- Page level custom scripts -->
 
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 //Set new default font family and font color to mimic Bootstrap's default styling
 Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#858796';
@@ -726,7 +726,7 @@ var myLineChart = new Chart(ctx, {
 });
 
 
-</script>
+</script> -->
 
 
 </body>

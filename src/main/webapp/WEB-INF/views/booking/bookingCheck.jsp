@@ -253,9 +253,6 @@ ${bVO.arrInfo.vihicleId} ${bVO.arrInfo.airlineNm}<br>
 
 			var t = Number(rt);
 			r = r + t;
-
-			
-			console.log(addComma(r));
 		});
 
 		
@@ -289,6 +286,7 @@ ${bVO.arrInfo.vihicleId} ${bVO.arrInfo.airlineNm}<br>
 			var rm = r - mil;
 			$('.tprice').html(' ' + addComma(rm) + '원');
 		});
+		
 
 		$('#useAll').click(function(){
 			$('#muse').val(${member.mileage});
@@ -307,7 +305,6 @@ ${bVO.arrInfo.vihicleId} ${bVO.arrInfo.airlineNm}<br>
 
 		$.each(numList, function(index, item) {
 			nlist = nlist + ',' + item;
-			
 		}); 
 
 	
