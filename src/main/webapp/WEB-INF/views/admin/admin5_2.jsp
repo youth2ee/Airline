@@ -392,7 +392,7 @@
 
           <!-- 김포공항 -->
           <!-- 인천공항 -->
-		  <h2 class="h4 mb-2 text-gray-800">제주공항 예약주차장</h2>
+		  <h2 class="h4 mb-2 text-gray-800">인천공항 예약주차장</h2>
           <div class="row">
             <!-- Earnings (Monthly) Card Example -->
             <div class="col-xl-3 col-md-6 mb-4">
@@ -490,7 +490,7 @@
 
           <!-- 인천공항 -->
           <!-- 제주공항 -->
-		  <h2 class="h4 mb-2 text-gray-800">인천공항 예약주차장</h2>
+		  <h2 class="h4 mb-2 text-gray-800">제주공항 예약주차장</h2>
           <div class="row">
             <!-- Earnings (Monthly) Card Example -->
             <div class="col-xl-3 col-md-6 mb-4">

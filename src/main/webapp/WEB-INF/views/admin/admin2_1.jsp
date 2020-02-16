@@ -13,8 +13,6 @@
   <meta name="author" content=""> -->
 
  <title>AIRLINE ADMIN</title>
-
- 
     <c:import url="../template/boot.jsp"></c:import>
   <link href="../resources/css/reset.css" rel="stylesheet">
  <link href="../resources/css/admin/admin2_1.css" rel="stylesheet">
@@ -25,9 +23,6 @@
 
   <!-- Custom styles for this template-->
   <link href="${pageContext.request.contextPath}/resources/vendor/css/sb-admin-2.min.css" rel="stylesheet">
- 
-
-
 </head>
 <c:import url="../template/roading.jsp"></c:import>
 

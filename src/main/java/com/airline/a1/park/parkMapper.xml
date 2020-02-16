@@ -49,12 +49,12 @@
   	
   	<!-- 공항별 지난 달 수익 -->
   	<select id="lastMonthEarn" parameterType="java.lang.String" resultType="com.airline.a1.park.pReservationVO">
-  		select airport, sum(rate) rate from airline.pReservation where endDate like CONCAT(#{pm}, '%') group by airport
+  		select airport, sum(rate) rate from airline.pReservation where endDate like CONCAT(#{pm}, '%') group by airport order by airport asc
   	</select>
   	
   	<!-- 공항별 이번 달 예상 수익 -->
   	<select id="thisMonthEarn" parameterType="java.lang.String" resultType="com.airline.a1.park.pReservationVO">
-  		select airport, sum(rate) rate from airline.pReservation where endDate like CONCAT(#{tm}, '%') group by airport
+  		select airport, sum(rate) rate from airline.pReservation where endDate like CONCAT(#{tm}, '%') group by airport order by airport asc
   	</select>
   	
   	<select id="today" resultType="com.airline.a1.park.pReservationVO">
@@ -72,7 +72,7 @@
 		left outer join
 		(select * from airline.pReservation where date(now()) = endDate) B
 		on A.airport = B.airport
-		group by A.airport
+		group by A.airport order by airport asc
   	</select>
   	
   	<select id="parkIn" resultType="com.airline.a1.park.pReservationVO">
@@ -81,7 +81,7 @@
 		left outer join
 		(select * from airline.pReservation where date(now()) = startDate) B
 		on A.airport = B.airport
-		group by A.airport
+		group by A.airport order by airport asc
   	</select>
   	
   	
