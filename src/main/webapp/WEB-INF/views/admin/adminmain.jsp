@@ -21,6 +21,10 @@
 
   <!-- Custom styles for this template-->
   <link href="${pageContext.request.contextPath}/resources/vendor/css/sb-admin-2.min.css" rel="stylesheet">
+
+
+<link href="../resources/css/admin/adminmain.css" rel="stylesheet">
+
 </head>
 
 
@@ -380,8 +384,7 @@
             </div>
           </div>
 
-          <!-- Content Row -->
-
+<%--           <!-- Content Row -->
           <div class="row">
 
             <!-- Area Chart -->
@@ -434,7 +437,40 @@
           </div>
 
           <!-- Content Row -->
-          <div class="row">
+          <div class="row"> --%>
+          
+          
+          <div>
+          <h1> 여기에 돟영상 넣을래 귀찮아 </h1>
+          </div>
+          
+          <video autoplay muted loop id="myVideo">
+  <source src="rain.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>
+
+<div class="content">
+  <h1>Heading</h1>
+  <p>Lorem ipsum dolor sit amet, an his etiam torquatos. Tollit soleat phaedrum te duo, eum cu recteque expetendis neglegentur. Cu mentitum maiestatis persequeris pro, pri ponderum tractatos ei. Id qui nemore latine molestiae, ad mutat oblique delicatissimi pro.</p>
+  <button id="myBtn" onclick="myFunction()">Pause</button>
+</div>
+          
+          
+          <script>
+var video = document.getElementById("myVideo");
+var btn = document.getElementById("myBtn");
+
+function myFunction() {
+  if (video.paused) {
+    video.play();
+    btn.innerHTML = "Pause";
+  } else {
+    video.pause();
+    btn.innerHTML = "Play";
+  }
+}
+</script>
+          
 
             <!-- Content Column -->
             <div class="col-lg-6 mb-4">
