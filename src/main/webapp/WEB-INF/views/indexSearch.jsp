@@ -20,16 +20,6 @@
 			<div id="hbhome">
 				<i class="fa fa-home"></i>
 			</div>
-			<div id="hbselect">
-				<select onchange="location.href=this.value">
-					<option selected="selected" value="./main">나의 Every Air</option>
-					<option value="./memberUpdate">회원정보수정</option>
-					<option value="./mileage">마일리지</option>
-					<option value="./ticketCheck">예매내역</option>
-					<option value="./park">주차장 예약내역</option>
-					<option value="./limo">리무진 예약내역</option>
-				</select>
-			</div>
 		</div>
 	</div>
 
@@ -68,7 +58,7 @@
 							
 							<c:if test="${not empty vo}">
 							<c:if test="${vo.cate == 'EveryAir소식'}">
-								<li OnClick="location.href ='./board/boardSelect?num=${vo.num}'" style="cursor:pointer;" >
+								<li OnClick="location.href ='./notice/noticeSelect?num=${vo.num}'" style="cursor:pointer;" >
 									<div class="ttitle">${vo.title}</div>
 									<div class="tcons">${vo.textContents}</div>
 								</li>
@@ -82,7 +72,7 @@
 						
 							<c:if test="${not empty vo}">
 							<c:if test="${vo.cate == 'EveryAir클럽'}">
-								<li OnClick="location.href ='./board/boardSelect?num=${vo.num}'" style="cursor:pointer;" >
+								<li OnClick="location.href ='./notice/noticeSelect?num=${vo.num}'" style="cursor:pointer;" >
 									<div class="ttitle">${vo.title}</div>
 									<div class="tcons">${vo.textContents}</div>
 								</li>
@@ -95,7 +85,7 @@
 
 							<c:if test="${not empty vo}">
 							<c:if test="${vo.cate == '유류할증료'}">
-								<li OnClick="location.href ='./board/boardSelect?num=${vo.num}'" style="cursor:pointer;" >
+								<li OnClick="location.href ='./notice/noticeSelect?num=${vo.num}'" style="cursor:pointer;" >
 									<div class="ttitle">${vo.title}</div>
 									<div class="tcons">${vo.textContents}</div>
 								</li>
@@ -109,7 +99,7 @@
 						
 							<c:if test="${not empty vo}">
 							<c:if test="${vo.cate == '제휴사소식'}">
-								<li OnClick="location.href ='./board/boardSelect?num=${vo.num}'" style="cursor:pointer;" >
+								<li OnClick="location.href ='./notice/noticeSelect?num=${vo.num}'" style="cursor:pointer;" >
 									<div class="ttitle">${vo.title}</div>
 									<div class="tcons">${vo.textContents}</div>
 								</li>
@@ -123,7 +113,7 @@
 							
 							<c:if test="${not empty vo}">
 							<c:if test="${vo.cate == '기타'}">
-								<li OnClick="location.href ='./board/boardSelect?num=${vo.num}'" style="cursor:pointer;" >
+								<li OnClick="location.href ='./notice/noticeSelect?num=${vo.num}'" style="cursor:pointer;" >
 									<div class="ttitle">${vo.title}</div>
 									<div class="tcons">${vo.textContents}</div>
 								</li>
@@ -220,7 +210,7 @@
 
 					$('.ttitle').each(function(index) {
 						var tlist2 = $(this).text();
-						tlist2 = tlist2.replace(search, "<span class='tact'>" + search + "</span>");
+						tlist2 = tlist2.replace(search, "<span class='tact2'>" + search + "</span>");
 
 						$(this).html(tlist2);
 
@@ -260,7 +250,7 @@
 
 							$('.ttitle').each(function(index) {
 								var tlist2 = $(this).text();
-								tlist2 = tlist2.replace(search, "<span class='tact'>" + search + "</span>");
+								tlist2 = tlist2.replace(search, "<span class='tact2'>" + search + "</span>");
 
 								$(this).html(tlist2);
 

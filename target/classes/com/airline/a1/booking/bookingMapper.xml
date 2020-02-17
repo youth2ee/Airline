@@ -67,6 +67,16 @@ select * from members
 where name=#{name} and id=#{id}
 </select>
 
+<!-- index 출도착  -->
+<select id="indexdep" parameterType="com.airline.a1.booking.FlightDataVO" resultType="com.airline.a1.booking.FlightDataVO">
+    select * from flightData
+    where depAirportNm = #{depAirportNm} and arrAirportNm = #{arrAirportNm}
+    and depPlandTime between #{depPlandTime} and #{arrPlandTime}
+    order by depPlandTime desc
+    limit 0, 10
+</select>
+
+
 
 
 </mapper>

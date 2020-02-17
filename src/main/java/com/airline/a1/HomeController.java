@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +20,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -61,6 +63,37 @@ public class HomeController {
 		List<String> airport = bookingService.airportList();
 		model.addAttribute("airportList", airport);
 		
+		
+		//출도착 조회
+		Date date = new Date();
+		SimpleDateFormat sdformat = new SimpleDateFormat("yyyy.MM.dd"); 
+		String now = sdformat.format(date);
+		model.addAttribute("t_3", now);
+		
+		Calendar cal = Calendar.getInstance();
+		
+		cal.setTime(date);
+		cal.add(Calendar.DAY_OF_YEAR, -2);
+		String t_1 = sdformat.format(cal.getTime());
+		
+		cal.setTime(date);
+		cal.add(Calendar.DAY_OF_YEAR, -1);
+		String t_2 = sdformat.format(cal.getTime());
+		
+		cal.setTime(date);
+		cal.add(Calendar.DAY_OF_YEAR, 1);
+		String t_4 = sdformat.format(cal.getTime());
+		
+		cal.setTime(date);
+		cal.add(Calendar.DAY_OF_YEAR, 2);
+		String t_5 = sdformat.format(cal.getTime());
+
+		model.addAttribute("t_1", t_1);
+		model.addAttribute("t_2", t_2);
+		model.addAttribute("t_4", t_4);
+		model.addAttribute("t_5", t_5);
+		
+		
 		return "index";
 	}
 
@@ -77,11 +110,11 @@ public class HomeController {
 	
 	
 	@GetMapping("indexSearch")
-	public void indexSearch(Model model, String search) throws Exception {
+	public ModelAndView indexSearch( String search,  HttpServletRequest request) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+		if(request.getHeader("Referer") != null) {
 		if (search != "") {
-
-			/* System.out.println(search); */
-
 			List<BoardVO> ar = searchService.searchTotalList(search);
 			
 			if(ar.size() > 0) {
@@ -106,25 +139,15 @@ public class HomeController {
 			ar = new ArrayList<BoardVO>();
 		}
 			  
-			/*
-			 * SearchRankingVO newVO = searchService.rListSelect();
-			 * 
-			 * Map<String, Integer> tolist = searchService.listUpdate(newVO);
-			 * model.addAttribute("tolist", tolist);
-			 */
-			  
 			customSchedule.fixRateSchedule();
 			
 			Map<String, Integer> tolist = searchService.rListTwo();
-			model.addAttribute("tolist", tolist);
-			
-
-			 
-			model.addAttribute("search", search);
-			model.addAttribute("tlist", ar);
+			mv.addObject("tolist", tolist);
+			mv.addObject("search", search);
+			mv.addObject("tlist", ar);
 			
 			List<SearchVO> cr = searchService.realList();
-			model.addAttribute("rList", cr);
+			mv.addObject("rList", cr);
 			
 			SearchVO searchVO = new SearchVO();
 			searchVO.setSearch(search);
@@ -226,9 +249,17 @@ public class HomeController {
 				}
 			}
 			
-			System.out.println(searchVO.getSearch());
-			
 		}
+		
+		mv.setViewName("indexSearch");
+		} else {
+			mv.addObject("msg", "올바른 접근이 아닙니다.");
+			mv.addObject("path", "../");
+			mv.setViewName("common/common_result");
+		}
+		
+		return mv;
+		
 	}
 
 	@PostMapping("indexSearch")
@@ -237,7 +268,11 @@ public class HomeController {
 	}
 
 	@GetMapping("searchSelect")
-	public ModelAndView searchSelect(String menu, String search) throws Exception {
+	public ModelAndView searchSelect(String menu, String search, HttpServletRequest request) throws Exception {
+		ModelAndView mv = new ModelAndView();
+	
+	if(request.getHeader("Referer") != null) {
+		
 		NoticeVO noticeVO = new NoticeVO();
 		noticeVO.setTitle(search);
 		noticeVO.setWriter(menu);
@@ -264,24 +299,35 @@ public class HomeController {
 			  con.setTextContents(tcon);
 		  }
 
-		ModelAndView mv = new ModelAndView();
 		mv.addObject("cate", menu);
 		mv.addObject("list", ar);
 		mv.setViewName("layout/searchList");
+	} else {
+		mv.addObject("msg", "올바른 접근이 아닙니다.");
+		mv.addObject("path", "../");
+		mv.setViewName("common/common_result");
+	}
+	
+	return mv;
 
-		return mv;
 	}
 	
 	@GetMapping("rlist")
-	public ModelAndView rlist() throws Exception {
+	public ModelAndView rlist(HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		
-		Map<String, Integer> tolist = searchService.rListTwo();
-		mv.addObject("tolist", tolist);
-		
-		List<SearchVO> cr = searchService.realList();
-		mv.addObject("rList", cr);
-		mv.setViewName("layout/rlist");
+		if(request.getHeader("Referer") != null) {
+			Map<String, Integer> tolist = searchService.rListTwo();
+			mv.addObject("tolist", tolist);
+			
+			List<SearchVO> cr = searchService.realList();
+			mv.addObject("rList", cr);
+			mv.setViewName("layout/rlist");
+		} else {
+			mv.addObject("msg", "올바른 접근이 아닙니다.");
+			mv.addObject("path", "../");
+			mv.setViewName("common/common_result");
+		}
 		
 		return mv;
 	}
@@ -338,9 +384,26 @@ public class HomeController {
 	}
 	
 	
+	@GetMapping("bookingMain")
+	public ModelAndView bookingMain(HttpServletRequest request) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+		if(request.getHeader("Referer") == null) {
+			mv.addObject("msg", "올바른 접근이 아닙니다.");
+			mv.addObject("path", "../");
+			mv.setViewName("common/common_result");
+		}
+		
+		
+		return mv;
+		
+	}
+	
 	@PostMapping("bookingMain")
-	public ModelAndView bookingMain(BookingTicketVO bookingTicketVO) throws Exception {
-
+	public ModelAndView bookingMain(BookingTicketVO bookingTicketVO, HttpServletRequest request) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+		if(request.getHeader("Referer") != null) {
 		String date = bookingTicketVO.getDate();
 		String ddate = "";
 		String adate = "";
@@ -451,7 +514,7 @@ public class HomeController {
 			System.out.println(bookingTicketVO.getArrLoc());
 		}
 
-		ModelAndView mv = new ModelAndView();
+		
 
 		mv.addObject("bookingVO", bookingTicketVO);
 		mv.addObject("Dlist", ddates);
@@ -460,8 +523,42 @@ public class HomeController {
 		mv.addObject("AairList", aairList);
 		mv.addObject("today", today);
 		mv.setViewName("booking/bookingList");
+		
+		}else {
+			mv.addObject("msg", "올바른 접근이 아닙니다.");
+			mv.addObject("path", "../");
+			mv.setViewName("common/common_result");
+		}
+		
+		
+		return mv;
+
+	}
+	
+	
+	//출도착 조회
+	@RequestMapping("indexdep")
+	public ModelAndView indexdep(FlightDataVO flightDataVO, HttpServletRequest request) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		String ft = flightDataVO.getDepPlandTime().replace(" ", "");
+		String ft2 = ft+"0000";
+		String ft3 = ft+"2359";
+		
+			flightDataVO.setDepPlandTime(ft2);
+			flightDataVO.setArrPlandTime(ft3);
+			
+			List<FlightDataVO> fdlist =  bookingService.indexdep(flightDataVO);
+			
+			for(FlightDataVO f : fdlist) {
+				System.out.println("ㅎ하하하ㅏㅎ");
+				System.out.println(f.getDepAirportNm());
+			}
+			
+			mv.addObject("fdlist", fdlist);
+			mv.setViewName("depCheck");
 
 		return mv;
+		
 	}
 	
 }

@@ -274,7 +274,6 @@ class AirlineApplicationTests {
 								System.out.println("일반석운임 : 0");
 								flightDataVO.setEconomyCharge("0");
 							}
-							// System.out.println("비즈니스석운임 : " + getTagValue("prestigeCharge", eElement));
 							if (eElement.getElementsByTagName("depAirportNm").getLength() != 0) {
 								System.out.println("출발공항 : " + getTagValue("depAirportNm", eElement));
 								flightDataVO.setDepAirportNm(getTagValue("depAirportNm", eElement));

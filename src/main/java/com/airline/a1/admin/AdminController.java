@@ -24,6 +24,7 @@ import com.airline.a1.park.pInfoVO;
 import com.airline.a1.park.pReservationVO;
 import com.airline.a1.checkIn.ETicketVO;
 import com.airline.a1.member.MembersVO;
+import com.airline.a1.limo.LimoVO;
 import com.airline.a1.board.BoardVO;
 import com.airline.a1.board.NoticeService;
 import com.airline.a1.board.NoticeVO;
@@ -52,9 +53,38 @@ public class AdminController {
 	
 	
 	@GetMapping("adminmain")
-	public void adminmain() throws Exception{
+	public void adminmain(Model model) throws Exception{
 		
+		FlightDataVO flightDataVO = new FlightDataVO();
+		
+		flightDataVO.setAirlineNm("");
+		
+		  SimpleDateFormat format1 = new SimpleDateFormat ("yyyy-MM-dd");
+		  Date time = new Date(); 
+		  String today = format1.format(time); //오늘 날짜
+		
+		  flightDataVO.setDepPlandTime(today);
+		  flightDataVO.setArrPlandTime(today+" 23:59:59");
+		  Integer tprice = adminService.tprice(flightDataVO);
+		  model.addAttribute("tprice", tprice);
+		  
+		  flightDataVO.setDepPlandTime("2020-02-01");
+		  flightDataVO.setArrPlandTime("2020-02-29 23:59:59");
+		  Integer mprice = adminService.tprice(flightDataVO);
+		  model.addAttribute("mprice", mprice);
+		  
+		  format1 = new SimpleDateFormat ("yyyyMMdd");
+		  today = format1.format(time);
+		  flightDataVO.setDepPlandTime(today);
+		 
+		  // flightDataVO.setDepPlandTime("20200120");
+		  Double trate = adminService.trate(flightDataVO);
+		  model.addAttribute("trate", trate);
+
+		  Integer ftotal = adminService.ftotal(flightDataVO);
+		  model.addAttribute("ftotal", ftotal);
 	}
+	
 	
 	@GetMapping("admin1_1")
 	public void admin1_1(Model model) throws Exception{
@@ -71,7 +101,6 @@ public class AdminController {
 		  Date time = new Date(); 
 		  String today = format1.format(time); //오늘 날짜
 		 		
-
 		  //월 
 		  //2020-02-01 ~ 2020-02-29
 		  flightDataVO.setDepPlandTime("2020-02-01");
@@ -86,46 +115,15 @@ public class AdminController {
 		  
 		  List<FlightDataVO> swlist = adminService.saleterm(flightDataVO);
 		  
-		/*
-		 * //2020-02-02 ~ 2020-02-08 flightDataVO.setDepPlandTime("2020-02-02");
-		 * flightDataVO.setArrPlandTime("2020-02-08");
-		 * 
-		 * List<FlightDataVO> sw2list = adminService.saleterm(flightDataVO);
-		 * 
-		 * //2020-02-09 ~ 2020-02-15 flightDataVO.setDepPlandTime("2020-02-09");
-		 * flightDataVO.setArrPlandTime("2020-02-15");
-		 * 
-		 * List<FlightDataVO> sw3list = adminService.saleterm(flightDataVO);
-		 * 
-		 * //2020-02-16 ~ 2020-02-22 flightDataVO.setDepPlandTime("2020-02-16");
-		 * flightDataVO.setArrPlandTime("2020-02-22");
-		 * 
-		 * List<FlightDataVO> sw4list = adminService.saleterm(flightDataVO);
-		 * 
-		 * //2020-02-23 ~ 2020-02-29 flightDataVO.setDepPlandTime("2020-02-23");
-		 * flightDataVO.setArrPlandTime("2020-02-29");
-		 * 
-		 * List<FlightDataVO> sw5list = adminService.saleterm(flightDataVO);
-		 */
-
-		  
 		  //일 오늘 2020-02-01 ~ 2020-02-01 23:59:59
 		  flightDataVO.setDepPlandTime(today);
 		  flightDataVO.setArrPlandTime(today+" 23:59:59");
 		  
 		  List<FlightDataVO> sdlist = adminService.saleterm(flightDataVO);
 		  
-		  
 		  model.addAttribute("smlist", smlist);
 		  model.addAttribute("swlist", swlist);
-		/*
-		 * model.addAttribute("sw2list", sw2list); model.addAttribute("sw3list",
-		 * sw3list); model.addAttribute("sw4list", sw4list);
-		 * model.addAttribute("sw5list", sw5list);
-		 */
 		  model.addAttribute("sdlist", sdlist);
-		
-		
 	}
 	
 	@GetMapping("admin1_1_layout")
@@ -230,35 +228,13 @@ public class AdminController {
 		  
 		  List<FlightDataVO> smlist = adminService.saletermAir(flightDataVO);
 		  
+		  
 		  //주 
 		  //2020-01-26 ~ 2020-02-01
 		  flightDataVO.setDepPlandTime("2020-02-11");
 		  flightDataVO.setArrPlandTime("2020-02-17 23:59:59");
 		  
 		  List<FlightDataVO> swlist = adminService.saletermAir(flightDataVO);
-		  
-		/*
-		 * //2020-02-02 ~ 2020-02-08 flightDataVO.setDepPlandTime("2020-02-02");
-		 * flightDataVO.setArrPlandTime("2020-02-08");
-		 * 
-		 * List<FlightDataVO> sw2list = adminService.saleterm(flightDataVO);
-		 * 
-		 * //2020-02-09 ~ 2020-02-15 flightDataVO.setDepPlandTime("2020-02-09");
-		 * flightDataVO.setArrPlandTime("2020-02-15");
-		 * 
-		 * List<FlightDataVO> sw3list = adminService.saleterm(flightDataVO);
-		 * 
-		 * //2020-02-16 ~ 2020-02-22 flightDataVO.setDepPlandTime("2020-02-16");
-		 * flightDataVO.setArrPlandTime("2020-02-22");
-		 * 
-		 * List<FlightDataVO> sw4list = adminService.saleterm(flightDataVO);
-		 * 
-		 * //2020-02-23 ~ 2020-02-29 flightDataVO.setDepPlandTime("2020-02-23");
-		 * flightDataVO.setArrPlandTime("2020-02-29");
-		 * 
-		 * List<FlightDataVO> sw5list = adminService.saleterm(flightDataVO);
-		 */
-
 		  
 		  //일 오늘 2020-02-01 ~ 2020-02-01 23:59:59
 		  flightDataVO.setDepPlandTime(today);
@@ -269,11 +245,6 @@ public class AdminController {
 		  
 		  model.addAttribute("smlist", smlist);
 		  model.addAttribute("swlist", swlist);
-		/*
-		 * model.addAttribute("sw2list", sw2list); model.addAttribute("sw3list",
-		 * sw3list); model.addAttribute("sw4list", sw4list);
-		 * model.addAttribute("sw5list", sw5list);
-		 */
 		  model.addAttribute("sdlist", sdlist);
 		
 	}
@@ -297,45 +268,45 @@ public class AdminController {
 		  flightDataVO.setDepPlandTime("2020-02-01");
 		  flightDataVO.setArrPlandTime("2020-02-29 23:59:59");
 		  
-		  List<FlightDataVO> smlist = adminService.saleterm(flightDataVO);
+		  List<FlightDataVO> smlist = adminService.saletermAir(flightDataVO);
 		  
 		  //주 
 		  //2020-01-26 ~ 2020-02-01
 		  flightDataVO.setDepPlandTime("2020-01-26");
 		  flightDataVO.setArrPlandTime("2020-02-01 23:59:59");
 		  
-		  List<FlightDataVO> sw1list = adminService.saleterm(flightDataVO);
+		  List<FlightDataVO> sw1list = adminService.saletermAir(flightDataVO);
 		  
 		  //2020-02-02 ~ 2020-02-08
 		  flightDataVO.setDepPlandTime("2020-02-02");
 		  flightDataVO.setArrPlandTime("2020-02-08 23:59:59");
 		  
-		  List<FlightDataVO> sw2list = adminService.saleterm(flightDataVO);
+		  List<FlightDataVO> sw2list = adminService.saletermAir(flightDataVO);
 		  
 		  //2020-02-09 ~ 2020-02-15
 		  flightDataVO.setDepPlandTime("2020-02-09");
 		  flightDataVO.setArrPlandTime("2020-02-15 23:59:59");
 		  
-		  List<FlightDataVO> sw3list = adminService.saleterm(flightDataVO);
+		  List<FlightDataVO> sw3list = adminService.saletermAir(flightDataVO);
 		  
 		  //2020-02-16 ~ 2020-02-22
 		  flightDataVO.setDepPlandTime("2020-02-16");
 		  flightDataVO.setArrPlandTime("2020-02-22 23:59:59");
 		  
-		  List<FlightDataVO> sw4list = adminService.saleterm(flightDataVO);
+		  List<FlightDataVO> sw4list = adminService.saletermAir(flightDataVO);
 		  
 		  //2020-02-23 ~ 2020-02-29
 		  flightDataVO.setDepPlandTime("2020-02-23");
 		  flightDataVO.setArrPlandTime("2020-02-29 23:59:59");
 		  
-		  List<FlightDataVO> sw5list = adminService.saleterm(flightDataVO);
+		  List<FlightDataVO> sw5list = adminService.saletermAir(flightDataVO);
 
 		  
 		  //일 오늘 2020-02-01 ~ 2020-02-01 23:59:59
 		  flightDataVO.setDepPlandTime(today);
 		  flightDataVO.setArrPlandTime(today+" 23:59:59");
 		  
-		  List<FlightDataVO> sdlist = adminService.saleterm(flightDataVO);
+		  List<FlightDataVO> sdlist = adminService.saletermAir(flightDataVO);
 		  
 		  
 		
@@ -348,10 +319,10 @@ public class AdminController {
 		mv.addObject("sdlist", sdlist.get(0));
 		
 		
-		List<AirlineVO> airlineVOs = adminService.airlineList();
+		List<AirportVO> airlineVOs = adminService.airportList();
 		mv.addObject("alist", airlineVOs);
 		
-		mv.setViewName("admin/common/admin1_1_layout");
+		mv.setViewName("admin/common/admin1_2_layout");
 		
 		return mv;
 	}
@@ -373,6 +344,8 @@ public class AdminController {
 		List<FlightDataVO> flist = adminService.airallList();
 		model.addAttribute("flist", flist);
 		
+		
+		
 	}
 	
 	@GetMapping("admin2_1_layout")
@@ -391,9 +364,33 @@ public class AdminController {
 	
 	
 	@GetMapping("admin2_2")
-	public void admin2_2() throws Exception{
+	public void admin2_2(Model model) throws Exception{
+		List<AirportVO> airlineVOs = adminService.airportList();
+		model.addAttribute("alist", airlineVOs);
+		
+		List<FlightDataVO> flist = adminService.airallList();
+		model.addAttribute("flist", flist);
 		
 	}
+	
+	@GetMapping("admin2_2_layout")
+	public ModelAndView admin2_2_layout(FlightDataVO flightDataVO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		List<FlightDataVO> flist = adminService.airportpartList(flightDataVO);
+		mv.addObject("flist", flist);
+		
+		List<AirlineVO> airlineVOs = adminService.airlineList();
+		mv.addObject("alist", airlineVOs);
+		
+		
+		
+		
+		mv.setViewName("admin/common/admin2_2_layout");
+		
+		return mv;
+	}
+	
+	
 	
 	@GetMapping("admin3_1")
 	public ModelAndView admin3_1() throws Exception{
@@ -454,12 +451,44 @@ public class AdminController {
 	}
 
 	@GetMapping("admin6_1")
-	public void admin6_1() throws Exception{
-	
+	public ModelAndView admin6_1(LimoVO limoVO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		List<LimoVO> ar = adminService.limoMember();
+		mv.addObject("limoMember", ar);
+
+		return mv;
 	}
 	
 	@GetMapping("admin6_2")
-	public void admin6_2() throws Exception{
+	public ModelAndView admin6_2(LimoVO limoVO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		List<Integer> ar = new ArrayList<Integer>();
+		List<Integer> ar2 = new ArrayList<Integer>();
+		List<Integer> ar3 = new ArrayList<Integer>();
+		int result2 = adminService.limoTotalSum();
+		int result4 = adminService.personSum();
+		int result6  = adminService.limoTodaySum();
+		String [] airport = {"인천공항", "김포공항", "양양공항", "청주공항", "대구공항", "무안공항", "여수공항", "김해공항", "울산공항", "제주공항"};
+		for(int i=0; i<airport.length; i++) {
+			int result = adminService.limoSum(airport[i]);
+			ar.add(result);
+		}
+		for(int j=0; j<airport.length; j++) {
+			int result3 = adminService.limoTotalPerson(airport[j]);
+			ar2.add(result3);
+		}
+		for(int z=0; z<airport.length; z++) {
+			int result5 = adminService.todaySum(airport[z]);
+			ar3.add(result5);
+		}
+		mv.addObject("limo", ar);
+		mv.addObject("SumTotal", result2);
+		mv.addObject("SumPerson", ar2);
+		mv.addObject("PersonSum", result4);
+		mv.addObject("todaySum", ar3);
+		mv.addObject("limoTodaySum", result6);
+		
+		return mv;
 		
 	}
 	

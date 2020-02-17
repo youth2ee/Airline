@@ -138,7 +138,7 @@ $(document).ready(function() {
 		<div class="tab-content">
 			<div class="tab-pane active" id="tab1">
 
-				<form method="post" action="./bookingMain" id="frm">
+				<form method="post" action="./booking/bookingMain" id="frm">
 
 					<div class="radio-row" style="margin-bottom: 20px;">
 							<label class="radio-container m-r-45">왕복 
@@ -314,6 +314,8 @@ $(document).ready(function() {
 			<div class="section" id="section2"
 				style="background: url(https://flyasiana.com/C/pc/image/main/bg_section03.jpg); background-size: 1920px;">
 
+			<div style="position: relative; top: 150px;">
+			
 				<div class="checkbox_text">
 					<h2>체크인</h2>
 					<p>원하시는 좌석의 탑승권을 미리 발급받고 공항에서 대기시간을 줄이세요.</p>
@@ -348,1924 +350,108 @@ $(document).ready(function() {
 		</div>
 				
 		<div id="myModal" class="modal">
-
-  <!-- Modal content -->
+ <!-- Modal content -->
   <div class="modal-content">
     <div class="modal-header">
-      <span class="close">×</span>
-      <h2>좌석선택</h2>
+      <span class="close">&times;</span>
+      <h2 style="color: #6d6e70;cursor: context-menu;">좌석선택</h2>
     </div>
     <div class="modal-header2">
-      <h2>김포 -&gt; 제주</h2>
+      <h2 class="direction"><span id="depLoc"></span> → <span id="arrLoc"></span></h2>
     </div>
     <div class="modal-body">
+    <form id="frm3" method="post" action="./checkIn/checkInPage">
 		<div class="modalInnerWrap">
 			<div class="modalInnerLeft">
 				<div class="left1">
-					<div class="nameView">이름</div>
+					<div class="nameView"><p class="nameViewInner"></p></div>
 						<div class="seatView">
-						<div class="depAir">
+				<div class="depAir">
 				<div class="depSeat">
 					<div class="seat1">
-						
-						 
-						
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							<label for="A1" class="bookable" title="A1"><input type="checkbox" id="A1" class="seat" title="A1"></label>
-						  
-						
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							<label for="B1" class="bookable" title="B1"><input type="checkbox" id="B1" class="seat" title="B1"></label>
-						  
-						
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							<label for="C1" class="bookable" title="C1"><input type="checkbox" id="C1" class="seat" title="C1"></label>
-						  
+						<c:forEach begin="1" end="31" var="i">
+						 <c:forEach begin="1" end="3" var="j">
+						<c:choose>
+						 		<c:when test="${j eq 1}">
+						 			<c:set var="c" value="A"/>
+						 		</c:when>
+						 		<c:when test="${j eq 2}">
+						 			<c:set var="c" value="B"/>
+						 		</c:when>
+						 		<c:otherwise>
+						 			<c:set var="c" value="C"/>
+						 		</c:otherwise>
+						 	</c:choose>
+							<label for="dep${c}${i}" class="bookable" title="${c}${i}"><input type="checkbox" id="dep${c}${i}" class="seat" title="${c}${i}"></label>
+						  </c:forEach>
 						  <br>
-						
-						 
-						
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							<label for="A2" class="bookable" title="A2"><input type="checkbox" id="A2" class="seat" title="A2"></label>
-						  
-						
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							<label for="B2" class="bookable" title="B2"><input type="checkbox" id="B2" class="seat" title="B2"></label>
-						  
-						
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							<label for="C2" class="bookable" title="C2"><input type="checkbox" id="C2" class="seat" title="C2"></label>
-						  
-						  <br>
-						
-						 
-						
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							<label for="A3" class="bookable" title="A3"><input type="checkbox" id="A3" class="seat" title="A3"></label>
-						  
-						
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							<label for="B3" class="bookable" title="B3"><input type="checkbox" id="B3" class="seat" title="B3"></label>
-						  
-						
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							<label for="C3" class="bookable" title="C3"><input type="checkbox" id="C3" class="seat" title="C3"></label>
-						  
-						  <br>
-						
-						 
-						
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							<label for="A4" class="bookable" title="A4"><input type="checkbox" id="A4" class="seat" title="A4"></label>
-						  
-						
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							<label for="B4" class="bookable" title="B4"><input type="checkbox" id="B4" class="seat" title="B4"></label>
-						  
-						
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							<label for="C4" class="bookable" title="C4"><input type="checkbox" id="C4" class="seat" title="C4"></label>
-						  
-						  <br>
-						
-						 
-						
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							<label for="A5" class="bookable" title="A5"><input type="checkbox" id="A5" class="seat" title="A5"></label>
-						  
-						
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							<label for="B5" class="bookable" title="B5"><input type="checkbox" id="B5" class="seat" title="B5"></label>
-						  
-						
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							<label for="C5" class="bookable" title="C5"><input type="checkbox" id="C5" class="seat" title="C5"></label>
-						  
-						  <br>
-						
-						 
-						
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							<label for="A6" class="bookable" title="A6"><input type="checkbox" id="A6" class="seat" title="A6"></label>
-						  
-						
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							<label for="B6" class="bookable" title="B6"><input type="checkbox" id="B6" class="seat" title="B6"></label>
-						  
-						
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							<label for="C6" class="bookable" title="C6"><input type="checkbox" id="C6" class="seat" title="C6"></label>
-						  
-						  <br>
-						
-						 
-						
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							<label for="A7" class="bookable" title="A7"><input type="checkbox" id="A7" class="seat" title="A7"></label>
-						  
-						
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							<label for="B7" class="bookable" title="B7"><input type="checkbox" id="B7" class="seat" title="B7"></label>
-						  
-						
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							<label for="C7" class="bookable" title="C7"><input type="checkbox" id="C7" class="seat" title="C7"></label>
-						  
-						  <br>
-						
-						 
-						
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							<label for="A8" class="bookable" title="A8"><input type="checkbox" id="A8" class="seat" title="A8"></label>
-						  
-						
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							<label for="B8" class="bookable" title="B8"><input type="checkbox" id="B8" class="seat" title="B8"></label>
-						  
-						
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							<label for="C8" class="bookable" title="C8"><input type="checkbox" id="C8" class="seat" title="C8"></label>
-						  
-						  <br>
-						
-						 
-						
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							<label for="A9" class="bookable" title="A9"><input type="checkbox" id="A9" class="seat" title="A9"></label>
-						  
-						
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							<label for="B9" class="bookable" title="B9"><input type="checkbox" id="B9" class="seat" title="B9"></label>
-						  
-						
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							<label for="C9" class="bookable" title="C9"><input type="checkbox" id="C9" class="seat" title="C9"></label>
-						  
-						  <br>
-						
-						 
-						
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							<label for="A10" class="bookable" title="A10"><input type="checkbox" id="A10" class="seat" title="A10"></label>
-						  
-						
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							<label for="B10" class="bookable" title="B10"><input type="checkbox" id="B10" class="seat" title="B10"></label>
-						  
-						
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							<label for="C10" class="bookable" title="C10"><input type="checkbox" id="C10" class="seat" title="C10"></label>
-						  
-						  <br>
-						
-						 
-						
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							<label for="A11" class="bookable" title="A11"><input type="checkbox" id="A11" class="seat" title="A11"></label>
-						  
-						
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							<label for="B11" class="bookable" title="B11"><input type="checkbox" id="B11" class="seat" title="B11"></label>
-						  
-						
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							<label for="C11" class="bookable" title="C11"><input type="checkbox" id="C11" class="seat" title="C11"></label>
-						  
-						  <br>
-						
-						 
-						
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							<label for="A12" class="bookable" title="A12"><input type="checkbox" id="A12" class="seat" title="A12"></label>
-						  
-						
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							<label for="B12" class="bookable" title="B12"><input type="checkbox" id="B12" class="seat" title="B12"></label>
-						  
-						
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							<label for="C12" class="bookable" title="C12"><input type="checkbox" id="C12" class="seat" title="C12"></label>
-						  
-						  <br>
-						
-						 
-						
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							<label for="A13" class="bookable" title="A13"><input type="checkbox" id="A13" class="seat" title="A13"></label>
-						  
-						
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							<label for="B13" class="bookable" title="B13"><input type="checkbox" id="B13" class="seat" title="B13"></label>
-						  
-						
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							<label for="C13" class="bookable" title="C13"><input type="checkbox" id="C13" class="seat" title="C13"></label>
-						  
-						  <br>
-						
-						 
-						
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							<label for="A14" class="bookable" title="A14"><input type="checkbox" id="A14" class="seat" title="A14"></label>
-						  
-						
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							<label for="B14" class="bookable" title="B14"><input type="checkbox" id="B14" class="seat" title="B14"></label>
-						  
-						
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							<label for="C14" class="bookable" title="C14"><input type="checkbox" id="C14" class="seat" title="C14"></label>
-						  
-						  <br>
-						
-						 
-						
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							<label for="A15" class="bookable" title="A15"><input type="checkbox" id="A15" class="seat" title="A15"></label>
-						  
-						
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							<label for="B15" class="bookable" title="B15"><input type="checkbox" id="B15" class="seat" title="B15"></label>
-						  
-						
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							<label for="C15" class="bookable" title="C15"><input type="checkbox" id="C15" class="seat" title="C15"></label>
-						  
-						  <br>
-						
-						 
-						
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							<label for="A16" class="bookable" title="A16"><input type="checkbox" id="A16" class="seat" title="A16"></label>
-						  
-						
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							<label for="B16" class="bookable" title="B16"><input type="checkbox" id="B16" class="seat" title="B16"></label>
-						  
-						
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							<label for="C16" class="bookable" title="C16"><input type="checkbox" id="C16" class="seat" title="C16"></label>
-						  
-						  <br>
-						
-						 
-						
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							<label for="A17" class="bookable" title="A17"><input type="checkbox" id="A17" class="seat" title="A17"></label>
-						  
-						
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							<label for="B17" class="bookable" title="B17"><input type="checkbox" id="B17" class="seat" title="B17"></label>
-						  
-						
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							<label for="C17" class="bookable" title="C17"><input type="checkbox" id="C17" class="seat" title="C17"></label>
-						  
-						  <br>
-						
-						 
-						
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							<label for="A18" class="bookable" title="A18"><input type="checkbox" id="A18" class="seat" title="A18"></label>
-						  
-						
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							<label for="B18" class="bookable" title="B18"><input type="checkbox" id="B18" class="seat" title="B18"></label>
-						  
-						
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							<label for="C18" class="bookable" title="C18"><input type="checkbox" id="C18" class="seat" title="C18"></label>
-						  
-						  <br>
-						
-						 
-						
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							<label for="A19" class="bookable" title="A19"><input type="checkbox" id="A19" class="seat" title="A19"></label>
-						  
-						
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							<label for="B19" class="bookable" title="B19"><input type="checkbox" id="B19" class="seat" title="B19"></label>
-						  
-						
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							<label for="C19" class="bookable" title="C19"><input type="checkbox" id="C19" class="seat" title="C19"></label>
-						  
-						  <br>
-						
-						 
-						
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							<label for="A20" class="bookable" title="A20"><input type="checkbox" id="A20" class="seat" title="A20"></label>
-						  
-						
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							<label for="B20" class="bookable" title="B20"><input type="checkbox" id="B20" class="seat" title="B20"></label>
-						  
-						
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							<label for="C20" class="bookable" title="C20"><input type="checkbox" id="C20" class="seat" title="C20"></label>
-						  
-						  <br>
-						
-						 
-						
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							<label for="A21" class="bookable" title="A21"><input type="checkbox" id="A21" class="seat" title="A21"></label>
-						  
-						
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							<label for="B21" class="bookable" title="B21"><input type="checkbox" id="B21" class="seat" title="B21"></label>
-						  
-						
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							<label for="C21" class="bookable" title="C21"><input type="checkbox" id="C21" class="seat" title="C21"></label>
-						  
-						  <br>
-						
-						 
-						
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							<label for="A22" class="bookable" title="A22"><input type="checkbox" id="A22" class="seat" title="A22"></label>
-						  
-						
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							<label for="B22" class="bookable" title="B22"><input type="checkbox" id="B22" class="seat" title="B22"></label>
-						  
-						
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							<label for="C22" class="bookable" title="C22"><input type="checkbox" id="C22" class="seat" title="C22"></label>
-						  
-						  <br>
-						
-						 
-						
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							<label for="A23" class="bookable" title="A23"><input type="checkbox" id="A23" class="seat" title="A23"></label>
-						  
-						
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							<label for="B23" class="bookable" title="B23"><input type="checkbox" id="B23" class="seat" title="B23"></label>
-						  
-						
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							<label for="C23" class="bookable" title="C23"><input type="checkbox" id="C23" class="seat" title="C23"></label>
-						  
-						  <br>
-						
-						 
-						
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							<label for="A24" class="bookable" title="A24"><input type="checkbox" id="A24" class="seat" title="A24"></label>
-						  
-						
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							<label for="B24" class="bookable" title="B24"><input type="checkbox" id="B24" class="seat" title="B24"></label>
-						  
-						
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							<label for="C24" class="bookable" title="C24"><input type="checkbox" id="C24" class="seat" title="C24"></label>
-						  
-						  <br>
-						
-						 
-						
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							<label for="A25" class="bookable" title="A25"><input type="checkbox" id="A25" class="seat" title="A25"></label>
-						  
-						
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							<label for="B25" class="bookable" title="B25"><input type="checkbox" id="B25" class="seat" title="B25"></label>
-						  
-						
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							<label for="C25" class="bookable" title="C25"><input type="checkbox" id="C25" class="seat" title="C25"></label>
-						  
-						  <br>
-						
-						 
-						
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							<label for="A26" class="bookable" title="A26"><input type="checkbox" id="A26" class="seat" title="A26"></label>
-						  
-						
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							<label for="B26" class="bookable" title="B26"><input type="checkbox" id="B26" class="seat" title="B26"></label>
-						  
-						
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							<label for="C26" class="bookable" title="C26"><input type="checkbox" id="C26" class="seat" title="C26"></label>
-						  
-						  <br>
-						
-						 
-						
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							<label for="A27" class="bookable" title="A27"><input type="checkbox" id="A27" class="seat" title="A27"></label>
-						  
-						
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							<label for="B27" class="bookable" title="B27"><input type="checkbox" id="B27" class="seat" title="B27"></label>
-						  
-						
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							<label for="C27" class="bookable" title="C27"><input type="checkbox" id="C27" class="seat" title="C27"></label>
-						  
-						  <br>
-						
-						 
-						
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							<label for="A28" class="bookable" title="A28"><input type="checkbox" id="A28" class="seat" title="A28"></label>
-						  
-						
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							<label for="B28" class="bookable" title="B28"><input type="checkbox" id="B28" class="seat" title="B28"></label>
-						  
-						
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							<label for="C28" class="bookable" title="C28"><input type="checkbox" id="C28" class="seat" title="C28"></label>
-						  
-						  <br>
-						
-						 
-						
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							<label for="A29" class="bookable" title="A29"><input type="checkbox" id="A29" class="seat" title="A29"></label>
-						  
-						
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							<label for="B29" class="bookable" title="B29"><input type="checkbox" id="B29" class="seat" title="B29"></label>
-						  
-						
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							<label for="C29" class="bookable" title="C29"><input type="checkbox" id="C29" class="seat" title="C29"></label>
-						  
-						  <br>
-						
-						 
-						
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							<label for="A30" class="bookable" title="A30"><input type="checkbox" id="A30" class="seat" title="A30"></label>
-						  
-						
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							<label for="B30" class="bookable" title="B30"><input type="checkbox" id="B30" class="seat" title="B30"></label>
-						  
-						
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							<label for="C30" class="bookable" title="C30"><input type="checkbox" id="C30" class="seat" title="C30"></label>
-						  
-						  <br>
-						
-						 
-						
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							<label for="A31" class="bookable" title="A31"><input type="checkbox" id="A31" class="seat" title="A31"></label>
-						  
-						
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							<label for="B31" class="bookable" title="B31"><input type="checkbox" id="B31" class="seat" title="B31"></label>
-						  
-						
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							<label for="C31" class="bookable" title="C31"><input type="checkbox" id="C31" class="seat" title="C31"></label>
-						  
-						  <br>
-						
+						</c:forEach>
 						</div>
 						<div class="seat2">
-						
-						 
-						 
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							 <label for="D1" class="bookable" title="D1"><input type="checkbox" id="D1" class="seat" title="D1"></label>
-						  
-						 
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							 <label for="E1" class="bookable" title="E1"><input type="checkbox" id="E1" class="seat" title="E1"></label>
-						  
-						 
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							 <label for="F1" class="bookable" title="F1"><input type="checkbox" id="F1" class="seat" title="F1"></label>
-						  
+						<c:forEach begin="1" end="32" var="i">
+						 <c:forEach begin="1" end="3" var="j">
+						 <c:choose>
+						 		<c:when test="${j eq 1}">
+						 			<c:set var="c" value="D"/>
+						 		</c:when>
+						 		<c:when test="${j eq 2}">
+						 			<c:set var="c" value="E"/>
+						 		</c:when>
+						 		<c:otherwise>
+						 			<c:set var="c" value="F"/>
+						 		</c:otherwise>
+						 	</c:choose>
+							 <label for="dep${c}${i}" class="bookable" title="${c}${i}"><input type="checkbox" id="dep${c}${i}" class="seat" title="${c}${i}"></label>
+						  </c:forEach>
 						  <br>
-						
-						 
-						 
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							 <label for="D2" class="bookable" title="D2"><input type="checkbox" id="D2" class="seat" title="D2"></label>
-						  
-						 
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							 <label for="E2" class="bookable" title="E2"><input type="checkbox" id="E2" class="seat" title="E2"></label>
-						  
-						 
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							 <label for="F2" class="bookable" title="F2"><input type="checkbox" id="F2" class="seat" title="F2"></label>
-						  
-						  <br>
-						
-						 
-						 
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							 <label for="D3" class="bookable" title="D3"><input type="checkbox" id="D3" class="seat" title="D3"></label>
-						  
-						 
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							 <label for="E3" class="bookable" title="E3"><input type="checkbox" id="E3" class="seat" title="E3"></label>
-						  
-						 
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							 <label for="F3" class="bookable" title="F3"><input type="checkbox" id="F3" class="seat" title="F3"></label>
-						  
-						  <br>
-						
-						 
-						 
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							 <label for="D4" class="bookable" title="D4"><input type="checkbox" id="D4" class="seat" title="D4"></label>
-						  
-						 
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							 <label for="E4" class="bookable" title="E4"><input type="checkbox" id="E4" class="seat" title="E4"></label>
-						  
-						 
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							 <label for="F4" class="bookable" title="F4"><input type="checkbox" id="F4" class="seat" title="F4"></label>
-						  
-						  <br>
-						
-						 
-						 
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							 <label for="D5" class="bookable" title="D5"><input type="checkbox" id="D5" class="seat" title="D5"></label>
-						  
-						 
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							 <label for="E5" class="bookable" title="E5"><input type="checkbox" id="E5" class="seat" title="E5"></label>
-						  
-						 
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							 <label for="F5" class="bookable" title="F5"><input type="checkbox" id="F5" class="seat" title="F5"></label>
-						  
-						  <br>
-						
-						 
-						 
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							 <label for="D6" class="bookable" title="D6"><input type="checkbox" id="D6" class="seat" title="D6"></label>
-						  
-						 
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							 <label for="E6" class="bookable" title="E6"><input type="checkbox" id="E6" class="seat" title="E6"></label>
-						  
-						 
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							 <label for="F6" class="bookable" title="F6"><input type="checkbox" id="F6" class="seat" title="F6"></label>
-						  
-						  <br>
-						
-						 
-						 
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							 <label for="D7" class="bookable" title="D7"><input type="checkbox" id="D7" class="seat" title="D7"></label>
-						  
-						 
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							 <label for="E7" class="bookable" title="E7"><input type="checkbox" id="E7" class="seat" title="E7"></label>
-						  
-						 
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							 <label for="F7" class="bookable" title="F7"><input type="checkbox" id="F7" class="seat" title="F7"></label>
-						  
-						  <br>
-						
-						 
-						 
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							 <label for="D8" class="bookable" title="D8"><input type="checkbox" id="D8" class="seat" title="D8"></label>
-						  
-						 
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							 <label for="E8" class="bookable" title="E8"><input type="checkbox" id="E8" class="seat" title="E8"></label>
-						  
-						 
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							 <label for="F8" class="bookable" title="F8"><input type="checkbox" id="F8" class="seat" title="F8"></label>
-						  
-						  <br>
-						
-						 
-						 
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							 <label for="D9" class="bookable" title="D9"><input type="checkbox" id="D9" class="seat" title="D9"></label>
-						  
-						 
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							 <label for="E9" class="bookable" title="E9"><input type="checkbox" id="E9" class="seat" title="E9"></label>
-						  
-						 
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							 <label for="F9" class="bookable" title="F9"><input type="checkbox" id="F9" class="seat" title="F9"></label>
-						  
-						  <br>
-						
-						 
-						 
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							 <label for="D10" class="bookable" title="D10"><input type="checkbox" id="D10" class="seat" title="D10"></label>
-						  
-						 
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							 <label for="E10" class="bookable" title="E10"><input type="checkbox" id="E10" class="seat" title="E10"></label>
-						  
-						 
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							 <label for="F10" class="bookable" title="F10"><input type="checkbox" id="F10" class="seat" title="F10"></label>
-						  
-						  <br>
-						
-						 
-						 
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							 <label for="D11" class="bookable" title="D11"><input type="checkbox" id="D11" class="seat" title="D11"></label>
-						  
-						 
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							 <label for="E11" class="bookable" title="E11"><input type="checkbox" id="E11" class="seat" title="E11"></label>
-						  
-						 
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							 <label for="F11" class="bookable" title="F11"><input type="checkbox" id="F11" class="seat" title="F11"></label>
-						  
-						  <br>
-						
-						 
-						 
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							 <label for="D12" class="bookable" title="D12"><input type="checkbox" id="D12" class="seat" title="D12"></label>
-						  
-						 
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							 <label for="E12" class="bookable" title="E12"><input type="checkbox" id="E12" class="seat" title="E12"></label>
-						  
-						 
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							 <label for="F12" class="bookable" title="F12"><input type="checkbox" id="F12" class="seat" title="F12"></label>
-						  
-						  <br>
-						
-						 
-						 
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							 <label for="D13" class="bookable" title="D13"><input type="checkbox" id="D13" class="seat" title="D13"></label>
-						  
-						 
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							 <label for="E13" class="bookable" title="E13"><input type="checkbox" id="E13" class="seat" title="E13"></label>
-						  
-						 
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							 <label for="F13" class="bookable" title="F13"><input type="checkbox" id="F13" class="seat" title="F13"></label>
-						  
-						  <br>
-						
-						 
-						 
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							 <label for="D14" class="bookable" title="D14"><input type="checkbox" id="D14" class="seat" title="D14"></label>
-						  
-						 
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							 <label for="E14" class="bookable" title="E14"><input type="checkbox" id="E14" class="seat" title="E14"></label>
-						  
-						 
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							 <label for="F14" class="bookable" title="F14"><input type="checkbox" id="F14" class="seat" title="F14"></label>
-						  
-						  <br>
-						
-						 
-						 
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							 <label for="D15" class="bookable" title="D15"><input type="checkbox" id="D15" class="seat" title="D15"></label>
-						  
-						 
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							 <label for="E15" class="bookable" title="E15"><input type="checkbox" id="E15" class="seat" title="E15"></label>
-						  
-						 
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							 <label for="F15" class="bookable" title="F15"><input type="checkbox" id="F15" class="seat" title="F15"></label>
-						  
-						  <br>
-						
-						 
-						 
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							 <label for="D16" class="bookable" title="D16"><input type="checkbox" id="D16" class="seat" title="D16"></label>
-						  
-						 
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							 <label for="E16" class="bookable" title="E16"><input type="checkbox" id="E16" class="seat" title="E16"></label>
-						  
-						 
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							 <label for="F16" class="bookable" title="F16"><input type="checkbox" id="F16" class="seat" title="F16"></label>
-						  
-						  <br>
-						
-						 
-						 
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							 <label for="D17" class="bookable" title="D17"><input type="checkbox" id="D17" class="seat" title="D17"></label>
-						  
-						 
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							 <label for="E17" class="bookable" title="E17"><input type="checkbox" id="E17" class="seat" title="E17"></label>
-						  
-						 
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							 <label for="F17" class="bookable" title="F17"><input type="checkbox" id="F17" class="seat" title="F17"></label>
-						  
-						  <br>
-						
-						 
-						 
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							 <label for="D18" class="bookable" title="D18"><input type="checkbox" id="D18" class="seat" title="D18"></label>
-						  
-						 
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							 <label for="E18" class="bookable" title="E18"><input type="checkbox" id="E18" class="seat" title="E18"></label>
-						  
-						 
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							 <label for="F18" class="bookable" title="F18"><input type="checkbox" id="F18" class="seat" title="F18"></label>
-						  
-						  <br>
-						
-						 
-						 
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							 <label for="D19" class="bookable" title="D19"><input type="checkbox" id="D19" class="seat" title="D19"></label>
-						  
-						 
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							 <label for="E19" class="bookable" title="E19"><input type="checkbox" id="E19" class="seat" title="E19"></label>
-						  
-						 
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							 <label for="F19" class="bookable" title="F19"><input type="checkbox" id="F19" class="seat" title="F19"></label>
-						  
-						  <br>
-						
-						 
-						 
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							 <label for="D20" class="bookable" title="D20"><input type="checkbox" id="D20" class="seat" title="D20"></label>
-						  
-						 
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							 <label for="E20" class="bookable" title="E20"><input type="checkbox" id="E20" class="seat" title="E20"></label>
-						  
-						 
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							 <label for="F20" class="bookable" title="F20"><input type="checkbox" id="F20" class="seat" title="F20"></label>
-						  
-						  <br>
-						
-						 
-						 
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							 <label for="D21" class="bookable" title="D21"><input type="checkbox" id="D21" class="seat" title="D21"></label>
-						  
-						 
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							 <label for="E21" class="bookable" title="E21"><input type="checkbox" id="E21" class="seat" title="E21"></label>
-						  
-						 
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							 <label for="F21" class="bookable" title="F21"><input type="checkbox" id="F21" class="seat" title="F21"></label>
-						  
-						  <br>
-						
-						 
-						 
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							 <label for="D22" class="bookable" title="D22"><input type="checkbox" id="D22" class="seat" title="D22"></label>
-						  
-						 
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							 <label for="E22" class="bookable" title="E22"><input type="checkbox" id="E22" class="seat" title="E22"></label>
-						  
-						 
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							 <label for="F22" class="bookable" title="F22"><input type="checkbox" id="F22" class="seat" title="F22"></label>
-						  
-						  <br>
-						
-						 
-						 
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							 <label for="D23" class="bookable" title="D23"><input type="checkbox" id="D23" class="seat" title="D23"></label>
-						  
-						 
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							 <label for="E23" class="bookable" title="E23"><input type="checkbox" id="E23" class="seat" title="E23"></label>
-						  
-						 
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							 <label for="F23" class="bookable" title="F23"><input type="checkbox" id="F23" class="seat" title="F23"></label>
-						  
-						  <br>
-						
-						 
-						 
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							 <label for="D24" class="bookable" title="D24"><input type="checkbox" id="D24" class="seat" title="D24"></label>
-						  
-						 
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							 <label for="E24" class="bookable" title="E24"><input type="checkbox" id="E24" class="seat" title="E24"></label>
-						  
-						 
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							 <label for="F24" class="bookable" title="F24"><input type="checkbox" id="F24" class="seat" title="F24"></label>
-						  
-						  <br>
-						
-						 
-						 
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							 <label for="D25" class="bookable" title="D25"><input type="checkbox" id="D25" class="seat" title="D25"></label>
-						  
-						 
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							 <label for="E25" class="bookable" title="E25"><input type="checkbox" id="E25" class="seat" title="E25"></label>
-						  
-						 
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							 <label for="F25" class="bookable" title="F25"><input type="checkbox" id="F25" class="seat" title="F25"></label>
-						  
-						  <br>
-						
-						 
-						 
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							 <label for="D26" class="bookable" title="D26"><input type="checkbox" id="D26" class="seat" title="D26"></label>
-						  
-						 
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							 <label for="E26" class="bookable" title="E26"><input type="checkbox" id="E26" class="seat" title="E26"></label>
-						  
-						 
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							 <label for="F26" class="bookable" title="F26"><input type="checkbox" id="F26" class="seat" title="F26"></label>
-						  
-						  <br>
-						
-						 
-						 
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							 <label for="D27" class="bookable" title="D27"><input type="checkbox" id="D27" class="seat" title="D27"></label>
-						  
-						 
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							 <label for="E27" class="bookable" title="E27"><input type="checkbox" id="E27" class="seat" title="E27"></label>
-						  
-						 
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							 <label for="F27" class="bookable" title="F27"><input type="checkbox" id="F27" class="seat" title="F27"></label>
-						  
-						  <br>
-						
-						 
-						 
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							 <label for="D28" class="bookable" title="D28"><input type="checkbox" id="D28" class="seat" title="D28"></label>
-						  
-						 
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							 <label for="E28" class="bookable" title="E28"><input type="checkbox" id="E28" class="seat" title="E28"></label>
-						  
-						 
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							 <label for="F28" class="bookable" title="F28"><input type="checkbox" id="F28" class="seat" title="F28"></label>
-						  
-						  <br>
-						
-						 
-						 
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							 <label for="D29" class="bookable" title="D29"><input type="checkbox" id="D29" class="seat" title="D29"></label>
-						  
-						 
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							 <label for="E29" class="bookable" title="E29"><input type="checkbox" id="E29" class="seat" title="E29"></label>
-						  
-						 
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							 <label for="F29" class="bookable" title="F29"><input type="checkbox" id="F29" class="seat" title="F29"></label>
-						  
-						  <br>
-						
-						 
-						 
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							 <label for="D30" class="bookable" title="D30"><input type="checkbox" id="D30" class="seat" title="D30"></label>
-						  
-						 
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							 <label for="E30" class="bookable" title="E30"><input type="checkbox" id="E30" class="seat" title="E30"></label>
-						  
-						 
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							 <label for="F30" class="bookable" title="F30"><input type="checkbox" id="F30" class="seat" title="F30"></label>
-						  
-						  <br>
-						
-						 
-						 
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							 <label for="D31" class="bookable" title="D31"><input type="checkbox" id="D31" class="seat" title="D31"></label>
-						  
-						 
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							 <label for="E31" class="bookable" title="E31"><input type="checkbox" id="E31" class="seat" title="E31"></label>
-						  
-						 
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							 <label for="F31" class="bookable" title="F31"><input type="checkbox" id="F31" class="seat" title="F31"></label>
-						  
-						  <br>
-						
-						 
-						 
-						 		
-						 			
-						 		
-						 		
-						 		
-						 	
-							 <label for="D32" class="bookable" title="D32"><input type="checkbox" id="D32" class="seat" title="D32"></label>
-						  
-						 
-						 		
-						 		
-						 			
-						 		
-						 		
-						 	
-							 <label for="E32" class="bookable" title="E32"><input type="checkbox" id="E32" class="seat" title="E32"></label>
-						  
-						 
-						 		
-						 		
-						 		
-						 			
-						 		
-						 	
-							 <label for="F32" class="bookable" title="F32"><input type="checkbox" id="F32" class="seat" title="F32"></label>
-						  
-						  <br>
-						
+						</c:forEach>
 					</div>
 				 </div>
 				</div>
+				<div class="arrAir" style="display: none">
+					<div class="arrSeat">
+						<div class="seat1">
+						<c:forEach begin="1" end="31" var="i">
+						 <c:forEach begin="1" end="3" var="j">
+						<c:choose>
+						 		<c:when test="${j eq 1}">
+						 			<c:set var="c" value="A"/>
+						 		</c:when>
+						 		<c:when test="${j eq 2}">
+						 			<c:set var="c" value="B"/>
+						 		</c:when>
+						 		<c:otherwise>
+						 			<c:set var="c" value="C"/>
+						 		</c:otherwise>
+						 	</c:choose>
+							<label for="arr${c}${i}" class="bookable" title="${c}${i}"><input type="checkbox" id="arr${c}${i}" class="seat" title="${c}${i}"></label>
+						  </c:forEach>
+						  <br>
+						</c:forEach>
 						</div>
-						<div class="seatWarning"> 좌석지정 유의사항 안내</div>
+							<div class="seat2">
+						<c:forEach begin="1" end="32" var="i">
+						 <c:forEach begin="1" end="3" var="j">
+						 <c:choose>
+						 		<c:when test="${j eq 1}">
+						 			<c:set var="c" value="D"/>
+						 		</c:when>
+						 		<c:when test="${j eq 2}">
+						 			<c:set var="c" value="E"/>
+						 		</c:when>
+						 		<c:otherwise>
+						 			<c:set var="c" value="F"/>
+						 		</c:otherwise>
+						 	</c:choose>
+							 <label for="arr${arrFNum}${c}${i}" class="bookable" title="${c}${i}"><input type="checkbox" id="arr${arrFNum}${c}${i}" class="seat" title="${c}${i}"></label>
+						  </c:forEach>
+						  <br>
+						</c:forEach>
+					</div>
+						</div>
+				</div>
+						</div>
+						<div class="seatWarning"> <span class="warning"><i class="fa fa-warning" style="margin-right: 5px"></i>좌석지정 유의사항 안내</span></div>
 					</div>
 			</div>
 			<div class="modalInnerRight">
@@ -2274,49 +460,55 @@ $(document).ready(function() {
 						<div class="seatInfo_bookSeat"><img alt="" src="../resources/newni/bookableSeat.png"> 선택가능 좌석 </div>
 						<div class="seatInfo_bookingSeat"><img alt="" src="../resources/newni/bookingSeat.png"> 선택한 좌석 </div>
 						<div class="seatInfo_bookedSeat"><img alt="" src="../resources/newni/bookedSeat.png"> 선택불가 좌석 </div>
-						<div>이부분 전체 수정</div>
 					</div>
 				</div>
 				<div class="modalInnerRightDown">
-					<table>
-						<tbody><tr>
-							<td>예매번호</td>
-							<td><input type="text" id="bookingNum" name="bookingNum" readonly="readonly"></td>	
-						</tr>  
-						<tr>
-							<td>인원 수</td>
-							<td><input type="text" id="people" name="people" readonly="readonly" style="width:10px">명</td>
-						</tr> 
-						<tr>
-							<td>가는편 좌석</td>
-							<td><input type="text" id="depSeat" name="depSeat" readonly="readonly"></td>
-						</tr>
+								<div> 예매번호  <span class="spanBookingNum"></span><input type="text" id="bookingNum" name="bookingNum"
+										readonly="readonly" hidden="hidden">
+								</div>
+								<div>
+									인원 수 <input type="text" id="people" name="people"
+										readonly="readonly" style="width: 10px" hidden="hidden"><span class="spanPeople"></span>명
+								</div>
+								<div class="goSeat">
+								가는편 좌석
+							<input type="text" id="depSeat" name="depSeat" readonly="readonly" style="padding: 0; height: 17px"></div>
+						<div class="roundOnly backSeat">
+								오는편 좌석 
+								<input type="text" id="arrSeat" name="arrSeat" readonly="readonly" style="padding: 0; height: 17px">
+								</div>
 						
-					</tbody></table>
+							<input type="text" id="depFNum" name="depFNum" readonly="readonly" hidden="hidden">
+							<input type="text" class="roundOnly" id="arrFNum" name="arrFNum" readonly="readonly" hidden="hidden">
+							<input type="text" id="kind" name="kind" readonly="readonly" hidden="hidden">
 				</div>
 			</div>
 			<div class="ajax" style="display: none;">
 				
 			</div>
-			<div class="modalInnerBottom">
-			 	오는편 좌석 선택
+			 	<p><button type="button" class="modalInnerBottom" id="btn"><span>선택 완료</span></button></p>
+			<div class="modalInnerBottom2" style="display: none">
+			 	<p><button type="button" class="depBookGo" id="btn2"><span>좌석 변경</span></button></p>
+			 	<p><button type="button" class="bookOk" id="btn3"><span>체크인</span></button></p>
 			</div>
 		</div>
+		</form>
     </div>
     <div class="modal-footer">
-      <h3>KRW</h3>
+      <h3 class="tripDate"></h3>
     </div>
   </div>
 
 </div>
+
 				
-					
+			</div>	
 			</div>
 			<div class="section" id="section3"
 				style="background: url(https://flyasiana.com/C/pc/image/main/bg_section05.jpg); background-size: 1920px;">
 
 				<!-- 출도착조회 -->
-				<div class="slide_inner">
+				<div class="slide_inner" style="position: relative; top: 150px;">
 
 					<div class="section_copy checkbox_text">
 						<h2>출도착 조회</h2>
@@ -2342,7 +534,13 @@ $(document).ready(function() {
 											<input type="hidden" name="default" area="" airport="">	
 											<a href="javascript:sharpNothig();" class="btn_airport airport_open" id="btn_depAllAirport1" name="btn_layer1" seg="dep1" deparrtype="dep" onclick="javascript:showAirportLayer(this, 'F');"><span class="hidden">전체도시보기</span></a>
 										</div>
-										<div class="shadow_layer search_flight" name="shadow_layer" style="display: none;">
+										<script type="text/javascript">
+											$('#txtDepartureAirportF').click(function(){
+
+												});
+										</script>
+										
+<!-- 										<div class="shadow_layer search_flight" name="shadow_layer" style="display: none;">
 											<div class="inner">
 												<div class="search_layer">
 													<div class="search_lately" name="search_lately">
@@ -2358,7 +556,7 @@ $(document).ready(function() {
 												<button type="button" class="btn_popup airport_open" id="btn_depAllAirport1" name="btn_layer1" seg="dep1" deparrtype="dep" onclick="javascript:showAirportLayer(this, 'F');">전체도시보기</button>
 											</div>
 											<a href="javascript:sharpNothig();" class="layer_close"><span class="hidden">닫기</span></a>
-										</div>		
+										</div>	 -->	
 										
 										<div class="ipt_elt loct spot_destin">
 											<input type="hidden" id="arrivalAreaF" name="arrivalAreaF" value="">
@@ -2370,7 +568,13 @@ $(document).ready(function() {
 											<input type="hidden" name="default" area="" airport="">
 											<a href="javascript:sharpNothig();" class="btn_airport airport_open" id="btn_arrAllAirport1" name="btn_layer1" seg="arr1" deparrtype="arr" onclick="javascript:showAirportLayer(this, 'F');"><span class="hidden">전체도시보기</span></a>
 										</div>
-										<div class="shadow_layer search_flight to" style="display: none;">
+										
+										<script type="text/javascript">
+											$('#txtArrivalAirportF').click(function(){
+
+												});
+										</script>
+<!-- 										<div class="shadow_layer search_flight to" style="display: none;">
 											<div class="inner">
 												<div class="search_layer">
 													<div class="search_lately" name="search_lately">
@@ -2386,9 +590,9 @@ $(document).ready(function() {
 												<button type="button" class="btn_popup airport_open" id="btn_arrAllAirport1" name="btn_layer1" seg="arr1" deparrtype="arr" onclick="javascript:showAirportLayer(this, 'F');">전체도시보기</button>
 											</div>
 											<a href="javascript:sharpNothig();" class="layer_close"><span class="hidden">닫기</span></a>
-										</div>			
+										</div> -->			
 										
-										<div class="shadow_layer case2 select_airport" id="depAllAirportF" name="allAirportF" style="display: none;">
+<!-- 										<div class="shadow_layer case2 select_airport" id="depAllAirportF" name="allAirportF" style="display: none;">
 											<div class="inner">
 												<h4 class="hidden">공항 선택</h4>
 												<h5 class="hidden">국제선</h5>
@@ -2406,14 +610,15 @@ $(document).ready(function() {
 											<a href="javascript:sharpNothig();" class="layer_close">
 												<span class="hidden">닫기</span>
 											</a>
-										</div>
+										</div> -->
 										
 										<div class="ipt_elt flt_date">
 											<select title="출발일" style="width:215px" class="select_date" id="searchDate">
-												<option value="20200213">2020.02.13</option>
-												<option value="20200212" selected="selected">2020.02.12</option>
-												<option value="20200211">2020.02.11</option>
-												<option value="20200210">2020.02.10</option>
+												<option value="${t_1}">${t_1}</option>
+												<option value="${t_2}">${t_2}</option>
+												<option value="${t_3}" selected="selected">${t_3}</option>
+												<option value="${t_4}">${t_4}</option>
+												<option value="${t_5}">${t_5}</option>
 											</select>
 										</div>
 													
@@ -2427,12 +632,60 @@ $(document).ready(function() {
 								
 							</div>
 						</div>
-						<a href="javascript:sharpNothig();" class="btn_fold open2" id="foldSection4" style="display: inline-block;"><span class="hidden">조회영역 펼치기</span></a>
+<!-- 						<a href="javascript:sharpNothig();" class="btn_fold open2" id="foldSection4" style="display: inline-block;"><span class="hidden">조회영역 펼치기</span></a>
 						
-						<div id="searchDepArrResult" class="departure_list_wrap" style="display: none;">
+						<div id="searchDepArrResult" class="departure_list_wrap" style="display: none;"> -->
+						
+						<div style="display: none; width: 100%;" id="deptt">
+						
+						<div style="width: 1180px; padding: 10px; background-color:#eee; margin: 0 auto; margin-top: 10px;text-align: center; height: 318.44px; line-height: 318.44px;" id="te">
+						
+						</div>
+						
+						</div>
+						
+						
 							
 						</div>
-											<!-- 출도착 조회 -->
+						<!-- 출도착 조회 -->
+						
+						<script type="text/javascript">
+							$('#searchDepArr').click(function(){
+
+								$('.slide_inner').css('top','40px');
+								$('#deptt').css('display','block');
+								var soptsel =  $('#searchDate option:selected').val().replace('.','').replace('.','').trim();
+								var dc = $('#txtDepartureAirportF').val().trim();
+								var ac = $('#txtArrivalAirportF').val().trim();
+								
+
+  								$.ajax({
+									data : {
+										depAirportNm : dc,
+										arrAirportNm : ac,
+										depPlandTime : soptsel
+									},
+									type : "GET",
+									url : "/indexdep",
+									success : function(data) {
+
+										$('#te').html(data);
+
+									}
+								}); 
+
+								
+							});
+						
+
+						</script>
+						
+						
+						
+						
+						
+						
+						
 						</div>
 				
 
@@ -2698,36 +951,210 @@ $('body').on('blur', '.search__input', function(){
  });
 
 
- /* 날씨입니다 지우지 마세여 ^8^*/
+$("#weather_select").click(function(){
+	var weather = $("#weather_sel").val();
+	$.ajax({
+		type:'get',
+		url:"weather/weatherInfo",
+		async: false,
+		data:{
+			"airLine":weather
+		},
+		success: function(data){
+			data = data.trim();
+			$("#weather_view").html(data);
+		}
+	});
+	$("#weather_view tr").css("background-color", "transparent");
+	$("#weather_view td").css("background-color", "transparent");
+	$("#weather_view td").css("border-style", "hidden");
+	$("#weather_view td").css("font-weight","bold");
+	$("#weather_view td").css("vertical-align","middle");
+});
+$("#weather_view td").css("font-weight","bold");
+$("#weather_view td").css("vertical-align","middle");
+$("#weather_view tr").css("background-color", "transparent");
+$("#weather_view td").css("background-color", "transparent");
+$("#weather_view td").css("border-style", "hidden");
+var depChecks=[]; // 가는 비행기의 좌석에 체크된 항목을 담을 배열
+var arrChecks=[]; // 오는 비행기의 좌석에 체크된 항목을 담을 배열
+var depLoc;
+var arrLoc;
 
- 
-$("#weather_sel").click(function(){ 
-			var weather = $("#weather_sel").val();
-			$.ajax({
-				type:'get',
-				url:"weather/weatherInfo",
-				async: false,
-				data:{
-					"airLine":weather
-				},
-				success: function(data){
-					data = data.trim();
-					$("#weather_view").html(data);
+$(function() { // 구매가능한 좌석만 호버 
+	$('.bookable').mouseover(function() {
+		$(this).addClass('over');
+	});
+	$('.bookable').mouseout(function() {
+		$(this).removeClass('over');
+	});
+});
+
+$("input:checkbox").click(function(){
+	// alert($(this).attr('id'));
+	// alert($(this).attr('class'));
+	if ($(this).prop('checked')) {
+		$(this).parent().closest('label').addClass('booking');
+		$(this).parent().closest('label').removeClass('bookable');
+	}
+	else{
+		//alert($(this).attr('id')+" 좌석을 취소");
+		$(this).parent().closest('label').addClass('bookable');
+		$(this).parent().closest('label').removeClass('booking');
+	}
+	// 가는 편 좌석을 모두 선택시 체크박스 제어
+	if($(".depAir input:checkbox:checked").length == $("#people").val()){
+		$(".depAir input:checkbox").not(":checked").attr('disabled', true);
+		$(".depAir input:checkbox").not(":checked").parent().closest('label').removeClass('bookable');
+		$(".depAir input:checkbox").not(":checked").parent().closest('label').addClass('bookend');
+	}
+	else if($(".depAir input:checkbox:checked").length < $("#people").val()){
+		// 이미 예매 되어있는 좌석을 제외한 나머지 좌석의 disabled을 해제
+		$(".depAir input:checkbox").not(".booked input:checkbox").attr('disabled', false); 
+		$(".depAir input:checkbox").not(":checked").addClass('bookable');
+		$(".depAir input:checkbox").not(":checked").parent().closest('label').removeClass('bookend');
+		$(".depAir input:checkbox").not(":checked").parent().closest('label').addClass('bookable');
+	} 
+	// 오는 편 좌석을 모두 선택시 체크박스 제어
+	if($(".arrAir input:checkbox:checked").length == $("#people").val()){
+		$(".arrAir input:checkbox").not(":checked").attr('disabled', true);
+		$(".arrAir input:checkbox").not(":checked").parent().closest('label').removeClass('bookable');
+		$(".arrAir input:checkbox").not(":checked").parent().closest('label').addClass('bookend');
+	}
+	else if($(".arrAir input:checkbox:checked").length < $("#people").val()){
+		$(".arrAir input:checkbox").not(".booked input:checkbox").attr('disabled', false);
+		$(".arrAir input:checkbox").not(":checked").addClass('bookable');
+		$(".arrAir input:checkbox").not(":checked").parent().closest('label').removeClass('bookend');
+		$(".arrAir input:checkbox").not(":checked").parent().closest('label').addClass('bookable');
+	} 
+	if($(this).closest("div").parent().attr("class") == "depSeat"){
+		if($(this).is(":checked")) {
+			// 좌석 선택시 배열에 넣음 
+			depChecks.push($(this).attr('title'));
+		} else if ($(this).not(":checked")) {
+			// 좌석 선택 해제시 해제한 값을 찾아서 배열에서 삭제
+			depChecks.splice(depChecks.indexOf($(this).attr('title')),1);	
+		}
+		<c:forEach items='depChecks' var='depCheck'>
+			$("#depSeat").val(${depCheck}); // 선택한 좌석을 파라미터로 넘기기 위해 input에 담아줌
+		</c:forEach>
+	}
+	if($(this).closest("div").parent().attr("class") == "arrSeat"){
+		if($(this).is(":checked")) {
+			arrChecks.push($(this).attr('title'));
+		} else if ($(this).not(":checked")) {
+			arrChecks.splice(arrChecks.indexOf($(this).attr('title')),1);	
+		}
+		<c:forEach items='arrChecks' var='arrCheck'>
+			$("#arrSeat").val(${arrCheck});
+		</c:forEach>
+	}
+});
+$("#btn_search").click(function() {
+	var  bookingNum = $('#bookingNum').val();
+	$.get("./checkIn/bookingCheck?bookingNum=" + bookingNum, function(data) {
+		$(".ajax").html(data);
+		var result = $(".ajax").find(".result").text();
+		if (result == 2) {
+			var people = $(".ajax").find(".people").text();
+			var depFNum = $(".ajax").find(".depFNum").text();
+			var arrFNum = $(".ajax").find(".arrFNum").text();
+			var tripData = $(".ajax").find(".tripData").text();
+			var booked = $(".ajax").find(".booked").text();
+			depLoc = $(".ajax").find(".depLoc").text();
+			arrLoc = $(".ajax").find(".arrLoc").text();
+			var depSeat = $(".ajax").find(".depSeat").text();
+			var arrSeat = $(".ajax").find(".arrSeat").text();
+			var bookingNum = $(".ajax").find(".bookingNum").text();
+			var kind = $(".ajax").find(".kind").text();
+			var id = $(".ajax").find(".id").text();
+			var tripDate = $(".ajax").find(".tripDate").text();
+			$("#myModal").css('display','block');
+			$("#people").val(people);
+			$("#tripData").val(tripData);
+			$(".modalInnerRightDown #bookingNum").val(bookingNum);
+			$("#depFNum").val(depFNum);
+			$("#arrFNum").val(arrFNum);
+			$("#kind").val(kind);
+			$("#depLoc").html(depLoc);
+			$("#arrLoc").html(arrLoc);
+			$(".nameViewInner").html(id);
+			$(".tripDate").html(tripDate);
+			$(".spanPeople").html(people);
+			$(".spanBookingNum").html(bookingNum);
+			var depSplit = depSeat.split(",");
+			for(var i = 0; i < depSplit.length; i++){
+				var depSeat = depSplit[i].replace("[","").replace("]","").trim();
+				$(".depSeat input:checkbox[id=dep"+depSeat+"]").attr('disabled', true); // 이미 예매 되어있는 좌석을 선택불가로 바꿈
+				$(".depSeat input:checkbox[id=dep"+depSeat+"]").parent().closest('label').addClass('booked'); // 색상도 바꿔줌
+				$(".depSeat input:checkbox[id=dep"+depSeat+"]").parent().closest('label').removeClass('bookable'); // 색상도 바꿔줌
 				}
-			});
-			$("#weather_view tr").css("background-color", "transparent");
-			$("#weather_view td").css("background-color", "transparent");
-			$("#weather_view td").css("border-style", "hidden");
-			$("#weather_view td").css("font-weight","bold");
-			$("#weather_view td").css("vertical-align","middle");
-		});
-		$("#weather_view td").css("font-weight","bold");
-		$("#weather_view td").css("vertical-align","middle");
-		$("#weather_view tr").css("background-color", "transparent");
-		$("#weather_view td").css("background-color", "transparent");
-		$("#weather_view td").css("border-style", "hidden");
+			var arrSplit = arrSeat.split(",");
+			for(var i = 0; i < arrSplit.length; i++){
+				var arrSeat = arrSplit[i].replace("[","").replace("]","").trim();
+				$(".arrSeat input:checkbox[id=arr"+arrSeat+"]").attr('disabled', true); // 이미 예매 되어있는 좌석을 선택불가로 바꿈
+				$(".arrSeat input:checkbox[id=arr"+arrSeat+"]").parent().closest('label').addClass('booked'); // 색상도 바꿔줌
+				$(".arrSeat input:checkbox[id=arr"+arrSeat+"]").parent().closest('label').removeClass('bookable'); // 색상도 바꿔줌
+				}
+			var span = document.getElementsByClassName("close")[0];
+			span.onclick = function() {
+				  $("#myModal").css('display','none');
+				}
+			window.onclick = function(event) {
+				  if (event.target == $("#myModal")) {
+				    $("#myModal").css('display','none');
+				  }
+				}
+			if($("#kind").val() == 1){
+				$(".modalInnerBottom").click(function(){
+					if($("#people").val() == $(".depAir input:checkbox:checked").length){
+						$(".depAir").css("display","none");
+						$(".arrAir").css("display","block");
+						$(".modalInnerBottom").css('display','none');
+						$(".modalInnerBottom2").css('display','block');
+						$("#depLoc").html(arrLoc);
+						$("#arrLoc").html(depLoc);
+					} else {
+						alert('좌석을 선택하세요.');
+					}
+				});
+			} else {
+				$(".modalInnerBottom").text('좌석 선택 완료');
+				$(".roundOnly").html("");
+				$(".modalInnerBottom").click(function(){
+					if($("#people").val() == $(".depAir input:checkbox:checked").length){
+						$("#frm3").submit();
+					} else {
+						alert('좌석을 선택하세요.');
+					} 
+				});
+			}		
+				
+		} else if (result == 1){
+			alert('이미 체크인 하셨습니다.');
+		} else {
+			alert('정보 조회에 실패했습니다. 예매번호를 확인해주세요.');
+		}
+		
+	});
+});
 
-
+$(".depBookGo").click(function(){
+	$(".depAir").css("display","block");
+	$(".arrAir").css("display","none");
+	$(".modalInnerBottom").css('display','inline-block');
+	$(".modalInnerBottom2").css('display','none');
+	$("#depLoc").html(depLoc);
+	$("#arrLoc").html(arrLoc);
+});
+$(".bookOk").click(function(){
+	if($("#people").val() == $(".depAir input:checkbox:checked").length && $("#people").val() == $(".arrAir input:checkbox:checked").length){
+		$("#frm3").submit();
+	}
+	else{
+		alert('좌석 선택이 완료되지 않았습니다.');
+	}
+});
 
 		
 	</script>

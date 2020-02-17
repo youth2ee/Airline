@@ -1,5 +1,6 @@
 package com.airline.a1.imPay;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.airline.a1.booking.BookingPriceVO;
 import com.airline.a1.booking.BookingService;
+import com.airline.a1.limo.LimoVO;
 import com.airline.a1.member.MemberService;
 import com.airline.a1.member.MembersVO;
 
@@ -25,37 +27,52 @@ public class ImPayController {
 	
 	@Autowired
 	private MemberService memberService;
+	
+	@RequestMapping("imPayComplete2")
+	public void imPayComplete2(Model model, LimoVO limoVO) {
+
+		model.addAttribute("vo", limoVO);
+	}
+
+	@RequestMapping("imPayList2")
+	public Model imPayList2(ImPayVO imPayVO, HttpSession session, Model model) {
+
+
+		MembersVO membersVO = (MembersVO)session.getAttribute("member");
+		imPayVO.setMembersVO(membersVO);
+
+		model.addAttribute("VO", imPayVO);
+
+		return model;
+	}
 
 	
 	@RequestMapping("imPayList")
-	public Model imPayList(ImPayVO imPayVO, HttpSession session ,Model model) {
+	public ModelAndView imPayList(ImPayVO imPayVO, HttpSession session, Model model, HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView();
 		
-		System.out.println("1");
-		System.out.println(imPayVO.getRamount());
-		System.out.println(imPayVO.getMilplus());
-		System.out.println(imPayVO.getBnum());
-
-		
+		if(request.getHeader("Referer") != null) {
 		MembersVO membersVO = (MembersVO)session.getAttribute("member");
 		imPayVO.setMembersVO(membersVO);
-		
 	
-		model.addAttribute("VO", imPayVO);
+		mv.addObject("VO", imPayVO);
+		mv.setViewName("imPay/imPayList");
+		} else {
+			mv.addObject("msg", "올바른 접근이 아닙니다.");
+			mv.addObject("path", "../");
+			mv.setViewName("common/common_result");
+		}
 		
-		return model;
+		return mv;
 	}
 	
 	
 	@RequestMapping("imPayComplete")
-	public void imPayComplete(ImPayResultVO imPayResultVO, Model model, HttpSession session) throws Exception {
+	public ModelAndView imPayComplete(ImPayResultVO imPayResultVO, HttpSession session,  HttpServletRequest request) throws Exception {
 		
-		System.out.println("2");
-		System.out.println(imPayResultVO.getBpnum());
-		System.out.println(imPayResultVO.getMil());
-		System.out.println(imPayResultVO.getPaid_amount());
-		System.out.println(imPayResultVO.getImp_uid()); //id
-		System.out.println(imPayResultVO.getMerchant_uid()); //milplus
-		System.out.println(imPayResultVO.getBnum());
+		ModelAndView mv = new ModelAndView();
+		
+		if(request.getHeader("Referer") != null) {
 		
 		String [] nlist = imPayResultVO.getBpnum().split(","); 
 		
@@ -64,21 +81,10 @@ public class ImPayController {
 		bookingPriceVO.setMileagePlus(Integer.parseInt(imPayResultVO.getMerchant_uid()));
 		bookingPriceVO.setTotalAllPrice(imPayResultVO.getPaid_amount());
 		
-		System.out.println("빠질 마일리지 1");
-		System.out.println(bookingPriceVO.getMileageMin());
-		
-		System.out.println("더할 마일리지 1");
-		System.out.println(bookingPriceVO.getMileagePlus());
-		
-		
-		
 		for (int i = 1; i < nlist.length; i++) {
 			Integer bpnum = Integer.parseInt(nlist[i]);
 			
 			bookingPriceVO.setBpnum(bpnum);
-			
-			System.out.println("빠지는 마일리지 게시판에 등록");
-			System.out.println(bookingPriceVO.getMileageMin());
 			
 			bookingService.priceInsertResult(bookingPriceVO);	
 			memberService.updateMilplus(bookingPriceVO);
@@ -86,30 +92,27 @@ public class ImPayController {
 		
 		MembersVO memVo2 =  (MembersVO)session.getAttribute("member");
 		memVo2 = memberService.memberLogin(memVo2);
-		System.out.println("인서트된 후 마일리지");
-		System.out.println(memVo2.getMileage());
-		
 		
 		MembersVO membersVO = new MembersVO();
 		membersVO.setId(imPayResultVO.getImp_uid());
 		membersVO.setMileage(bookingPriceVO.getMileageMin());
-		
-		System.out.println("빠질 마일리지");
-		System.out.println(membersVO.getMileage());
 		
 		memberService.updateMilmin(membersVO);
 		
 		MembersVO memVo =  (MembersVO)session.getAttribute("member");
 		memVo = memberService.memberLogin(memVo);
 		
-		System.out.println("결과적 마일리지");
-		System.out.println(memVo.getMileage());
-		
-		System.out.println();
-		
 		session.setAttribute("member", memVo);
+		mv.addObject("vo", imPayResultVO);
+		mv.setViewName("imPay/imPayComplete");
 		
-		model.addAttribute("vo", imPayResultVO);
+		} else {
+			mv.addObject("msg", "올바른 접근이 아닙니다.");
+			mv.addObject("path", "../");
+			mv.setViewName("common/common_result");
+		}
+		
+		return mv;
 	}
 	
 }

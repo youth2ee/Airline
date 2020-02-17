@@ -218,6 +218,10 @@ public class BookingService {
 		return bookingMapper.searchMember(membersVO);
 	}
 	
+	public List<FlightDataVO> indexdep(FlightDataVO flightDataVO) throws Exception{
+		return bookingMapper.indexdep(flightDataVO);
+	}
+	
 
 	
 }

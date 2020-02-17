@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.airline.a1.booking.FlightDataVO;
 import com.airline.a1.checkIn.ETicketVO;
 import com.airline.a1.member.MembersVO;
+import com.airline.a1.limo.LimoVO;
 
 
 
@@ -48,7 +49,52 @@ public class AdminService {
 
 	
 	public List<FlightDataVO> saletermAir(FlightDataVO flightDataVO) throws Exception {
-		return adminMapper.saleterm(flightDataVO);
 
+		return adminMapper.saletermAir(flightDataVO);
+	}
+	
+	public List<FlightDataVO> airportpartList(FlightDataVO flightDataVO) throws Exception {
+		return adminMapper.airportpartList(flightDataVO);
+	}
+	
+	public Integer tprice(FlightDataVO flightDataVO) throws Exception {
+		return adminMapper.tprice(flightDataVO);
+	}
+	
+	public Double trate(FlightDataVO flightDataVO) throws Exception {
+		return adminMapper.trate(flightDataVO);
+	}
+
+	public Integer ftotal(FlightDataVO flightDataVO) throws Exception {
+		return adminMapper.ftotal(flightDataVO);
+
+	}
+	
+	public Integer limoSum(String airport) throws Exception{
+		return adminMapper.limoSum(airport);
+	}
+
+	public Integer limoTotalSum()throws Exception{
+		return adminMapper.limoTotalSum();
+	}
+
+	public Integer limoTotalPerson(String airport)throws Exception{
+		return adminMapper.limoTotalPerson(airport);
+	}
+
+	public Integer personSum() throws Exception{
+		return adminMapper.personSum();
+	}
+
+	public Integer todaySum(String airport)throws Exception{
+		return adminMapper.todaySum(airport);
+	}
+
+	public Integer limoTodaySum() throws Exception{
+		return adminMapper.limoTodaySum();
+	}
+	
+	public List<LimoVO> limoMember()throws Exception{
+		return adminMapper.limoMember();
 	}
 }

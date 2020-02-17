@@ -91,7 +91,7 @@ ${bVO.arrInfo.vihicleId} ${bVO.arrInfo.airlineNm}<br>
 <td>출발지</td>
 <td>도착지</td>
 <td>원가</td>
-<td>쿠폰명</td>
+<td class="cnmh">쿠폰명</td>
 <td>할인내역</td>
 <td>유류할증료</td>
 <td>공항이용료</td>
@@ -148,7 +148,7 @@ ${bVO.arrInfo.vihicleId} ${bVO.arrInfo.airlineNm}<br>
 <td>출발지</td>
 <td>도착지</td>
 <td>원가</td>
-<td>쿠폰명</td>
+<td class="cnmh">쿠폰명</td>
 <td>할인내역</td>
 <td>유류할증료</td>
 <td>공항이용료</td>
@@ -253,9 +253,6 @@ ${bVO.arrInfo.vihicleId} ${bVO.arrInfo.airlineNm}<br>
 
 			var t = Number(rt);
 			r = r + t;
-
-			
-			console.log(addComma(r));
 		});
 
 		
@@ -289,6 +286,7 @@ ${bVO.arrInfo.vihicleId} ${bVO.arrInfo.airlineNm}<br>
 			var rm = r - mil;
 			$('.tprice').html(' ' + addComma(rm) + '원');
 		});
+		
 
 		$('#useAll').click(function(){
 			$('#muse').val(${member.mileage});
@@ -307,7 +305,6 @@ ${bVO.arrInfo.vihicleId} ${bVO.arrInfo.airlineNm}<br>
 
 		$.each(numList, function(index, item) {
 			nlist = nlist + ',' + item;
-			
 		}); 
 
 	
