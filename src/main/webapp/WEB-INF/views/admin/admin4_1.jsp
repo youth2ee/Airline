@@ -71,7 +71,6 @@
             <h6 class="collapse-header">SALES MANAGEMENT</h6>
             <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin1_1">항공사별 매출 관리</a>
             <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin1_2">공항별 매출 관리</a>
-            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin1_3">회원별 매출 관리</a>
           </div>
         </div>
       </li>
