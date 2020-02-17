@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>EVERY AIR / Parking</title>
 <c:import url="../template/boot.jsp" />
 <link rel="stylesheet" type="text/css" href="../resources/css/xddatepicker/jquery.datetimepicker.css">
 <script src="../js/jquery.js"></script>
@@ -38,19 +38,19 @@
 										<option value=""  selected="selected">공항선택</option>
 										<option value="인천공항">인천공항</option>
 										<option value="김포공항">김포공항</option>
-										<option value="제주공항" >제주공항</option>
+										<option value="제주공항">제주공항</option>
 										</select>
 									</div>
 									<div class="frow">
 										<label for="entvhclResveDt" class="label"><span class="star">*</span> 예약 입차일시</label>
 										<div class="fsize01 m_full cal_wrap">
-											<input type="text" id="entvhclResveDate" name="startDate" readonly="readonly" aria-required="true" >
+											<input type="text" id="entvhclResveDate" name="startDate" readonly="readonly" aria-required="true">
 										</div>
 									</div>
 									<div class="frow">
 										<label for="lvvhclResveDt" class="label"><span class="star">*</span> 예약 출차일시</label>
 										<div class="fsize01 m_full cal_wrap">
-											<input type="text" id="lvvhclResveDate" name="endDate" readonly="readonly" aria-required="true" >
+											<input type="text" id="lvvhclResveDate" name="endDate" readonly="readonly" aria-required="true">
 										</div>
 									</div>
 <!-- 									<div class="frow">
@@ -123,7 +123,7 @@ $('#entvhclResveDate').datetimepicker({
  },
  timepicker:false,
  format:'Y-m-d',
- lang:'ko'  ,
+ lang:'ko',
  onShow:function( ct ){
 	   this.setOptions({
 		minDate:0,
@@ -186,7 +186,7 @@ $("#btnNext").click(function(){
 	endDate = $('#lvvhclResveDate').val();
 	
 
- 	if(airport == "" ){
+	if(airport == "" ){
 		alert('공항을 선택해 주세요');
 		$("#airportCode").focus();
 	}else if(startDate == "" || startDate < today){
@@ -200,7 +200,8 @@ $("#btnNext").click(function(){
 	}else{
 		//폼제출
 		$("#resveForm").submit();
-	} 
+	}
+	
 });
 </script>
 </body>

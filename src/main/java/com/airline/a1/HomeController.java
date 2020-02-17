@@ -137,6 +137,7 @@ public class HomeController {
 				ar = new ArrayList<BoardVO>();
 			}
 			
+			
 			customSchedule.fixRateSchedule();
 			
 			Map<String, Integer> tolist = searchService.rListTwo();
@@ -178,47 +179,47 @@ public class HomeController {
 				if(searchService.getType(search)) {
 					searchVO.setSvoca(search);
 					searchService.searchInsert(searchVO);
-				}else {
-					
-				if(kl.size() >= 3) {
-					  for(int i = 0; i < kl.size(); i++ ) {
-						  if(i == 1) {
-							  Keyword kwrd = kl.get(i); 
-							  msg = kwrd.getString();
-							  
-							  if(search.contains("스")) {
-								  searchVO.setSvoca(search);
-							  } else {
-								  searchVO.setSvoca(msg);
-							  }
-							  
-							  searchService.searchInsert(searchVO);
-						  }
-					  }
-				} else if (kl.size() == 1) {
-					  for(int i = 0; i < kl.size(); i++ ) {
-							  Keyword kwrd = kl.get(i); 
-							  msg = kwrd.getString();
-							  
-							  if(search.contains("스")) {
-								  searchVO.setSvoca(search);
-							  }else {
-								  searchVO.setSvoca(msg);
-							  }
-							  
-							  searchService.searchInsert(searchVO);
-						  }
 				} else {
-					  for(int i = 0; i < kl.size(); i++ ) {
-						  Keyword kwrd = kl.get(i); 
-						  msg = kwrd.getString();
-						  
-						  if(search.contains("우한")) {
-							  searchVO.setSvoca(search);
+					if(kl.size() >= 3) {
+						  for(int i = 0; i < kl.size(); i++ ) {
+							  if(i == 1) {
+								  Keyword kwrd = kl.get(i); 
+								  msg = kwrd.getString();
+								  
+								  if(search.contains("스")) {
+									  searchVO.setSvoca(search);
+								  } else {
+									  searchVO.setSvoca(msg);
+								  }
+								  
+								  searchService.searchInsert(searchVO);
+							  }
 						  }
-						  searchService.searchInsert(searchVO);
-					  }
-				}
+					} else if (kl.size() == 1) {
+						  for(int i = 0; i < kl.size(); i++ ) {
+								  Keyword kwrd = kl.get(i); 
+								  msg = kwrd.getString();
+								  
+								  if(search.contains("스")) {
+									  searchVO.setSvoca(search);
+								  } else {
+									  searchVO.setSvoca(msg);
+								  }
+								  
+								  searchService.searchInsert(searchVO);
+							  }
+					} else {
+						  for(int i = 0; i < kl.size(); i++ ) {
+							  Keyword kwrd = kl.get(i); 
+							  msg = kwrd.getString();
+							  
+							  if(search.contains("우한")) {
+								  searchVO.setSvoca(search);
+							  }
+							  
+							  searchService.searchInsert(searchVO);
+						  }
+					}
 				}
 			}
 		}

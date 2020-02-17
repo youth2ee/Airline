@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>EVERY AIR / Limousine</title>
 <link rel="stylesheet" type="text/css" href="https://www.kobus.co.kr/css/spexp/plugin.css?v=1.0">
 <link rel="stylesheet" type="text/css" href="https://www.kobus.co.kr/css/spexp/reset.css?v=1.0">
 <link rel="stylesheet" type="text/css" href="https://www.kobus.co.kr/css/spexp/layout.css?v=1.1">

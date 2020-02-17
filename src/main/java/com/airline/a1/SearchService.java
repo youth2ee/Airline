@@ -94,12 +94,6 @@ public class SearchService {
 			for (int j = 1; j < 11; j++) {
 				
 				if(olist.get(i).equals(nlist.get(j))) {
-					
-					if(i-j != 0) {
-						System.out.println(nlist.get(j));
-						System.out.println(i-j);
-					}
-					
 					tolist.put(nlist.get(j), i-j);
 				}
 			}
@@ -107,10 +101,6 @@ public class SearchService {
 		
 		return tolist;
 	}
-	
-	
-	
-	
 	
 	
     public boolean getType(String word) {
@@ -156,12 +146,6 @@ public class SearchService {
 			for (int j = 1; j < 11; j++) {
 				
 				if(olist.get(i).equals(nlist.get(j))) {
-					
-					if(i-j != 0) {
-						System.out.println(nlist.get(j));
-						System.out.println(i-j);
-					}
-					
 					tolist.put(nlist.get(j), i-j);
 				}
 			}

@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>EVERY AIR / Park check</title>
 
 <link rel="stylesheet" href="../resources/css/park/parkRes.css">
 
