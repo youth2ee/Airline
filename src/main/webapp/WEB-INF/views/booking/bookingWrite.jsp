@@ -52,7 +52,7 @@ ${arr[3]}시 ${arr[4]}분<i class='fas fa-angle-right' style='font-size:10px; pa
 <i class="material-icons" style="font-size:31px; color: white; padding-top: 14px;">person</i>
 <div style="margin-top: 1px; font-size: 20px;">
 <c:if test="${bTVO.adult != 0}">
-성인 : ${bTVO.adult}명
+성인 : ${bTVO.adult}명 <br>
 </c:if>
 <c:if test="${bTVO.child != 0}">
 아동 : ${bTVO.child}명
