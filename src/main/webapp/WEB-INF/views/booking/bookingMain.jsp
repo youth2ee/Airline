@@ -20,7 +20,7 @@
 <c:import url="../template/boot.jsp"></c:import>
 
 <!-- Title Page-->
-<title>tt</title>
+<title>EVERY AIR / Booking</title>
 
 <!-- Icons font CSS-->
 <link href="../resources/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
@@ -313,14 +313,6 @@ $('input:radio[name=kind]').click(function(){
 				}
 		}); 
 /**** 공항검색 끝 ****/
-
-
-
-
-
-
-
- 
 
  /***** 공항유효성검사 *****/
 	  $('body').on("click",'#booking_btn',function(){

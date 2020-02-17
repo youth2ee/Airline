@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>EVERY AIR / Booking</title>
 <link href="../resources/css/reset.css" rel="stylesheet">
 <link href="../resources/css/header.css" rel="stylesheet">
 <link href="../resources/css/booking/bookingWrite.css" rel="stylesheet">
@@ -52,7 +52,7 @@ ${arr[3]}시 ${arr[4]}분<i class='fas fa-angle-right' style='font-size:10px; pa
 <i class="material-icons" style="font-size:31px; color: white; padding-top: 14px;">person</i>
 <div style="margin-top: 1px; font-size: 20px;">
 <c:if test="${bTVO.adult != 0}">
-성인 : ${bTVO.adult}명 <br>
+성인 : ${bTVO.adult}명
 </c:if>
 <c:if test="${bTVO.child != 0}">
 아동 : ${bTVO.child}명
@@ -166,7 +166,7 @@ ${arr[3]}시 ${arr[4]}분<i class='fas fa-angle-right' style='font-size:10px; pa
 <option>[30%] 5.18민주유공 1~4급 동반 보호자 1인</option>
 <option>[30%] 국가유공상이 1~3급 동반 보호자 1인</option>
 <option>[30%] 독립유공자 동반 보호자 1인</option>
-<option>[10%] 독립유동자 유족증소지자</option>
+<option>[10%] 독립유공자 유족증소지자</option>
 <option>[30%] 독립유공자</option>
 <option>[10%] 국가유공자/5.18민주유공자/월남전 참전유공자 &#38; 유공자 유족증 소지자</option>
 <option>[30%] 국가유공상이자 &#38; 5.18민주유공부상자</option>
@@ -191,7 +191,7 @@ ${arr[3]}시 ${arr[4]}분<i class='fas fa-angle-right' style='font-size:10px; pa
 <option>[30%] 5.18민주유공 1~4급 동반 보호자 1인</option>
 <option>[30%] 국가유공상이 1~3급 동반 보호자 1인</option>
 <option>[30%] 독립유공자 동반 보호자 1인</option>
-<option>[10%] 독립유동자 유족증소지자</option>
+<option>[10%] 독립유공자 유족증소지자</option>
 <option>[30%] 독립유공자</option>
 <option>[10%] 국가유공자/5.18민주유공자/월남전 참전유공자 &#38; 유공자 유족증 소지자</option>
 <option>[30%] 국가유공상이자 &#38; 5.18민주유공부상자</option>
@@ -440,13 +440,12 @@ window.onclick = function(event) {
 	
 });
 
-var dold = '';
-
 $('.mbtn2').on('click',  function(event){
 	
 	$('.modal-content').css('height','491px');
 	$('#modalfm').css('display','block');
 	$('#ubtn').css('display','none');
+	alert("clickl");
  	$.ajax({
 		data : {
 			name : $('#mname').val().trim(),
@@ -456,8 +455,7 @@ $('.mbtn2').on('click',  function(event){
 		url : "./booking/searchm",
 		success : function(data) {
 
-			 data = data.trim();
-			 dold = data; 
+			data = data.trim();
 
 			if(data != "0"){
 				$('#modalfm').css('line-height','102px');
@@ -465,6 +463,8 @@ $('.mbtn2').on('click',  function(event){
 				$('#mnump').text(data);
 				$('#ubtn').css('display','block');
 
+				
+				
 			} else {
 
 				$('#modalfm').css('line-height','121px');
@@ -477,7 +477,13 @@ $('.mbtn2').on('click',  function(event){
 });
 
 $('body').on('click','#ubtn', function(){
-	thi.parent('.btb').find('.mnum').val(dold);
+	/* 	$('.mnu-m').css('background-color','red'); */
+	alert(thi.parent('.btb').length);
+	thi.parent('.btb').find('.mnum').val(data);
+
+	thi.parent('.btb').find('.mnum').css('background-color','red');
+
+	
     $('#myModal').css('display','none');
 });
 
