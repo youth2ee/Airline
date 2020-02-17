@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>EVERY AIR / Board</title>
 
 <c:import url="../template/boot.jsp"></c:import>
 <link rel="stylesheet" href="../resources/css/board/boardList.css">

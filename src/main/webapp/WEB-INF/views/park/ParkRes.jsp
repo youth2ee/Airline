@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>EVERY AIR / Park</title>
 <c:import url="../template/boot.jsp" />
 <link rel="stylesheet" type="text/css" href="../resources/css/xddatepicker/jquery.datetimepicker.css">
 <script src="../js/jquery.js"></script>

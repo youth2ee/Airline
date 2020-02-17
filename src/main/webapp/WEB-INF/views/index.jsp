@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Index</title>
+<title>EVERY AIR</title>
 <link href="../resources/css/reset.css" rel="stylesheet">
 <link href="../resources/css/header.css" rel="stylesheet">
 <link href="../resources/css/index/main.css" rel="stylesheet">
