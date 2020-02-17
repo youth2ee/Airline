@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>EVERY AIR / Index search</title>
 <c:import url="./template/boot.jsp"></c:import>
     <link href="../resources/css/header.css" rel="stylesheet">
 <link rel="stylesheet" href="../resources/css/index/indexSearch.css">

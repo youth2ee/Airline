@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>EVERY AIR / Member join</title>
 <c:import url="../template/boot.jsp" />
 
 <link rel="stylesheet" type="text/css" href="https://flyasiana.com/C/pc/css/reset.css">

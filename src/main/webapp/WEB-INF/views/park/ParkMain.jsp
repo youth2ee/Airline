@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>EVERY AIR / Parking</title>
 <c:import url="../template/boot.jsp" />
 </head>
 <body>
