@@ -58,7 +58,7 @@
 								</div>
 
 								<div class="input_wrap">
-									<input type="text" id="txtID" name="id" placeholder="아이디 입력" title="아이디 입력" style="width:500px;" onkeyup="enterkey();"> 
+									<input type="text" id="txtID" name="id" placeholder="아이디 입력" title="아이디 입력" style="width:500px;"> 
 									<input type="password" id="txtPW" name="pw" placeholder="비밀번호 입력" title="비밀번호 입력" style="width:500px;" autocomplete="off" onkeyup="enterkey();"> 
 								</div>
 
