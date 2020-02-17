@@ -9,6 +9,11 @@
 <c:import url="../template/boot.jsp" />
 <link rel="stylesheet" href="../resources/css/park/parkRes.css">
 <link rel="stylesheet" type="text/css" href="../resources/css/header.css">
+<style type="text/css">
+.btn:hover {
+	color: white;
+}
+</style>
 </head>
 <body>
 <c:import url="../layout/header.jsp" />

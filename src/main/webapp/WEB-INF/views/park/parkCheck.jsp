@@ -156,7 +156,7 @@ label {
 									<div class="frow">
 										<label for="acPlate" class="label"><span class="star">*</span> 차량번호</label>
 										<div class="full">
-											<input type="text" id="carNum" name="carNum" maxlength="20" placeholder="예) 00가0000, 서울00가0000, 외교000000" aria-required="true" value="21가7452">
+											<input type="text" id="carNum" name="carNum" maxlength="20" placeholder="예) 00가0000, 서울00가0000, 외교000000" aria-required="true">
 										</div>
 									</div>
 									<div class="frow">
@@ -219,12 +219,12 @@ label {
 									
 								<!-- 예약 못하는 자리  -->
 								<c:forEach items="${list}" var="vo">
-									<input type="hidden" value="${vo.areaNum}" class="check"><br>
+									<input type="hidden" value="${vo.areaNum}" class="check">
 								</c:forEach>
 							
 								<!-- 장애인 자리 -->
 								<c:forEach items="${etc}" var="vo">
-									<input type="hidden" value="${vo}" class="etc"><br>
+									<input type="hidden" value="${vo}" class="etc">
 								</c:forEach>
 							
 								<div class="container2 ${park.aName}">
