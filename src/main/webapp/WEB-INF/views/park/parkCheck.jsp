@@ -219,12 +219,12 @@ label {
 									
 								<!-- 예약 못하는 자리  -->
 								<c:forEach items="${list}" var="vo">
-									<input type="hidden" value="${vo.areaNum}" class="check"><br>
+									<input type="hidden" value="${vo.areaNum}" class="check">
 								</c:forEach>
 							
 								<!-- 장애인 자리 -->
 								<c:forEach items="${etc}" var="vo">
-									<input type="hidden" value="${vo}" class="etc"><br>
+									<input type="hidden" value="${vo}" class="etc">
 								</c:forEach>
 							
 								<div class="container2 ${park.aName}">

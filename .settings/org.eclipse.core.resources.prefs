@@ -4,6 +4,7 @@ encoding//src/main/java/com/airline/a1/admin/AdminService.java=UTF-8
 encoding//src/main/java/com/airline/a1/booking/BookingService.java=UTF-8
 encoding//src/main/resources=UTF-8
 encoding//src/main/resources/application.properties=UTF-8
+encoding//src/main/webapp/WEB-INF/views/error.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/layout/header.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/member/NewFile.jsp=UTF-8
 encoding//src/test/java=UTF-8

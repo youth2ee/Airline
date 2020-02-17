@@ -25,7 +25,7 @@ public class SmsService {
 	public int smsSend(String receiver) throws Exception{
 		// 6자리 인증 코드 생성 
 		int rand = (int) (Math.random() * 899999) + 100000; 
-		// 인증 코드를 데이터베이스에 저장하는 코드는 생략했습니다. 
+		
 		// 문자 보내기 
 		String hostname = "api.bluehouselab.com"; 
 		String url = "https://" + hostname + "/smscenter/v1.0/sendsms"; 
@@ -33,7 +33,7 @@ public class SmsService {
 		CredentialsProvider credsProvider = new BasicCredentialsProvider(); 
 		credsProvider.setCredentials(new AuthScope(hostname, 443, AuthScope.ANY_REALM),
 				
-		// 청기와랩에 등록한 Application Id 와 API key 를 입력합니다. 
+		// 청기와랩에 등록한 Application Id 와 API key
 		new UsernamePasswordCredentials("Everyaaa", "719bd3243b5611eab3ca0cc47a1fcfae"));
 		
 		AuthCache authCache = new BasicAuthCache(); 

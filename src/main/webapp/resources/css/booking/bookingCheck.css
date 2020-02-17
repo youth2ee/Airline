@@ -38,9 +38,11 @@ section{
 
 
 #noti{
-	min-height: 90px;
-	background-color: #f3f4f6;
-	padding-bottom: 30px;
+min-height: 90px;
+    background-color: #f3f4f6;
+    padding-bottom: 22px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke: 0.45px;
 }
 
 #notiWrap{
@@ -59,10 +61,12 @@ section{
 }
 
 #tmsg{
-	padding: 25px 0;
-	border-top: gray solid 1px;
-	border-bottom: gray solid 1px;
-	margin-bottom: 30px;
+    padding: 25px 0;
+    border-top: gray solid 1px;
+    border-bottom: gray solid 1px;
+    margin-bottom: 30px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke: 0.45px;
 }
 
 

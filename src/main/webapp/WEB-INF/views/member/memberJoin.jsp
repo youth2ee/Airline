@@ -199,11 +199,6 @@
 	</div>
 </form>
 <c:import url="../template/fffooter.jsp" />
-
-<button id="window_open" onclick="window.open("./newwindow", "아론", "width=800, height=700")">새창열기</button>
-	
-<a href="#" onclick="window.open('newwindow', '팝업창 이름','width=800, height=700'); return false">새창</a>
-
 <script type="text/javascript">
 
 function tooltipBlock(){
@@ -275,7 +270,6 @@ $("#input_pw").keyup(function(){
 		$(".pwd_rule  > li").eq(4).children().removeClass('able');
 		$(".pwd_rule  > li").eq(4).children().addClass('unable');
 	}
-
 
 	//20자리 이상 체크
 	if(pw.length >19){

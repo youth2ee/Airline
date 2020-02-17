@@ -12,8 +12,11 @@
 <link rel="stylesheet" type="text/css" href="https://flyasiana.com/C/pc/css/common.css">
 <link rel="stylesheet" type="text/css" href="https://flyasiana.com/C/pc/css/flyasiana.css">
 <link rel="stylesheet" type="text/css" href="https://flyasiana.com/C/pc/css/calendar.css">
+
+<link rel="stylesheet" type="text/css" href="../resources/css/header.css">
 </head>
 <body>
+<c:import url="../layout/header.jsp" />
 <div class="container" id="container">
 				
 				<h3>아이디 찾기</h3>
@@ -49,4 +52,10 @@
 				</div>
 			</div>
 </body>
+<script type="text/javascript">
+
+$("#btnLogin").click(function(){
+	location.href='./memberLogin';
+});
+</script>
 </html>
