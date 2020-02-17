@@ -44,11 +44,13 @@ public class InterceptorConfig implements WebMvcConfigurer {
 			.addPathPatterns("/mypage/*")
 			.excludePathPatterns("booking/bookingMain");
 			
-			registry.addInterceptor(noticeInterceptor)
-			.addPathPatterns("/notice/noticeWrite");
-			
-			registry.addInterceptor(noticeSelectInterceptor)
-			.addPathPatterns("/notice/noticeSelect");
+		/*
+		 * registry.addInterceptor(noticeInterceptor)
+		 * .addPathPatterns("/notice/noticeWrite");
+		 * 
+		 * registry.addInterceptor(noticeSelectInterceptor)
+		 * .addPathPatterns("/notice/noticeSelect");
+		 */
 			
 			//WebMvcConfigurer.super.addInterceptors(registry);
 		}

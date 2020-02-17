@@ -638,7 +638,7 @@ $(document).ready(function() {
 						
 						<div style="display: none; width: 100%;" id="deptt">
 						
-						<div style="width: 1180px; padding: 10px; background-color:#eee; margin: 0 auto; margin-top: 10px;text-align: center; height: 434.44px; line-height: 434.44px;" id="te">
+						<div style="width: 1180px; padding: 10px; background-color:#eee; margin: 0 auto; margin-top: 10px;text-align: center; height: 318.44px; line-height: 318.44px;" id="te">
 						
 						</div>
 						
@@ -655,8 +655,8 @@ $(document).ready(function() {
 								$('.slide_inner').css('top','40px');
 								$('#deptt').css('display','block');
 								var soptsel =  $('#searchDate option:selected').val().replace('.','').replace('.','').trim();
-								var dc = $('#txtDepartureAirportF').val();
-								var ac = $('#txtArrivalAirportF').val();
+								var dc = $('#txtDepartureAirportF').val().trim();
+								var ac = $('#txtArrivalAirportF').val().trim();
 								
 
   								$.ajax({
@@ -669,7 +669,6 @@ $(document).ready(function() {
 									url : "/indexdep",
 									success : function(data) {
 
-										alert('모야');
 										$('#te').html(data);
 
 									}
