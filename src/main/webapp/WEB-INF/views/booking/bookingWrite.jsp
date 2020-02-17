@@ -440,12 +440,13 @@ window.onclick = function(event) {
 	
 });
 
+var told = '';
+
 $('.mbtn2').on('click',  function(event){
 	
 	$('.modal-content').css('height','491px');
 	$('#modalfm').css('display','block');
 	$('#ubtn').css('display','none');
-	alert("clickl");
  	$.ajax({
 		data : {
 			name : $('#mname').val().trim(),
@@ -456,6 +457,7 @@ $('.mbtn2').on('click',  function(event){
 		success : function(data) {
 
 			data = data.trim();
+			told = data;
 
 			if(data != "0"){
 				$('#modalfm').css('line-height','102px');
@@ -477,13 +479,7 @@ $('.mbtn2').on('click',  function(event){
 });
 
 $('body').on('click','#ubtn', function(){
-	/* 	$('.mnu-m').css('background-color','red'); */
-	alert(thi.parent('.btb').length);
-	thi.parent('.btb').find('.mnum').val(data);
-
-	thi.parent('.btb').find('.mnum').css('background-color','red');
-
-	
+	thi.parent('.btb').find('.mnum').val(told);
     $('#myModal').css('display','none');
 });
 
