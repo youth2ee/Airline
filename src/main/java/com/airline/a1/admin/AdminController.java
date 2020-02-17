@@ -24,6 +24,7 @@ import com.airline.a1.park.pInfoVO;
 import com.airline.a1.park.pReservationVO;
 import com.airline.a1.checkIn.ETicketVO;
 import com.airline.a1.member.MembersVO;
+import com.airline.a1.limo.LimoVO;
 import com.airline.a1.board.BoardVO;
 import com.airline.a1.board.NoticeService;
 import com.airline.a1.board.NoticeVO;
@@ -450,12 +451,44 @@ public class AdminController {
 	}
 
 	@GetMapping("admin6_1")
-	public void admin6_1() throws Exception{
-	
+	public ModelAndView admin6_1(LimoVO limoVO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		List<LimoVO> ar = adminService.limoMember();
+		mv.addObject("limoMember", ar);
+
+		return mv;
 	}
 	
 	@GetMapping("admin6_2")
-	public void admin6_2() throws Exception{
+	public ModelAndView admin6_2(LimoVO limoVO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		List<Integer> ar = new ArrayList<Integer>();
+		List<Integer> ar2 = new ArrayList<Integer>();
+		List<Integer> ar3 = new ArrayList<Integer>();
+		int result2 = adminService.limoTotalSum();
+		int result4 = adminService.personSum();
+		int result6  = adminService.limoTodaySum();
+		String [] airport = {"인천공항", "김포공항", "양양공항", "청주공항", "대구공항", "무안공항", "여수공항", "김해공항", "울산공항", "제주공항"};
+		for(int i=0; i<airport.length; i++) {
+			int result = adminService.limoSum(airport[i]);
+			ar.add(result);
+		}
+		for(int j=0; j<airport.length; j++) {
+			int result3 = adminService.limoTotalPerson(airport[j]);
+			ar2.add(result3);
+		}
+		for(int z=0; z<airport.length; z++) {
+			int result5 = adminService.todaySum(airport[z]);
+			ar3.add(result5);
+		}
+		mv.addObject("limo", ar);
+		mv.addObject("SumTotal", result2);
+		mv.addObject("SumPerson", ar2);
+		mv.addObject("PersonSum", result4);
+		mv.addObject("todaySum", ar3);
+		mv.addObject("limoTodaySum", result6);
+		
+		return mv;
 		
 	}
 	
