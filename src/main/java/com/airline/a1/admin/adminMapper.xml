@@ -88,6 +88,7 @@
 	<select id="airportList" resultType="com.airline.a1.admin.AirportVO">
 	select * from airport order by apName asc
 	</select>
+
 	
 	<!-- main -->
 	<select id="tprice" parameterType="com.airline.a1.booking.FlightDataVO" resultType="java.lang.Integer">
@@ -128,5 +129,46 @@
 	where depPlandTime like concat(#{depPlandTime},'%')
 	</select>
 	
+		<select id="limoSum" parameterType="java.lang.String" resultType="java.lang.Integer">
+		select ifnull(sum(limoPrice),0)
+		from (select * from limo where depLoc = #{airport} or arrLoc= #{airport}) L
+		where limoDate like '2020-02-%'
+	</select>
+
+	<select id="limoTotalSum" resultType="java.lang.Integer">
+		select ifnull(sum(limoPrice),0)
+		from (select * from limo) L
+		where limoDate like '2020-02-%'
+	</select>
+
+	<select id="limoTotalPerson" parameterType="java.lang.String" resultType="java.lang.Integer">
+		select ifnull(sum(person) + sum(child),0)
+		from (select * from limo where depLoc = #{airport} or arrLoc=#{airport}) L
+		where limoDate = curdate()
+
+	</select>
+
+	<select id="personSum" resultType="java.lang.Integer">
+		select ifnull(sum(person) + sum(child),0)
+		from (select * from limo) L
+		where limoDate = curdate()
+	</select>
+
+	<select id="todaySum" parameterType="java.lang.String" resultType="java.lang.Integer">
+		select ifnull(sum(limoPrice),0)
+		from (select * from limo where depLoc = #{airport} or arrLoc= #{airport}) L
+		where limoDate = curdate()
+	</select>
+
+	<select id="limoTodaySum" resultType="java.lang.Integer">
+		select ifnull(sum(limoPrice),0)
+		from (select * from limo) L
+		where limoDate = curdate()
+	</select>
+	
+	<select id="limoMember" resultType="com.airline.a1.limo.LimoVO">
+		select * from limo order by id desc
+	</select>
+
   
   </mapper>

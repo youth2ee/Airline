@@ -20,12 +20,12 @@
 			
 	    <c:forEach items="${fdlist}" var="t">
 			<tr>
-			<td style="line-height: 37px; font-size: 18px;">${t.vihicleId}</td>
-			<td style="line-height: 37px; font-size: 18px;">${t.airlineNm}</td>
-			<td style="line-height: 37px; font-size: 18px;">${t.depAirportNm}</td>
-			<td style="line-height: 37px; font-size: 18px;">${t.arrAirportNm}</td>
-			<td style="line-height: 37px; font-size: 18px;">${t.depPlandTime}</td>
-			<td style="line-height: 37px; font-size: 18px;">${t.arrPlandTime}</td>
+			<td style="line-height: 25px; font-size: 14px;">${t.vihicleId}</td>
+			<td style="line-height: 25px; font-size: 14px;">${t.airlineNm}</td>
+			<td style="line-height: 25px; font-size: 14px;">${t.depAirportNm}</td>
+			<td style="line-height: 25px; font-size: 14px;">${t.arrAirportNm}</td>
+			<td style="line-height: 25px; font-size: 14px;">${t.depPlandTime}</td>
+			<td style="line-height: 25px; font-size: 14px;">${t.arrPlandTime}</td>
 			</tr>
 	    </c:forEach>
 	    	

@@ -32,7 +32,7 @@ import lombok.experimental.Helper;
 @Component
 public class MailService {
 	
-	@Autowired
+	//@Autowired
 	private JavaMailSender javaMailSender;
 		
 	public void mailFindId2(MembersVO membersVO) throws Exception { 

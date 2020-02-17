@@ -49,7 +49,7 @@ public class MemberService {
 		String memberNumber1 = String.format("%03d%n", rand.nextInt(1000)).replace("\r\n", "");
 		String memberNumber2 = String.format("%03d%n", rand.nextInt(1000)).replace("\r\n", "");
 		String memberNumber3 = String.format("%03d%n", rand.nextInt(1000)).replace("\r\n", "");
-		String memberNumber = memberNumber1 + "-" + memberNumber2 + "-" + memberNumber3; // 띄어쓰기 있음 (아시아나 형식)
+		String memberNumber = memberNumber1 + "-" + memberNumber2 + "-" + memberNumber3; // 띄어쓰기 있음 
 		// String memberNumber = memberNumber1 + memberNumber2 + memberNumber3; // 띄어쓰기 없음  (편의상)
 		return memberNumber;
 

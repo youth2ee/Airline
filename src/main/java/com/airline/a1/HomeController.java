@@ -110,7 +110,7 @@ public class HomeController {
 	
 	
 	@GetMapping("indexSearch")
-	public ModelAndView indexSearch( String search,  HttpServletRequest request) throws Exception {
+	public ModelAndView indexSearch(String search,  HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		
 		if(request.getHeader("Referer") != null) {
@@ -119,26 +119,24 @@ public class HomeController {
 			
 			if(ar.size() > 0) {
 			  for(BoardVO con:ar) {
-				  
 				  if(con.getTextContents() != null) {
-				  String tcon = con.getTextContents();
-			  
-				  int num = tcon.indexOf(search);
-				  int tlen = tcon.length();
+					  String tcon = con.getTextContents();
 				  
-				  if(num > 10) {
-					  tcon = tcon.substring(num-10);
-				  } else {
-					  tcon = tcon.substring(0);
-				}
-				  con.setTextContents(tcon);
-
+					  int num = tcon.indexOf(search);
+					  int tlen = tcon.length();
+					  
+					  if(num > 10) {
+						  tcon = tcon.substring(num-10);
+					  } else {
+						  tcon = tcon.substring(0);
+					  }
+					  con.setTextContents(tcon);
 				 }
 			  }
-		} else {
-			ar = new ArrayList<BoardVO>();
-		}
-			  
+			} else {
+				ar = new ArrayList<BoardVO>();
+			}
+			
 			customSchedule.fixRateSchedule();
 			
 			Map<String, Integer> tolist = searchService.rListTwo();
@@ -153,50 +151,30 @@ public class HomeController {
 			searchVO.setSearch(search);
 
 			String msg = "";
-
-			/*
-			 * String string = search; try { MorphemeAnalyzer ma = new MorphemeAnalyzer();
-			 * ma.createLogger(null); Timer timer = new Timer(); timer.start();
-			 * List<MExpression> ret = ma.analyze(string); timer.stop();
-			 * timer.printMsg("Time"); ret = ma.postProcess(ret); ret =
-			 * ma.leaveJustBest(ret); List<Sentence> stl = ma.divideToSentences(ret); for(
-			 * int i = 0; i < stl.size(); i++ ) { Sentence st = stl.get(i);
-			 * 
-			 * System.out.println("=============================================  " +
-			 * st.getSentence());
-			 * 
-			 * for( int j = 0; j < st.size(); j++ ) { System.out.println(st.get(j)); msg =
-			 * msg + "/" + st.get(j); } } ma.closeLogger(); } catch (Exception e) {
-			 * e.printStackTrace(); }
-			 */
 			
 			String strToExtrtKwrd = search; 
 			KeywordExtractor ke = new KeywordExtractor(); 
 			KeywordList kl = ke.extractKeyword(strToExtrtKwrd, true);
 
 			if(search.contains(" ")) {
-
 				if(kl.size() >= 4) {
 				  for(int i = 0; i < kl.size(); i++ ) {
-					  
 					  if(i == 1) {
 						  Keyword kwrd = kl.get(i); 
 						  msg = kwrd.getString();
 						  
 						  if(search.contains("스")) {
 							  searchVO.setSvoca(search);
-						  }else {
+						  } else {
 							  searchVO.setSvoca(msg);
 						  }
 						  
 						  searchService.searchInsert(searchVO);
 					  	}
-					  
 					  }
 				}
 
 			}else {
-				
 				if(searchService.getType(search)) {
 					searchVO.setSvoca(search);
 					searchService.searchInsert(searchVO);
@@ -206,12 +184,11 @@ public class HomeController {
 					  for(int i = 0; i < kl.size(); i++ ) {
 						  if(i == 1) {
 							  Keyword kwrd = kl.get(i); 
-							/* System.out.println(kwrd.getString() + "\t" + kwrd.getCnt()); */
 							  msg = kwrd.getString();
 							  
 							  if(search.contains("스")) {
 								  searchVO.setSvoca(search);
-							  }else {
+							  } else {
 								  searchVO.setSvoca(msg);
 							  }
 							  
@@ -221,7 +198,6 @@ public class HomeController {
 				} else if (kl.size() == 1) {
 					  for(int i = 0; i < kl.size(); i++ ) {
 							  Keyword kwrd = kl.get(i); 
-						/* System.out.println(kwrd.getString() + "\t" + kwrd.getCnt()); */
 							  msg = kwrd.getString();
 							  
 							  if(search.contains("스")) {
@@ -235,20 +211,16 @@ public class HomeController {
 				} else {
 					  for(int i = 0; i < kl.size(); i++ ) {
 						  Keyword kwrd = kl.get(i); 
-						/* System.out.println(kwrd.getString() + "\t" + kwrd.getCnt()); */
 						  msg = kwrd.getString();
 						  
 						  if(search.contains("우한")) {
 							  searchVO.setSvoca(search);
 						  }
 						  searchService.searchInsert(searchVO);
-
 					  }
 				}
-
 				}
 			}
-			
 		}
 		
 		mv.setViewName("indexSearch");
@@ -514,8 +486,6 @@ public class HomeController {
 			System.out.println(bookingTicketVO.getArrLoc());
 		}
 
-		
-
 		mv.addObject("bookingVO", bookingTicketVO);
 		mv.addObject("Dlist", ddates);
 		mv.addObject("Alist", adates);
@@ -548,11 +518,6 @@ public class HomeController {
 			flightDataVO.setArrPlandTime(ft3);
 			
 			List<FlightDataVO> fdlist =  bookingService.indexdep(flightDataVO);
-			
-			for(FlightDataVO f : fdlist) {
-				System.out.println("ㅎ하하하ㅏㅎ");
-				System.out.println(f.getDepAirportNm());
-			}
 			
 			mv.addObject("fdlist", fdlist);
 			mv.setViewName("depCheck");

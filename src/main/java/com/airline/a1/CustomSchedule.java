@@ -13,15 +13,10 @@ public class CustomSchedule {
 	private SearchService searchService;
 
 	@Scheduled(fixedRate = 30000)
-	//@Scheduled(fixedRateString = "1000")
 	public void fixRateSchedule() throws Exception {
 		
 	    List<SearchVO> ar = searchService.realList();
 		SearchRankingVO searchRankingVO = new SearchRankingVO();
-		
-
-		/* System.out.println("스케쥴링 실행중"); */
-
 		
 			 searchRankingVO.setRank1(ar.get(0).getSvoca());
 			 searchRankingVO.setRank2(ar.get(1).getSvoca());
@@ -35,9 +30,6 @@ public class CustomSchedule {
 			 searchRankingVO.setRank10(ar.get(9).getSvoca());
 		
 		 searchService.rListInsert(searchRankingVO); 
-		
-		//System.out.println("FixRate"+Thread.currentThread().getName());
-		//Thread.sleep(2000);
 	}
 	
 	

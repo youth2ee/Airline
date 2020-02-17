@@ -68,8 +68,8 @@ $(document).ready(function() {
 
   <!-- <strong>신종 코로나 바이러스</strong>&nbsp주의 하세여 -->
   <p class="strong">
-  			코로나19 관련 국가별 입국 제한 현황
-  	<a href="${pageContext.request.contextPath}/notice/noticeSelect?num=132" style="text-decoration: underline;">자세히보기</a>
+  			비운항 및 감편 노선 안내
+  	<a href="${pageContext.request.contextPath}/notice/noticeSelect?num=134" style="text-decoration: underline;">자세히보기</a>
   </p>
 
 </div>
@@ -263,53 +263,53 @@ $(document).ready(function() {
 			</div>
 			<div class="section" id="section1"
 				style="background: url(https://flyasiana.com/C/pc/image/main/bg_section02_default.jpg); background-size: 1920px">
-				<div class="intro">
+<div class="intro">
 
-				<span style="float: right;">
-					<a href="https://www.weather.go.kr/w/index.do"><img alt="weather" src="../images/weather.png" style="width: 180px; height: 180px; margin-top: -50px; cursor: pointer;"></a>
-					<a href="https://www.weatheri.co.kr/forecast/forecast03.php?mNum=1&aircode=RKSI"><img alt="weather" src="../images/weather2.png" style="width: 60px; height: 60px; float: right; margin-right:50px; cursor: pointer;"></a>
-				</span>
+            <span style="float: right;">
+               <a href="https://www.weather.go.kr/w/index.do"><img alt="weather" src="../images/weather.png" style="width: 180px; height: 180px; margin-top: -50px; cursor: pointer;"></a>
+               <a href="https://www.weatheri.co.kr/forecast/forecast03.php?mNum=1&aircode=RKSI"><img alt="weather" src="../images/weather2.png" style="width: 60px; height: 60px; float: right; margin-right:50px; cursor: pointer;"></a>
+            </span>
 
-					<div class="weather">
-							<div class="airLine_weather">
-								<span class="airLine_weather_text">공항별 날씨정보</span>
-							</div>
-						<div class="weather_wrap">
-							<div class="weather_select_wrap">
-								<select name="airLine" id="weather_sel" >
-									<option value="RKSI/인천공항/1">인천공항</option>
-									<option value="RKSS/김포공항/2">김포공항</option>
-									<option value="RKNY/양양공항/3">양양공항</option>
-									<option value="RKTU/청주공항/4">청주공항</option>
-									<option value="RKTN/대구공항/5">대구공항</option>
-									<option value="RKJB/무안공항/6">무안공항</option>
-									<option value="RKJY/여수공항/7">여수공항</option>
-									<option value="RKPK/김해공항/8">김해공항</option>
-									<option value="RKPU/울산공항/9">울산공항</option>
-									<option value="RKPC/제주공항/10">제주공항</option>
-								</select>
-	<!-- 							<button id="weather_select">선택</button> -->
-<!-- 								<img alt="search" src="../images/search.png" style="width: 35px; height: 35px; cursor:pointer; top:-5px; position: relative;" id="weather_select"> -->
-							</div>
-						</div>	
-							<div id="weather_view">
-								<div class="weather_view_wrap">
-									<span class="weather_view_wrap_text">현재날씨</span>
-								</div>
-								<div class="weather_info">
-									${weather}
-								</div>
-								<div class="weather_view_wrap2">
-									<span class="weather_view_wrap_text">날씨예보</span>
-								</div>
-								<div class="weather_info">
-									${weather2}
-								</div>
-							</div>
-					</div>
-					
+               <div class="weather">
+                     <div class="airLine_weather">
+                        <span class="airLine_weather_text">공항별 날씨정보</span>
+                     </div>
+                  <div class="weather_wrap">
+                     <div class="weather_select_wrap">
+                        <select name="airLine" id="weather_sel" >
+                           <option value="RKSI/인천공항/1">인천공항</option>
+                           <option value="RKSS/김포공항/2">김포공항</option>
+                           <option value="RKNY/양양공항/3">양양공항</option>
+                           <option value="RKTU/청주공항/4">청주공항</option>
+                           <option value="RKTN/대구공항/5">대구공항</option>
+                           <option value="RKJB/무안공항/6">무안공항</option>
+                           <option value="RKJY/여수공항/7">여수공항</option>
+                           <option value="RKPK/김해공항/8">김해공항</option>
+                           <option value="RKPU/울산공항/9">울산공항</option>
+                           <option value="RKPC/제주공항/10">제주공항</option>
+                        </select>
+   <!--                      <button id="weather_select">선택</button> -->
+<!--                         <img alt="search" src="../images/search.png" style="width: 35px; height: 35px; cursor:pointer; top:-5px; position: relative;" id="weather_select"> -->
+                     </div>
+                  </div>   
+                     <div id="weather_view">
+                        <div class="weather_view_wrap">
+                           <span class="weather_view_wrap_text">현재날씨</span>
+                        </div>
+                        <div class="weather_info">
+                           ${weather}
+                        </div>
+                        <div class="weather_view_wrap2">
+                           <span class="weather_view_wrap_text">날씨예보</span>
+                        </div>
+                        <div class="weather_info">
+                           ${weather2}
+                        </div>
+                     </div>
+               </div>
+               
 
-				</div>
+            </div>
 			</div>
 			<div class="section" id="section2"
 				style="background: url(https://flyasiana.com/C/pc/image/main/bg_section03.jpg); background-size: 1920px;">
@@ -638,7 +638,7 @@ $(document).ready(function() {
 						
 						<div style="display: none; width: 100%;" id="deptt">
 						
-						<div style="width: 1180px; padding: 10px; background-color:#eee; margin: 0 auto; margin-top: 10px;text-align: center; height: 434.44px; line-height: 434.44px;" id="te">
+						<div style="width: 1180px; padding: 10px; background-color:#eee; margin: 0 auto; margin-top: 10px;text-align: center; height: 318.44px; line-height: 318.44px;" id="te">
 						
 						</div>
 						
@@ -655,8 +655,8 @@ $(document).ready(function() {
 								$('.slide_inner').css('top','40px');
 								$('#deptt').css('display','block');
 								var soptsel =  $('#searchDate option:selected').val().replace('.','').replace('.','').trim();
-								var dc = $('#txtDepartureAirportF').val();
-								var ac = $('#txtArrivalAirportF').val();
+								var dc = $('#txtDepartureAirportF').val().trim();
+								var ac = $('#txtArrivalAirportF').val().trim();
 								
 
   								$.ajax({
@@ -669,7 +669,6 @@ $(document).ready(function() {
 									url : "/indexdep",
 									success : function(data) {
 
-										alert('모야');
 										$('#te').html(data);
 
 									}
@@ -951,32 +950,36 @@ $('body').on('blur', '.search__input', function(){
 		$('#frm2').submit();
  });
 
+/* 날씨 */
+$("#weather_sel").click(function(){ 
+         var weather = $("#weather_sel").val();
+         $.ajax({
+            type:'get',
+            url:"weather/weatherInfo",
+            async: false,
+            data:{
+               "airLine":weather
+            },
+            success: function(data){
+               data = data.trim();
+               $("#weather_view").html(data);
+            }
+         });
+         $("#weather_view tr").css("background-color", "transparent");
+         $("#weather_view td").css("background-color", "transparent");
+         $("#weather_view td").css("border-style", "hidden");
+         $("#weather_view td").css("font-weight","bold");
+         $("#weather_view td").css("vertical-align","middle");
+      });
+      $("#weather_view td").css("font-weight","bold");
+      $("#weather_view td").css("vertical-align","middle");
+      $("#weather_view tr").css("background-color", "transparent");
+      $("#weather_view td").css("background-color", "transparent");
+      $("#weather_view td").css("border-style", "hidden");
 
-$("#weather_select").click(function(){
-	var weather = $("#weather_sel").val();
-	$.ajax({
-		type:'get',
-		url:"weather/weatherInfo",
-		async: false,
-		data:{
-			"airLine":weather
-		},
-		success: function(data){
-			data = data.trim();
-			$("#weather_view").html(data);
-		}
-	});
-	$("#weather_view tr").css("background-color", "transparent");
-	$("#weather_view td").css("background-color", "transparent");
-	$("#weather_view td").css("border-style", "hidden");
-	$("#weather_view td").css("font-weight","bold");
-	$("#weather_view td").css("vertical-align","middle");
-});
-$("#weather_view td").css("font-weight","bold");
-$("#weather_view td").css("vertical-align","middle");
-$("#weather_view tr").css("background-color", "transparent");
-$("#weather_view td").css("background-color", "transparent");
-$("#weather_view td").css("border-style", "hidden");
+
+
+/* 좌석  */
 var depChecks=[]; // 가는 비행기의 좌석에 체크된 항목을 담을 배열
 var arrChecks=[]; // 오는 비행기의 좌석에 체크된 항목을 담을 배열
 var depLoc;

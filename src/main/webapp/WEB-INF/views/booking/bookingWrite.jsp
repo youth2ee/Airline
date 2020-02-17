@@ -52,7 +52,7 @@ ${arr[3]}시 ${arr[4]}분<i class='fas fa-angle-right' style='font-size:10px; pa
 <i class="material-icons" style="font-size:31px; color: white; padding-top: 14px;">person</i>
 <div style="margin-top: 1px; font-size: 20px;">
 <c:if test="${bTVO.adult != 0}">
-성인 : ${bTVO.adult}명
+성인 : ${bTVO.adult}명 <br>
 </c:if>
 <c:if test="${bTVO.child != 0}">
 아동 : ${bTVO.child}명
@@ -386,18 +386,14 @@ ${arr[3]}시 ${arr[4]}분<i class='fas fa-angle-right' style='font-size:10px; pa
 						<td class="mbtb"><input type="text" id="mid"></td>
 					</tr>
 
-					<!-- <tr>
-<td class="mbth">회원번호</td>
-<td class="mbtb">
-<input type="text">
-</td>
-</tr> -->
 				</table>
 
 				<div style="width: 100%; margin: 0 auto; text-align: center; padding-top: 15px;">
 					<input type="button" value="찾기" style="margin: 0 auto;" class="mbtn2">
 				</div>
+				
 				<div id="modalfm"></div>
+				
 				<div style="width: 100%;">
 					<input type="button" value="사용하기" id="ubtn">
 				</div>
@@ -410,13 +406,13 @@ ${arr[3]}시 ${arr[4]}분<i class='fas fa-angle-right' style='font-size:10px; pa
 </section>
 
 <script type="text/javascript">
+var thi;
 
 /* 회원번호 찾기 */
 
-$('.mbtn').click(function(){
-
-	var thi = $(this);
-	alert(thi.prop('class'));
+$('.mbtn').click(function(e){
+	
+	thi = $(this);
 
 	$('#mname').val('');
 	$('#mid').val('');
@@ -438,18 +434,19 @@ window.onclick = function(event) {
 	  }
 	}
 
-alert(2);
-alert(thi.prop('class'));
 
-$('body').on('click', '.mbtn2', function(){
+		
+		e.preventDefault();
+	
+});
 
-	alert(3);
-	alert(thi.prop('class'));
+var dold = '';
+
+$('.mbtn2').on('click',  function(event){
 	
 	$('.modal-content').css('height','491px');
 	$('#modalfm').css('display','block');
 	$('#ubtn').css('display','none');
-
  	$.ajax({
 		data : {
 			name : $('#mname').val().trim(),
@@ -459,7 +456,8 @@ $('body').on('click', '.mbtn2', function(){
 		url : "./booking/searchm",
 		success : function(data) {
 
-			data = data.trim();
+			 data = data.trim();
+			 dold = data; 
 
 			if(data != "0"){
 				$('#modalfm').css('line-height','102px');
@@ -467,24 +465,20 @@ $('body').on('click', '.mbtn2', function(){
 				$('#mnump').text(data);
 				$('#ubtn').css('display','block');
 
-					$('body').on('click','#ubtn', function(){
-
-						alert(4);
-						alert(thi.prop('class'));
-						
-						thi.parent('.btb').find('.mnum').val(data);
-				       $('#myModal').css('display','none');
-					});
-				
 			} else {
 
 				$('#modalfm').css('line-height','121px');
 				$('#modalfm').text('회원번호가 존재하지 않습니다.');
 			}
 		}
-	});  
+	}); 
+
+	event.preventDefault(); 
 });
-	
+
+$('body').on('click','#ubtn', function(){
+	thi.parent('.btb').find('.mnum').val(dold);
+    $('#myModal').css('display','none');
 });
 
 //회원번호 찾기

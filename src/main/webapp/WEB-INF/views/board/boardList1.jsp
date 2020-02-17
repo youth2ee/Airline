@@ -21,7 +21,7 @@
 		<c:import url="../layout/header.jsp"></c:import>
 	</header>
 
-	<div id="headerBottom">
+<!-- 	<div id="headerBottom">
 		<div id="hbh">
 			<div id="hbhome">
 				<i class="fa fa-home"></i>
@@ -38,7 +38,7 @@
 			</div>
 		</div>
 	</div>
-
+ -->
 
 
 
@@ -75,9 +75,11 @@
 					<a href="./noticeList1?menu=EveryAir소식&curPage=1&search=${pager.search}&kind=${pager.kind}"> <span
 						class="val"> EveryAir소식 </span></a>
 				</li>
+				
 				<li class="tab-link" data-tab="tab-3" id="EveryAir클럽">
-					<a href="./noticeList1?menu=EveryAir클럽&curPage=1&search=${pager.search}&kind=${pager.kind}"> <span
-						class="val"> EveryAir클럽 </span></a></li>
+					<a href="./noticeList1?menu=EveryAir클럽&curPage=1&search=${pager.search}&kind=${pager.kind}"> 
+					<span class="val"> EveryAir클럽 </span></a></li>
+					
 				<li class="tab-link" data-tab="tab-4" id="유류할증료">
 					<a href="./noticeList1?menu=유류할증료&curPage=1&search=${pager.search}&kind=${pager.kind}"> <span> 유류할증료
 					</span></a></li>
@@ -112,7 +114,7 @@
 								<li class="bg_point">
 								<div class="left">
 									<div class="title">
-										<a href="./noticeSelect?num=${vo.num}&dispCt=all&curPage=${pager.curPage}&search=${pager.search}&kind=${pager.kind}">
+										<a href="./noticeSelect?num=${vo.num}&dispCt=all&curPage=${pager.curPage}&search=${pager.search}&kind=${pager.kind}&menu=${param.menu}">
 											<span class="txt_notice">공지</span>
 											<em>${vo.title}</em>
 										</a>
@@ -153,28 +155,35 @@
 
 
 				<!---- paging ---->
+				<c:choose>
+				<c:when test="${not empty list}">
 				<div class="paging">
-					<a href="./noticeList1?menu=EveryAir소식&curPage=1"
+					<a href="./noticeList1?menu=${param.menu}&curPage=1"
 						class="btn_first btn_common"></a>
-					<c:if test="${pager.curBlock>1}">
+					<c:choose>	
+					<c:when test="${pager.curBlock>1}">
 						<a
-							href="./noticeList1?menu=EveryAir소식&curPage=${pager.startNum-1}"
+							href="./noticeList1?menu=${param.menu}&curPage=${pager.startNum-1}"
 							class="btn_prev btn_common"></a>
-					</c:if>
+					</c:when>
+					</c:choose>
 					<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-						<a href="./noticeList1?menu=EveryAir소식&curPage=${i}"
+						<a href="./noticeList1?menu=${param.menu}&curPage=${i}"
 							class="pagingNo" id="page${i}">${i}</a>
 					</c:forEach>
-					<c:if test="${pager.curBlock<pager.totalBlock}">
-						<a href="./noticeList1?menu=EveryAir소식&curPage=${pager.lastNum+1}"
+					<c:choose>
+					<c:when test="${pager.curBlock<pager.totalBlock}">
+						<a href="./noticeList1?menu=${param.menu}&curPage=${pager.lastNum+1}"
 							class="btn_next btn_commont"></a>
-					</c:if>
+					</c:when>
+					</c:choose>
 					<fmt:parseNumber var="pages" integerOnly="true" value="${tc/10}" />
-					<a href="./noticeList1?menu=EveryAir소식&curPage=${pages+1}"
+					<a href="./noticeList1?menu=${param.menu}&curPage=${pages+1}"
 						class="btn_last btn_common"></a>
 				</div>
+				</c:when>
+			</c:choose>
 			</div>
-
 		</div>
 	</div>
 
