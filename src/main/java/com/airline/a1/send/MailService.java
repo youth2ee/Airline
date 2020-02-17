@@ -60,7 +60,7 @@ public class MailService {
 					"				<tbody>\r\n" + 
 					"				<tr>\r\n" + 
 					"					<td style=\"font-family:'AppeGothic','Malgun Gothic','맑은 고딕','돋음','Dotum','Apple SD Gothic Neo',Arial,Helvetica,sans-serif;word-break:keep-all;font-size:13px;text-align:left;\">\r\n" + 
-					"						<img src=\"http://localhost/images/logo/logo.png\" alt=\"\" loading=\"lazy\" style=\"width:222px; height:50px;\">\r\n" + 
+					"						<img src=\"http://211.238.142.26/images/logo/logo.png\" alt=\"\" loading=\"lazy\" style=\"width:222px; height:50px;\">\r\n" + 
 					"					</td>\r\n" + 
 					"				</tr>\r\n" + 
 					"				<tr>\r\n" + 
@@ -130,7 +130,7 @@ public class MailService {
 					"														<img src=\"https://flyasiana.com/C/pc/image/mail/btn_red_left.jpg\" width=\"5\" height=\"46\" style=\"border:0;vertical-align:top\" alt=\"\" loading=\"lazy\">\r\n" + 
 					"													</td>\r\n" + 
 					"													<td align=\"center\" valign=\"middle\" width=\"100%\" height=\"46\" style=\"background:#d60815\">\r\n" + 
-					"														<a target=\"_blank\" href=\"http://localhost/member/memberLogin\" style=\"display:block;font-family:'appegothic','malgun gothic','맑은 고딕','돋음','dotum','apple sd gothic neo',arial,helvetica,sans-serif;word-break:keep-all;color:#ffffff;font-size:13px;text-decoration:none;\" rel=\"noreferrer noopener\">로그인</a> \r\n" + 
+					"														<a target=\"_blank\" href=\"http://211.238.142.26/member/memberLogin\" style=\"display:block;font-family:'appegothic','malgun gothic','맑은 고딕','돋음','dotum','apple sd gothic neo',arial,helvetica,sans-serif;word-break:keep-all;color:#ffffff;font-size:13px;text-decoration:none;\" rel=\"noreferrer noopener\">로그인</a> \r\n" + 
 					"													</td>\r\n" + 
 					"													<td width=\"5\" height=\"46\">\r\n" + 
 					"														<img src=\"https://flyasiana.com/C/pc/image/mail/btn_red_right.jpg\" width=\"5\" height=\"46\" style=\"border:0;vertical-align:top\" alt=\"\" loading=\"lazy\">\r\n" + 

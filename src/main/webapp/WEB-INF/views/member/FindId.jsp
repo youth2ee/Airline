@@ -576,18 +576,18 @@ $("#emailDomainText").blur(function(){
 	$("#emailsum").val(emailOne+'@'+emailTwo);
 });
 
-var SetTime = 300;		// 최초 설정 시간(기본 : 초)
+var SetTime = 300;		// 최초 설정 시간(5분)
 
-function msg_time() {	// 1초씩 카운트
+function msg_time() {	// 1초씩 카운트 하는 함수
 
-	var minute = Math.floor(SetTime/60);
-	var second = SetTime % 60;
+	var minute = Math.floor(SetTime/60); //현재 남은 시간(분)
+	var second = SetTime % 60; //현재 남은 시간(초)
 	if(second < 10){
 		second = 0 +""+ second;
 	}
 	var msg =  minute+ " : " + second;
-	$(".countDown").text(msg);
-	SetTime--;					// 1초씩 감소
+	$(".countDown").text(msg);	//카운트다운 보여줄 곳에 남은 시간 표시
+	SetTime--;					// 남은 시간 1씩 감소
 	if (SetTime < 0) {			// 시간이 종료 되면
 		clearInterval(tid);		// 타이머 해제
 		$("#p_idRule").html('요청 인증 시간이 <span class="col_brown">만료됐습니다. </span> 인증요청을 다시 진행해주세요.');
