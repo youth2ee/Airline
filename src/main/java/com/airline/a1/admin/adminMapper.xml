@@ -14,12 +14,24 @@
 	order by depPlandTime desc
 	</select>
 	
+<!-- 	<select id="airallList" resultType="com.airline.a1.booking.FlightDataVO">
+	select * from flightData 
+	order by depPlandTime desc
+	</select> -->
+	
 	
 	<select id="airpartList" parameterType="com.airline.a1.booking.FlightDataVO" resultType="com.airline.a1.booking.FlightDataVO">
 	select * from flightData 
 	where airlineNm=#{airlineNm}
 	order by depPlandTime desc
 	</select>
+	
+	<select id="airportpartList" parameterType="com.airline.a1.booking.FlightDataVO" resultType="com.airline.a1.booking.FlightDataVO">
+	select * from flightData
+	where depAirportNm = #{depAirportNm}
+	order by depPlandTime desc
+	</select>
+	
 	
 	<select id="getBookingInfo" parameterType="com.airline.a1.checkIn.ETicketVO" resultType="com.airline.a1.checkIn.ETicketVO">
 		select depPlandTime,arrPlandTime,kind,bookingTicket.bnum,fnum,bookingTicket.bookingNum,flightBNum,name,bookingTicket.id,depAirportNm,vihicleId,arrAirportNm,depPlandTime,arrPlandTime,totalPrice 
@@ -76,5 +88,46 @@
 	<select id="airportList" resultType="com.airline.a1.admin.AirportVO">
 	select * from airport order by apName asc
 	</select>
+	
+	<!-- main -->
+	<select id="tprice" parameterType="com.airline.a1.booking.FlightDataVO" resultType="java.lang.Integer">
+	select sum(arrPlandTime) totalAllPrice from( 
+	select Z.aId vihicleId, Z.aName airlineNm, Z.aCode depPlandTime, Y.airlineNm t, ifnull(Y.a, 0) arrPlandTime 
+	from (select * from airline order by aName asc) Z
+	left outer join 
+	(select D.airlineNm, sum(totalAllPrice) a from 
+	(select distinct A.bookingNum, ifnull(A.totalAllPrice,0) totalAllPrice, B.resDate, B.depFnum, C.* 
+	from bookingPrice A
+	left join bookingTicket B
+	on A.bnum = B.bnum
+	left join flightData C
+	on B.depFnum = C.fnum
+	where DATE_FORMAT(resDate, '%Y-%m-%d %H:%i') BETWEEN #{depPlandTime} AND #{arrPlandTime}) D
+	group by D.airlineNm
+	order by D.airlineNm asc) Y
+	on Z.aName = Y.airlineNm
+	where Z.aName like concat('', '%')
+	order by Z.aName asc) kk
+	</select>
+	
+	<select id="trate" parameterType="com.airline.a1.booking.FlightDataVO" resultType="java.lang.Double">
+	select 
+	((select count(*) from bookingTicket
+	where depFnum between 
+	(select min(fnum) from flightData where depPlandTime like concat(#{depPlandTime},'%')) 
+	and (select max(fnum) from flightData where depPlandTime like concat(#{depPlandTime},'%')) )
+	/
+	(select 
+	(select max(fnum) - min(fnum) from flightData
+	where depPlandTime like concat(#{depPlandTime},'%')
+	) * 195)) * 100
+	</select>
+	
+	<select id="ftotal" parameterType="com.airline.a1.booking.FlightDataVO" resultType="java.lang.Integer">
+	select max(fnum) - min(fnum) from flightData
+	where depPlandTime like concat(#{depPlandTime},'%')
+	</select>
+	
+
   
   </mapper>

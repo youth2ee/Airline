@@ -21,6 +21,10 @@
 
   <!-- Custom styles for this template-->
   <link href="${pageContext.request.contextPath}/resources/vendor/css/sb-admin-2.min.css" rel="stylesheet">
+
+
+<link href="../resources/css/admin/adminmain.css" rel="stylesheet">
+
 </head>
 
 
@@ -293,7 +297,7 @@
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">CGV 매출 현황</h1>
+            <h1 class="h3 mb-0 text-gray-800">EveryAir 매출 현황</h1>
           </div>
 
           <!-- Content Row -->
@@ -305,13 +309,13 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-m font-weight-bold text-primary text-uppercase mb-1">티켓 판매량 (2019/12)</div>
+                      <div class="text-m font-weight-bold text-danger text-uppercase mb-1">이달의 항공권 판매량 (2020/02)</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">
-                      <fmt:setLocale value="ko_KR"/><fmt:formatNumber type="currency" value="${mmtotal.totalmovie}" />
+                      <fmt:setLocale value="ko_KR"/><fmt:formatNumber type="currency" value="${mprice}" currencySymbol="￦"/>
                       </div>
                     </div>
                     <div class="col-auto">
-                       <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                       <i class="fas fa-won-sign fa-2x text-gray-300"></i>
                     </div>
                   </div>
                 </div>
@@ -324,12 +328,12 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-m font-weight-bold text-success text-uppercase mb-1">스토어 판매량 (2019/12)</div>
+                      <div class="text-m font-weight-bold text-success text-uppercase mb-1">오늘의 항공권 판매량 (2020/02/17)</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">
-                      <fmt:setLocale value="ko_KR"/><fmt:formatNumber type="currency" value="${mstotal.totalstore}" /></div>
+                      <fmt:setLocale value="ko_KR"/><fmt:formatNumber type="currency" value="${tprice}" currencySymbol="￦"/></div>
                     </div>
                     <div class="col-auto">
-                      <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                      <i class="fas fa-won-sign fa-2x text-gray-300"></i>
                     </div>
                   </div>
                 </div>
@@ -345,11 +349,11 @@
                       <div class="text-m font-weight-bold text-info text-uppercase mb-1">오늘의 예매율</div>
                       <div class="row no-gutters align-items-center">
                         <div class="col-auto">
-                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">${tmovierate.todayrate}%</div>
+                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">${trate}%</div>
                         </div>
                         <div class="col">
                           <div class="progress progress-sm mr-2">
-                            <div class="progress-bar bg-info" role="progressbar" style="width: ${tmovierate.todayrate}%" aria-valuenow="${tmovierate.todayrate}" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar bg-info" role="progressbar" style="width: ${trate}%" aria-valuenow="${trate}" aria-valuemin="0" aria-valuemax="100"></div>
                           </div>
                         </div>
                       </div>
@@ -368,8 +372,8 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-m font-weight-bold text-warning text-uppercase mb-1">현재 상영관 수 </div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">${theatertotal.totaltheater}</div>
+                      <div class="text-m font-weight-bold text-warning text-uppercase mb-1">오늘의 항공편</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">${ftotal}편</div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -380,8 +384,7 @@
             </div>
           </div>
 
-          <!-- Content Row -->
-
+<%--           <!-- Content Row -->
           <div class="row">
 
             <!-- Area Chart -->
@@ -389,7 +392,7 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary"> 티켓 판매량순 영화관 TOP 5</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">항공권 판매량순 공항 TOP 5</h6>
           
                 </div>
                 <!-- Card Body -->
@@ -406,7 +409,7 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">예매율순 영화 TOP 5</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">항공권 판매량순 항공사 TOP 5</h6>
          
                 </div>
                 <!-- Card Body -->
@@ -434,7 +437,40 @@
           </div>
 
           <!-- Content Row -->
-          <div class="row">
+          <div class="row"> --%>
+          
+<!--           
+          <div>
+          <h1> 여기에 돟영상 넣을래 귀찮아 </h1>
+          </div> -->
+
+<div style="padding: 30px;">
+<video autoplay muted loop id="myVideo" >
+  <source src="../images/airline.mp4" type="video/mp4">
+</video>
+
+<div class="content">
+  <h1>Every Air</h1>
+  <p>Enjoy your flight</p>
+  <button id="myBtn" onclick="myFunction()">Pause</button>
+</div>
+</div>          
+          
+          <script>
+var video = document.getElementById("myVideo");
+var btn = document.getElementById("myBtn");
+
+function myFunction() {
+  if (video.paused) {
+    video.play();
+    btn.innerHTML = "Pause";
+  } else {
+    video.pause();
+    btn.innerHTML = "Play";
+  }
+}
+</script>
+          
 
             <!-- Content Column -->
             <div class="col-lg-6 mb-4">
@@ -484,7 +520,7 @@
     </div>
   </div>
   
-                 <c:set var="flag" value="true"/>
+<%--                  <c:set var="flag" value="true"/>
                   <c:forEach items="${movietop}" var="top" varStatus="status"> 
                   <c:if test="${flag eq 'true'}">
                   <input type="hidden" id="${status.index}seat" value="${top.totalseat}">
@@ -504,7 +540,7 @@
 					<c:set var="flag2" value="false"/>
                    </c:if> 
                   </c:if>
-                  </c:forEach>
+                  </c:forEach> --%>
   
   
   
@@ -526,7 +562,7 @@
   <!-- Page level custom scripts -->
 
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 //Set new default font family and font color to mimic Bootstrap's default styling
 Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#858796';
@@ -690,7 +726,7 @@ var myLineChart = new Chart(ctx, {
 });
 
 
-</script>
+</script> -->
 
 
 </body>

@@ -21,7 +21,8 @@
 
   <!-- Custom styles for this template-->
   <link href="${pageContext.request.contextPath}/resources/vendor/css/sb-admin-2.min.css" rel="stylesheet">
-</head>
+  
+ <link href="../resources/css/admin/admin2_1.css" rel="stylesheet"></head>
 
 
 <body id="page-top">
@@ -289,45 +290,63 @@
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
+         <c:import url="../template/roading.jsp"></c:import>
 
           <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800">항공편 관리</h1>
           <p class="mb-4">공항별 항공편 관리</p>
-
-          <!-- DataTales Example -->
+          
+          <div style="width: 100%; margin-bottom: 30px;">
+          <c:forEach items="${alist}" var="an">
+ 		   <div class="btn btn-danger btn-icon-split" style="margin-right: 5px; margin-left: 5px;'">
+ 		   <span class="icon text-white-50">
+                      <i class="fas fa-map-marker"></i>
+           </span>
+           <span class="text">${an.apName}</span>
+ 		   
+ 		   </div>
+          </c:forEach> 
+     	  </div>
+     
+    	 <div style="clear: both;"></div>
+    	 
+    	           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">공항별 항공편 현황</h6>
             </div>
             <div class="card-body">
-              <div class="table-responsive">
+              <div class="table-responsive dbt">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>편명</th>
                       <th>출발공항</th>
                       <th>도착공항</th>
-                      <th>항공사</th>
+                      <th>편명</th>
+                      <th>항공사명</th>
                       <th>출발시간</th>
                       <th>도착시간</th>
                     </tr>
                   </thead>
                   <tbody>
-             <%--      <c:forEach items="${cinemalist}" var="clist">  --%>
+                   <c:forEach items="${flist}" var="f"> 
                     <tr>
-                      <td>1<%-- <a href="${pageContext.request.contextPath}/admin/admin_cinemaSelect?cinema_num=${clist.cinema_num}">${clist.cinema_num}</a> --%></td>
-                      <td>2</td>
-                      <td>2</td>
-                      <td>2</td>
-                      <td>2</td>
+                      <td>${f.depAirportNm}</td>
+                      <td>${f.arrAirportNm}</td>
+                      <td>${f.vihicleId}</td>
+                      <td>${f.airlineNm}</td>
+                      <td>${f.depPlandTime}</td>
+                      <td>${f.arrPlandTime}</td>
                     </tr>
-<%--                   </c:forEach> --%>
+                 </c:forEach> 
 
                   </tbody>
                 </table>
               </div>
             </div>
           </div>
+    	 
+    	 
 
         </div>
         <!-- /.container-fluid -->
@@ -391,6 +410,30 @@
 
   <!-- Page level custom scripts -->
   <script src="${pageContext.request.contextPath}/resources/vendor/js/demo/datatables-demo.js"></script>
+
+
+<script type="text/javascript">
+
+$('body').on ('click','.btn',function(){
+
+	$.ajax({
+		data : {
+			depAirportNm : $(this).find('.text').text()
+		},
+		type : "GET",
+		url : "./admin/admin2_2_layout",
+		success : function(data) {
+
+			$('.dbt').html(data);
+
+		}
+	});
+	
+});
+
+</script>
+
+
 
 </body>
 

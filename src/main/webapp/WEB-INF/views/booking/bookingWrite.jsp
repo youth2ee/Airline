@@ -258,7 +258,10 @@ ${arr[3]}시 ${arr[4]}분<i class='fas fa-angle-right' style='font-size:10px; pa
 
 <tr>
 <td class="bth">회원번호(탑승객)</td>
-<td class="btb"><input type="text" placeholder="회원번호" name="childList[${status.index-1}].memberNum" class="mnum" readonly="readonly"></td>
+<td class="btb">
+<input type="text" placeholder="회원번호" name="childList[${status.index-1}].memberNum" class="mnum" readonly="readonly">
+<input type="button" value="회원번호 찾기" class="mbtn">
+</td>
 </tr>
 
 <tr>
@@ -367,129 +370,67 @@ ${arr[3]}시 ${arr[4]}분<i class='fas fa-angle-right' style='font-size:10px; pa
 <div id="myModal" class="modal">
 
   <!-- Modal content -->
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    
-    <div id="mtitle">회원번호 찾기</div>
+			<div class="modal-content">
+				<span class="close">&times;</span>
 
-<table style="margin: 0 auto;">
-<tr>
-<td class="mbth">이름</td>
-<td class="mbtb">
-<input type="text" id="mname">
-</td>
-</tr>
+				<div id="mtitle">회원번호 찾기</div>
 
-<tr>
-<td class="mbth">아이디</td>
-<td class="mbtb">
-<input type="text" id="mid">
-</td>
-</tr>
+				<table style="margin: 0 auto;">
+					<tr>
+						<td class="mbth">이름</td>
+						<td class="mbtb"><input type="text" id="mname"></td>
+					</tr>
 
-<!-- <tr>
+					<tr>
+						<td class="mbth">아이디</td>
+						<td class="mbtb"><input type="text" id="mid"></td>
+					</tr>
+
+					<!-- <tr>
 <td class="mbth">회원번호</td>
 <td class="mbtb">
 <input type="text">
 </td>
 </tr> -->
-</table>
-    
-<div style="    width: 100%;
-    margin: 0 auto;
-    text-align: center;
-    padding-top: 15px;">
-<input type="button" value="찾기" style="margin: 0 auto;" class="mbtn2"></div>
-<div id="modalfm"></div>
-<div style="    width: 100%;"><input type="button" value="사용하기"  id="ubtn"></div>
+				</table>
 
-  </div>
+				<div style="width: 100%; margin: 0 auto; text-align: center; padding-top: 15px;">
+					<input type="button" value="찾기" style="margin: 0 auto;" class="mbtn2">
+				</div>
+				<div id="modalfm"></div>
+				<div style="width: 100%;">
+					<input type="button" value="사용하기" id="ubtn">
+				</div>
 
-</div>
+			</div>
+
+		</div>
 
 
 </section>
 
 <script type="text/javascript">
 
-	var x = 0;
-	$('.hannaName').blur(function(){
-		if($(this).val()==""){
-			x=1;
-		}
-	});
-
-
-	$('#btn').click(function(){
-		x=0;
-		$('.hn1').each(function(){
-			if($('.hn1 option:eq(0)').prop('selected')){
-			x=3;
-			}
-		});
-		
-		$('.hn2').each(function(){
-			if($('.hn2 option:eq(0)').prop('selected')){
-			x=3;
-		}
-		});
-		
-		$('.hn3').each(function(){
-			if($('.hn3 option:eq(0)').prop('selected')){
-			x=3;
-		}
-		});
-
-		$('.hannaName').each(function(){
-			if($('.hannaName').val()==""){
-				x=1;
-			}
-		});
-
-
-		if($('#re').val() == ''){
-			x=1;
-		}
-
-		if($('#rp').val() == ''){
-			x=1;
-		}
-
-
-		if(x==1){
-			alert("모든 항목을 입력하세요.");
-		}else if(x==3){
-			alert("생년월일을 입력하세요.");
-
-		}else{
-			$("#frm").submit();
-		}
-
-	});
-
-
-	
-
-
 /* 회원번호 찾기 */
 
 $('.mbtn').click(function(){
 
+	var thi = $(this);
+	alert(thi.prop('class'));
 
 	$('#mname').val('');
 	$('#mid').val('');
-	$(this).prev('.mnum').val('');
 	$('#ubtn').css('display','none');
 
 	$('.modal-content').css('height','360px');
 	$('#modalfm').css('display','none');
 	
 
-$('#myModal').css('display','block');
-
-$('.close').click(function(){
-	$('#myModal').css('display','none');
-});
+	$('#myModal').css('display','block');
+	
+	$('.close').click(function(){
+		$('#myModal').css('display','none');
+	});
 
 window.onclick = function(event) {
 	  if (event.target == $('#myModal')) {
@@ -497,12 +438,14 @@ window.onclick = function(event) {
 	  }
 	}
 
-
-var thi = $(this);
-
-
+alert(2);
+alert(thi.prop('class'));
 
 $('body').on('click', '.mbtn2', function(){
+
+	alert(3);
+	alert(thi.prop('class'));
+	
 	$('.modal-content').css('height','491px');
 	$('#modalfm').css('display','block');
 	$('#ubtn').css('display','none');
@@ -524,10 +467,12 @@ $('body').on('click', '.mbtn2', function(){
 				$('#mnump').text(data);
 				$('#ubtn').css('display','block');
 
-				/* $(this).prev('.mnum').val(data); */
-
 					$('body').on('click','#ubtn', function(){
-				       thi.prev('.mnum').val(data);
+
+						alert(4);
+						alert(thi.prop('class'));
+						
+						thi.parent('.btb').find('.mnum').val(data);
 				       $('#myModal').css('display','none');
 					});
 				
@@ -536,28 +481,23 @@ $('body').on('click', '.mbtn2', function(){
 				$('#modalfm').css('line-height','121px');
 				$('#modalfm').text('회원번호가 존재하지 않습니다.');
 			}
-	
-
 		}
 	});  
-	
-	
 });
 	
-}); //회원번호 찾기
- function inputPhoneNumber(obj) {
+});
 
+//회원번호 찾기
+ function inputPhoneNumber(obj) {
 
 	 var regexp = /^[0-9]*$/;
 
 		 if( !regexp.test(obj.value) ) {
 		 	obj.value = obj.value.replace(/[^0-9]/g, "");
 		 }
-	 
 
     var number = obj.value.replace(/[^0-9]/g, "");
     var phone = "";
-
 
     if(number.length < 4) {
         return number;
@@ -579,33 +519,78 @@ $('body').on('click', '.mbtn2', function(){
         phone += number.substr(7);
     }
     obj.value = phone.substring(0,13);
-
 } 
 
 
 $('#rp').blur(function(){
-
 	if($(this).val().length > 12 ){
-
 		tel_check($(this).val());
 	}
-
-	
 });
 
 
-
 function tel_check(str){
-
-var regTel = /^(01[016789]{1}|070|02|0[3-9]{1}[0-9]{1})-[0-9]{3,4}-[0-9]{4}$/;
-
-if(!regTel.test(str)) {
-	alert('올바른 전화번호를 입력하세요.');
-	return false;
+	var regTel = /^(01[016789]{1}|070|02|0[3-9]{1}[0-9]{1})-[0-9]{3,4}-[0-9]{4}$/;
+	
+	if(!regTel.test(str)) {
+		alert('올바른 전화번호를 입력하세요.');
+		return false;
+	}
+	return true;
 }
-return true;
-}
 
+
+var x = 0;
+$('.hannaName').blur(function(){
+	if($(this).val()==""){
+		x=1;
+	}
+});
+
+
+$('#btn').click(function(){
+	x=0;
+	$('.hn1').each(function(){
+		if($('.hn1 option:eq(0)').prop('selected')){
+		x=3;
+		}
+	});
+	
+	$('.hn2').each(function(){
+		if($('.hn2 option:eq(0)').prop('selected')){
+		x=3;
+	}
+	});
+	
+	$('.hn3').each(function(){
+		if($('.hn3 option:eq(0)').prop('selected')){
+		x=3;
+	}
+	});
+
+	$('.hannaName').each(function(){
+		if($('.hannaName').val()==""){
+			x=1;
+		}
+	});
+
+	if($('#re').val() == ''){
+		x=1;
+	}
+
+	if($('#rp').val() == ''){
+		x=1;
+	}
+
+	if(x==1){
+		alert("모든 항목을 입력하세요.");
+	}else if(x==3){
+		alert("생년월일을 입력하세요.");
+
+	}else{
+		$("#frm").submit();
+	}
+});
 
 
 </script>

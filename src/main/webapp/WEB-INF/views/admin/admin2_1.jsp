@@ -5,31 +5,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 
+
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
-  <meta name="author" content=""> -->
+  <meta name="author" content="">
 
  <title>AIRLINE ADMIN</title>
-
- 
-    <c:import url="../template/boot.jsp"></c:import>
+  <c:import url="../template/boot.jsp"></c:import>
   <link href="../resources/css/reset.css" rel="stylesheet">
- <link href="../resources/css/admin/admin2_1.css" rel="stylesheet">
- 
-   <!-- Custom fonts for this template-->
+  <!-- Custom fonts for this template-->
   <link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template-->
   <link href="${pageContext.request.contextPath}/resources/vendor/css/sb-admin-2.min.css" rel="stylesheet">
- 
+  
+ <link href="../resources/css/admin/admin2_1.css" rel="stylesheet"></head>
 
 
 </head>
-<c:import url="../template/roading.jsp"></c:import>
+
 
 <body id="page-top">
 
@@ -247,8 +244,11 @@
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
 
+
+
       <!-- Main Content -->
       <div id="content">
+     
 
         <!-- Topbar -->
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
@@ -295,15 +295,25 @@
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
-        <div class="container-fluid dbt">
+        <div class="container-fluid">
+         <c:import url="../template/roading.jsp"></c:import>
 
           <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800">항공편 관리</h1>
           <p class="mb-4">항공사별 항공편 관리</p>
           
-         <c:forEach items="${alist}" var="an">
- 		   <div class="abtn">${an.getAName()}</div>
+          
+          <div style="width: 100%; margin-bottom: 30px;">
+          <c:forEach items="${alist}" var="an">
+ 		   <div class="btn btn-warning btn-icon-split" style="margin-right: 1px; margin-left: 1px;'">
+ 		   <span class="icon text-white-50">
+                      <i class="fas fa-map-marker"></i>
+           </span>
+           <span class="text">${an.getAName()}</span>
+ 		   
+ 		   </div>
           </c:forEach> 
+     	  </div>
      
      <div style="clear: both;"></div>
 
@@ -315,12 +325,12 @@
               <h6 class="m-0 font-weight-bold text-primary">항공사별 항공편 현황</h6>
             </div>
             <div class="card-body">
-              <div class="table-responsive">
+              <div class="table-responsive dbt">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>편명</th>
                       <th>항공사명</th>
+                      <th>편명</th>
                       <th>출발지</th>
                       <th>도착지</th>
                       <th>출발시간</th>
@@ -330,8 +340,8 @@
                   <tbody>
                    <c:forEach items="${flist}" var="f"> 
                     <tr>
-                      <td>${f.vihicleId}</td>
                       <td>${f.airlineNm}</td>
+                      <td>${f.vihicleId}</td>
                       <td>${f.depAirportNm}</td>
                       <td>${f.arrAirportNm}</td>
                       <td>${f.depPlandTime}</td>
@@ -413,12 +423,12 @@
 
 <script type="text/javascript">
 
-$('body').on ('click','.abtn',function(){
+$('body').on ('click','.btn',function(){
 
 
 	$.ajax({
 		data : {
-			airlineNm : $(this).text()
+			airlineNm : $(this).find('.text').text()
 		},
 		type : "GET",
 		url : "./admin/admin2_1_layout",

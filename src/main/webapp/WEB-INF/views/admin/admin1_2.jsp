@@ -294,11 +294,19 @@
 
           <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800">매출 관리</h1>
-          <p class="mb-4">항공사별 매출 관리</p>
+          <p class="mb-4">공항별 매출 관리</p>
           
+          <div style="width: 100%; margin-bottom: 30px;">
           <c:forEach items="${alist}" var="an">
- 		   <div class="abtn">${an.apName}</div>
+ 		   <div class="btn btn-danger btn-icon-split" style="margin-right: 5px; margin-left: 5px;'">
+ 		   <span class="icon text-white-50">
+                      <i class="fas fa-map-marker"></i>
+           </span>
+           <span class="text">${an.apName}</span>
+ 		   
+ 		   </div>
           </c:forEach> 
+     	  </div>
      
      <div style="clear: both;"></div>
           
@@ -308,7 +316,7 @@
           <div class="card shadow mb-4 dbt">
             
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">항공사별 매출 현황</h6>
+              <h6 class="m-0 font-weight-bold text-primary">공항별 매출 현황</h6>
             </div>
             
             
@@ -319,7 +327,7 @@
               <div class="card shadow mb-4" style="width: 1596px;">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" style="width: 1594px;">
-                  <h6 class="m-0 font-weight-bold text-primary">항공사별 2월 매출 (2020년 2월 기준)</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">공항별 2월 매출 (2020년 2월 기준)</h6>
           
                 </div>
                 <!-- Card Body -->
@@ -336,7 +344,7 @@
               <div class="card shadow mb-4" style="width: 1596px;">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" style="width: 1594px;">
-                  <h6 class="m-0 font-weight-bold text-primary">항공사별 이번주 매출 (2020월 02월 11일 ~ 2020년 02월 17일 기준)</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">공항별 이번주 매출 (2020월 02월 11일 ~ 2020년 02월 17일 기준)</h6>
           
                 </div>
                 <!-- Card Body -->
@@ -354,7 +362,7 @@
               <div class="card shadow mb-4" style="width: 1596px;">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" style="width: 1594px;">
-                  <h6 class="m-0 font-weight-bold text-primary">항공사별 오늘 매출 (2020년 02월 17일 기준)</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">공항별 오늘 매출 (2020년 02월 17일 기준)</h6>
           
                 </div>
                 <!-- Card Body -->
@@ -445,11 +453,11 @@
 
 <script type="text/javascript">
 
-$('body').on ('click','.abtn',function(){
+$('body').on ('click','.btn',function(){
 
 	$.ajax({
 		data : {
-			airlineNm : $(this).text()
+			airlineNm : $(this).find('.text').text()
 		},
 		type : "GET",
 		url : "./admin/admin1_2_layout",
@@ -506,6 +514,10 @@ var an8 ='';
 var an9 ='';
 var an10 ='';
 var an11 ='';
+var an12 ='';
+var an13 ='';
+var an14 ='';
+var an15 ='';
 
 var pn1 ='';
 var pn2 ='';
@@ -518,6 +530,10 @@ var pn8 ='';
 var pn9 ='';
 var pn10 ='';
 var pn11 ='';
+var pn12 ='';
+var pn13 ='';
+var pn14 ='';
+var pn15 ='';
 
 
 <c:forEach items="${smlist}" var="m" varStatus="status">
@@ -530,7 +546,7 @@ pn${status.index +1} = '${m.arrPlandTime}';
 var myLineChart = new Chart(ctx, {
   type: 'line',
   data: {
-    labels: [an1, an2, an3, an4, an5, an6, an7, an8, an9, an10, an11],
+    labels: [an1, an2, an3, an4, an5, an6, an7, an8, an9, an10, an11, an12, an13, an14, an15],
     datasets: [{
       label: "판매량",
       lineTension: 0.3,
@@ -544,7 +560,7 @@ var myLineChart = new Chart(ctx, {
       pointHoverBorderColor: "rgba(214, 8, 21, 1)",
       pointHitRadius: 10,
       pointBorderWidth: 2,
-      data: [pn1, pn2, pn3, pn4, pn5, pn6, pn7, pn8, pn9, pn10, pn11],
+      data: [pn1, pn2, pn3, pn4, pn5, pn6, pn7, pn8, pn9, pn10, pn11, pn12, pn13, pn14, pn15],
     }],
   },
   options: {
@@ -567,7 +583,7 @@ var myLineChart = new Chart(ctx, {
           drawBorder: false
         },
         ticks: {
-          maxTicksLimit: 11
+          maxTicksLimit: 15
         }
       }],
       yAxes: [{
@@ -630,6 +646,11 @@ var an8 ='';
 var an9 ='';
 var an10 ='';
 var an11 ='';
+var an12 ='';
+var an13 ='';
+var an14 ='';
+var an15 ='';
+
 
 var pn1 ='';
 var pn2 ='';
@@ -642,6 +663,10 @@ var pn8 ='';
 var pn9 ='';
 var pn10 ='';
 var pn11 ='';
+var pn12 ='';
+var pn13 ='';
+var pn14 ='';
+var pn15 ='';
 
 
 <c:forEach items="${swlist}" var="m" varStatus="status">
@@ -654,21 +679,21 @@ pn${status.index +1} = '${m.arrPlandTime}';
 var myLineChart = new Chart(ctx2, {
   type: 'line',
   data: {
-    labels: [an1, an2, an3, an4, an5, an6, an7, an8, an9, an10, an11],
-    datasets: [{
-      label: "판매량",
-      lineTension: 0.3,
-      backgroundColor: "rgba(214, 8, 21, 0.05)",
-      borderColor: "rgba(214, 8, 21, 1)",
-      pointRadius: 3,
-      pointBackgroundColor: "rgba(214, 8, 21, 1)",
-      pointBorderColor: "rgba(214, 8, 21, 1)",
-      pointHoverRadius: 3,
-      pointHoverBackgroundColor: "rgba(214, 8, 21, 1)",
-      pointHoverBorderColor: "rgba(214, 8, 21, 1)",
-      pointHitRadius: 10,
-      pointBorderWidth: 2,
-      data: [pn1, pn2, pn3, pn4, pn5, pn6, pn7, pn8, pn9, pn10, pn11],
+	    labels: [an1, an2, an3, an4, an5, an6, an7, an8, an9, an10, an11, an12, an13, an14, an15],
+	    datasets: [{
+	      label: "판매량",
+	      lineTension: 0.3,
+	      backgroundColor: "rgba(214, 8, 21, 0.05)",
+	      borderColor: "rgba(214, 8, 21, 1)",
+	      pointRadius: 3,
+	      pointBackgroundColor: "rgba(214, 8, 21, 1)",
+	      pointBorderColor: "rgba(214, 8, 21, 1)",
+	      pointHoverRadius: 3,
+	      pointHoverBackgroundColor: "rgba(214, 8, 21, 1)",
+	      pointHoverBorderColor: "rgba(214, 8, 21, 1)",
+	      pointHitRadius: 10,
+	      pointBorderWidth: 2,
+	      data: [pn1, pn2, pn3, pn4, pn5, pn6, pn7, pn8, pn9, pn10, pn11, pn12, pn13, pn14, pn15],
     }],
   },
   options: {
@@ -691,7 +716,7 @@ var myLineChart = new Chart(ctx2, {
           drawBorder: false
         },
         ticks: {
-          maxTicksLimit: 11
+          maxTicksLimit: 15
         }
       }],
       yAxes: [{
@@ -755,6 +780,11 @@ var an8 ='';
 var an9 ='';
 var an10 ='';
 var an11 ='';
+var an12 ='';
+var an13 ='';
+var an14 ='';
+var an15 ='';
+
 
 var pn1 ='';
 var pn2 ='';
@@ -767,6 +797,10 @@ var pn8 ='';
 var pn9 ='';
 var pn10 ='';
 var pn11 ='';
+var pn12 ='';
+var pn13 ='';
+var pn14 ='';
+var pn15 ='';
 
 
 <c:forEach items="${sdlist}" var="m" varStatus="status">
@@ -779,21 +813,21 @@ pn${status.index +1} = '${m.arrPlandTime}';
 var myLineChart = new Chart(ctx3, {
   type: 'line',
   data: {
-    labels: [an1, an2, an3, an4, an5, an6, an7, an8, an9, an10, an11],
-    datasets: [{
-      label: "판매량",
-      lineTension: 0.3,
-      backgroundColor: "rgba(214, 8, 21, 0.05)",
-      borderColor: "rgba(214, 8, 21, 1)",
-      pointRadius: 3,
-      pointBackgroundColor: "rgba(214, 8, 21, 1)",
-      pointBorderColor: "rgba(214, 8, 21, 1)",
-      pointHoverRadius: 3,
-      pointHoverBackgroundColor: "rgba(214, 8, 21, 1)",
-      pointHoverBorderColor: "rgba(214, 8, 21, 1)",
-      pointHitRadius: 10,
-      pointBorderWidth: 2,
-      data: [pn1, pn2, pn3, pn4, pn5, pn6, pn7, pn8, pn9, pn10, pn11],
+	    labels: [an1, an2, an3, an4, an5, an6, an7, an8, an9, an10, an11, an12, an13, an14, an15],
+	    datasets: [{
+	      label: "판매량",
+	      lineTension: 0.3,
+	      backgroundColor: "rgba(214, 8, 21, 0.05)",
+	      borderColor: "rgba(214, 8, 21, 1)",
+	      pointRadius: 3,
+	      pointBackgroundColor: "rgba(214, 8, 21, 1)",
+	      pointBorderColor: "rgba(214, 8, 21, 1)",
+	      pointHoverRadius: 3,
+	      pointHoverBackgroundColor: "rgba(214, 8, 21, 1)",
+	      pointHoverBorderColor: "rgba(214, 8, 21, 1)",
+	      pointHitRadius: 10,
+	      pointBorderWidth: 2,
+	      data: [pn1, pn2, pn3, pn4, pn5, pn6, pn7, pn8, pn9, pn10, pn11, pn12, pn13, pn14, pn15],
     }],
   },
   options: {
@@ -816,7 +850,7 @@ var myLineChart = new Chart(ctx3, {
           drawBorder: false
         },
         ticks: {
-          maxTicksLimit: 11
+          maxTicksLimit: 15
         }
       }],
       yAxes: [{
