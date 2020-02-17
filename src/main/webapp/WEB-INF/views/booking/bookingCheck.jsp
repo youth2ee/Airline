@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>EVERY AIR / Booking</title>
 <link href="../resources/css/header.css" rel="stylesheet">
 <link href="../resources/css/reset.css" rel="stylesheet">
 <link href="../resources/css/booking/bookingCheck.css" rel="stylesheet">

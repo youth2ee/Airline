@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>EVERY AIR / Booking</title>
 <c:import url="../template/boot.jsp"></c:import>
 </head>
 <body>
