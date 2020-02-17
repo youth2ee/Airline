@@ -406,12 +406,13 @@ ${arr[3]}시 ${arr[4]}분<i class='fas fa-angle-right' style='font-size:10px; pa
 </section>
 
 <script type="text/javascript">
+var thi;
 
 /* 회원번호 찾기 */
 
-$('.mbtn').click(function(){
-
-	var thi = $(this);
+$('.mbtn').click(function(e){
+	
+	thi = $(this);
 
 	$('#mname').val('');
 	$('#mid').val('');
@@ -434,49 +435,56 @@ window.onclick = function(event) {
 	}
 
 
-		$('body').on('click', '.mbtn2', function(){
 		
-			$('.modal-content').css('height','491px');
-			$('#modalfm').css('display','block');
-			$('#ubtn').css('display','none');
-		
-		 	$.ajax({
-				data : {
-					name : $('#mname').val().trim(),
-					id : $('#mid').val().trim()
-				},
-				type : "GET",
-				url : "./booking/searchm",
-				success : function(data) {
-		
-					data = data.trim();
-		
-					if(data != "0"){
-						$('#modalfm').css('line-height','102px');
-						$('#modalfm').html(' 회원님의 회원번호는  <span style="color: #d60815;" id="mnump"></span> 입니다.')
-						$('#mnump').text(data);
-						$('#ubtn').css('display','block');
-		
-							$('body').on('click','#ubtn', function(){
-								/* 	$('.mnu-m').css('background-color','red'); */
-								
-								thi.parent('.btb').find('.mnum').val(data);
-
-								thi.parent('.btb').find('.mnum').css('background-color','red');
-
-								
-						        $('#myModal').css('display','none');
-							});
-						
-					} else {
-		
-						$('#modalfm').css('line-height','121px');
-						$('#modalfm').text('회원번호가 존재하지 않습니다.');
-					}
-				}
-			});  
-		});
+		e.preventDefault();
 	
+});
+
+$('.mbtn2').on('click',  function(event){
+	
+	$('.modal-content').css('height','491px');
+	$('#modalfm').css('display','block');
+	$('#ubtn').css('display','none');
+	alert("clickl");
+ 	$.ajax({
+		data : {
+			name : $('#mname').val().trim(),
+			id : $('#mid').val().trim()
+		},
+		type : "GET",
+		url : "./booking/searchm",
+		success : function(data) {
+
+			data = data.trim();
+
+			if(data != "0"){
+				$('#modalfm').css('line-height','102px');
+				$('#modalfm').html(' 회원님의 회원번호는  <span style="color: #d60815;" id="mnump"></span> 입니다.')
+				$('#mnump').text(data);
+				$('#ubtn').css('display','block');
+
+				
+				
+			} else {
+
+				$('#modalfm').css('line-height','121px');
+				$('#modalfm').text('회원번호가 존재하지 않습니다.');
+			}
+		}
+	}); 
+
+	event.preventDefault(); 
+});
+
+$('body').on('click','#ubtn', function(){
+	/* 	$('.mnu-m').css('background-color','red'); */
+	alert(thi.parent('.btb').length);
+	thi.parent('.btb').find('.mnum').val(data);
+
+	thi.parent('.btb').find('.mnum').css('background-color','red');
+
+	
+    $('#myModal').css('display','none');
 });
 
 //회원번호 찾기
