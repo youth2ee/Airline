@@ -137,6 +137,7 @@ public class HomeController {
 				ar = new ArrayList<BoardVO>();
 			}
 			
+			
 			customSchedule.fixRateSchedule();
 			
 			Map<String, Integer> tolist = searchService.rListTwo();
