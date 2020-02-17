@@ -1,0 +1,7 @@
+-------------------------------------------------------------------------------
+Test set: com.airline.a1.BoardTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.004 s <<< FAILURE! - in com.airline.a1.BoardTest
+noticeList1Test{Pager}  Time elapsed: 0.004 s  <<< ERROR!
+org.junit.jupiter.api.extension.ParameterResolutionException: No ParameterResolver registered for parameter [com.airline.a1.boardUtil.Pager pager] in method [void com.airline.a1.BoardTest.noticeList1Test(com.airline.a1.boardUtil.Pager) throws java.lang.Exception].
+
