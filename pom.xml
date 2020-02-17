@@ -21,11 +21,11 @@
 
 	<dependencies>
 	
-	<dependency>
+	  <dependency>
        <groupId>org.snu.ids</groupId>
        <artifactId>ha</artifactId>
        <version>1.0</version>
-   </dependency>
+   </dependency> 
 
 	<!-- https://mvnrepository.com/artifact/kr.bydelta/koalanlp-kkma -->
 	<dependency>
@@ -47,7 +47,7 @@
 	<artifactId>httpclient</artifactId>
 	</dependency>
 
-	
+
 	<!-- jsoup -->
 	<dependency>
     	<groupId>org.jsoup</groupId>

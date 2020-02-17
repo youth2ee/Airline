@@ -48,6 +48,7 @@ public class AdminService {
 
 	
 	public List<FlightDataVO> saletermAir(FlightDataVO flightDataVO) throws Exception {
+
 		return adminMapper.saletermAir(flightDataVO);
 	}
 	
@@ -65,5 +66,6 @@ public class AdminService {
 
 	public Integer ftotal(FlightDataVO flightDataVO) throws Exception {
 		return adminMapper.ftotal(flightDataVO);
+
 	}
 }
