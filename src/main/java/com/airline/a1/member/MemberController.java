@@ -47,11 +47,13 @@ public class MemberController {
 		
 		if(membersVO != null) {
 			session.setAttribute("member", membersVO);
-			 mv.setViewName("redirect:../"); 
-			
-			
-			
-			
+			 if(membersVO.getId().equals("admin")) {
+				 mv.addObject("msg", "관리자 페이지로 이동합니다.");
+				 mv.addObject("path", "../admin/adminmain");
+				 mv.setViewName("common/common_result");
+			 }else {
+				 mv.setViewName("redirect:../"); 
+			 }
 			
 		}else {
 			mv.setViewName("member/memberLogin");
