@@ -26,4 +26,9 @@ public interface AdminMapper {
 	public List<FlightDataVO> saleterm(FlightDataVO flightDataVO) throws Exception;
 	public List<FlightDataVO> saletermAir(FlightDataVO flightDataVO) throws Exception;
 	
+	public List<FlightDataVO> airportpartList(FlightDataVO flightDataVO) throws Exception;
+	
+	public Integer tprice(FlightDataVO flightDataVO) throws Exception;
+	public Double trate(FlightDataVO flightDataVO) throws Exception;
+	public Integer ftotal(FlightDataVO flightDataVO) throws Exception;
 }

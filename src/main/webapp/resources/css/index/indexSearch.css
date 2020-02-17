@@ -330,14 +330,14 @@ header {
 	width: 50px;
 	text-align: center;
 	vertical-align: 48px;
-	line-height: 48px; height : 48px;
-	background-color: white;
-	height: 48px;
+	line-height: 48px; 
+	height : 48px;
 }
 
 #hbhome > i{
 	font-size: 30px;
 	padding-top: 9px;
+	color: white;
 }
 
 #hbselect {
@@ -458,6 +458,11 @@ color: white;
     padding: 6px;
 }
 
+.tact2{
+color: #d60815;
+font-weight: bolder;
+}
+
 /* 실시간 검색어 a */
 #rwrap{
 	height: 303px;
@@ -468,7 +473,7 @@ color: white;
  .rlist_wrap:hover, .rlist_wrap:active {
 	text-decoration: none; 
 	color:white; 
-	background-color:#f59000;
+	background-color:#f55a45;
  }
 
 /* 검색 내용 */

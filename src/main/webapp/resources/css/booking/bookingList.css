@@ -166,14 +166,14 @@ top: 620px;
 }
 
 #arrtitle {
-top: 1784px;
+top: 1605px;
     left: 418px;
     background-color: gray;
     width: 1073px;
 }
 
 #depW, #arrW {
-    height: 846px;
+    height: 667px;
 	width: 1072px;
 	overflow-y: scroll;
 	clear: both;
@@ -254,13 +254,13 @@ top: 1784px;
 .dhide{
 	display: none; 
 	background-color: #f3ebeb;
-	height: 94px;
+	height: 49px;
 }
 
 .ahide{
 	display: none; 
     background-color: #f3ebeb;
-	height: 94px;
+	height: 49px;
 }
 
 .cact{

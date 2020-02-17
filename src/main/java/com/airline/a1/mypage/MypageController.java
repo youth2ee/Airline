@@ -83,13 +83,7 @@ public class MypageController {
 	@GetMapping("milplus")
 	public ModelAndView milplus(BookingTicketVO bookingTicketVO) throws Exception {
 		
-		System.out.println("들어오니");
-		
 		List<BookingTicketVO> nlist = mypageService.bnumSearch(bookingTicketVO);
-		
-		for(BookingTicketVO n:nlist) {
-			System.out.println(n);
-		}
 		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("nlist", nlist);

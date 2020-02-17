@@ -4,9 +4,19 @@ header{
 }
 
 section{
-	width: 1200px;
+	width: 1215px;
 	margin: 0 auto;	
+
 }
+
+#muse{
+	text-align: right;
+}
+
+.milCheck{
+	padding-left: 20px;
+}
+
 
 #top{
 	height: 170px;
@@ -56,7 +66,7 @@ section{
 }
 
 
-.bth > td{
+.bth > td:not(.cnm){
 	padding:10px 0;
 	border-bottom: 1px solid #ddd;
 	background-color: #6d6e70;
@@ -67,16 +77,38 @@ section{
 	width: 100px;
 }
 
-.btb > td{
+
+.btb > td:not(.cnm){
 	padding:20px 0;
-	border-bottom: 1px solid white;
 	border-top: 1px solid white;
 	text-align: center;
 	background-color: #f1f1f1;
+	width: 100px;
 }
 
+.cnmh{
+		padding:10px 0;
+	border-bottom: 1px solid #ddd;
+	background-color: #6d6e70;
+	color: #fff;
+	font-size: 16px;
+	text-align: center;
+	font-weight: normal;
+	width: 100px;
+}
+
+
 .cnm{
-	white-space: nowrap;
+overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 169px;
+    display: block;	
+    padding:20px 0;
+	border-top: 1px solid white;
+	text-align: center;
+	background-color: #f1f1f1;
+	width: 100px;
 }
 
 #tpriceTb{
@@ -87,7 +119,7 @@ section{
 
 .tprice{
 	color: #d60815;
-	padding-left: 5px;
+	padding-left: 20px;
 	text-align: right;
 }
 

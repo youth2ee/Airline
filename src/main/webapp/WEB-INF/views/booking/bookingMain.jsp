@@ -3,16 +3,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
 <!-- Required meta tags-->
 <meta charset="UTF-8">
-<meta name="viewport"
+<!-- <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="Colrolib Templates">
 <meta name="author" content="Colrolib">
-<meta name="keywords" content="Colrolib Templates">
+<meta name="keywords" content="Colrolib Templates"> -->
 
     <link href="../resources/css/mypage/mypageHeader.css" rel="stylesheet">
 <link href="../resources/css/reset.css" rel="stylesheet">
@@ -46,14 +46,14 @@
 <div id="hbh">
 <div id="hbhome"><i class="fa fa-home"></i></div>
 <div id="hbselect">
-<select onchange="location.href=this.value">
+<!-- <select onchange="location.href=this.value">
 <option selected="selected" value="./main">나의 Every Air</option>
 <option value="./memberUpdate">회원정보수정</option>
 <option value="./mileage">마일리지</option>
 <option value="./ticketCheck">예매내역</option>
 <option value="./park">주차장 예약내역</option>
 <option value="./limo">리무진 예약내역</option>
-</select>
+</select> -->
 </div>
 </div>
 </div>
