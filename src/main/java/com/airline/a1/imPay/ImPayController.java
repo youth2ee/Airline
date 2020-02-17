@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.airline.a1.booking.BookingPriceVO;
 import com.airline.a1.booking.BookingService;
+import com.airline.a1.limo.LimoVO;
 import com.airline.a1.member.MemberService;
 import com.airline.a1.member.MembersVO;
 
@@ -25,6 +26,24 @@ public class ImPayController {
 	
 	@Autowired
 	private MemberService memberService;
+	
+	@RequestMapping("imPayComplete2")
+	public void imPayComplete2(Model model, LimoVO limoVO) {
+
+		model.addAttribute("vo", limoVO);
+	}
+
+	@RequestMapping("imPayList2")
+	public Model imPayList2(ImPayVO imPayVO, HttpSession session, Model model) {
+
+
+		MembersVO membersVO = (MembersVO)session.getAttribute("member");
+		imPayVO.setMembersVO(membersVO);
+
+		model.addAttribute("VO", imPayVO);
+
+		return model;
+	}
 
 	
 	@RequestMapping("imPayList")
