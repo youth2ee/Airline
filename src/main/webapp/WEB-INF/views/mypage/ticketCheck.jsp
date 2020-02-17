@@ -226,7 +226,6 @@ var toggleButton = document.getElementById("toggleButton");
 				var depYesterDayBackNoHyphen = yesterYear + yesterMonth + yesterDay;
 				var depYesterDayBack = yesterYear + "-" + yesterMonth + "-" + yesterDay;
 				/*******************************************/
-				
 				var timeline = '<ul class="timeline timeline1" id="timeline"><li class="li" id="checkInTimeline"> <div class="timestamp"><span class="author">온라인 체크인</span><span class="checkInDate">'+flightBnum+'<span></div><div class="status"><h4> Online check in </h4></div></li>';
 				timeline += '<li class="li" id="checkInCloseTimeline"><div class="timestamp"><span class="author">체크인 마감</span><span class="checkInClose" id="'+depYesterDayGoNoHyphen+'">'+depYesterDayGo+'</span></div><div class="status"><h4> Check in closure </h4></div></li>';
 				timeline += '<li class="li" id="boardingCloseTimeline"><div class="timestamp"><span class="author">탑승마감</span><span class="boardingClose" >'+depPlandTimeGoPrint+" "+boardingClosureGo+'<span></div><div class="status"><h4> Boarding closure </h4></div></li>';
