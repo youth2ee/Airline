@@ -449,7 +449,6 @@ $('.mbtn2').on('click',  function(event){
 	$('.modal-content').css('height','491px');
 	$('#modalfm').css('display','block');
 	$('#ubtn').css('display','none');
-	alert("clickl");
  	$.ajax({
 		data : {
 			name : $('#mname').val().trim(),
