@@ -88,6 +88,7 @@
 	<select id="airportList" resultType="com.airline.a1.admin.AirportVO">
 	select * from airport order by apName asc
 	</select>
+
 	
 	<!-- main -->
 	<select id="tprice" parameterType="com.airline.a1.booking.FlightDataVO" resultType="java.lang.Integer">
@@ -128,6 +129,7 @@
 	where depPlandTime like concat(#{depPlandTime},'%')
 	</select>
 	
+
 
   
   </mapper>

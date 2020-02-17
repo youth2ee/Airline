@@ -349,7 +349,7 @@
 			var contents = $('#contents').val().trim();
 
 
-		 	if(title !=="" && cate !=="" && contents !=="" && check ==true){
+		 	if(title !=="" && cate !=="" && contents !==""  && check ==true){
 					 $('#frm').submit();
 			}else{
 					alert('필수항목을 확인해주세요.')
@@ -360,85 +360,84 @@
 
 		
 		/**** Captcha ****/
-		$('#capReload').on('click', function(){
+		
+		$('#capReload').on('click', function() {
 
-		/* $("#btnTransfer").attr('disabled',true); */
-		
-		$.ajax({
-			 url : "captchaKey.do", 
-		//	dataType:"json",
-			success : function(data) {
-				console.log(data);
-	//			var key = data;
-	//			location.href = "captchaImg.do?key="+key;
-				$('#key').val(data);
-				
-				getCaptchaImg();
-	
-			}, error : function(data){
-				console.log("error : "+data);
-			}
-		});
-	});
-	
-	$(document).ready(function() {
-		$.ajax({
-			url : "captchaKey.do",
-		//	dataType:"json",
-			success : function(data) {
-				console.log(data);
-	//			var key = data;
-	//			location.href = "captchaImg.do?key="+key;
-				$('#key').val(data);
-				
-				getCaptchaImg();
-	
-			}, error : function(data){
-				console.log("error : "+data);
-			}
-		});
-		
-	});
-	function getCaptchaImg(){
-		$(function(){
-		//	alert("이미지 캡차 메소드 실행 ");
-		var key = $("#key").val();
 			$.ajax({
-				url: "captchaImg.do",
-				data: {key: key},
-				success: function(data){
-					$("#captchaDiv").html("<img src='${ contextPath }/resources/captchaImg/"+data+"'>").css('float','left');
+				url : "captchaKey.do",
+
+				success : function(data) {
+					console.log(data);
+					$('#key').val(data);
+					getCaptchaImg();
+				},
+				error : function(data) {
+					console.log("error : " + data);
 				}
 			});
 		});
-	}
-	
-	 $("#checkNo").on("click",function(){
-	//	var form01Data = $("#form01").serialize();
-	//	console.log(form01Data);
-		var key = $("#key").val();
-		var value = $("#value").val();
-		$.ajax({
-			url : "checkNo.do",
-			data : {key:key,value:value},
-			dataType:"json",
-			success : function(data) {
-				console.log(data.result);
-				if(data.result){
-					alert("인증되었습니다.");
-					check=true;
-					/* $("#btnTransfer").attr('disabled',false); */
-				}else{
-					alert("일치하지 않습니다. 다시 확인해주세요.");
+
+		$(document).ready(function() {
+			$.ajax({
+				url : "captchaKey.do",
+				success : function(data) {
+					console.log(data);
+					$('#key').val(data);
+					getCaptchaImg();
+				},
+				error : function(data) {
+					console.log("error : " + data);
 				}
-			},error : function(data){
-				alert("에러");
-				console.log(data);
-			}
+			});
+
 		});
-	}); 
+
+		function getCaptchaImg() {
+			$(function() {
+				var key = $("#key").val();
+				$
+						.ajax({
+							url : "captchaImg.do",
+							data : {
+								key : key
+							},
+							success : function(data) {
+								$("#captchaDiv")
+									.html("<img src='${ contextPath }/resources/captchaImg/"+data+"'>")
+									.css('float', 'left');
+							}
+						});
+			});
+		}
+
+		$("#checkNo").on("click", function() {
+			var key = $("#key").val();
+			var value = $("#value").val();
+			$.ajax({
+				url : "checkNo.do",
+				data : {
+					key : key,
+					value : value
+				},
+				dataType : "json",
+				success : function(data) {
+					console.log(data.result);
+					if (data.result) {
+						alert("인증되었습니다.");
+						check = true;
+					} else {
+						alert("일치하지 않습니다. 다시 확인해주세요.");
+					}
+				},
+				error : function(data) {
+					alert("에러");
+					console.log(data);
+				}
+			});
+		});
+
 		
-</script>
+	</script>
 
 </body>
 </html>
