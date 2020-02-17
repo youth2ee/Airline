@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>EVERY AIR / Booking</title>
 <link href="../resources/css/reset.css" rel="stylesheet">
 <link href="../resources/css/header.css" rel="stylesheet">
 <link href="../resources/css/booking/bookingWrite.css" rel="stylesheet">
@@ -166,7 +166,7 @@ ${arr[3]}시 ${arr[4]}분<i class='fas fa-angle-right' style='font-size:10px; pa
 <option>[30%] 5.18민주유공 1~4급 동반 보호자 1인</option>
 <option>[30%] 국가유공상이 1~3급 동반 보호자 1인</option>
 <option>[30%] 독립유공자 동반 보호자 1인</option>
-<option>[10%] 독립유동자 유족증소지자</option>
+<option>[10%] 독립유공자 유족증소지자</option>
 <option>[30%] 독립유공자</option>
 <option>[10%] 국가유공자/5.18민주유공자/월남전 참전유공자 &#38; 유공자 유족증 소지자</option>
 <option>[30%] 국가유공상이자 &#38; 5.18민주유공부상자</option>
@@ -191,7 +191,7 @@ ${arr[3]}시 ${arr[4]}분<i class='fas fa-angle-right' style='font-size:10px; pa
 <option>[30%] 5.18민주유공 1~4급 동반 보호자 1인</option>
 <option>[30%] 국가유공상이 1~3급 동반 보호자 1인</option>
 <option>[30%] 독립유공자 동반 보호자 1인</option>
-<option>[10%] 독립유동자 유족증소지자</option>
+<option>[10%] 독립유공자 유족증소지자</option>
 <option>[30%] 독립유공자</option>
 <option>[10%] 국가유공자/5.18민주유공자/월남전 참전유공자 &#38; 유공자 유족증 소지자</option>
 <option>[30%] 국가유공상이자 &#38; 5.18민주유공부상자</option>
