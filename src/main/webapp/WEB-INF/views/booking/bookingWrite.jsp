@@ -440,12 +440,13 @@ window.onclick = function(event) {
 	
 });
 
+var dold = '';
+
 $('.mbtn2').on('click',  function(event){
 	
 	$('.modal-content').css('height','491px');
 	$('#modalfm').css('display','block');
 	$('#ubtn').css('display','none');
-	alert("clickl");
  	$.ajax({
 		data : {
 			name : $('#mname').val().trim(),
@@ -455,7 +456,8 @@ $('.mbtn2').on('click',  function(event){
 		url : "./booking/searchm",
 		success : function(data) {
 
-			data = data.trim();
+			 data = data.trim();
+			 dold = data; 
 
 			if(data != "0"){
 				$('#modalfm').css('line-height','102px');
@@ -463,8 +465,6 @@ $('.mbtn2').on('click',  function(event){
 				$('#mnump').text(data);
 				$('#ubtn').css('display','block');
 
-				
-				
 			} else {
 
 				$('#modalfm').css('line-height','121px');
@@ -477,13 +477,7 @@ $('.mbtn2').on('click',  function(event){
 });
 
 $('body').on('click','#ubtn', function(){
-	/* 	$('.mnu-m').css('background-color','red'); */
-	alert(thi.parent('.btb').length);
-	thi.parent('.btb').find('.mnum').val(data);
-
-	thi.parent('.btb').find('.mnum').css('background-color','red');
-
-	
+	thi.parent('.btb').find('.mnum').val(dold);
     $('#myModal').css('display','none');
 });
 
