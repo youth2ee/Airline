@@ -123,13 +123,13 @@ $('#entvhclResveDate').datetimepicker({
  },
  timepicker:false,
  format:'Y-m-d',
- lang:'ko' /* ,
+ lang:'ko'  ,
  onShow:function( ct ){
 	   this.setOptions({
 		minDate:0,
 	    maxDate:$('#lvvhclResveDate').val()?$('#lvvhclResveDate').val():false
 	   })
-} */
+}
 });
 
 $('#entvhclResveDate').change(function(){
@@ -170,13 +170,13 @@ $('#lvvhclResveDate').datetimepicker({
 	 },
 	 timepicker:false,
 	 format:'Y-m-d',
-	 lang:'ko'/* ,
+	 lang:'ko',
 	 onShow:function( ct ){
 		   this.setOptions({
 			maxDate:maxDate2,
 		    minDate:jQuery('#entvhclResveDate').val()?jQuery('#entvhclResveDate').val():false
 		   })
-		  } */
+		  }
 	});
 
 $("#btnNext").click(function(){
@@ -185,7 +185,7 @@ $("#btnNext").click(function(){
 	startDate = $("#entvhclResveDate").val();
 	endDate = $('#lvvhclResveDate').val();
 	
-/* 
+
  	if(airport == "" ){
 		alert('공항을 선택해 주세요');
 		$("#airportCode").focus();
@@ -200,8 +200,7 @@ $("#btnNext").click(function(){
 	}else{
 		//폼제출
 		$("#resveForm").submit();
-	} */
- 	$("#resveForm").submit();
+	} 
 });
 </script>
 </body>
