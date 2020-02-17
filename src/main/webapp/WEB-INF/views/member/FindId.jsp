@@ -12,6 +12,8 @@
 <link rel="stylesheet" type="text/css" href="https://flyasiana.com/C/pc/css/common.css">
 <link rel="stylesheet" type="text/css" href="https://flyasiana.com/C/pc/css/flyasiana.css">
 <link rel="stylesheet" type="text/css" href="https://flyasiana.com/C/pc/css/calendar.css">
+
+<link rel="stylesheet" type="text/css" href="../resources/css/header.css">
 <style type="text/css">
 .modal-content {
   position: relative;
@@ -36,6 +38,7 @@ a:focus {
 </style>
 </head>
 <body>
+<c:import url="../layout/header.jsp" />
 <c:import url="../template/roading.jsp" />
 <div class="test"></div>
 <div class="container" id="container">

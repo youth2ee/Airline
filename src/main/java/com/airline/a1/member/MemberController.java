@@ -143,16 +143,15 @@ public class MemberController {
 	@ResponseBody
 	@GetMapping("memberidFindbyPhone")
 	public int memberidFindbyPhone(MembersVO membersVO, HttpSession session) throws Exception{
-		ModelAndView mv = new ModelAndView();
+		System.out.println("hello");
 		membersVO = memberService.memberidFindbyPhone(membersVO);
 		int result = 0;
 		if(membersVO != null) {
 			result = 1;
-			//int message = smsService.smsSend(membersVO.getPhone());
+			int message = smsService.smsSend(membersVO.getPhone());
 			Calendar calendar = Calendar.getInstance();
 			Long time = calendar.getTimeInMillis();
 			session.setAttribute("time", time);
-			int message = 123456;
 			session.setAttribute("number", message);
 		}
 		return result;
