@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>EVERY AIR / Ticket check</title>
 <link href="../resources/css/reset.css" rel="stylesheet">
 <link href="../resources/css/mypage/ticketCheck.css" rel="stylesheet">
 <link href="../resources/css/mypage/mypageHeader.css" rel="stylesheet">
