@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>EVERY AIR / Fine Res</title>
 <c:import url="../template/boot.jsp" />
 <link rel="stylesheet" href="../resources/css/park/parkRes.css">
 <link rel="stylesheet" type="text/css" href="../resources/css/header.css">
