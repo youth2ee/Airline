@@ -638,7 +638,7 @@ $(document).ready(function() {
 						
 						<div style="display: none; width: 100%;" id="deptt">
 						
-						<div style="width: 1180px; padding: 10px; background-color:#eee; margin: 0 auto; margin-top: 10px;text-align: center; height: 318.44px; line-height: 318.44px;" id="te">
+						<div style="width: 1180px; padding: 10px; background-color:#eee; margin: 0 auto; margin-top: 10px;text-align: center;" id="te">
 						
 						</div>
 						

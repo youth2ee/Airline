@@ -62,7 +62,7 @@
 				<div>
 					<span class="prev">다음글</span>
 					 <a href="./noticeSelect?num=${next.num}&menu=${param.menu}&curPage=${param.curPage}&search=${param.search}&kind=${param.kind}">${next.title}</a>
-					<c:if test="${next eq null}"><a>다음글이 없습니다.</a></c:if>
+					<c:if test="${next eq null}"><a>다음글이 없습니다.</a></c:if> 
 				</div>
 				<div>
 					<span class="next">이전글</span>
