@@ -21,7 +21,9 @@ public class InterceptorConfig implements WebMvcConfigurer {
 	
 	@Autowired
 	private NoticeSelectInterceptor noticeSelectInterceptor;
-
+	
+	@Autowired
+	private AdminInterceptor adminInterceptor;
 	//addInterceptors :  interceptor를 등록하는 메서드
 	@Override
 		public void addInterceptors(InterceptorRegistry registry) {
@@ -56,6 +58,9 @@ public class InterceptorConfig implements WebMvcConfigurer {
 		 * .addPathPatterns("/notice/noticeSelect");
 		 */
 		 
+		  //관리자만 admin페이지 접속하도록
+		  registry.addInterceptor(adminInterceptor)
+		  .addPathPatterns("/admin/*");
 			
 			//WebMvcConfigurer.super.addInterceptors(registry);
 		}
