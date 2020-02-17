@@ -165,6 +165,15 @@ input, select{
 	border-radius: 10px;
 	color: #c60b15;
 }
+
+.gobooks2{
+	background-color: white;
+	border: 2px solid #c60b15;
+	width: 100px;
+	height: 50px;
+	border-radius: 10px;
+	color: #c60b15;
+}
 .select, .select2{
 	height: 50px;
 }

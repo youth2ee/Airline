@@ -951,7 +951,7 @@ $('body').on('blur', '.search__input', function(){
  });
 
 
-$("#weather_select").click(function(){
+$("#weather_sel").change(function(){
 	var weather = $("#weather_sel").val();
 	$.ajax({
 		type:'get',
