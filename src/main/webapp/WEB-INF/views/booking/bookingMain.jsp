@@ -230,19 +230,19 @@
  $('#input-start').daterangepicker({
 	singleDatePicker:false,
 	autoApply: true,
-	/*  minDate: new Date() */
+	  minDate: new Date() 
 	});
 $('input:radio[name=kind]').click(function(){
 	if($('input:radio[id=eachWay]').is(":checked")){
 			 $('#input-start').daterangepicker({
 				singleDatePicker:true,
-				/* minDate: new Date() */	
+				 minDate: new Date()
 				}); 
 		}else{
 			$('#input-start').daterangepicker({
 				singleDatePicker:false,	
 				autoApply: true,
-				/* minDate: new Date() */
+				 minDate: new Date()
 				}); 	
 		}
 });

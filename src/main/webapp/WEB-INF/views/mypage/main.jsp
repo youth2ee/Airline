@@ -81,9 +81,9 @@
 			</div>
 			
 			<div id="cardInfo">
-				<div>회원번호 : ${member.memberNum}</div>
-				<div>전화번호 : ${member.phone}</div>
-				<div>이메일 : ${member.email}</div>
+				<div><span style="color:#d2e9ec;">회원번호 : </span>${member.memberNum}</div>
+				<div><span style="color:#d2e9ec;">전화번호 :  </span>${member.phone}</div>
+				<div><span style="color:#d2e9ec;">이메일 :  </span>${member.email}</div>
 				<div style="padding-top: 30px;">바코드 / <span class="openQr">QR코드</span> / SMS</div>
 			</div>
 			

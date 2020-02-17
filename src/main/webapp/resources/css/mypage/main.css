@@ -84,6 +84,11 @@ section {
 .openQr{
 	cursor: pointer;
 }
+
+.openQr : hover{
+	color: #6d0815;
+	}
+
 .mypageInfo {
 	background-color: #e4e4e4;;
 	width: 75%;

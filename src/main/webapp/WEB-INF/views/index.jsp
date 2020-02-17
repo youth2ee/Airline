@@ -638,7 +638,7 @@ $(document).ready(function() {
 						
 						<div style="display: none; width: 100%;" id="deptt">
 						
-						<div style="width: 1180px; padding: 10px; background-color:#eee; margin: 0 auto; margin-top: 10px;text-align: center; height: 318.44px; line-height: 318.44px;" id="te">
+						<div style="width: 1180px; padding: 10px; background-color:#eee; margin: 0 auto; margin-top: 10px;text-align: center; " id="te">
 						
 						</div>
 						
@@ -805,19 +805,19 @@ $(document).ready(function() {
  $('#input-start').daterangepicker({
 	singleDatePicker:false,
 	autoApply: true,
-	/*  minDate: new Date() */
+	 minDate: new Date() 
 	});
 $('input:radio[name=kind]').click(function(){
 	if($('input:radio[id=eachWay]').is(":checked")){
 			 $('#input-start').daterangepicker({
 				singleDatePicker:true,
-				/* minDate: new Date() */	
+				 minDate: new Date() 
 				}); 
 		}else{
 			$('#input-start').daterangepicker({
 				singleDatePicker:false,	
 				autoApply: true,
-				/* minDate: new Date() */
+				 minDate: new Date() 
 				}); 	
 		}
 });
