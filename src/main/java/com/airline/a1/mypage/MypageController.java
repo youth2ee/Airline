@@ -126,7 +126,6 @@ public class MypageController {
 		mv.addObject("isCheckIn",seatVOs.size());
 		mv.addObject("count", eTicketVOs.size());
 		return mv;
-		
 	}
 	
 	@GetMapping("ticketCheck")
@@ -135,7 +134,6 @@ public class MypageController {
 		ETicketVO eTicketVO = new ETicketVO();
 		MembersVO member = (MembersVO)session.getAttribute("member");
 		eTicketVO.setId(member.getId()); 
-		/* eTicketVO.setId("test"); */
 		List<ETicketVO> eTicketVOs = mypageService.getBookingList(eTicketVO);
 		List<ETicketVO> eTicketVOs2 = new ArrayList<ETicketVO>();
 		
