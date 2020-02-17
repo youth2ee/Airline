@@ -440,6 +440,10 @@ window.onclick = function(event) {
 	
 });
 
+
+var told = '';
+
+
 $('.mbtn2').on('click',  function(event){
 	
 	$('.modal-content').css('height','491px');
@@ -456,6 +460,8 @@ $('.mbtn2').on('click',  function(event){
 		success : function(data) {
 
 			data = data.trim();
+
+			told = data;
 
 			if(data != "0"){
 				$('#modalfm').css('line-height','102px');
@@ -477,13 +483,8 @@ $('.mbtn2').on('click',  function(event){
 });
 
 $('body').on('click','#ubtn', function(){
-	/* 	$('.mnu-m').css('background-color','red'); */
-	alert(thi.parent('.btb').length);
-	thi.parent('.btb').find('.mnum').val(data);
+	thi.parent('.btb').find('.mnum').val(told);
 
-	thi.parent('.btb').find('.mnum').css('background-color','red');
-
-	
     $('#myModal').css('display','none');
 });
 
