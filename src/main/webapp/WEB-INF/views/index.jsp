@@ -68,8 +68,8 @@ $(document).ready(function() {
 
   <!-- <strong>신종 코로나 바이러스</strong>&nbsp주의 하세여 -->
   <p class="strong">
-  			코로나19 관련 국가별 입국 제한 현황
-  	<a href="${pageContext.request.contextPath}/notice/noticeSelect?num=132" style="text-decoration: underline;">자세히보기</a>
+  			비운항 및 감편 노선 안내
+  	<a href="${pageContext.request.contextPath}/notice/noticeSelect?num=134" style="text-decoration: underline;">자세히보기</a>
   </p>
 
 </div>
