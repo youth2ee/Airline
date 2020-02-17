@@ -483,8 +483,6 @@ public class HomeController {
 			bookingTicketVO.setDepLoc(depLoc);
 			bookingTicketVO.setArrLoc(arrLoc);
 			
-			System.out.println(bookingTicketVO.getDepLoc());
-			System.out.println(bookingTicketVO.getArrLoc());
 		}
 
 		mv.addObject("bookingVO", bookingTicketVO);
