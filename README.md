@@ -6,7 +6,6 @@
 ---
 
 ## 개발환경
-> If your `README` has a lot of info, section headers might be nice.
 
 - **운영체제** : Window10 64bit / Linux
 - **사용언어** : JAVA(JDK 1.8) / JavaScript / JSP 
