@@ -26,9 +26,9 @@
 | 리무진 예약 | 전국공항 버스노선(한국공항공사) | 전국공항 버스노선 정보 |
 | 채팅 |  |  |
 | SMS | 청기와랩(https://www.bluehouselab.com/sms/) | 아이디, 비밀번호 찾기 |
-| SMS | <a href='https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient'>`Apache HttpClient`</a> |  |
+| SMS | <a href='https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient' target="_blank">`Apache HttpClient`</a> |  |
 | Email |  |  |
-| 날씨 | 웨더아이(https://www.weatheri.co.kr/) | 날씨정보 |
+| 날씨 | <a href='https://www.weatheri.co.kr' target="_blank">`웨더아이`</ | 날씨정보 |
 | 게시판 |  |  |
 | 실시간 검색어 | 꼬꼬마 형태소 분석기(http://kkma.snu.ac.kr/) | 검색된 단어의 형태소 분석 |
 | Barcode | Barcode-coder(https://barcode-coder.com/en/) | 항공권 Barcode 생성 |
