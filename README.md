@@ -33,9 +33,9 @@
 | 실시간 검색어 | <a href='http://kkma.snu.ac.kr' target="_blank">`꼬꼬마 형태소 분석기`</a> | 검색된 단어의 형태소 분석 |
 | Barcode | <a href='https://barcode-coder.com/en/' target="_blank">`Barcode-coder`</a> | 항공권 Barcode 생성 |
 | QRcode | <a href='https://github.com/davidshimjs/qrcodejs' target="_blank">`QRCode`</a> | 회원번호 QRcode 생성 |
-| ScreenShot(Image) | Screenshots(https://html2canvas.hertzen.com/) | 항공권화면 이미지저장 |
-| ScreenShot(PDF) | jsPDF(https://github.com/MrRio/jsPDF) | 항공권화면 PDF저장 |
-| 결제 | 아임포트(https://www.iamport.kr) | 항공권요금결제, 리무진요금결제 |
+| ScreenShot(Image) | <a href='https://html2canvas.hertzen.com/' target="_blank">`Screenshots`</a> | 항공권화면 이미지저장 |
+| ScreenShot(PDF) | <a href='https://github.com/MrRio/jsPDF' target="_blank">`jsPDF`</a> | 항공권화면 PDF저장 |
+| 결제 | <a href='https://www.iamport.kr' target="_blank">`아임포트`</a> | 항공권요금결제, 리무진요금결제 |
 
 
 ---
