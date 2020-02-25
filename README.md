@@ -33,7 +33,7 @@
 | QRcode | QRCode(https://github.com/davidshimjs/qrcodejs) | 회원번호 QRcode 생성 |
 | ScreenShot(Image) | Screenshots(https://html2canvas.hertzen.com/) | 항공권화면 이미지저장 |
 | ScreenShot(PDF) | jsPDF(https://github.com/MrRio/jsPDF) | 항공권화면 PDF저장 |
-| 결제 | 아임포트(https://www.iamport.kr) |  |
+| 결제 | 아임포트(https://www.iamport.kr) | 항공권요금결제, 리무진요금결제 |
 
 
 ---
