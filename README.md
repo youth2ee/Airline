@@ -28,11 +28,11 @@
 | SMS | 청기와랩(https://www.bluehouselab.com/sms/) | 아이디, 비밀번호 찾기 |
 | SMS | <a href='https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient' target="_blank">`Apache HttpClient`</a> |  |
 | Email |  |  |
-| 날씨 | <a href='https://www.weatheri.co.kr' target="_blank">`웨더아이`</ | 날씨정보 |
+| 날씨 | <a href='https://www.weatheri.co.kr' target="_blank">`웨더아이`</a> | 날씨정보 |
 | 게시판 |  |  |
-| 실시간 검색어 | 꼬꼬마 형태소 분석기(http://kkma.snu.ac.kr/) | 검색된 단어의 형태소 분석 |
-| Barcode | Barcode-coder(https://barcode-coder.com/en/) | 항공권 Barcode 생성 |
-| QRcode | QRCode(https://github.com/davidshimjs/qrcodejs) | 회원번호 QRcode 생성 |
+| 실시간 검색어 | <a href='http://kkma.snu.ac.kr' target="_blank">`꼬꼬마 형태소 분석기`</a> | 검색된 단어의 형태소 분석 |
+| Barcode | <a href='https://barcode-coder.com/en/' target="_blank">`Barcode-coder`</a> | 항공권 Barcode 생성 |
+| QRcode | <a href='https://github.com/davidshimjs/qrcodejs' target="_blank">`QRCode`</a> | 회원번호 QRcode 생성 |
 | ScreenShot(Image) | Screenshots(https://html2canvas.hertzen.com/) | 항공권화면 이미지저장 |
 | ScreenShot(PDF) | jsPDF(https://github.com/MrRio/jsPDF) | 항공권화면 PDF저장 |
 | 결제 | 아임포트(https://www.iamport.kr) | 항공권요금결제, 리무진요금결제 |
