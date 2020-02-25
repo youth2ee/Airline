@@ -31,8 +31,8 @@
 | 실시간 검색어 | 꼬꼬마 형태소 분석기(http://kkma.snu.ac.kr/) | 검색된 단어의 형태소 분석 |
 | Barcode | Barcode-coder(https://barcode-coder.com/en/) | 항공권 Barcode 생성 |
 | QRcode | QRCode(https://github.com/davidshimjs/qrcodejs) | 회원번호 QRcode 생성 |
-| ScreenShot(Image) | https://html2canvas.hertzen.com/ | 항공권화면 이미지저장 |
-| ScreenShot(PDF) | https://github.com/MrRio/jsPDF | 항공권화면 PDF저장 |
+| ScreenShot(Image) | Screenshots(https://html2canvas.hertzen.com/) | 항공권화면 이미지저장 |
+| ScreenShot(PDF) | jsPDF(https://github.com/MrRio/jsPDF) | 항공권화면 PDF저장 |
 | 결제 | 아임포트(https://www.iamport.kr) |  |
 
 
