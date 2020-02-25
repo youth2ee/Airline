@@ -8,7 +8,7 @@
 ## 개발환경
 > If your `README` has a lot of info, section headers might be nice.
 
-- **운영체제** : Window10 64bit, Linux
+- **운영체제** : Window10 64bit / Linux
 - **사용언어** : JAVA(JDK 1.8) / JavaScript / JSP 
 - **DB** : MySQL
 - **Framework** : Spring Boot / Mybatis / BootStrap
@@ -29,7 +29,7 @@
 | 날씨 | 웨더아이(https://www.weatheri.co.kr/) | 날씨정보 |
 | 게시판 |  |  |
 | 실시간 검색어 | 꼬꼬마 형태소 분석기(http://kkma.snu.ac.kr/) | 검색된 단어의 형태소 분석 |
-| Barcode | Barcode-coder(https://barcode-coder.com/en/) | 회원번호 Barcode 생성 |
+| Barcode | Barcode-coder(https://barcode-coder.com/en/) | 항공권 Barcode 생성 |
 | QRcode | QRCode(https://github.com/davidshimjs/qrcodejs) | 회원번호 QRcode 생성 |
 | ScreenShot(Image) | https://html2canvas.hertzen.com/ | 항공권화면 이미지저장 |
 | ScreenShot(PDF) | https://github.com/MrRio/jsPDF | 항공권화면 PDF저장 |
