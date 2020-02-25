@@ -1,10 +1,5 @@
 
-개발환경 
-* 운영체제 : Window10 64bit
-* 사용언어 : JAVA(JDK 1.8) / JavaScript / JSP 
-* 
-
-## Airline
+### Airline
 
 > 아시아나에 기반한 항공권 예매 사이트 제작 
 
@@ -12,12 +7,12 @@
 
 ---
 
-## Table of Contents (Optional)
+## 개발환경
 
 > If your `README` has a lot of info, section headers might be nice.
 
-- [Installation](#installation)
-- [Features](#features)
+- 운영체제 : Window10 64bit
+- 사용언어 : JAVA(JDK 1.8) / JavaScript / JSP 
 - [Contributing](#contributing)
 - [Team](#team)
 - [FAQ](#faq)
