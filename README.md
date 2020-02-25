@@ -27,7 +27,7 @@
 | SMS | <a href='https://www.bluehouselab.com/sms' target="_blank">`청기와랩`</a> | 아이디, 비밀번호 찾기 |
 |  | <a href='https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient' target="_blank">`Apache HttpClient`</a> |  |
 | 날씨 | <a href='https://www.weatheri.co.kr' target="_blank">`웨더아이`</a> | 날씨정보 |
-| 게시판 |  <a href='https://developers.naver.com/products/captcha/' target="_blank">`네이버 캡차`</ |  |
+| 게시판 |  <a href='https://developers.naver.com/products/captcha/' target="_blank">`네이버 캡차`</a> | 고객센터 게시물 작성 |
 | 실시간 검색어 | <a href='http://kkma.snu.ac.kr' target="_blank">`꼬꼬마 형태소 분석기`</a> | 검색된 단어의 형태소 분석 |
 | Barcode | <a href='https://barcode-coder.com/en/' target="_blank">`Barcode-coder`</a> | 항공권 Barcode 생성 |
 | QRcode | <a href='https://github.com/davidshimjs/qrcodejs' target="_blank">`QRCode`</a> | 회원번호 QRcode 생성 |
