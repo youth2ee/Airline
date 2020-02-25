@@ -16,10 +16,6 @@
 - Git / Maven
 - **API** 
 
-| column | column | column | 
-|:-------|-------:|:------:|
-|   a    |   b    |   c    |
-
 | 사용분야 | API명 | 사용데이터 |
 |---|:---:|:---:|
 | 항공데이터 구축 | 국내항공운항정보 서비스(국토교통부) | 항공사정보, 공항정보, 항공운행정보 |
@@ -28,9 +24,11 @@
 | 채팅 |  |  |
 | SMS |  |  |
 | Email |  |  |
+| 날씨 | 웨더아이(https://www.weatheri.co.kr/) | 날씨정보 |
 | 게시판 |  |  |
 | 실시간 검색어 | 꼬꼬마 형태소 분석기(http://kkma.snu.ac.kr/) | 검색된 단어의 형태소 분석 |
-| QRcode |  |  |
+| Barcode | Barcode-coder(https://barcode-coder.com/en/) | 회원번호 Barcode 생성 |
+| QRcode | QRCode(https://github.com/davidshimjs/qrcodejs) | 회원번호 QRcode 생성 |
 | 결제 | 아임포트(https://www.iamport.kr) |  |
 
 
