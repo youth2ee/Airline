@@ -66,7 +66,7 @@ class SearchTests {
 	//@Test
 	public void mTest(){
         // string to extract keywords
-        String strToExtrtKwrd = "이것도분석하는게가능한부분인가요오지고지리고돌리고인정?어인정";
+        String strToExtrtKwrd = "이것도분석하는게가능한부분인가요";
         // init KeywordExtractor
         KeywordExtractor ke = new KeywordExtractor();
         // extract keywords
